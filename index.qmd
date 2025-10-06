@@ -1,0 +1,64 @@
+---
+title: "Estatística Multivariada I"
+page-layout: full
+title-block-banner: false
+comments: false
+toc: FALSE
+bibliography: references.bib
+---
+
+::: {#hero-heading}
+Página dedicada à disciplina **EST014 - Estatística Multivariada I**
+:::
+
+------------------------------------------------------------------------
+
+Estatística Multivariada I é uma disciplina que apresenta o estudo de técnicas estatísticas voltadas para a análise simultânea de múltiplas variáveis. O curso abrange temas como análise de componentes principais, análise fatorial, análise de agrupamentos e análise discriminante. Essas metodologias são amplamente aplicadas em diversas áreas do conhecimento, permitindo a extração de informações relevantes a partir de conjuntos de dados complexos. O objetivo da disciplina é fornecer tanto a fundamentação teórica quanto a aplicação prática dessas técnicas, capacitando os alunos a utilizar ferramentas estatísticas avançadas em suas pesquisas e projetos.
+
+![](images/multi_I.jpg){width="1000"}
+
+
+
+# Ementa
+
+Revisão de Álgebra Matricial. Introdução à Estatística Multivariada. Distribuição Normal Multivariada. Análise de Componentes Principais. Análise Fatorial. Análise de Conglomerados ou Agrupamentos. Análise Discriminante.
+
+
+
+
+
+# Conteúdo Programático
+
+1. **Revisão de Álgebra Matricial:** matrizes e vetores. Operações com matrizes. Inversão matricial. Formas quadráticas. Autovalores e autovetores. Teorema da decomposição espectral. Determinante.
+
+
+2. **Introdução à Estatística Multivariada:** exemplos de aplicação. Definição de Vetores Aleatórios, Vetores de Médias e Matrizes de Covariâncias e Correlação. Interpretação destas Matrizes. Vetores de Médias Amostrais e Matrizes Covariâncias e Correlações Amostrais. Variância Generalizada e Variância Total. Distâncias: Euclidiana, Euclidiana padronizada e Mahalanobis. 
+
+3. **Distribuição Normal Multivariada:** função densidade. Propriedades. Distribuição Normal Bivariada. Elipsóides de concentração. Métodos práticos de verificação da hipótese de normalidade multivariada.
+
+4. **Análise de Componentes Principais:** construção das Componentes Principais pela Matriz de Covariância e pela Matriz de Correlação. Proporção da Variância Total Explicada pelas Componentes. Estimação das Componentes Principais e dos Escores. Exemplos Práticos de Aplicação.
+
+5. **Análise Fatorial:** apresentação teórica da metodologia. Modelo de Fatores Ortogonais. Estimação dos Fatores pelos Métodos de Componentes Principais, de Fatores Principais e de Máxima Verossimilhança. Rotação de Fatores: Rotações Ortogonais e Oblíquas.
+Estimação dos Escores dos Fatores: Método de Mínimos Quadrados e Método de Regressão. Exemplos Práticos de Aplicação.
+
+6. **Análise de Conglomerados ou Agrupamentos:**  discussão dos vários Métodos de Formação de Conglomerados, Variáveis Quantitativas e Qualitativas. Métodos Hierárquicos: Método de Ligação Simples (Single Linkage), de Ligação Completa (Complete Linkage), de Ligação Média (Average Linkage), do Centróide, e de Ward. Métodos para encontrar o Número de Conglomerados Ótimo da Partição. Métodos Não Hierárquicos: Método das K-Médias (KMeans). Exemplos Práticos de Aplicação.
+
+7. **Análise Discriminante:** discriminação e classificação em 2 grupos. Estimação das Probabilidades de Erro de Classificação. Discriminação e Classificação Multivariada. Função Discriminante de Fischer. Exemplos Práticos de Aplicação.
+
+
+# Horário de Aulas
+
+Neste semestre, as aulas da disciplina serão ministradas no LABEST II.
+
+| Dia           | Horário         | Local        |
+|---------------|-----------------|--------------|
+| Terça-feira   | 21:00 - 22:40   | LABEST III   |
+| Quinta-feira   | 19:00 - 20:40   | LABEST III   |
+
+
+# Referências Bibliográficas
+
+---
+nocite: |
+  @johnson2007applied, @anderson2009introduction, @mingoti05, @hair2009, @ferreira18, @rencher2012methods, @lattin11, @corrar07, @favero2017manual
+---

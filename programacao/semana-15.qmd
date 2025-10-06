@@ -1,0 +1,31 @@
+---
+title: "Semana 15"
+---
+
+
+
+## Slides
+
+{{< fa file-powerpoint size=lg >}} [Análise de Correspondência](/aulas/Analise_Correspondencia/correspondencia.html "Análise de Correspondência"){aria-label="Análise de Correspondência"}
+
+
+## Script R
+
+{{< fa brands r-project size=lg >}}[Análise da Percepção de Sabores de Café](/analises_dados/acs.html "Análise de dados"){aria-label="Análise de dados"}
+
+
+
+## Entrega lista de exercícios 04
+
+::: callout-important
+
+## Fique Atento!
+
+{{< fa file-lines size=lg >}} [Lista de exercícios 04](/exercicios/lista04.html "Lista de exercícios 04"){aria-label="Lista de exercícios 04"} 
+
+Entrega via [Moodle](https://moodlepresencial.ufop.br/login/index.php)
+
+-   Data de entrega:
+    -   31 de agosto de 2025
+:::
+

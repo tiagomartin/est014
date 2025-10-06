@@ -1,0 +1,17 @@
+---
+title: "Aulas"
+---
+
+- Revisão de Álgebra Matricial
+
+- Introdução à Estatística Multivariada
+
+- Distribuição Normal Multivariada
+
+- Análise de Componentes Principais
+
+- Análise Fatorial
+
+- Análise de Conglomerados ou Agrupamentos
+
+- Análise Discriminante
