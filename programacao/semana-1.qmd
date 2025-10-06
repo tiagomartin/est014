@@ -4,4 +4,6 @@ title: "Semana 01"
 
 Sejam bem-vindos à disciplina EST014 - Estatística Multivariada I.
 
-Leiam com atenção o [plano de ensino](https://github.com/tiagomartin/est014/blob/main/documentos/Plano%20de%20Ensino%20multivariada%202%202025-1.pdf) da disciplina. Nele estão as regras do jogo!
+Leiam com atenção o [plano de ensino](https://github.com/tiagomartin/est014/blob/3510b6c24211502df95769537ddb1097d026bd8d/documentos/Plano_de_Ensino_EST014_2025_2.pdf) da disciplina. Nele estão as regras do jogo!
+
+
