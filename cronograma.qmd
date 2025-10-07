@@ -31,7 +31,7 @@ Esta página contém um esboço dos tópicos, conteúdos e tarefas para o semest
 | Semana | Data | Tópico | Artigo | Slides | EC | LE | Script | MC | Projeto |
 |:------:|--------|--------|:------:|:------:|:------:|:------:|:------:|:------:|:------:|
 | [1](programacao/semana-1.html) | Ter, 07/10 | Apresentação da disciplina |  |  |  |  |  |  |  |
-|  | Qui, 09/10 | Revisão de Álgebra Linear |  |  |  |  |  |  |  |
+|  | Qui, 09/10 | Revisão de Álgebra Linear |  | [{{< fa file-powerpoint size=2xl >}}](/aulas/revisao_alg_linear/rev_alg_linear.html#/title-slide "Revisão de Álgebra Linear"){aria-label="Revisão de Álgebra Linear"} |  |  |  |  |  |
 <!-- | [2](programacao/semana-2.html) | Ter, 13/05 | Conceitos iniciais |  | [{{< fa file-powerpoint size=2xl >}}](/aulas/Conceitos%20iniciais/conceitos_iniciais.html "Conceitos iniciais"){aria-label="Conceitos iniciais"} |  |  |  |  |  | -->
 <!-- |  | Qui, 15/05 | Conceitos iniciais |  | [{{< fa file-powerpoint size=2xl >}}](/aulas/Conceitos%20iniciais/conceitos_iniciais.html#/importância-da-definição-dos-objetivos "Conceitos iniciais"){aria-label="Conceitos iniciais"} |  |  |  |  |  | -->
 <!-- | [3](programacao/semana-3.html) | Ter, 20/05 | Pré-processamento de dados |  | [{{< fa file-powerpoint size=2xl >}}](/aulas/Pre_processamento/pre_processamento.html#/processo-de-preparação-da-base-de-dados "Pré-processamento"){aria-label="Pré-processamento"} |  |  |  |  |  | -->

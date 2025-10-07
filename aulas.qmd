@@ -2,7 +2,7 @@
 title: "Aulas"
 ---
 
-- Revisão de Álgebra Matricial
+- [Revisão de Álgebra Matricial](/aulas/revisao_alg_linear/rev_alg_linear.html#/title-slide)
 
 - Introdução à Estatística Multivariada
 

@@ -1,115 +1,17 @@
 [
   {
-    "objectID": "programacao/semana-9.html",
-    "href": "programacao/semana-9.html",
-    "title": "Semana 09",
-    "section": "",
-    "text": "{{&lt; fa file-powerpoint size=lg &gt;}} Análise de Regressão Multivariada"
-  },
-  {
-    "objectID": "programacao/semana-9.html#slides",
-    "href": "programacao/semana-9.html#slides",
-    "title": "Semana 09",
-    "section": "",
-    "text": "{{&lt; fa file-powerpoint size=lg &gt;}} Análise de Regressão Multivariada"
-  },
-  {
-    "objectID": "programacao/semana-7.html",
-    "href": "programacao/semana-7.html",
-    "title": "Semana 07",
-    "section": "",
-    "text": "Recesso Feriado Corpus Christi"
-  },
-  {
-    "objectID": "programacao/semana-5.html",
-    "href": "programacao/semana-5.html",
-    "title": "Semana 04",
-    "section": "",
-    "text": "{{&lt; fa file-powerpoint size=lg &gt;}} Inferência sobre matrizes de covariâncias"
-  },
-  {
-    "objectID": "programacao/semana-5.html#slides",
-    "href": "programacao/semana-5.html#slides",
-    "title": "Semana 04",
-    "section": "",
-    "text": "{{&lt; fa file-powerpoint size=lg &gt;}} Inferência sobre matrizes de covariâncias"
-  },
-  {
-    "objectID": "programacao/semana-3.html",
-    "href": "programacao/semana-3.html",
-    "title": "Semana 03",
-    "section": "",
-    "text": "{{&lt; fa file-powerpoint size=lg &gt;}} Inferência sobre vetores de médias"
-  },
-  {
-    "objectID": "programacao/semana-3.html#slides",
-    "href": "programacao/semana-3.html#slides",
-    "title": "Semana 03",
-    "section": "",
-    "text": "{{&lt; fa file-powerpoint size=lg &gt;}} Inferência sobre vetores de médias"
-  },
-  {
-    "objectID": "programacao/semana-15.html",
-    "href": "programacao/semana-15.html",
-    "title": "Semana 15",
-    "section": "",
-    "text": "{{&lt; fa file-powerpoint size=lg &gt;}} Análise de Correspondência"
-  },
-  {
-    "objectID": "programacao/semana-15.html#slides",
-    "href": "programacao/semana-15.html#slides",
-    "title": "Semana 15",
-    "section": "",
-    "text": "{{&lt; fa file-powerpoint size=lg &gt;}} Análise de Correspondência"
-  },
-  {
-    "objectID": "programacao/semana-15.html#script-r",
-    "href": "programacao/semana-15.html#script-r",
-    "title": "Semana 15",
-    "section": "Script R",
-    "text": "Script R\n{{&lt; fa brands r-project size=lg &gt;}}Análise da Percepção de Sabores de Café"
-  },
-  {
-    "objectID": "programacao/semana-15.html#entrega-lista-de-exercícios-04",
-    "href": "programacao/semana-15.html#entrega-lista-de-exercícios-04",
-    "title": "Semana 15",
-    "section": "Entrega lista de exercícios 04",
-    "text": "Entrega lista de exercícios 04\n\n\n\n\n\n\nFique Atento!\n\n\n\n{{&lt; fa file-lines size=lg &gt;}} Lista de exercícios 04\nEntrega via Moodle\n\nData de entrega:\n\n31 de agosto de 2025"
-  },
-  {
-    "objectID": "programacao/semana-13.html",
-    "href": "programacao/semana-13.html",
-    "title": "Semana 13",
-    "section": "",
-    "text": "{{&lt; fa file-powerpoint size=lg &gt;}} Escalonamento Multidimensional"
-  },
-  {
-    "objectID": "programacao/semana-13.html#slides",
-    "href": "programacao/semana-13.html#slides",
-    "title": "Semana 13",
-    "section": "",
-    "text": "{{&lt; fa file-powerpoint size=lg &gt;}} Escalonamento Multidimensional"
-  },
-  {
-    "objectID": "programacao/semana-13.html#script-r",
-    "href": "programacao/semana-13.html#script-r",
-    "title": "Semana 13",
-    "section": "Script R",
-    "text": "Script R\n{{&lt; fa brands r-project size=lg &gt;}}Análise de Preferência de Consumidores por Sabonetes Artesanais"
-  },
-  {
-    "objectID": "programacao/semana-11.html",
-    "href": "programacao/semana-11.html",
-    "title": "Semana 11",
-    "section": "",
-    "text": "Não haverá aula!"
-  },
-  {
     "objectID": "programacao/semana-1.html",
     "href": "programacao/semana-1.html",
     "title": "Semana 01",
     "section": "",
     "text": "Sejam bem-vindos à disciplina EST014 - Estatística Multivariada I.\nLeiam com atenção o plano de ensino da disciplina. Nele estão as regras do jogo!"
+  },
+  {
+    "objectID": "programacao/semana-1.html#slides",
+    "href": "programacao/semana-1.html#slides",
+    "title": "Semana 01",
+    "section": "Slides",
+    "text": "Slides\n Revisão de Álgebra Matricial"
   },
   {
     "objectID": "index.html",
@@ -131,9 +33,240 @@
   {
     "objectID": "about.html",
     "href": "about.html",
-    "title": "About",
+    "title": "Sobre",
     "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
+    "text": "Disciplina oferecida no semestre 2025/2"
+  },
+  {
+    "objectID": "aulas/revisao_alg_linear/rev_alg_linear.html#definição-e-propriedades-básicas",
+    "href": "aulas/revisao_alg_linear/rev_alg_linear.html#definição-e-propriedades-básicas",
+    "title": "Revisão de Álgebra Matricial",
+    "section": "Definição e propriedades básicas",
+    "text": "Definição e propriedades básicas\n\nUma matriz é um conjunto de números ou variáveis dispostos em linhas e colunas.\n\n\n\nUma matriz \\(\\mathbf{A}\\) de \\(n\\) linhas e \\(p\\) colunas (dimensão \\(n \\times p\\)) pode ser representada, genericamente, por:\n\n\\[{\\mathbf A} = \\left[ \\begin{array}{cccc} a_{11} & a_{12} & \\cdots & a_{1p} \\\\ a_{21} & a_{22} & \\cdots & a_{2p} \\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\\na_{n1} & a_{n2} & \\cdots & a_{np} \\end{array} \\right]\\]\n\n\n\nA matriz \\(\\mathbf{A}\\) pode ser denotada ainda por \\(\\mathbf{A} = \\{a_{ij}\\}\\), onde o primeiro índice indica linha, o segundo coluna e \\(a_{ij}\\) é o termo geral da matriz."
+  },
+  {
+    "objectID": "aulas/revisao_alg_linear/rev_alg_linear.html#definição-e-propriedades-básicas-1",
+    "href": "aulas/revisao_alg_linear/rev_alg_linear.html#definição-e-propriedades-básicas-1",
+    "title": "Revisão de Álgebra Matricial",
+    "section": "Definição e propriedades básicas",
+    "text": "Definição e propriedades básicas\n\nUm vetor \\(\\mathbf{x}\\), de dimensão \\(n\\), é representado, genericamente, por:\n\n\\[\\mathbf{x} = \\left[ \\begin{array}{c} x_1 \\\\ x_2 \\\\ \\vdots \\\\ x_n \\end{array} \\right] \\]\n\n\nNuma análise multivariada com \\(n\\) indivíduos e \\(p\\) variáveis, as linhas da matriz de dados (observações dos indivíduos) podem ser consideradas \\(n\\) vetores de dimensão \\(p\\): \\(\\mathbf{x}_i^t = (x_{i1}, x_{i2}, \\cdots, x_{ip}), \\,\\,\\,\\,\\, i = 1, 2, \\cdots, n\\);"
+  },
+  {
+    "objectID": "aulas/revisao_alg_linear/rev_alg_linear.html#definição-e-propriedades-básicas-2",
+    "href": "aulas/revisao_alg_linear/rev_alg_linear.html#definição-e-propriedades-básicas-2",
+    "title": "Revisão de Álgebra Matricial",
+    "section": "Definição e propriedades básicas",
+    "text": "Definição e propriedades básicas\n\nAs colunas da matriz de dados (observações referentes à variáveis) podem ser consideradas \\(p\\) vetores de dimensão \\(n\\):\n\n\\[\\mathbf{x}_j^t = (x_{1j}, x_{2j}, \\cdots, x_{nj}), \\,\\,\\,\\,\\, j = 1, 2, \\cdots, p\\]\n\n\nA multiplicação de um vetor \\(\\mathbf{x} = (x_1, x_2 , \\cdots, x_p)^t\\) por um escalar real \\(c\\) resulta em um vetor \\(\\mathbf{y} = c \\mathbf{x} = (cx_1 , cx_2 , \\cdots, cx_p)^t\\), de igual dimensão em relação ao vetor original;\n\n\n\n\nGeometricamente, a multiplicação de um vetor por um escalar pode mudar seu tamanho e sentido, mas não sua direção."
+  },
+  {
+    "objectID": "aulas/revisao_alg_linear/rev_alg_linear.html#definição-e-propriedades-básicas-3",
+    "href": "aulas/revisao_alg_linear/rev_alg_linear.html#definição-e-propriedades-básicas-3",
+    "title": "Revisão de Álgebra Matricial",
+    "section": "Definição e propriedades básicas",
+    "text": "Definição e propriedades básicas\n\nA soma de dois vetores \\(\\mathbf{x}\\) e \\(\\mathbf{y}\\), de iguais dimensões, resulta em um terceiro vetor dado por:\n\n\\[\\mathbf{z} = \\mathbf{x} + \\mathbf{y} = (x_1 + y_1, x_2 + y_2, \\cdots, x_p + y_p)^t\\]\n\n\nA diferença de dois vetores \\(\\mathbf{x}\\) e \\(\\mathbf{y}\\), de iguais dimensões, resulta em um terceiro vetor dado por:\n\n\\[\\mathbf{w} = \\mathbf{x} - \\mathbf{y} = (x_1 - y_1, x_2 - y_2, \\cdots, x_p - y_p)^t\\]"
+  },
+  {
+    "objectID": "aulas/revisao_alg_linear/rev_alg_linear.html#definição-e-propriedades-básicas-4",
+    "href": "aulas/revisao_alg_linear/rev_alg_linear.html#definição-e-propriedades-básicas-4",
+    "title": "Revisão de Álgebra Matricial",
+    "section": "Definição e propriedades básicas",
+    "text": "Definição e propriedades básicas\n\nO produto interno de dois vetores \\(\\mathbf{x}\\) e \\(\\mathbf{y}\\) é definido por:\n\n\\[\\mathbf{v} = \\mathbf{x}^t\\mathbf{y} = \\displaystyle{\\sum_{i=1}^{p}} x_iy_i = x_1 y_1 + x_2 y_2 + \\cdots + x_p y_p\\]\n\n\nO tamanho do vetor \\(\\mathbf{x} = (x_1, x_2, \\cdots, x_p)^t\\) é definido pela distância do ponto \\(p\\)-dimensional, determinado por suas coordenadas, à origem:\n\n\\[L_x = \\sqrt{\\mathbf{x}^t\\mathbf{x}} = \\sqrt{x_1^2 + x_2^2 + \\cdots + x_p^2}\\]"
+  },
+  {
+    "objectID": "aulas/revisao_alg_linear/rev_alg_linear.html#definição-e-propriedades-básicas-5",
+    "href": "aulas/revisao_alg_linear/rev_alg_linear.html#definição-e-propriedades-básicas-5",
+    "title": "Revisão de Álgebra Matricial",
+    "section": "Definição e propriedades básicas",
+    "text": "Definição e propriedades básicas\n\nO cosseno do ângulo \\(\\theta\\) entre os vetores \\(\\mathbf{x}\\) e \\(\\mathbf{y}\\) definidos em \\(\\mathbb{R}^p\\) é dado por:\n\n\\[\\cos({\\theta}) = \\dfrac{\\mathbf{x}^t\\mathbf{y}}{\\sqrt{\\mathbf{x}^t\\mathbf{x}} \\sqrt{\\mathbf{y}^t\\mathbf{y}}}\\]\n\n\nDois vetores \\(\\mathbf{x}\\) e \\(\\mathbf{y}\\) são entre si se o ângulo \\(\\theta\\) entre eles é \\(90^o\\), de tal forma que \\(\\cos(\\theta) = 0\\), ou, de forma equivalente, \\(\\mathbf{x}^t\\mathbf{y} = 0\\).\n\n\n\n\nA normalização de um vetor \\(\\mathbf{x}\\) corresponde à divisão de \\(\\mathbf{x}\\) por \\(L_x\\), de tal forma que o vetor resultante tenha comprimento unitário:\n\n\\[\\mathbf{x}^* = \\dfrac{\\mathbf{x}}{L_x}\\]"
+  },
+  {
+    "objectID": "aulas/revisao_alg_linear/rev_alg_linear.html#definição-e-propriedades-básicas-6",
+    "href": "aulas/revisao_alg_linear/rev_alg_linear.html#definição-e-propriedades-básicas-6",
+    "title": "Revisão de Álgebra Matricial",
+    "section": "Definição e propriedades básicas",
+    "text": "Definição e propriedades básicas\n\nA projeção de um vetor \\(\\mathbf{x}\\) em um vetor \\(\\mathbf{y}\\) é um novo vetor, com coordenadas:\n\n\\[\\text{Projeção de } \\mathbf{x} \\text{ em } \\mathbf{y} = \\dfrac{\\mathbf{x}^t\\mathbf{y}}{\\mathbf{y}^t\\mathbf{y}} \\mathbf{y}\\]\n\n\nO comprimento da projeção de \\(\\mathbf{x}\\) em \\(\\mathbf{y}\\) é dado por:\n\n\\[\\text{Tamanho da projeção de } \\mathbf{x} \\text{ em } \\mathbf{y} = \\dfrac{|\\mathbf{x}^t\\mathbf{y}|}{L_y} =  L_x \\cos(\\theta)\\]"
+  },
+  {
+    "objectID": "aulas/revisao_alg_linear/rev_alg_linear.html#definição-e-propriedades-básicas-7",
+    "href": "aulas/revisao_alg_linear/rev_alg_linear.html#definição-e-propriedades-básicas-7",
+    "title": "Revisão de Álgebra Matricial",
+    "section": "Definição e propriedades básicas",
+    "text": "Definição e propriedades básicas\n\nIgualdade de matrizes: Dizemos que duas matrizes \\(\\mathbf{A}\\) e \\(\\mathbf{B}\\) são iguais se elas tem iguais dimensões e \\(\\{a_{ij}\\} = \\{b_{ij}\\}\\) para todo \\(i\\) e para todo \\(j\\).\n\n\n\nMatriz transposta: A transposta de uma matriz \\(\\mathbf{A}_{n \\times p}\\) é a matriz \\(\\mathbf{A}^t_{p \\times n}\\) tal que \\(\\{a_{ij}\\} = \\{a_{ji}\\}\\) para todo \\(i\\) e para todo \\(j\\):\n\n\\[\\mathbf{A}^t = \\left[ \\begin{array}{cccc} a_{11} & a_{21} & \\cdots & a_{n1} \\\\ a_{12} & a_{22} & \\cdots & a_{n2} \\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\\n        a_{1p} & a_{2p} & \\cdots & a_{np} \\end{array} \\right]\\]"
+  },
+  {
+    "objectID": "aulas/revisao_alg_linear/rev_alg_linear.html#definição-e-propriedades-básicas-8",
+    "href": "aulas/revisao_alg_linear/rev_alg_linear.html#definição-e-propriedades-básicas-8",
+    "title": "Revisão de Álgebra Matricial",
+    "section": "Definição e propriedades básicas",
+    "text": "Definição e propriedades básicas\n\nMatriz simétrica: Dizemos que uma matriz \\(\\mathbf{A}_{p \\times p}\\) é simétrica se \\(\\{a_{ij}\\} = \\{a_{ji}\\}\\) para todo \\(i\\) e para todo \\(j\\), ou seja, \\(\\mathbf{A}^t = \\mathbf{A}\\).\n\n\n\nDiagonal de uma matriz: A diagonal de uma matriz quadrada \\(\\mathbf{A}_{p \\times p}\\) corresponde ao conjunto de elementos \\(a_{11}, a_{22}, \\cdots, a_{pp}\\).\n\n\n\n\nMatriz diagonal: Dizemos que a matriz quadrada \\(\\mathbf{A}_{p \\times p}\\) é diagonal se todos os elementos fora da diagonal são iguais a zero:\n\n\\[\\mathbf{A} = \\left[ \\begin{array}{cccc} a_{11} & 0 & \\cdots & 0 \\\\ 0 & a_{22} & \\cdots & 0 \\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\\n        0 & 0 & \\cdots & a_{pp} \\end{array} \\right]\\]"
+  },
+  {
+    "objectID": "aulas/revisao_alg_linear/rev_alg_linear.html#definição-e-propriedades-básicas-9",
+    "href": "aulas/revisao_alg_linear/rev_alg_linear.html#definição-e-propriedades-básicas-9",
+    "title": "Revisão de Álgebra Matricial",
+    "section": "Definição e propriedades básicas",
+    "text": "Definição e propriedades básicas\n\nMatriz identidade: Dizemos que a matriz quadrada \\(\\mathbf{I}_{p\\times p}\\) é uma matriz identidade se ela é uma matriz diagonal com todos os elementos da diagonal iguais a 1:\n\n\\[\\mathbf{I} = \\left[ \\begin{array}{cccc} 1 & 0 & \\cdots & 0 \\\\ 0 & 1 & \\cdots & 0 \\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\\n        0 & 0 & \\cdots & 1 \\end{array} \\right]\\]"
+  },
+  {
+    "objectID": "aulas/revisao_alg_linear/rev_alg_linear.html#definição-e-propriedades-básicas-10",
+    "href": "aulas/revisao_alg_linear/rev_alg_linear.html#definição-e-propriedades-básicas-10",
+    "title": "Revisão de Álgebra Matricial",
+    "section": "Definição e propriedades básicas",
+    "text": "Definição e propriedades básicas\n\nMatriz triangular superior: Dizemos que a matriz quadrada \\(\\mathbf{A}_{p \\times p}\\) é uma matriz triangular superior se todos os elementos abaixo da diagonal são iguais a zero:\n\n\\[\\mathbf{A} = \\left[ \\begin{array}{cccc} a_{11} & a_{12} & \\cdots & a_{1p} \\\\ 0 & a_{22} & \\cdots & a_{2p} \\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\\n0 & 0 & \\cdots & a_{pp} \\end{array} \\right]\\]\n\n\nUma matriz triangular inferior é definida de forma semelhante."
+  },
+  {
+    "objectID": "aulas/revisao_alg_linear/rev_alg_linear.html#operações-envolvendo-matrizes",
+    "href": "aulas/revisao_alg_linear/rev_alg_linear.html#operações-envolvendo-matrizes",
+    "title": "Revisão de Álgebra Matricial",
+    "section": "Operações envolvendo matrizes",
+    "text": "Operações envolvendo matrizes\n\nA soma de duas matrizes \\(\\mathbf{A}_{n \\times p}\\) e \\(\\mathbf{B}_{n \\times p}\\) de iguais dimensões é a matriz resultante das somas dos elementos nas posições correspondentes:\n\n\\[\\mathbf{A} + \\mathbf{B} = \\left[ \\begin{array}{cccc} a_{11} + b_{11} & a_{12} + b_{12} & \\cdots & a_{1p} + b_{1p}\\\\ a_{21} +  b_{21}& a_{22} + b_{22}& \\cdots & a_{2p} + b_{2p} \\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\\n        a_{n1} + b_{n1} & a_{n2} + b_{n2} & \\cdots & a_{np} + b_{np} \\end{array} \\right]\\]"
+  },
+  {
+    "objectID": "aulas/revisao_alg_linear/rev_alg_linear.html#operações-envolvendo-matrizes-1",
+    "href": "aulas/revisao_alg_linear/rev_alg_linear.html#operações-envolvendo-matrizes-1",
+    "title": "Revisão de Álgebra Matricial",
+    "section": "Operações envolvendo matrizes",
+    "text": "Operações envolvendo matrizes\n\nA diferença de duas matrizes \\(\\mathbf{A}_{n \\times p}\\) e \\(\\mathbf{B}_{n \\times p}\\) de iguais dimensões é a matriz resultante das diferenças dos elementos nas posições correspondentes:\n\n\\[\\mathbf{A} - \\mathbf{B} = \\left[ \\begin{array}{cccc} a_{11} - b_{11} & a_{12} - b_{12} & \\cdots & a_{1p} - b_{1p}\\\\ a_{21} -  b_{21}& a_{22} - b_{22}& \\cdots & a_{2p} - b_{2p} \\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\       a_{n1} - b_{n1} & a_{n2} - b_{n2} & \\cdots & a_{np} - b_{np} \\end{array} \\right]\\]"
+  },
+  {
+    "objectID": "aulas/revisao_alg_linear/rev_alg_linear.html#operações-envolvendo-matrizes-2",
+    "href": "aulas/revisao_alg_linear/rev_alg_linear.html#operações-envolvendo-matrizes-2",
+    "title": "Revisão de Álgebra Matricial",
+    "section": "Operações envolvendo matrizes",
+    "text": "Operações envolvendo matrizes\n\nSejam \\(\\mathbf{A}_{n \\times k}\\) e \\(\\mathbf{B}_{k \\times p}\\) duas matrizes, tais que o número de linhas da segunda é igual ao número de colunas da primeira. O produto \\(\\mathbf{AB}\\) é definido por:\n\n\\[\\mathbf{A} \\mathbf{B} = \\left[ \\begin{array}{cccc} \\sum_{r = 1}^k a_{1r}. b_{r1} & \\sum_{r = 1}^k a_{1r}. b_{r2} & \\cdots & \\sum_{r = 1}^k a_{1r}. b_{rp}\\\\ \\sum_{r = 1}^k a_{2r}. b_{r1} & \\sum_{r = 1}^k a_{2r}. b_{r2} & \\cdots & \\sum_{r = 1}^k a_{2r}. b_{rp} \\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\\n        \\sum_{r = 1}^k a_{nr}. b_{r1} & \\sum_{r = 1}^k a_{nr}. b_{r2} & \\cdots & \\sum_{r = 1}^k a_{nr}. b_{rp} \\end{array} \\right]\\]\n\n\nDizemos que uma matriz quadrada \\(\\mathbf{Q}\\) é ortogonal se \\(\\mathbf{QQ}^t = \\mathbf{Q}^t \\mathbf{Q} = \\mathbf{I}\\)."
+  },
+  {
+    "objectID": "aulas/revisao_alg_linear/rev_alg_linear.html#operações-envolvendo-matrizes-3",
+    "href": "aulas/revisao_alg_linear/rev_alg_linear.html#operações-envolvendo-matrizes-3",
+    "title": "Revisão de Álgebra Matricial",
+    "section": "Operações envolvendo matrizes",
+    "text": "Operações envolvendo matrizes\n\nSejam \\(\\mathbf{A}_{n \\times p}\\) e \\(c\\) uma constante. O produto \\(c \\mathbf{A}\\) resulta no produto de cada elemento de \\(\\mathbf{A}\\) por \\(c\\):\n\n\\[c\\mathbf{A} = \\left[ \\begin{array}{cccc} ca_{11} & ca_{12} & \\cdots & ca_{1p} \\\\ ca_{21} & ca_{22} & \\cdots & ca_{2p} \\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\\n    ca_{n1} & ca_{n2} & \\cdots & ca_{np} \\end{array} \\right]\\]"
+  },
+  {
+    "objectID": "aulas/revisao_alg_linear/rev_alg_linear.html#operações-envolvendo-matrizes-4",
+    "href": "aulas/revisao_alg_linear/rev_alg_linear.html#operações-envolvendo-matrizes-4",
+    "title": "Revisão de Álgebra Matricial",
+    "section": "Operações envolvendo matrizes",
+    "text": "Operações envolvendo matrizes\n\nSejam \\(\\mathbf{A}\\), \\(\\mathbf{B}\\) e \\(\\mathbf{C}\\) matrizes com dimensões compatíveis para as operações consideradas. Então:\n\n\\((\\mathbf{A}^t)^t = \\mathbf{A}\\);\n\\(\\mathbf{A} + \\mathbf{B} = \\mathbf{B} + \\mathbf{A}\\);\n\\((\\mathbf{A} + \\mathbf{B})^t = \\mathbf{A}^t + \\mathbf{B}^t\\);\n\\((\\mathbf{A} - \\mathbf{B})^t = \\mathbf{A}^t - \\mathbf{B}^t\\);\n\\((\\mathbf{AB})^t = \\mathbf{B}^t \\mathbf{A}^t\\);\n\\(\\mathbf{AB} \\neq \\mathbf{BA}\\), a menos de situações bem específicas;"
+  },
+  {
+    "objectID": "aulas/revisao_alg_linear/rev_alg_linear.html#operações-envolvendo-matrizes-5",
+    "href": "aulas/revisao_alg_linear/rev_alg_linear.html#operações-envolvendo-matrizes-5",
+    "title": "Revisão de Álgebra Matricial",
+    "section": "Operações envolvendo matrizes",
+    "text": "Operações envolvendo matrizes\n\nSejam \\(\\mathbf{A}\\), \\(\\mathbf{B}\\) e \\(\\mathbf{C}\\) matrizes com dimensões compatíveis para as operações consideradas. Então:\n\n\\(\\mathbf{A}(\\mathbf{B} + \\mathbf{C}) = \\mathbf{AB} + \\mathbf{AC}\\), valendo o mesmo ao substituir a soma pela diferença;\n\\((\\mathbf{A} + \\mathbf{B}) \\mathbf{C} = \\mathbf{AC} + \\mathbf{BC}\\), valendo o mesmo ao substituir a soma pela diferença;\n\\((\\mathbf{A} + \\mathbf{B})\\mathbf{C} \\neq \\mathbf{CA} + \\mathbf{BA}\\), a menos de situações bem específicas;\n\\(\\mathbf{IA} = \\mathbf{AI} = \\mathbf{A}\\), para qualquer \\(\\mathbf{A}\\)."
+  },
+  {
+    "objectID": "aulas/revisao_alg_linear/rev_alg_linear.html#operações-envolvendo-matrizes-6",
+    "href": "aulas/revisao_alg_linear/rev_alg_linear.html#operações-envolvendo-matrizes-6",
+    "title": "Revisão de Álgebra Matricial",
+    "section": "Operações envolvendo matrizes",
+    "text": "Operações envolvendo matrizes\n\nO traço de uma matriz de uma matriz \\(\\mathbf{A}_{p \\times p}\\), denotado por \\(\\text{tr}(\\mathbf{A})\\), corresponde à soma dos elementos da diagonal de \\(\\mathbf{A}\\):\n\n\\[\\text{tr}(\\mathbf{A}) = \\displaystyle{\\sum_{i=1}^{p}a_{ii}}\\]\n\n\nSejam \\(\\mathbf{A}\\) e \\(\\mathbf{B}\\) matrizes quadradas. Então:\n\n\\(\\text{tr}(\\mathbf{A} + \\mathbf{B}) = \\text{tr}(\\mathbf{A}) + \\text{tr}(\\mathbf{B})\\)\n\\(\\text{tr}(\\mathbf{A} \\mathbf{B}) = \\text{tr}(\\mathbf{B} \\mathbf{A})\\)"
+  },
+  {
+    "objectID": "aulas/revisao_alg_linear/rev_alg_linear.html#combinações-lineares-e-formas-quadráticas",
+    "href": "aulas/revisao_alg_linear/rev_alg_linear.html#combinações-lineares-e-formas-quadráticas",
+    "title": "Revisão de Álgebra Matricial",
+    "section": "Combinações lineares e formas quadráticas",
+    "text": "Combinações lineares e formas quadráticas\n\nPara um conjunto de constantes \\(a_1, a_2, \\cdots, a_p\\), o vetor \\(\\mathbf{y} = a_1 \\mathbf{x}_1 + a_2 \\mathbf{x}_ 2 + \\cdots + a_p \\mathbf{x}_p\\) é uma combinação linear dos vetores \\(\\mathbf{x}_1, \\mathbf{x}_2, \\cdots, \\mathbf{x}_p\\) .\n\n\n\nO conjunto de vetores \\(\\mathbf{x}_1, \\mathbf{x}_2, \\cdots, \\mathbf{x}_p\\) é dito linearmente dependente se há um conjunto de constantes \\(a_1, a_2, \\cdots, a_p\\), nem todas nulas, tal que:\n\n\\[a_1 \\mathbf{x}_1 + a_2 \\mathbf{x}_ 2 + \\cdots + a_p \\mathbf{x}_p = 0\\]\n\n\n\nCaso contrário os vetores são linearmente independentes."
+  },
+  {
+    "objectID": "aulas/revisao_alg_linear/rev_alg_linear.html#combinações-lineares-e-formas-quadráticas-1",
+    "href": "aulas/revisao_alg_linear/rev_alg_linear.html#combinações-lineares-e-formas-quadráticas-1",
+    "title": "Revisão de Álgebra Matricial",
+    "section": "Combinações lineares e formas quadráticas",
+    "text": "Combinações lineares e formas quadráticas\n\nFormas quadráticas surgem de forma recorrente na estatística multivariada, por exemplo, na definição de distâncias.\n\n\n\nUma forma quadrática, definida a partir de uma matriz simétrica \\(\\mathbf{A}_{p \\times p}\\), é definida como:\n\n\\[Q(\\mathbf{x}) = {\\mathbf{x}^t} \\mathbf{A} \\mathbf{x} =\\displaystyle{\\sum_{i=1}^p a_{ii} x_{i}^2} + 2 \\displaystyle{\\sum_{i = 1}^{p-1}} \\displaystyle{\\sum_{k = i+1}^{p}} a_{ik} x_i  x_k  = \\displaystyle{\\sum_{i=1}^p} \\displaystyle{\\sum_{k=1}^p} a_{ik} x_i  x_k\\]\npara \\(\\mathbf{x} \\neq \\mathbf{0}\\) definido em \\(\\mathbb{R}^p\\)."
+  },
+  {
+    "objectID": "aulas/revisao_alg_linear/rev_alg_linear.html#combinações-lineares-e-formas-quadráticas-2",
+    "href": "aulas/revisao_alg_linear/rev_alg_linear.html#combinações-lineares-e-formas-quadráticas-2",
+    "title": "Revisão de Álgebra Matricial",
+    "section": "Combinações lineares e formas quadráticas",
+    "text": "Combinações lineares e formas quadráticas\n\nClassificamos a matriz \\(\\mathbf{A}\\), e a consequente forma quadrática \\(\\mathbf{x}^t \\mathbf{A}\\mathbf{x}\\), como positiva definida se \\(Q(\\mathbf{x}) &gt; 0\\) para qualquer \\(\\mathbf{x} \\neq \\mathbf{0}\\).\n\n\n\nOutras classificações:\n\nPositiva semidefinida: \\(Q(\\mathbf{x}) \\geqslant 0\\)\nNegativa definida: \\(Q(\\mathbf{x}) &lt; 0\\)\nNegativa semidefinida: \\(Q(\\mathbf{x}) \\leqslant 0\\)\nIndefinida: \\(Q(\\mathbf{x}) &gt; 0\\) para alguns \\(\\mathbf{x} \\in \\mathbb{R}^p\\) e \\(Q(\\mathbf{x}) &lt; 0\\) para outros \\(\\mathbf{x} \\in \\mathbb{R}^p\\)"
+  },
+  {
+    "objectID": "aulas/revisao_alg_linear/rev_alg_linear.html#matriz-inversa",
+    "href": "aulas/revisao_alg_linear/rev_alg_linear.html#matriz-inversa",
+    "title": "Revisão de Álgebra Matricial",
+    "section": "Matriz inversa",
+    "text": "Matriz inversa\n\nMatriz inversa: Considere uma matriz \\(\\mathbf{A}_{p \\times p}\\). Caso exista uma matriz \\(\\mathbf{B}_{p \\times p}\\) tal que\n\n\\[\\mathbf{AB} = \\mathbf{BA} = \\mathbf{I}\\]\ndizemos que \\(\\mathbf{B}\\) é a matriz inversa de \\(\\mathbf{A}\\), sendo usualmente denotada por \\(\\mathbf{A}^{-1}\\).\n\n\nQuando uma matriz possui uma matriz inversa, dizemos que ela é não-singular. Caso contrário, ela é classificada como singular."
+  },
+  {
+    "objectID": "aulas/revisao_alg_linear/rev_alg_linear.html#matriz-inversa-1",
+    "href": "aulas/revisao_alg_linear/rev_alg_linear.html#matriz-inversa-1",
+    "title": "Revisão de Álgebra Matricial",
+    "section": "Matriz inversa",
+    "text": "Matriz inversa\n\nA condição fundamental para que uma matriz tenha inversa é que suas colunas sejam linearmente independentes (matriz de \\(rank\\) completo).\n\n\n\nO \\(rank\\) de uma matriz \\(\\mathbf{A}_{n \\times p}\\) , denotado por \\(rank(\\mathbf{A})\\), é definido como o número de linhas (ou colunas) linearmente independentes de \\(\\mathbf{A}\\).\n\n\n\n\nDizemos que a matriz quadrada \\(\\mathbf{A}_{p \\times p}\\) tem \\(rank\\) completo se \\(rank(\\mathbf{A}) = p\\), configurando uma matriz não singular.\n\n\n\n\nPara matrizes de \\(rank\\) incompleto ou não-quadradas, define-se a inversa generalizada de \\(\\mathbf{A}\\) como a matriz \\(\\mathbf{A}^-\\) que satisfaz \\(\\mathbf{A} \\mathbf{A}^- \\mathbf{A} = \\mathbf{A}\\)."
+  },
+  {
+    "objectID": "aulas/revisao_alg_linear/rev_alg_linear.html#matriz-inversa-2",
+    "href": "aulas/revisao_alg_linear/rev_alg_linear.html#matriz-inversa-2",
+    "title": "Revisão de Álgebra Matricial",
+    "section": "Matriz inversa",
+    "text": "Matriz inversa\n\nA inversa de uma matriz diagonal é dada pela matriz diagonal composta pelos inversos dos elementos da matriz original:\n\n\\[\\mathbf{A} = \\left[ \\begin{array}{cccc} a_{11} & 0 & \\cdots & 0 \\\\ 0 & a_{22} & \\cdots & 0 \\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\\n0 & 0 & \\cdots & a_{pp} \\end{array} \\right]; \\,\\,\\,\\,\\,\\,\\,\\,\\, \\mathbf{A}^{-1} = \\left[ \\begin{array}{cccc} \\frac{1}{a_{11}} & 0 & \\cdots & 0 \\\\ 0 & \\frac{1}{a_{22}} & \\cdots & 0 \\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\ 0 & 0 & \\cdots & \\frac{1}{a_{pp}} \\end{array} \\right]\\]"
+  },
+  {
+    "objectID": "aulas/revisao_alg_linear/rev_alg_linear.html#matriz-inversa-3",
+    "href": "aulas/revisao_alg_linear/rev_alg_linear.html#matriz-inversa-3",
+    "title": "Revisão de Álgebra Matricial",
+    "section": "Matriz inversa",
+    "text": "Matriz inversa\n\n\\(\\mathbf{A}\\) e \\(\\mathbf{B}\\) não singulares \\((p \\times p)\\), \\((\\mathbf{AB})^{-1} = \\mathbf{B}^{-1} \\mathbf{A}^{-1}\\);\n\n\n\nPara \\(c\\) uma constante real diferente de zero, \\((c \\mathbf{B})^{-1} = c^{-1}(\\mathbf{A})^{-1}\\);\n\n\n\n\n\\((\\mathbf{A}^t)^{-1} = (\\mathbf{A}^{-1})^t\\);\n\n\n\n\nSe \\(rank(\\mathbf{A}) = p\\) então \\(\\mathbf{A}^{-1}\\) existe;\n\n\n\n\nSe \\(\\mathbf{A}\\) é ortogonal, então \\(\\mathbf{A}^{-1}\\) existe, além do que \\(\\mathbf{A}^{-1} = \\mathbf{A}^t\\);\n\n\n\n\nSe \\(\\mathbf{B}\\) é não singular, \\(\\mathbf{AB} = \\mathbf{CB}\\) implica \\(\\mathbf{A} = \\mathbf{C}\\)."
+  },
+  {
+    "objectID": "aulas/revisao_alg_linear/rev_alg_linear.html#determinante",
+    "href": "aulas/revisao_alg_linear/rev_alg_linear.html#determinante",
+    "title": "Revisão de Álgebra Matricial",
+    "section": "Determinante",
+    "text": "Determinante\n\nO determinante de uma matriz \\(\\mathbf{A}_{p \\times p}\\) , denotado por \\(\\det(\\mathbf{A})\\) ou \\(|\\mathbf{A}|\\), é definido como:\n\\[\\det(\\mathbf{A}) = \\begin{cases} a_{11} & \\text{ se } p = 1 \\\\ \\sum \\limits_{j=1}^p a_{ij} |\\mathbf{A}_{ij}| (-1)^{i+j} & \\text{ se } p &gt; 1\\end{cases}\\]\n\nsendo \\(\\mathbf{A}_{ij}\\) a matriz \\((p - 1) \\times (p - 1)\\) resultante da exclusão da \\(i\\)-ésima linha e \\(j\\)-ésima coluna de \\(\\mathbf{A}\\)."
+  },
+  {
+    "objectID": "aulas/revisao_alg_linear/rev_alg_linear.html#determinante-1",
+    "href": "aulas/revisao_alg_linear/rev_alg_linear.html#determinante-1",
+    "title": "Revisão de Álgebra Matricial",
+    "section": "Determinante",
+    "text": "Determinante"
+  },
+  {
+    "objectID": "aulas/revisao_alg_linear/rev_alg_linear.html#determinante-2",
+    "href": "aulas/revisao_alg_linear/rev_alg_linear.html#determinante-2",
+    "title": "Revisão de Álgebra Matricial",
+    "section": "Determinante",
+    "text": "Determinante\n\nSejam as matrizes \\(\\mathbf{A}\\) e \\(\\mathbf{B}\\) quadradas de ordem \\(p\\) e seja \\(c\\) um escalar. Então,\n\n\\(\\left|c \\mathbf{A}\\right| = c^n \\left| \\mathbf{A} \\right|\\);\n\\(\\left|\\mathbf{A}^t \\right| = \\left|\\mathbf{A}\\right|\\);\n\\(\\left|\\mathbf{A}^{-1} \\right| = \\displaystyle{\\dfrac {1}{\\left|\\mathbf{A}\\right|}} = \\left|\\mathbf{A}\\right|^{-1}\\);\nSe \\(rank(\\mathbf{A}) &lt; p\\) então \\(|\\mathbf{A}| = 0\\);\nSe \\(rank(\\mathbf{A}) = p\\) então \\(|\\mathbf{A}| \\neq 0\\);"
+  },
+  {
+    "objectID": "aulas/revisao_alg_linear/rev_alg_linear.html#determinante-3",
+    "href": "aulas/revisao_alg_linear/rev_alg_linear.html#determinante-3",
+    "title": "Revisão de Álgebra Matricial",
+    "section": "Determinante",
+    "text": "Determinante\n\nSejam as matrizes \\(\\mathbf{A}\\) e \\(\\mathbf{B}\\) quadradas de ordem \\(p\\) e seja \\(c\\) um escalar. Então,\n\n\\(\\left| \\mathbf{AB} \\right| = \\left|\\mathbf{A}\\right| \\left|\\mathbf{B}\\right|\\);\n\\(\\left| \\mathbf{ABA}^{-1} \\right| = \\left|\\mathbf{A}\\right| \\left|\\mathbf{B}\\right|  \\left|\\mathbf{A}^{-1}\\right|\\);\nSe \\(\\mathbf{A}\\) é uma matriz diagonal, então \\(|\\mathbf{A}| = \\displaystyle{\\prod_{i=1}^p a_{ii}}\\);\nSe uma matriz \\(\\mathbf{A}\\) é singular, então \\(\\left| \\mathbf{A} \\right| = 0\\);\nSe uma matriz \\(\\mathbf{A}\\) é não-singular, então \\(\\left| \\mathbf{A} \\right| \\neq 0\\);\nSe uma matriz \\(\\mathbf{A}\\) é positiva definida, então \\(\\left| \\mathbf{A} \\right| &gt; 0\\)."
+  },
+  {
+    "objectID": "aulas/revisao_alg_linear/rev_alg_linear.html#autovalores-e-autovetores",
+    "href": "aulas/revisao_alg_linear/rev_alg_linear.html#autovalores-e-autovetores",
+    "title": "Revisão de Álgebra Matricial",
+    "section": "Autovalores e autovetores",
+    "text": "Autovalores e autovetores\n\nSeja \\(\\mathbf{A}\\) uma matriz quadrada e \\(\\mathbf{I}\\) a matriz identidade, ambas \\(p \\times p\\). Os escalares \\(\\lambda_1, \\lambda_2, \\cdots, \\lambda_p\\) que são a solução da equação polinomial \\(|\\mathbf{A} - \\lambda \\mathbf{I}| = 0\\) são chamados autovalores (ou valores característicos) de \\(\\mathbf{A}\\).\n\n\n\nA equação \\(|\\mathbf{A} - \\lambda \\mathbf{I}| = 0\\) (como função de \\(\\lambda\\)) é chamada equação característica.\n\n\n\n\nSeja \\(\\mathbf{A}\\) uma matriz quadrada \\(p \\times p\\) e \\(\\lambda\\) um autovalor de \\(\\mathbf{A}\\). Então, o vetor \\(\\mathbf{x}\\) \\((p \\times 1)\\), não nulo, que satisfaz:\n\n\\[\\mathbf{Ax} = \\lambda \\mathbf{x}\\]\né chamado autovetor (ou vetor característico) de \\(\\mathbf{A}\\) associado ao autovalor \\(\\lambda\\)."
+  },
+  {
+    "objectID": "aulas/revisao_alg_linear/rev_alg_linear.html#autovalores-e-autovetores-1",
+    "href": "aulas/revisao_alg_linear/rev_alg_linear.html#autovalores-e-autovetores-1",
+    "title": "Revisão de Álgebra Matricial",
+    "section": "Autovalores e autovetores",
+    "text": "Autovalores e autovetores\n\nPara qualquer matriz simétrica \\(\\mathbf{A}\\) com autovalores \\(\\lambda_1, \\lambda_2, \\cdots, \\lambda_p\\), valem:\n\n\\[\\text{tr}(\\mathbf{A}) = \\displaystyle{\\sum_{i=1}^{p}\\lambda_{i}} \\hspace{1cm} \\text{e} \\hspace{1cm} \\left|\\mathbf{A} \\right| = \\displaystyle{\\prod_{i=1}^{p}\\lambda_{i}}\\]\n\n\nSe todos os autovalores da matriz \\(\\mathbf{A}\\) são positivos maiores que zero, então a matriz \\(\\mathbf{A}\\) é positiva definida;\n\n\n\n\nSe os autovalores da matriz \\(\\mathbf{A}\\) são positivos ou iguais a zero, então a matriz \\(\\mathbf{A}\\) é positiva semidefinida. Neste caso, o número de autovalores positivos será igual ao posto da matriz \\(\\mathbf{A}\\)\n\n\n\n\nOs autovetores de uma matriz \\(\\mathbf{A}\\) simétrica de dimensão \\(p \\times p\\) são ortogonais."
+  },
+  {
+    "objectID": "aulas/revisao_alg_linear/rev_alg_linear.html#teorema-da-decomposição-espectral",
+    "href": "aulas/revisao_alg_linear/rev_alg_linear.html#teorema-da-decomposição-espectral",
+    "title": "Revisão de Álgebra Matricial",
+    "section": "Teorema da decomposição espectral",
+    "text": "Teorema da decomposição espectral\n\nComo resultado da ortogonalidade dos autovetores de \\(\\mathbf{A}\\) tem-se o Teorema da Decomposição Espectral.\n\n\n\nToda matriz simétrica \\(\\mathbf{A}\\) de ordem \\(p \\times p\\) pode ser decomposta em:\n\n\\[\\mathbf{A} = \\mathbf{C} \\mathbf{\\Lambda} \\mathbf{C}^t = \\displaystyle{\\sum_{i = 1}^p \\lambda_i {\\mathbf{e}_i \\mathbf{e}_i^t}}\\]"
+  },
+  {
+    "objectID": "aulas/revisao_alg_linear/rev_alg_linear.html#teorema-da-decomposição-espectral-1",
+    "href": "aulas/revisao_alg_linear/rev_alg_linear.html#teorema-da-decomposição-espectral-1",
+    "title": "Revisão de Álgebra Matricial",
+    "section": "Teorema da decomposição espectral",
+    "text": "Teorema da decomposição espectral\nem que \\(\\mathbf{\\Lambda}\\) é a matriz diagonal dos autovalores:\n\\[\\mathbf{\\Lambda} = \\left[ \\begin{array}{cccc} \\lambda_1 & 0 & \\cdots & 0 \\\\ 0 & \\lambda_2 & \\cdots & 0 \\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\ 0 & 0 & \\cdots & \\lambda_p \\end{array} \\right]\\]\ne \\(\\mathbf{C}\\) é a matriz ortogonal com os autovetores normalizados de \\(\\mathbf{A}\\) nas colunas:\n\\[\\mathbf{C} = \\left[\\begin{array}{rrrr} \\mathbf{e}_1 & \\mathbf{e}_2 & \\cdots & \\mathbf{e}_p \\end{array} \\right]\\]"
   },
   {
     "objectID": "cronograma.html",
@@ -154,124 +287,5 @@
     "crumbs": [
       "Plano de Ensino"
     ]
-  },
-  {
-    "objectID": "programacao/semana-10.html",
-    "href": "programacao/semana-10.html",
-    "title": "Semana 10",
-    "section": "",
-    "text": "{{&lt; fa file-powerpoint size=lg &gt;}} Escalonamento Multidimensional"
-  },
-  {
-    "objectID": "programacao/semana-10.html#slides",
-    "href": "programacao/semana-10.html#slides",
-    "title": "Semana 10",
-    "section": "",
-    "text": "{{&lt; fa file-powerpoint size=lg &gt;}} Escalonamento Multidimensional"
-  },
-  {
-    "objectID": "programacao/semana-12.html",
-    "href": "programacao/semana-12.html",
-    "title": "Semana 12",
-    "section": "",
-    "text": "Recesso Acadêmico!"
-  },
-  {
-    "objectID": "programacao/semana-14.html",
-    "href": "programacao/semana-14.html",
-    "title": "Semana 14",
-    "section": "",
-    "text": "{{&lt; fa file-powerpoint size=lg &gt;}} Análise de Correlação Canônica"
-  },
-  {
-    "objectID": "programacao/semana-14.html#slides",
-    "href": "programacao/semana-14.html#slides",
-    "title": "Semana 14",
-    "section": "",
-    "text": "{{&lt; fa file-powerpoint size=lg &gt;}} Análise de Correlação Canônica"
-  },
-  {
-    "objectID": "programacao/semana-14.html#script-r",
-    "href": "programacao/semana-14.html#script-r",
-    "title": "Semana 14",
-    "section": "Script R",
-    "text": "Script R\n{{&lt; fa brands r-project size=lg &gt;}}Análise da Relação entre Navegação e Vendas no E-commerce"
-  },
-  {
-    "objectID": "programacao/semana-2.html",
-    "href": "programacao/semana-2.html",
-    "title": "Semana 02",
-    "section": "",
-    "text": "{{&lt; fa file-powerpoint size=lg &gt;}} Inferência sobre vetores de médias"
-  },
-  {
-    "objectID": "programacao/semana-2.html#slides",
-    "href": "programacao/semana-2.html#slides",
-    "title": "Semana 02",
-    "section": "",
-    "text": "{{&lt; fa file-powerpoint size=lg &gt;}} Inferência sobre vetores de médias"
-  },
-  {
-    "objectID": "programacao/semana-4.html",
-    "href": "programacao/semana-4.html",
-    "title": "Semana 04",
-    "section": "",
-    "text": "Fique Atento!\n\n\n\n{{&lt; fa file-lines size=lg &gt;}} Lista de exercícios 01\nEntrega via Moodle\n\nData de entrega:\n\n09 de junho de 2025"
-  },
-  {
-    "objectID": "programacao/semana-4.html#entrega-lista-de-exercícios-01",
-    "href": "programacao/semana-4.html#entrega-lista-de-exercícios-01",
-    "title": "Semana 04",
-    "section": "",
-    "text": "Fique Atento!\n\n\n\n{{&lt; fa file-lines size=lg &gt;}} Lista de exercícios 01\nEntrega via Moodle\n\nData de entrega:\n\n09 de junho de 2025"
-  },
-  {
-    "objectID": "programacao/semana-4.html#slides",
-    "href": "programacao/semana-4.html#slides",
-    "title": "Semana 04",
-    "section": "Slides",
-    "text": "Slides\n{{&lt; fa file-powerpoint size=lg &gt;}} Inferência sobre vetores de médias\n{{&lt; fa file-powerpoint size=lg &gt;}} Inferência sobre matrizes de covariâncias"
-  },
-  {
-    "objectID": "programacao/semana-6.html",
-    "href": "programacao/semana-6.html",
-    "title": "Semana 06",
-    "section": "",
-    "text": "Fique Atento!\n\n\n\n{{&lt; fa file-lines size=lg &gt;}} Lista de exercícios 02\nEntrega via Moodle\n\nData de entrega:\n\n23 de junho de 2025"
-  },
-  {
-    "objectID": "programacao/semana-6.html#entrega-lista-de-exercícios-02",
-    "href": "programacao/semana-6.html#entrega-lista-de-exercícios-02",
-    "title": "Semana 06",
-    "section": "",
-    "text": "Fique Atento!\n\n\n\n{{&lt; fa file-lines size=lg &gt;}} Lista de exercícios 02\nEntrega via Moodle\n\nData de entrega:\n\n23 de junho de 2025"
-  },
-  {
-    "objectID": "programacao/semana-6.html#slides",
-    "href": "programacao/semana-6.html#slides",
-    "title": "Semana 06",
-    "section": "Slides",
-    "text": "Slides\n{{&lt; fa file-powerpoint size=lg &gt;}} Análise de Variância multivariada - MANOVA"
-  },
-  {
-    "objectID": "programacao/semana-8.html",
-    "href": "programacao/semana-8.html",
-    "title": "Semana 08",
-    "section": "",
-    "text": "Fique Atento!\n\n\n\n{{&lt; fa file-lines size=lg &gt;}} Lista de exercícios 03\nEntrega via Moodle\n\nData de entrega:\n\n14 de julho de 2025"
-  },
-  {
-    "objectID": "programacao/semana-8.html#entrega-lista-de-exercícios-02",
-    "href": "programacao/semana-8.html#entrega-lista-de-exercícios-02",
-    "title": "Semana 08",
-    "section": "",
-    "text": "Fique Atento!\n\n\n\n{{&lt; fa file-lines size=lg &gt;}} Lista de exercícios 03\nEntrega via Moodle\n\nData de entrega:\n\n14 de julho de 2025"
-  },
-  {
-    "objectID": "programacao/semana-8.html#slides",
-    "href": "programacao/semana-8.html#slides",
-    "title": "Semana 08",
-    "section": "Slides",
-    "text": "Slides\n{{&lt; fa file-powerpoint size=lg &gt;}} Análise de Variância multivariada - MANOVA"
   }
 ]
