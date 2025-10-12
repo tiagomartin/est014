@@ -1,0 +1,8 @@
+---
+title: "Semana 02"
+---
+
+
+## Slides
+
+{{< fa file-powerpoint size=lg >}} [Revisão de Álgebra Matricial](/aulas/revisao_alg_linear/rev_alg_linear.html#/title-slide "Revisão de Álgebra Linear"){aria-label="Revisão de Álgebra Linear"}

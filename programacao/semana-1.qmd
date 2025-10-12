@@ -7,7 +7,3 @@ Sejam bem-vindos à disciplina EST014 - Estatística Multivariada I.
 Leiam com atenção o [plano de ensino](https://github.com/tiagomartin/est014/blob/3510b6c24211502df95769537ddb1097d026bd8d/documentos/Plano_de_Ensino_EST014_2025_2.pdf) da disciplina. Nele estão as regras do jogo!
 
 
-
-## Slides
-
-{{< fa file-powerpoint size=lg >}} [Revisão de Álgebra Matricial](/aulas/revisao_alg_linear/rev_alg_linear.html#/title-slide "Revisão de Álgebra Linear"){aria-label="Revisão de Álgebra Linear"}

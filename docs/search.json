@@ -273,7 +273,7 @@
     "href": "cronograma.html",
     "title": "Cronograma da Disciplina",
     "section": "",
-    "text": "Esta página contém um esboço dos tópicos, conteúdos e tarefas para o semestre. Este cronograma será atualizado conforme o semestre avança.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSemana\nData\nTópico\nArtigo\nSlides\nEC\nLE\nScript\nMC\nProjeto\n\n\n\n\n1\nTer, 07/10\nApresentação da disciplina\n\n\n\n\n\n\n\n\n\n\nQui, 09/10\nRevisão de Álgebra Linear",
+    "text": "Esta página contém um esboço dos tópicos, conteúdos e tarefas para o semestre. Este cronograma será atualizado conforme o semestre avança.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSemana\nData\nTópico\nArtigo\nSlides\nEC\nLE\nScript\nMC\nProjeto\n\n\n\n\n1\nTer, 07/10\nApresentação da disciplina\n\n\n\n\n\n\n\n\n\n\nQui, 09/10\nNão haverá aula!\n\n\n\n\n\n\n\n\n\n2\nTer, 14/10\nRevisão de Álgebra Linear\n\n\n\n\n\n\n\n\n\n\nQui, 16/10\nRevisão de Álgebra Linear",
     "crumbs": [
       "Cronograma da Disciplina"
     ]
@@ -287,5 +287,19 @@
     "crumbs": [
       "Plano de Ensino"
     ]
+  },
+  {
+    "objectID": "programacao/semana-2.html",
+    "href": "programacao/semana-2.html",
+    "title": "Semana 02",
+    "section": "",
+    "text": "Revisão de Álgebra Matricial"
+  },
+  {
+    "objectID": "programacao/semana-2.html#slides",
+    "href": "programacao/semana-2.html#slides",
+    "title": "Semana 02",
+    "section": "",
+    "text": "Revisão de Álgebra Matricial"
   }
 ]
