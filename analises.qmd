@@ -1,0 +1,5 @@
+---
+title: "Análise de dados"
+---
+
+-   [Descrição e Visualização da base de dados Iris](analise_dados/descr_vis_iris.html "Script análise de dados"){aria-label="Script análise de dados"}
