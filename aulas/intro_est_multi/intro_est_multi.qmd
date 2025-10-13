@@ -1,0 +1,808 @@
+---
+title: "Introdução à Estatística Multivariada"
+format: 
+  revealjs:
+    width: 1600
+    height: 900
+    footer: ""
+    theme: quartomonothemer.scss
+    slide-number: c/t
+    show-slide-number: all
+    preview-links: auto
+    self-contained: true
+incremental: false
+code-link: true
+bibliography: references.bib
+title-slide-attributes:
+    data-background-image: /images/back.png
+    data-background-size: cover
+    data-background-opacity: "0.3"
+execute:
+  echo: true
+---
+
+## Análise Estatística Multivariada
+
+-  A capacidade de coleta e armazenamento de dados tem aumentado significativamente ao longo do tempo, tornando cada vez maior a quantidade de informações (variáveis) que se dispõe sobre cada indivíduo.
+
+
+. . .
+
+
+- Assim, tem-se a necessidade de transformar essa grande quantidade de dados em conhecimento, que possa fundamentar a compreensão de diferentes fenômenos e subsidiar tomadas de decisões.
+
+
+
+. . .
+
+
+- Nesse contexto, técnicas de análise de dados que permitam explorar e compreender as relações existentes entre múltiplas variáveis tornam-se essenciais na análise
+
+
+
+## Definição de Análise Multivariada
+
+
+::: {.callout-tip title="Análise Multivariada" icon=false}
+
+A análise multivariada contempla um conjunto de métodos estatísticos utilizados na análise conjunta de múltiplas variáveis avaliadas nos indivíduos	sob estudo.
+		
+:::
+
+
+![](/images/IEM/multi.png){fig-align="center"}		
+
+
+
+## Principais objetivos da Análise Multivariada
+
+
+Métodos de Análise Multivariada podem ser aplicados para diversas finalidades, dentre as quais podemos destacar:
+
+. . .
+
+- Redução ou simplificação de dados;
+
+. . .
+
+
+- Classificação;
+
+. . .
+
+
+- Agrupamento;
+
+. . .
+
+- dentre outros...
+
+
+
+## Exemplos de aplicações
+
+<br>
+
+- **Redução ou simplificação de dados**
+    - Dados referentes aos sintomas de determinada doença e limitações relatadas pelos pacientes, decorrentes da doença ou do tratamento,	podem ser usados para a elaboração de um índice de qualidade de vida;
+    - Diferentes indicadores demográficos e sócio-econômicos podem ser usados para a elaboração de um gráfico, em duas dimensões, em que proximidade entre pontos (representando bairros de um município, por exemplo) configure similaridade entre eles.
+    
+    
+## Exemplos de aplicações
+
+<br>
+
+- **Agrupamento**
+    -  Dados cadastrais podem ser utilizados com o objetivo de definir grupos de clientes de uma loja de departamentos similares quanto a informações disponíveis em suas fichas;
+    - Variáveis referentes à contabilidade de indústrias no último ano (gastos com mão de obra, investimento em matéria prima, produção...) podem ser usadas para agrupá-las em clusters de indústrias com características contábeis similares.
+	  
+	  
+## Exemplos de aplicações
+
+<br>
+
+- **Classificação**
+    -  Resultados de diversas variáveis psicológicas e comportamentais podem ser usados para criar uma regra de discriminação de usuários de drogas que reincidem, após período de abstinência, daqueles que não reincidem;
+    - Variáveis referentes à anatomia de moscas (comprimento de asas, peso,	coloração...) podem ser usadas para discriminar moscas em uma de quatro espécies distintas segundo os valores apresentados para tais variáveis.
+    
+
+
+## Disposição dos dados em uma análise multivariada
+
+
+- Numa análise multivariada, dispõe-se, em geral, de uma amostra de $n$ indivíduos, com $p > 1$ variáveis avaliadas em	cada um deles.
+		
+. . .
+		
+- O uso de técnicas multivariadas permite analisar simultaneamente as $p$ variáveis.
+		
+. . .
+
+
+- Os métodos multivariados consistem, muitas vezes, de	generalizações de procedimentos univariados utilizados para fins semelhantes.
+
+
+
+
+## Disposição dos dados em uma análise multivariada
+
+
+- Vamos denotar por $x_{ij}$ o valor da variável $j$ verificado no	indivíduo $i$, $i = 1, 2, \cdots, n$; $j = 1, 2, \cdots, p$.
+		
+. . .
+		
+- A disposição usual dos dados é na forma convencional,	entrando com os indivíduos nas linhas e as variáveis nas colunas.
+		
+. . .
+
+
+<style type="text/css">
+.tg  {border-collapse:collapse;border-color:#ccc;border-spacing:0;margin:0px auto;}
+.tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:0px;color:#333;
+  font-family:Arial, sans-serif;font-size:34px;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:0px;color:#333;
+  font-family:Arial, sans-serif;font-size:34px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
+.tg .tg-7btt{border-color:inherit;font-weight:bold;text-align:center;vertical-align:top}
+</style>
+<table class="tg"><thead>
+  <tr>
+    <th class="tg-c3ow"></th>
+    <th class="tg-7btt">Var 1</th>
+    <th class="tg-7btt">Var 2</th>
+    <th class="tg-c3ow">$\cdots$</th>
+    <th class="tg-7btt">Var j</th>
+    <th class="tg-c3ow">$\cdots$</th>
+    <th class="tg-7btt">Var p</th>
+  </tr></thead>
+<tbody>
+  <tr>
+    <td class="tg-7btt">Ind 1</td>
+    <td class="tg-c3ow">$x_{11}$</td>
+    <td class="tg-c3ow">$x_{12}$</td>
+    <td class="tg-c3ow">$\cdots$</td>
+    <td class="tg-c3ow">$x_{1j}$</td>
+    <td class="tg-c3ow">$\cdots$</td>
+    <td class="tg-c3ow">$x_{1p}$</td>
+  </tr>
+  <tr>
+    <td class="tg-7btt">Ind 2</td>
+    <td class="tg-c3ow">$x_{21}$</td>
+    <td class="tg-c3ow">$x_{22}$</td>
+    <td class="tg-c3ow">$\cdots$</td>
+    <td class="tg-c3ow">$x_{2j}$</td>
+    <td class="tg-c3ow">$\cdots$</td>
+    <td class="tg-c3ow">$x_{2p}$</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">$\vdots$</td>
+    <td class="tg-c3ow">$\vdots$</td>
+    <td class="tg-c3ow">$\vdots$</td>
+    <td class="tg-c3ow">$\vdots$</td>
+    <td class="tg-c3ow">$\vdots$</td>
+    <td class="tg-c3ow">$\vdots$</td>
+    <td class="tg-c3ow">$\vdots$</td>
+  </tr>
+  <tr>
+    <td class="tg-7btt">Ind i</td>
+    <td class="tg-c3ow">$x_{i1}$</td>
+    <td class="tg-c3ow">$x_{i2}$</td>
+    <td class="tg-c3ow">$\cdots$</td>
+    <td class="tg-c3ow">$x_{ij}$</td>
+    <td class="tg-c3ow">$\cdots$</td>
+    <td class="tg-c3ow">$x_{ip}$</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">$\vdots$</td>
+    <td class="tg-c3ow">$\vdots$</td>
+    <td class="tg-c3ow">$\vdots$</td>
+    <td class="tg-c3ow">$\cdots$</td>
+    <td class="tg-c3ow">$\vdots$</td>
+    <td class="tg-c3ow">$\cdots$</td>
+    <td class="tg-c3ow">$\vdots$</td>
+  </tr>
+  <tr>
+    <td class="tg-7btt">Ind n</td>
+    <td class="tg-c3ow">$x_{n1}$</td>
+    <td class="tg-c3ow">$x_{n2}$</td>
+    <td class="tg-c3ow">$\cdots$</td>
+    <td class="tg-c3ow">$x_{nj}$</td>
+    <td class="tg-c3ow">$\cdots$</td>
+    <td class="tg-c3ow">$x_{np}$</td>
+  </tr>
+  <tr>
+  </tr>
+</tbody></table>
+
+
+
+## Representação matricial dos dados
+
+- Para fins de apresentação e desenvolvimento da teoria, a	representação matricial dos dados é necessária.
+		
+. . .
+
+
+- A matriz dos dados tem dimensão $n \times p$, apresentando nas linhas os $n$ indivíduos e nas colunas as $p$ variáveis.
+		
+. . .
+		
+$$ \mathbf{X}_{n \times p} = \left[ \begin{array}{cccc} x_{11} & x_{12} & \cdots & x_{1p} \\ x_{21} & x_{22} & \cdots & x_{2p} \\ 
+\vdots & \vdots & \ddots & \vdots \\ x_{n1} & x_{n2} & \cdots & x_{np} \end{array} \right] $$
+
+
+
+
+
+## Vetores aleatórios 
+
+
+- Para o tratamento probabilístico de dados multivariados, vamos relembrar a definição de vetor aleatório.
+		
+. . .
+		
+
+- Um vetor aleatório de dimensão $p$ é um vetor em que cada um de seus $p$ componentes é uma variável aleatória.
+	
+. . .
+		
+- Vamos denotar um vetor aleatório $\mathbf{x}$ por $\mathbf{x} = (X_1, X_2, \cdots, X_p)^t$. A função distribuição de probabilidade conjunta de $\mathbf{x}$ é definida como:
+		
+
+$$F(\mathbf{x}) = P(X_1 \leqslant x_1, X_2 \leqslant x_2, \cdots, X_p \leqslant x_p)$$
+		
+
+para $\mathbf{x} \in \mathbb{R}^p$
+
+
+
+## Vetores aleatórios
+
+
+- Se $\mathbf{x}$ for contínua, então a função densidade de probabilidade $f(\mathbf{x})$ fica definida por:
+
+		
+		
+$$f(\mathbf{x}) = \dfrac{\partial F(\mathbf{x})}{\partial x_1 \partial x_2 \cdots \partial x_p},$$
+		
+		
+		
+		
+satisfazendo
+	
+$$\int \limits_{-\infty}^{\infty} \int \limits_{-\infty}^{\infty} \cdots \int \limits_{-\infty}^{\infty} f(x_1, x_2, \cdots, x_p)dx_1 dx_2 \cdots dx_p = 1$$
+
+
+
+
+## Vetores aleatórios
+
+
+	
+e,
+	
+$$f(x_1, x_2, \cdots, x_p) \geqslant 0$$
+	
+
+para qualquer conjunto de valores $x_1, x_2, \cdots, x_p$.
+
+
+
+
+## Vetores aleatórios
+
+
+- Cada elemento de $\mathbf{x} = (X_1, X_2, \cdots, X_p)^t$ é uma variável aleatória $X_i$, $i = 1, 2, \cdots, p$, cuja distribuição (denominada distribuição marginal) fica determinada pela função densidade de probabilidade $f(x_i)$:
+		
+		
+$$f(x_i) = \int \limits_{x_1} \int \limits_{x_2} \cdots \int \limits_{x_p} f(\mathbf{x})dx_1 dx_2 \cdots dx_p, \,\,\,\, j \neq i$$
+		
+		
+. . .
+		
+		
+- Se $X_1, X_2, \cdots, X_p$ forem independentes, então:
+		
+
+$$f(x_1, x_2, \cdots, x_p) = \prod \limits_{i=1}^p f(x_i) = f(x_1) f(x_2) \cdots f(x_p)$$
+		
+		
+		
+## Vetores aleatórios
+
+- A média e a variância de $X_i$, ficam definidas como:
+		
+		
+		
+$$\mu_i = E(X_i) = \int \limits_{-\infty}^{\infty} x_i f(x_i)dx_i$$
+		
+		
+$$\sigma_{ii} = Var(X_i) = \int \limits_{-\infty}^{\infty} (x_i - \mu_i)^2 f(x_i)dx_i$$
+		
+		
+para $i = 1, 2, \cdots, p$.
+		
+
+
+## Vetores aleatórios
+
+- Para duas variáveis aleatórias $X_i$ e $X_j$, a covariância é um	parâmetro da distribuição conjunta bivariada que mede a associação linear entre elas:
+		
+		
+$$\sigma_{ij} = Cov(X_i, X_j) = \int \limits_{-\infty}^{\infty} \int \limits_{-\infty}^{\infty} (x_i - \mu_i)(x_j - \mu_j) f(x_i, x_j)dx_idx_j$$
+		
+
+. . .
+
+
+		
+- Se $X_i$ e $X_j$ forem independentes, então $Cov(X_i, X_j ) = 0$.
+
+
+
+
+## Vetores aleatórios
+
+
+- O coeficiente de correlação de $X_i$ e $X_j$ é definido como:
+		
+		
+$$\rho_{ij} = \dfrac{\sigma_{ij}}{\sigma_i \sigma_j}$$
+		
+		
+sendo uma medida de associação linear adimensional, tal que $-1 \leqslant \rho \leqslant 1$.
+		
+		
+
+. . .
+
+
+		
+- Todos os resultados equivalentes para o caso discreto são	obtidos substituindo adequadamente as integrais por somas.
+
+
+
+
+
+## Vetores aleatórios
+
+
+- A esperança matemática de um vetor aleatório $\mathbf{x} = (X_1, X_2, \cdots, X_p)^t$ é definida pelo vetor de mesma dimensão	em que cada elemento corresponde à esperança matemática da respectiva variável.
+		
+		
+		
+$$ \mathbf{\mu} = E(\mathbf{x}) =  E \left( \left[ \begin{array}{c} X_{1}  \\ X_{2} \\ \vdots
+\\ X_{p} \end{array} \right] \right)  = \left[ \begin{array}{c} E(X_{1})  \\ E(X_{2}) \\ \vdots
+\\ E(X_{p}) \end{array} \right]  = \left[ \begin{array}{c} \mu_1  \\ \mu_2 \\ \vdots
+\\ \mu_p \end{array} \right] $$
+
+
+
+
+
+## Vetores aleatórios
+
+
+- A matriz de variâncias e covariâncias de um vetor aleatório $\mathbf{x} = (X_1, X_2, \cdots, X_p)^t$ é definida pela matriz $\mathbf{\Sigma}$ dada por:
+		
+
+$$\begin{eqnarray*} \mathbf{\Sigma} &=& E \left[(\mathbf{x} - \mathbf{\mu})(\mathbf{x} - 
+\mathbf{\mu})^t \right] \\ &=& 
+	  \left[ \begin{array}{ccc} E(X_1 - \mu_1)^2  & \cdots & E(X_1 - \mu_1)( X_p - \mu_p) \\ E(X_2 - \mu_2)(X_1 - \mu_1)  & \cdots & E(X_2 - \mu_2)( X_p - \mu_p)\\ \vdots & \ddots & \vdots \\ E( X_p - \mu_p)(X_1 - \mu_1) & \cdots & E( X_p - \mu_p)^2 \end{array} \right] 
+ \end{eqnarray*}$$
+ 
+ 
+ 
+## Vetores aleatórios
+
+
+- De maneira semelhante, a matriz de correlações do vetor aleatório $\mathbf{x}$ fica dada por:
+			
+$$ \mathbf{P} = \left[ \begin{array}{cccc} 1 & \rho_{12} & \cdots & \rho_{1p} \\ \rho_{21} & 1 & \cdots & \rho_{2p}\\ \vdots & \vdots & \ddots & \vdots \\ \rho_{p1} & \rho_{p2} & \cdots & 1
+\end{array} \right]$$
+
+
+
+## Vetores aleatórios
+
+
+- A matriz de correlações pode ser determinada facilmente a partir da matriz de covariâncias por:
+
+
+$$\mathbf{P} = \left(\mathbf{V}^\frac{1}{2}\right)^{-1} \mathbf{\Sigma} \left(\mathbf{V}^\frac{1}{2}\right)^{-1}$$
+
+sendo $\mathbf{V}^\frac{1}{2}$ a matriz diagonal com elementos $\sqrt{\sigma_{11}}, \sqrt{\sigma_{22}}, \cdots, \sqrt{\sigma_{pp}}$.
+
+
+
+
+## Propriedades da média e da variância de vetores aleatórios
+
+- Sejam $\mathbf{A}$ e $\mathbf{B}$ matrizes matrizes e $c$ um vetor de constantes (todos com dimensões compatíveis às operações apresentadas). Sejam $\mathbf{x}$ e $\mathbf{y}$ vetores aleatórios.
+	- $E(\mathbf{x} + \mathbf{y}) = E(\mathbf{x}) + E(\mathbf{y})$;
+	- $E(\mathbf{AxB}) = \mathbf{A} E(\mathbf{x}) \mathbf{B}$;
+	- $E(\mathbf{Ax} + c) = \mathbf{A} E(\mathbf{x}) + c$;
+	- $Cov(\mathbf{x}) = E(\mathbf{x} \mathbf{x}^t) - \mathbf{\mu}_x \mathbf{\mu}_x^t$;
+	- $Cov(c^t \mathbf{x}) = c^t Cov(\mathbf{x})c$;
+	- $Cov(\mathbf{A}^t \mathbf{x} + c) = \mathbf{A} Cov(\mathbf{x})\mathbf{A}^t$.
+	
+	
+
+
+## Descrição de dados multivariados
+
+
+- Na prática, todas as matrizes teóricas ( $\mathbf{\mu}$, $\mathbf{\Sigma}$, $\mathbf{P}$ e $\mathbf{V}$ ) são desconhecidas e precisam ser estimadas através de dados amostrais.
+		
+		
+. . .
+
+		
+- Seja então, uma amostra aleatória multivariada de tamanho $n$.
+		
+
+. . .
+
+
+- Podemos calcular a média amostral separadamente para cada variável:
+	
+$$\bar{x}_j = \dfrac{1}{n} \sum \limits_{i=1}^n x_{ij}, \,\,\,\,\,\, j = 1, 2,  \cdots, p$$
+
+
+
+
+## Descrição de dados multivariados
+
+
+
+- O vetor de médias amostrais fica definido por:
+		
+		
+$$\bar{\mathbf{x}} = \left[ \begin{array}{c} \bar{x}_1  \\ \bar{x}_2\\ \vdots  \\ \bar{x}_p	\end{array} \right]$$
+		
+
+. . .
+		
+
+- Matricialmente, temos $\bar{\mathbf{x}} = \dfrac{1}{n} \mathbf{X}^t \mathbf{j}$, sendo $\mathbf{X}$ a matriz de dados e $\mathbf{j}$ o vetor de 1's de dimensão $n$.
+
+
+
+
+## Descrição de dados multivariados
+
+
+- A variância amostral para a $j$-ésima variável e a covariância amostral para as variáveis $X_j$ e $X_k$ são definidas, respectivamente, por:
+		
+$$ s_{jj} = \frac{\displaystyle\sum _{i=1}^n (x_{ij}-\bar{x_j})^2}{n-1} $$
+
+$$ s_{jk} = \frac{\displaystyle\sum _{i=1}^n (x_{ij}-\bar{x_j})(x_{ik}-\bar{x_k})}{n-1}, \hspace{0.5cm} j \neq k$$
+
+
+
+## Descrição de dados multivariados
+
+
+- A matriz de covariâncias amostral (simétrica) fica definida por:
+		
+		
+$$\mathbf{S}_{p \times p} = \left[ \begin{array}{cccc} s_{11} & s_{12} & \cdots & s_{1p} \\ s_{21} & s_{22} & \cdots & s_{2p}\\ \vdots & \vdots & \ddots & \vdots \\ s_{p1} & s_{p2} & \cdots & s_{pp} \end{array} \right]	$$
+		
+## Descrição de dados multivariados
+
+
+		
+- Podemos expressar a matriz de covariâncias em termos dos	vetores observados:
+		
+$$\mathbf{S} = \dfrac{1}{n-1} \sum \limits_{i=1}^n (\mathbf{x}_i - \bar{\mathbf{x}})(\mathbf{x}_i - \bar{\mathbf{x}})^t = \dfrac{1}{n-1} \left( \sum \limits_{i=1}^n \mathbf{x}_i \mathbf{x}_i^t - n \bar{\mathbf{x}}\bar{\mathbf{x}}^t \right) $$
+
+
+
+
+## Descrição de dados multivariados
+
+- O coeficiente de correlação amostral entre as variáveis $X_j$ e $X_k$	é dado por:
+		
+		
+		
+$$r_{jk} = \dfrac{s_{jk}}{\sqrt{s_{jj}} \sqrt{s_{kk}}} = \dfrac{\sum \limits_{i=1}^n (x_{ij} - \bar{x}_j)(x_{ik} - \bar{x}_k)}{\sqrt{\sum \limits_{i=1}^n (x_{ij} - \bar{x}_j)^2} \sqrt{\sum \limits_{i=1}^n (x_{ik} - \bar{x}_k)^2}}$$
+		
+
+## Descrição de dados multivariados
+		
+		
+- A matriz de correlações amostrais (simétrica) é determinada pelos coeficientes calculados para cada par de variáveis.
+		
+		
+$$\mathbf{R}_{p \times p} = \left[ \begin{array}{cccc} 1 & r_{12} & \cdots & r_{1p} \\
+r_{21} & 1 & \cdots & r_{2p}\\
+\vdots & \vdots & \ddots & \vdots \\
+r_{p1} & r_{p2} & \cdots & 1
+\end{array} \right]
+$$
+
+
+
+
+
+## Descrição de dados multivariados
+
+
+- Como complemento às medidas descritivas apresentadas, o uso de gráficos permite extrair informações importantes dos dados. Alguns gráficos (e recursos adicionais):
+  - Histograma; 
+  - Boxplot;
+  - Diagrama de dispersão;
+  - Correlograma;
+  - Matrizes de gráficos;
+  - Faces de Chernoff;
+  - Gráficos tridimensionais...
+  
+
+## Variância generalizada e variância total
+
+- Em algumas situações, é de interesse exprimir a varição presente nos dados multivariados em um único valor.
+		
+. . .
+
+
+- Uma das alternativas para isso é a **variância generalizada**, que é definida como o determinante da matriz de covariâncias amostral.
+		
+		
+$$\text{Variância generalizada} = |\mathbf{S}|$$
+
+. . .
+
+
+
+- Naturalmente, por resumir toda a variação em um único valor, parte da informação referente à variação dos dados se perde nesse resumo, originando possíveis distorções.
+
+
+
+
+## Variância generalizada e variância total
+
+
+- A variância generalizada pode ser definida ainda a partir das	variáveis originais padronizadas $(x_{ij} - \bar{x}_j)/s_{jj}$, contornando	problema de diferentes escalas das variáveis. Como resultado da padronização, temos:
+		
+	
+		
+$$\text{Variância generalizada das variáveis padronizadas} = |\mathbf{R}|$$
+		
+		
+		
+
+## Variância generalizada e variância total
+
+
+- Algumas propriedades da variância generalizada:
+  - Quanto maior a variância de uma variável, maior sua contribuição para a variância generalizada;
+  - Quanto maior a correlação entre duas variáveis, menor a variância generalizada;
+  - Caso duas ou mais variáveis sejam perfeitamente correlacionadas a variância generalizada atingirá seu mínimo valor (zero);
+  - A variância generalizada será máxima caso as variáveis tenham correlação nula.
+
+
+
+## Variância generalizada e variância total
+
+
+- Uma das limitações da variância generalizada é o fato de diferentes estruturas de correlação produzirem, algumas vezes, igual variância generalizada.
+		
+		
+. . .
+
+
+- **Exemplo:** Calcular, para cada matriz de covariâncias, a variância generalizada e a correlação entre as variáveis.
+		
+		
+$$\mathbf{S}_1 = \left[ \begin{array}{rr} 10 & 8  \\  8 & 10 \end{array} \right], \,\,\,\,\,\,\,\, \mathbf{S}_2 = \left[ \begin{array}{rr} 10 & -8  \\  -8 & 10 \end{array} \right], \,\,\,\,\,\,\,\, \mathbf{S}_3 = \left[ \begin{array}{rr} 9 & 0  \\  0 & 4 \end{array} \right]$$
+
+
+
+
+
+
+
+## Variância generalizada e variância total 
+
+- Outra medida usada para resumir a variação total em um único valor é a **variância total**, definida por:
+		
+
+$$\text{Variância total} = \text{tr}(\mathbf{S}) = s_{11} + s_{22} + \cdots + s_{pp}$$
+		
+
+. . .
+
+
+		
+- Por se basear apenas na diagonal de $\mathbf{S}$, a variância total claramente ignora a estrutura de correlação dos dados.
+
+
+
+## Distâncias
+
+
+- Boa parte das técnicas multivariadas baseiam-se no conceito de distância.
+		
+		
+. . .
+
+
+- Usamos distâncias para medir quão semelhantes são dois indivíduos com relação aos valores observados para $p$ variáveis.
+		
+
+. . .
+
+
+- Sejam dois vetores $\mathbf{x}$ e $\mathbf{y} \in \mathbb{R}^p$ e uma matriz $\mathbf{\Psi}$, positiva definida. Então, a expressão geral para a distância quadrática entre os vetores $\mathbf{x}$ e $\mathbf{y}$ é dada por:
+		
+
+
+$$d^2(\mathbf{x}, \mathbf{y}) = \left| \mathbf{x} - \mathbf{y} \right|^2_{\mathbf{\Psi}} = (\mathbf{x} - \mathbf{y})^t{\mathbf{\Psi}} (\mathbf{x} - \mathbf{y})$$ 
+		
+em que a matriz $\mathbf{\Psi}$, positiva definida, é chamada de métrica.
+
+
+
+## Distâncias
+
+
+- Consideremos agora $\mathbf{z}$, um terceiro vetor de $\mathbb{R}^p$. Então as seguintes propriedades são válidas:
+    - $d(\mathbf{x}, \mathbf{y}) = d(\mathbf{y}, \mathbf{x})$
+    - $d(\mathbf{x}, \mathbf{y}) > 0 \hspace{0.5cm} \forall \hspace{0.2cm} \mathbf{x} \neq \mathbf{y}$ 
+    - $d(\mathbf{x}, \mathbf{y}) = 0  \hspace{0.5cm} \text{se, e somente se,} \hspace{0.5cm} \mathbf{x} = \mathbf{y}$  
+    - $d(\mathbf{x}, \mathbf{y}) \leq d(\mathbf{x}, \mathbf{z}) + d(\mathbf{y}, \mathbf{z}) \,\,\,\,\,\, \text{(desigualdade triangular)}$
+
+
+. . .
+
+
+- Dependendo da escolha da métrica $\mathbf{\Psi}$, podemos obter diferentes medidas de distâncias, cada uma com suas características e aplicações. A escolha de uma medida adequada é fundamental para qualquer análise.
+
+
+
+
+## Distância Euclidiana
+
+
+- Se a métrica $\mathbf{\Psi}$ é dada por $\mathbf{\Psi} = \mathbf{I}$, temos a **distância euclidiana quadrática**. Neste caso, a expressão da distância é dada por:
+		
+		
+$$d^2(\mathbf{x}, \mathbf{y}) = (\mathbf{x} - \mathbf{y})^t (\mathbf{x} - \mathbf{y})$$ 
+
+de forma que a **distância euclidiana** é dada por:
+
+
+
+$$d(\mathbf{x}, \mathbf{y}) = \sqrt{(\mathbf{x} - \mathbf{y})^t (\mathbf{x} - \mathbf{y})}$$ 
+
+
+
+## Distância Euclidiana
+
+
+![](/images/IEM/euclidiana.jpg){fig-align="center"}	
+
+
+## Distância Euclidiana
+
+
+- A distância euclidiana confere mesmos pesos às diferenças verificadas em cada uma das $p$ dimensões.
+		
+		
+		
+. . .
+		
+		
+-  Nas análises estatísticas, em que distâncias serão aplicadas a dados de variáveis com diferentes variâncias, e na presença de covariâncias, incorporar tais características ao cálculo da distância pode ser fundamental.
+	
+		
+
+. . .
+		
+		
+		
+- Nesse contexto, duas medidas de distância mais apropriadas	são as distâncias de **Karl Pearson** e a de **Mahalanobis**.
+
+
+
+## Distância de Karl Pearson
+
+
+- Se considerarmos a métrica $\mathbf{\Psi}$ como sendo igual a 
+
+		
+
+$$\mathbf{\Psi} = \mathbf{D}^{-1} = \text{diag}\left(\dfrac{1}{s_{kk}}\right), \hspace{1cm} k = 1,\cdots, p,$$
+
+
+então podemos definir a **distância quadrática de Karl Pearson** por:
+		
+
+$$d^2_p(\mathbf{x}, \mathbf{y}) = (\mathbf{x} - \mathbf{y})^t \mathbf{D}^{-1}(\mathbf{x} - \mathbf{y})$$ 
+		
+de forma que a distância euclidiana ponderada é dada por,
+		
+$$d_p(\mathbf{x}, \mathbf{y}) = \sqrt{(\mathbf{x} - \mathbf{y})^t\mathbf{D}^{-1} (\mathbf{x} - \mathbf{y})}$$ 
+
+
+
+
+
+
+## Distância de Karl Pearson
+
+
+![](/images/IEM/karlPearson.jpg){fig-align="center"}	
+
+
+
+## Distância de Karl Pearson
+
+
+- A distância de Karl Pearson evita o problema de heterogeneidade em um sistema de variáveis é dividindo cada variável por um fator que elimine o fator escala.
+		
+				
+. . . 
+
+
+- Também é conhecida como distância euclidiana ponderada ou padronizada
+
+
+
+## Distância de Mahalanobis
+
+
+- A **distância de Mahalanobis** configura um caso mais geral, em que são usadas tanto as variâncias quanto as covariâncias no cálculo da distância.
+		
+
+. . .
+
+
+- Se considerarmos a métrica $\mathbf{\Psi}$ igual a $\mathbf{\Psi} = \mathbf{S}^{-1}$, temos a chamada **distância quadrática de Mahalanobis**, dada por:
+		
+
+$$d^2_M(\mathbf{x}, \mathbf{y}) = (\mathbf{x} - \mathbf{y})^t \mathbf{S}^{-1}(\mathbf{x} - \mathbf{y})$$ 
+		
+de forma que a distância de Mahalanobis é dada por,
+		
+
+$$d_M(\mathbf{x}, \mathbf{y}) = \sqrt{(\mathbf{x} - \mathbf{y})^t\mathbf{S}^{-1} (\mathbf{x} - \mathbf{y})}$$ 
+
+
+
+## Distância de Mahalanobis
+
+
+![](/images/IEM/mahalanobis.jpg){fig-align="center"}
+
+
+
+## Distância de Mahalanobis
+
+
+- A distância de Mahalanobis é largamente aplicada, permitindo acomodar diferentes escalas e correlações entre as variáveis.
+		
+		
+. . .
+
+
+- Dada sua definição, a distância de Mahalanobis, ao incorporar a inversa da matriz de covariância, tem como efeitos:
+    - Padronizar todas as variáveis de forma que apresentem mesma variância;
+    - Eliminar correlações.
+    
+
+## Matriz de distâncias
+
+- Seja qual for a distância utilizada, é comum, em análises multivariadas, calculá-la para cada par de indivíduos e armazenar os valores em uma matriz, denominada **matriz de distâncias**.
+		
+$$\mathbf{D}_{n \times n} = \left[ \begin{array}{cccc} 0 & d_{12} & \cdots & d_{1n} \\ d_{21} & 0 & \cdots & d_{2n}\\ \vdots & \vdots & \ddots & \vdots \\ d_{n1} & d_{n2} & \cdots & 0 \end{array} \right]
+		$$
+		
+em que $d_{ij} = d_{ji}$ é a distância calculada para os indivíduos $i$ e $j$, utilizando uma métrica qualquer.
+		
+
+. . .
+		
+
+
+- A visualização das distâncias num gráfico do tipo "mapa de calor" permite uma apreciação conjunta das distâncias calculadas duas a duas.

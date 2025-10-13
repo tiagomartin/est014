@@ -294,5 +294,425 @@
     "title": "Semana 01",
     "section": "",
     "text": "Sejam bem-vindos à disciplina EST014 - Estatística Multivariada I.\nLeiam com atenção o plano de ensino da disciplina. Nele estão as regras do jogo!"
+  },
+  {
+    "objectID": "aulas/intro_est_multi/intro_est_multi.html#análise-estatística-multivariada",
+    "href": "aulas/intro_est_multi/intro_est_multi.html#análise-estatística-multivariada",
+    "title": "Introdução à Estatística Multivariada",
+    "section": "Análise Estatística Multivariada",
+    "text": "Análise Estatística Multivariada\n\nA capacidade de coleta e armazenamento de dados tem aumentado significativamente ao longo do tempo, tornando cada vez maior a quantidade de informações (variáveis) que se dispõe sobre cada indivíduo.\n\n\n\nAssim, tem-se a necessidade de transformar essa grande quantidade de dados em conhecimento, que possa fundamentar a compreensão de diferentes fenômenos e subsidiar tomadas de decisões.\n\n\n\n\nNesse contexto, técnicas de análise de dados que permitam explorar e compreender as relações existentes entre múltiplas variáveis tornam-se essenciais na análise"
+  },
+  {
+    "objectID": "aulas/intro_est_multi/intro_est_multi.html#definição-de-análise-multivariada",
+    "href": "aulas/intro_est_multi/intro_est_multi.html#definição-de-análise-multivariada",
+    "title": "Introdução à Estatística Multivariada",
+    "section": "Definição de Análise Multivariada",
+    "text": "Definição de Análise Multivariada\n\n\n\n\nAnálise Multivariada\n\n\nA análise multivariada contempla um conjunto de métodos estatísticos utilizados na análise conjunta de múltiplas variáveis avaliadas nos indivíduos sob estudo."
+  },
+  {
+    "objectID": "aulas/intro_est_multi/intro_est_multi.html#principais-objetivos-da-análise-multivariada",
+    "href": "aulas/intro_est_multi/intro_est_multi.html#principais-objetivos-da-análise-multivariada",
+    "title": "Introdução à Estatística Multivariada",
+    "section": "Principais objetivos da Análise Multivariada",
+    "text": "Principais objetivos da Análise Multivariada\nMétodos de Análise Multivariada podem ser aplicados para diversas finalidades, dentre as quais podemos destacar:\n\n\nRedução ou simplificação de dados;\n\n\n\n\nClassificação;\n\n\n\n\nAgrupamento;\n\n\n\n\ndentre outros…"
+  },
+  {
+    "objectID": "aulas/intro_est_multi/intro_est_multi.html#exemplos-de-aplicações",
+    "href": "aulas/intro_est_multi/intro_est_multi.html#exemplos-de-aplicações",
+    "title": "Introdução à Estatística Multivariada",
+    "section": "Exemplos de aplicações",
+    "text": "Exemplos de aplicações\n\n\nRedução ou simplificação de dados\n\nDados referentes aos sintomas de determinada doença e limitações relatadas pelos pacientes, decorrentes da doença ou do tratamento, podem ser usados para a elaboração de um índice de qualidade de vida;\nDiferentes indicadores demográficos e sócio-econômicos podem ser usados para a elaboração de um gráfico, em duas dimensões, em que proximidade entre pontos (representando bairros de um município, por exemplo) configure similaridade entre eles."
+  },
+  {
+    "objectID": "aulas/intro_est_multi/intro_est_multi.html#exemplos-de-aplicações-1",
+    "href": "aulas/intro_est_multi/intro_est_multi.html#exemplos-de-aplicações-1",
+    "title": "Introdução à Estatística Multivariada",
+    "section": "Exemplos de aplicações",
+    "text": "Exemplos de aplicações\n\n\nAgrupamento\n\nDados cadastrais podem ser utilizados com o objetivo de definir grupos de clientes de uma loja de departamentos similares quanto a informações disponíveis em suas fichas;\nVariáveis referentes à contabilidade de indústrias no último ano (gastos com mão de obra, investimento em matéria prima, produção…) podem ser usadas para agrupá-las em clusters de indústrias com características contábeis similares."
+  },
+  {
+    "objectID": "aulas/intro_est_multi/intro_est_multi.html#exemplos-de-aplicações-2",
+    "href": "aulas/intro_est_multi/intro_est_multi.html#exemplos-de-aplicações-2",
+    "title": "Introdução à Estatística Multivariada",
+    "section": "Exemplos de aplicações",
+    "text": "Exemplos de aplicações\n\n\nClassificação\n\nResultados de diversas variáveis psicológicas e comportamentais podem ser usados para criar uma regra de discriminação de usuários de drogas que reincidem, após período de abstinência, daqueles que não reincidem;\nVariáveis referentes à anatomia de moscas (comprimento de asas, peso, coloração…) podem ser usadas para discriminar moscas em uma de quatro espécies distintas segundo os valores apresentados para tais variáveis."
+  },
+  {
+    "objectID": "aulas/intro_est_multi/intro_est_multi.html#vetores-aleatórios",
+    "href": "aulas/intro_est_multi/intro_est_multi.html#vetores-aleatórios",
+    "title": "Introdução à Estatística Multivariada",
+    "section": "Vetores aleatórios",
+    "text": "Vetores aleatórios\n\nPara o tratamento probabilístico de dados multivariados, vamos relembrar a definição de vetor aleatório.\n\n\n\nUm vetor aleatório de dimensão \\(p\\) é um vetor em que cada um de seus \\(p\\) componentes é uma variável aleatória.\n\n\n\n\nVamos denotar um vetor aleatório \\(\\mathbf{x}\\) por \\(\\mathbf{x} = (X_1, X_2, \\cdots, X_p)^t\\). A função distribuição de probabilidade conjunta de \\(\\mathbf{x}\\) é definida como:\n\n\\[F(\\mathbf{x}) = P(X_1 \\leqslant x_1, X_2 \\leqslant x_2, \\cdots, X_p \\leqslant x_p)\\]\npara \\(\\mathbf{x} \\in \\mathbb{R}^p\\)"
+  },
+  {
+    "objectID": "aulas/intro_est_multi/intro_est_multi.html#disposição-dos-dados-em-uma-análise-multivariada",
+    "href": "aulas/intro_est_multi/intro_est_multi.html#disposição-dos-dados-em-uma-análise-multivariada",
+    "title": "Introdução à Estatística Multivariada",
+    "section": "Disposição dos dados em uma análise multivariada",
+    "text": "Disposição dos dados em uma análise multivariada\n\nNuma análise multivariada, dispõe-se, em geral, de uma amostra de \\(n\\) indivíduos, com \\(p &gt; 1\\) variáveis avaliadas em cada um deles.\n\n\n\nO uso de técnicas multivariadas permite analisar simultaneamente as \\(p\\) variáveis.\n\n\n\n\nOs métodos multivariados consistem, muitas vezes, de generalizações de procedimentos univariados utilizados para fins semelhantes."
+  },
+  {
+    "objectID": "aulas/intro_est_multi/intro_est_multi.html#disposição-dos-dados-em-uma-análise-multivariada-1",
+    "href": "aulas/intro_est_multi/intro_est_multi.html#disposição-dos-dados-em-uma-análise-multivariada-1",
+    "title": "Introdução à Estatística Multivariada",
+    "section": "Disposição dos dados em uma análise multivariada",
+    "text": "Disposição dos dados em uma análise multivariada\n\nVamos denotar por \\(x_{ij}\\) o valor da variável \\(j\\) verificado no indivíduo \\(i\\), \\(i = 1, 2, \\cdots, n\\); \\(j = 1, 2, \\cdots, p\\).\n\n\n\nA disposição usual dos dados é na forma convencional, entrando com os indivíduos nas linhas e as variáveis nas colunas.\n\n\n\n\n\n\n\n\n\n\nVar 1\n\n\nVar 2\n\n\n\\(\\cdots\\)\n\n\nVar j\n\n\n\\(\\cdots\\)\n\n\nVar p\n\n\n\n\n\n\nInd 1\n\n\n\\(x_{11}\\)\n\n\n\\(x_{12}\\)\n\n\n\\(\\cdots\\)\n\n\n\\(x_{1j}\\)\n\n\n\\(\\cdots\\)\n\n\n\\(x_{1p}\\)\n\n\n\n\nInd 2\n\n\n\\(x_{21}\\)\n\n\n\\(x_{22}\\)\n\n\n\\(\\cdots\\)\n\n\n\\(x_{2j}\\)\n\n\n\\(\\cdots\\)\n\n\n\\(x_{2p}\\)\n\n\n\n\n\\(\\vdots\\)\n\n\n\\(\\vdots\\)\n\n\n\\(\\vdots\\)\n\n\n\\(\\vdots\\)\n\n\n\\(\\vdots\\)\n\n\n\\(\\vdots\\)\n\n\n\\(\\vdots\\)\n\n\n\n\nInd i\n\n\n\\(x_{i1}\\)\n\n\n\\(x_{i2}\\)\n\n\n\\(\\cdots\\)\n\n\n\\(x_{ij}\\)\n\n\n\\(\\cdots\\)\n\n\n\\(x_{ip}\\)\n\n\n\n\n\\(\\vdots\\)\n\n\n\\(\\vdots\\)\n\n\n\\(\\vdots\\)\n\n\n\\(\\cdots\\)\n\n\n\\(\\vdots\\)\n\n\n\\(\\cdots\\)\n\n\n\\(\\vdots\\)\n\n\n\n\nInd n\n\n\n\\(x_{n1}\\)\n\n\n\\(x_{n2}\\)\n\n\n\\(\\cdots\\)\n\n\n\\(x_{nj}\\)\n\n\n\\(\\cdots\\)\n\n\n\\(x_{np}\\)"
+  },
+  {
+    "objectID": "aulas/intro_est_multi/intro_est_multi.html#representação-matricial-dos-dados",
+    "href": "aulas/intro_est_multi/intro_est_multi.html#representação-matricial-dos-dados",
+    "title": "Introdução à Estatística Multivariada",
+    "section": "Representação matricial dos dados",
+    "text": "Representação matricial dos dados\n\nPara fins de apresentação e desenvolvimento da teoria, a representação matricial dos dados é necessária.\n\n\n\nA matriz dos dados tem dimensão \\(n \\times p\\), apresentando nas linhas os \\(n\\) indivíduos e nas colunas as \\(p\\) variáveis.\n\n\n\n\\[ \\mathbf{X}_{n \\times p} = \\left[ \\begin{array}{cccc} x_{11} & x_{12} & \\cdots & x_{1p} \\\\ x_{21} & x_{22} & \\cdots & x_{2p} \\\\\n\\vdots & \\vdots & \\ddots & \\vdots \\\\ x_{n1} & x_{n2} & \\cdots & x_{np} \\end{array} \\right] \\]"
+  },
+  {
+    "objectID": "aulas/intro_est_multi/intro_est_multi.html#vetores-aleatórios-ou-v.-a.-multidimensionais",
+    "href": "aulas/intro_est_multi/intro_est_multi.html#vetores-aleatórios-ou-v.-a.-multidimensionais",
+    "title": "Introdução à Estatística Multivariada",
+    "section": "Vetores aleatórios (ou v. a. multidimensionais)",
+    "text": "Vetores aleatórios (ou v. a. multidimensionais)\n\nPara o tratamento probabilístico de dados multivariados, vamos relembrar a definição de vetor aleatório.\n\n\n\nUm vetor aleatório de dimensão \\(p\\) é um vetor em que cada um de seus \\(p\\) componentes é uma variável aleatória.\n\n\n\n\nVamos denotar um vetor aleatório \\(\\mathbf{x}\\) por \\(\\mathbf{x} = (X_1, X_2, \\cdots, X_p)^t\\). A função distribuição de probabilidade conjunta de \\(\\mathbf{x}\\) é definida como:\n\n\\[F(\\mathbf{x}) = P(X_1 \\leqslant x_1, X_2 \\leqslant x_2, \\cdots, X_p \\leqslant x_p)\\]\npara \\(\\mathbf{x} \\in \\mathbb{R}^p\\)"
+  },
+  {
+    "objectID": "aulas/intro_est_multi/intro_est_multi.html#vetores-aleatórios-ou-v.-a.-multidimensionais-1",
+    "href": "aulas/intro_est_multi/intro_est_multi.html#vetores-aleatórios-ou-v.-a.-multidimensionais-1",
+    "title": "Introdução à Estatística Multivariada",
+    "section": "Vetores aleatórios (ou v. a. multidimensionais)",
+    "text": "Vetores aleatórios (ou v. a. multidimensionais)"
+  },
+  {
+    "objectID": "aulas/intro_est_multi/intro_est_multi.html#vetores-aleatórios-1",
+    "href": "aulas/intro_est_multi/intro_est_multi.html#vetores-aleatórios-1",
+    "title": "Introdução à Estatística Multivariada",
+    "section": "Vetores aleatórios",
+    "text": "Vetores aleatórios\n\nSe \\(\\mathbf{x}\\) for contínua, então a função densidade de probabilidade \\(f(\\mathbf{x})\\) fica definida por:\n\n\\[f(\\mathbf{x}) = \\dfrac{\\partial F(\\mathbf{x})}{\\partial x_1 \\partial x_2 \\cdots \\partial x_p},\\]\nsatisfazendo\n\\[\\int \\limits_{-\\infty}^{\\infty} \\int \\limits_{-\\infty}^{\\infty} \\cdots \\int \\limits_{-\\infty}^{\\infty} f(x_1, x_2, \\cdots, x_p)dx_1 dx_2 \\cdots dx_p = 1\\]"
+  },
+  {
+    "objectID": "aulas/intro_est_multi/intro_est_multi.html#vetores-aleatórios-2",
+    "href": "aulas/intro_est_multi/intro_est_multi.html#vetores-aleatórios-2",
+    "title": "Introdução à Estatística Multivariada",
+    "section": "Vetores aleatórios",
+    "text": "Vetores aleatórios\ne,\n\\[f(x_1, x_2, \\cdots, x_p) \\geqslant 0\\]\npara qualquer conjunto de valores \\(x_1, x_2, \\cdots, x_p\\)."
+  },
+  {
+    "objectID": "aulas/intro_est_multi/intro_est_multi.html#vetores-aleatórios-3",
+    "href": "aulas/intro_est_multi/intro_est_multi.html#vetores-aleatórios-3",
+    "title": "Introdução à Estatística Multivariada",
+    "section": "Vetores aleatórios",
+    "text": "Vetores aleatórios\n\nCada elemento de \\(\\mathbf{x} = (X_1, X_2, \\cdots, X_p)^t\\) é uma variável aleatória \\(X_i\\), \\(i = 1, 2, \\cdots, p\\), cuja distribuição (denominada distribuição marginal) fica determinada pela função densidade de probabilidade \\(f(x_i)\\):\n\n\\[f(x_i) = \\int \\limits_{x_1} \\int \\limits_{x_2} \\cdots \\int \\limits_{x_p} f(\\mathbf{x})dx_1 dx_2 \\cdots dx_p, \\,\\,\\,\\, j \\neq i\\]\n\n\nSe \\(X_1, X_2, \\cdots, X_p\\) forem independentes, então:\n\n\\[f(x_1, x_2, \\cdots, x_p) = \\prod \\limits_{i=1}^p f(x_i) = f(x_1) f(x_2) \\cdots f(x_p)\\]"
+  },
+  {
+    "objectID": "aulas/intro_est_multi/intro_est_multi.html#vetores-aleatórios-4",
+    "href": "aulas/intro_est_multi/intro_est_multi.html#vetores-aleatórios-4",
+    "title": "Introdução à Estatística Multivariada",
+    "section": "Vetores aleatórios",
+    "text": "Vetores aleatórios\n\nA média e a variância de \\(X_i\\), ficam definidas como:\n\n\\[\\mu_i = E(X_i) = \\int \\limits_{-\\infty}^{\\infty} x_i f(x_i)dx_i\\]\n\\[\\sigma_{ii} = Var(X_i) = \\int \\limits_{-\\infty}^{\\infty} (x_i - \\mu_i)^2 f(x_i)dx_i\\]\npara \\(i = 1, 2, \\cdots, p\\)."
+  },
+  {
+    "objectID": "aulas/intro_est_multi/intro_est_multi.html#vetores-aleatórios-5",
+    "href": "aulas/intro_est_multi/intro_est_multi.html#vetores-aleatórios-5",
+    "title": "Introdução à Estatística Multivariada",
+    "section": "Vetores aleatórios",
+    "text": "Vetores aleatórios\n\nPara duas variáveis aleatórias \\(X_i\\) e \\(X_j\\), a covariância é um parâmetro da distribuição conjunta bivariada que mede a associação linear entre elas:\n\n\\[\\sigma_{ij} = Cov(X_i, X_j) = \\int \\limits_{-\\infty}^{\\infty} \\int \\limits_{-\\infty}^{\\infty} (x_i - \\mu_i)(x_j - \\mu_j) f(x_i, x_j)dx_idx_j\\]\n\n\nSe \\(X_i\\) e \\(X_j\\) forem independentes, então \\(Cov(X_i, X_j ) = 0\\)."
+  },
+  {
+    "objectID": "aulas/intro_est_multi/intro_est_multi.html#vetores-aleatórios-6",
+    "href": "aulas/intro_est_multi/intro_est_multi.html#vetores-aleatórios-6",
+    "title": "Introdução à Estatística Multivariada",
+    "section": "Vetores aleatórios",
+    "text": "Vetores aleatórios\n\nO coeficiente de correlação de \\(X_i\\) e \\(X_j\\) é definido como:\n\n\\[\\rho_{ij} = \\dfrac{\\sigma_{ij}}{\\sigma_i \\sigma_j}\\]\nsendo uma medida de associação linear adimensional, tal que \\(-1 \\leqslant \\rho \\leqslant 1\\).\n\n\nTodos os resultados equivalentes para o caso discreto são obtidos substituindo adequadamente as integrais por somas."
+  },
+  {
+    "objectID": "aulas/intro_est_multi/intro_est_multi.html#vetores-aleatórios-7",
+    "href": "aulas/intro_est_multi/intro_est_multi.html#vetores-aleatórios-7",
+    "title": "Introdução à Estatística Multivariada",
+    "section": "Vetores aleatórios",
+    "text": "Vetores aleatórios\n\nA esperança matemática de um vetor aleatório \\(\\mathbf{x} = (X_1, X_2, \\cdots, X_p)^t\\) é definida pelo vetor de mesma dimensão em que cada elemento corresponde à esperança matemática da respectiva variável.\n\n\\[ \\mathbf{\\mu} = E(\\mathbf{x}) =  E \\left( \\left[ \\begin{array}{c} X_{1}  \\\\ X_{2} \\\\ \\vdots\n\\\\ X_{p} \\end{array} \\right] \\right)  = \\left[ \\begin{array}{c} E(X_{1})  \\\\ E(X_{2}) \\\\ \\vdots\n\\\\ E(X_{p}) \\end{array} \\right]  = \\left[ \\begin{array}{c} \\mu_1  \\\\ \\mu_2 \\\\ \\vdots\n\\\\ \\mu_p \\end{array} \\right] \\]"
+  },
+  {
+    "objectID": "aulas/intro_est_multi/intro_est_multi.html#vetores-aleatórios-8",
+    "href": "aulas/intro_est_multi/intro_est_multi.html#vetores-aleatórios-8",
+    "title": "Introdução à Estatística Multivariada",
+    "section": "Vetores aleatórios",
+    "text": "Vetores aleatórios\n\nA matriz de variâncias e covariâncias de um vetor aleatório \\(\\mathbf{x} = (X_1, X_2, \\cdots, X_p)^t\\) é definida pela matriz \\(\\mathbf{\\Sigma}\\) dada por:\n\n\\[\\begin{eqnarray*} \\mathbf{\\Sigma} &=& E \\left[(\\mathbf{x} - \\mathbf{\\mu})(\\mathbf{x} -\n\\mathbf{\\mu})^t \\right] \\\\ &=&\n      \\left[ \\begin{array}{ccc} E(X_1 - \\mu_1)^2  & \\cdots & E(X_1 - \\mu_1)( X_p - \\mu_p) \\\\ E(X_2 - \\mu_2)(X_1 - \\mu_1)  & \\cdots & E(X_2 - \\mu_2)( X_p - \\mu_p)\\\\ \\vdots & \\ddots & \\vdots \\\\ E( X_p - \\mu_p)(X_1 - \\mu_1) & \\cdots & E( X_p - \\mu_p)^2 \\end{array} \\right]\n\\end{eqnarray*}\\]"
+  },
+  {
+    "objectID": "aulas/intro_est_multi/intro_est_multi.html#vetores-aleatórios-9",
+    "href": "aulas/intro_est_multi/intro_est_multi.html#vetores-aleatórios-9",
+    "title": "Introdução à Estatística Multivariada",
+    "section": "Vetores aleatórios",
+    "text": "Vetores aleatórios\n\nDe maneira semelhante, a matriz de correlações do vetor aleatório \\(\\mathbf{x}\\) fica dada por:\n\n\\[ \\mathbf{P} = \\left[ \\begin{array}{cccc} 1 & \\rho_{12} & \\cdots & \\rho_{1p} \\\\ \\rho_{21} & 1 & \\cdots & \\rho_{2p}\\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\ \\rho_{p1} & \\rho_{p2} & \\cdots & 1\n\\end{array} \\right]\\]"
+  },
+  {
+    "objectID": "aulas/intro_est_multi/intro_est_multi.html#propriedades-da-média-e-da-variância-de-vetores-aleatórios",
+    "href": "aulas/intro_est_multi/intro_est_multi.html#propriedades-da-média-e-da-variância-de-vetores-aleatórios",
+    "title": "Introdução à Estatística Multivariada",
+    "section": "Propriedades da média e da variância de vetores aleatórios",
+    "text": "Propriedades da média e da variância de vetores aleatórios\n\nSejam \\(\\mathbf{A}\\) e \\(\\mathbf{B}\\) matrizes matrizes e \\(c\\) um vetor de constantes (todos com dimensões compatíveis às operações apresentadas). Sejam \\(\\mathbf{x}\\) e \\(\\mathbf{y}\\) vetores aleatórios.\n\n\\(E(\\mathbf{x} + \\mathbf{y}) = E(\\mathbf{x}) + E(\\mathbf{y})\\);\n\\(E(\\mathbf{AxB}) = \\mathbf{A} E(\\mathbf{x}) \\mathbf{B}\\);\n\\(E(\\mathbf{Ax} + c) = \\mathbf{A} E(\\mathbf{x}) + c\\);\n\\(Cov(\\mathbf{x}) = E(\\mathbf{x} \\mathbf{x}^t) - \\mathbf{\\mu}_x \\mathbf{\\mu}_x^t\\);\n\\(Cov(c^t \\mathbf{x}) = c^t Cov(\\mathbf{x})c\\);\n\\(Cov(\\mathbf{A}^t \\mathbf{x} + c) = \\mathbf{A} Cov(\\mathbf{x})\\mathbf{A}^t\\)."
+  },
+  {
+    "objectID": "aulas/intro_est_multi/intro_est_multi.html#vetores-aleatórios-10",
+    "href": "aulas/intro_est_multi/intro_est_multi.html#vetores-aleatórios-10",
+    "title": "Introdução à Estatística Multivariada",
+    "section": "Vetores aleatórios",
+    "text": "Vetores aleatórios\n\nA matriz de correlações pode ser determinada facilmente a partir da matriz de covariâncias por:\n\n\\[\\mathbf{P} = \\left(\\mathbf{V}^\\frac{1}{2}\\right)^{-1} \\mathbf{\\Sigma} \\left(\\mathbf{V}^\\frac{1}{2}\\right)^{-1}\\]\nsendo \\(\\mathbf{V}^\\frac{1}{2}\\) a matriz diagonal com elementos \\(\\sqrt{\\sigma_{11}}, \\sqrt{\\sigma_{22}}, \\cdots, \\sqrt{\\sigma_{pp}}\\)."
+  },
+  {
+    "objectID": "aulas/intro_est_multi/intro_est_multi.html#descrição-de-dados-multivariados",
+    "href": "aulas/intro_est_multi/intro_est_multi.html#descrição-de-dados-multivariados",
+    "title": "Introdução à Estatística Multivariada",
+    "section": "Descrição de dados multivariados",
+    "text": "Descrição de dados multivariados\n\nNa prática, todas as matrizes teóricas ( \\(\\mathbf{\\mu}\\), \\(\\mathbf{\\Sigma}\\), \\(\\mathbf{P}\\) e \\(\\mathbf{V}\\) ) são desconhecidas e precisam ser estimadas através de dados amostrais.\n\n\n\nSeja então, uma amostra aleatória multivariada de tamanho \\(n\\).\n\n\n\n\nPodemos calcular a média amostral separadamente para cada variável:\n\n\\[\\bar{x}_j = \\dfrac{1}{n} \\sum \\limits_{i=1}^n x_{ij}, \\,\\,\\,\\,\\,\\, j = 1, 2,  \\cdots, p\\]"
+  },
+  {
+    "objectID": "aulas/intro_est_multi/intro_est_multi.html#descrição-de-dados-multivariados-1",
+    "href": "aulas/intro_est_multi/intro_est_multi.html#descrição-de-dados-multivariados-1",
+    "title": "Introdução à Estatística Multivariada",
+    "section": "Descrição de dados multivariados",
+    "text": "Descrição de dados multivariados\n\nO vetor de médias amostrais fica definido por:\n\n\\[\\bar{\\mathbf{x}} = \\left[ \\begin{array}{c} \\bar{x}_1  \\\\ \\bar{x}_2\\\\ \\vdots  \\\\ \\bar{x}_p \\end{array} \\right]\\]\n\n\nMatricialmente, temos \\(\\bar{\\mathbf{x}} = \\dfrac{1}{n} \\mathbf{X}^t \\mathbf{j}\\), sendo \\(\\mathbf{X}\\) a matriz de dados e \\(\\mathbf{j}\\) o vetor de 1’s de dimensão \\(n\\)."
+  },
+  {
+    "objectID": "aulas/intro_est_multi/intro_est_multi.html#descrição-de-dados-multivariados-2",
+    "href": "aulas/intro_est_multi/intro_est_multi.html#descrição-de-dados-multivariados-2",
+    "title": "Introdução à Estatística Multivariada",
+    "section": "Descrição de dados multivariados",
+    "text": "Descrição de dados multivariados\n\nA variância amostral para a \\(j\\)-ésima variável e a covariância amostral para as variáveis \\(X_j\\) e \\(X_k\\) são definidas, respectivamente, por:\n\n\\[ s_{jj} = \\frac{\\displaystyle\\sum _{i=1}^n (x_{ij}-\\bar{x_j})^2}{n-1} \\]\n\\[ s_{jk} = \\frac{\\displaystyle\\sum _{i=1}^n (x_{ij}-\\bar{x_j})(x_{ik}-\\bar{x_k})}{n-1}, \\hspace{0.5cm} j \\neq k\\]"
+  },
+  {
+    "objectID": "aulas/intro_est_multi/intro_est_multi.html#descrição-de-dados-multivariados-3",
+    "href": "aulas/intro_est_multi/intro_est_multi.html#descrição-de-dados-multivariados-3",
+    "title": "Introdução à Estatística Multivariada",
+    "section": "Descrição de dados multivariados",
+    "text": "Descrição de dados multivariados\n\nA matriz de covariâncias amostral (simétrica) fica definida por:\n\n\\[\\mathbf{S}_{p \\times p} = \\left[ \\begin{array}{cccc} s_{11} & s_{12} & \\cdots & s_{1p} \\\\ s_{21} & s_{22} & \\cdots & s_{2p}\\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\ s_{p1} & s_{p2} & \\cdots & s_{pp} \\end{array} \\right]  \\]"
+  },
+  {
+    "objectID": "aulas/intro_est_multi/intro_est_multi.html#descrição-de-dados-multivariados-4",
+    "href": "aulas/intro_est_multi/intro_est_multi.html#descrição-de-dados-multivariados-4",
+    "title": "Introdução à Estatística Multivariada",
+    "section": "Descrição de dados multivariados",
+    "text": "Descrição de dados multivariados\n\nPodemos expressar a matriz de covariâncias em termos dos vetores observados:\n\n\\[\\mathbf{S} = \\dfrac{1}{n-1} \\sum \\limits_{i=1}^n (\\mathbf{x}_i - \\bar{\\mathbf{x}})(\\mathbf{x}_i - \\bar{\\mathbf{x}})^t = \\dfrac{1}{n-1} \\left( \\sum \\limits_{i=1}^n \\mathbf{x}_i \\mathbf{x}_i^t - n \\bar{\\mathbf{x}}\\bar{\\mathbf{x}}^t \\right) \\]"
+  },
+  {
+    "objectID": "aulas/intro_est_multi/intro_est_multi.html#descrição-de-dados-multivariados-5",
+    "href": "aulas/intro_est_multi/intro_est_multi.html#descrição-de-dados-multivariados-5",
+    "title": "Introdução à Estatística Multivariada",
+    "section": "Descrição de dados multivariados",
+    "text": "Descrição de dados multivariados\n\nO coeficiente de correlação amostral entre as variáveis \\(X_j\\) e \\(X_k\\) é dado por:\n\n\\[r_{jk} = \\dfrac{s_{jk}}{\\sqrt{s_{jj}} \\sqrt{s_{kk}}} = \\dfrac{\\sum \\limits_{i=1}^n (x_{ij} - \\bar{x}_j)(x_{ik} - \\bar{x}_k)}{\\sqrt{\\sum \\limits_{i=1}^n (x_{ij} - \\bar{x}_j)^2} \\sqrt{\\sum \\limits_{i=1}^n (x_{ik} - \\bar{x}_k)^2}}\\]"
+  },
+  {
+    "objectID": "aulas/intro_est_multi/intro_est_multi.html#descrição-de-dados-multivariados-6",
+    "href": "aulas/intro_est_multi/intro_est_multi.html#descrição-de-dados-multivariados-6",
+    "title": "Introdução à Estatística Multivariada",
+    "section": "Descrição de dados multivariados",
+    "text": "Descrição de dados multivariados\n\nA matriz de correlações amostrais (simétrica) é determinada pelos coeficientes calculados para cada par de variáveis.\n\n\\[\\mathbf{R}_{p \\times p} = \\left[ \\begin{array}{cccc} 1 & r_{12} & \\cdots & r_{1p} \\\\\nr_{21} & 1 & \\cdots & r_{2p}\\\\\n\\vdots & \\vdots & \\ddots & \\vdots \\\\\nr_{p1} & r_{p2} & \\cdots & 1\n\\end{array} \\right]\n\\]"
+  },
+  {
+    "objectID": "aulas/intro_est_multi/intro_est_multi.html#descrição-de-dados-multivariados-7",
+    "href": "aulas/intro_est_multi/intro_est_multi.html#descrição-de-dados-multivariados-7",
+    "title": "Introdução à Estatística Multivariada",
+    "section": "Descrição de dados multivariados",
+    "text": "Descrição de dados multivariados\n\nComo complemento às medidas descritivas apresentadas, o uso de gráficos permite extrair informações importantes dos dados. Alguns gráficos (e recursos adicionais):\n\nHistograma;\nBoxplot;\nDiagrama de dispersão;\nCorrelograma;\nMatrizes de gráficos;\nFaces de Chernoff;\nGráficos tridimensionais…"
+  },
+  {
+    "objectID": "aulas/intro_est_multi/intro_est_multi.html#variância-generalizada-e-variância-total",
+    "href": "aulas/intro_est_multi/intro_est_multi.html#variância-generalizada-e-variância-total",
+    "title": "Introdução à Estatística Multivariada",
+    "section": "Variância generalizada e variância total",
+    "text": "Variância generalizada e variância total\n\nEm algumas situações, é de interesse exprimir a varição presente nos dados multivariados em um único valor.\n\n\n\nUma das alternativas para isso é a variância generalizada, que é definida como o determinante da matriz de covariâncias amostral.\n\n\\[\\text{Variância generalizada} = |\\mathbf{S}|\\]\n\n\n\nNaturalmente, por resumir toda a variação em um único valor, parte da informação referente à variação dos dados se perde nesse resumo, originando possíveis distorções."
+  },
+  {
+    "objectID": "aulas/intro_est_multi/intro_est_multi.html#variância-generalizada-e-variância-total-1",
+    "href": "aulas/intro_est_multi/intro_est_multi.html#variância-generalizada-e-variância-total-1",
+    "title": "Introdução à Estatística Multivariada",
+    "section": "Variância generalizada e variância total",
+    "text": "Variância generalizada e variância total\n\nA variância generalizada pode ser definida ainda a partir das variáveis originais padronizadas \\((x_{ij} - \\bar{x}_j)/s_{jj}\\), contornando problema de diferentes escalas das variáveis. Como resultado da padronização, temos:\n\n\\[\\text{Variância generalizada das variáveis padronizadas} = |\\mathbf{R}|\\]"
+  },
+  {
+    "objectID": "aulas/intro_est_multi/intro_est_multi.html#variância-generalizada-e-variância-total-2",
+    "href": "aulas/intro_est_multi/intro_est_multi.html#variância-generalizada-e-variância-total-2",
+    "title": "Introdução à Estatística Multivariada",
+    "section": "Variância generalizada e variância total",
+    "text": "Variância generalizada e variância total\n\nAlgumas propriedades da variância generalizada:\n\nQuanto maior a variância de uma variável, maior sua contribuição para a variância generalizada;\nQuanto maior a correlação entre duas variáveis, menor a variância generalizada;\nCaso duas ou mais variáveis sejam perfeitamente correlacionadas a variância generalizada atingirá seu mínimo valor (zero);\nA variância generalizada será máxima caso as variáveis tenham correlação nula."
+  },
+  {
+    "objectID": "aulas/intro_est_multi/intro_est_multi.html#variância-generalizada-e-variância-total-3",
+    "href": "aulas/intro_est_multi/intro_est_multi.html#variância-generalizada-e-variância-total-3",
+    "title": "Introdução à Estatística Multivariada",
+    "section": "Variância generalizada e variância total",
+    "text": "Variância generalizada e variância total\n\nUma das limitações da variância generalizada é o fato de diferentes estruturas de correlação produzirem, algumas vezes, igual variância generalizada.\n\n\n\nExemplo: Calcular, para cada matriz de covariâncias, a variância generalizada e a correlação entre as variáveis.\n\n\\[\\mathbf{S}_1 = \\left[ \\begin{array}{rr} 10 & 8  \\\\  8 & 10 \\end{array} \\right], \\,\\,\\,\\,\\,\\,\\,\\, \\mathbf{S}_2 = \\left[ \\begin{array}{rr} 10 & -8  \\\\  -8 & 10 \\end{array} \\right], \\,\\,\\,\\,\\,\\,\\,\\, \\mathbf{S}_3 = \\left[ \\begin{array}{rr} 9 & 0  \\\\  0 & 4 \\end{array} \\right]\\]"
+  },
+  {
+    "objectID": "aulas/intro_est_multi/intro_est_multi.html#variância-generalizada-e-variância-total-4",
+    "href": "aulas/intro_est_multi/intro_est_multi.html#variância-generalizada-e-variância-total-4",
+    "title": "Introdução à Estatística Multivariada",
+    "section": "Variância generalizada e variância total",
+    "text": "Variância generalizada e variância total\n\nOutra medida usada para resumir a variação total em um único valor é a variância total, definida por:\n\n\\[\\text{Variância total} = \\text{tr}(\\mathbf{S}) = s_{11} + s_{22} + \\cdots + s_{pp}\\]\n\n\nPor se basear apenas na diagonal de \\(\\mathbf{S}\\), a variância total claramente ignora a estrutura de correlação dos dados."
+  },
+  {
+    "objectID": "aulas/intro_est_multi/intro_est_multi.html#distâncias",
+    "href": "aulas/intro_est_multi/intro_est_multi.html#distâncias",
+    "title": "Introdução à Estatística Multivariada",
+    "section": "Distâncias",
+    "text": "Distâncias\n\nBoa parte das técnicas multivariadas baseiam-se no conceito de distância.\n\n\n\nUsamos distâncias para medir quão semelhantes são dois indivíduos com relação aos valores observados para \\(p\\) variáveis.\n\n\n\n\nSejam dois vetores \\(\\mathbf{x}\\) e \\(\\mathbf{y} \\in \\mathbb{R}^p\\) e uma matriz \\(\\mathbf{\\Psi}\\), positiva definida. Então, a expressão geral para a distância quadrática entre os vetores \\(\\mathbf{x}\\) e \\(\\mathbf{y}\\) é dada por:\n\n\\[d^2(\\mathbf{x}, \\mathbf{y}) = \\left| \\mathbf{x} - \\mathbf{y} \\right|^2_{\\mathbf{\\Psi}} = (\\mathbf{x} - \\mathbf{y})^t{\\mathbf{\\Psi}} (\\mathbf{x} - \\mathbf{y})\\]\nem que a matriz \\(\\mathbf{\\Psi}\\), positiva definida, é chamada de métrica."
+  },
+  {
+    "objectID": "aulas/intro_est_multi/intro_est_multi.html#distâncias-1",
+    "href": "aulas/intro_est_multi/intro_est_multi.html#distâncias-1",
+    "title": "Introdução à Estatística Multivariada",
+    "section": "Distâncias",
+    "text": "Distâncias\n\nConsideremos agora \\(\\mathbf{z}\\), um terceiro vetor de \\(\\mathbb{R}^p\\). Então as seguintes propriedades são válidas:\n\n\\(d(\\mathbf{x}, \\mathbf{y}) = d(\\mathbf{y}, \\mathbf{x})\\)\n\\(d(\\mathbf{x}, \\mathbf{y}) &gt; 0 \\hspace{0.5cm} \\forall \\hspace{0.2cm} \\mathbf{x} \\neq \\mathbf{y}\\)\n\\(d(\\mathbf{x}, \\mathbf{y}) = 0  \\hspace{0.5cm} \\text{se, e somente se,} \\hspace{0.5cm} \\mathbf{x} = \\mathbf{y}\\)\n\n\\(d(\\mathbf{x}, \\mathbf{y}) \\leq d(\\mathbf{x}, \\mathbf{z}) + d(\\mathbf{y}, \\mathbf{z}) \\,\\,\\,\\,\\,\\, \\text{(desigualdade triangular)}\\)\n\n\n\n\nDependendo da escolha da métrica \\(\\mathbf{\\Psi}\\), podemos obter diferentes medidas de distâncias, cada uma com suas características e aplicações. A escolha de uma medida adequada é fundamental para qualquer análise."
+  },
+  {
+    "objectID": "aulas/intro_est_multi/intro_est_multi.html#distância-euclidiana",
+    "href": "aulas/intro_est_multi/intro_est_multi.html#distância-euclidiana",
+    "title": "Introdução à Estatística Multivariada",
+    "section": "Distância Euclidiana",
+    "text": "Distância Euclidiana\n\nSe a métrica \\(\\mathbf{\\Psi}\\) é dada por \\(\\mathbf{\\Psi} = \\mathbf{I}\\), temos a distância euclidiana quadrática. Neste caso, a expressão da distância é dada por:\n\n\\[d^2(\\mathbf{x}, \\mathbf{y}) = (\\mathbf{x} - \\mathbf{y})^t (\\mathbf{x} - \\mathbf{y})\\]\nde forma que a distância euclidiana é dada por:\n\\[d(\\mathbf{x}, \\mathbf{y}) = \\sqrt{(\\mathbf{x} - \\mathbf{y})^t (\\mathbf{x} - \\mathbf{y})}\\]"
+  },
+  {
+    "objectID": "aulas/intro_est_multi/intro_est_multi.html#distância-euclidiana-1",
+    "href": "aulas/intro_est_multi/intro_est_multi.html#distância-euclidiana-1",
+    "title": "Introdução à Estatística Multivariada",
+    "section": "Distância Euclidiana",
+    "text": "Distância Euclidiana"
+  },
+  {
+    "objectID": "aulas/intro_est_multi/intro_est_multi.html#distância-euclidiana-2",
+    "href": "aulas/intro_est_multi/intro_est_multi.html#distância-euclidiana-2",
+    "title": "Introdução à Estatística Multivariada",
+    "section": "Distância Euclidiana",
+    "text": "Distância Euclidiana\n\nA distância euclidiana confere mesmos pesos às diferenças verificadas em cada uma das \\(p\\) dimensões.\n\n\n\nNas análises estatísticas, em que distâncias serão aplicadas a dados de variáveis com diferentes variâncias, e na presença de covariâncias, incorporar tais características ao cálculo da distância pode ser fundamental.\n\n\n\n\nNesse contexto, duas medidas de distância mais apropriadas são as distâncias de Karl Pearson e a de Mahalanobis."
+  },
+  {
+    "objectID": "aulas/intro_est_multi/intro_est_multi.html#distância-de-karl-pearson",
+    "href": "aulas/intro_est_multi/intro_est_multi.html#distância-de-karl-pearson",
+    "title": "Introdução à Estatística Multivariada",
+    "section": "Distância de Karl Pearson",
+    "text": "Distância de Karl Pearson\n\nSe considerarmos a métrica \\(\\mathbf{\\Psi}\\) como sendo igual a\n\n\\[\\mathbf{\\Psi} = \\mathbf{D}^{-1} = \\text{diag}\\left(\\dfrac{1}{s_{kk}}\\right), \\hspace{1cm} k = 1,\\cdots, p,\\]\nentão podemos definir a distância quadrática de Karl Pearson por:\n\\[d^2_p(\\mathbf{x}, \\mathbf{y}) = (\\mathbf{x} - \\mathbf{y})^t \\mathbf{D}^{-1}(\\mathbf{x} - \\mathbf{y})\\]\nde forma que a distância euclidiana ponderada é dada por,\n\\[d_p(\\mathbf{x}, \\mathbf{y}) = \\sqrt{(\\mathbf{x} - \\mathbf{y})^t\\mathbf{D}^{-1} (\\mathbf{x} - \\mathbf{y})}\\]"
+  },
+  {
+    "objectID": "aulas/intro_est_multi/intro_est_multi.html#distância-de-karl-pearson-1",
+    "href": "aulas/intro_est_multi/intro_est_multi.html#distância-de-karl-pearson-1",
+    "title": "Introdução à Estatística Multivariada",
+    "section": "Distância de Karl Pearson",
+    "text": "Distância de Karl Pearson"
+  },
+  {
+    "objectID": "aulas/intro_est_multi/intro_est_multi.html#distância-de-karl-pearson-2",
+    "href": "aulas/intro_est_multi/intro_est_multi.html#distância-de-karl-pearson-2",
+    "title": "Introdução à Estatística Multivariada",
+    "section": "Distância de Karl Pearson",
+    "text": "Distância de Karl Pearson\n\nA distância de Karl Pearson evita o problema de heterogeneidade em um sistema de variáveis é dividindo cada variável por um fator que elimine o fator escala.\n\n\n\nTambém é conhecida como distância euclidiana ponderada ou padronizada"
+  },
+  {
+    "objectID": "aulas/intro_est_multi/intro_est_multi.html#distância-de-mahalanobis",
+    "href": "aulas/intro_est_multi/intro_est_multi.html#distância-de-mahalanobis",
+    "title": "Introdução à Estatística Multivariada",
+    "section": "Distância de Mahalanobis",
+    "text": "Distância de Mahalanobis\n\nA distância de Mahalanobis configura um caso mais geral, em que são usadas tanto as variâncias quanto as covariâncias no cálculo da distância.\n\n\n\nSe considerarmos a métrica \\(\\mathbf{\\Psi}\\) igual a \\(\\mathbf{\\Psi} = \\mathbf{S}^{-1}\\), temos a chamada distância quadrática de Mahalanobis, dada por:\n\n\\[d^2_M(\\mathbf{x}, \\mathbf{y}) = (\\mathbf{x} - \\mathbf{y})^t \\mathbf{S}^{-1}(\\mathbf{x} - \\mathbf{y})\\]\nde forma que a distância de Mahalanobis é dada por,\n\\[d_M(\\mathbf{x}, \\mathbf{y}) = \\sqrt{(\\mathbf{x} - \\mathbf{y})^t\\mathbf{S}^{-1} (\\mathbf{x} - \\mathbf{y})}\\]"
+  },
+  {
+    "objectID": "aulas/intro_est_multi/intro_est_multi.html#distância-de-mahalanobis-1",
+    "href": "aulas/intro_est_multi/intro_est_multi.html#distância-de-mahalanobis-1",
+    "title": "Introdução à Estatística Multivariada",
+    "section": "Distância de Mahalanobis",
+    "text": "Distância de Mahalanobis"
+  },
+  {
+    "objectID": "aulas/intro_est_multi/intro_est_multi.html#distância-de-mahalanobis-2",
+    "href": "aulas/intro_est_multi/intro_est_multi.html#distância-de-mahalanobis-2",
+    "title": "Introdução à Estatística Multivariada",
+    "section": "Distância de Mahalanobis",
+    "text": "Distância de Mahalanobis\n\nA distância de Mahalanobis é largamente aplicada, permitindo acomodar diferentes escalas e correlações entre as variáveis.\n\n\n\nDada sua definição, a distância de Mahalanobis, ao incorporar a inversa da matriz de covariância, tem como efeitos:\n\nPadronizar todas as variáveis de forma que apresentem mesma variância;\nEliminar correlações."
+  },
+  {
+    "objectID": "aulas/intro_est_multi/intro_est_multi.html#matriz-de-distâncias",
+    "href": "aulas/intro_est_multi/intro_est_multi.html#matriz-de-distâncias",
+    "title": "Introdução à Estatística Multivariada",
+    "section": "Matriz de distâncias",
+    "text": "Matriz de distâncias\n\nSeja qual for a distância utilizada, é comum, em análises multivariadas, calculá-la para cada par de indivíduos e armazenar os valores em uma matriz, denominada matriz de distâncias.\n\n\\[\\mathbf{D}_{n \\times n} = \\left[ \\begin{array}{cccc} 0 & d_{12} & \\cdots & d_{1n} \\\\ d_{21} & 0 & \\cdots & d_{2n}\\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\ d_{n1} & d_{n2} & \\cdots & 0 \\end{array} \\right]\n        \\]\nem que \\(d_{ij} = d_{ji}\\) é a distância calculada para os indivíduos \\(i\\) e \\(j\\), utilizando uma métrica qualquer.\n\n\nA visualização das distâncias num gráfico do tipo “mapa de calor” permite uma apreciação conjunta das distâncias calculadas duas a duas."
+  },
+  {
+    "objectID": "analise_dados/descr_vis_iris.html",
+    "href": "analise_dados/descr_vis_iris.html",
+    "title": "Descrição e visualização de dados multivariados utilizando a base Iris",
+    "section": "",
+    "text": "A base iris (FISHER (1936)) é um dos conjuntos de dados mais clássicos e didáticos da estatística. Ela contém 150 observações (flores) de três espécies, setosa, versicolor e virginica, medidas em quatro variáveis contínuas:\n\nSepal.Length (cm)\n\nSepal.Width (cm)\n\nPetal.Length (cm)\n\nPetal.Width (cm)\n\n\n\n\n\n\nNosso objetivo é revisar conceitos fundamentais de Estatística Multivariada:\n\n\nVetor de médias\n\nMatrizes de covariância e correlação\n\nVariância total e generalizada\n\nMatrizes de distância (euclidiana e de Mahalanobis)\n\nVisualizações (pares, correlograma, heatmaps)"
+  },
+  {
+    "objectID": "analise_dados/descr_vis_iris.html#distância-euclidiana",
+    "href": "analise_dados/descr_vis_iris.html#distância-euclidiana",
+    "title": "Descrição e visualização de dados multivariados utilizando a base Iris",
+    "section": "6.1 Distância Euclidiana",
+    "text": "6.1 Distância Euclidiana\n\nD_euclid &lt;- euclidean_dist(data = X)\nas.matrix(D_euclid)[1:6, 1:6]\n\n          1         2        3         4         5         6\n1 0.0000000 0.5385165 0.509902 0.6480741 0.1414214 0.6164414\n2 0.5385165 0.0000000 0.300000 0.3316625 0.6082763 1.0908712\n3 0.5099020 0.3000000 0.000000 0.2449490 0.5099020 1.0862780\n4 0.6480741 0.3316625 0.244949 0.0000000 0.6480741 1.1661904\n5 0.1414214 0.6082763 0.509902 0.6480741 0.0000000 0.6164414\n6 0.6164414 1.0908712 1.086278 1.1661904 0.6164414 0.0000000\n\n\n\n📏 Distância Euclidiana representa a distância geométrica entre dois pontos."
+  },
+  {
+    "objectID": "analise_dados/descr_vis_iris.html#distância-de-mahalanobis",
+    "href": "analise_dados/descr_vis_iris.html#distância-de-mahalanobis",
+    "title": "Descrição e visualização de dados multivariados utilizando a base Iris",
+    "section": "6.3 Distância de Mahalanobis",
+    "text": "6.3 Distância de Mahalanobis\n\nD_mahal &lt;- mahalanobis_dist(data = X)\nas.matrix(D_mahal)[1:6, 1:6]\n\n          1         2         3         4         5         6\n1 0.0000000 1.3544572 0.9687298 1.4057253 0.5899110 1.1382566\n2 1.3544572 0.0000000 0.9697905 1.4527546 1.8106890 2.4484066\n3 0.9687298 0.9697905 0.0000000 0.7170009 1.1253440 1.9227214\n4 1.4057253 1.4527546 0.7170009 0.0000000 1.3293220 2.2425573\n5 0.5899110 1.8106890 1.1253440 1.3293220 0.0000000 0.9446158\n6 1.1382566 2.4484066 1.9227214 2.2425573 0.9446158 0.0000000\n\n\n\n📏 Distância de Mahalanobis leva em conta correlações entre variáveis e diferenças de escala."
+  },
+  {
+    "objectID": "analise_dados/descr_vis_iris.html#gráfico-de-pares-colorido-por-espécie",
+    "href": "analise_dados/descr_vis_iris.html#gráfico-de-pares-colorido-por-espécie",
+    "title": "Descrição e visualização de dados multivariados utilizando a base Iris",
+    "section": "7.1 Gráfico de pares colorido por espécie",
+    "text": "7.1 Gráfico de pares colorido por espécie\n\nGGally::ggpairs(bind_cols(X, Species = y),\n                columns = 1:4, aes(color = Species, alpha = 0.8)) +\n  theme_bw()"
+  },
+  {
+    "objectID": "analise_dados/descr_vis_iris.html#correlograma",
+    "href": "analise_dados/descr_vis_iris.html#correlograma",
+    "title": "Descrição e visualização de dados multivariados utilizando a base Iris",
+    "section": "7.2 Correlograma",
+    "text": "7.2 Correlograma\n\nggcorrplot(R, hc.order = TRUE, type = \"lower\",\n           lab = TRUE, tl.cex = 10,\n           title = \"Matriz de Correlações - iris\")\n\n\n\n\n\n\n\n\n\n💡 Interpretação: O mapa de correlações da iris evidencia três padrões centrais: (1) forte associação positiva entre as medidas de pétala: Petal.Length vs. Petal.Width ≈ 0,96 e também de Sepal.Length com as pétalas (≈ 0,87 e 0,82), indicando redundância informacional e provável multicolinearidade; (2) Sepal.Width apresenta correlações negativas com as demais variáveis (≈ −0,12 com Sepal.Length, −0,43 com Petal.Length e −0,37 com Petal.Width), sugerindo um eixo de variação em sentido oposto ao das pétalas; e (3) como consequência, em tarefas de PCA ou classificação, as pétalas tendem a dominar a separação entre espécies, enquanto Sepal.Width adiciona sinal complementar."
+  },
+  {
+    "objectID": "analise_dados/descr_vis_iris.html#heatmap-das-correlações",
+    "href": "analise_dados/descr_vis_iris.html#heatmap-das-correlações",
+    "title": "Descrição e visualização de dados multivariados utilizando a base Iris",
+    "section": "7.3 Heatmap das correlações",
+    "text": "7.3 Heatmap das correlações\n\npheatmap(R, cluster_rows = TRUE, cluster_cols = TRUE,\n         main = \"Heatmap da Matriz de Correlações (iris)\")\n\n\n\n\n\n\n\n\n\n💡 Interpretação: O heatmap das correlações da iris confirma dois blocos de variáveis: (i) Petal.Length e Petal.Width fortemente positivas entre si (vermelho intenso) e também bem alinhadas com Sepal.Length (vermelho), formando um grupo altamente correlacionado que indica redundância e tende a dominar a variação; (ii) Sepal.Width aparece em azul frente às demais, mostrando correlação negativa moderada, o que a isola no dendrograma e sugere um eixo complementar de informação. Em termos práticos, as pétalas são as melhores para discriminar espécies (e podem sofrer multicolinearidade), enquanto Sepal.Width acrescenta sinal em direção oposta."
+  },
+  {
+    "objectID": "analise_dados/descr_vis_iris.html#heatmap-dos-dados-padronizados",
+    "href": "analise_dados/descr_vis_iris.html#heatmap-dos-dados-padronizados",
+    "title": "Descrição e visualização de dados multivariados utilizando a base Iris",
+    "section": "7.4 Heatmap dos dados padronizados",
+    "text": "7.4 Heatmap dos dados padronizados\n\nX_std &lt;- scale(X)\nrownames_X &lt;- paste0(y, \"_\", seq_len(nrow(X)))\nX_std_mat  &lt;- as.matrix(X_std)\nrownames(X_std_mat) &lt;- rownames_X\n\nann &lt;- data.frame(Species = y)\nrownames(ann) &lt;- rownames_X\n\npheatmap(X_std_mat,\n         scale = \"none\",\n         annotation_row = ann,\n         clustering_method = \"complete\",\n         main = \"Heatmap - iris (dados padronizados)\")"
+  },
+  {
+    "objectID": "analise_dados/descr_vis_iris.html#dendrograma",
+    "href": "analise_dados/descr_vis_iris.html#dendrograma",
+    "title": "Descrição e visualização de dados multivariados utilizando a base Iris",
+    "section": "7.5 7.5 Dendrograma",
+    "text": "7.5 7.5 Dendrograma\n\nhc &lt;- hclust(D_euclid, method = \"complete\")\nplot(hc, main = \"Dendrograma (Euclidiana + Complete-linkage)\", xlab = \"\")\n\n\n\n\n\n\n\npheatmap(as.matrix(D_euclid),\n         clustering_method = \"complete\",\n         main = \"Heatmap da Distância Euclidiana (padronizada)\")"
+  },
+  {
+    "objectID": "analise_dados/descr_vis_iris.html#exercícios-sugeridos",
+    "href": "analise_dados/descr_vis_iris.html#exercícios-sugeridos",
+    "title": "Descrição e visualização de dados multivariados utilizando a base Iris",
+    "section": "8.1 Exercícios sugeridos",
+    "text": "8.1 Exercícios sugeridos\n\nCalcule matrizes de covariância e correlação por espécie.\n\nCompare as distâncias de Mahalanobis dentro de cada grupo.\n\nTeste clusterização (k-means, hierárquico) e compare com Species.\n\nInterprete os autovetores do PCA e sua relação com as variáveis originais.\n\n\n\n✏️ Durante a renderização, todas as figuras serão salvas automaticamente em figures/.\nPara PDF, certifique-se de ter LaTeX instalado (ex.: tinytex::install_tinytex())."
+  },
+  {
+    "objectID": "analise_dados/descr_vis_iris.html#distância-de-karl-pearson",
+    "href": "analise_dados/descr_vis_iris.html#distância-de-karl-pearson",
+    "title": "Descrição e visualização de dados multivariados utilizando a base Iris",
+    "section": "6.2 Distância de Karl Pearson",
+    "text": "6.2 Distância de Karl Pearson\n\nD_karlP &lt;- scaled_euclidean_dist(data = X)\nas.matrix(D_karlP)[1:6, 1:6]\n\n          1         2         3         4         5         6\n1 0.0000000 1.1722914 0.8427840 1.0999999 0.2592702 1.0349769\n2 1.1722914 0.0000000 0.5216255 0.4325508 1.3818560 2.1739229\n3 0.8427840 0.5216255 0.0000000 0.2829432 0.9882608 1.8477070\n4 1.0999999 0.4325508 0.2829432 0.0000000 1.2459861 2.0937597\n5 0.2592702 1.3818560 0.9882608 1.2459861 0.0000000 0.8971079\n6 1.0349769 2.1739229 1.8477070 2.0937597 0.8971079 0.0000000\n\n\n\n📏 Distância de Karl Pearson leva em conta as diferenças de escala."
+  },
+  {
+    "objectID": "analise_dados/descr_vis_iris.html#gráfico-de-pares-por-espécie",
+    "href": "analise_dados/descr_vis_iris.html#gráfico-de-pares-por-espécie",
+    "title": "Descrição e visualização de dados multivariados utilizando a base Iris",
+    "section": "7.1 Gráfico de pares por espécie",
+    "text": "7.1 Gráfico de pares por espécie\n\nGGally::ggpairs(bind_cols(X, Species = y),\n                columns = 1:4, aes(color = Species, alpha = 0.8)) + theme_bw()\n\n\n\n\n\n\n\n\n\n💡 Interpretação: O “pairs plot” da iris mostra que setosa tem pétalas muito pequenas e sépalas mais largas, enquanto versicolor e virginica apresentam pétalas maiores (com alguma sobreposição), e em Sepal.Width a espécie setosa desloca-se à direita, versicolor à esquerda e virginica fica intermediária. As correlações globais destacam Petal.Length vs. Petal.Width como fortíssima (≈0,96) e Sepal.Length bem associado às pétalas; já Sepal.Width aparece negativamente correlacionado no agregado. Contudo, por espécie as relações com Sepal.Width tendem a ser positivas, e os dispersogramas envolvendo medidas de pétala exibem a melhor separação entre espécies. Em síntese, as pétalas dominam a estrutura e a discriminação, com Sepal.Width fornecendo informação complementar."
+  },
+  {
+    "objectID": "analise_dados/descr_vis_iris.html#references",
+    "href": "analise_dados/descr_vis_iris.html#references",
+    "title": "Descrição e visualização de dados multivariados utilizando a base Iris",
+    "section": "7.4 References",
+    "text": "7.4 References"
   }
 ]
