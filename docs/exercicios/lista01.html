@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Semana 01 – EST014 - Estatística Multivariada I</title>
+<title>Lista de exercícios 01: Revisão de Álgebra Linear – EST014 - Estatística Multivariada I</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -71,8 +71,37 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta property="og:title" content="Semana 01 – EST014 - Estatística Multivariada I">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="Lista de exercícios 01: Revisão de Álgebra Linear – EST014 - Estatística Multivariada I">
 <meta property="og:description" content="Homepage da disciplina EST014 - Estatística Multivariada I, 2025/2">
 <meta property="og:site_name" content="EST014 - Estatística Multivariada I">
 </head>
@@ -247,7 +276,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Semana 01</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Lista de exercícios 01: Revisão de Álgebra Linear</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -314,7 +343,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Semana 01</h1>
+<h1 class="title">Lista de exercícios 01: Revisão de Álgebra Linear</h1>
 </div>
 
 
@@ -331,8 +360,187 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Sejam bem-vindos à disciplina EST014 - Estatística Multivariada I.</p>
-<p>Leiam com atenção o <a href="https://github.com/tiagomartin/est014/blob/3510b6c24211502df95769537ddb1097d026bd8d/documentos/Plano_de_Ensino_EST014_2025_2.pdf">plano de ensino</a> da disciplina. Nele estão as regras do jogo!</p>
+<p align="center" style="font-size: 40px">
+<code>Data de entrega: 27 de outubro de 2025</code>
+</p>
+<hr>
+<ol type="1">
+<li>Sejam as seguintes matrizes:</li>
+</ol>
+<p><span class="math display">\[\mathbf{A} = \left(\begin{array}{ccc} 4 &amp; 2 &amp; 3 \\ 7 &amp; 5 &amp; 8 \end{array}\right) \text{     e     } \mathbf{B} = \left(\begin{array}{ccc} 3 &amp; -2 &amp; 4\\ 6 &amp; 9 &amp; -5 \end{array}\right)\]</span></p>
+<ol type="a">
+<li>Encontre <span class="math inline">\(\mathbf{A + B}\)</span> e <span class="math inline">\(\mathbf{A- B}\)</span>.</li>
+<li>Encontre <span class="math inline">\(\mathbf{AA}^t\)</span> e <span class="math inline">\(\mathbf{A}^t\mathbf{A}\)</span>.</li>
+<li>Calcule <span class="math inline">\((\mathbf{A+B})^t\)</span> e verifique que a matriz resultante é igual a <span class="math inline">\(\mathbf{A}^t + \mathbf{B}^t\)</span>.</li>
+<li>Mostre que <span class="math inline">\((\mathbf{A}^t)^t = \mathbf{A}\)</span>.</li>
+</ol>
+<hr>
+<ol start="2" type="1">
+<li>Sejam as matrizes:</li>
+</ol>
+<p><span class="math display">\[\mathbf{A} = \left(\begin{array}{cc} 1 &amp; 3 \\ 2 &amp; -1 \end{array}\right)  \text{      e      } \mathbf{B} = \left(\begin{array}{cc} 2 &amp; 0 \\ 1 &amp; 5 \end{array}\right)\]</span></p>
+<ol type="a">
+<li>Encontre <span class="math inline">\(\mathbf{AB}\)</span> e <span class="math inline">\(\mathbf{BA}\)</span>.</li>
+<li>Encontre <span class="math inline">\(\mathbf{|AB|}\)</span> e verifique se <span class="math inline">\(\mathbf{|AB| = |A| \cdot |B|}\)</span>.</li>
+<li>Calcule <span class="math inline">\(\mathbf{A+B}\)</span> e <span class="math inline">\(\mathbf{tr(A+B)}\)</span>.</li>
+<li>Calcule <span class="math inline">\(\mathbf{tr(A)}\)</span> e <span class="math inline">\(\mathbf{tr(B)}\)</span> e verifique se <span class="math inline">\(\mathbf{tr(A+B) = tr(A) + tr(B)}\)</span>.</li>
+<li>Encontre <span class="math inline">\(\mathbf{(AB)^t}\)</span> e verifique que <span class="math inline">\(\mathbf{(AB)^t = B^t A^t}\)</span>.</li>
+</ol>
+<hr>
+<ol start="3" type="1">
+<li>Sejam as matrizes:</li>
+</ol>
+<p><span class="math display">\[\mathbf{A} = \left(\begin{array}{ccc}
+1 &amp; 2&amp; 3\\
+2 &amp; -1 &amp;1
+\end{array}\right)  \text{      e      } \mathbf{B} = \left(\begin{array}{cc}
+3 &amp; -2 \\
+2 &amp; 0 \\
+-1&amp;1
+\end{array}\right)\]</span></p>
+<ol type="a">
+<li>Encontre <span class="math inline">\(\mathbf{AB}\)</span> e <span class="math inline">\(\mathbf{BA}\)</span>.</li>
+<li>Calcule <span class="math inline">\(\mathbf{tr(AB)}\)</span> e <span class="math inline">\(\mathbf{tr(BA)}\)</span> e verifique se são iguais.</li>
+</ol>
+<hr>
+<ol start="4" type="1">
+<li>Sejam as matrizes:</li>
+</ol>
+<p><span class="math display">\[\mathbf{A} = \left(\begin{array}{ccc}
+1 &amp; 2&amp; 3\\
+2 &amp; 4 &amp; 6 \\
+5 &amp; 10 &amp; 15
+\end{array}\right)  \text{      e      } \mathbf{B} =  \left(\begin{array}{ccc}
+-1 &amp;1&amp; -2 \\
+-1 &amp;1&amp; -2 \\
+1&amp;-1&amp;2
+\end{array}\right)\]</span></p>
+<ol type="a">
+<li>Mostre que <span class="math inline">\(\mathbf{AB = 0}\)</span>.</li>
+<li>Encontre um vetor <span class="math inline">\(\mathbf{x}\)</span> tal que <span class="math inline">\(\mathbf{A} \mathbf{x} = 0\)</span>.</li>
+<li>Mostre que <span class="math inline">\(\mathbf{|A|} = 0\)</span>.</li>
+</ol>
+<hr>
+<ol start="5" type="1">
+<li>Sejam</li>
+</ol>
+<p><span class="math display">\[\mathbf{A} = \left(\begin{array}{ccc}
+1 &amp; -1&amp; 4\\
+-1 &amp; 1 &amp; 3 \\
+4 &amp; 3 &amp; 2
+\end{array}\right), \mathbf{B} =  \left(\begin{array}{ccc}
+3 &amp;-2&amp; 4 \\
+7 &amp;1&amp; 0 \\
+2&amp;3&amp;5
+\end{array}\right), \mathbf{x} = \left(\begin{array}{c}
+1 \\
+-1  \\
+2
+\end{array}\right), \mathbf{y} = \left(\begin{array}{c}
+3  \\
+2  \\
+1
+\end{array}\right)\]</span></p>
+<p>Encontre o que se pede:</p>
+<ol type="a">
+<li><span class="math inline">\(\mathbf{B} \mathbf{x}\)</span></li>
+<li><span class="math inline">\(\mathbf{y^t B}\)</span></li>
+<li><span class="math inline">\(\mathbf{x^t A x}\)</span></li>
+<li><span class="math inline">\(\mathbf{x A y}\)</span>.</li>
+<li><span class="math inline">\(\mathbf{x y^t}\)</span>.</li>
+<li><span class="math inline">\(\mathbf{({x}-{y})^t A ({x}-{y})}\)</span></li>
+</ol>
+<hr>
+<ol start="6" type="1">
+<li>Sejam</li>
+</ol>
+<p><span class="math display">\[\mathbf{A} = \left(\begin{array}{ccc}
+1 &amp; 2&amp; 3\\
+4 &amp; 5 &amp; 6 \\
+7 &amp; 8 &amp; 9
+\end{array}\right)  \text{      e      } \mathbf{D} =  \left(\begin{array}{ccc}
+a &amp;0&amp; 0 \\
+0 &amp;b&amp; 0 \\
+0&amp;0&amp;c
+\end{array}\right)\]</span></p>
+<p>Encontre <span class="math inline">\(\mathbf{AD}\)</span>, <span class="math inline">\(\mathbf{DA}\)</span> e <span class="math inline">\(\mathbf{DAD}\)</span></p>
+<hr>
+<ol start="7" type="1">
+<li>Sejam</li>
+</ol>
+<p><span class="math display">\[\mathbf{A} = \left(\begin{array}{ccc} 1 &amp; 3&amp; 2\\ 2 &amp; 0 &amp; -1 \end{array}\right), \mathbf{B} =  \left(\begin{array}{cc} 1 &amp;2 \\ 0 &amp;1 \\ 1&amp;0 \end{array}\right), \mathbf{C} = \left(\begin{array}{ccc} 2&amp; 1&amp; 1\\ 5 &amp; -6 &amp; -4 \end{array}\right)\]</span></p>
+<ol type="a">
+<li>Encontre <span class="math inline">\(\mathbf{AB}\)</span> e <span class="math inline">\(\mathbf{CB}\)</span>. Elas são iguais?</li>
+<li>Encontre o posto das matrizes <span class="math inline">\(\mathbf{A}\)</span>, <span class="math inline">\(\mathbf{B}\)</span> e <span class="math inline">\(\mathbf{C}\)</span>.</li>
+</ol>
+<hr>
+<ol start="8" type="1">
+<li>Verifique se as matrizes abaixo são ortogonais:</li>
+</ol>
+<p><span class="math display">\[\mathbf{A} =  \displaystyle  \frac{1}{169} \cdot \left(\begin{array}{cc}
+5 &amp; 12\\
+-12 &amp; 5  
+\end{array}\right), \mathbf{B} =  \displaystyle  \frac{1}{\sqrt{2}} \cdot \left(\begin{array}{cc}
+1 &amp; 1\\
+1 &amp; -1  
+\end{array}\right)\]</span></p>
+<hr>
+<ol start="9" type="1">
+<li>Seja a matriz</li>
+</ol>
+<p><span class="math display">\[\mathbf{A} =  \left(\begin{array}{cc}
+1 &amp; 2\\
+2 &amp; -2  
+\end{array}\right)\]</span></p>
+<ol type="a">
+<li>Mostre que <span class="math inline">\(\mathbf{A}\)</span> é simétrica.</li>
+<li>Obtenha os autovalores e autovetores da matriz <span class="math inline">\(\mathbf{A}\)</span>.</li>
+<li>Mostre que os autovetores são ortogonais.</li>
+<li>Escreva a decomposição espectral de <span class="math inline">\(\mathbf{A}\)</span>.</li>
+<li>Obtenha <span class="math inline">\(\mathbf{A^{-1}}\)</span>, seus autovalores e autovetores e a decomposição espectral. Relacione com a decomposição espectral de <span class="math inline">\(\mathbf{A}\)</span>.</li>
+<li>Mostre que o determinante de <span class="math inline">\(\mathbf{A^{-1}}\)</span> é o inverso do determinante de <span class="math inline">\(\mathbf{A}\)</span>.</li>
+<li>Mostre que o determinante de <span class="math inline">\(\mathbf{A}\)</span> é o produto dos autovalores.</li>
+<li>Encontre a forma quadrática da matriz <span class="math inline">\(\mathbf{A}\)</span> e classifique-a.</li>
+<li>Mostre que <span class="math inline">\(\mathbf{(A^t)^{-1} = (A^{-1})^t}\)</span>.</li>
+</ol>
+<hr>
+<ol start="10" type="1">
+<li>Seja a matriz</li>
+</ol>
+<p><span class="math display">\[\mathbf{A} =   \left(\begin{array}{ccc}
+3 &amp; 6 &amp;-1\\
+6 &amp; 9 &amp; 4 \\
+-1&amp; 4&amp; 3  
+\end{array}\right)\]</span></p>
+<ol type="a">
+<li>Encontre a decomposição espectral de <span class="math inline">\(\mathbf{A}\)</span>.</li>
+<li>Encontre a decomposição espectral de <span class="math inline">\(\mathbf{A^2}\)</span> e mostre que a matriz diagonal de autovalores é igual ao quadrado da matriz <span class="math inline">\(\mathbf{D}\)</span> encontrada na parte <span class="math inline">\(a.\)</span></li>
+<li>Encontre a decomposição espectral de <span class="math inline">\(\mathbf{A^{-1}}\)</span> e mostre que a matriz diagonal de autovalores é igual à inversa da matriz <span class="math inline">\(\mathbf{D}\)</span> encontrada na parte <span class="math inline">\(a.\)</span></li>
+</ol>
+<hr>
+<ol start="11" type="1">
+<li>Dados os vetores <span class="math inline">\(\mathbf{x^t} = [1 \hspace{0.5cm} 3]\)</span> e <span class="math inline">\(\mathbf{y^t} = [2 \hspace{0.5cm} -5]\)</span>:</li>
+</ol>
+<ol type="a">
+<li>Obtenha a norma de <span class="math inline">\(\mathbf{x}\)</span> e de <span class="math inline">\(\mathbf{y}\)</span>.</li>
+<li>Obtenha o ângulo e a distância entre esses vetores.</li>
+<li>Obtenha a distância entre <span class="math inline">\(\mathbf{x}\)</span> e <span class="math inline">\(\mathbf{y}\)</span> na métrica</li>
+</ol>
+<p><span class="math display">\[\mathbf{A} =   \left(\begin{array}{cc}
+4 &amp;0\\
+0 &amp; 2  
+\end{array}\right)\]</span></p>
+<ol start="4" type="a">
+<li>Obtenha a distância entre <span class="math inline">\(\mathbf{x}\)</span> e <span class="math inline">\(\mathbf{y}\)</span> na métrica</li>
+</ol>
+<p><span class="math display">\[\mathbf{A} =   \left(\begin{array}{cc}
+4 &amp;2\\
+2 &amp; 2  
+\end{array}\right)\]</span></p>
+<hr>
+<ol start="12" type="1">
+<li>Uma forma quadrática <span class="math inline">\(\mathbf{x^t A x}\)</span> é dita ser positiva definida se a matriz <span class="math inline">\(\mathbf{A}\)</span> é positiva definida. A forma quadrática <span class="math inline">\(3x_1^2 + 3x_2^2 - 2x_1x_2\)</span> é positiva definida?</li>
+</ol>
 
 
 
@@ -757,7 +965,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/tiagomartin/est014/edit/main/programacao/semana-1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/tiagomartin/est014/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.com/tiagomartin/est014/edit/main/exercicios/lista01.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/tiagomartin/est014/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Página construída usando <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

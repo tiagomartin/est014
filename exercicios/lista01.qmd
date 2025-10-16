@@ -1,0 +1,221 @@
+---
+title: "Lista de exercícios 01: Revisão de Álgebra Linear"
+---
+
+<p align="center" style="font-size: 40px"> 
+`Data de entrega: 27 de outubro de 2025`
+</p>
+
+
+---
+
+1) Sejam as seguintes matrizes:
+
+$$\mathbf{A} = \left(\begin{array}{ccc} 4 & 2 & 3 \\ 7 & 5 & 8 \end{array}\right) \text{     e     } \mathbf{B} = \left(\begin{array}{ccc} 3 & -2 & 4\\ 6 & 9 & -5 \end{array}\right)$$
+
+a) Encontre $\mathbf{A + B}$ e $\mathbf{A- B}$.
+b) Encontre $\mathbf{AA}^t$ e $\mathbf{A}^t\mathbf{A}$.
+c) Calcule $(\mathbf{A+B})^t$ e verifique que a matriz resultante é igual a $\mathbf{A}^t + \mathbf{B}^t$.
+d) Mostre que $(\mathbf{A}^t)^t = \mathbf{A}$.
+
+
+---
+
+2) Sejam as matrizes: 
+
+$$\mathbf{A} = \left(\begin{array}{cc} 1 & 3 \\ 2 & -1 \end{array}\right)  \text{      e      } \mathbf{B} = \left(\begin{array}{cc} 2 & 0 \\ 1 & 5 \end{array}\right)$$
+
+
+a) Encontre $\mathbf{AB}$ e $\mathbf{BA}$.
+b) Encontre $\mathbf{|AB|}$ e verifique se $\mathbf{|AB| = |A| \cdot |B|}$.
+c) Calcule $\mathbf{A+B}$ e $\mathbf{tr(A+B)}$.
+d) Calcule $\mathbf{tr(A)}$ e $\mathbf{tr(B)}$ e verifique se $\mathbf{tr(A+B) = tr(A) + tr(B)}$.
+e) Encontre $\mathbf{(AB)^t}$ e verifique que $\mathbf{(AB)^t = B^t A^t}$.
+
+
+---
+
+
+3) Sejam as matrizes: 
+
+
+$$\mathbf{A} = \left(\begin{array}{ccc}
+1 & 2& 3\\
+2 & -1 &1
+\end{array}\right)  \text{      e      } \mathbf{B} = \left(\begin{array}{cc}
+3 & -2 \\
+2 & 0 \\
+-1&1 
+\end{array}\right)$$
+
+
+
+a) Encontre $\mathbf{AB}$ e $\mathbf{BA}$.
+b) Calcule $\mathbf{tr(AB)}$ e $\mathbf{tr(BA)}$ e verifique se são iguais.
+
+
+---
+
+4) Sejam as matrizes: 
+
+
+$$\mathbf{A} = \left(\begin{array}{ccc}
+1 & 2& 3\\
+2 & 4 & 6 \\
+5 & 10 & 15
+\end{array}\right)  \text{      e      } \mathbf{B} =  \left(\begin{array}{ccc}
+-1 &1& -2 \\
+-1 &1& -2 \\
+1&-1&2 
+\end{array}\right)$$
+
+
+a) Mostre que $\mathbf{AB = 0}$.
+b) Encontre um vetor $\mathbf{x}$ tal que $\mathbf{A} \mathbf{x} = 0$.
+c) Mostre que $\mathbf{|A|} = 0$.
+
+
+---
+
+5) Sejam
+
+
+$$\mathbf{A} = \left(\begin{array}{ccc}
+1 & -1& 4\\
+-1 & 1 & 3 \\
+4 & 3 & 2
+\end{array}\right), \mathbf{B} =  \left(\begin{array}{ccc}
+3 &-2& 4 \\
+7 &1& 0 \\
+2&3&5 
+\end{array}\right), \mathbf{x} = \left(\begin{array}{c}
+1 \\
+-1  \\
+2 
+\end{array}\right), \mathbf{y} = \left(\begin{array}{c}
+3  \\
+2  \\
+1 
+\end{array}\right)$$
+
+
+Encontre o que se pede:
+
+a) $\mathbf{B} \mathbf{x}$
+b) $\mathbf{y^t B}$
+c) $\mathbf{x^t A x}$
+d) $\mathbf{x A y}$.
+e) $\mathbf{x y^t}$.
+f) $\mathbf{({x}-{y})^t A ({x}-{y})}$
+
+
+---
+
+6) Sejam
+
+$$\mathbf{A} = \left(\begin{array}{ccc}
+1 & 2& 3\\
+4 & 5 & 6 \\
+7 & 8 & 9
+\end{array}\right)  \text{      e      } \mathbf{D} =  \left(\begin{array}{ccc}
+a &0& 0 \\
+0 &b& 0 \\
+0&0&c 
+\end{array}\right)$$
+
+Encontre $\mathbf{AD}$, $\mathbf{DA}$ e $\mathbf{DAD}$
+
+---
+
+7) Sejam
+
+
+$$\mathbf{A} = \left(\begin{array}{ccc} 1 & 3& 2\\ 2 & 0 & -1 \end{array}\right), \mathbf{B} =  \left(\begin{array}{cc} 1 &2 \\ 0 &1 \\ 1&0 \end{array}\right), \mathbf{C} = \left(\begin{array}{ccc} 2& 1& 1\\ 5 & -6 & -4 \end{array}\right)$$
+
+a) Encontre $\mathbf{AB}$ e $\mathbf{CB}$. Elas são iguais? 
+b) Encontre o posto das matrizes $\mathbf{A}$, $\mathbf{B}$ e $\mathbf{C}$.
+
+
+---
+
+8) Verifique se as matrizes abaixo são ortogonais:
+
+
+$$\mathbf{A} =  \displaystyle  \frac{1}{169} \cdot \left(\begin{array}{cc}
+5 & 12\\
+-12 & 5  
+\end{array}\right), \mathbf{B} =  \displaystyle  \frac{1}{\sqrt{2}} \cdot \left(\begin{array}{cc}
+1 & 1\\
+1 & -1  
+\end{array}\right)$$
+
+
+---
+
+9) Seja a matriz
+
+
+$$\mathbf{A} =  \left(\begin{array}{cc}
+1 & 2\\
+2 & -2  
+\end{array}\right)$$
+
+
+a) Mostre que $\mathbf{A}$ é simétrica.
+b) Obtenha os autovalores e autovetores da matriz $\mathbf{A}$.
+c) Mostre que os autovetores são ortogonais.
+d) Escreva a decomposição espectral de $\mathbf{A}$.
+e) Obtenha $\mathbf{A^{-1}}$, seus autovalores e autovetores e a decomposição 
+ espectral. Relacione com a decomposição espectral de $\mathbf{A}$.
+f) Mostre que o determinante de $\mathbf{A^{-1}}$ é o inverso do determinante 
+ de $\mathbf{A}$.
+g) Mostre que o determinante de $\mathbf{A}$ é o produto dos autovalores.
+h) Encontre a forma quadrática da matriz $\mathbf{A}$ e classifique-a.
+i) Mostre que $\mathbf{(A^t)^{-1} = (A^{-1})^t}$.
+
+
+---
+
+10) Seja a matriz
+
+
+$$\mathbf{A} =   \left(\begin{array}{ccc}
+3 & 6 &-1\\
+6 & 9 & 4 \\
+-1& 4& 3  
+\end{array}\right)$$
+
+
+a) Encontre a decomposição espectral de $\mathbf{A}$.
+b) Encontre a decomposição espectral de $\mathbf{A^2}$ e mostre que a matriz 
+ diagonal de autovalores é igual ao quadrado da matriz $\mathbf{D}$ encontrada na 
+ parte $a.$
+c) Encontre a decomposição espectral de $\mathbf{A^{-1}}$ e mostre que a 
+ matriz diagonal de autovalores é igual à inversa da matriz $\mathbf{D}$ encontrada na 
+ parte $a.$
+ 
+---
+
+11) Dados os vetores $\mathbf{x^t} = [1 \hspace{0.5cm} 3]$ e $\mathbf{y^t} = [2 \hspace{0.5cm} -5]$:
+
+a) Obtenha a norma de $\mathbf{x}$ e de $\mathbf{y}$.
+b) Obtenha o ângulo e a distância entre esses vetores.
+c) Obtenha a distância entre $\mathbf{x}$ e $\mathbf{y}$ na métrica
+
+$$\mathbf{A} =   \left(\begin{array}{cc}
+4 &0\\
+0 & 2  
+\end{array}\right)$$
+
+d) Obtenha a distância entre $\mathbf{x}$ e $\mathbf{y}$ na métrica
+
+$$\mathbf{A} =   \left(\begin{array}{cc}
+4 &2\\
+2 & 2  
+\end{array}\right)$$
+
+
+---
+
+12) Uma forma quadrática $\mathbf{x^t A x}$ é dita ser positiva definida se a 
+matriz $\mathbf{A}$ é positiva definida. A forma quadrática $3x_1^2 + 3x_2^2 - 2x_1x_2$ é positiva definida?

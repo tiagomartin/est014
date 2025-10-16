@@ -2,27 +2,47 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>http://professortp.com.br/est014/programacao/semana-2.html</loc>
-    <lastmod>2025-10-12T15:20:01.809Z</lastmod>
+    <lastmod>2025-10-16T19:55:55.708Z</lastmod>
   </url>
   <url>
     <loc>http://professortp.com.br/est014/plano.html</loc>
     <lastmod>2025-10-06T23:05:45.931Z</lastmod>
   </url>
   <url>
+    <loc>http://professortp.com.br/est014/exercicios.html</loc>
+    <lastmod>2025-10-16T19:53:53.467Z</lastmod>
+  </url>
+  <url>
     <loc>http://professortp.com.br/est014/cronograma.html</loc>
-    <lastmod>2025-10-12T15:30:23.161Z</lastmod>
+    <lastmod>2025-10-16T19:53:01.667Z</lastmod>
   </url>
   <url>
     <loc>http://professortp.com.br/est014/aulas/revisao_alg_linear/rev_alg_linear.html</loc>
     <lastmod>2025-10-07T01:35:59.612Z</lastmod>
   </url>
   <url>
+    <loc>http://professortp.com.br/est014/analise_dados/descr_vis_iris.html</loc>
+    <lastmod>2025-10-13T22:14:04.288Z</lastmod>
+  </url>
+  <url>
     <loc>http://professortp.com.br/est014/about.html</loc>
     <lastmod>2025-10-06T23:15:02.169Z</lastmod>
   </url>
   <url>
+    <loc>http://professortp.com.br/est014/analises.html</loc>
+    <lastmod>2025-10-13T22:19:39.130Z</lastmod>
+  </url>
+  <url>
+    <loc>http://professortp.com.br/est014/aulas/intro_est_multi/intro_est_multi.html</loc>
+    <lastmod>2025-10-13T15:20:37.734Z</lastmod>
+  </url>
+  <url>
     <loc>http://professortp.com.br/est014/aulas.html</loc>
     <lastmod>2025-10-07T01:38:53.994Z</lastmod>
+  </url>
+  <url>
+    <loc>http://professortp.com.br/est014/exercicios/lista01.html</loc>
+    <lastmod>2025-10-16T19:48:10.235Z</lastmod>
   </url>
   <url>
     <loc>http://professortp.com.br/est014/index.html</loc>
@@ -31,17 +51,5 @@
   <url>
     <loc>http://professortp.com.br/est014/programacao/semana-1.html</loc>
     <lastmod>2025-10-12T15:19:47.825Z</lastmod>
-  </url>
-  <url>
-    <loc>http://professortp.com.br/est014/aulas/intro_est_multi/intro_est_multi.html</loc>
-    <lastmod>2025-10-13T15:20:37.734Z</lastmod>
-  </url>
-  <url>
-    <loc>http://professortp.com.br/est014/analise_dados/descr_vis_iris.html</loc>
-    <lastmod>2025-10-13T22:14:04.288Z</lastmod>
-  </url>
-  <url>
-    <loc>http://professortp.com.br/est014/analises.html</loc>
-    <lastmod>2025-10-13T22:19:39.130Z</lastmod>
   </url>
 </urlset>

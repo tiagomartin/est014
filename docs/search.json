@@ -14,6 +14,13 @@
     "text": "Revisão de Álgebra Matricial"
   },
   {
+    "objectID": "programacao/semana-2.html#entrega-lista-de-exercícios-01",
+    "href": "programacao/semana-2.html#entrega-lista-de-exercícios-01",
+    "title": "Semana 02",
+    "section": "Entrega lista de exercícios 01",
+    "text": "Entrega lista de exercícios 01\n\n\n\n\n\n\nFique Atento!\n\n\n\n Lista de exercícios 01\nEntrega via Moodle\n\nData de entrega:\n\n27 de outubro de 2025"
+  },
+  {
     "objectID": "plano.html",
     "href": "plano.html",
     "title": "Plano de Ensino",
@@ -21,6 +28,16 @@
     "text": "Leia com atenção o plano de ensino da disciplina que será oferecida neste período. Nele estão as regras do jogo.\n\nPlano de ensino",
     "crumbs": [
       "Plano de Ensino"
+    ]
+  },
+  {
+    "objectID": "exercicios.html",
+    "href": "exercicios.html",
+    "title": "Listas de exercícios",
+    "section": "",
+    "text": "Lista de exercícios 01",
+    "crumbs": [
+      "Listas de exercícios"
     ]
   },
   {
@@ -265,6 +282,55 @@
     "text": "Teorema da decomposição espectral\nem que \\(\\mathbf{\\Lambda}\\) é a matriz diagonal dos autovalores:\n\\[\\mathbf{\\Lambda} = \\left[ \\begin{array}{cccc} \\lambda_1 & 0 & \\cdots & 0 \\\\ 0 & \\lambda_2 & \\cdots & 0 \\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\ 0 & 0 & \\cdots & \\lambda_p \\end{array} \\right]\\]\ne \\(\\mathbf{C}\\) é a matriz ortogonal com os autovetores normalizados de \\(\\mathbf{A}\\) nas colunas:\n\\[\\mathbf{C} = \\left[\\begin{array}{rrrr} \\mathbf{e}_1 & \\mathbf{e}_2 & \\cdots & \\mathbf{e}_p \\end{array} \\right]\\]"
   },
   {
+    "objectID": "analise_dados/descr_vis_iris.html",
+    "href": "analise_dados/descr_vis_iris.html",
+    "title": "Descrição e visualização de dados multivariados utilizando a base Iris",
+    "section": "",
+    "text": "A base iris (FISHER (1936)) é um dos conjuntos de dados mais clássicos e didáticos da estatística. Ela contém 150 observações (flores) de três espécies, setosa, versicolor e virginica, medidas em quatro variáveis contínuas:\n\nSepal.Length (cm)\n\nSepal.Width (cm)\n\nPetal.Length (cm)\n\nPetal.Width (cm)\n\n\n\n\n\n\nNosso objetivo é revisar conceitos fundamentais de Estatística Multivariada:\n\n\nVetor de médias\n\nMatrizes de covariância e correlação\n\nVariância total e generalizada\n\nMatrizes de distância (euclidiana e de Mahalanobis)\n\nVisualizações (pares, correlograma, heatmaps)"
+  },
+  {
+    "objectID": "analise_dados/descr_vis_iris.html#distância-euclidiana",
+    "href": "analise_dados/descr_vis_iris.html#distância-euclidiana",
+    "title": "Descrição e visualização de dados multivariados utilizando a base Iris",
+    "section": "6.1 Distância Euclidiana",
+    "text": "6.1 Distância Euclidiana\n\nD_euclid &lt;- euclidean_dist(data = X)\nas.matrix(D_euclid)[1:6, 1:6]\n\n          1         2        3         4         5         6\n1 0.0000000 0.5385165 0.509902 0.6480741 0.1414214 0.6164414\n2 0.5385165 0.0000000 0.300000 0.3316625 0.6082763 1.0908712\n3 0.5099020 0.3000000 0.000000 0.2449490 0.5099020 1.0862780\n4 0.6480741 0.3316625 0.244949 0.0000000 0.6480741 1.1661904\n5 0.1414214 0.6082763 0.509902 0.6480741 0.0000000 0.6164414\n6 0.6164414 1.0908712 1.086278 1.1661904 0.6164414 0.0000000\n\n\n\n📏 Distância Euclidiana representa a distância geométrica entre dois pontos."
+  },
+  {
+    "objectID": "analise_dados/descr_vis_iris.html#distância-de-karl-pearson",
+    "href": "analise_dados/descr_vis_iris.html#distância-de-karl-pearson",
+    "title": "Descrição e visualização de dados multivariados utilizando a base Iris",
+    "section": "6.2 Distância de Karl Pearson",
+    "text": "6.2 Distância de Karl Pearson\n\nD_karlP &lt;- scaled_euclidean_dist(data = X)\nas.matrix(D_karlP)[1:6, 1:6]\n\n          1         2         3         4         5         6\n1 0.0000000 1.1722914 0.8427840 1.0999999 0.2592702 1.0349769\n2 1.1722914 0.0000000 0.5216255 0.4325508 1.3818560 2.1739229\n3 0.8427840 0.5216255 0.0000000 0.2829432 0.9882608 1.8477070\n4 1.0999999 0.4325508 0.2829432 0.0000000 1.2459861 2.0937597\n5 0.2592702 1.3818560 0.9882608 1.2459861 0.0000000 0.8971079\n6 1.0349769 2.1739229 1.8477070 2.0937597 0.8971079 0.0000000\n\n\n\n📏 Distância de Karl Pearson leva em conta as diferenças de escala."
+  },
+  {
+    "objectID": "analise_dados/descr_vis_iris.html#distância-de-mahalanobis",
+    "href": "analise_dados/descr_vis_iris.html#distância-de-mahalanobis",
+    "title": "Descrição e visualização de dados multivariados utilizando a base Iris",
+    "section": "6.3 Distância de Mahalanobis",
+    "text": "6.3 Distância de Mahalanobis\n\nD_mahal &lt;- mahalanobis_dist(data = X)\nas.matrix(D_mahal)[1:6, 1:6]\n\n          1         2         3         4         5         6\n1 0.0000000 1.3544572 0.9687298 1.4057253 0.5899110 1.1382566\n2 1.3544572 0.0000000 0.9697905 1.4527546 1.8106890 2.4484066\n3 0.9687298 0.9697905 0.0000000 0.7170009 1.1253440 1.9227214\n4 1.4057253 1.4527546 0.7170009 0.0000000 1.3293220 2.2425573\n5 0.5899110 1.8106890 1.1253440 1.3293220 0.0000000 0.9446158\n6 1.1382566 2.4484066 1.9227214 2.2425573 0.9446158 0.0000000\n\n\n\n📏 Distância de Mahalanobis leva em conta correlações entre variáveis e diferenças de escala."
+  },
+  {
+    "objectID": "analise_dados/descr_vis_iris.html#gráfico-de-pares-por-espécie",
+    "href": "analise_dados/descr_vis_iris.html#gráfico-de-pares-por-espécie",
+    "title": "Descrição e visualização de dados multivariados utilizando a base Iris",
+    "section": "7.1 Gráfico de pares por espécie",
+    "text": "7.1 Gráfico de pares por espécie\n\nGGally::ggpairs(bind_cols(X, Species = y),\n                columns = 1:4, aes(color = Species, alpha = 0.8)) + theme_bw()\n\n\n\n\n\n\n\n\n\n💡 Interpretação: O “pairs plot” da iris mostra que setosa tem pétalas muito pequenas e sépalas mais largas, enquanto versicolor e virginica apresentam pétalas maiores (com alguma sobreposição), e em Sepal.Width a espécie setosa desloca-se à direita, versicolor à esquerda e virginica fica intermediária. As correlações globais destacam Petal.Length vs. Petal.Width como fortíssima (≈0,96) e Sepal.Length bem associado às pétalas; já Sepal.Width aparece negativamente correlacionado no agregado. Contudo, por espécie as relações com Sepal.Width tendem a ser positivas, e os dispersogramas envolvendo medidas de pétala exibem a melhor separação entre espécies. Em síntese, as pétalas dominam a estrutura e a discriminação, com Sepal.Width fornecendo informação complementar."
+  },
+  {
+    "objectID": "analise_dados/descr_vis_iris.html#correlograma",
+    "href": "analise_dados/descr_vis_iris.html#correlograma",
+    "title": "Descrição e visualização de dados multivariados utilizando a base Iris",
+    "section": "7.2 Correlograma",
+    "text": "7.2 Correlograma\n\nggcorrplot(R, hc.order = TRUE, type = \"lower\",\n           lab = TRUE, tl.cex = 10,\n           title = \"Matriz de Correlações - iris\")\n\n\n\n\n\n\n\n\n\n💡 Interpretação: O mapa de correlações da iris evidencia três padrões centrais: (1) forte associação positiva entre as medidas de pétala: Petal.Length vs. Petal.Width ≈ 0,96 e também de Sepal.Length com as pétalas (≈ 0,87 e 0,82), indicando redundância informacional e provável multicolinearidade; (2) Sepal.Width apresenta correlações negativas com as demais variáveis (≈ −0,12 com Sepal.Length, −0,43 com Petal.Length e −0,37 com Petal.Width), sugerindo um eixo de variação em sentido oposto ao das pétalas; e (3) como consequência, em tarefas de PCA ou classificação, as pétalas tendem a dominar a separação entre espécies, enquanto Sepal.Width adiciona sinal complementar."
+  },
+  {
+    "objectID": "analise_dados/descr_vis_iris.html#heatmap-das-correlações",
+    "href": "analise_dados/descr_vis_iris.html#heatmap-das-correlações",
+    "title": "Descrição e visualização de dados multivariados utilizando a base Iris",
+    "section": "7.3 Heatmap das correlações",
+    "text": "7.3 Heatmap das correlações\n\npheatmap(R, cluster_rows = TRUE, cluster_cols = TRUE,\n         main = \"Heatmap da Matriz de Correlações (iris)\")\n\n\n\n\n\n\n\n\n\n💡 Interpretação: O heatmap das correlações da iris confirma dois blocos de variáveis: (i) Petal.Length e Petal.Width fortemente positivas entre si (vermelho intenso) e também bem alinhadas com Sepal.Length (vermelho), formando um grupo altamente correlacionado que indica redundância e tende a dominar a variação; (ii) Sepal.Width aparece em azul frente às demais, mostrando correlação negativa moderada, o que a isola no dendrograma e sugere um eixo complementar de informação. Em termos práticos, as pétalas são as melhores para discriminar espécies (e podem sofrer multicolinearidade), enquanto Sepal.Width acrescenta sinal em direção oposta."
+  },
+  {
     "objectID": "about.html",
     "href": "about.html",
     "title": "Sobre",
@@ -272,28 +338,11 @@
     "text": "Disciplina oferecida no semestre 2025/2"
   },
   {
-    "objectID": "aulas.html",
-    "href": "aulas.html",
-    "title": "Aulas",
+    "objectID": "analises.html",
+    "href": "analises.html",
+    "title": "Análise de dados",
     "section": "",
-    "text": "Revisão de Álgebra Matricial\nIntrodução à Estatística Multivariada\nDistribuição Normal Multivariada\nAnálise de Componentes Principais\nAnálise Fatorial\nAnálise de Conglomerados ou Agrupamentos\nAnálise Discriminante",
-    "crumbs": [
-      "Aulas"
-    ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Estatística Multivariada I",
-    "section": "",
-    "text": "Página dedicada à disciplina EST014 - Estatística Multivariada I\n\n\nEstatística Multivariada I é uma disciplina que apresenta o estudo de técnicas estatísticas voltadas para a análise simultânea de múltiplas variáveis. O curso abrange temas como análise de componentes principais, análise fatorial, análise de agrupamentos e análise discriminante. Essas metodologias são amplamente aplicadas em diversas áreas do conhecimento, permitindo a extração de informações relevantes a partir de conjuntos de dados complexos. O objetivo da disciplina é fornecer tanto a fundamentação teórica quanto a aplicação prática dessas técnicas, capacitando os alunos a utilizar ferramentas estatísticas avançadas em suas pesquisas e projetos.\n\n\nEmenta\nRevisão de Álgebra Matricial. Introdução à Estatística Multivariada. Distribuição Normal Multivariada. Análise de Componentes Principais. Análise Fatorial. Análise de Conglomerados ou Agrupamentos. Análise Discriminante.\n\n\nConteúdo Programático\n\nRevisão de Álgebra Matricial: matrizes e vetores. Operações com matrizes. Inversão matricial. Formas quadráticas. Autovalores e autovetores. Teorema da decomposição espectral. Determinante.\nIntrodução à Estatística Multivariada: exemplos de aplicação. Definição de Vetores Aleatórios, Vetores de Médias e Matrizes de Covariâncias e Correlação. Interpretação destas Matrizes. Vetores de Médias Amostrais e Matrizes Covariâncias e Correlações Amostrais. Variância Generalizada e Variância Total. Distâncias: Euclidiana, Euclidiana padronizada e Mahalanobis.\nDistribuição Normal Multivariada: função densidade. Propriedades. Distribuição Normal Bivariada. Elipsóides de concentração. Métodos práticos de verificação da hipótese de normalidade multivariada.\nAnálise de Componentes Principais: construção das Componentes Principais pela Matriz de Covariância e pela Matriz de Correlação. Proporção da Variância Total Explicada pelas Componentes. Estimação das Componentes Principais e dos Escores. Exemplos Práticos de Aplicação.\nAnálise Fatorial: apresentação teórica da metodologia. Modelo de Fatores Ortogonais. Estimação dos Fatores pelos Métodos de Componentes Principais, de Fatores Principais e de Máxima Verossimilhança. Rotação de Fatores: Rotações Ortogonais e Oblíquas. Estimação dos Escores dos Fatores: Método de Mínimos Quadrados e Método de Regressão. Exemplos Práticos de Aplicação.\nAnálise de Conglomerados ou Agrupamentos: discussão dos vários Métodos de Formação de Conglomerados, Variáveis Quantitativas e Qualitativas. Métodos Hierárquicos: Método de Ligação Simples (Single Linkage), de Ligação Completa (Complete Linkage), de Ligação Média (Average Linkage), do Centróide, e de Ward. Métodos para encontrar o Número de Conglomerados Ótimo da Partição. Métodos Não Hierárquicos: Método das K-Médias (KMeans). Exemplos Práticos de Aplicação.\nAnálise Discriminante: discriminação e classificação em 2 grupos. Estimação das Probabilidades de Erro de Classificação. Discriminação e Classificação Multivariada. Função Discriminante de Fischer. Exemplos Práticos de Aplicação.\n\n\n\nHorário de Aulas\nNeste semestre, as aulas da disciplina serão ministradas no LABEST II.\n\n\n\nDia\nHorário\nLocal\n\n\n\n\nTerça-feira\n21:00 - 22:40\nLABEST III\n\n\nQuinta-feira\n19:00 - 20:40\nLABEST III\n\n\n\n\n\n\n\n\n\n\n\nReferências Bibliográficas\n\nAnderson, T. W. 2009. AN INTRODUCTION TO MULTIVARIATE STATISTICAL ANALYSIS, 3RD ED. Wiley India Pvt. Limited.\n\n\nCORRAR, Luiz J., Edilson PAULO, and José M. DIAS FILHO. 2007. Análise Multivariada: Para Os Cursos de Administração, Ciências Contábeis e Economia. Editora Atlas.\n\n\nFávero, L. P., and P. Belfiore. 2017. Manual de análise de Dados: Estatı́stica e Modelagem Multivariada Com Excel, SPSS e Stata. Elsevier Editora Ltda.\n\n\nFerreira, D. F. 2018. Estatística Multivariada. Editora UFLA.\n\n\nHair, J. F., W. C. Black, B. J. Babin, R. E. Anderson, and R. L. Tatham. 2009. Análise Multivariada de Dados - 6ed. Bookman.\n\n\nJohnson, R. A., and D. W. Wichern. 2007. Applied Multivariate Statistical Analysis. Applied Multivariate Statistical Analysis. Pearson Prentice Hall.\n\n\nLATTIN, James, J. Douglas CARROLL, and Paul E. GREEN. 2011. Análise de Dados Multivariados. CENGAGE Learning.\n\n\nMingoti, Sueli. 2005. Análise de Dados Através de Métodos de Estatística Multivariada: Uma Abordagem Aplicada.\n\n\nRencher, A. C., and W. F. Christensen. 2012. Methods of Multivariate Analysis. Wiley Series in Probability and Statistics. Wiley."
-  },
-  {
-    "objectID": "programacao/semana-1.html",
-    "href": "programacao/semana-1.html",
-    "title": "Semana 01",
-    "section": "",
-    "text": "Sejam bem-vindos à disciplina EST014 - Estatística Multivariada I.\nLeiam com atenção o plano de ensino da disciplina. Nele estão as regras do jogo!"
+    "text": "Descrição e Visualização da base de dados Iris"
   },
   {
     "objectID": "aulas/intro_est_multi/intro_est_multi.html#análise-estatística-multivariada",
@@ -338,13 +387,6 @@
     "text": "Exemplos de aplicações\n\n\nClassificação\n\nResultados de diversas variáveis psicológicas e comportamentais podem ser usados para criar uma regra de discriminação de usuários de drogas que reincidem, após período de abstinência, daqueles que não reincidem;\nVariáveis referentes à anatomia de moscas (comprimento de asas, peso, coloração…) podem ser usadas para discriminar moscas em uma de quatro espécies distintas segundo os valores apresentados para tais variáveis."
   },
   {
-    "objectID": "aulas/intro_est_multi/intro_est_multi.html#vetores-aleatórios",
-    "href": "aulas/intro_est_multi/intro_est_multi.html#vetores-aleatórios",
-    "title": "Introdução à Estatística Multivariada",
-    "section": "Vetores aleatórios",
-    "text": "Vetores aleatórios\n\nPara o tratamento probabilístico de dados multivariados, vamos relembrar a definição de vetor aleatório.\n\n\n\nUm vetor aleatório de dimensão \\(p\\) é um vetor em que cada um de seus \\(p\\) componentes é uma variável aleatória.\n\n\n\n\nVamos denotar um vetor aleatório \\(\\mathbf{x}\\) por \\(\\mathbf{x} = (X_1, X_2, \\cdots, X_p)^t\\). A função distribuição de probabilidade conjunta de \\(\\mathbf{x}\\) é definida como:\n\n\\[F(\\mathbf{x}) = P(X_1 \\leqslant x_1, X_2 \\leqslant x_2, \\cdots, X_p \\leqslant x_p)\\]\npara \\(\\mathbf{x} \\in \\mathbb{R}^p\\)"
-  },
-  {
     "objectID": "aulas/intro_est_multi/intro_est_multi.html#disposição-dos-dados-em-uma-análise-multivariada",
     "href": "aulas/intro_est_multi/intro_est_multi.html#disposição-dos-dados-em-uma-análise-multivariada",
     "title": "Introdução à Estatística Multivariada",
@@ -366,18 +408,11 @@
     "text": "Representação matricial dos dados\n\nPara fins de apresentação e desenvolvimento da teoria, a representação matricial dos dados é necessária.\n\n\n\nA matriz dos dados tem dimensão \\(n \\times p\\), apresentando nas linhas os \\(n\\) indivíduos e nas colunas as \\(p\\) variáveis.\n\n\n\n\\[ \\mathbf{X}_{n \\times p} = \\left[ \\begin{array}{cccc} x_{11} & x_{12} & \\cdots & x_{1p} \\\\ x_{21} & x_{22} & \\cdots & x_{2p} \\\\\n\\vdots & \\vdots & \\ddots & \\vdots \\\\ x_{n1} & x_{n2} & \\cdots & x_{np} \\end{array} \\right] \\]"
   },
   {
-    "objectID": "aulas/intro_est_multi/intro_est_multi.html#vetores-aleatórios-ou-v.-a.-multidimensionais",
-    "href": "aulas/intro_est_multi/intro_est_multi.html#vetores-aleatórios-ou-v.-a.-multidimensionais",
+    "objectID": "aulas/intro_est_multi/intro_est_multi.html#vetores-aleatórios",
+    "href": "aulas/intro_est_multi/intro_est_multi.html#vetores-aleatórios",
     "title": "Introdução à Estatística Multivariada",
-    "section": "Vetores aleatórios (ou v. a. multidimensionais)",
-    "text": "Vetores aleatórios (ou v. a. multidimensionais)\n\nPara o tratamento probabilístico de dados multivariados, vamos relembrar a definição de vetor aleatório.\n\n\n\nUm vetor aleatório de dimensão \\(p\\) é um vetor em que cada um de seus \\(p\\) componentes é uma variável aleatória.\n\n\n\n\nVamos denotar um vetor aleatório \\(\\mathbf{x}\\) por \\(\\mathbf{x} = (X_1, X_2, \\cdots, X_p)^t\\). A função distribuição de probabilidade conjunta de \\(\\mathbf{x}\\) é definida como:\n\n\\[F(\\mathbf{x}) = P(X_1 \\leqslant x_1, X_2 \\leqslant x_2, \\cdots, X_p \\leqslant x_p)\\]\npara \\(\\mathbf{x} \\in \\mathbb{R}^p\\)"
-  },
-  {
-    "objectID": "aulas/intro_est_multi/intro_est_multi.html#vetores-aleatórios-ou-v.-a.-multidimensionais-1",
-    "href": "aulas/intro_est_multi/intro_est_multi.html#vetores-aleatórios-ou-v.-a.-multidimensionais-1",
-    "title": "Introdução à Estatística Multivariada",
-    "section": "Vetores aleatórios (ou v. a. multidimensionais)",
-    "text": "Vetores aleatórios (ou v. a. multidimensionais)"
+    "section": "Vetores aleatórios",
+    "text": "Vetores aleatórios\n\nPara o tratamento probabilístico de dados multivariados, vamos relembrar a definição de vetor aleatório.\n\n\n\nUm vetor aleatório de dimensão \\(p\\) é um vetor em que cada um de seus \\(p\\) componentes é uma variável aleatória.\n\n\n\n\nVamos denotar um vetor aleatório \\(\\mathbf{x}\\) por \\(\\mathbf{x} = (X_1, X_2, \\cdots, X_p)^t\\). A função distribuição de probabilidade conjunta de \\(\\mathbf{x}\\) é definida como:\n\n\\[F(\\mathbf{x}) = P(X_1 \\leqslant x_1, X_2 \\leqslant x_2, \\cdots, X_p \\leqslant x_p)\\]\npara \\(\\mathbf{x} \\in \\mathbb{R}^p\\)"
   },
   {
     "objectID": "aulas/intro_est_multi/intro_est_multi.html#vetores-aleatórios-1",
@@ -443,18 +478,18 @@
     "text": "Vetores aleatórios\n\nDe maneira semelhante, a matriz de correlações do vetor aleatório \\(\\mathbf{x}\\) fica dada por:\n\n\\[ \\mathbf{P} = \\left[ \\begin{array}{cccc} 1 & \\rho_{12} & \\cdots & \\rho_{1p} \\\\ \\rho_{21} & 1 & \\cdots & \\rho_{2p}\\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\ \\rho_{p1} & \\rho_{p2} & \\cdots & 1\n\\end{array} \\right]\\]"
   },
   {
-    "objectID": "aulas/intro_est_multi/intro_est_multi.html#propriedades-da-média-e-da-variância-de-vetores-aleatórios",
-    "href": "aulas/intro_est_multi/intro_est_multi.html#propriedades-da-média-e-da-variância-de-vetores-aleatórios",
-    "title": "Introdução à Estatística Multivariada",
-    "section": "Propriedades da média e da variância de vetores aleatórios",
-    "text": "Propriedades da média e da variância de vetores aleatórios\n\nSejam \\(\\mathbf{A}\\) e \\(\\mathbf{B}\\) matrizes matrizes e \\(c\\) um vetor de constantes (todos com dimensões compatíveis às operações apresentadas). Sejam \\(\\mathbf{x}\\) e \\(\\mathbf{y}\\) vetores aleatórios.\n\n\\(E(\\mathbf{x} + \\mathbf{y}) = E(\\mathbf{x}) + E(\\mathbf{y})\\);\n\\(E(\\mathbf{AxB}) = \\mathbf{A} E(\\mathbf{x}) \\mathbf{B}\\);\n\\(E(\\mathbf{Ax} + c) = \\mathbf{A} E(\\mathbf{x}) + c\\);\n\\(Cov(\\mathbf{x}) = E(\\mathbf{x} \\mathbf{x}^t) - \\mathbf{\\mu}_x \\mathbf{\\mu}_x^t\\);\n\\(Cov(c^t \\mathbf{x}) = c^t Cov(\\mathbf{x})c\\);\n\\(Cov(\\mathbf{A}^t \\mathbf{x} + c) = \\mathbf{A} Cov(\\mathbf{x})\\mathbf{A}^t\\)."
-  },
-  {
     "objectID": "aulas/intro_est_multi/intro_est_multi.html#vetores-aleatórios-10",
     "href": "aulas/intro_est_multi/intro_est_multi.html#vetores-aleatórios-10",
     "title": "Introdução à Estatística Multivariada",
     "section": "Vetores aleatórios",
     "text": "Vetores aleatórios\n\nA matriz de correlações pode ser determinada facilmente a partir da matriz de covariâncias por:\n\n\\[\\mathbf{P} = \\left(\\mathbf{V}^\\frac{1}{2}\\right)^{-1} \\mathbf{\\Sigma} \\left(\\mathbf{V}^\\frac{1}{2}\\right)^{-1}\\]\nsendo \\(\\mathbf{V}^\\frac{1}{2}\\) a matriz diagonal com elementos \\(\\sqrt{\\sigma_{11}}, \\sqrt{\\sigma_{22}}, \\cdots, \\sqrt{\\sigma_{pp}}\\)."
+  },
+  {
+    "objectID": "aulas/intro_est_multi/intro_est_multi.html#propriedades-da-média-e-da-variância-de-vetores-aleatórios",
+    "href": "aulas/intro_est_multi/intro_est_multi.html#propriedades-da-média-e-da-variância-de-vetores-aleatórios",
+    "title": "Introdução à Estatística Multivariada",
+    "section": "Propriedades da média e da variância de vetores aleatórios",
+    "text": "Propriedades da média e da variância de vetores aleatórios\n\nSejam \\(\\mathbf{A}\\) e \\(\\mathbf{B}\\) matrizes matrizes e \\(c\\) um vetor de constantes (todos com dimensões compatíveis às operações apresentadas). Sejam \\(\\mathbf{x}\\) e \\(\\mathbf{y}\\) vetores aleatórios.\n\n\\(E(\\mathbf{x} + \\mathbf{y}) = E(\\mathbf{x}) + E(\\mathbf{y})\\);\n\\(E(\\mathbf{AxB}) = \\mathbf{A} E(\\mathbf{x}) \\mathbf{B}\\);\n\\(E(\\mathbf{Ax} + c) = \\mathbf{A} E(\\mathbf{x}) + c\\);\n\\(Cov(\\mathbf{x}) = E(\\mathbf{x} \\mathbf{x}^t) - \\mathbf{\\mu}_x \\mathbf{\\mu}_x^t\\);\n\\(Cov(c^t \\mathbf{x}) = c^t Cov(\\mathbf{x})c\\);\n\\(Cov(\\mathbf{A}^t \\mathbf{x} + c) = \\mathbf{A} Cov(\\mathbf{x})\\mathbf{A}^t\\)."
   },
   {
     "objectID": "aulas/intro_est_multi/intro_est_multi.html#descrição-de-dados-multivariados",
@@ -632,94 +667,34 @@
     "text": "Matriz de distâncias\n\nSeja qual for a distância utilizada, é comum, em análises multivariadas, calculá-la para cada par de indivíduos e armazenar os valores em uma matriz, denominada matriz de distâncias.\n\n\\[\\mathbf{D}_{n \\times n} = \\left[ \\begin{array}{cccc} 0 & d_{12} & \\cdots & d_{1n} \\\\ d_{21} & 0 & \\cdots & d_{2n}\\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\ d_{n1} & d_{n2} & \\cdots & 0 \\end{array} \\right]\n        \\]\nem que \\(d_{ij} = d_{ji}\\) é a distância calculada para os indivíduos \\(i\\) e \\(j\\), utilizando uma métrica qualquer.\n\n\nA visualização das distâncias num gráfico do tipo “mapa de calor” permite uma apreciação conjunta das distâncias calculadas duas a duas."
   },
   {
-    "objectID": "analise_dados/descr_vis_iris.html",
-    "href": "analise_dados/descr_vis_iris.html",
-    "title": "Descrição e visualização de dados multivariados utilizando a base Iris",
+    "objectID": "aulas.html",
+    "href": "aulas.html",
+    "title": "Aulas",
     "section": "",
-    "text": "A base iris (FISHER (1936)) é um dos conjuntos de dados mais clássicos e didáticos da estatística. Ela contém 150 observações (flores) de três espécies, setosa, versicolor e virginica, medidas em quatro variáveis contínuas:\n\nSepal.Length (cm)\n\nSepal.Width (cm)\n\nPetal.Length (cm)\n\nPetal.Width (cm)\n\n\n\n\n\n\nNosso objetivo é revisar conceitos fundamentais de Estatística Multivariada:\n\n\nVetor de médias\n\nMatrizes de covariância e correlação\n\nVariância total e generalizada\n\nMatrizes de distância (euclidiana e de Mahalanobis)\n\nVisualizações (pares, correlograma, heatmaps)"
+    "text": "Revisão de Álgebra Matricial\nIntrodução à Estatística Multivariada\nDistribuição Normal Multivariada\nAnálise de Componentes Principais\nAnálise Fatorial\nAnálise de Conglomerados ou Agrupamentos\nAnálise Discriminante",
+    "crumbs": [
+      "Aulas"
+    ]
   },
   {
-    "objectID": "analise_dados/descr_vis_iris.html#distância-euclidiana",
-    "href": "analise_dados/descr_vis_iris.html#distância-euclidiana",
-    "title": "Descrição e visualização de dados multivariados utilizando a base Iris",
-    "section": "6.1 Distância Euclidiana",
-    "text": "6.1 Distância Euclidiana\n\nD_euclid &lt;- euclidean_dist(data = X)\nas.matrix(D_euclid)[1:6, 1:6]\n\n          1         2        3         4         5         6\n1 0.0000000 0.5385165 0.509902 0.6480741 0.1414214 0.6164414\n2 0.5385165 0.0000000 0.300000 0.3316625 0.6082763 1.0908712\n3 0.5099020 0.3000000 0.000000 0.2449490 0.5099020 1.0862780\n4 0.6480741 0.3316625 0.244949 0.0000000 0.6480741 1.1661904\n5 0.1414214 0.6082763 0.509902 0.6480741 0.0000000 0.6164414\n6 0.6164414 1.0908712 1.086278 1.1661904 0.6164414 0.0000000\n\n\n\n📏 Distância Euclidiana representa a distância geométrica entre dois pontos."
-  },
-  {
-    "objectID": "analise_dados/descr_vis_iris.html#distância-de-mahalanobis",
-    "href": "analise_dados/descr_vis_iris.html#distância-de-mahalanobis",
-    "title": "Descrição e visualização de dados multivariados utilizando a base Iris",
-    "section": "6.3 Distância de Mahalanobis",
-    "text": "6.3 Distância de Mahalanobis\n\nD_mahal &lt;- mahalanobis_dist(data = X)\nas.matrix(D_mahal)[1:6, 1:6]\n\n          1         2         3         4         5         6\n1 0.0000000 1.3544572 0.9687298 1.4057253 0.5899110 1.1382566\n2 1.3544572 0.0000000 0.9697905 1.4527546 1.8106890 2.4484066\n3 0.9687298 0.9697905 0.0000000 0.7170009 1.1253440 1.9227214\n4 1.4057253 1.4527546 0.7170009 0.0000000 1.3293220 2.2425573\n5 0.5899110 1.8106890 1.1253440 1.3293220 0.0000000 0.9446158\n6 1.1382566 2.4484066 1.9227214 2.2425573 0.9446158 0.0000000\n\n\n\n📏 Distância de Mahalanobis leva em conta correlações entre variáveis e diferenças de escala."
-  },
-  {
-    "objectID": "analise_dados/descr_vis_iris.html#gráfico-de-pares-colorido-por-espécie",
-    "href": "analise_dados/descr_vis_iris.html#gráfico-de-pares-colorido-por-espécie",
-    "title": "Descrição e visualização de dados multivariados utilizando a base Iris",
-    "section": "7.1 Gráfico de pares colorido por espécie",
-    "text": "7.1 Gráfico de pares colorido por espécie\n\nGGally::ggpairs(bind_cols(X, Species = y),\n                columns = 1:4, aes(color = Species, alpha = 0.8)) +\n  theme_bw()"
-  },
-  {
-    "objectID": "analise_dados/descr_vis_iris.html#correlograma",
-    "href": "analise_dados/descr_vis_iris.html#correlograma",
-    "title": "Descrição e visualização de dados multivariados utilizando a base Iris",
-    "section": "7.2 Correlograma",
-    "text": "7.2 Correlograma\n\nggcorrplot(R, hc.order = TRUE, type = \"lower\",\n           lab = TRUE, tl.cex = 10,\n           title = \"Matriz de Correlações - iris\")\n\n\n\n\n\n\n\n\n\n💡 Interpretação: O mapa de correlações da iris evidencia três padrões centrais: (1) forte associação positiva entre as medidas de pétala: Petal.Length vs. Petal.Width ≈ 0,96 e também de Sepal.Length com as pétalas (≈ 0,87 e 0,82), indicando redundância informacional e provável multicolinearidade; (2) Sepal.Width apresenta correlações negativas com as demais variáveis (≈ −0,12 com Sepal.Length, −0,43 com Petal.Length e −0,37 com Petal.Width), sugerindo um eixo de variação em sentido oposto ao das pétalas; e (3) como consequência, em tarefas de PCA ou classificação, as pétalas tendem a dominar a separação entre espécies, enquanto Sepal.Width adiciona sinal complementar."
-  },
-  {
-    "objectID": "analise_dados/descr_vis_iris.html#heatmap-das-correlações",
-    "href": "analise_dados/descr_vis_iris.html#heatmap-das-correlações",
-    "title": "Descrição e visualização de dados multivariados utilizando a base Iris",
-    "section": "7.3 Heatmap das correlações",
-    "text": "7.3 Heatmap das correlações\n\npheatmap(R, cluster_rows = TRUE, cluster_cols = TRUE,\n         main = \"Heatmap da Matriz de Correlações (iris)\")\n\n\n\n\n\n\n\n\n\n💡 Interpretação: O heatmap das correlações da iris confirma dois blocos de variáveis: (i) Petal.Length e Petal.Width fortemente positivas entre si (vermelho intenso) e também bem alinhadas com Sepal.Length (vermelho), formando um grupo altamente correlacionado que indica redundância e tende a dominar a variação; (ii) Sepal.Width aparece em azul frente às demais, mostrando correlação negativa moderada, o que a isola no dendrograma e sugere um eixo complementar de informação. Em termos práticos, as pétalas são as melhores para discriminar espécies (e podem sofrer multicolinearidade), enquanto Sepal.Width acrescenta sinal em direção oposta."
-  },
-  {
-    "objectID": "analise_dados/descr_vis_iris.html#heatmap-dos-dados-padronizados",
-    "href": "analise_dados/descr_vis_iris.html#heatmap-dos-dados-padronizados",
-    "title": "Descrição e visualização de dados multivariados utilizando a base Iris",
-    "section": "7.4 Heatmap dos dados padronizados",
-    "text": "7.4 Heatmap dos dados padronizados\n\nX_std &lt;- scale(X)\nrownames_X &lt;- paste0(y, \"_\", seq_len(nrow(X)))\nX_std_mat  &lt;- as.matrix(X_std)\nrownames(X_std_mat) &lt;- rownames_X\n\nann &lt;- data.frame(Species = y)\nrownames(ann) &lt;- rownames_X\n\npheatmap(X_std_mat,\n         scale = \"none\",\n         annotation_row = ann,\n         clustering_method = \"complete\",\n         main = \"Heatmap - iris (dados padronizados)\")"
-  },
-  {
-    "objectID": "analise_dados/descr_vis_iris.html#dendrograma",
-    "href": "analise_dados/descr_vis_iris.html#dendrograma",
-    "title": "Descrição e visualização de dados multivariados utilizando a base Iris",
-    "section": "7.5 7.5 Dendrograma",
-    "text": "7.5 7.5 Dendrograma\n\nhc &lt;- hclust(D_euclid, method = \"complete\")\nplot(hc, main = \"Dendrograma (Euclidiana + Complete-linkage)\", xlab = \"\")\n\n\n\n\n\n\n\npheatmap(as.matrix(D_euclid),\n         clustering_method = \"complete\",\n         main = \"Heatmap da Distância Euclidiana (padronizada)\")"
-  },
-  {
-    "objectID": "analise_dados/descr_vis_iris.html#exercícios-sugeridos",
-    "href": "analise_dados/descr_vis_iris.html#exercícios-sugeridos",
-    "title": "Descrição e visualização de dados multivariados utilizando a base Iris",
-    "section": "8.1 Exercícios sugeridos",
-    "text": "8.1 Exercícios sugeridos\n\nCalcule matrizes de covariância e correlação por espécie.\n\nCompare as distâncias de Mahalanobis dentro de cada grupo.\n\nTeste clusterização (k-means, hierárquico) e compare com Species.\n\nInterprete os autovetores do PCA e sua relação com as variáveis originais.\n\n\n\n✏️ Durante a renderização, todas as figuras serão salvas automaticamente em figures/.\nPara PDF, certifique-se de ter LaTeX instalado (ex.: tinytex::install_tinytex())."
-  },
-  {
-    "objectID": "analise_dados/descr_vis_iris.html#distância-de-karl-pearson",
-    "href": "analise_dados/descr_vis_iris.html#distância-de-karl-pearson",
-    "title": "Descrição e visualização de dados multivariados utilizando a base Iris",
-    "section": "6.2 Distância de Karl Pearson",
-    "text": "6.2 Distância de Karl Pearson\n\nD_karlP &lt;- scaled_euclidean_dist(data = X)\nas.matrix(D_karlP)[1:6, 1:6]\n\n          1         2         3         4         5         6\n1 0.0000000 1.1722914 0.8427840 1.0999999 0.2592702 1.0349769\n2 1.1722914 0.0000000 0.5216255 0.4325508 1.3818560 2.1739229\n3 0.8427840 0.5216255 0.0000000 0.2829432 0.9882608 1.8477070\n4 1.0999999 0.4325508 0.2829432 0.0000000 1.2459861 2.0937597\n5 0.2592702 1.3818560 0.9882608 1.2459861 0.0000000 0.8971079\n6 1.0349769 2.1739229 1.8477070 2.0937597 0.8971079 0.0000000\n\n\n\n📏 Distância de Karl Pearson leva em conta as diferenças de escala."
-  },
-  {
-    "objectID": "analise_dados/descr_vis_iris.html#gráfico-de-pares-por-espécie",
-    "href": "analise_dados/descr_vis_iris.html#gráfico-de-pares-por-espécie",
-    "title": "Descrição e visualização de dados multivariados utilizando a base Iris",
-    "section": "7.1 Gráfico de pares por espécie",
-    "text": "7.1 Gráfico de pares por espécie\n\nGGally::ggpairs(bind_cols(X, Species = y),\n                columns = 1:4, aes(color = Species, alpha = 0.8)) + theme_bw()\n\n\n\n\n\n\n\n\n\n💡 Interpretação: O “pairs plot” da iris mostra que setosa tem pétalas muito pequenas e sépalas mais largas, enquanto versicolor e virginica apresentam pétalas maiores (com alguma sobreposição), e em Sepal.Width a espécie setosa desloca-se à direita, versicolor à esquerda e virginica fica intermediária. As correlações globais destacam Petal.Length vs. Petal.Width como fortíssima (≈0,96) e Sepal.Length bem associado às pétalas; já Sepal.Width aparece negativamente correlacionado no agregado. Contudo, por espécie as relações com Sepal.Width tendem a ser positivas, e os dispersogramas envolvendo medidas de pétala exibem a melhor separação entre espécies. Em síntese, as pétalas dominam a estrutura e a discriminação, com Sepal.Width fornecendo informação complementar."
-  },
-  {
-    "objectID": "analise_dados/descr_vis_iris.html#references",
-    "href": "analise_dados/descr_vis_iris.html#references",
-    "title": "Descrição e visualização de dados multivariados utilizando a base Iris",
-    "section": "7.4 References",
-    "text": "7.4 References"
-  },
-  {
-    "objectID": "analises.html",
-    "href": "analises.html",
-    "title": "Análise de dados",
+    "objectID": "exercicios/lista01.html",
+    "href": "exercicios/lista01.html",
+    "title": "Lista de exercícios 01: Revisão de Álgebra Linear",
     "section": "",
-    "text": "Descrição e Visualização da base de dados Iris"
+    "text": "Data de entrega: 27 de outubro de 2025\n\n\n\nSejam as seguintes matrizes:\n\n\\[\\mathbf{A} = \\left(\\begin{array}{ccc} 4 & 2 & 3 \\\\ 7 & 5 & 8 \\end{array}\\right) \\text{     e     } \\mathbf{B} = \\left(\\begin{array}{ccc} 3 & -2 & 4\\\\ 6 & 9 & -5 \\end{array}\\right)\\]\n\nEncontre \\(\\mathbf{A + B}\\) e \\(\\mathbf{A- B}\\).\nEncontre \\(\\mathbf{AA}^t\\) e \\(\\mathbf{A}^t\\mathbf{A}\\).\nCalcule \\((\\mathbf{A+B})^t\\) e verifique que a matriz resultante é igual a \\(\\mathbf{A}^t + \\mathbf{B}^t\\).\nMostre que \\((\\mathbf{A}^t)^t = \\mathbf{A}\\).\n\n\n\nSejam as matrizes:\n\n\\[\\mathbf{A} = \\left(\\begin{array}{cc} 1 & 3 \\\\ 2 & -1 \\end{array}\\right)  \\text{      e      } \\mathbf{B} = \\left(\\begin{array}{cc} 2 & 0 \\\\ 1 & 5 \\end{array}\\right)\\]\n\nEncontre \\(\\mathbf{AB}\\) e \\(\\mathbf{BA}\\).\nEncontre \\(\\mathbf{|AB|}\\) e verifique se \\(\\mathbf{|AB| = |A| \\cdot |B|}\\).\nCalcule \\(\\mathbf{A+B}\\) e \\(\\mathbf{tr(A+B)}\\).\nCalcule \\(\\mathbf{tr(A)}\\) e \\(\\mathbf{tr(B)}\\) e verifique se \\(\\mathbf{tr(A+B) = tr(A) + tr(B)}\\).\nEncontre \\(\\mathbf{(AB)^t}\\) e verifique que \\(\\mathbf{(AB)^t = B^t A^t}\\).\n\n\n\nSejam as matrizes:\n\n\\[\\mathbf{A} = \\left(\\begin{array}{ccc}\n1 & 2& 3\\\\\n2 & -1 &1\n\\end{array}\\right)  \\text{      e      } \\mathbf{B} = \\left(\\begin{array}{cc}\n3 & -2 \\\\\n2 & 0 \\\\\n-1&1\n\\end{array}\\right)\\]\n\nEncontre \\(\\mathbf{AB}\\) e \\(\\mathbf{BA}\\).\nCalcule \\(\\mathbf{tr(AB)}\\) e \\(\\mathbf{tr(BA)}\\) e verifique se são iguais.\n\n\n\nSejam as matrizes:\n\n\\[\\mathbf{A} = \\left(\\begin{array}{ccc}\n1 & 2& 3\\\\\n2 & 4 & 6 \\\\\n5 & 10 & 15\n\\end{array}\\right)  \\text{      e      } \\mathbf{B} =  \\left(\\begin{array}{ccc}\n-1 &1& -2 \\\\\n-1 &1& -2 \\\\\n1&-1&2\n\\end{array}\\right)\\]\n\nMostre que \\(\\mathbf{AB = 0}\\).\nEncontre um vetor \\(\\mathbf{x}\\) tal que \\(\\mathbf{A} \\mathbf{x} = 0\\).\nMostre que \\(\\mathbf{|A|} = 0\\).\n\n\n\nSejam\n\n\\[\\mathbf{A} = \\left(\\begin{array}{ccc}\n1 & -1& 4\\\\\n-1 & 1 & 3 \\\\\n4 & 3 & 2\n\\end{array}\\right), \\mathbf{B} =  \\left(\\begin{array}{ccc}\n3 &-2& 4 \\\\\n7 &1& 0 \\\\\n2&3&5\n\\end{array}\\right), \\mathbf{x} = \\left(\\begin{array}{c}\n1 \\\\\n-1  \\\\\n2\n\\end{array}\\right), \\mathbf{y} = \\left(\\begin{array}{c}\n3  \\\\\n2  \\\\\n1\n\\end{array}\\right)\\]\nEncontre o que se pede:\n\n\\(\\mathbf{B} \\mathbf{x}\\)\n\\(\\mathbf{y^t B}\\)\n\\(\\mathbf{x^t A x}\\)\n\\(\\mathbf{x A y}\\).\n\\(\\mathbf{x y^t}\\).\n\\(\\mathbf{({x}-{y})^t A ({x}-{y})}\\)\n\n\n\nSejam\n\n\\[\\mathbf{A} = \\left(\\begin{array}{ccc}\n1 & 2& 3\\\\\n4 & 5 & 6 \\\\\n7 & 8 & 9\n\\end{array}\\right)  \\text{      e      } \\mathbf{D} =  \\left(\\begin{array}{ccc}\na &0& 0 \\\\\n0 &b& 0 \\\\\n0&0&c\n\\end{array}\\right)\\]\nEncontre \\(\\mathbf{AD}\\), \\(\\mathbf{DA}\\) e \\(\\mathbf{DAD}\\)\n\n\nSejam\n\n\\[\\mathbf{A} = \\left(\\begin{array}{ccc} 1 & 3& 2\\\\ 2 & 0 & -1 \\end{array}\\right), \\mathbf{B} =  \\left(\\begin{array}{cc} 1 &2 \\\\ 0 &1 \\\\ 1&0 \\end{array}\\right), \\mathbf{C} = \\left(\\begin{array}{ccc} 2& 1& 1\\\\ 5 & -6 & -4 \\end{array}\\right)\\]\n\nEncontre \\(\\mathbf{AB}\\) e \\(\\mathbf{CB}\\). Elas são iguais?\nEncontre o posto das matrizes \\(\\mathbf{A}\\), \\(\\mathbf{B}\\) e \\(\\mathbf{C}\\).\n\n\n\nVerifique se as matrizes abaixo são ortogonais:\n\n\\[\\mathbf{A} =  \\displaystyle  \\frac{1}{169} \\cdot \\left(\\begin{array}{cc}\n5 & 12\\\\\n-12 & 5  \n\\end{array}\\right), \\mathbf{B} =  \\displaystyle  \\frac{1}{\\sqrt{2}} \\cdot \\left(\\begin{array}{cc}\n1 & 1\\\\\n1 & -1  \n\\end{array}\\right)\\]\n\n\nSeja a matriz\n\n\\[\\mathbf{A} =  \\left(\\begin{array}{cc}\n1 & 2\\\\\n2 & -2  \n\\end{array}\\right)\\]\n\nMostre que \\(\\mathbf{A}\\) é simétrica.\nObtenha os autovalores e autovetores da matriz \\(\\mathbf{A}\\).\nMostre que os autovetores são ortogonais.\nEscreva a decomposição espectral de \\(\\mathbf{A}\\).\nObtenha \\(\\mathbf{A^{-1}}\\), seus autovalores e autovetores e a decomposição espectral. Relacione com a decomposição espectral de \\(\\mathbf{A}\\).\nMostre que o determinante de \\(\\mathbf{A^{-1}}\\) é o inverso do determinante de \\(\\mathbf{A}\\).\nMostre que o determinante de \\(\\mathbf{A}\\) é o produto dos autovalores.\nEncontre a forma quadrática da matriz \\(\\mathbf{A}\\) e classifique-a.\nMostre que \\(\\mathbf{(A^t)^{-1} = (A^{-1})^t}\\).\n\n\n\nSeja a matriz\n\n\\[\\mathbf{A} =   \\left(\\begin{array}{ccc}\n3 & 6 &-1\\\\\n6 & 9 & 4 \\\\\n-1& 4& 3  \n\\end{array}\\right)\\]\n\nEncontre a decomposição espectral de \\(\\mathbf{A}\\).\nEncontre a decomposição espectral de \\(\\mathbf{A^2}\\) e mostre que a matriz diagonal de autovalores é igual ao quadrado da matriz \\(\\mathbf{D}\\) encontrada na parte \\(a.\\)\nEncontre a decomposição espectral de \\(\\mathbf{A^{-1}}\\) e mostre que a matriz diagonal de autovalores é igual à inversa da matriz \\(\\mathbf{D}\\) encontrada na parte \\(a.\\)\n\n\n\nDados os vetores \\(\\mathbf{x^t} = [1 \\hspace{0.5cm} 3]\\) e \\(\\mathbf{y^t} = [2 \\hspace{0.5cm} -5]\\):\n\n\nObtenha a norma de \\(\\mathbf{x}\\) e de \\(\\mathbf{y}\\).\nObtenha o ângulo e a distância entre esses vetores.\nObtenha a distância entre \\(\\mathbf{x}\\) e \\(\\mathbf{y}\\) na métrica\n\n\\[\\mathbf{A} =   \\left(\\begin{array}{cc}\n4 &0\\\\\n0 & 2  \n\\end{array}\\right)\\]\n\nObtenha a distância entre \\(\\mathbf{x}\\) e \\(\\mathbf{y}\\) na métrica\n\n\\[\\mathbf{A} =   \\left(\\begin{array}{cc}\n4 &2\\\\\n2 & 2  \n\\end{array}\\right)\\]\n\n\nUma forma quadrática \\(\\mathbf{x^t A x}\\) é dita ser positiva definida se a matriz \\(\\mathbf{A}\\) é positiva definida. A forma quadrática \\(3x_1^2 + 3x_2^2 - 2x_1x_2\\) é positiva definida?"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Estatística Multivariada I",
+    "section": "",
+    "text": "Página dedicada à disciplina EST014 - Estatística Multivariada I\n\n\nEstatística Multivariada I é uma disciplina que apresenta o estudo de técnicas estatísticas voltadas para a análise simultânea de múltiplas variáveis. O curso abrange temas como análise de componentes principais, análise fatorial, análise de agrupamentos e análise discriminante. Essas metodologias são amplamente aplicadas em diversas áreas do conhecimento, permitindo a extração de informações relevantes a partir de conjuntos de dados complexos. O objetivo da disciplina é fornecer tanto a fundamentação teórica quanto a aplicação prática dessas técnicas, capacitando os alunos a utilizar ferramentas estatísticas avançadas em suas pesquisas e projetos.\n\n\nEmenta\nRevisão de Álgebra Matricial. Introdução à Estatística Multivariada. Distribuição Normal Multivariada. Análise de Componentes Principais. Análise Fatorial. Análise de Conglomerados ou Agrupamentos. Análise Discriminante.\n\n\nConteúdo Programático\n\nRevisão de Álgebra Matricial: matrizes e vetores. Operações com matrizes. Inversão matricial. Formas quadráticas. Autovalores e autovetores. Teorema da decomposição espectral. Determinante.\nIntrodução à Estatística Multivariada: exemplos de aplicação. Definição de Vetores Aleatórios, Vetores de Médias e Matrizes de Covariâncias e Correlação. Interpretação destas Matrizes. Vetores de Médias Amostrais e Matrizes Covariâncias e Correlações Amostrais. Variância Generalizada e Variância Total. Distâncias: Euclidiana, Euclidiana padronizada e Mahalanobis.\nDistribuição Normal Multivariada: função densidade. Propriedades. Distribuição Normal Bivariada. Elipsóides de concentração. Métodos práticos de verificação da hipótese de normalidade multivariada.\nAnálise de Componentes Principais: construção das Componentes Principais pela Matriz de Covariância e pela Matriz de Correlação. Proporção da Variância Total Explicada pelas Componentes. Estimação das Componentes Principais e dos Escores. Exemplos Práticos de Aplicação.\nAnálise Fatorial: apresentação teórica da metodologia. Modelo de Fatores Ortogonais. Estimação dos Fatores pelos Métodos de Componentes Principais, de Fatores Principais e de Máxima Verossimilhança. Rotação de Fatores: Rotações Ortogonais e Oblíquas. Estimação dos Escores dos Fatores: Método de Mínimos Quadrados e Método de Regressão. Exemplos Práticos de Aplicação.\nAnálise de Conglomerados ou Agrupamentos: discussão dos vários Métodos de Formação de Conglomerados, Variáveis Quantitativas e Qualitativas. Métodos Hierárquicos: Método de Ligação Simples (Single Linkage), de Ligação Completa (Complete Linkage), de Ligação Média (Average Linkage), do Centróide, e de Ward. Métodos para encontrar o Número de Conglomerados Ótimo da Partição. Métodos Não Hierárquicos: Método das K-Médias (KMeans). Exemplos Práticos de Aplicação.\nAnálise Discriminante: discriminação e classificação em 2 grupos. Estimação das Probabilidades de Erro de Classificação. Discriminação e Classificação Multivariada. Função Discriminante de Fischer. Exemplos Práticos de Aplicação.\n\n\n\nHorário de Aulas\nNeste semestre, as aulas da disciplina serão ministradas no LABEST II.\n\n\n\nDia\nHorário\nLocal\n\n\n\n\nTerça-feira\n21:00 - 22:40\nLABEST III\n\n\nQuinta-feira\n19:00 - 20:40\nLABEST III\n\n\n\n\n\n\n\n\n\n\n\nReferências Bibliográficas\n\nAnderson, T. W. 2009. AN INTRODUCTION TO MULTIVARIATE STATISTICAL ANALYSIS, 3RD ED. Wiley India Pvt. Limited.\n\n\nCORRAR, Luiz J., Edilson PAULO, and José M. DIAS FILHO. 2007. Análise Multivariada: Para Os Cursos de Administração, Ciências Contábeis e Economia. Editora Atlas.\n\n\nFávero, L. P., and P. Belfiore. 2017. Manual de análise de Dados: Estatı́stica e Modelagem Multivariada Com Excel, SPSS e Stata. Elsevier Editora Ltda.\n\n\nFerreira, D. F. 2018. Estatística Multivariada. Editora UFLA.\n\n\nHair, J. F., W. C. Black, B. J. Babin, R. E. Anderson, and R. L. Tatham. 2009. Análise Multivariada de Dados - 6ed. Bookman.\n\n\nJohnson, R. A., and D. W. Wichern. 2007. Applied Multivariate Statistical Analysis. Applied Multivariate Statistical Analysis. Pearson Prentice Hall.\n\n\nLATTIN, James, J. Douglas CARROLL, and Paul E. GREEN. 2011. Análise de Dados Multivariados. CENGAGE Learning.\n\n\nMingoti, Sueli. 2005. Análise de Dados Através de Métodos de Estatística Multivariada: Uma Abordagem Aplicada.\n\n\nRencher, A. C., and W. F. Christensen. 2012. Methods of Multivariate Analysis. Wiley Series in Probability and Statistics. Wiley."
+  },
+  {
+    "objectID": "programacao/semana-1.html",
+    "href": "programacao/semana-1.html",
+    "title": "Semana 01",
+    "section": "",
+    "text": "Sejam bem-vindos à disciplina EST014 - Estatística Multivariada I.\nLeiam com atenção o plano de ensino da disciplina. Nele estão as regras do jogo!"
   }
 ]
