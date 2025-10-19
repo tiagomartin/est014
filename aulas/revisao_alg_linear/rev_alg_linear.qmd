@@ -342,7 +342,7 @@ $$c\mathbf{A} = \left[ \begin{array}{cccc} ca_{11} & ca_{12} & \cdots & ca_{1p} 
 
     - $\mathbf{A}(\mathbf{B} + \mathbf{C}) = \mathbf{AB} + \mathbf{AC}$, valendo o mesmo ao substituir a soma pela diferença;
     - $(\mathbf{A} + \mathbf{B}) \mathbf{C} = \mathbf{AC} + \mathbf{BC}$, valendo o mesmo ao substituir a soma pela diferença;
-    - $(\mathbf{A} + \mathbf{B})\mathbf{C} \neq \mathbf{CA} + \mathbf{BA}$, a menos de situações bem específicas;
+    - $(\mathbf{A} + \mathbf{B})\mathbf{C} \neq \mathbf{CA} + \mathbf{CB}$, a menos de situações bem específicas;
     - $\mathbf{IA} = \mathbf{AI} = \mathbf{A}$, para qualquer $\mathbf{A}$.
     
     
@@ -555,7 +555,7 @@ sendo $\mathbf{A}_{ij}$ a matriz $(p - 1) \times (p - 1)$ resultante da exclusã
 
 - Sejam as matrizes $\mathbf{A}$ e $\mathbf{B}$ quadradas de ordem $p$ e seja $c$ um escalar. Então,
 		
-    - $\left|c \mathbf{A}\right| = c^n \left| \mathbf{A} \right|$;
+    - $\left|c \mathbf{A}\right| = c^p \left| \mathbf{A} \right|$;
     - $\left|\mathbf{A}^t \right| = \left|\mathbf{A}\right|$;
     - $\left|\mathbf{A}^{-1} \right| = \displaystyle{\dfrac {1}{\left|\mathbf{A}\right|}} = \left|\mathbf{A}\right|^{-1}$;
     - Se $rank(\mathbf{A}) < p$ então $|\mathbf{A}| = 0$;

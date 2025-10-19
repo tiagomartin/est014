@@ -45,7 +45,7 @@
     "href": "cronograma.html",
     "title": "Cronograma da Disciplina",
     "section": "",
-    "text": "Esta página contém um esboço dos tópicos, conteúdos e tarefas para o semestre. Este cronograma será atualizado conforme o semestre avança.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSemana\nData\nTópico\nArtigo\nSlides\nEC\nLE\nScript\nMC\nProjeto\n\n\n\n\n1\nTer, 07/10\nApresentação da disciplina\n\n\n\n\n\n\n\n\n\n\nQui, 09/10\nNão haverá aula!\n\n\n\n\n\n\n\n\n\n2\nTer, 14/10\nRevisão de Álgebra Linear\n\n\n\n\n\n\n\n\n\n\nQui, 16/10\nRevisão de Álgebra Linear",
+    "text": "Esta página contém um esboço dos tópicos, conteúdos e tarefas para o semestre. Este cronograma será atualizado conforme o semestre avança.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSemana\nData\nTópico\nArtigo\nSlides\nEC\nLE\nScript\nMC\nProjeto\n\n\n\n\n1\nTer, 07/10\nApresentação da disciplina\n\n\n\n\n\n\n\n\n\n\nQui, 09/10\nNão haverá aula!\n\n\n\n\n\n\n\n\n\n2\nTer, 14/10\nRevisão de Álgebra Linear\n\n\n\n\n\n\n\n\n\n\nQui, 16/10\nRevisão de Álgebra Linear\n\n\n\n\n\n\n\n\n\n3\nTer, 21/10\nIntrodução à Estatística Multivariada\n\n\n\n\n\n\n\n\n\n\nQui, 23/10\nIntrodução à Estatística Multivariada",
     "crumbs": [
       "Cronograma da Disciplina"
     ]
@@ -167,7 +167,7 @@
     "href": "aulas/revisao_alg_linear/rev_alg_linear.html#operações-envolvendo-matrizes-5",
     "title": "Revisão de Álgebra Matricial",
     "section": "Operações envolvendo matrizes",
-    "text": "Operações envolvendo matrizes\n\nSejam \\(\\mathbf{A}\\), \\(\\mathbf{B}\\) e \\(\\mathbf{C}\\) matrizes com dimensões compatíveis para as operações consideradas. Então:\n\n\\(\\mathbf{A}(\\mathbf{B} + \\mathbf{C}) = \\mathbf{AB} + \\mathbf{AC}\\), valendo o mesmo ao substituir a soma pela diferença;\n\\((\\mathbf{A} + \\mathbf{B}) \\mathbf{C} = \\mathbf{AC} + \\mathbf{BC}\\), valendo o mesmo ao substituir a soma pela diferença;\n\\((\\mathbf{A} + \\mathbf{B})\\mathbf{C} \\neq \\mathbf{CA} + \\mathbf{BA}\\), a menos de situações bem específicas;\n\\(\\mathbf{IA} = \\mathbf{AI} = \\mathbf{A}\\), para qualquer \\(\\mathbf{A}\\)."
+    "text": "Operações envolvendo matrizes\n\nSejam \\(\\mathbf{A}\\), \\(\\mathbf{B}\\) e \\(\\mathbf{C}\\) matrizes com dimensões compatíveis para as operações consideradas. Então:\n\n\\(\\mathbf{A}(\\mathbf{B} + \\mathbf{C}) = \\mathbf{AB} + \\mathbf{AC}\\), valendo o mesmo ao substituir a soma pela diferença;\n\\((\\mathbf{A} + \\mathbf{B}) \\mathbf{C} = \\mathbf{AC} + \\mathbf{BC}\\), valendo o mesmo ao substituir a soma pela diferença;\n\\((\\mathbf{A} + \\mathbf{B})\\mathbf{C} \\neq \\mathbf{CA} + \\mathbf{CB}\\), a menos de situações bem específicas;\n\\(\\mathbf{IA} = \\mathbf{AI} = \\mathbf{A}\\), para qualquer \\(\\mathbf{A}\\)."
   },
   {
     "objectID": "aulas/revisao_alg_linear/rev_alg_linear.html#operações-envolvendo-matrizes-6",
@@ -244,7 +244,7 @@
     "href": "aulas/revisao_alg_linear/rev_alg_linear.html#determinante-2",
     "title": "Revisão de Álgebra Matricial",
     "section": "Determinante",
-    "text": "Determinante\n\nSejam as matrizes \\(\\mathbf{A}\\) e \\(\\mathbf{B}\\) quadradas de ordem \\(p\\) e seja \\(c\\) um escalar. Então,\n\n\\(\\left|c \\mathbf{A}\\right| = c^n \\left| \\mathbf{A} \\right|\\);\n\\(\\left|\\mathbf{A}^t \\right| = \\left|\\mathbf{A}\\right|\\);\n\\(\\left|\\mathbf{A}^{-1} \\right| = \\displaystyle{\\dfrac {1}{\\left|\\mathbf{A}\\right|}} = \\left|\\mathbf{A}\\right|^{-1}\\);\nSe \\(rank(\\mathbf{A}) &lt; p\\) então \\(|\\mathbf{A}| = 0\\);\nSe \\(rank(\\mathbf{A}) = p\\) então \\(|\\mathbf{A}| \\neq 0\\);"
+    "text": "Determinante\n\nSejam as matrizes \\(\\mathbf{A}\\) e \\(\\mathbf{B}\\) quadradas de ordem \\(p\\) e seja \\(c\\) um escalar. Então,\n\n\\(\\left|c \\mathbf{A}\\right| = c^p \\left| \\mathbf{A} \\right|\\);\n\\(\\left|\\mathbf{A}^t \\right| = \\left|\\mathbf{A}\\right|\\);\n\\(\\left|\\mathbf{A}^{-1} \\right| = \\displaystyle{\\dfrac {1}{\\left|\\mathbf{A}\\right|}} = \\left|\\mathbf{A}\\right|^{-1}\\);\nSe \\(rank(\\mathbf{A}) &lt; p\\) então \\(|\\mathbf{A}| = 0\\);\nSe \\(rank(\\mathbf{A}) = p\\) então \\(|\\mathbf{A}| \\neq 0\\);"
   },
   {
     "objectID": "aulas/revisao_alg_linear/rev_alg_linear.html#determinante-3",
@@ -696,5 +696,19 @@
     "title": "Semana 01",
     "section": "",
     "text": "Sejam bem-vindos à disciplina EST014 - Estatística Multivariada I.\nLeiam com atenção o plano de ensino da disciplina. Nele estão as regras do jogo!"
+  },
+  {
+    "objectID": "programacao/semana-3.html",
+    "href": "programacao/semana-3.html",
+    "title": "Semana 03",
+    "section": "",
+    "text": "Introdução à Estatística Multivariada"
+  },
+  {
+    "objectID": "programacao/semana-3.html#slides",
+    "href": "programacao/semana-3.html#slides",
+    "title": "Semana 03",
+    "section": "",
+    "text": "Introdução à Estatística Multivariada"
   }
 ]

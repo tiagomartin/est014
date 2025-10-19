@@ -4,7 +4,7 @@ title: "Aulas"
 
 - [Revisão de Álgebra Matricial](/aulas/revisao_alg_linear/rev_alg_linear.html#/title-slide)
 
-- Introdução à Estatística Multivariada
+- [Introdução à Estatística Multivariada](/aulas/intro_est_multi/intro_est_multi.html#/title-slide)
 
 - Distribuição Normal Multivariada
 
