@@ -1,0 +1,813 @@
+---
+title: "Distribuição Normal Multivariada"
+format: 
+  revealjs:
+    width: 1600
+    height: 900
+    footer: ""
+    theme: quartomonothemer.scss
+    slide-number: c/t
+    show-slide-number: all
+    preview-links: auto
+    self-contained: true
+incremental: false
+code-link: true
+bibliography: references.bib
+title-slide-attributes:
+    data-background-image: /images/back.png
+    data-background-size: cover
+    data-background-opacity: "0.3"
+execute:
+  echo: true
+---
+
+## Distribuição Normal Multivariada
+
+- A distribuição normal multivariada é uma generalização da distribuição normal univariada, para o caso $p$-dimensional.
+
+
+. . .
+
+
+- Diversas técnicas multivariadas baseiam-se na distribuição normal multivariada e em suas propriedades.
+
+
+. . .
+
+
+- Basicamente, a distribuição normal multivariada é importante por dois possíveis fatores:
+    - Configura um modelo probabilístico adequado para o fenômeno sob estudo;
+    - Corresponde à distribuição (ao menos aproximada) de um grande	número de estatísticas e estimadores.
+
+
+
+## Distribuição Normal Multivariada
+
+
+- **Caso univariado:** Uma variável aleatória $X$ tem distribuição normal univariada com média $\mu$ e variância $\sigma^2$, o que denotamos por $X \sim Normal(\mu, \sigma^2)$, se sua função densidade de probabilidade é dada por:
+		
+$$f_X(x) = \frac{1}{\sqrt{2\pi}\sigma} \exp\left\{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2\right\}, \,\,\,  -\infty < \mu < \infty \,\,\, \text{e} \,\,\, \sigma > 0$$
+
+
+. . .
+
+
+- Observe a seguinte reescrita do termo presente no expoente:
+		
+$$ \left( \displaystyle{\frac{x - \mu}{\sigma}} \right)^2 = \displaystyle{\frac{(x - \mu)^2}{\sigma^2}}  = (x - \mu) \displaystyle{\frac{1}{\sigma^2}} (x - \mu) = (x - \mu) (\sigma^2)^{-1} (x - \mu),$$
+		
+que corresponde à distância quadrática entre $x$ e $\mu$ em unidades de $\sigma$.
+
+
+
+
+## Distribuição Normal Multivariada
+
+
+- Considere agora $\mathbf{x}$ um vetor aleatório $p$-dimensional, com vetor de médias $\mathbf{\mu}$ e matriz de covariâncias $\mathbf{\Sigma}$.
+		
+		
+. . .
+		
+		
+- Assumindo que $\mathbf{\Sigma}$ é uma matriz $p \times p$, positiva definida, a seguinte expressão define o quadrado da distância de Mahalanobis entre $\mathbf{x}$ e $\mathbf{\mu}$:
+		
+$$(\mathbf{x} - \mathbf{\mu})^t\mathbf{\Sigma}^{-1}(\mathbf{x} - \mathbf{\mu})$$
+		
+
+
+. . .
+
+
+- A distribuição normal multivariada é obtida substituindo o expoente original pela distância generalizada, para o caso $p$-dimensional, e usando como constante de normalização $(2\pi)^{p/2} |\mathbf{\Sigma}|^{-1/2}$.
+
+
+
+## Distribuição Normal Multivariada
+
+
+- Um vetor aleatório $p$-dimensional $\mathbf{x} = (X_1, X_2, \cdots, X_p)^t$ tem distribuição normal $p$-variada, com vetor de médias $\mathbf{\mu}$ e matriz de covariâncias $\mathbf{\Sigma}$ se a função densidade de probabilidade conjunta for dada por:
+		
+		
+		
+$$f(\mathbf{x}) = \frac{1}{(2\pi)^\frac{p}{2}\left|\mathbf{\Sigma} \right|^\frac{1}{2}} \exp \left\{-\frac{1}{2}(\mathbf{x} - \mathbf{\mu})^t \mathbf{\Sigma}^{-1}(\mathbf{x} - \mathbf{\mu}) \right\}$$ 
+		
+
+para $-\infty < x_i < \infty, \,\,\, i = 1,2,\cdots, p$
+			
+
+. . .
+		
+
+- Vamos denotar a normalidade multivariada na forma $\mathbf{x} \sim \mathcal{N}_p(\mathbf{\mu}, \mathbf{\Sigma})$.
+
+
+## Distribuição Normal Multivariada
+
+
+- Como caso particular da distribuição normal multivariada temos a 	normal bivariada $(p=2)$.
+		
+		
+. . .
+
+		
+- Seja $\mathbf{x} = (X_1, X_2)^t$ um vetor aleatório com distribuição normal de média $\mathbf{\mu} = (\mu_1, \mu_2)^t$ e matriz de covariâncias:
+		
+$$\mathbf{\Sigma} = \left[ \begin{array}{cc} \sigma_{11} & \sigma_{12}  \\ \sigma_{21} & \sigma_{22} \end{array} \right]$$
+		
+. . .
+
+
+		
+- A função densidade de probabilidade de $\mathbf{x}$ fica dada por:
+
+::: {style="font-size:80%;"}
+$$f_{\mathbf{x}}(\mathbf{x}) = \displaystyle{\frac{1}{2 \pi \sigma_1 \sigma_2 \sqrt{1-\rho^2}}} \exp \left\{ \displaystyle{-\frac{1}{2(1-\rho^2)}} \left[ \left(\frac{x_1 - \mu_1}{\sigma_1}\right)^2 + \left(\frac{x_2 - \mu_2}{\sigma_2}\right)^2 - 2\rho \left( \frac{x_1 - \mu_1}{\sigma_1}\right) \left(\frac{x_2 - \mu_2}{\sigma_2}\right)\right] \right\}$$
+:::
+
+
+
+
+## Distribuição Normal Multivariada
+
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-width: 10
+#| fig-height: 8
+
+library(plotly)
+
+x <- seq(-3, 3, length.out = 90)
+y <- seq(-3, 3, length.out = 90)
+grid <- expand.grid(x = x, y = y)
+
+bivn_pdf <- function(x, y, mu1 = 0, mu2 = 0, s1 = 1, s2 = 1, rho = -1) {
+  rho <- max(min(rho, 0.999), -0.999)
+  1/(2*pi*s1*s2*sqrt(1 - rho^2)) *
+    exp(-1/(2*(1 - rho^2)) * (
+      (x - mu1)^2/s1^2 + (y - mu2)^2/s2^2 -
+        2*rho*(x - mu1)*(y - mu2)/(s1*s2)
+    ))
+}
+
+rhos <- seq(-1, 1, by = 0.05)
+
+# pdf normalizada: multiplica por sqrt(1 - rho^2) para manter o pico ~ 1/(2π)
+Z_list <- lapply(rhos, function(rho) {
+  z <- matrix(bivn_pdf(grid$x, grid$y, rho = rho), nrow = length(x))
+  z * sqrt(1 - max(min(rho, 0.999), -0.999)^2)
+})
+
+i0 <- which.min(abs(rhos - 0))
+z0 <- Z_list[[i0]]
+
+fig <- plot_ly(
+  x = ~x, y = ~y, z = ~z0,
+  type = "surface",
+  colorscale = "Viridis",
+  showscale = FALSE
+)
+
+frames <- lapply(seq_along(rhos), function(i) {
+  list(
+    name   = sprintf("ρ = %.2f", rhos[i]),
+    traces = list(0),
+    data   = list(list(z = Z_list[[i]]))
+  )
+})
+
+fig <- fig %>%
+  layout(
+    title = "Efeito da variação de ρ na distribuição normal bivariada",
+    scene = list(
+      xaxis = list(title = "x₁"),
+      yaxis = list(title = "x₂"),
+      zaxis = list(title = "f̂(x₁, x₂)", range = c(0, 0.18))  # ~1/(2π)
+    ),
+    sliders = list(list(
+      active = which.min(abs(rhos - 0)) - 1,  # posição inicial no slider (ρ = 0)
+      steps = lapply(seq_along(rhos), function(i)
+        list(method = "animate",
+            args = list(list(sprintf("ρ = %.2f", rhos[i])),
+                     list(mode = "immediate",
+                          frame = list(duration = 0, redraw = TRUE))),
+            label = sprintf("ρ = %.2f", rhos[i]))),
+      x = 0.1, len = 0.9, y = -0.1
+    ))
+  )
+
+fig$x$frames <- frames
+fig %>% config(displayModeBar = FALSE)
+```
+
+
+## Distribuição Normal Multivariada
+
+::: callout-tip
+À medida que $\rho$ varia de -1 a 1:
+
+  - $\rho = 0$ → formato circular, variáveis independentes.  
+  - $\rho > 0$ → elipses inclinadas na diagonal positiva.  
+  - $\rho < 0$ → elipses inclinadas na diagonal negativa.  
+  - $\rho$ → $\pm 1$ → a densidade colapsa em uma linha, indicando dependência perfeita.
+  
+:::
+
+
+
+
+## Distribuição Normal Multivariada
+
+- Se $X_1, X_2, \cdots, X_p$ forem independentes, então $f(\mathbf{x}) = f(x_1)f(x_2)\cdots f(x_n)$, tal que $X_i \sim \mathcal{N}(\mu, \sigma^2)$.
+		
+		
+. . .
+		
+
+- **Contornos da normal multivariada:** são elipsoides que compreendem	todo $\mathbf{x} \in \mathbb{R}^p$ tal que $(\mathbf{x} - \mathbf{\mu})^t\mathbf{\Sigma}^{-1}(\mathbf{x} - \mathbf{\mu}) = c^2$.
+		
+		
+	
+. . .
+		
+
+- Os elipsoides (contornos) gerados tem centro em $\mathbf{\mu}$ e a direção dada pelos autovetores de $\mathbf{\Sigma}$, com eixos $\pm c \sqrt{\lambda_i} \mathbf{e}_i$.
+		
+
+. . .
+		
+
+- O elipsoide sólido de $\mathbf{x}$ satisfazendo:
+		
+
+$$(\mathbf{x} - \mathbf{\mu})^t\mathbf{\Sigma}^{-1}(\mathbf{x} - \mathbf{\mu}) \leqslant \chi_p^2(\alpha)$$
+		
+onde $\chi_p^2(\alpha)$ é o quantil superior $\alpha$ de uma distribuição $\chi_p^2$ , delimita $1 - \alpha$ de probabilidade.
+		
+
+## Distribuição Normal Multivariada
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-width: 16
+#| fig-height: 7
+
+library(plotly)
+
+# grade
+x <- seq(-3, 3, length.out = 90)
+y <- seq(-3, 3, length.out = 90)
+grid <- expand.grid(x = x, y = y)
+
+# pdf bivariada
+bivn_pdf <- function(x, y, mu1 = 0, mu2 = 0, s1 = 1, s2 = 1, rho = 0) {
+  rho <- max(min(rho, 0.999), -0.999)
+  1/(2*pi*s1*s2*sqrt(1 - rho^2)) *
+    exp(-1/(2*(1 - rho^2)) * (
+      (x - mu1)^2/s1^2 + (y - mu2)^2/s2^2 -
+        2*rho*(x - mu1)*(y - mu2)/(s1*s2)
+    ))
+}
+
+# sequência e normalização da altura (para comparar forma)
+rhos <- seq(-1, 1, by = 0.05)
+Z_list <- lapply(rhos, function(rho) {
+  z <- matrix(bivn_pdf(grid$x, grid$y, rho = rho), nrow = length(x))
+  z * sqrt(1 - max(min(rho, 0.999), -0.999)^2)
+})
+
+i0 <- which.min(abs(rhos - 0))
+z0 <- Z_list[[i0]]
+
+# ------- painel 3D
+fig3D <- plot_ly(
+  x = ~x, y = ~y, z = ~z0,
+  type = "surface",
+  colorscale = "Viridis",
+  showscale = FALSE
+) %>%
+  layout(
+    title = list(text = "Densidade 3D"),
+    scene = list(
+      xaxis = list(title = "x₁", range = c(-3, 3)),
+      yaxis = list(title = "x₂", range = c(-3, 3)),
+      zaxis = list(title = "f(x₁, x₂)", range = c(0, 0.18))
+    ),
+    margin = list(l = 0, r = 0, b = 0, t = 40)
+  )
+
+# ------- painel 2D (contornos)
+fig2D <- plot_ly(
+  x = ~x, y = ~y, z = ~z0,
+  type = "contour",
+  contours = list(
+    showlabels = TRUE,
+    coloring = "heatmap",
+    start = 0.02, end = 0.14, size = 0.02
+  ),
+  colorscale = "Viridis",
+  showscale = FALSE
+) %>%
+  layout(
+    title = list(text = "Contornos (2D)"),
+    xaxis = list(title = "x₁", zeroline = FALSE, showgrid = FALSE,
+                 scaleanchor = "y", scaleratio = 1, range = c(-3, 3)),
+    yaxis = list(title = "x₂", zeroline = FALSE, showgrid = FALSE, range = c(-3, 3)),
+    plot_bgcolor = "white",
+    paper_bgcolor = "white",
+    margin = list(l = 0, r = 0, b = 0, t = 40)
+  )
+
+# ------- frames sincronizados
+frames <- lapply(seq_along(rhos), function(i) {
+  list(
+    name   = sprintf("ρ = %.2f", rhos[i]),
+    traces = list(0, 1),                     # atualiza ambos os painéis
+    data   = list(list(z = Z_list[[i]]),     # 3D
+                  list(z = Z_list[[i]]))     # 2D
+  )
+})
+
+# ------- slider (ρ = 0 default, valor atual visível)
+slider <- list(
+  active = which.min(abs(rhos - 0)) - 1,
+  currentvalue = list(prefix = "ρ = ", font = list(size = 14)),
+  steps = lapply(seq_along(rhos), function(i)
+    list(method = "animate",
+         args = list(list(sprintf("ρ = %.2f", rhos[i])),
+                     list(mode = "immediate",
+                          frame = list(duration = 0, redraw = TRUE))),
+         label = sprintf("%.2f", rhos[i]))),
+  x = 0.18, len = 0.64, y = -0.16
+)
+
+# ------- combina e aplica slider
+fig <- subplot(
+  fig3D, fig2D,
+  widths = c(0.48, 0.48),
+  margin  = 0.2,
+  shareY  = FALSE
+) %>% layout(
+  title = "Efeito da variação de ρ na distribuição normal bivariada",
+  sliders = list(slider)
+)
+
+fig$x$frames <- frames
+fig %>% config(displayModeBar = FALSE)
+```
+
+
+
+
+
+## Propriedades da Distribuição Normal Multivariada
+
+
+- Seja $\mathbf{x} \sim N_p(\mathbf{\mu}, \mathbf{\Sigma})$. Valem as propriedades:
+		
+		
+. . .
+		
+
+
+1) Qualquer combinação linear das variáveis que compõem $\mathbf{x}$ tem distribuição normal univariada.
+    - Mais especificamente, se $\mathbf{a}^t = (a_1, a_2, \cdots, a_p)$ é um vetor de constantes, então
+			
+$$a_1X_1 + a_2X_2 + \cdots + a_pX_p = \mathbf{a}^t \mathbf{x} \sim N(\mathbf{a}^t \mathbf{\mu}, \mathbf{a}^t \mathbf{\Sigma} \mathbf{a})$$
+			
+			
+
+## Propriedades da Distribuição Normal Multivariada
+
+
+2) Se $\mathbf{A}$ é uma matriz $q \times p$ de constantes, então $\mathbf{A} \mathbf{x}$ tem distribuição normal multivariada.
+	  - Mais especificamente, $\mathbf{A} \mathbf{x} \sim N_q(\mathbf{A} \mathbf{\mu}, \mathbf{A} \mathbf{\Sigma} \mathbf{A}^t)$, sendo
+			
+$$\mathbf{A} = \left[ \begin{array}{cccc} a_{11} & a_{12} & \cdots & a_{1p} \\ a_{21} & a_{22} & \cdots & a_{2p} \\ \vdots & \vdots & \ddots & \vdots \\ 
+a_{q1} & a_{q2} & \cdots & a_{qp} \end{array} \right]$$
+
+
+
+## Propriedades da Distribuição Normal Multivariada
+
+
+- Como caso particular da propriedade $1)$, se $\mathbf{x} \sim	N_p(\mathbf{\mu}, \mathbf{\Sigma})$, então $X_i \sim \mathcal{N}(\mu_i, \sigma_{ii}), \,\,\, i = 1, 2, \cdots, p$, ou seja, a normalidade multivariada implica em marginais com distribuição normal univariada.
+		
+
+
+. . .
+		
+		
+- Importante destacar que a recíproca da afirmação anterior não é necessariamente verdadeira, ou seja, marginais normalmente distribuídas não implicam, necessariamente, distribuição normal multivariada para a conjunta.
+
+
+
+## Propriedades da Distribuição Normal Multivariada
+
+
+3) As partições de $\mathbf{x}$ são normalmente distribuídas com respectivos vetores de médias e matrizes de covariâncias.
+
+	
+$$
+\mathbf{x}_{p \times 1} =
+\begin{bmatrix}
+\underbrace{\mathbf{x}_1}_{q \times 1} \\
+\underbrace{\mathbf{x}_2}_{(p-q) \times 1}
+\end{bmatrix},
+\quad
+\boldsymbol{\mu}_{p \times 1} =
+\begin{bmatrix}
+\underbrace{\boldsymbol{\mu}_1}_{q \times 1} \\
+\underbrace{\boldsymbol{\mu}_2}_{(p-q) \times 1}
+\end{bmatrix},
+\quad
+\boldsymbol{\Sigma}_{p \times p} =
+\begin{bmatrix}
+\underbrace{\boldsymbol{\Sigma}_{11}}_{q \times q} &
+\underbrace{\boldsymbol{\Sigma}_{12}}_{q \times (p - q)} \\
+\underbrace{\boldsymbol{\Sigma}_{21}}_{(p-q) \times q} &
+\underbrace{\boldsymbol{\Sigma}_{22}}_{(p-q) \times (p-q)}
+\end{bmatrix}.
+$$
+
+então, 
+
+$$
+\mathbf{x}_1 \sim \mathcal{N}_q(\boldsymbol{\mu}_1, \boldsymbol{\Sigma}_{11})
+\quad \text{e} \quad
+\mathbf{x}_2 \sim \mathcal{N}_{(p-q)}(\boldsymbol{\mu}_2, \boldsymbol{\Sigma}_{22}).
+$$
+
+
+
+
+## Propriedades da Distribuição Normal Multivariada
+
+4) Equivalência de covariância zero e independência para variáveis com distribuição normal.
+    - Se $\mathbf{x}_1$ e $\mathbf{x}_2$ são vetores aleatórios com distribuição normal e $Cov(\mathbf{x}_1, \mathbf{x}_2) = \boldsymbol{\Sigma}_{12} = \boldsymbol{0}$, então $\mathbf{x}_1$ e $\mathbf{x}_2$ são independentes.
+    - No caso bivariado, $X_1$ e $X_2$ são independentes se $Cov(X_1,X_2) = \sigma_{12} = 0$.
+    - Importante destacar que a condição de independência apresentada **não vale** para variáveis sem distribuição normal.
+    
+    
+## Propriedades da Distribuição Normal Multivariada
+
+
+5) As distribuições condicionais das componentes de um vetor aleatório $\mathbf{x}$ com distribuição normal multivariada são normais multivariadas, isto é, se 
+
+$$
+\mathbf{x} =
+\begin{bmatrix}
+\mathbf{x}_1 \\[4pt]
+\mathbf{x}_2
+\end{bmatrix},
+\quad
+\boldsymbol{\mu} =
+\begin{bmatrix}
+\boldsymbol{\mu}_1 \\[4pt]
+\boldsymbol{\mu}_2
+\end{bmatrix},
+\quad
+\boldsymbol{\Sigma} =
+\begin{bmatrix}
+\boldsymbol{\Sigma}_{11} & \boldsymbol{\Sigma}_{12} \\[4pt]
+\boldsymbol{\Sigma}_{21} & \boldsymbol{\Sigma}_{22}
+\end{bmatrix},
+\qquad |\boldsymbol{\Sigma}_{22}| > 0
+$$
+
+
+Então, a **distribuição condicional** de $\mathbf{x}_1$ dado que $\mathbf{x}_2 = \mathbf{c}$ é normal com:
+
+$$
+\mathbf{x}_1 \mid \mathbf{x}_2 = \mathbf{c}
+\sim
+\mathcal{N}_q(\boldsymbol{\mu}^*, \boldsymbol{\Sigma}^*)
+$$
+
+
+
+## Propriedades da Distribuição Normal Multivariada
+
+onde:
+
+$$
+\boldsymbol{\mu}^* = \boldsymbol{\mu}_1 + \boldsymbol{\Sigma}_{12}\boldsymbol{\Sigma}_{22}^{-1}(\mathbf{c} - \boldsymbol{\mu}_2)
+$$
+
+e
+
+$$
+\boldsymbol{\Sigma}^* = \boldsymbol{\Sigma}_{11} - \boldsymbol{\Sigma}_{12}\boldsymbol{\Sigma}_{22}^{-1}\boldsymbol{\Sigma}_{21}.
+$$
+
+
+
+## Propriedades da Distribuição Normal Multivariada
+
+6) Se $\mathbf{x} \sim \mathcal{N}_p(\boldsymbol{\mu}, \boldsymbol{\Sigma})$, então
+    - $(\mathbf{x} - \boldsymbol{\mu})^{\mathsf{t}} \boldsymbol{\Sigma}^{-1} (\mathbf{x} - \boldsymbol{\mu})$ segue uma **distribuição qui-quadrado** com $p$ graus de liberdade.
+    - O **elipsóide sólido de probabilidade** de $\mathbf{x}$ é definido pelo conjunto de pontos que satisfazem:
+
+$$\mathbf{x} : (\mathbf{x} - \boldsymbol{\mu})^{\mathsf{T}} \boldsymbol{\Sigma}^{-1} (\mathbf{x} - \boldsymbol{\mu}) \leq \chi^2_p(\alpha)$$
+onde $\chi^2_p(\alpha)$ é o **quantil superior** de ordem $\alpha$ da distribuição qui-quadrado com $p$ graus de liberdade. Esse elipsóide delimita a região que contém aproximadamente $100 \times (1 - \alpha)\%$ da probabilidade da distribuição.
+
+
+## Elipsóide de confiança (95%)
+
+![](/images/DNM/elipsoide_confiança_95.svg){fig-align="center" width="70%"}
+
+
+
+## Elipsóide de confiança (95%)
+
+### Interpretação geométrica
+
+- O centro do elipsóide é a média $\boldsymbol{\mu}$;  
+- A forma e a orientação são determinadas por $\boldsymbol{\Sigma}$;  
+- O eixo maior aponta na direção do **autovetor associado ao maior autovalor** de $\boldsymbol{\Sigma}$;  
+- O raio na direção de cada autovetor é proporcional à **raiz quadrada do autovalor correspondente**.
+
+
+## Verificando a suposição de normalidade multivariada
+
+- Uma vez que parte dos métodos de análise multivariada requer a suposição de normalidade (multivariada) dos dados, precisamos de recursos para verificar a validade de tal suposição.
+			
+. . .
+			
+		
+		
+- Embora, como dito anteriormente, normalidade para as distribuições marginais não implique em normalidade para a conjunta, o contrário é necessariamente válido.
+			
+
+. . .
+			
+
+
+- Dessa forma, analisar a normalidade univariada (e eventualmente bivariada) para as $p$ variáveis pode fornecer indicativos favoráveis (ou	definitivamente contrários) à suposição de normalidade multivariada.
+
+
+## Verificando a suposição de normalidade multivariada
+
+
+- Alguns recursos para verificar normalidade (caso univariado).
+		
+		
+. . .
+
+
+- Gráficos:
+    - Histograma com curva de densidade não paramétrica;
+    - Boxplot;
+    - Gráfico quantil-quantil.				
+
+. . .
+
+
+- Testes:
+    - Shapiro Wilks;
+    - Anderson Darling;
+    - Lilliefors...
+    
+    
+## Verificando a suposição de normalidade multivariada
+
+- Um procedimento para verificação de normalidade multivariada pode ser estabelecido a partir da medida de distância de Mahalanobis:
+		
+$$d_i^2 = (\mathbf{x}_i - \bar{\mathbf{x}})^t \boldsymbol{S}^{-1}(\mathbf{x}_i - \bar{\mathbf{x}}), \,\,\, i = 1,2, \cdots, n$$
+		
+
+. . .
+		
+
+- Se a população de fato for normalmente distribuída, um procedimento válido (sobretudo se $n$ e $n - p$ forem grandes), é comparar os quantis das distâncias quadráticas com os quantis de uma distribuição $\chi_p^2$.
+
+
+## Verificando a suposição de normalidade multivariada
+
+
+- A verificação da normalidade multivariada com base nas distâncias quadráticas se dá da seguinte forma:
+    - Ordenar as $n$ distâncias quadráticas de forma crescente, ou seja, $d^2_{(1)} \leqslant d^2_{(2)} \leqslant \cdots \leqslant d^2_{(n)}$
+    - Obter os quantis $(i - 1/2)/n$ da distribuição $\chi_p^2$, para $i = 1, 2, \cdots, n$.	Vamos denotá-los por $q_{(1)}, q_{(2)}, \cdots, q_{(n)}$.
+    - Plotar a dispersão dos pontos $(d^2_{(1)}, q_{(1)}), (d^2_{(2)}, q_{(2)}), \cdots (d^2_{(n)}, q_{(n)})$.
+	
+	
+. . . 
+
+
+- Quanto mais os pontos estiverem dispersos próximos à reta identidade,	mais forte o indicativo de normalidade multivariada.
+
+
+
+## Verificando a suposição de normalidade multivariada
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-width: 14
+#| fig-height: 8
+
+library(plotly)
+
+# ========= 1) Dados (troque aqui pelo seu data.frame numérico) =========
+df <- iris[, 1:4]        # EXEMPLO: só colunas numéricas
+df <- na.omit(df)        # remove NAs
+X  <- as.matrix(df)
+n  <- nrow(X)
+p  <- ncol(X)
+
+# ========= 2) Distâncias de Mahalanobis =========
+# (use 'robust <- TRUE' para covariância robusta por MCD se quiser)
+robust <- FALSE
+if (robust) {
+  library(robustbase)
+  mcd <- covMcd(X)
+  center <- mcd$center
+  Sigma  <- mcd$cov
+} else {
+  center <- colMeans(X)
+  Sigma  <- cov(X)
+}
+
+d2 <- mahalanobis(X, center, Sigma)
+
+# ========= 3) Quantis teóricos vs. observados =========
+q_theo <- qchisq(ppoints(n), df = p)  # quantis teóricos χ²_p
+d2_ord <- sort(d2)                    # quantis amostrais ordenados
+idx_ord <- order(d2)                  # índice original após ordenação
+
+alpha <- 0.975                        # nível para marcar outliers
+cut   <- qchisq(alpha, df = p)
+is_out <- d2_ord > cut
+
+# Data frame para o plot
+lab_rows <- rownames(X)
+hover_lbl <- paste0(
+  "Obs: ", lab_rows[idx_ord],
+  "<br>d²: ", signif(d2_ord, 4),
+  "<br>Qχ²: ", signif(q_theo, 4)
+)
+
+# ========= 4) Plot interativo =========
+fig <- plot_ly()
+
+# pontos "inliers"
+fig <- fig %>%
+  add_trace(
+    x = q_theo[!is_out], y = d2_ord[!is_out],
+    type = "scatter", mode = "markers",
+    marker = list(size = 7),
+    hovertemplate = paste0(hover_lbl[!is_out], "<extra>Inlier</extra>"),
+    name = "Inliers"
+  )
+
+# pontos "outliers"
+if (any(is_out)) {
+  fig <- fig %>%
+    add_trace(
+      x = q_theo[is_out], y = d2_ord[is_out],
+      type = "scatter", mode = "markers",
+      marker = list(size = 9, line = list(width = 1), color = "#d62728"),
+      hovertemplate = paste0(hover_lbl[is_out], "<extra>Outlier</extra>"),
+      name = "Outliers"
+    )
+}
+
+# linha 45°
+rng <- range(c(q_theo, d2_ord))
+fig <- fig %>%
+  add_trace(
+    x = rng, y = rng,
+    type = "scatter", mode = "lines",
+    line = list(color = "gray", dash = "dash"),
+    hoverinfo = "skip",
+    name = "Referência 45°"
+  )
+
+# linha do corte χ²_p(α)
+fig <- fig %>%
+  add_trace(
+    x = c(min(q_theo), max(q_theo)), y = c(cut, cut),
+    type = "scatter", mode = "lines",
+    line = list(color = "#d62728", width = 1.5),
+    hoverinfo = "skip",
+    name = paste0("Corte χ²_", p, "(", alpha*100, "%)")
+  )
+
+fig <- fig %>%
+  layout(
+    title = paste0("Q–Q das distâncias de Mahalanobis vs. χ²_", p),
+    xaxis = list(title = "Quantis teóricos χ²", zeroline = FALSE),
+    yaxis = list(title = "Quantis observados d²", zeroline = FALSE),
+    legend = list(orientation = "h", x = 0, y = -0.15),
+    margin = list(l = 60, r = 20, t = 60, b = 60)
+  ) %>%
+  config(displayModeBar = FALSE)
+
+fig
+```
+
+
+## Verificando a suposição de normalidade multivariada
+
+
+- Um procedimento confirmatório disponível para a checagem da normalidade multivariada é a versão multivariada do teste de Shapiro-Wilks.
+		
+		
+		
+. . .
+		
+		
+		
+- A hipótese nula desse teste é a hipótese de normalidade multivariada, contra a hipótese alternativa de não normalidade.
+		
+
+. . .
+
+
+- O teste baseia-se na transformação das variáveis originais num conjunto de variáveis padronizadas e (aproximadamente) independentes, seguido do cálculo e soma das estatísticas do teste univariado de Shapiro-Wilks.
+		
+		
+
+
+. . .
+		
+
+
+- A distribuição da estatística do teste, sob a hipótese nula, não pode ser obtida analiticamente, mas determinada via simulação.
+		
+
+
+. . .
+		
+
+
+- No R, pacotes $\mathtt{mvShapiroTest}$, $\mathtt{MVN}$ e $\mathtt{goft}$.
+
+
+
+## Verificando a suposição de normalidade multivariada
+
+
+- Caso a suposição de normalidade não seja atendida, deve-se considerar	como alternativas:
+    - Utilizar métodos baseados em outras distribuições de probabilidades, ou que não requerem a suposição de normalidade;
+    - Transformar os dados para alcançar normalidade (ex: transformação de Box-Cox);
+    - Categorizar os dados;
+    - Investigar a presença de outliers.
+		
+
+. . .
+
+
+		
+- **Nota:** Boa parte dos métodos que vamos estudar são robustos a afastamentos moderados da hipótese de normalidade multivariada.
+
+
+
+## Verificando a existência de outliers
+
+
+- Outliers são resultados extremos que devem ser identificados e examinados com cautela, verificando possível impacto nos resultados das análises.
+		
+
+
+. . .
+
+
+- No contexto univariado, gráficos (histograma, boxplot, gráfico quanti-quantil), além de regras empíricas (como pontos afastados a mais de três desvios padrões da média) são ferramentas auxiliares na identificação de outliers.
+			
+			
+. . .
+
+
+- Já no contexto multivariado, identificar outliers é uma tarefa mais complicada.
+			
+. . .
+
+
+- Gráficos de dispersão bi e tridimensionais e matrizes de gráficos de dispersão podem ajudar.
+		
+
+
+
+## Verificando a existência de outliers
+
+- Uma vez mais, o conceito de distância pode ser aplicado aqui como	recurso para identificação de outliers.
+		
+		
+. . .
+
+
+- Nesse caso, calculamos $d_i^2 = (\mathbf{x}_i - \bar{\mathbf{x}})^t \boldsymbol{S}^{-1}(\mathbf{x}_i - \bar{\mathbf{x}})$, $i = 1,2, \cdots, n$ e comparamos os valores obtidos com o quantil superior $\alpha$ da distribuição $\chi^2_p$.
+		
+		
+. . .
+
+
+- Em geral consideramos um valor pequeno para $\alpha$ (como 1\%, ou 0,5\%), tendo em mente que, mesmo sob normalidade multivariada, valores extremos naturalmente ocorrem.
+		

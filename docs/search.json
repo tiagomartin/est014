@@ -710,5 +710,271 @@
     "title": "Semana 03",
     "section": "",
     "text": "Introdução à Estatística Multivariada"
+  },
+  {
+    "objectID": "aulas/distr_normal_multi/distr_normal_multi.html#distribuição-normal-multivariada",
+    "href": "aulas/distr_normal_multi/distr_normal_multi.html#distribuição-normal-multivariada",
+    "title": "Distribuição Normal Multivariada",
+    "section": "Distribuição Normal Multivariada",
+    "text": "Distribuição Normal Multivariada\n\nA distribuição normal multivariada é uma generalização da distribuição normal univariada, para o caso \\(p\\)-dimensional.\n\n\n\nDiversas técnicas multivariadas baseiam-se na distribuição normal multivariada e em suas propriedades.\n\n\n\n\nBasicamente, a distribuição normal multivariada é importante por dois possíveis fatores:\n\nConfigura um modelo probabilístico adequado para o fenômeno sob estudo;\nCorresponde à distribuição (ao menos aproximada) de um grande número de estatísticas e estimadores."
+  },
+  {
+    "objectID": "aulas/distr_normal_multi/distr_normal_multi.html#distribuição-normal-multivariada-1",
+    "href": "aulas/distr_normal_multi/distr_normal_multi.html#distribuição-normal-multivariada-1",
+    "title": "Distribuição Normal Multivariada",
+    "section": "Distribuição Normal Multivariada",
+    "text": "Distribuição Normal Multivariada\n\nCaso univariado: Uma variável aleatória \\(X\\) tem distribuição normal univariada com média \\(\\mu\\) e variância \\(\\sigma^2\\), o que denotamos por \\(X \\sim Normal(\\mu, \\sigma^2)\\), se sua função densidade de probabilidade é dada por:\n\n\\[f_X(x) = \\frac{1}{\\sqrt{2\\pi}\\sigma} \\exp\\left\\{-\\frac{1}{2}\\left(\\frac{x-\\mu}{\\sigma}\\right)^2\\right\\}, \\,\\,\\,  -\\infty &lt; \\mu &lt; \\infty \\,\\,\\, \\text{e} \\,\\,\\, \\sigma &gt; 0\\]\n\n\nObserve a seguinte reescrita do termo presente no expoente:\n\n\\[ \\left( \\displaystyle{\\frac{x - \\mu}{\\sigma}} \\right)^2 = \\displaystyle{\\frac{(x - \\mu)^2}{\\sigma^2}}  = (x - \\mu) \\displaystyle{\\frac{1}{\\sigma^2}} (x - \\mu) = (x - \\mu) (\\sigma^2)^{-1} (x - \\mu),\\]\nque corresponde à distância quadrática entre \\(x\\) e \\(\\mu\\) em unidades de \\(\\sigma\\)."
+  },
+  {
+    "objectID": "aulas/distr_normal_multi/distr_normal_multi.html#distribuição-normal-multivariada-2",
+    "href": "aulas/distr_normal_multi/distr_normal_multi.html#distribuição-normal-multivariada-2",
+    "title": "Distribuição Normal Multivariada",
+    "section": "Distribuição Normal Multivariada",
+    "text": "Distribuição Normal Multivariada\n\nConsidere agora \\(\\mathbf{x}\\) um vetor aleatório \\(p\\)-dimensional, com vetor de médias \\(\\mathbf{\\mu}\\) e matriz de covariâncias \\(\\mathbf{\\Sigma}\\).\n\n\n\nAssumindo que \\(\\mathbf{\\Sigma}\\) é uma matriz \\(p \\times p\\), positiva definida, a seguinte expressão define o quadrado da distância de Mahalanobis entre \\(\\mathbf{x}\\) e \\(\\mathbf{\\mu}\\):\n\n\\[(\\mathbf{x} - \\mathbf{\\mu})^t\\mathbf{\\Sigma}^{-1}(\\mathbf{x} - \\mathbf{\\mu})\\]\n\n\n\nA distribuição normal multivariada é obtida substituindo o expoente original pela distância generalizada, para o caso \\(p\\)-dimensional, e usando como constante de normalização \\((2\\pi)^{p/2} |\\mathbf{\\Sigma}|^{-1/2}\\)."
+  },
+  {
+    "objectID": "aulas/distr_normal_multi/distr_normal_multi.html#distribuição-normal-multivariada-3",
+    "href": "aulas/distr_normal_multi/distr_normal_multi.html#distribuição-normal-multivariada-3",
+    "title": "Distribuição Normal Multivariada",
+    "section": "Distribuição Normal Multivariada",
+    "text": "Distribuição Normal Multivariada\n\nUm vetor aleatório \\(p\\)-dimensional \\(\\mathbf{x} = (X_1, X_2, \\cdots, X_p)^t\\) tem distribuição normal \\(p\\)-variada, com vetor de médias \\(\\mathbf{\\mu}\\) e matriz de covariâncias \\(\\mathbf{\\Sigma}\\) se a função densidade de probabilidade conjunta for dada por:\n\n\\[f(\\mathbf{x}) = \\frac{1}{(2\\pi)^\\frac{p}{2}\\left|\\mathbf{\\Sigma} \\right|^\\frac{1}{2}} \\exp \\left\\{-\\frac{1}{2}(\\mathbf{x} - \\mathbf{\\mu})^t \\mathbf{\\Sigma}^{-1}(\\mathbf{x} - \\mathbf{\\mu}) \\right\\}\\]\npara \\(-\\infty &lt; x_i &lt; \\infty, \\,\\,\\, i = 1,2,\\cdots, p\\)\n\n\nVamos denotar a normalidade multivariada na forma \\(\\mathbf{x} \\sim \\mathcal{N}_p(\\mathbf{\\mu}, \\mathbf{\\Sigma})\\)."
+  },
+  {
+    "objectID": "aulas/distr_normal_multi/distr_normal_multi.html#distribuição-normal-multivariada-4",
+    "href": "aulas/distr_normal_multi/distr_normal_multi.html#distribuição-normal-multivariada-4",
+    "title": "Distribuição Normal Multivariada",
+    "section": "Distribuição Normal Multivariada",
+    "text": "Distribuição Normal Multivariada\n\nComo caso particular da distribuição normal multivariada temos a normal bivariada \\((p=2)\\).\n\n\n\nSeja \\(\\mathbf{x} = (X_1, X_2)^t\\) um vetor aleatório com distribuição normal de média \\(\\mathbf{\\mu} = (\\mu_1, \\mu_2)^t\\) e matriz de covariâncias:\n\n\\[\\mathbf{\\Sigma} = \\left[ \\begin{array}{cc} \\sigma_{11} & \\sigma_{12}  \\\\ \\sigma_{21} & \\sigma_{22} \\end{array} \\right]\\]\n\n\n\nA função densidade de probabilidade de \\(\\mathbf{x}\\) fica dada por:\n\n\n\\[f_{\\mathbf{x}}(\\mathbf{x}) = \\displaystyle{\\frac{1}{2 \\pi \\sigma_1 \\sigma_2 \\sqrt{1-\\rho^2}}} \\exp \\left\\{ \\displaystyle{-\\frac{1}{2(1-\\rho^2)}} \\left[ \\left(\\frac{x_1 - \\mu_1}{\\sigma_1}\\right)^2 + \\left(\\frac{x_2 - \\mu_2}{\\sigma_2}\\right)^2 - 2\\rho \\left( \\frac{x_1 - \\mu_1}{\\sigma_1}\\right) \\left(\\frac{x_2 - \\mu_2}{\\sigma_2}\\right)\\right] \\right\\}\\]"
+  },
+  {
+    "objectID": "aulas/distr_normal_multi/distr_normal_multi.html#distribuição-normal-multivariada-5",
+    "href": "aulas/distr_normal_multi/distr_normal_multi.html#distribuição-normal-multivariada-5",
+    "title": "Distribuição Normal Multivariada",
+    "section": "Distribuição Normal Multivariada",
+    "text": "Distribuição Normal Multivariada"
+  },
+  {
+    "objectID": "aulas/distr_normal_multi/distr_normal_multi.html#distribuição-normal-multivariada-6",
+    "href": "aulas/distr_normal_multi/distr_normal_multi.html#distribuição-normal-multivariada-6",
+    "title": "Distribuição Normal Multivariada",
+    "section": "Distribuição Normal Multivariada",
+    "text": "Distribuição Normal Multivariada\n\n\n\n\n\n\nTip\n\n\nÀ medida que \\(\\rho\\) varia de -1 a 1:\n\n\\(\\rho = 0\\) → formato circular, variáveis independentes.\n\n\\(\\rho &gt; 0\\) → elipses inclinadas na diagonal positiva.\n\n\\(\\rho &lt; 0\\) → elipses inclinadas na diagonal negativa.\n\n\\(\\rho\\) → \\(\\pm 1\\) → a densidade colapsa em uma linha, indicando dependência perfeita."
+  },
+  {
+    "objectID": "aulas/distr_normal_multi/distr_normal_multi.html#propriedades-da-distribuição-normal-multivariada",
+    "href": "aulas/distr_normal_multi/distr_normal_multi.html#propriedades-da-distribuição-normal-multivariada",
+    "title": "Distribuição Normal Multivariada",
+    "section": "Propriedades da Distribuição Normal Multivariada",
+    "text": "Propriedades da Distribuição Normal Multivariada\n\nSeja \\(\\mathbf{x} \\sim N_p(\\mathbf{\\mu}, \\mathbf{\\Sigma})\\). Valem as propriedades:\n\n\n\nQualquer combinação linear das variáveis que compõem \\(\\mathbf{x}\\) tem distribuição normal univariada.\n\nMais especificamente, se \\(\\mathbf{a}^t = (a_1, a_2, \\cdots, a_p)\\) é um vetor de constantes, então\n\n\n\\[a_1X_1 + a_2X_2 + \\cdots + a_pX_p = \\mathbf{a}^t \\mathbf{x} \\sim N(\\mathbf{a}^t \\mathbf{\\mu}, \\mathbf{a}^t \\mathbf{\\Sigma} \\mathbf{a})\\]"
+  },
+  {
+    "objectID": "aulas/distr_normal_multi/distr_normal_multi.html#propriedades-da-distribuição-normal-multivariada-1",
+    "href": "aulas/distr_normal_multi/distr_normal_multi.html#propriedades-da-distribuição-normal-multivariada-1",
+    "title": "Distribuição Normal Multivariada",
+    "section": "Propriedades da Distribuição Normal Multivariada",
+    "text": "Propriedades da Distribuição Normal Multivariada\n\nSe \\(\\mathbf{A}\\) é uma matriz \\(q \\times p\\) de constantes, então \\(\\mathbf{A} \\mathbf{x}\\) tem distribuição normal multivariada.\n\nMais especificamente, \\(\\mathbf{A} \\mathbf{x} \\sim N_q(\\mathbf{A} \\mathbf{\\mu}, \\mathbf{A} \\mathbf{\\Sigma} \\mathbf{A}^t)\\), sendo\n\n\n\\[\\mathbf{A} = \\left[ \\begin{array}{cccc} a_{11} & a_{12} & \\cdots & a_{1p} \\\\ a_{21} & a_{22} & \\cdots & a_{2p} \\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\\na_{q1} & a_{q2} & \\cdots & a_{qp} \\end{array} \\right]\\]"
+  },
+  {
+    "objectID": "aulas/distr_normal_multi/distr_normal_multi.html#propriedades-da-distribuição-normal-multivariada-2",
+    "href": "aulas/distr_normal_multi/distr_normal_multi.html#propriedades-da-distribuição-normal-multivariada-2",
+    "title": "Distribuição Normal Multivariada",
+    "section": "Propriedades da Distribuição Normal Multivariada",
+    "text": "Propriedades da Distribuição Normal Multivariada\n\nComo caso particular da propriedade \\(1)\\), se \\(\\mathbf{x} \\sim N_p(\\mathbf{\\mu}, \\mathbf{\\Sigma})\\), então \\(X_i \\sim \\mathcal{N}(\\mu_i, \\sigma_{ii}), \\,\\,\\, i = 1, 2, \\cdots, p\\), ou seja, a normalidade multivariada implica em marginais com distribuição normal univariada.\n\n\n\nImportante destacar que a recíproca da afirmação anterior não é necessariamente verdadeira, ou seja, marginais normalmente distribuídas não implicam, necessariamente, distribuição normal multivariada para a conjunta."
+  },
+  {
+    "objectID": "aulas/distr_normal_multi/distr_normal_multi.html#propriedades-da-distribuição-normal-multivariada-3",
+    "href": "aulas/distr_normal_multi/distr_normal_multi.html#propriedades-da-distribuição-normal-multivariada-3",
+    "title": "Distribuição Normal Multivariada",
+    "section": "Propriedades da Distribuição Normal Multivariada",
+    "text": "Propriedades da Distribuição Normal Multivariada\n\nAs partições de \\(\\mathbf{x}\\) são normalmente distribuídas com respectivos vetores de médias e matrizes de covariâncias.\n\n\\[\n\\mathbf{x}_{p \\times 1} =\n\\begin{bmatrix}\n\\underbrace{\\mathbf{x}_1}_{q \\times 1} \\\\\n\\underbrace{\\mathbf{x}_2}_{(p-q) \\times 1}\n\\end{bmatrix},\n\\quad\n\\boldsymbol{\\mu}_{p \\times 1} =\n\\begin{bmatrix}\n\\underbrace{\\boldsymbol{\\mu}_1}_{q \\times 1} \\\\\n\\underbrace{\\boldsymbol{\\mu}_2}_{(p-q) \\times 1}\n\\end{bmatrix},\n\\quad\n\\boldsymbol{\\Sigma}_{p \\times p} =\n\\begin{bmatrix}\n\\underbrace{\\boldsymbol{\\Sigma}_{11}}_{q \\times q} &\n\\underbrace{\\boldsymbol{\\Sigma}_{12}}_{q \\times (p - q)} \\\\\n\\underbrace{\\boldsymbol{\\Sigma}_{21}}_{(p-q) \\times q} &\n\\underbrace{\\boldsymbol{\\Sigma}_{22}}_{(p-q) \\times (p-q)}\n\\end{bmatrix}.\n\\]\nentão,\n\\[\n\\mathbf{x}_1 \\sim \\mathcal{N}_q(\\boldsymbol{\\mu}_1, \\boldsymbol{\\Sigma}_{11})\n\\quad \\text{e} \\quad\n\\mathbf{x}_2 \\sim \\mathcal{N}_{(p-q)}(\\boldsymbol{\\mu}_2, \\boldsymbol{\\Sigma}_{22}).\n\\]"
+  },
+  {
+    "objectID": "aulas/distr_normal_multi/distr_normal_multi.html#propriedades-da-distribuição-normal-multivariada-4",
+    "href": "aulas/distr_normal_multi/distr_normal_multi.html#propriedades-da-distribuição-normal-multivariada-4",
+    "title": "Distribuição Normal Multivariada",
+    "section": "Propriedades da Distribuição Normal Multivariada",
+    "text": "Propriedades da Distribuição Normal Multivariada\n\nEquivalência de covariância zero e independência para variáveis com distribuição normal.\n\nSe \\(\\mathbf{x}_1\\) e \\(\\mathbf{x}_2\\) são vetores aleatórios com distribuição normal e \\(Cov(\\mathbf{x}_1, \\mathbf{x}_2) = \\boldsymbol{\\Sigma}_{12} = \\boldsymbol{0}\\), então \\(\\mathbf{x}_1\\) e \\(\\mathbf{x}_2\\) são independentes.\nNo caso bivariado, \\(X_1\\) e \\(X_2\\) são independentes se \\(Cov(X_1,X_2) = \\sigma_{12} = 0\\).\nImportante destacar que a condição de independência apresentada não vale para variáveis sem distribuição normal."
+  },
+  {
+    "objectID": "aulas/distr_normal_multi/distr_normal_multi.html#propriedades-da-distribuição-normal-multivariada-5",
+    "href": "aulas/distr_normal_multi/distr_normal_multi.html#propriedades-da-distribuição-normal-multivariada-5",
+    "title": "Distribuição Normal Multivariada",
+    "section": "Propriedades da Distribuição Normal Multivariada",
+    "text": "Propriedades da Distribuição Normal Multivariada\n\nAs distribuições condicionais das componentes de um vetor aleatório \\(\\mathbf{x}\\) com distribuição normal multivariada são normais multivariadas, isto é, se\n\n\\[\n\\mathbf{x} =\n\\begin{bmatrix}\n\\mathbf{x}_1 \\\\[4pt]\n\\mathbf{x}_2\n\\end{bmatrix},\n\\quad\n\\boldsymbol{\\mu} =\n\\begin{bmatrix}\n\\boldsymbol{\\mu}_1 \\\\[4pt]\n\\boldsymbol{\\mu}_2\n\\end{bmatrix},\n\\quad\n\\boldsymbol{\\Sigma} =\n\\begin{bmatrix}\n\\boldsymbol{\\Sigma}_{11} & \\boldsymbol{\\Sigma}_{12} \\\\[4pt]\n\\boldsymbol{\\Sigma}_{21} & \\boldsymbol{\\Sigma}_{22}\n\\end{bmatrix},\n\\qquad |\\boldsymbol{\\Sigma}_{22}| &gt; 0\n\\]\nEntão, a distribuição condicional de \\(\\mathbf{x}_1\\) dado que \\(\\mathbf{x}_2 = \\mathbf{c}\\) é normal com:\n\\[\n\\mathbf{x}_1 \\mid \\mathbf{x}_2 = \\mathbf{c}\n\\sim\n\\mathcal{N}_q(\\boldsymbol{\\mu}^*, \\boldsymbol{\\Sigma}^*)\n\\]"
+  },
+  {
+    "objectID": "aulas/distr_normal_multi/distr_normal_multi.html#propriedades-da-distribuição-normal-multivariada-6",
+    "href": "aulas/distr_normal_multi/distr_normal_multi.html#propriedades-da-distribuição-normal-multivariada-6",
+    "title": "Distribuição Normal Multivariada",
+    "section": "Propriedades da Distribuição Normal Multivariada",
+    "text": "Propriedades da Distribuição Normal Multivariada\nonde:\n\\[\n\\boldsymbol{\\mu}^* = \\boldsymbol{\\mu}_1 + \\boldsymbol{\\Sigma}_{12}\\boldsymbol{\\Sigma}_{22}^{-1}(\\mathbf{c} - \\boldsymbol{\\mu}_2)\n\\]\ne\n\\[\n\\boldsymbol{\\Sigma}^* = \\boldsymbol{\\Sigma}_{11} - \\boldsymbol{\\Sigma}_{12}\\boldsymbol{\\Sigma}_{22}^{-1}\\boldsymbol{\\Sigma}_{21}.\n\\]"
+  },
+  {
+    "objectID": "aulas/distr_normal_multi/distr_normal_multi.html#propriedades-da-distribuição-normal-multivariada-7",
+    "href": "aulas/distr_normal_multi/distr_normal_multi.html#propriedades-da-distribuição-normal-multivariada-7",
+    "title": "Distribuição Normal Multivariada",
+    "section": "Propriedades da Distribuição Normal Multivariada",
+    "text": "Propriedades da Distribuição Normal Multivariada\n\nSe \\(\\mathbf{x} \\sim \\mathcal{N}_p(\\boldsymbol{\\mu}, \\boldsymbol{\\Sigma})\\), então\n\n\\((\\mathbf{x} - \\boldsymbol{\\mu})^{\\mathsf{t}} \\boldsymbol{\\Sigma}^{-1} (\\mathbf{x} - \\boldsymbol{\\mu})\\) segue uma distribuição qui-quadrado com \\(p\\) graus de liberdade.\nO elipsóide sólido de probabilidade de \\(\\mathbf{x}\\) é definido pelo conjunto de pontos que satisfazem:\n\n\n\\[\\mathbf{x} : (\\mathbf{x} - \\boldsymbol{\\mu})^{\\mathsf{T}} \\boldsymbol{\\Sigma}^{-1} (\\mathbf{x} - \\boldsymbol{\\mu}) \\leq \\chi^2_p(\\alpha)\\] onde \\(\\chi^2_p(\\alpha)\\) é o quantil superior de ordem \\(\\alpha\\) da distribuição qui-quadrado com \\(p\\) graus de liberdade. Esse elipsóide delimita a região que contém aproximadamente \\(100 \\times (1 - \\alpha)\\%\\) da probabilidade da distribuição."
+  },
+  {
+    "objectID": "aulas/distr_normal_multi/distr_normal_multi.html#propriedades-da-distribuição-normal-multivariada-8",
+    "href": "aulas/distr_normal_multi/distr_normal_multi.html#propriedades-da-distribuição-normal-multivariada-8",
+    "title": "Distribuição Normal Multivariada",
+    "section": "Propriedades da Distribuição Normal Multivariada",
+    "text": "Propriedades da Distribuição Normal Multivariada\nElipsóide de confiança (95%)"
+  },
+  {
+    "objectID": "aulas/distr_normal_multi/distr_normal_multi.html#elipsóide-de-confiança-95",
+    "href": "aulas/distr_normal_multi/distr_normal_multi.html#elipsóide-de-confiança-95",
+    "title": "Distribuição Normal Multivariada",
+    "section": "Elipsóide de confiança (95%)",
+    "text": "Elipsóide de confiança (95%)"
+  },
+  {
+    "objectID": "aulas/distr_normal_multi/distr_normal_multi.html#elipsóide-de-confiança-95-1",
+    "href": "aulas/distr_normal_multi/distr_normal_multi.html#elipsóide-de-confiança-95-1",
+    "title": "Distribuição Normal Multivariada",
+    "section": "Elipsóide de confiança (95%)",
+    "text": "Elipsóide de confiança (95%)\nInterpretação geométrica\n\nO centro do elipsóide é a média \\(\\boldsymbol{\\mu}\\);\n\nA forma e a orientação são determinadas por \\(\\boldsymbol{\\Sigma}\\);\n\nO eixo maior aponta na direção do autovetor associado ao maior autovalor de \\(\\boldsymbol{\\Sigma}\\);\n\nO raio na direção de cada autovetor é proporcional à raiz quadrada do autovalor correspondente."
+  },
+  {
+    "objectID": "aulas/distr_normal_multi/distr_normal_multi.html#verificando-a-suposição-de-normalidade-multivariada",
+    "href": "aulas/distr_normal_multi/distr_normal_multi.html#verificando-a-suposição-de-normalidade-multivariada",
+    "title": "Distribuição Normal Multivariada",
+    "section": "Verificando a suposição de normalidade multivariada",
+    "text": "Verificando a suposição de normalidade multivariada\n\nUma vez que parte dos métodos de análise multivariada requer a suposição de normalidade (multivariada) dos dados, precisamos de recursos para verificar a validade de tal suposição.\n\n\n\nEmbora, como dito anteriormente, normalidade para as distribuições marginais não implique em normalidade para a conjunta, o contrário é necessariamente válido.\n\n\n\n\nDessa forma, analisar a normalidade univariada (e eventualmente bivariada) para as \\(p\\) variáveis pode fornecer indicativos favoráveis (ou definitivamente contrários) à suposição de normalidade multivariada."
+  },
+  {
+    "objectID": "aulas/distr_normal_multi/distr_normal_multi.html#verificando-a-suposição-de-normalidade-multivariada-1",
+    "href": "aulas/distr_normal_multi/distr_normal_multi.html#verificando-a-suposição-de-normalidade-multivariada-1",
+    "title": "Distribuição Normal Multivariada",
+    "section": "Verificando a suposição de normalidade multivariada",
+    "text": "Verificando a suposição de normalidade multivariada\n\nAlguns recursos para verificar normalidade (caso univariado).\n\n\n\nGráficos:\n\nHistograma com curva de densidade não paramétrica;\nBoxplot;\nGráfico quantil-quantil.\n\n\n\n\n\nTestes:\n\nShapiro Wilks;\nAnderson Darling;\nLilliefors…"
+  },
+  {
+    "objectID": "aulas/distr_normal_multi/distr_normal_multi.html#verificando-a-suposição-de-normalidade-multivariada-2",
+    "href": "aulas/distr_normal_multi/distr_normal_multi.html#verificando-a-suposição-de-normalidade-multivariada-2",
+    "title": "Distribuição Normal Multivariada",
+    "section": "Verificando a suposição de normalidade multivariada",
+    "text": "Verificando a suposição de normalidade multivariada\n\nUm procedimento para verificação de normalidade multivariada pode ser estabelecido a partir da medida de distância de Mahalanobis:\n\n\\[d_i^2 = (\\mathbf{x}_i - \\bar{\\mathbf{x}})^t \\boldsymbol{S}^{-1}(\\mathbf{x}_i - \\bar{\\mathbf{x}}), \\,\\,\\, i = 1,2, \\cdots, n\\]\n\n\nSe a população de fato for normalmente distribuída, um procedimento válido (sobretudo se \\(n\\) e \\(n - p\\) forem grandes), é comparar os quantis das distâncias quadráticas com os quantis de uma distribuição \\(\\chi_p^2\\)."
+  },
+  {
+    "objectID": "aulas/distr_normal_multi/distr_normal_multi.html#verificando-a-suposição-de-normalidade-multivariada-3",
+    "href": "aulas/distr_normal_multi/distr_normal_multi.html#verificando-a-suposição-de-normalidade-multivariada-3",
+    "title": "Distribuição Normal Multivariada",
+    "section": "Verificando a suposição de normalidade multivariada",
+    "text": "Verificando a suposição de normalidade multivariada\n\nA verificação da normalidade multivariada com base nas distâncias quadráticas se dá da seguinte forma:\n\nOrdenar as \\(n\\) distâncias quadráticas de forma crescente, ou seja, \\(d^2_{(1)} \\leqslant d^2_{(2)} \\leqslant \\cdots \\leqslant d^2_{(n)}\\)\nObter os quantis \\((i - 1/2)/n\\) da distribuição \\(\\chi_p^2\\), para \\(i = 1, 2, \\cdots, n\\). Vamos denotá-los por \\(q_{(1)}, q_{(2)}, \\cdots, q_{(n)}\\).\nPlotar a dispersão dos pontos \\((d^2_{(1)}, q_{(1)}), (d^2_{(2)}, q_{(2)}), \\cdots (d^2_{(n)}, q_{(n)})\\).\n\n\n\n\nQuanto mais os pontos estiverem dispersos próximos à reta identidade, mais forte o indicativo de normalidade multivariada."
+  },
+  {
+    "objectID": "aulas/distr_normal_multi/distr_normal_multi.html#verificando-a-suposição-de-normalidade-multivariada-4",
+    "href": "aulas/distr_normal_multi/distr_normal_multi.html#verificando-a-suposição-de-normalidade-multivariada-4",
+    "title": "Distribuição Normal Multivariada",
+    "section": "Verificando a suposição de normalidade multivariada",
+    "text": "Verificando a suposição de normalidade multivariada"
+  },
+  {
+    "objectID": "aulas/distr_normal_multi/distr_normal_multi.html#verificando-a-suposição-de-normalidade-multivariada-5",
+    "href": "aulas/distr_normal_multi/distr_normal_multi.html#verificando-a-suposição-de-normalidade-multivariada-5",
+    "title": "Distribuição Normal Multivariada",
+    "section": "Verificando a suposição de normalidade multivariada",
+    "text": "Verificando a suposição de normalidade multivariada\n\nUm procedimento confirmatório disponível para a checagem da normalidade multivariada é a versão multivariada do teste de Shapiro-Wilks.\n\n\n\nA hipótese nula desse teste é a hipótese de normalidade multivariada, contra a hipótese alternativa de não normalidade.\n\n\n\n\nO teste baseia-se na transformação das variáveis originais num conjunto de variáveis padronizadas e (aproximadamente) independentes, seguido do cálculo e soma das estatísticas do teste univariado de Shapiro-Wilks.\n\n\n\n\nA distribuição da estatística do teste, sob a hipótese nula, não pode ser obtida analiticamente, mas determinada via simulação.\n\n\n\n\nNo R, pacotes \\(\\mathtt{mvShapiroTest}\\), \\(\\mathtt{MVN}\\) e \\(\\mathtt{goft}\\)."
+  },
+  {
+    "objectID": "aulas/distr_normal_multi/distr_normal_multi.html#verificando-a-existência-de-outliers",
+    "href": "aulas/distr_normal_multi/distr_normal_multi.html#verificando-a-existência-de-outliers",
+    "title": "Distribuição Normal Multivariada",
+    "section": "Verificando a existência de outliers",
+    "text": "Verificando a existência de outliers\n\nOutliers são resultados extremos que devem ser identificados e examinados com cautela, verificando possível impacto nos resultados das análises.\n\n\n\nNo contexto univariado, gráficos (histograma, boxplot, gráfico quanti-quantil), além de regras empíricas (como pontos afastados a mais de três desvios padrões da média) são ferramentas auxiliares na identificação de outliers.\n\n\n\n\nJá no contexto multivariado, identificar outliers é uma tarefa mais complicada.\n\n\n\n\nGráficos de dispersão bi e tridimensionais e matrizes de gráficos de dispersão podem ajudar."
+  },
+  {
+    "objectID": "aulas/distr_normal_multi/distr_normal_multi.html#verificando-a-existência-de-outliers-1",
+    "href": "aulas/distr_normal_multi/distr_normal_multi.html#verificando-a-existência-de-outliers-1",
+    "title": "Distribuição Normal Multivariada",
+    "section": "Verificando a existência de outliers",
+    "text": "Verificando a existência de outliers\n\nUma vez mais, o conceito de distância pode ser aplicado aqui como recurso para identificação de outliers.\n\n\n\nNesse caso, calculamos \\(d_i^2 = (\\mathbf{x}_i - \\bar{\\mathbf{x}})^t \\boldsymbol{S}^{-1}(\\mathbf{x}_i - \\bar{\\mathbf{x}})\\), \\(i = 1,2, \\cdots, n\\) e comparamos os valores obtidos com o quantil superior \\(\\alpha\\) da distribuição \\(\\chi^2_p\\).\n\n\n\n\nEm geral consideramos um valor pequeno para \\(\\alpha\\) (como 1%, ou 0,5%), tendo em mente que, mesmo sob normalidade multivariada, valores extremos naturalmente ocorrem."
+  },
+  {
+    "objectID": "aulas/distr_normal_multi/distr_normal_multi.html#distribuição-normal-bivariada-correlação-contínua",
+    "href": "aulas/distr_normal_multi/distr_normal_multi.html#distribuição-normal-bivariada-correlação-contínua",
+    "title": "Distribuição Normal Multivariada",
+    "section": "Distribuição Normal Bivariada — correlação contínua",
+    "text": "Distribuição Normal Bivariada — correlação contínua\n\n \n\n\n\n\n\n\n\nTip\n\n\nÀ medida que (ρ) varia de -1 a 1: - ρ = 0 → formato circular, variáveis independentes.\n- ρ &gt; 0 → elipses inclinadas na diagonal positiva.\n- ρ &lt; 0 → elipses inclinadas na diagonal negativa.\n- ρ → ±1 → a densidade colapsa em uma linha, indicando dependência perfeita."
+  },
+  {
+    "objectID": "aulas/distr_normal_multi/distr_normal_multi.html#distribuição-normal-bivariada",
+    "href": "aulas/distr_normal_multi/distr_normal_multi.html#distribuição-normal-bivariada",
+    "title": "Distribuição Normal Multivariada",
+    "section": "Distribuição Normal Bivariada",
+    "text": "Distribuição Normal Bivariada\n\n\n\n\n\n\nTip\n\n\nÀ medida que \\(\\rho\\) varia de -1 a 1:\n\n\\(\\rho = 0\\) → formato circular, variáveis independentes.\n\n\\(\\rho &gt; 0\\) → elipses inclinadas na diagonal positiva.\n\n\\(\\rho &lt; 0\\) → elipses inclinadas na diagonal negativa.\n\n\\(\\rho\\) → \\(\\pm 1\\) → a densidade colapsa em uma linha, indicando dependência perfeita."
+  },
+  {
+    "objectID": "aulas/distr_normal_multi/distr_normal_multi.html#distribuição-normal-bivariada-1",
+    "href": "aulas/distr_normal_multi/distr_normal_multi.html#distribuição-normal-bivariada-1",
+    "title": "Distribuição Normal Multivariada",
+    "section": "Distribuição Normal Bivariada",
+    "text": "Distribuição Normal Bivariada\n\n\n\n\n\n\nTip\n\n\nÀ medida que (ρ) varia de -1 a 1: - ρ = 0 → formato circular, variáveis independentes.\n- ρ &gt; 0 → elipses inclinadas na diagonal positiva.\n- ρ &lt; 0 → elipses inclinadas na diagonal negativa.\n- ρ → ±1 → a densidade colapsa em uma linha, indicando dependência perfeita."
+  },
+  {
+    "objectID": "aulas/distr_normal_multi/distr_normal_multi.html#distribuição-normal-bivariada-efeito-da-correlação-ρ",
+    "href": "aulas/distr_normal_multi/distr_normal_multi.html#distribuição-normal-bivariada-efeito-da-correlação-ρ",
+    "title": "Distribuição Normal Multivariada",
+    "section": "Distribuição Normal Bivariada — efeito da correlação ρ",
+    "text": "Distribuição Normal Bivariada — efeito da correlação ρ"
+  },
+  {
+    "objectID": "aulas/distr_normal_multi/distr_normal_multi.html#normal-bivariada-curvas-de-nível-ρ-de-1-a-1",
+    "href": "aulas/distr_normal_multi/distr_normal_multi.html#normal-bivariada-curvas-de-nível-ρ-de-1-a-1",
+    "title": "Distribuição Normal Multivariada",
+    "section": "Normal bivariada — curvas de nível (ρ de −1 a 1)",
+    "text": "Normal bivariada — curvas de nível (ρ de −1 a 1)"
+  },
+  {
+    "objectID": "aulas/distr_normal_multi/distr_normal_multi.html#normal-bivariada-contornos-altura-normalizada-use-o-slider",
+    "href": "aulas/distr_normal_multi/distr_normal_multi.html#normal-bivariada-contornos-altura-normalizada-use-o-slider",
+    "title": "Distribuição Normal Multivariada",
+    "section": "Normal bivariada — contornos (altura normalizada; use o slider)",
+    "text": "Normal bivariada — contornos (altura normalizada; use o slider)"
+  },
+  {
+    "objectID": "aulas/distr_normal_multi/distr_normal_multi.html#distribuição-normal-bivariada-efeito-da-correlação-ρ-1",
+    "href": "aulas/distr_normal_multi/distr_normal_multi.html#distribuição-normal-bivariada-efeito-da-correlação-ρ-1",
+    "title": "Distribuição Normal Multivariada",
+    "section": "Distribuição Normal Bivariada — efeito da correlação ρ",
+    "text": "Distribuição Normal Bivariada — efeito da correlação ρ"
+  },
+  {
+    "objectID": "aulas/distr_normal_multi/distr_normal_multi.html#distribuição-normal-multivariada-7",
+    "href": "aulas/distr_normal_multi/distr_normal_multi.html#distribuição-normal-multivariada-7",
+    "title": "Distribuição Normal Multivariada",
+    "section": "Distribuição Normal Multivariada",
+    "text": "Distribuição Normal Multivariada\n\nSe \\(X_1, X_2, \\cdots, X_p\\) forem independentes, então \\(f(\\mathbf{x}) = f(x_1)f(x_2)\\cdots f(x_n)\\), tal que \\(X_i \\sim \\mathcal{N}(\\mu, \\sigma^2)\\).\n\n\n\nContornos da normal multivariada: são elipsoides que compreendem todo \\(\\mathbf{x} \\in \\mathbb{R}^p\\) tal que \\((\\mathbf{x} - \\mathbf{\\mu})^t\\mathbf{\\Sigma}^{-1}(\\mathbf{x} - \\mathbf{\\mu}) = c^2\\).\n\n\n\n\nOs elipsoides (contornos) gerados tem centro em \\(\\mathbf{\\mu}\\) e a direção dada pelos autovetores de \\(\\mathbf{\\Sigma}\\), com eixos \\(\\pm c \\sqrt{\\lambda_i} \\mathbf{e}_i\\).\n\n\n\n\nO elipsoide sólido de \\(\\mathbf{x}\\) satisfazendo:\n\n\\[(\\mathbf{x} - \\mathbf{\\mu})^t\\mathbf{\\Sigma}^{-1}(\\mathbf{x} - \\mathbf{\\mu}) \\leqslant \\chi_p^2(\\alpha)\\]\nonde \\(\\chi_p^2(\\alpha)\\) é o quantil superior \\(\\alpha\\) de uma distribuição \\(\\chi_p^2\\) , delimita \\(1 - \\alpha\\) de probabilidade."
+  },
+  {
+    "objectID": "aulas/distr_normal_multi/distr_normal_multi.html#distribuição-normal-multivariada-8",
+    "href": "aulas/distr_normal_multi/distr_normal_multi.html#distribuição-normal-multivariada-8",
+    "title": "Distribuição Normal Multivariada",
+    "section": "Distribuição Normal Multivariada",
+    "text": "Distribuição Normal Multivariada"
+  },
+  {
+    "objectID": "aulas/distr_normal_multi/distr_normal_multi.html#qq-plot-interativo-verificação-de-normalidade-multivariada",
+    "href": "aulas/distr_normal_multi/distr_normal_multi.html#qq-plot-interativo-verificação-de-normalidade-multivariada",
+    "title": "Distribuição Normal Multivariada",
+    "section": "Q–Q plot interativo — verificação de normalidade multivariada",
+    "text": "Q–Q plot interativo — verificação de normalidade multivariada"
+  },
+  {
+    "objectID": "aulas/distr_normal_multi/distr_normal_multi.html#qq-plot-interativo-verificação-de-normalidade-multivariada-1",
+    "href": "aulas/distr_normal_multi/distr_normal_multi.html#qq-plot-interativo-verificação-de-normalidade-multivariada-1",
+    "title": "Distribuição Normal Multivariada",
+    "section": "Q–Q plot interativo — verificação de normalidade multivariada",
+    "text": "Q–Q plot interativo — verificação de normalidade multivariada"
+  },
+  {
+    "objectID": "aulas/distr_normal_multi/distr_normal_multi.html#verificando-a-suposição-de-normalidade-multivariada-6",
+    "href": "aulas/distr_normal_multi/distr_normal_multi.html#verificando-a-suposição-de-normalidade-multivariada-6",
+    "title": "Distribuição Normal Multivariada",
+    "section": "Verificando a suposição de normalidade multivariada",
+    "text": "Verificando a suposição de normalidade multivariada\n\nCaso a suposição de normalidade não seja atendida, deve-se considerar como alternativas:\n\nUtilizar métodos baseados em outras distribuições de probabilidades, ou que não requerem a suposição de normalidade;\nTransformar os dados para alcançar normalidade (ex: transformação de Box-Cox);\nCategorizar os dados;\nInvestigar a presença de outliers.\n\n\n\n\nNota: Boa parte dos métodos que vamos estudar são robustos a afastamentos moderados da hipótese de normalidade multivariada."
   }
 ]
