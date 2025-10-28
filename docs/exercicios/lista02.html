@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Semana 02 – EST014 - Estatística Multivariada I</title>
+<title>Lista de exercícios 02: Revisão de Álgebra Linear – EST014 - Estatística Multivariada I</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -43,8 +43,6 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/bootstrap/bootstrap-b09848b6287391c45069fed345a57cb2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/bootstrap/bootstrap-dark-e9f3ba5fbee03b112b18b9666ab66a2c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="../site_libs/bootstrap/bootstrap-b09848b6287391c45069fed345a57cb2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
-<link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -73,8 +71,37 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta property="og:title" content="Semana 02 – EST014 - Estatística Multivariada I">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="Lista de exercícios 02: Revisão de Álgebra Linear – EST014 - Estatística Multivariada I">
 <meta property="og:description" content="Homepage da disciplina EST014 - Estatística Multivariada I, 2025/2">
 <meta property="og:site_name" content="EST014 - Estatística Multivariada I">
 </head>
@@ -249,7 +276,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Semana 02</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Lista de exercícios 02: Revisão de Álgebra Linear</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -307,15 +334,8 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#slides" id="toc-slides" class="nav-link active" data-scroll-target="#slides">Slides</a></li>
-  <li><a href="#entrega-lista-de-exercícios-01" id="toc-entrega-lista-de-exercícios-01" class="nav-link" data-scroll-target="#entrega-lista-de-exercícios-01">Entrega lista de exercícios 01</a></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/tiagomartin/est014/edit/main/programacao/semana-2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/tiagomartin/est014/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -323,7 +343,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Semana 02</h1>
+<h1 class="title">Lista de exercícios 02: Revisão de Álgebra Linear</h1>
 </div>
 
 
@@ -340,35 +360,362 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="slides" class="level2">
-<h2 class="anchored" data-anchor-id="slides">Slides</h2>
-<p><i class="fa-solid fa-file-powerpoint fa-lg" aria-label="file-powerpoint"></i> <a href="..\aulas/revisao_alg_linear/rev_alg_linear.html#/title-slide" aria-label="Revisão de Álgebra Linear" title="Revisão de Álgebra Linear">Revisão de Álgebra Matricial</a></p>
-</section>
-<section id="entrega-lista-de-exercícios-01" class="level2">
-<h2 class="anchored" data-anchor-id="entrega-lista-de-exercícios-01">Entrega lista de exercícios 01</h2>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Fique Atento!
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><i class="fa-solid fa-file-lines fa-lg" aria-label="file-lines"></i> <a href="..\exercicios/lista01.html" aria-label="Lista de exercícios 01" title="Lista de exercícios 01">Lista de exercícios 01</a></p>
-<p>Entrega via <a href="https://moodlepresencial.ufop.br/login/index.php">Moodle</a></p>
-<ul>
-<li>Data de entrega:
-<ul>
-<li>31 de outubro de 2025</li>
-</ul></li>
-</ul>
-</div>
-</div>
+<p align="center" style="font-size: 40px">
+<code>Data de entrega: 17 de novembro de 2025</code>
+</p>
+<hr>
+<ol type="1">
+<li>Se <span class="math inline">\(z_i = ay_i\)</span>, para <span class="math inline">\(i = 1 \cdots n\)</span>, mostre que <span class="math inline">\({\overline{z}} =  a {\overline{y}}\)</span>.</li>
+</ol>
+<hr>
+<ol start="2" type="1">
+<li>Se <span class="math inline">\(z_i = ay_i\)</span>, para <span class="math inline">\(i = 1 \cdots n\)</span>, mostre que <span class="math inline">\(s^2_z = a^2s^2\)</span>.</li>
+</ol>
+<hr>
+<ol start="3" type="1">
+<li>A tabela abaixo fornece os dados de três variáveis (g/kg) medidas em 10 locais diferentes no Estado de Minas Gerais. As variáveis são:</li>
+</ol>
+<p><span class="math display">\[
+\begin{aligned}
+X_1 &amp;= \text{cálcio disponível no solo;} \\
+X_2 &amp;= \text{potássio disponível no solo;} \\
+X_3 &amp;= \text{fósforo disponível no solo.}
+\end{aligned}
+\]</span></p>
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;margin:0px auto;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
+</style>
+<table class="tg">
+<thead>
+<tr>
+<th class="tg-c3ow">
+Locais
+</th>
+<th class="tg-c3ow">
+<span class="math inline">\(X_1\)</span>
+</th>
+<th class="tg-c3ow">
+<span class="math inline">\(X_2\)</span>
+</th>
+<th class="tg-c3ow">
+<span class="math inline">\(X_3\)</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tg-c3ow">
+1
+</td>
+<td class="tg-c3ow">
+35
+</td>
+<td class="tg-c3ow">
+12
+</td>
+<td class="tg-c3ow">
+2,4
+</td>
+</tr>
+<tr>
+<td class="tg-c3ow">
+2
+</td>
+<td class="tg-c3ow">
+35
+</td>
+<td class="tg-c3ow">
+13
+</td>
+<td class="tg-c3ow">
+2,1
+</td>
+</tr>
+<tr>
+<td class="tg-c3ow">
+3
+</td>
+<td class="tg-c3ow">
+40
+</td>
+<td class="tg-c3ow">
+14
+</td>
+<td class="tg-c3ow">
+1,9
+</td>
+</tr>
+<tr>
+<td class="tg-c3ow">
+4
+</td>
+<td class="tg-c3ow">
+25
+</td>
+<td class="tg-c3ow">
+11
+</td>
+<td class="tg-c3ow">
+1,8
+</td>
+</tr>
+<tr>
+<td class="tg-c3ow">
+5
+</td>
+<td class="tg-c3ow">
+26
+</td>
+<td class="tg-c3ow">
+15
+</td>
+<td class="tg-c3ow">
+2,3
+</td>
+</tr>
+<tr>
+<td class="tg-c3ow">
+6
+</td>
+<td class="tg-c3ow">
+32
+</td>
+<td class="tg-c3ow">
+11
+</td>
+<td class="tg-c3ow">
+2,5
+</td>
+</tr>
+<tr>
+<td class="tg-c3ow">
+7
+</td>
+<td class="tg-c3ow">
+21
+</td>
+<td class="tg-c3ow">
+10
+</td>
+<td class="tg-c3ow">
+3,0
+</td>
+</tr>
+<tr>
+<td class="tg-c3ow">
+8
+</td>
+<td class="tg-c3ow">
+30
+</td>
+<td class="tg-c3ow">
+5
+</td>
+<td class="tg-c3ow">
+1,0
+</td>
+</tr>
+<tr>
+<td class="tg-c3ow">
+9
+</td>
+<td class="tg-c3ow">
+33
+</td>
+<td class="tg-c3ow">
+15
+</td>
+<td class="tg-c3ow">
+1,1
+</td>
+</tr>
+<tr>
+<td class="tg-c3ow">
+10
+</td>
+<td class="tg-c3ow">
+27
+</td>
+<td class="tg-c3ow">
+16
+</td>
+<td class="tg-c3ow">
+2,6
+</td>
+</tr>
+</tbody>
+</table>
+<ol type="a">
+<li>Encontre o vetor de médias amostrais <span class="math inline">\(\mathbf{\overline{x}}\)</span>.</li>
+<li>Calcule a matriz de covariâncias amostrais <span class="math inline">\(\boldsymbol{S}\)</span>.</li>
+<li>Obtenha a matriz de correlações amostrais <span class="math inline">\(\boldsymbol{R}\)</span>.</li>
+</ol>
+<hr>
+<ol start="4" type="1">
+<li>Usando os dados apresentados na Tabela acima, calcule:</li>
+</ol>
+<ol type="a">
+<li>A variância generalizada amostral.</li>
+<li>A variância total amostral.</li>
+</ol>
+<hr>
+<ol start="5" type="1">
+<li>Usando os dados apresentados na Tabela do exercício 3, defina <span class="math inline">\(Z = 3X_1 - X_2 + 2X_3\)</span> e calcule <span class="math inline">\(\overline{z}\)</span> e <span class="math inline">\(s^2_Z\)</span></li>
+</ol>
+<hr>
+<ol start="6" type="1">
+<li>Usando os dados apresentados na Tabela do exercício 3, defina <span class="math inline">\(W = -2X_1 + 3X_2 + X_3\)</span> e calcule:</li>
+</ol>
+<ol type="a">
+<li><span class="math inline">\(\overline{w}\)</span> e <span class="math inline">\(s^2_W\)</span>.</li>
+<li><span class="math inline">\(\overline{\mathbf{y}}\)</span> e <span class="math inline">\(\boldsymbol{S}_y\)</span> se <span class="math inline">\(\boldsymbol{y} = \left[\begin{array}{cc} Z &amp; W \end{array} \right]\)</span>.</li>
+<li>Encontre a matriz <span class="math inline">\(\boldsymbol{R}_{y}\)</span>.</li>
+</ol>
+<hr>
+<ol start="7" type="1">
+<li>Ainda utilizando os dados da Tabela do exercício 3, defina as seguintes combinações lineares das variáveis:</li>
+</ol>
+<p><span class="math display">\[
+\begin{aligned}
+Z_1 &amp;= X_1 + X_2 + X_3 \\
+Z_2 &amp;= 2X_1 - 3X_2 + 2X_3 \\
+Z_3 &amp;= -X_1 - 2X_2 - 3X_3
+\end{aligned}
+\]</span></p>
+<ol type="a">
+<li>Encontre <span class="math inline">\(\overline{\mathbf{z}}\)</span> e <span class="math inline">\(\boldsymbol{S_z}\)</span>.</li>
+<li>Através de <span class="math inline">\(\boldsymbol{S_z}\)</span>, encontre <span class="math inline">\(\boldsymbol{R_z}\)</span>.</li>
+</ol>
+<hr>
+<ol start="8" type="1">
+<li>Considere as amostras com 8 observações e 3 variáveis apresentadas a seguir:</li>
+</ol>
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;margin:0px auto;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
+</style>
+<table class="tg">
+<thead>
+<tr>
+<th class="tg-c3ow">
+<span class="math inline">\(X_1\)</span>
+</th>
+<th class="tg-c3ow">
+3
+</th>
+<th class="tg-c3ow">
+5
+</th>
+<th class="tg-c3ow">
+6
+</th>
+<th class="tg-c3ow">
+4
+</th>
+<th class="tg-c3ow">
+8
+</th>
+<th class="tg-c3ow">
+9
+</th>
+<th class="tg-c3ow">
+6
+</th>
+<th class="tg-c3ow">
+7
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tg-c3ow">
+<span class="math inline">\(X_2\)</span>
+</td>
+<td class="tg-c3ow">
+6
+</td>
+<td class="tg-c3ow">
+11
+</td>
+<td class="tg-c3ow">
+11
+</td>
+<td class="tg-c3ow">
+9
+</td>
+<td class="tg-c3ow">
+15
+</td>
+<td class="tg-c3ow">
+16
+</td>
+<td class="tg-c3ow">
+10
+</td>
+<td class="tg-c3ow">
+12
+</td>
+</tr>
+<tr>
+<td class="tg-c3ow">
+<span class="math inline">\(X_3\)</span>
+</td>
+<td class="tg-c3ow">
+14
+</td>
+<td class="tg-c3ow">
+9
+</td>
+<td class="tg-c3ow">
+9
+</td>
+<td class="tg-c3ow">
+13
+</td>
+<td class="tg-c3ow">
+2
+</td>
+<td class="tg-c3ow">
+2
+</td>
+<td class="tg-c3ow">
+9
+</td>
+<td class="tg-c3ow">
+5
+</td>
+</tr>
+</tbody>
+</table>
+<ol type="a">
+<li>Calcule <span class="math inline">\(\overline{\mathbf{x}}, \boldsymbol{S}, \boldsymbol{R}\)</span>.</li>
+<li>Calcule as distâncias euclidiana, euclidiana padronizada e Mahalanobis de um ponto <span class="math inline">\(P = (X_1, X_2, X_3) = (5, 12, 8)\)</span> em relação ao a <span class="math inline">\(\overline{\mathbf{x}}\)</span>.</li>
+</ol>
+<hr>
+<ol start="9" type="1">
+<li>Sejam dois vetores aleatórios <span class="math inline">\({\mathbf{x}} = [2 \hspace{0.2cm} 3]^t\)</span> e <span class="math inline">\({\mathbf{y}} = [2 \hspace{0.2cm} 1]^t\)</span> e considere a matriz de covariâncias amostral igual a <span class="math inline">\(\boldsymbol{S} = \left[ \begin{array}{ll} 10 &amp; 6 \\6 &amp; 8 \end{array} \right]\)</span>. Determine:</li>
+</ol>
+<ol type="a">
+<li>A distância euclidiana entre os dois vetores.</li>
+<li>A distância generalizada de Karl Pearson.</li>
+<li>A distância generalizada de Mahalanobis.</li>
+</ol>
+<hr>
+<ol start="10" type="1">
+<li>Obtenha as variâncias generalizada e total da matriz de covariâncias amostral apresentada a seguir. Determine a matriz de correlações e as variâncias generalizada e total correspondentes.</li>
+</ol>
+<p><span class="math display">\[\boldsymbol{S} = \left[ \begin{array}{ll} 32 &amp; 12 \\ 12 &amp; 10 \end{array} \right]\]</span></p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -791,7 +1138,7 @@ Fique Atento!
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/tiagomartin/est014/edit/main/programacao/semana-2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/tiagomartin/est014/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.com/tiagomartin/est014/edit/main/exercicios/lista02.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/tiagomartin/est014/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Página construída usando <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

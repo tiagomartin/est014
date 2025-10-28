@@ -1,0 +1,221 @@
+---
+title: "Lista de exercícios 02: Revisão de Álgebra Linear"
+---
+
+<p align="center" style="font-size: 40px"> 
+`Data de entrega: 17 de novembro de 2025`
+</p>
+
+
+---
+
+1)  Se $z_i = ay_i$, para $i = 1 \cdots n$, mostre que ${\overline{z}} =  a {\overline{y}}$.
+
+---
+
+2)  Se $z_i = ay_i$, para $i = 1 \cdots n$, mostre que $s^2_z = a^2s^2$.
+
+---
+
+3) A tabela abaixo fornece os dados de três variáveis (g/kg) medidas em 10 locais diferentes no Estado de Minas Gerais. As variáveis são:
+
+$$
+\begin{aligned}
+X_1 &= \text{cálcio disponível no solo;} \\
+X_2 &= \text{potássio disponível no solo;} \\
+X_3 &= \text{fósforo disponível no solo.}
+\end{aligned}
+$$
+
+
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;margin:0px auto;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
+</style>
+<table class="tg"><thead>
+  <tr>
+    <th class="tg-c3ow">Locais</th>
+    <th class="tg-c3ow">$X_1$</th>
+    <th class="tg-c3ow">$X_2$</th>
+    <th class="tg-c3ow">$X_3$</th>
+  </tr></thead>
+<tbody>
+  <tr>
+    <td class="tg-c3ow">1</td>
+    <td class="tg-c3ow">35</td>
+    <td class="tg-c3ow">12</td>
+    <td class="tg-c3ow">2,4</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">2</td>
+    <td class="tg-c3ow">35</td>
+    <td class="tg-c3ow">13</td>
+    <td class="tg-c3ow">2,1</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">3</td>
+    <td class="tg-c3ow">40</td>
+    <td class="tg-c3ow">14</td>
+    <td class="tg-c3ow">1,9</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">4</td>
+    <td class="tg-c3ow">25</td>
+    <td class="tg-c3ow">11</td>
+    <td class="tg-c3ow">1,8</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">5</td>
+    <td class="tg-c3ow">26</td>
+    <td class="tg-c3ow">15</td>
+    <td class="tg-c3ow">2,3</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">6</td>
+    <td class="tg-c3ow">32</td>
+    <td class="tg-c3ow">11</td>
+    <td class="tg-c3ow">2,5</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">7</td>
+    <td class="tg-c3ow">21</td>
+    <td class="tg-c3ow">10</td>
+    <td class="tg-c3ow">3,0</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">8</td>
+    <td class="tg-c3ow">30</td>
+    <td class="tg-c3ow">5</td>
+    <td class="tg-c3ow">1,0</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">9</td>
+    <td class="tg-c3ow">33</td>
+    <td class="tg-c3ow">15</td>
+    <td class="tg-c3ow">1,1</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">10</td>
+    <td class="tg-c3ow">27</td>
+    <td class="tg-c3ow">16</td>
+    <td class="tg-c3ow">2,6</td>
+  </tr>
+</tbody></table>
+
+
+a) Encontre o vetor de médias amostrais $\mathbf{\overline{x}}$.
+b) Calcule a matriz de covariâncias amostrais $\boldsymbol{S}$.
+c) Obtenha a matriz de correlações amostrais $\boldsymbol{R}$.
+
+---
+
+4) Usando os dados apresentados na Tabela acima, calcule:
+
+a) A variância generalizada amostral.
+b) A variância total amostral.
+
+
+---
+
+5) Usando os dados apresentados na Tabela do exercício 3, defina $Z = 3X_1 - X_2 + 2X_3$ e calcule $\overline{z}$ e $s^2_Z$
+
+---
+
+6) Usando os dados apresentados na Tabela do exercício 3, defina $W = -2X_1 + 3X_2 + X_3$ e calcule:
+
+a) $\overline{w}$ e $s^2_W$.
+b) $\overline{\mathbf{y}}$ e $\boldsymbol{S}_y$ se $\boldsymbol{y} = \left[\begin{array}{cc} Z & W \end{array} \right]$.
+c) Encontre a matriz $\boldsymbol{R}_{y}$.
+
+---
+
+7) Ainda utilizando os dados da Tabela do exercício 3, defina as seguintes combinações lineares das variáveis:
+
+
+
+$$
+\begin{aligned}
+Z_1 &= X_1 + X_2 + X_3 \\
+Z_2 &= 2X_1 - 3X_2 + 2X_3 \\
+Z_3 &= -X_1 - 2X_2 - 3X_3
+\end{aligned}
+$$
+
+a) Encontre $\overline{\mathbf{z}}$ e $\boldsymbol{S_z}$.
+b) Através de $\boldsymbol{S_z}$, encontre $\boldsymbol{R_z}$.
+
+
+---
+
+
+8) Considere as amostras com 8 observações e 3 variáveis apresentadas a seguir:
+
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;margin:0px auto;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
+</style>
+<table class="tg"><thead>
+  <tr>
+    <th class="tg-c3ow">$X_1$</th>
+    <th class="tg-c3ow">3</th>
+    <th class="tg-c3ow">5</th>
+    <th class="tg-c3ow">6</th>
+    <th class="tg-c3ow">4</th>
+    <th class="tg-c3ow">8</th>
+    <th class="tg-c3ow">9</th>
+    <th class="tg-c3ow">6</th>
+    <th class="tg-c3ow">7</th>
+  </tr></thead>
+<tbody>
+  <tr>
+    <td class="tg-c3ow">$X_2$</td>
+    <td class="tg-c3ow">6</td>
+    <td class="tg-c3ow">11</td>
+    <td class="tg-c3ow">11</td>
+    <td class="tg-c3ow">9</td>
+    <td class="tg-c3ow">15</td>
+    <td class="tg-c3ow">16</td>
+    <td class="tg-c3ow">10</td>
+    <td class="tg-c3ow">12</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">$X_3$</td>
+    <td class="tg-c3ow">14</td>
+    <td class="tg-c3ow">9</td>
+    <td class="tg-c3ow">9</td>
+    <td class="tg-c3ow">13</td>
+    <td class="tg-c3ow">2</td>
+    <td class="tg-c3ow">2</td>
+    <td class="tg-c3ow">9</td>
+    <td class="tg-c3ow">5</td>
+  </tr>
+</tbody>
+</table>
+
+
+a) Calcule $\overline{\mathbf{x}}, \boldsymbol{S}, \boldsymbol{R}$.
+b) Calcule as distâncias euclidiana, euclidiana padronizada e Mahalanobis de um ponto $P = (X_1, X_2, X_3) = (5, 12, 8)$ em relação ao a $\overline{\mathbf{x}}$.
+
+
+---
+
+9) Sejam dois vetores aleatórios ${\mathbf{x}} = [2 \hspace{0.2cm} 3]^t$ e  ${\mathbf{y}} = [2 \hspace{0.2cm} 1]^t$ e considere a matriz de covariâncias amostral igual a $\boldsymbol{S} = \left[ \begin{array}{ll} 10 & 6 \\6 & 8 \end{array} \right]$. Determine:
+
+
+a) A distância euclidiana entre os dois vetores.
+b) A distância generalizada de Karl Pearson.
+c) A distância generalizada de Mahalanobis.
+
+---
+
+10) Obtenha as variâncias generalizada e total da matriz de covariâncias amostral apresentada a seguir. Determine a matriz de correlações e as variâncias generalizada e total correspondentes. 
+
+$$\boldsymbol{S} = \left[ \begin{array}{ll} 32 & 12 \\ 12 & 10 \end{array} \right]$$

@@ -3,7 +3,7 @@ title: "Lista de exercícios 01: Revisão de Álgebra Linear"
 ---
 
 <p align="center" style="font-size: 40px"> 
-`Data de entrega: 27 de outubro de 2025`
+`Data de entrega: 31 de outubro de 2025`
 </p>
 
 

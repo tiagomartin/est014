@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>http://professortp.com.br/est014/programacao/semana-2.html</loc>
-    <lastmod>2025-10-16T19:55:55.708Z</lastmod>
+    <lastmod>2025-10-28T14:30:58.272Z</lastmod>
   </url>
   <url>
     <loc>http://professortp.com.br/est014/plano.html</loc>
@@ -10,11 +10,11 @@
   </url>
   <url>
     <loc>http://professortp.com.br/est014/exercicios.html</loc>
-    <lastmod>2025-10-16T19:53:53.467Z</lastmod>
+    <lastmod>2025-10-28T13:52:28.758Z</lastmod>
   </url>
   <url>
     <loc>http://professortp.com.br/est014/cronograma.html</loc>
-    <lastmod>2025-10-23T18:52:13.254Z</lastmod>
+    <lastmod>2025-10-28T14:28:23.433Z</lastmod>
   </url>
   <url>
     <loc>http://professortp.com.br/est014/aulas/revisao_alg_linear/rev_alg_linear.html</loc>
@@ -42,7 +42,7 @@
   </url>
   <url>
     <loc>http://professortp.com.br/est014/exercicios/lista01.html</loc>
-    <lastmod>2025-10-16T19:48:10.235Z</lastmod>
+    <lastmod>2025-10-28T12:59:26.116Z</lastmod>
   </url>
   <url>
     <loc>http://professortp.com.br/est014/index.html</loc>
@@ -59,5 +59,13 @@
   <url>
     <loc>http://professortp.com.br/est014/aulas/distr_normal_multi/distr_normal_multi.html</loc>
     <lastmod>2025-10-26T20:10:13.741Z</lastmod>
+  </url>
+  <url>
+    <loc>http://professortp.com.br/est014/exercicios/lista02.html</loc>
+    <lastmod>2025-10-28T13:51:00.822Z</lastmod>
+  </url>
+  <url>
+    <loc>http://professortp.com.br/est014/programacao/semana-4.html</loc>
+    <lastmod>2025-10-28T14:36:39.520Z</lastmod>
   </url>
 </urlset>
