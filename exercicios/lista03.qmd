@@ -1,0 +1,95 @@
+---
+title: "Lista de exercícios 03: Distribuição Normal Multivariada"
+---
+
+<p align="center" style="font-size: 40px"> 
+`Data de entrega: 24 de novembro de 2025`
+</p>
+
+
+---
+
+1) Suponha que $\mathbf{x} \sim N_3(\boldsymbol{\mu}, \boldsymbol{\Sigma})$, onde
+
+$$
+\boldsymbol{\mu} = \left[ \begin{array}{l} 3 \\ 1 \\ 4 \end{array} \right], 
+\boldsymbol{\Sigma} = \left[ \begin{array}{rrr} 6 & 1 & -2\\ 1 & 13 & 4 \\ -2 & 4 & 4 
+\end{array} \right]
+$$
+
+a) Encontre a distribuição de $z = 2x_1 - x_2 + 3x_3$
+b) Encontre a distribuição conjunta de $z_1 = x_1 + x_2 + x_3$ e $z_2 = x_1 - x_2 + 2x_3$
+c) Encontre a distribuição marginal de $x_2$
+d) Encontre a distribuição de $[x_1 \hspace{0.2cm} x_3]^t$
+e) Encontre a distribuição conjunta de $x_1$, $x_3$ e $3(x_1 + x_2)$
+
+---
+
+2) Considere uma população normal bivariada com $\mu_1 = 0$, $\mu_2 = 2$, $\sigma_{11} = 2$, $\sigma_{22} = 1$ e $\rho_{12} = 0,5$.
+
+
+a) Escreva a função densidade normal bivariada correspondente.
+b) Escreva a distância generalizada quadrática de Mahalanobis $(\mathbf{x} - \boldsymbol{\mu})^t \boldsymbol{\Sigma}^{-1}(\mathbf{x} - \boldsymbol{\mu})$ em função de $x_1$ e $x_2$.
+
+
+---
+
+3) Suponha que $\mathbf{x} \sim N_3(\boldsymbol{\mu}, \boldsymbol{\Sigma})$, onde
+
+$$
+\boldsymbol{\mu} = \left[ \begin{array}{r} 2 \\ -3 \\ 1 \end{array} \right], 
+\boldsymbol{\Sigma} = \left[ \begin{array}{rrr} 1 & 1 & 1\\ 1 & 3 & 2 \\ 1 & 2 & 2 
+\end{array} \right]
+$$
+
+a) Encontre a distribuição de $z = 3x_1 - 2x_2 + x_3$
+b) Encontre a distribuição de $w = 2x_1$
+c) Encontre a distribuição conjunta de $\mathbf{y} = \left[ \begin{array}{r} z \\ w \end{array} \right]$
+
+
+---
+
+4) Suponha que $\mathbf{x} \sim N_3(\boldsymbol{\mu}, \boldsymbol{\Sigma})$, com 
+
+
+$$
+\boldsymbol{\mu} = \left[ \begin{array}{r} -3 \\ 1 \\ 4 \end{array} \right], 
+\boldsymbol{\Sigma} = \left[ \begin{array}{rrr} 1 & -2 & 0 \\ -2 & 5 & 0  \\ 0 & 0 & 2  
+\end{array} \right]
+$$
+
+Verifique se as seguintes variáveis são independentes. JUSTIFIQUE!
+
+
+a) $X_1$ e $X_2$
+b) $X_2$ e $X_3$
+c) $(X_1, X_2)$ e $X_3$
+d) $\displaystyle \frac{X_1 + X_2}{2}$ e $X_3$
+e) $X_2$ e $\displaystyle X_2 - \frac{5}{2} X_1 - X_3$
+
+---
+
+5) Seja $\mathbf{x} \sim N_3(\boldsymbol{\mu}, \boldsymbol{\Sigma})$, com 
+
+
+$$
+\boldsymbol{\mu} = \left[ \begin{array}{r} 3 \\ 5 \\ 2 \end{array} \right], 
+\boldsymbol{\Sigma} = \left[ \begin{array}{rrr} 25 & -2 & 4 \\ -2 & 4 &1  \\ 4& 1 &9  
+\end{array} \right]
+$$
+
+Determine a distribuição condicional de $X_1$ dado $\mathbf{x_2} = [4 \hspace{0.2cm} 4]^t$.
+
+
+---
+
+6) Seja o vetor $\mathbf{x}$ com distribuição normal $N_3(\boldsymbol{\mu}, \boldsymbol{\Sigma})$, sendo   
+
+$$
+\boldsymbol{\mu} = \left[ \begin{array}{r} 0 \\ 0 \\ 0 \end{array} \right], 
+\boldsymbol{\Sigma} = \left[ \begin{array}{rrr} 5 & 0 & 0 \\ 0 & 7 & -1  \\ 0 & -1 & 2  
+\end{array} \right]
+$$
+
+Determine as distribuições marginal de $X_1$ e condicional de $X_1$ dado $\mathbf{x_2} = [X_2 \hspace{0.2cm} X_3]^t$. O que podemos dizer a respeito dessas distribuições? Explique a razão desse fato.
+ 

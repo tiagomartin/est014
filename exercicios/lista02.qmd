@@ -1,5 +1,5 @@
 ---
-title: "Lista de exercícios 02: Revisão de Álgebra Linear"
+title: "Lista de exercícios 02: Introdução à Estatística Multivariada"
 ---
 
 <p align="center" style="font-size: 40px"> 
