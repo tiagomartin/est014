@@ -267,6 +267,9 @@ $r$ primeiras componentes resumam, por exemplo, 80\% do comportamento geral das 
 
 **Geometricamente:** são as coordenadas dos pontos amostrais em um sistema de eixos obtido pela rotação do sistema de eixos original, na direção de variabilidade máxima.
 
+<p style="text-align: center;"> 
+[<span style='font-size:100px;'>&#128270;</span>](https://setosa.io/ev/principal-component-analysis)
+</p>
 
 ## Componentes Principais: alguns comentários
 
@@ -745,7 +748,7 @@ $$\boldsymbol{S} \approx \displaystyle \sum_{j=1}^r \hat{\lambda}_j \hat{\boldsy
     - Na prática, o uso das componentes relevantes se dá através dos escores
 
 
-## Primeiro Exemplo: (Mingoti,2007)
+## Exemplo: (Mingoti,2007)
 
 <p style="text-align: center; color: black; font-size: 34px;"> 
 12 empresas, 3 variáveis: ganho bruto ($X_1$), ganho líquido ($X_2$) e patrimônio acumulado ($X_3$)
@@ -841,3 +844,653 @@ $$\boldsymbol{S} \approx \displaystyle \sum_{j=1}^r \hat{\lambda}_j \hat{\boldsy
     <td class="tg-c3ow">8972</td>
   </tr>
 </tbody></table>
+
+
+
+## Primeiro Exemplo: (Mingoti,2007)
+
+```{r}
+load <- function(pkg){
+  new.pkg <- pkg[!(pkg %in% installed.packages()[, "Package"])]
+  if (length(new.pkg))
+    install.packages(new.pkg, dependencies = TRUE)
+  sapply(pkg, require, character.only = TRUE)
+} 
+
+## Pacotes utilizados nessa análise
+
+packages = c("tidyverse", "factoextra", "psych", "gridExtra")
+load(packages)
+```
+
+
+
+```{r}
+dados <- read.table("https://raw.githubusercontent.com/tiagomartin/est014/refs/heads/master/dados/empresas.txt", row.names = 1, header = TRUE) 
+dados %>% 
+  str()
+```
+
+
+## Primeiro Exemplo: (Mingoti,2007)
+
+
+
+```{r}
+x_barra = dados %>% 
+  colMeans()
+
+x_barra
+
+S = dados %>% 
+  var()
+
+S
+```
+
+
+## Primeiro Exemplo: (Mingoti,2007)
+
+
+
+```{r}
+dados %>% 
+  boxplot() 
+```
+
+
+## Primeiro Exemplo: (Mingoti,2007)
+
+```{r}
+## Analise de Componentes Principais utilizando a matriz de covariancias (Nao aconselhavel, neste caso)
+acp_S = prcomp(dados)
+
+## Proporcao da variacao explicada
+summary(acp_S)
+
+## Loadings (cargas)
+acp_S$rotation
+
+## Opcional: trocar sinal da primeira componente e escores
+acp_S$rotation = -acp_S$rotation
+acp_S$x = -acp_S$x
+
+## Loadings (cargas)
+acp_S$rotation
+```
+
+
+## Primeiro Exemplo: (Mingoti,2007)
+
+$$Y_1 = 0,425 \times \text{GB} + 0,028 \times \text{GL} + 0,905 \times \text{PA} \Longrightarrow
+94,18\% \text{ da informação total de } \mathbf{x}$$
+
+
+. . .
+
+
+<p style="text-align: center; color: red; font-size: 46px;"> 
+**Qual a variável mais importante para $Y_1$?**
+</p>
+
+
+::: {.fragment .fade-in}
+<p style="text-align: center; color: black; font-size: 46px;"> 
+**Patrimônio**
+</p>
+:::
+
+::: {.fragment .fade-up}
+
+:::: {.columns}
+
+::: {.column width="60%"}
+![](/images/CP/empresas_bp.png){fig-align="center"}
+:::
+
+::: {.column width="40%"}
+<p style="text-align: center; color: red; font-size: 100px;"> 
+<span style='font-size:150px;'>&#129300;</span>**Será?**
+</p>
+:::
+::::
+:::
+
+
+
+## Componentes Principais: variáveis padronizadas
+
+- Padronização do vetor aleatório $\mathbf{x}$: 
+
+$$\boldsymbol{z} = \boldsymbol{D}^{-1}(\mathbf{x} - \boldsymbol{\mu})$$
+
+. . .
+
+
+- $\boldsymbol{D}$: matriz diagonal de desvios-padrão 
+
+
+
+. . .
+
+
+- Variável padronizada: $Z_i = \dfrac{X_i - \mu_i}{\sqrt{\sigma_{ii}}}$
+
+
+. . .
+
+
+
+- Matriz de covariâncias de $\boldsymbol{z}$
+
+$$\text{Cov}(\boldsymbol{z}) = \boldsymbol{D}^{-1}\boldsymbol{\Sigma}  \boldsymbol{D}^{-1} = \boldsymbol{P} = \text{Cor}(\mathbf{x})$$
+
+. . .
+
+
+- Componentes principais de $\boldsymbol{z}$: obtidas dos autovalores e autovetores de $\boldsymbol{P}$
+
+
+## Componentes Principais: variáveis padronizadas
+
+
+- A $j$-ésima componente principal da matriz $\boldsymbol{P}$: 
+
+$$Y_j = \boldsymbol{e}_j^t \boldsymbol{z} =  \boldsymbol{e}_j^t \boldsymbol{D}^{-1}(\mathbf{x} - \boldsymbol{\mu}) = {e}_{j1}Z_1 + {e}_{j2}Z_2 + \cdots + {e}_{jp}Z_p$$
+
+sendo $\boldsymbol{e}_j$, o $j$-ésimo autovetor da matriz $\boldsymbol{P}$, $j = 1, \cdots p$.
+
+
+. . .
+
+
+- Variância total de $\boldsymbol{P}$ 
+
+$$\sum \limits_{j=1}^p \text{Var}(Y_j) = \sum \limits_{j=1}^p \text{Var}(Z_j) = p$$
+
+## Componentes Principais: variáveis padronizadas
+
+
+- Proporção da variância populacional padronizada devido à $j$-ésima componente
+
+$$\dfrac{\text{Var}({Y}_j)}{\text{Variância total de } \boldsymbol{z}} = \dfrac{{\lambda}_j}{\text{tr} (\boldsymbol{P})} =  \dfrac{{\lambda}_j}{p}$$
+
+
+. . .
+
+
+- Correlação entre componente $Y_j$ e a variável padronizada $Z_k$: 
+
+$$\rho_{Y_j,Z_k} = e_{jk} \sqrt{\lambda_j}$$
+
+
+
+## Observações
+
+
+- As componentes principais **não são invariantes à mudanças de escala**. Os resultados são **diferentes** quando se faz a análise utilizando a matriz de covariâncias e a matriz de correlações.
+
+
+. . .
+
+
+- **As componentes obtidas a partir da matriz de covariâncias são influenciadas pelas variáveis de maior variância**. A **matriz de correlações**, em geral, é a melhor opção quando as **variâncias são muito heterogêneas**. 
+
+
+. . .
+
+
+- Um valor **pequeno incomum** para o **último autovalor** da matriz de covariâncias (ou correlação) amostral pode indicar uma **dependência linear não detectada** no conjunto de dados.
+
+
+. . .
+
+- Valores grandes de autovalores (e correspondentes autovetores) são importantes em uma análise.
+
+
+
+
+## Quantas componentes devem ser retidas?
+
+
+- **Critério de Kaiser:** Trata-se de uma regra prática (heurística) para decidir quantas componentes principais manter em uma PCA extraída através da matriz de correlações. Ele diz:
+
+> Retenha apenas as componentes associadas a um autovalor maior que 1.
+
+- $\lambda = 1$ → a componente explica tanta variabilidade quanto 1 variável original
+- $\lambda > 1$ → explica mais variabilidade do que qualquer variável isolada
+- $\lambda < 1$ → explica menos variabilidade do que uma única variável → então não “vale a pena”
+
+
+
+## Quantas componentes devem ser retidas?
+
+
+- **Média dos autovalores:** É um critério alternativo quando a PCA é feita sobre **matriz de covariâncias**.
+
+> Se PCA foi feita na matriz de covariâncias, retenha PCs com autovalores maiores que a média dos autovalores.
+
+
+ Então, se uma componente tem autovalor:
+
+$$\lambda_k > \dfrac{\sum \limits_{j=1}^p \lambda_j}{p}$$
+
+ela retém mais informação do que a variância média por dimensão do espaço original.
+
+
+
+
+## Quantas componentes devem ser retidas?
+
+
+- **Screeplot:** É um gráfico que coloca, no eixo X, o número da componente principal e, no eixo Y, o autovalor (ou a variância explicada).
+
+
+> O ponto onde a curva deixa de cair abruptamente e começa a “horizontalizar” é onde você para de manter componentes.
+
+
+
+- A ideia é identificar o “cotovelo” da curva.
+    - antes do cotovelo: cada componente adiciona bastante variância
+    - depois do cotovelo: os autovalores ficam “quase uma linha reta” → só ruído
+    
+    
+
+## Quantas componentes devem ser retidas?
+
+
+```{r,  echo=FALSE}
+pca <- prcomp(scale(iris[,1:4]))
+fviz_eig(pca, geom="line",  choice = c("eigenvalue"), addlabels = TRUE, main = "")
+```
+
+
+## Quantas componentes devem ser retidas?
+
+
+- Reter o número de componentes principais que acumulem pelo menos certa porcentagem da variabilidade total dos dados, digamos 70\%.
+
+
+```{r, echo=FALSE}
+fviz_eig(pca, geom="bar",  choice = c("variance"), addlabels = TRUE, main = "")
+```
+
+
+
+## Quantas componentes devem ser retidas?
+
+- **Parallel Analysis (Horn, 1965):** É o método moderno mais recomendado para decidir quantos componentes reter em PCA.
+
+> Compare seus autovalores reais com autovalores esperados ao acaso.
+
+
+## Quantas componentes devem ser retidas?
+
+- O procedimento envolve: 
+    - Calcular os autovalores dos dados originais.
+    - Gerar dados aleatórios com a mesma estrutura dos dados originais.
+    - Calcular autovalores para os dados aleatórios, repetindo o processo muitas vezes para obter uma distribuição amostral.
+    - Comparar os autovalores reais com os autovalores médios ou percentis (como o 95º) dos dados simulados.
+    - Reter os componentes cujos autovalores reais são maiores do que os autovalores aleatórios correspondentes. 
+
+
+## Quantas componentes devem ser retidas?
+
+
+```{r, echo=FALSE}
+pca <- principal(iris[,1:4], nfactors = 4, rotate = "none")
+fa.parallel(iris[,1:4], fa="pc", n.iter=1000)
+```
+
+
+## Quantas componentes devem ser retidas?
+
+
+- **Interpretação desse gráfico**
+    - linha azul = autovalores reais dos seus dados
+    - linhas vermelha / pontilhada = autovalores esperados pelo acaso (parallel analysis)
+
+. . .
+
+
+- **Regra:** retenha apenas os componentes cuja linha azul está acima da linha vermelha.
+    - Parallel Analysis (Horn) está dizendo: retenha 1 componente principal.
+
+
+
+## Interpretação das componentes principais
+
+- Em geral, quando existe uma **alta correlação positiva** entre todas as variáveis, os **sinais associados às variáveis coincidem** na primeira componente principal.
+
+
+. . .
+
+
+- Neste caso, a primeira componente principal pode ser interpretada como um **índice global**, calculado como uma média ponderada de todas as variáveis.
+
+
+. . .
+
+- O restante das componentes, normalmente possuem **pesos negativos e positivos** e são interpretadas como um **contraste entre grupos de variáveis**.
+
+
+## Voltando ao Exemplo
+
+
+<p style="text-align: center; color: black; font-size: 34px;"> 
+12 empresas, 3 variáveis: ganho bruto ($X_1$), ganho líquido ($X_2$) e patrimônio acumulado ($X_3$)
+</p>
+
+
+<style type="text/css">
+.tg  {border:none;border-collapse:collapse;border-color:#ccc;border-spacing:0;margin:0px auto;}
+.tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:0px;color:#333;
+  font-family:Arial, sans-serif;font-size:30px;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:0px;color:#333;
+  font-family:Arial, sans-serif;font-size:30px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-c3ow{border-color:white;text-align:center;vertical-align:top}
+</style>
+<table class="tg"><thead>
+  <tr>
+    <th class="tg-c3ow">Empresa</th>
+    <th class="tg-c3ow">Ganho bruto $(X_1)$</th>
+    <th class="tg-c3ow">Ganho líquido $(X_2)$</th>
+    <th class="tg-c3ow">Patrimônio $(X_3)$</th>
+  </tr></thead>
+<tbody>
+  <tr>
+    <td class="tg-c3ow">E1</td>
+    <td class="tg-c3ow">9893</td>
+    <td class="tg-c3ow">564</td>
+    <td class="tg-c3ow">17689</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">E2</td>
+    <td class="tg-c3ow">8776</td>
+    <td class="tg-c3ow">389</td>
+    <td class="tg-c3ow">17359</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">E3</td>
+    <td class="tg-c3ow">13572</td>
+    <td class="tg-c3ow">1103</td>
+    <td class="tg-c3ow">18597</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">E4</td>
+    <td class="tg-c3ow">6455</td>
+    <td class="tg-c3ow">743</td>
+    <td class="tg-c3ow">8745</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">E5</td>
+    <td class="tg-c3ow">5129</td>
+    <td class="tg-c3ow">203</td>
+    <td class="tg-c3ow">14397</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">E6</td>
+    <td class="tg-c3ow">5432</td>
+    <td class="tg-c3ow">215</td>
+    <td class="tg-c3ow">3467</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">E7</td>
+    <td class="tg-c3ow">3807</td>
+    <td class="tg-c3ow">385</td>
+    <td class="tg-c3ow">4679</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">E8</td>
+    <td class="tg-c3ow">3423</td>
+    <td class="tg-c3ow">187</td>
+    <td class="tg-c3ow">6754</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">E9</td>
+    <td class="tg-c3ow">3708</td>
+    <td class="tg-c3ow">127</td>
+    <td class="tg-c3ow">2275</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">E10</td>
+    <td class="tg-c3ow">3294</td>
+    <td class="tg-c3ow">297</td>
+    <td class="tg-c3ow">6754</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">E11</td>
+    <td class="tg-c3ow">5433</td>
+    <td class="tg-c3ow">432</td>
+    <td class="tg-c3ow">5589</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">E12</td>
+    <td class="tg-c3ow">6287</td>
+    <td class="tg-c3ow">451</td>
+    <td class="tg-c3ow">8972</td>
+  </tr>
+</tbody></table>
+
+
+
+## Voltando ao Exemplo
+
+![](/images/CP/empresas_bp.png){fig-align="center"}
+
+
+## Voltando ao Exemplo
+
+
+```{r}
+dados %>% 
+  scale(center=TRUE, scale=TRUE) 
+```
+
+
+
+
+## Voltando ao Exemplo
+
+```{r}
+dados %>% 
+  scale(center=TRUE, scale=TRUE) %>% 
+  boxplot()
+```
+
+
+
+## Voltando ao Exemplo
+
+```{r}
+## Analise de Componentes Principais utilizando a matriz de correlacoes (Mais aconselhavel, neste caso)
+acp_R = prcomp(dados, scale. = TRUE)
+
+## Proporcao da variacao explicada
+summary(acp_R)
+
+## Loadings (cargas)
+acp_R$rotation
+
+## Opcional: trocar sinal da primeira componente e escores
+acp_R$rotation = -acp_R$rotation
+acp_R$x = -acp_R$x
+
+## Loadings (cargas)
+acp_R$rotation
+```
+
+
+## Voltando ao Exemplo
+
+```{r}
+## Escores das componentes principais
+Yr = acp_R$x
+Yr %>% head()
+```
+
+```{r}
+## Matriz de correlacoes entre variaveis originais e componentes principais
+Ryx_R = cor(dados,Yr)
+Ryx_R
+```
+
+
+## Voltando ao Exemplo
+
+```{r}
+fa.parallel(dados %>% scale(center=TRUE, scale=TRUE), fa="pc", n.iter=1000)
+```
+
+
+## Voltando ao Exemplo
+
+$$Z_{GB} = \dfrac{\text{Ganho Bruto} - \overline{\text{Ganho Bruto}}}{s_{\text{Ganho Bruto}}}$$
+
+$$Z_{GL} = \dfrac{\text{Ganho Líquido} - \overline{\text{Ganho Líquido}}}{s_{\text{Ganho Líquido}}}$$
+
+$$Z_{PA} = \dfrac{\text{Patrimônio} - \overline{\text{Patrimônio}}}{s_{\text{Patrimônio}}}$$
+
+
+
+
+## Voltando ao Exemplo
+
+$$Y_1 =  0,617 \times Z_{GB} + 0,557 \times Z_{GL} + 0,556 \times Z_{PA} \Longrightarrow
+83,08\% \text{ da informação total de } \boldsymbol{z}$$
+
+. . .
+
+
+- **Interpretação:** É basicamente um índice de desempenho global da empresa. O coeficiente de maior grandeza numérica desta componente é relativo a ganho bruto enquanto que os demais coeficientes são aproximadamente iguais. Quanto maior os valores de ganhos brutos e líquido e patrimônio da empresa, maior será o valor numérico da componente. Além disso, todas as três variáveis possui alta correlação com essa componente, indicando serem importantes na composição da mesma.
+
+
+
+
+
+## Voltando ao Exemplo
+
+$$Y_2 =  -0,001 \times Z_{GB} - 0,706 \times Z_{GL} + 0,708 \times Z_{PA} \Longrightarrow
+14,12\% \text{ da informação total de } \boldsymbol{z}$$
+
+. . .
+
+
+- **Interpretação:** É uma comparação entre as variáveis ganho líquido e patrimônio, sendo que essas duas variáveis possuem igual importância na composição da mesma. Valores próximos de zero dessa componente indicam empresas com um certo equilíbrio entre ganho líquido e patrimônio acumulado no período.
+
+
+
+
+## Voltando ao Exemplo
+
+
+```{r}
+fviz_pca_biplot(acp_R, repel = TRUE,
+                col.var = "#2E9FDF", # Variables color
+                col.ind = "#696969"  # Individuals color
+                )
+
+```
+
+
+## Voltando ao Exemplo
+
+**Interpretação do biplot** 
+
+
+- As setas indicam em que direção a variável aumenta. os indivíduos que estão posicionados no sentido da seta são os que têm valores maiores naquela variável.
+
+. . .
+
+- **Ângulo entre a seta (variável) e o eixo PC1:** O cosseno do ângulo entre a variável e a PC é exatamente o **loading**.
+
+$$\cos(\theta_j, PC_i) = \text{loading}_{X_j, PC_i}$$
+
+
+## Voltando ao Exemplo
+
+
+então:
+
+- se a seta está quase colada no eixo $PC_i$
+    - loading próximo de +1 → variável altamente alinhada com a componente
+    - é variável que define o componente principal
+
+- se a seta faz um ângulo grande (perto de 90°) com $PC_i$
+    - loading $\approx 0$ → essa variável não contribui para a componente
+
+- se a seta aponta para o lado oposto da $PC_i$ (180°)
+    - loading $\approx -1$ → variável altamente alinhada negativamente
+
+## Voltando ao Exemplo
+
+- **Observação:** Quando a PCA é feita na **matriz de correlações**, os loadings são exatamente as correlações entre as variáveis originais e as componentes principais. Quando usamos **matriz de covariâncias**, os loadings refletem contribuição em variância e o cosseno do ângulo não corresponde numericamente à correlação.
+
+## Voltando ao Exemplo
+
+
+
+- **PC1 (Dim1 = 83.1%):** Praticamente toda a informação relevante está aqui.
+
+> PC1 representa um eixo geral de nível financeiro / escala econômica.
+Quanto maior Patrimônio / Ganho Bruto / Ganho Líquido → mais à direita o indivíduo aparece.
+
+
+- Todas variáveis apontam para a direita, e com ângulos semelhantes → altíssima correlação entre elas
+
+
+
+
+
+## Voltando ao Exemplo
+
+- Quem está mais pra direita (E1, E2, E3) → são aqueles com valores altos nessas variáveis
+
+- Quem está mais pra esquerda (E8, E9, E10...) → são os com valores baixos
+
+- A empresa E12 posiciona-se muito próxima à origem do plano principal, indicando um perfil mediano em todas as variáveis financeiras consideradas. 
+    - Ela não apresenta características extremas nem para valores altos, nem para valores baixos, sendo portanto uma empresa altamente representativa do centro da distribuição.
+
+
+. . .
+
+- **PC2 (Dim2 = 14.1%):** quase não traz informação nova → setas não sobem muito, elas estão quase horizontais
+    - não existe uma segunda dimensão “conceitual” forte
+
+
+
+## Voltando a Exemplo
+
+```{r}
+# Contribuições das variáveis para a PC1
+fviz_contrib(acp_R, choice = "var", axes = 1)
+```
+
+## Voltando ao Exemplo
+
+- Esse gráfico mostra o quanto cada variável explica/contribui para a formação do primeiro componente principal.
+    - Ganho Bruto contribuiu um pouco mais
+    - Ganho Liquido e Patrimonio contribuem praticamente igual e muito próximo
+
+
+. . .
+
+
+- A linha vermelha tracejada é a contribuição média esperada (se todas contribuíssem igual).
+    - Como temos 3 variáveis → contribuição média = $100\%/3 \approx 33.33\%$
+    
+## Voltando ao Exemplo
+
+```{r}
+fviz_contrib(acp_R, choice = "ind", axes = 1:2)
+```
+
+
+## Voltando ao Exemplo
+
+- Esse gráfico mostra quais indivíduos contribuem mais para definir o plano principal da PC, isto é, quais observações estão orientando a direção das componentes principais.
+
+. . .
+
+
+- A empresa E3 é a maior influenciadora da PCA: sua contribuição para o plano principal é muito superior à média (linha vermelha), indicando que ela é um caso extremo na direção da primeira componente. Esse ponto está orientando de forma dominante a estrutura da análise.

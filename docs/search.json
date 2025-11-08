@@ -1108,7 +1108,7 @@
     "href": "aulas/analise_comp_princ/comp_princ.html#componentes-principais-o-que-são",
     "title": "Análise de Componentes Principais",
     "section": "Componentes Principais: o que são?",
-    "text": "Componentes Principais: o que são?\nAlgebricamente: são combinações lineares das \\(p\\) variáveis originais, \\(X_1, X_2, \\cdots, X_p\\).\n\nGeometricamente: são as coordenadas dos pontos amostrais em um sistema de eixos obtido pela rotação do sistema de eixos original, na direção de variabilidade máxima."
+    "text": "Componentes Principais: o que são?\nAlgebricamente: são combinações lineares das \\(p\\) variáveis originais, \\(X_1, X_2, \\cdots, X_p\\).\n\nGeometricamente: são as coordenadas dos pontos amostrais em um sistema de eixos obtido pela rotação do sistema de eixos original, na direção de variabilidade máxima.\n\n🔎"
   },
   {
     "objectID": "aulas/analise_comp_princ/comp_princ.html#componentes-principais-alguns-comentários",
@@ -1311,6 +1311,286 @@
     "href": "aulas/analise_comp_princ/comp_princ.html#primeiro-exemplo-mingoti2007",
     "title": "Análise de Componentes Principais",
     "section": "Primeiro Exemplo: (Mingoti,2007)",
-    "text": "Primeiro Exemplo: (Mingoti,2007)\n\n12 empresas, 3 variáveis: ganho bruto (\\(X_1\\)), ganho líquido (\\(X_2\\)) e patrimônio acumulado (\\(X_3\\))\n\n\n\n\n\n\nEmpresa\n\n\nGanho bruto \\((X_1)\\)\n\n\nGanho líquido \\((X_2)\\)\n\n\nPatrimônio \\((X_3)\\)\n\n\n\n\n\n\nE1\n\n\n9893\n\n\n564\n\n\n17689\n\n\n\n\nE2\n\n\n8776\n\n\n389\n\n\n17359\n\n\n\n\nE3\n\n\n13572\n\n\n1103\n\n\n18597\n\n\n\n\nE4\n\n\n6455\n\n\n743\n\n\n8745\n\n\n\n\nE5\n\n\n5129\n\n\n203\n\n\n14397\n\n\n\n\nE6\n\n\n5432\n\n\n215\n\n\n3467\n\n\n\n\nE7\n\n\n3807\n\n\n385\n\n\n4679\n\n\n\n\nE8\n\n\n3423\n\n\n187\n\n\n6754\n\n\n\n\nE9\n\n\n3708\n\n\n127\n\n\n2275\n\n\n\n\nE10\n\n\n3294\n\n\n297\n\n\n6754\n\n\n\n\nE11\n\n\n5433\n\n\n432\n\n\n5589\n\n\n\n\nE12\n\n\n6287\n\n\n451\n\n\n8972"
+    "text": "Primeiro Exemplo: (Mingoti,2007)\n\nload &lt;- function(pkg){\n  new.pkg &lt;- pkg[!(pkg %in% installed.packages()[, \"Package\"])]\n  if (length(new.pkg))\n    install.packages(new.pkg, dependencies = TRUE)\n  sapply(pkg, require, character.only = TRUE)\n} \n\n## Pacotes utilizados nessa análise\n\npackages = c(\"tidyverse\", \"factoextra\", \"psych\", \"gridExtra\")\nload(packages)\n\n tidyverse factoextra      psych  gridExtra \n      TRUE       TRUE       TRUE       TRUE \n\n\n\ndados &lt;- read.table(\"https://raw.githubusercontent.com/tiagomartin/est014/refs/heads/master/dados/empresas.txt\", row.names = 1, header = TRUE) \ndados %&gt;% \n  str()\n\n'data.frame':   12 obs. of  3 variables:\n $ Granho_Bruto : int  9893 8776 13572 6455 5129 5432 3807 3423 3708 3294 ...\n $ Ganho_Liquido: int  564 389 1103 743 203 215 385 187 127 297 ...\n $ Patrimonio   : int  17689 17359 18597 8745 14397 3467 4679 6754 2275 6754 ..."
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#primeiro-exemplo-mingoti2007-1",
+    "href": "aulas/analise_comp_princ/comp_princ.html#primeiro-exemplo-mingoti2007-1",
+    "title": "Análise de Componentes Principais",
+    "section": "Primeiro Exemplo: (Mingoti,2007)",
+    "text": "Primeiro Exemplo: (Mingoti,2007)\n\nx_barra = dados %&gt;% \n  colMeans()\n\nx_barra\n\n Granho_Bruto Ganho_Liquido    Patrimonio \n    6267.4167      424.6667     9606.4167 \n\nS = dados %&gt;% \n  var()\n\nS\n\n              Granho_Bruto Ganho_Liquido Patrimonio\nGranho_Bruto     9550608.6     706121.06 14978232.5\nGanho_Liquido     706121.1      76269.52   933915.1\nPatrimonio      14978232.5     933915.06 34408113.0"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#primeiro-exemplo-mingoti2007-2",
+    "href": "aulas/analise_comp_princ/comp_princ.html#primeiro-exemplo-mingoti2007-2",
+    "title": "Análise de Componentes Principais",
+    "section": "Primeiro Exemplo: (Mingoti,2007)",
+    "text": "Primeiro Exemplo: (Mingoti,2007)\n\ndados %&gt;% \n  boxplot()"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#primeiro-exemplo-mingoti2007-3",
+    "href": "aulas/analise_comp_princ/comp_princ.html#primeiro-exemplo-mingoti2007-3",
+    "title": "Análise de Componentes Principais",
+    "section": "Primeiro Exemplo: (Mingoti,2007)",
+    "text": "Primeiro Exemplo: (Mingoti,2007)\n\n## Analise de Componentes Principais utilizando a matriz de covariancias (Nao aconselhavel, neste caso)\nacp_S = prcomp(dados)\n\n## Proporcao da variacao explicada\nsummary(acp_S)\n\nImportance of components:\n                             PC1       PC2       PC3\nStandard deviation     6440.0615 1.594e+03 145.23266\nProportion of Variance    0.9418 5.767e-02   0.00048\nCumulative Proportion     0.9418 9.995e-01   1.00000\n\n## Loadings (cargas)\nacp_S$rotation\n\n                      PC1         PC2         PC3\nGranho_Bruto  -0.42509725 -0.89970680 -0.09909593\nGanho_Liquido -0.02766083 -0.09651661  0.99494694\nPatrimonio    -0.90472493  0.42569029  0.01614231\n\n## Opcional: trocar sinal da primeira componente e escores\nacp_S$rotation = -acp_S$rotation\nacp_S$x = -acp_S$x\n\n## Loadings (cargas)\nacp_S$rotation\n\n                     PC1         PC2         PC3\nGranho_Bruto  0.42509725  0.89970680  0.09909593\nGanho_Liquido 0.02766083  0.09651661 -0.99494694\nPatrimonio    0.90472493 -0.42569029 -0.01614231"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#primeiro-exemplo-mingoti2007-4",
+    "href": "aulas/analise_comp_princ/comp_princ.html#primeiro-exemplo-mingoti2007-4",
+    "title": "Análise de Componentes Principais",
+    "section": "Primeiro Exemplo: (Mingoti,2007)",
+    "text": "Primeiro Exemplo: (Mingoti,2007)\n\\[Y_1 = 0,425 \\times \\text{GB} + 0,028 \\times \\text{GL} + 0,905 \\times \\text{PA} \\Longrightarrow\n94,18\\% \\text{ da informação total de } \\mathbf{x}\\]\n\n\nQual a variável mais importante para \\(Y_1\\)?\n\n\n\nPatrimônio\n\n\n\n\n\n\n\n\n\n\n\n\n🤔Será?"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#primeiro-exemplo-mingoti2007-5",
+    "href": "aulas/analise_comp_princ/comp_princ.html#primeiro-exemplo-mingoti2007-5",
+    "title": "Análise de Componentes Principais",
+    "section": "Primeiro Exemplo: (Mingoti,2007)",
+    "text": "Primeiro Exemplo: (Mingoti,2007)\n\\[Y_1 = 0,425 \\times \\text{Ganho Bruto} + 0,028 \\times \\text{Ganho Líquido} + 0,905 \\times \\text{Patrimônio}\\]\n\n\nQual a variável mais importante para \\(Y_1\\)?\n\n\n\nPatrimônio\n\n\n\n\n\n\n\n\n\n\n\n\n🤔Será?"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#componentes-principais-variáveis-padronizadas",
+    "href": "aulas/analise_comp_princ/comp_princ.html#componentes-principais-variáveis-padronizadas",
+    "title": "Análise de Componentes Principais",
+    "section": "Componentes Principais: variáveis padronizadas",
+    "text": "Componentes Principais: variáveis padronizadas\n\nPadronização do vetor aleatório \\(\\mathbf{x}\\):\n\n\\[\\boldsymbol{z} = \\boldsymbol{D}^{-1}(\\mathbf{x} - \\boldsymbol{\\mu})\\]\n\n\n\\(\\boldsymbol{D}\\): matriz diagonal de desvios-padrão\n\n\n\n\nVariável padronizada: \\(Z_i = \\dfrac{X_i - \\mu_i}{\\sqrt{\\sigma_{ii}}}\\)\n\n\n\n\nMatriz de covariâncias de \\(\\boldsymbol{z}\\)\n\n\\[\\text{Cov}(\\boldsymbol{z}) = \\boldsymbol{D}^{-1}\\boldsymbol{\\Sigma}  \\boldsymbol{D}^{-1} = \\boldsymbol{P} = \\text{Cor}(\\mathbf{x})\\]\n\n\n\nComponentes principais de \\(\\boldsymbol{z}\\): obtidas dos autovalores e autovetores de \\(\\boldsymbol{P}\\)"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#componentes-principais-variáveis-padronizadas-1",
+    "href": "aulas/analise_comp_princ/comp_princ.html#componentes-principais-variáveis-padronizadas-1",
+    "title": "Análise de Componentes Principais",
+    "section": "Componentes Principais: variáveis padronizadas",
+    "text": "Componentes Principais: variáveis padronizadas\n\nA \\(j\\)-ésima componente principal da matriz \\(\\boldsymbol{P}\\):\n\n\\[Y_j = \\boldsymbol{e}_j^t \\boldsymbol{z} =  \\boldsymbol{e}_j^t \\boldsymbol{D}^{-1}(\\mathbf{x} - \\boldsymbol{\\mu}) = {e}_{j1}Z_1 + {e}_{j2}Z_2 + \\cdots + {e}_{jp}Z_p\\]\nsendo \\(\\boldsymbol{e}_j\\), o \\(j\\)-ésimo autovetor da matriz \\(\\boldsymbol{P}\\), \\(j = 1, \\cdots p\\).\n\n\nVariância total de \\(\\boldsymbol{P}\\)\n\n\\[\\sum \\limits_{j=1}^p \\text{Var}(Y_j) = \\sum \\limits_{j=1}^p \\text{Var}(Z_j) = p\\]"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#componentes-principais-variáveis-padronizadas-2",
+    "href": "aulas/analise_comp_princ/comp_princ.html#componentes-principais-variáveis-padronizadas-2",
+    "title": "Análise de Componentes Principais",
+    "section": "Componentes Principais: variáveis padronizadas",
+    "text": "Componentes Principais: variáveis padronizadas\n\nProporção da variância populacional padronizada devido à \\(j\\)-ésima componente\n\n\\[\\dfrac{\\text{Var}({Y}_j)}{\\text{Variância total de } \\boldsymbol{z}} = \\dfrac{{\\lambda}_j}{\\text{tr} (\\boldsymbol{P})} =  \\dfrac{{\\lambda}_j}{p}\\]\n\n\nCorrelação entre componente \\(Y_j\\) e a variável padronizada \\(Z_k\\):\n\n\\[\\rho_{Y_j,Z_k} = e_{jk} \\sqrt{\\lambda_j}\\]"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#observações",
+    "href": "aulas/analise_comp_princ/comp_princ.html#observações",
+    "title": "Análise de Componentes Principais",
+    "section": "Observações",
+    "text": "Observações\n\nAs componentes principais não são invariantes à mudanças de escala. Os resultados são diferentes quando se faz a análise utilizando a matriz de covariâncias e a matriz de correlações.\n\n\n\nAs componentes obtidas a partir da matriz de covariâncias são influenciadas pelas variáveis de maior variância. A matriz de correlações, em geral, é a melhor opção quando as variâncias são muito heterogêneas.\n\n\n\n\nUm valor pequeno incomum para o último autovalor da matriz de covariâncias (ou correlação) amostral pode indicar uma dependência linear não detectada no conjunto de dados.\n\n\n\n\nValores grandes de autovalores (e correspondentes autovetores) são importantes em uma análise."
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#quantas-componentes-devem-ser-retidas",
+    "href": "aulas/analise_comp_princ/comp_princ.html#quantas-componentes-devem-ser-retidas",
+    "title": "Análise de Componentes Principais",
+    "section": "Quantas componentes devem ser retidas?",
+    "text": "Quantas componentes devem ser retidas?\n\nCritério de Kaiser: Trata-se de uma regra prática (heurística) para decidir quantas componentes principais manter em uma PCA extraída através da matriz de correlações. Ele diz:\n\n\nRetenha apenas as componentes associadas a um autovalor maior que 1.\n\n\n\\(\\lambda = 1\\) → a componente explica tanta variabilidade quanto 1 variável original\n\\(\\lambda &gt; 1\\) → explica mais variabilidade do que qualquer variável isolada\n\\(\\lambda &lt; 1\\) → explica menos variabilidade do que uma única variável → então não “vale a pena”"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#quantas-componentes-devem-ser-retidas-1",
+    "href": "aulas/analise_comp_princ/comp_princ.html#quantas-componentes-devem-ser-retidas-1",
+    "title": "Análise de Componentes Principais",
+    "section": "Quantas componentes devem ser retidas?",
+    "text": "Quantas componentes devem ser retidas?\n\nMédia dos autovalores: É um critério alternativo quando a PCA é feita sobre matriz de covariâncias.\n\n\nSe PCA foi feita na matriz de covariâncias, retenha PCs com autovalores maiores que a média dos autovalores.\n\nEntão, se uma componente tem autovalor:\n\\[\\lambda_k &gt; \\dfrac{\\sum \\limits_{j=1}^p \\lambda_j}{p}\\]\nela retém mais informação do que a variância média por dimensão do espaço original."
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#quantas-componentes-devem-ser-retidas-2",
+    "href": "aulas/analise_comp_princ/comp_princ.html#quantas-componentes-devem-ser-retidas-2",
+    "title": "Análise de Componentes Principais",
+    "section": "Quantas componentes devem ser retidas?",
+    "text": "Quantas componentes devem ser retidas?\n\nScreeplot: É um gráfico que coloca, no eixo X, o número da componente principal e, no eixo Y, o autovalor (ou a variância explicada).\n\n\nO ponto onde a curva deixa de cair abruptamente e começa a “horizontalizar” é onde você para de manter componentes.\n\n\nA ideia é identificar o “cotovelo” da curva.\n\nantes do cotovelo: cada componente adiciona bastante variância\ndepois do cotovelo: os autovalores ficam “quase uma linha reta” → só ruído"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#quantas-componentes-devem-ser-retidas-3",
+    "href": "aulas/analise_comp_princ/comp_princ.html#quantas-componentes-devem-ser-retidas-3",
+    "title": "Análise de Componentes Principais",
+    "section": "Quantas componentes devem ser retidas?",
+    "text": "Quantas componentes devem ser retidas?"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#quantas-componentes-devem-ser-retidas-4",
+    "href": "aulas/analise_comp_princ/comp_princ.html#quantas-componentes-devem-ser-retidas-4",
+    "title": "Análise de Componentes Principais",
+    "section": "Quantas componentes devem ser retidas?",
+    "text": "Quantas componentes devem ser retidas?\n\nReter o número de componentes principais que acumulem pelo menos certa porcentagem da variabilidade total dos dados, digamos 70%."
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#quantas-componentes-devem-ser-retidas-5",
+    "href": "aulas/analise_comp_princ/comp_princ.html#quantas-componentes-devem-ser-retidas-5",
+    "title": "Análise de Componentes Principais",
+    "section": "Quantas componentes devem ser retidas?",
+    "text": "Quantas componentes devem ser retidas?\n\nParallel Analysis (Horn, 1965): É o método moderno mais recomendado para decidir quantos componentes reter em PCA.\n\n\nCompare seus autovalores reais com autovalores esperados ao acaso."
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#quantas-componentes-devem-ser-retidas-6",
+    "href": "aulas/analise_comp_princ/comp_princ.html#quantas-componentes-devem-ser-retidas-6",
+    "title": "Análise de Componentes Principais",
+    "section": "Quantas componentes devem ser retidas?",
+    "text": "Quantas componentes devem ser retidas?\n\nO procedimento envolve:\n\nCalcular os autovalores dos dados originais.\nGerar dados aleatórios com a mesma estrutura dos dados originais.\nCalcular autovalores para os dados aleatórios, repetindo o processo muitas vezes para obter uma distribuição amostral.\nComparar os autovalores reais com os autovalores médios ou percentis (como o 95º) dos dados simulados.\nReter os componentes cujos autovalores reais são maiores do que os autovalores aleatórios correspondentes."
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#quantas-componentes-devem-ser-retidas-7",
+    "href": "aulas/analise_comp_princ/comp_princ.html#quantas-componentes-devem-ser-retidas-7",
+    "title": "Análise de Componentes Principais",
+    "section": "Quantas componentes devem ser retidas?",
+    "text": "Quantas componentes devem ser retidas?\n\n\n\nParallel analysis suggests that the number of factors =  NA  and the number of components =  1"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#quantas-componentes-devem-ser-retidas-8",
+    "href": "aulas/analise_comp_princ/comp_princ.html#quantas-componentes-devem-ser-retidas-8",
+    "title": "Análise de Componentes Principais",
+    "section": "Quantas componentes devem ser retidas?",
+    "text": "Quantas componentes devem ser retidas?\n\nInterpretação desse gráfico\n\nlinha azul = autovalores reais dos seus dados\nlinhas vermelha / pontilhada = autovalores esperados pelo acaso (parallel analysis)\n\n\n\n\nRegra: retenha apenas os componentes cuja linha azul está acima da linha vermelha.\n\nParallel Analysis (Horn) está dizendo: retenha 1 componente principal."
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#interpretação-das-componentes-principais",
+    "href": "aulas/analise_comp_princ/comp_princ.html#interpretação-das-componentes-principais",
+    "title": "Análise de Componentes Principais",
+    "section": "Interpretação das componentes principais",
+    "text": "Interpretação das componentes principais\n\nEm geral, quando existe uma alta correlação positiva entre todas as variáveis, os sinais associados às variáveis coincidem na primeira componente principal.\n\n\n\nNeste caso, a primeira componente principal pode ser interpretada como um índice global, calculado como uma média ponderada de todas as variáveis.\n\n\n\n\nO restante das componentes, normalmente possuem pesos negativos e positivos e são interpretadas como um contraste entre grupos de variáveis."
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#exemplo-mingoti2007",
+    "href": "aulas/analise_comp_princ/comp_princ.html#exemplo-mingoti2007",
+    "title": "Análise de Componentes Principais",
+    "section": "Exemplo: (Mingoti,2007)",
+    "text": "Exemplo: (Mingoti,2007)\n\n12 empresas, 3 variáveis: ganho bruto (\\(X_1\\)), ganho líquido (\\(X_2\\)) e patrimônio acumulado (\\(X_3\\))\n\n\n\n\n\n\nEmpresa\n\n\nGanho bruto \\((X_1)\\)\n\n\nGanho líquido \\((X_2)\\)\n\n\nPatrimônio \\((X_3)\\)\n\n\n\n\n\n\nE1\n\n\n9893\n\n\n564\n\n\n17689\n\n\n\n\nE2\n\n\n8776\n\n\n389\n\n\n17359\n\n\n\n\nE3\n\n\n13572\n\n\n1103\n\n\n18597\n\n\n\n\nE4\n\n\n6455\n\n\n743\n\n\n8745\n\n\n\n\nE5\n\n\n5129\n\n\n203\n\n\n14397\n\n\n\n\nE6\n\n\n5432\n\n\n215\n\n\n3467\n\n\n\n\nE7\n\n\n3807\n\n\n385\n\n\n4679\n\n\n\n\nE8\n\n\n3423\n\n\n187\n\n\n6754\n\n\n\n\nE9\n\n\n3708\n\n\n127\n\n\n2275\n\n\n\n\nE10\n\n\n3294\n\n\n297\n\n\n6754\n\n\n\n\nE11\n\n\n5433\n\n\n432\n\n\n5589\n\n\n\n\nE12\n\n\n6287\n\n\n451\n\n\n8972"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#voltando-ao-exemplo",
+    "href": "aulas/analise_comp_princ/comp_princ.html#voltando-ao-exemplo",
+    "title": "Análise de Componentes Principais",
+    "section": "Voltando ao Exemplo",
+    "text": "Voltando ao Exemplo\n\n12 empresas, 3 variáveis: ganho bruto (\\(X_1\\)), ganho líquido (\\(X_2\\)) e patrimônio acumulado (\\(X_3\\))\n\n\n\n\n\n\nEmpresa\n\n\nGanho bruto \\((X_1)\\)\n\n\nGanho líquido \\((X_2)\\)\n\n\nPatrimônio \\((X_3)\\)\n\n\n\n\n\n\nE1\n\n\n9893\n\n\n564\n\n\n17689\n\n\n\n\nE2\n\n\n8776\n\n\n389\n\n\n17359\n\n\n\n\nE3\n\n\n13572\n\n\n1103\n\n\n18597\n\n\n\n\nE4\n\n\n6455\n\n\n743\n\n\n8745\n\n\n\n\nE5\n\n\n5129\n\n\n203\n\n\n14397\n\n\n\n\nE6\n\n\n5432\n\n\n215\n\n\n3467\n\n\n\n\nE7\n\n\n3807\n\n\n385\n\n\n4679\n\n\n\n\nE8\n\n\n3423\n\n\n187\n\n\n6754\n\n\n\n\nE9\n\n\n3708\n\n\n127\n\n\n2275\n\n\n\n\nE10\n\n\n3294\n\n\n297\n\n\n6754\n\n\n\n\nE11\n\n\n5433\n\n\n432\n\n\n5589\n\n\n\n\nE12\n\n\n6287\n\n\n451\n\n\n8972"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#voltando-ao-exemplo-1",
+    "href": "aulas/analise_comp_princ/comp_princ.html#voltando-ao-exemplo-1",
+    "title": "Análise de Componentes Principais",
+    "section": "Voltando ao Exemplo",
+    "text": "Voltando ao Exemplo"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#voltando-ao-exemplo-2",
+    "href": "aulas/analise_comp_princ/comp_princ.html#voltando-ao-exemplo-2",
+    "title": "Análise de Componentes Principais",
+    "section": "Voltando ao Exemplo",
+    "text": "Voltando ao Exemplo\n\ndados %&gt;% \n  scale(center=TRUE, scale=TRUE) \n\n    Granho_Bruto Ganho_Liquido Patrimonio\nE1   1.173173832    0.50452133  1.3779065\nE2   0.811732638   -0.12914781  1.3216486\nE3   2.363632341    2.45622228  1.5327010\nE4   0.060698607    1.15267434 -0.1468530\nE5  -0.368371244   -0.80264757  0.8166914\nE6  -0.270325871   -0.75919598 -1.0466384\nE7  -0.796146767   -0.14363167 -0.8400185\nE8  -0.920402290   -0.86058304 -0.4862757\nE9  -0.828181394   -1.07784103 -1.2498488\nE10 -0.962144379   -0.46227672 -0.4862757\nE11 -0.270002289    0.02655375 -0.6848831\nE12  0.006336816    0.09535212 -0.1081544\nattr(,\"scaled:center\")\n Granho_Bruto Ganho_Liquido    Patrimonio \n    6267.4167      424.6667     9606.4167 \nattr(,\"scaled:scale\")\n Granho_Bruto Ganho_Liquido    Patrimonio \n    3090.4059      276.1694     5865.8429"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#voltando-ao-exemplo-3",
+    "href": "aulas/analise_comp_princ/comp_princ.html#voltando-ao-exemplo-3",
+    "title": "Análise de Componentes Principais",
+    "section": "Voltando ao Exemplo",
+    "text": "Voltando ao Exemplo\n\ndados %&gt;% \n  scale(center=TRUE, scale=TRUE) %&gt;% \n  boxplot()"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#voltando-ao-exemplo-4",
+    "href": "aulas/analise_comp_princ/comp_princ.html#voltando-ao-exemplo-4",
+    "title": "Análise de Componentes Principais",
+    "section": "Voltando ao Exemplo",
+    "text": "Voltando ao Exemplo\n\n## Analise de Componentes Principais utilizando a matriz de correlacoes (Mais aconselhavel, neste caso)\nacp_R = prcomp(dados, scale. = TRUE)\n\n## Proporcao da variacao explicada\nsummary(acp_R)\n\nImportance of components:\n                          PC1    PC2     PC3\nStandard deviation     1.5788 0.6508 0.28978\nProportion of Variance 0.8308 0.1412 0.02799\nCumulative Proportion  0.8308 0.9720 1.00000\n\n## Loadings (cargas)\nacp_R$rotation\n\n                     PC1          PC2        PC3\nGranho_Bruto  -0.6167027  0.001267206  0.7871952\nGanho_Liquido -0.5567945  0.706196936 -0.4373395\nPatrimonio    -0.5564690 -0.708014324 -0.4348080\n\n## Opcional: trocar sinal da primeira componente e escores\nacp_R$rotation = -acp_R$rotation\nacp_R$x = -acp_R$x\n\n## Loadings (cargas)\nacp_R$rotation\n\n                    PC1          PC2        PC3\nGranho_Bruto  0.6167027 -0.001267206 -0.7871952\nGanho_Liquido 0.5567945 -0.706196936  0.4373395\nPatrimonio    0.5564690  0.708014324  0.4348080"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#voltando-ao-exemplo-5",
+    "href": "aulas/analise_comp_princ/comp_princ.html#voltando-ao-exemplo-5",
+    "title": "Análise de Componentes Principais",
+    "section": "Voltando ao Exemplo",
+    "text": "Voltando ao Exemplo\n\n## Escores das componentes principais\nYr = acp_R$x\nYr %&gt;% head()\n\n          PC1        PC2        PC3\nE1  1.7711764  0.6177995 -0.1037449\nE2  1.1641454  1.0259213 -0.1208101\nE3  3.6781699 -0.6523976 -0.1200063\nE4  0.5975165 -0.9180660  0.3924755\nE5 -0.2196218  1.1455233  0.2940545\nE6 -1.1718486 -0.2045506 -0.5743139\n\n\n\n## Matriz de correlacoes entre variaveis originais e componentes principais\nRyx_R = cor(dados,Yr)\nRyx_R\n\n                    PC1           PC2        PC3\nGranho_Bruto  0.9736351 -0.0008246563 -0.2281098\nGanho_Liquido 0.8790534 -0.4595699002  0.1267302\nPatrimonio    0.8785396  0.4607525968  0.1259966"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#voltando-ao-exemplo-6",
+    "href": "aulas/analise_comp_princ/comp_princ.html#voltando-ao-exemplo-6",
+    "title": "Análise de Componentes Principais",
+    "section": "Voltando ao Exemplo",
+    "text": "Voltando ao Exemplo\n\nfa.parallel(dados %&gt;% scale(center=TRUE, scale=TRUE), fa=\"pc\", n.iter=1000)\n\n\nParallel analysis suggests that the number of factors =  NA  and the number of components =  1"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#voltando-ao-exemplo-7",
+    "href": "aulas/analise_comp_princ/comp_princ.html#voltando-ao-exemplo-7",
+    "title": "Análise de Componentes Principais",
+    "section": "Voltando ao Exemplo",
+    "text": "Voltando ao Exemplo\n\\[Z_{GB} = \\dfrac{\\text{Ganho Bruto} - \\overline{\\text{Ganho Bruto}}}{s_{\\text{Ganho Bruto}}}\\]\n\\[Z_{GL} = \\dfrac{\\text{Ganho Líquido} - \\overline{\\text{Ganho Líquido}}}{s_{\\text{Ganho Líquido}}}\\]\n\\[Z_{PA} = \\dfrac{\\text{Patrimônio} - \\overline{\\text{Patrimônio}}}{s_{\\text{Patrimônio}}}\\]"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#voltando-ao-exemplo-8",
+    "href": "aulas/analise_comp_princ/comp_princ.html#voltando-ao-exemplo-8",
+    "title": "Análise de Componentes Principais",
+    "section": "Voltando ao Exemplo",
+    "text": "Voltando ao Exemplo\n\\[Y_1 =  0,617 \\times Z_{GB} + 0,557 \\times Z_{GL} + 0,556 \\times Z_{PA} \\Longrightarrow\n83,08\\% \\text{ da informação total de } \\boldsymbol{z}\\]\n\n\nInterpretação: É basicamente um índice de desempenho global da empresa. O coeficiente de maior grandeza numérica desta componente é relativo a ganho bruto enquanto que os demais coeficientes são aproximadamente iguais. Quanto maior os valores de ganhos brutos e líquido e patrimônio da empresa, maior será o valor numérico da componente. Além disso, todas as três variáveis possui alta correlação com essa componente, indicando serem importantes na composição da mesma."
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#voltando-ao-exemplo-9",
+    "href": "aulas/analise_comp_princ/comp_princ.html#voltando-ao-exemplo-9",
+    "title": "Análise de Componentes Principais",
+    "section": "Voltando ao Exemplo",
+    "text": "Voltando ao Exemplo\n\\[Y_2 =  -0,001 \\times Z_{GB} - 0,706 \\times Z_{GL} + 0,708 \\times Z_{PA} \\Longrightarrow\n14,12\\% \\text{ da informação total de } \\boldsymbol{z}\\]\n\n\nInterpretação: É uma comparação entre as variáveis ganho líquido e patrimônio, sendo que essas duas variáveis possuem igual importância na composição da mesma. Valores próximos de zero dessa componente indicam empresas com um certo equilíbrio entre ganho líquido e patrimônio acumulado no período."
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#voltando-ao-exemplo-10",
+    "href": "aulas/analise_comp_princ/comp_princ.html#voltando-ao-exemplo-10",
+    "title": "Análise de Componentes Principais",
+    "section": "Voltando ao Exemplo",
+    "text": "Voltando ao Exemplo\n\nfviz_pca_biplot(acp_R, repel = TRUE,\n                col.var = \"#2E9FDF\", # Variables color\n                col.ind = \"#696969\"  # Individuals color\n                )"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#voltando-ao-exemplo-11",
+    "href": "aulas/analise_comp_princ/comp_princ.html#voltando-ao-exemplo-11",
+    "title": "Análise de Componentes Principais",
+    "section": "Voltando ao Exemplo",
+    "text": "Voltando ao Exemplo\nInterpretação do biplot\n\nAs setas indicam em que direção a variável aumenta. os indivíduos que estão posicionados no sentido da seta são os que têm valores maiores naquela variável.\n\n\n\nÂngulo entre a seta (variável) e o eixo PC1: O cosseno do ângulo entre a variável e a PC é exatamente o loading.\n\n\\[\\cos(\\theta_j, PC_i) = \\text{loading}_{X_j, PC_i}\\]"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#voltando-ao-exemplo-12",
+    "href": "aulas/analise_comp_princ/comp_princ.html#voltando-ao-exemplo-12",
+    "title": "Análise de Componentes Principais",
+    "section": "Voltando ao Exemplo",
+    "text": "Voltando ao Exemplo\nentão:\n\nse a seta está quase colada no eixo \\(PC_i\\)\n\nloading próximo de +1 → variável altamente alinhada com a componente\né variável que define o componente principal\n\nse a seta faz um ângulo grande (perto de 90°) com \\(PC_i\\)\n\nloading \\(\\approx 0\\) → essa variável não contribui para a componente\n\nse a seta aponta para o lado oposto da \\(PC_i\\) (180°)\n\nloading \\(\\approx -1\\) → variável altamente alinhada negativamente"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#voltando-ao-exemplo-13",
+    "href": "aulas/analise_comp_princ/comp_princ.html#voltando-ao-exemplo-13",
+    "title": "Análise de Componentes Principais",
+    "section": "Voltando ao Exemplo",
+    "text": "Voltando ao Exemplo\n\nObservação: Quando a PCA é feita na matriz de correlações, os loadings são exatamente as correlações entre as variáveis originais e as componentes principais. Quando usamos matriz de covariâncias, os loadings refletem contribuição em variância e o cosseno do ângulo não corresponde numericamente à correlação."
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#voltando-ao-exemplo-14",
+    "href": "aulas/analise_comp_princ/comp_princ.html#voltando-ao-exemplo-14",
+    "title": "Análise de Componentes Principais",
+    "section": "Voltando ao Exemplo",
+    "text": "Voltando ao Exemplo\n\nPC1 (Dim1 = 83.1%): Praticamente toda a informação relevante está aqui.\n\n\nPC1 representa um eixo geral de nível financeiro / escala econômica. Quanto maior Patrimônio / Ganho Bruto / Ganho Líquido → mais à direita o indivíduo aparece.\n\n\nTodas variáveis apontam para a direita, e com ângulos semelhantes → altíssima correlação entre elas"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#voltando-ao-exemplo-15",
+    "href": "aulas/analise_comp_princ/comp_princ.html#voltando-ao-exemplo-15",
+    "title": "Análise de Componentes Principais",
+    "section": "Voltando ao Exemplo",
+    "text": "Voltando ao Exemplo\n\nQuem está mais pra direita (E1, E2, E3) → são aqueles com valores altos nessas variáveis\nQuem está mais pra esquerda (E8, E9, E10…) → são os com valores baixos\nA empresa E12 posiciona-se muito próxima à origem do plano principal, indicando um perfil mediano em todas as variáveis financeiras consideradas.\n\nEla não apresenta características extremas nem para valores altos, nem para valores baixos, sendo portanto uma empresa altamente representativa do centro da distribuição.\n\n\n\n\nPC2 (Dim2 = 14.1%): quase não traz informação nova → setas não sobem muito, elas estão quase horizontais\n\nnão existe uma segunda dimensão “conceitual” forte"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#voltando-a-exemplo",
+    "href": "aulas/analise_comp_princ/comp_princ.html#voltando-a-exemplo",
+    "title": "Análise de Componentes Principais",
+    "section": "Voltando a Exemplo",
+    "text": "Voltando a Exemplo\n\n# Contribuições das variáveis para a PC1\nfviz_contrib(acp_R, choice = \"var\", axes = 1)"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#voltando-ao-exemplo-16",
+    "href": "aulas/analise_comp_princ/comp_princ.html#voltando-ao-exemplo-16",
+    "title": "Análise de Componentes Principais",
+    "section": "Voltando ao Exemplo",
+    "text": "Voltando ao Exemplo\n\nEsse gráfico mostra o quanto cada variável explica/contribui para a formação do primeiro componente principal.\n\nGanho Bruto contribuiu um pouco mais\nGanho Liquido e Patrimonio contribuem praticamente igual e muito próximo\n\n\n\n\nA linha vermelha tracejada é a contribuição média esperada (se todas contribuíssem igual).\n\nComo temos 3 variáveis → contribuição média = \\(100\\%/3 \\approx 33.33\\%\\)"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#voltando-ao-exemplo-17",
+    "href": "aulas/analise_comp_princ/comp_princ.html#voltando-ao-exemplo-17",
+    "title": "Análise de Componentes Principais",
+    "section": "Voltando ao Exemplo",
+    "text": "Voltando ao Exemplo\n\nfviz_contrib(acp_R, choice = \"ind\", axes = 1:2)"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#voltando-ao-exemplo-18",
+    "href": "aulas/analise_comp_princ/comp_princ.html#voltando-ao-exemplo-18",
+    "title": "Análise de Componentes Principais",
+    "section": "Voltando ao Exemplo",
+    "text": "Voltando ao Exemplo\n\nEsse gráfico mostra quais indivíduos contribuem mais para definir o plano principal da PC, isto é, quais observações estão orientando a direção das componentes principais.\n\n\n\nA empresa E3 é a maior influenciadora da PCA: sua contribuição para o plano principal é muito superior à média (linha vermelha), indicando que ela é um caso extremo na direção da primeira componente. Esse ponto está orientando de forma dominante a estrutura da análise."
   }
 ]
