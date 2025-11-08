@@ -1,0 +1,843 @@
+---
+title: "Análise de Componentes Principais"
+format: 
+  revealjs:
+    width: 1600
+    height: 900
+    footer: ""
+    theme: quartomonothemer.scss
+    slide-number: c/t
+    show-slide-number: all
+    preview-links: auto
+    self-contained: true
+incremental: false
+code-link: true
+bibliography: references.bib
+title-slide-attributes:
+    data-background-image: /images/back.png
+    data-background-size: cover
+    data-background-opacity: "0.3"
+execute:
+  echo: true
+---
+
+
+## Introdução
+
+Um problema central na análise de dados multivariados é a **redução da dimensionalidade:** é possível descrever com precisão a informação contida nos dados mensurados em $p$ variáveis utilizando um conjunto $r < p$ de novas variáveis, perdendo a menor quantidade de informação possível?
+
+
+. . .
+
+
+A **análise de componentes principais** tem este objetivo: dadas $n$ observações de $p$ variáveis, se analisa se é possível representar adequadamente esta informação com um número menor de variáveis construídas como **combinações lineares** das variáveis originais.
+
+
+## O Problema...
+
+Dado um conjunto de variáveis  $\mathbf{x} = [X_1 \hspace{0.1cm} X_2 \hspace{0.1cm} \cdots \hspace{0.1cm} X_p]^t$, podemos 
+encontrar outro conjunto de variáveis $\mathbf{y} = [Y_1 \hspace{0.1cm} Y_2 \hspace{0.1cm} \cdots \hspace{0.1cm} Y_r]^t$, dadas por 
+
+$$Y_i= \displaystyle{\sum_{j=1}^p a_{ij}X_j}, \,\, i = 1, \cdots, r < p$$ 
+
+de tal forma que a informação contida em $\mathbf{x}$ esteja sendo bem representada por $\mathbf{y}$?
+
+
+
+## Algumas questões
+
+<br>
+
+Vamos encontrar combinações lineares para representar informação.
+
+
+. . .
+
+
+
+<p style="text-align: center;"> <span style='font-size:50px;'>&#129300;</span> O que é **informação**?</p> 
+
+
+
+
+. . .
+
+
+
+**Informação $\Longrightarrow$ Variância: quanto maior a variabilidade, maior a informação contida nos dados, maior a 
+variância dos dados**
+
+
+## Algumas questões
+
+<br>
+
+
+Outra questão importante:
+
+
+. . .
+
+
+
+
+<p style="text-align: center;"> <span style='font-size:50px;'>&#129300;</span> O que é **uma boa representação da informação**?</p> 
+
+
+
+. . .
+
+
+
+**Boa representação da informação $\Longrightarrow$ tomar as componentes de $\mathbf{y}$ que assegurem uma variância similar à de $\mathbf{x}$**
+
+
+
+
+## Esquematicamente
+
+Nestas condições, temos que buscar **combinações lineares** $\mathbf{y}$ das variáveis $\mathbf{x}$ de forma que se *maximize* a **variância**
+
+
+. . .
+
+
+<style type="text/css">
+.tg  {border-collapse:collapse;border-color:white;border-spacing:0;border-style:solid;border-width:1px;margin:0px auto;}
+.tg td{border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:36px;overflow:hidden;
+  padding:10px 5px;word-break:normal;}
+.tg th{border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:36px;font-weight:normal;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-c3ow{border-color:white;text-align:center;vertical-align:top}
+.tg .tg-7btt{border-color:white;font-weight:bold;text-align:center;vertical-align:top}
+</style>
+<table class="tg"><thead>
+  <tr>
+    <th class="tg-7btt">Variáveis Originais</th>
+    <th class="tg-c3ow"></th>
+    <th class="tg-7btt">Combinações Lineares</th>
+  </tr></thead>
+<tbody>
+  <tr>
+    <td class="tg-c3ow">$X_1$</td>
+    <td class="tg-c3ow"></td>
+    <td class="tg-c3ow">$Y_1$</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">$X_2$</td>
+    <td class="tg-c3ow"></td>
+    <td class="tg-c3ow">$Y_2$</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">$\vdots$</td>
+    <td class="tg-c3ow"></td>
+    <td class="tg-c3ow">$\vdots$</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">$X_{r}$</td>
+    <td class="tg-c3ow">$\Longrightarrow$</td>
+    <td class="tg-c3ow">$Y_r$</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">$\vdots$</td>
+    <td class="tg-c3ow"></td>
+    <td class="tg-c3ow">$\vdots$</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">$X_p$</td>
+    <td class="tg-c3ow"></td>
+    <td class="tg-c3ow">$Y_{p}$</td>
+  </tr>
+</tbody>
+</table>
+
+. . .
+
+
+
+<p style="text-align: center;"> $\rm{Var}[\mathbf{y}]$: Máxima</p> 
+
+
+
+
+## Esquematicamente
+
+
+Ideia básica da técnica de Análise de Componentes Principais:
+
+
+. . .
+
+
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;margin:0px auto;}
+.tg td{border-color:white;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:36px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:white;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:36px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-dxqr{border-color:white;color:#fe0000;text-align:center;vertical-align:top}
+.tg .tg-c3ow{border-color:white;text-align:center;vertical-align:top}
+.tg .tg-7btt{border-color:white;font-weight:bold;text-align:center;vertical-align:top}
+</style>
+<table class="tg"><thead>
+  <tr>
+    <th class="tg-c3ow">Variáveis Originais</th>
+    <th class="tg-c3ow"></th>
+    <th class="tg-c3ow">Componentes Principais</th>
+  </tr></thead>
+<tbody>
+  <tr>
+    <td class="tg-c3ow">$X_1$</td>
+    <td class="tg-7btt">ACP</td>
+    <td class="tg-dxqr">$Y_1$</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">$X_2$</td>
+    <td class="tg-c3ow">$\Longrightarrow$</td>
+    <td class="tg-dxqr">$Y_2$</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">$\vdots$</td>
+    <td class="tg-c3ow"></td>
+    <td class="tg-dxqr">$\vdots$</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">$X_{p}$</td>
+    <td class="tg-c3ow"></td>
+    <td class="tg-dxqr">$Y_r$</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow"></td>
+    <td class="tg-c3ow"></td>
+    <td class="tg-c3ow">$\vdots$</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow"></td>
+    <td class="tg-c3ow"></td>
+    <td class="tg-c3ow">$Y_{p}$</td>
+  </tr>
+</tbody>
+</table>
+
+
+. . .
+
+<p style="text-align: center;"> 
+$r$ primeiras componentes resumam, por exemplo, 80\% do comportamento geral das $p$ variáveis originais 
+</p>
+
+
+## Principais objetivos
+
+
+- Redução da dimensionalidade dos dados, projetando-os em uma dimensão $r < p$;
+
+
+
+
+![](/images/CP/red_dimens.png){fig-align="center"}
+
+
+## Principais objetivos
+
+
+- Obtenção de combinações interpretáveis: determinar índices e produzir escores com base nos resultados avaliados para as $p$ variáveis;
+
+
+![](/images/CP/idh.png){fig-align="center"}
+
+
+## Principais objetivos
+
+
+- Descrição e entendimento da estrutura de correlação entre as variáveis, através de algumas combinações lineares das mesmas.
+
+
+![](/images/CP/fig_pca.png){fig-align="center"}
+
+
+
+## Componentes Principais: o que são?
+
+
+**Algebricamente:** são combinações lineares das $p$ variáveis originais, $X_1, X_2, \cdots, X_p$.
+
+
+. . .
+
+**Geometricamente:** são as coordenadas dos pontos amostrais em um sistema de eixos obtido pela rotação do sistema de eixos original, na direção de variabilidade máxima.
+
+
+## Componentes Principais: alguns comentários
+
+
+- Não pressupõe normalidade dos dados, embora componentes derivadas de populações normais tenham interpretações úteis.
+
+. . .
+
+- Com frequência, revela relações insuspeitas. Pode permitir interpretações que não seriam obtidas preliminarmente. 
+
+
+
+. . .
+
+
+- Em algumas aplicações, os componentes da ACP configuram o objetivo final do estudo. Em outras, servem como passo intermediário para realização de outras análises, como regressão, classificação, agrupamento, etc...
+
+
+## Componentes Principais: como obtê-los?
+
+
+- Sejam $X_1, \hspace{0.1cm} X_2, \hspace{0.1cm} \cdots, \hspace{0.1cm} X_p$ as variáveis originais
+
+
+. . .
+
+
+- A ideia é encontrar um novo conjunto de variáveis $Y_1, \hspace{0.1cm} Y_2, \hspace{0.1cm} \cdots, \hspace{0.1cm} Y_p$, tais que:
+
+$$\textrm{Var}[Y_1] \geqslant \textrm{Var}[Y_2] \geqslant \cdots \geqslant \textrm{Var}[Y_p]$$
+
+
+. . .
+
+- Vamos tomar cada nova variável $Y_i$, $i = 1, \cdots, p$, como uma combinação linear das variáveis originais $\mathbf{x}$:
+
+$$Y_i = a_{i1}X_1 + a_{i2}X_2 + \cdots + a_{ip}X_p = \mathbf{a}_i^t \mathbf{x}$$
+
+
+## Componentes Principais: como obtê-los?
+
+- Para fixar problemas de escala, adicionamos uma primeira restrição aos vetores $\mathbf{a}_i$:
+
+
+$$\mathbf{a}_i^t \mathbf{a}_i = \displaystyle{ \sum_{j=1}^p a_{ij}^2} = 1$$
+
+. . .
+
+
+- Para evitar que duas variáveis $Y_i$ e $Y_k$, $i \neq k$, $i,k = 1, \cdots, p$, compartilhem informação, adicionamos uma 
+segunda restrição aos vetores $\mathbf{a}_i$: 
+
+$$\mathbf{a}_i^t \mathbf{a}_k = \displaystyle{ \sum_{j=1}^p a_{ij}a_{kj}}  = 0$$
+
+## Componentes Principais: como obtê-los?
+
+<br>
+
+<br>
+
+<p style="text-align: center;"> 
+💡 **Garantia:** ortogalidade, componentes não correlacionadas, independência
+</p>
+
+
+## Componentes Principais: como obtê-los?
+
+
+
+<p style="text-align: center; color: red;"> 
+**Primeira Componente Principal**
+</p>
+
+$$Y_1 = a_{11}X_1 + a_{12}X_2 + \cdots + a_{1p}X_p = \boldsymbol{a}_1^t \mathbf{x}$$
+
+. . .
+
+
+**Objetivo:** Encontrar $\boldsymbol{a}_1^t = [a_{11} \hspace{0.3cm} a_{12} \hspace{0.3cm} \cdots \hspace{0.3cm} a_{1p}]^t$
+tal que:
+
+<p style="text-align: center; color: red;"> 
+**$\rm{Var}[Y_1]$ seja máxima**
+</p>
+
+. . .
+
+Sujeita à restrição:
+
+$$\boldsymbol{a}_1^t \boldsymbol{a}_1 = a_{11}^2 + a_{12}^2 + \cdots + a_{1p}^2 = 1$$
+
+
+
+
+## Componentes Principais: como obtê-los?
+
+
+
+<p style="text-align: center; color: red;"> 
+**Segunda Componente Principal**
+</p>
+
+$$Y_2 = a_{21}X_1 + a_{22}X_2 + \cdots + a_{2p}X_p = \boldsymbol{a}_2^t \mathbf{x}$$
+
+. . .
+
+
+
+**Objetivo:** Encontrar $\boldsymbol{a}_2^t = [a_{21} \hspace{0.3cm} a_{22} \hspace{0.3cm} \cdots \hspace{0.3cm} a_{2p}]^t$
+tal que:
+
+<p style="text-align: center; color: red;"> 
+**$\rm{Var}[Y_2]$ seja máxima**
+</p>
+
+. . .
+
+Sujeita à restrição:
+
+$$\boldsymbol{a}_2^t \boldsymbol{a}_2 = a_{21}^2 + a_{22}^2 + \cdots + a_{2p}^2 = 1$$
+
+$$\rm{Cov}[Y_1,Y_2] = 0$$
+
+
+
+
+## Componentes Principais: como obtê-los?
+
+
+
+<p style="text-align: center; color: red;"> 
+**i-ésima Componente Principal**
+</p>
+
+$$Y_i = a_{i1}X_1 + a_{i2}X_2 + \cdots + a_{ip}X_p = \boldsymbol{a}_i^t \mathbf{x}$$
+
+. . .
+
+
+
+**Objetivo:** Encontrar $\boldsymbol{a}_i^t = [a_{i1} \hspace{0.3cm} a_{i2} \hspace{0.3cm} \cdots \hspace{0.3cm} a_{ip}]^t$
+tal que:
+
+<p style="text-align: center; color: red;"> 
+**$\rm{Var}[Y_i]$ seja máxima**
+</p>
+
+. . .
+
+Sujeita à restrição:
+
+$$\boldsymbol{a}_i^t \boldsymbol{a}_i =  a_{i1}^2 + a_{i2}^2 + \cdots + a_{ip}^2 = 1$$
+
+$$\rm{Cov}[Y_,Y_k] = 0, \text{para  } k < i$$
+
+
+## A escolha dos vetores $\boldsymbol{a}_i$
+
+
+- Considere o vetor aleatório p-variado $\mathbf{x} = [X_1 \hspace{0.3cm} X_2 \hspace{0.3cm} \cdots \hspace{0.3cm} X_p]^t$
+com vetor de médias $\boldsymbol{\mu}$ e matriz de covariâncias $\boldsymbol{\Sigma}$, positiva definida (todos os seus autovalores são positivos), 
+sendo
+
+$$\boldsymbol{\mu} = [\mu_1 \hspace{0.3cm} \mu_2 \hspace{0.3cm} \cdots \hspace{0.3cm} \mu_p]^t \hspace{0.5cm} \textrm{e} \hspace{0.5cm}
+\boldsymbol{\Sigma} = \left[ \begin{array}{cccc} \sigma_{11} & \sigma_{12} & \cdots & \sigma_{1p}
+\\ \sigma_{21} & \sigma_{22} & \cdots & \sigma_{2p} 
+\\ \vdots & \vdots & \ddots & \vdots
+\\ \sigma_{p1} & \sigma_{p2} & \cdots & \sigma_{pp} \end{array} \right]$$
+
+
+. . .
+
+
+- Para determinação dos componentes principais, com base no que foi exposto, usaremos o seguinte teorema:
+
+
+## A escolha dos vetores $\boldsymbol{a}_i$
+
+**Teorema - Maximização de formas quadráticas:** Seja $\boldsymbol{B}$ uma matriz positiva definida com autovalores $\lambda_1 \geqslant \lambda_2 \geqslant \cdots \geqslant \lambda_p > 0$ e autovetores associados normalizados ${\boldsymbol{e}_1, \boldsymbol{e}_2, \cdots, \boldsymbol{e}_p}$. Então:
+
+
+$$\max_{\mathbf{x} \neq \boldsymbol{0}} \dfrac{\mathbf{x}^t \boldsymbol{B} \mathbf{x}}{\mathbf{x}^t \mathbf{x}} =  \lambda_1, \text{ obtido quando } \mathbf{x} = \boldsymbol{e}_1;$$
+
+$$\min_{\mathbf{x} \neq \boldsymbol{0}} \dfrac{\mathbf{x}^t \boldsymbol{B} \mathbf{x}}{\mathbf{x}^t \mathbf{x}} =  \lambda_p, \text{ obtido quando } \mathbf{x} = \boldsymbol{e}_p.$$
+
+. . .
+
+
+- Adicionalmente,
+
+$$\max_{\mathbf{x} \perp \boldsymbol{e}_1, \boldsymbol{e}_1, \cdots, \boldsymbol{e}_k} \dfrac{\mathbf{x}^t \boldsymbol{B} \mathbf{x}}{\mathbf{x}^t \mathbf{x}} =  \lambda_{k+1}, \text{ obtido quando } \mathbf{x} = \boldsymbol{e}_{k+1}.$$
+
+
+
+## A escolha dos vetores $\boldsymbol{a}_i$
+
+Assim, no contexto de componentes principais, seja $\mathbf{x} = [X_1 \hspace{0.3cm} X_2 \hspace{0.3cm} \cdots \hspace{0.3cm} X_p]^t$ um vetor aleatório. Seja $\boldsymbol{\Sigma}$ a matriz de variâncias e covariâncias e $(\lambda_1, \boldsymbol{e}_1)$, $(\lambda_2, \boldsymbol{e}_2)$, ..., $(\lambda_p, \boldsymbol{e}_p)$ seus autovalores e autovetores, tal que $\lambda_1 \geqslant \lambda_2 \geqslant \cdots \geqslant \lambda_p > 0$. Então:
+
+
+
+$$\max_{\boldsymbol{a} \neq \boldsymbol{0}} \dfrac{\boldsymbol{a}^t \boldsymbol{\Sigma} \boldsymbol{a}}{\boldsymbol{a}^t \boldsymbol{a}} = \max_{\boldsymbol{a} \neq \boldsymbol{0}}(\boldsymbol{a}^t \boldsymbol{\Sigma} \boldsymbol{a}) = \lambda_1, \text{ obtido quando } \boldsymbol{a} = \boldsymbol{e}_1;$$
+
+$$\min_{\boldsymbol{a} \neq \boldsymbol{0}} \dfrac{\boldsymbol{a}^t \boldsymbol{\Sigma} \boldsymbol{a}}{\boldsymbol{a}^t \boldsymbol{a}} = \min_{\boldsymbol{a} \neq \boldsymbol{0}}(\boldsymbol{a}^t \boldsymbol{\Sigma} \boldsymbol{a}) = \lambda_p, \text{ obtido quando } \boldsymbol{a} = \boldsymbol{e}_p.$$
+
+## A escolha dos vetores $\boldsymbol{a}_i$
+
+- Adicionalmente,
+
+
+$$\max_{\boldsymbol{a} \perp \boldsymbol{e}_1, \boldsymbol{e}_1, \cdots, \boldsymbol{e}_k} \dfrac{\boldsymbol{a}^t \boldsymbol{\Sigma} {\boldsymbol a}}{\boldsymbol{a}^t \boldsymbol{a}} = \max_{\boldsymbol{a} \perp \boldsymbol{e}_1, \boldsymbol{e}_1, \cdots, \boldsymbol{e}_k}(\boldsymbol{a}^t \boldsymbol{\Sigma} \boldsymbol{a})= \lambda_{k+1}, \text{ obtido quando } \boldsymbol{a} = \boldsymbol{e}_{k+1}.$$
+
+
+## A escolha dos vetores $\boldsymbol{a}_i$
+
+
+- Uma escolha interessante para os vetores de constantes ${\boldsymbol{a}_i}$, $i = 1, \cdots, p$ são os **autovetores normalizados** ${\boldsymbol{e}_i}$ da matriz $\boldsymbol{\Sigma}$.
+
+
+
+. . .
+
+
+-  Dessa forma, podemos definir a $i$-ésima componente principal da matriz $\boldsymbol{\Sigma}$, $i = 1, \cdots, p$ como sendo
+
+
+. . .
+
+
+
+$$Y_i = {\boldsymbol{e}_i^t}\mathbf{x} =  e_{i1}X_1 + e_{i2}X_2 + \cdots + e_{ip}X_p$$
+
+
+
+## Componentes Principais: propriedades
+
+- A esperança e a variância da componente $Y_i$ são respectivamente dadas por:
+
+$$
+\begin{eqnarray*}
+ E[Y_i] &=& E[e_{i1}X_1 + e_{i2}X_2 + \cdots + e_{ip}X_p]  \nonumber \\
+&=& e_{i1}E[X_1] + e_{i2}E[X_2] + \cdots + e_{ip}E[X_p]  \nonumber \\
+&=& e_{i1}\mu_1 + e_{i2}\mu_2 + \cdots + e_{ip}\mu_p \nonumber \\
+&=& {\boldsymbol{e}_i^t}{\boldsymbol{\mu}} \nonumber
+\end{eqnarray*}
+$$
+
+. . .
+
+
+
+$$ \textrm{Var}[Y_i] = \textrm{Var}[{\boldsymbol{e}_i^t}\mathbf{x}] = {\boldsymbol{e}_i^t} \textrm{Var}[\mathbf{x}] {\boldsymbol{e}_i}
+ =  {\boldsymbol{e}_i^t} \boldsymbol{\Sigma} {\boldsymbol{e}_i} = {\boldsymbol{e}_i^t} \lambda_i {\boldsymbol{e}_i} =   
+{\boldsymbol{e}_i^t} {\boldsymbol{e}_i}\lambda_i = \lambda_i $$
+
+
+
+## Na forma matricial
+
+
+- Sejam $\boldsymbol{O}$ a matriz dos autovetores normalizados da matriz $\boldsymbol{\Sigma}$, isto é,
+
+$$\boldsymbol{O} = \left[ \begin{array}{cccc} e_{11} & e_{21} & \cdots & e_{p1}
+\\ e_{12} & e_{22} & \cdots & e_{p2}
+\\ \vdots & \vdots & \ddots & \vdots
+\\ e_{1p} & e_{2p} & \cdots & e_{pp} \end{array} \right] = [{\boldsymbol{e}_1} \hspace{0.5cm} {\boldsymbol{e}_2}
+\hspace{0.5cm} \cdots \hspace{0.5cm} {\boldsymbol{e}_p}]$$
+
+
+e $\boldsymbol{y}$ o vetor das componentes principais. Então, $\boldsymbol{y} = \boldsymbol{O}^t \mathbf{x}$ e a
+matriz de covariâncias de $\boldsymbol{y}$ será:
+
+$$\textrm{Var}[\boldsymbol{y}] = \textrm{Var}[\boldsymbol{O}^t \mathbf{x}] =  \boldsymbol{O}^t \textrm{Var}[\mathbf{x}] \boldsymbol{O} =
+\boldsymbol{O}^t \boldsymbol{\Sigma} \boldsymbol{O} = \boldsymbol{\Lambda}$$
+
+
+## Na forma matricial
+
+sendo
+
+$$\boldsymbol{\Lambda} = \left[ \begin{array}{cccc} \lambda_1 & 0 & \cdots & 0
+\\ 0 & \lambda_2 & \cdots & 0
+\\ \vdots & \vdots & \ddots & \vdots
+\\ 0 & 0 & \cdots & \lambda_p \end{array} \right] $$
+
+ou ainda, $\boldsymbol{\Sigma} = \boldsymbol{O} \boldsymbol{\Lambda} \boldsymbol{O}^t = \displaystyle \sum_{i=1}^p \lambda_i \boldsymbol{e}_i \boldsymbol{e}_i^t$, uma vez que $\boldsymbol{O}$ é uma matriz ortogonal tal que $\boldsymbol{O} \boldsymbol{O}^t = \boldsymbol{O}^t \boldsymbol{O} = \boldsymbol{I}$. Estes resultados são conhecidos como **Teorema da decomposição espectral**.
+
+
+
+## Variabilidade explicada
+
+<style type="text/css">
+.tg  {border:none;border-collapse:collapse;border-spacing:0;margin:0px auto;}
+.tg td{border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:36px;overflow:hidden;
+  padding:10px 5px;word-break:normal;}
+.tg th{border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:36px;font-weight:normal;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
+</style>
+<table class="tg"><thead>
+  <tr>
+    <th class="tg-c3ow">Variável</th>
+    <th class="tg-c3ow">Variância</th>
+    <th class="tg-c3ow">Componente</th>
+    <th class="tg-c3ow">Variância</th>
+  </tr></thead>
+<tbody>
+  <tr>
+    <td class="tg-c3ow">$X_1$</td>
+    <td class="tg-c3ow">$\sigma_{11}$</td>
+    <td class="tg-c3ow">$Y_1$</td>
+    <td class="tg-c3ow">$\lambda_1$</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">$X_2$</td>
+    <td class="tg-c3ow">$\sigma_{22}$</td>
+    <td class="tg-c3ow">$Y_2$</td>
+    <td class="tg-c3ow">$\lambda_2$</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">$\vdots$</td>
+    <td class="tg-c3ow">$\vdots$</td>
+    <td class="tg-c3ow">$\vdots$</td>
+    <td class="tg-c3ow">$\vdots$</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">$X_p$</td>
+    <td class="tg-c3ow">$\sigma_{pp}$</td>
+    <td class="tg-c3ow">$Y_p$</td>
+    <td class="tg-c3ow">$\lambda_p$</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">Total</td>
+    <td class="tg-c3ow">$\sigma_T^2$ = $\displaystyle{\sum_{j=1}^p \sigma_{jj}} = \rm{tr}(\boldsymbol{\Sigma})$</td>
+    <td class="tg-c3ow">Total</td>
+    <td class="tg-c3ow">$\lambda_T = \displaystyle{\sum_{j=1}^p \lambda_j} = \rm{tr}(\boldsymbol{\Lambda})$</td>
+  </tr>
+</tbody></table>
+
+. . .
+
+$$\rm{tr}(\boldsymbol{\Sigma}) = \rm{tr}(\boldsymbol{O} \boldsymbol{\Lambda} \boldsymbol{O}^t) = \rm{tr}(\boldsymbol{\Lambda} \boldsymbol{O}^t \boldsymbol{O}) = \rm{tr}(\boldsymbol{\Lambda} \boldsymbol{I}) = \rm{tr}(\boldsymbol{\Lambda})$$
+
+
+. . .
+
+$$\sigma_T^2 = \lambda_T$$
+
+
+
+
+## Variabilidade explicada
+
+
+- Pode-se então concluir que a **j-ésima componente explica**
+
+$$\displaystyle{\frac{\textrm{Var}[Y_j]}{\textrm{Variância Total de X}}} = \displaystyle{\frac{\lambda_j}{\textrm{tr}(\boldsymbol{\Sigma})}} = 
+\displaystyle{\frac{\lambda_j}{\displaystyle{\sum_{i=1}^p \lambda_i}}}$$
+
+da variação total original, e ainda, que as **$r$ primeiras** componentes explicam 
+
+$$\displaystyle{\frac{ \displaystyle \sum_{j=1}^r \textrm{Var}[Y_j]}{\textrm{Variância Total de X}}} = \displaystyle{\frac{\displaystyle \sum_{j=1}^r \lambda_j}{\textrm{tr}(\boldsymbol{\Sigma})}} = 
+\displaystyle{\frac{\displaystyle \sum_{j=1}^r \lambda_j}{\displaystyle{\sum_{i=1}^p \lambda_i}}}$$
+
+da variação total.
+
+
+## Variabilidade explicada
+
+
+- Busca-se analisar um conjunto menor de variáveis sem perder muita informação sobre a estrutura de variabilidade original
+
+. . .
+
+
+- Aproximação de $\boldsymbol{\Sigma}$: Analisando as $r$ primeiras componentes principais
+
+$$\boldsymbol{\Sigma} \approx \displaystyle \sum_{i=1}^r \lambda_i \boldsymbol{e}_i \boldsymbol{e}_i^t$$
+
+
+. . .
+
+
+- Cada parcela da soma envolve uma matriz de dimensão $p \times p$ correspondente apenas à informação da $j$-ésima componente principal
+
+
+## Correlação com as variáveis originais
+
+
+- Os coeficientes de correlação entre a $j$-ésima variável e a $i$-ésima componente principal é dada por:
+
+
+$$\rho_{Y_i,X_j} = \displaystyle{\frac{e_{ij} \sqrt{\lambda_i}}{\sqrt{\sigma_{jj}}}}$$
+
+. . .
+
+
+
+
+- As correlações medem unicamente a importância de uma variável individual sem considerar a influência das demais. Não medem a importância de $X_i$ na presença de outras variáveis.
+
+
+. . .
+
+
+- Os coeficientes (**cargas**) dos componentes ($e_{ij}$), seus sinais e magnitudes, permitem interpretar os componentes e avaliar a importância das variáveis em sua constituição.
+
+
+
+## Estimação das Componentes Principais
+
+
+- Em geral, $\boldsymbol{\Sigma}$ é estimada por $\boldsymbol{S}$
+
+$$\boldsymbol{S} = \left[ \begin{array}{cccc} s_{11} & s_{12} & \cdots & s_{1p}
+\\ s_{21} & s_{22} & \cdots & s_{2p} 
+\\ \vdots & \vdots & \ddots & \vdots
+\\ s_{p1} & s_{p2} & \cdots & s_{pp} \end{array} \right]$$
+
+
+. . .
+
+
+- Autovalores de $\boldsymbol{S}$: $\hat{\lambda}_1, \hat{\lambda}_2, \cdots, \hat{\lambda}_p$
+
+
+. . .
+
+
+- Autovetores de $\boldsymbol{S}$: $\hat{\boldsymbol{e}}_1, \hat{\boldsymbol{e}}_2, \cdots, \hat{\boldsymbol{e}}_p$
+
+
+
+## Estimação das Componentes Principais
+
+- Estimação da $j$-ésima componente principal de $\boldsymbol{S}$:
+
+$$\hat{Y}_j = {\hat{\boldsymbol{e}}_j^t}\mathbf{x} =  \hat{e}_{j1}X_1 + \hat{e}_{j2}X_2 + \cdots + \hat{e}_{jp}X_p, \,\,\,\,\,\, j = 1, 2, \cdots, p$$
+
+. . .
+
+
+
+
+- Componentes principais amostrais - Propriedades
+    - Variância: $\text{Var}(\hat{Y}_j) = \hat{\lambda}_j$
+    - Covariância entre as componentes: $\text{Cov}(\hat{Y}_j, \hat{Y}_k) = 0, \,\,\, j \neq k$
+    - Variância total estimada explicada pela componente:
+$$\dfrac{\text{Var}(\hat{Y}_j)}{\text{Variância total estimada de } \mathbf{x}} = \dfrac{\hat{\lambda}_j}{\text{tr}(\boldsymbol{S})} =  \dfrac{\hat{\lambda}_j}{\sum \limits_{i=1}^p \hat{\lambda}_i}$$
+
+## Estimação das Componentes Principais
+
+- Correlação estimada entre componente e variável:
+$$r_{\hat{Y}_j,\hat{X}_k} = \displaystyle{\frac{\hat{e}_{jk} \sqrt{\hat{\lambda}_j}}{\sqrt{\sigma_{kk}}}}$$
+
+. . .
+
+-  Decomposição espectral de $\boldsymbol{S}$:
+
+$$\boldsymbol{S} = \displaystyle \sum_{j=1}^p \hat{\lambda}_j  \hat{\boldsymbol{e}}_j  \hat{\boldsymbol{e}}_j^t$$
+
+
+## Estimação das Componentes Principais
+
+
+- Aproximação de $\boldsymbol{S}$ pelas $r$ primeiras componentes
+
+
+$$\boldsymbol{S} \approx \displaystyle \sum_{j=1}^r \hat{\lambda}_j \hat{\boldsymbol{e}}_j  \hat{\boldsymbol{e}}_j^t$$
+
+. . .
+
+
+
+- Escores das componentes
+    - Valor das componentes para cada elemento amostral
+    - Na prática, o uso das componentes relevantes se dá através dos escores
+
+
+## Primeiro Exemplo: (Mingoti,2007)
+
+<p style="text-align: center; color: black; font-size: 34px;"> 
+12 empresas, 3 variáveis: ganho bruto ($X_1$), ganho líquido ($X_2$) e patrimônio acumulado ($X_3$)
+</p>
+
+
+<style type="text/css">
+.tg  {border:none;border-collapse:collapse;border-color:#ccc;border-spacing:0;margin:0px auto;}
+.tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:0px;color:#333;
+  font-family:Arial, sans-serif;font-size:30px;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:0px;color:#333;
+  font-family:Arial, sans-serif;font-size:30px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-c3ow{border-color:white;text-align:center;vertical-align:top}
+</style>
+<table class="tg"><thead>
+  <tr>
+    <th class="tg-c3ow">Empresa</th>
+    <th class="tg-c3ow">Ganho bruto $(X_1)$</th>
+    <th class="tg-c3ow">Ganho líquido $(X_2)$</th>
+    <th class="tg-c3ow">Patrimônio $(X_3)$</th>
+  </tr></thead>
+<tbody>
+  <tr>
+    <td class="tg-c3ow">E1</td>
+    <td class="tg-c3ow">9893</td>
+    <td class="tg-c3ow">564</td>
+    <td class="tg-c3ow">17689</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">E2</td>
+    <td class="tg-c3ow">8776</td>
+    <td class="tg-c3ow">389</td>
+    <td class="tg-c3ow">17359</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">E3</td>
+    <td class="tg-c3ow">13572</td>
+    <td class="tg-c3ow">1103</td>
+    <td class="tg-c3ow">18597</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">E4</td>
+    <td class="tg-c3ow">6455</td>
+    <td class="tg-c3ow">743</td>
+    <td class="tg-c3ow">8745</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">E5</td>
+    <td class="tg-c3ow">5129</td>
+    <td class="tg-c3ow">203</td>
+    <td class="tg-c3ow">14397</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">E6</td>
+    <td class="tg-c3ow">5432</td>
+    <td class="tg-c3ow">215</td>
+    <td class="tg-c3ow">3467</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">E7</td>
+    <td class="tg-c3ow">3807</td>
+    <td class="tg-c3ow">385</td>
+    <td class="tg-c3ow">4679</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">E8</td>
+    <td class="tg-c3ow">3423</td>
+    <td class="tg-c3ow">187</td>
+    <td class="tg-c3ow">6754</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">E9</td>
+    <td class="tg-c3ow">3708</td>
+    <td class="tg-c3ow">127</td>
+    <td class="tg-c3ow">2275</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">E10</td>
+    <td class="tg-c3ow">3294</td>
+    <td class="tg-c3ow">297</td>
+    <td class="tg-c3ow">6754</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">E11</td>
+    <td class="tg-c3ow">5433</td>
+    <td class="tg-c3ow">432</td>
+    <td class="tg-c3ow">5589</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">E12</td>
+    <td class="tg-c3ow">6287</td>
+    <td class="tg-c3ow">451</td>
+    <td class="tg-c3ow">8972</td>
+  </tr>
+</tbody></table>

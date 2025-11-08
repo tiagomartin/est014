@@ -1032,5 +1032,285 @@
     "title": "Lista de exercícios 03: Distribuição Normal Multivariada",
     "section": "",
     "text": "Data de entrega: 24 de novembro de 2025\n\n\n\nSuponha que \\(\\mathbf{x} \\sim N_3(\\boldsymbol{\\mu}, \\boldsymbol{\\Sigma})\\), onde\n\n\\[\n\\boldsymbol{\\mu} = \\left[ \\begin{array}{l} 3 \\\\ 1 \\\\ 4 \\end{array} \\right],\n\\boldsymbol{\\Sigma} = \\left[ \\begin{array}{rrr} 6 & 1 & -2\\\\ 1 & 13 & 4 \\\\ -2 & 4 & 4\n\\end{array} \\right]\n\\]\n\nEncontre a distribuição de \\(z = 2x_1 - x_2 + 3x_3\\)\nEncontre a distribuição conjunta de \\(z_1 = x_1 + x_2 + x_3\\) e \\(z_2 = x_1 - x_2 + 2x_3\\)\nEncontre a distribuição marginal de \\(x_2\\)\nEncontre a distribuição de \\([x_1 \\hspace{0.2cm} x_3]^t\\)\nEncontre a distribuição conjunta de \\(x_1\\), \\(x_3\\) e \\(3(x_1 + x_2)\\)\n\n\n\nConsidere uma população normal bivariada com \\(\\mu_1 = 0\\), \\(\\mu_2 = 2\\), \\(\\sigma_{11} = 2\\), \\(\\sigma_{22} = 1\\) e \\(\\rho_{12} = 0,5\\).\n\n\nEscreva a função densidade normal bivariada correspondente.\nEscreva a distância generalizada quadrática de Mahalanobis \\((\\mathbf{x} - \\boldsymbol{\\mu})^t \\boldsymbol{\\Sigma}^{-1}(\\mathbf{x} - \\boldsymbol{\\mu})\\) em função de \\(x_1\\) e \\(x_2\\).\n\n\n\nSuponha que \\(\\mathbf{x} \\sim N_3(\\boldsymbol{\\mu}, \\boldsymbol{\\Sigma})\\), onde\n\n\\[\n\\boldsymbol{\\mu} = \\left[ \\begin{array}{r} 2 \\\\ -3 \\\\ 1 \\end{array} \\right],\n\\boldsymbol{\\Sigma} = \\left[ \\begin{array}{rrr} 1 & 1 & 1\\\\ 1 & 3 & 2 \\\\ 1 & 2 & 2\n\\end{array} \\right]\n\\]\n\nEncontre a distribuição de \\(z = 3x_1 - 2x_2 + x_3\\)\nEncontre a distribuição de \\(w = 2x_1\\)\nEncontre a distribuição conjunta de \\(\\mathbf{y} = \\left[ \\begin{array}{r} z \\\\ w \\end{array} \\right]\\)\n\n\n\nSuponha que \\(\\mathbf{x} \\sim N_3(\\boldsymbol{\\mu}, \\boldsymbol{\\Sigma})\\), com\n\n\\[\n\\boldsymbol{\\mu} = \\left[ \\begin{array}{r} -3 \\\\ 1 \\\\ 4 \\end{array} \\right],\n\\boldsymbol{\\Sigma} = \\left[ \\begin{array}{rrr} 1 & -2 & 0 \\\\ -2 & 5 & 0  \\\\ 0 & 0 & 2  \n\\end{array} \\right]\n\\]\nVerifique se as seguintes variáveis são independentes. JUSTIFIQUE!\n\n\\(X_1\\) e \\(X_2\\)\n\\(X_2\\) e \\(X_3\\)\n\\((X_1, X_2)\\) e \\(X_3\\)\n\\(\\displaystyle \\frac{X_1 + X_2}{2}\\) e \\(X_3\\)\n\\(X_2\\) e \\(\\displaystyle X_2 - \\frac{5}{2} X_1 - X_3\\)\n\n\n\nSeja \\(\\mathbf{x} \\sim N_3(\\boldsymbol{\\mu}, \\boldsymbol{\\Sigma})\\), com\n\n\\[\n\\boldsymbol{\\mu} = \\left[ \\begin{array}{r} 3 \\\\ 5 \\\\ 2 \\end{array} \\right],\n\\boldsymbol{\\Sigma} = \\left[ \\begin{array}{rrr} 25 & -2 & 4 \\\\ -2 & 4 &1  \\\\ 4& 1 &9  \n\\end{array} \\right]\n\\]\nDetermine a distribuição condicional de \\(X_1\\) dado \\(\\mathbf{x_2} = [4 \\hspace{0.2cm} 4]^t\\).\n\n\nSeja o vetor \\(\\mathbf{x}\\) com distribuição normal \\(N_3(\\boldsymbol{\\mu}, \\boldsymbol{\\Sigma})\\), sendo\n\n\\[\n\\boldsymbol{\\mu} = \\left[ \\begin{array}{r} 0 \\\\ 0 \\\\ 0 \\end{array} \\right],\n\\boldsymbol{\\Sigma} = \\left[ \\begin{array}{rrr} 5 & 0 & 0 \\\\ 0 & 7 & -1  \\\\ 0 & -1 & 2  \n\\end{array} \\right]\n\\]\nDetermine as distribuições marginal de \\(X_1\\) e condicional de \\(X_1\\) dado \\(\\mathbf{x_2} = [X_2 \\hspace{0.2cm} X_3]^t\\). O que podemos dizer a respeito dessas distribuições? Explique a razão desse fato."
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#introdução",
+    "href": "aulas/analise_comp_princ/comp_princ.html#introdução",
+    "title": "Análise de Componentes Principais",
+    "section": "Introdução",
+    "text": "Introdução\nUm problema central na análise de dados multivariados é a redução da dimensionalidade: é possível descrever com precisão a informação contida nos dados mensurados em \\(p\\) variáveis utilizando um conjunto \\(r &lt; p\\) de novas variáveis, perdendo a menor quantidade de informação possível?\n\nA análise de componentes principais tem este objetivo: dadas \\(n\\) observações de \\(p\\) variáveis, se analisa se é possível representar adequadamente esta informação com um número menor de variáveis construídas como combinações lineares das variáveis originais."
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#o-problema",
+    "href": "aulas/analise_comp_princ/comp_princ.html#o-problema",
+    "title": "Análise de Componentes Principais",
+    "section": "O Problema…",
+    "text": "O Problema…\nDado um conjunto de variáveis \\(\\mathbf{x} = [X_1 \\hspace{0.1cm} X_2 \\hspace{0.1cm} \\cdots \\hspace{0.1cm} X_p]^t\\), podemos encontrar outro conjunto de variáveis \\(\\mathbf{y} = [Y_1 \\hspace{0.1cm} Y_2 \\hspace{0.1cm} \\cdots \\hspace{0.1cm} Y_r]^t\\), dadas por\n\\[Y_i= \\displaystyle{\\sum_{j=1}^p a_{ij}X_j}, \\,\\, i = 1, \\cdots, r &lt; p\\]\nde tal forma que a informação contida em \\(\\mathbf{x}\\) esteja sendo bem representada por \\(\\mathbf{y}\\)?"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#o-problema-1",
+    "href": "aulas/analise_comp_princ/comp_princ.html#o-problema-1",
+    "title": "Análise de Componentes Principais",
+    "section": "O Problema…",
+    "text": "O Problema…\nAlgumas questões\nVamos encontrar combinações lineares para representar informação.\n. . .\n\n🤔 O que é informação?\n\n. . .\nInformação \\(\\Longrightarrow\\) Variância: quanto maior a variabilidade, maior a informação contida nos dados, maior a variância dos dados"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#algumas-questões",
+    "href": "aulas/analise_comp_princ/comp_princ.html#algumas-questões",
+    "title": "Análise de Componentes Principais",
+    "section": "Algumas questões",
+    "text": "Algumas questões\n\nVamos encontrar combinações lineares para representar informação.\n\n\n🤔 O que é informação?\n\n\n\nInformação \\(\\Longrightarrow\\) Variância: quanto maior a variabilidade, maior a informação contida nos dados, maior a variância dos dados"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#algumas-questões-1",
+    "href": "aulas/analise_comp_princ/comp_princ.html#algumas-questões-1",
+    "title": "Análise de Componentes Principais",
+    "section": "Algumas questões",
+    "text": "Algumas questões\n\nOutra questão importante:\n\n\n🤔 O que é uma boa representação da informação?\n\n\n\nBoa representação da informação \\(\\Longrightarrow\\) tomar as componentes de \\(\\mathbf{y}\\) que assegurem uma variância similar à de \\(\\mathbf{x}\\)"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#esquematicamente",
+    "href": "aulas/analise_comp_princ/comp_princ.html#esquematicamente",
+    "title": "Análise de Componentes Principais",
+    "section": "Esquematicamente",
+    "text": "Esquematicamente\nNestas condições, temos que buscar combinações lineares \\(\\mathbf{y}\\) das variáveis \\(\\mathbf{x}\\) de forma que se maximize a variância\n\n\n\n\n\n\nVariáveis Originais\n\n\n\n\nCombinações Lineares\n\n\n\n\n\n\n\\(X_1\\)\n\n\n\n\n\\(Y_1\\)\n\n\n\n\n\\(X_2\\)\n\n\n\n\n\\(Y_2\\)\n\n\n\n\n\\(\\vdots\\)\n\n\n\n\n\\(\\vdots\\)\n\n\n\n\n\\(X_{r}\\)\n\n\n\\(\\Longrightarrow\\)\n\n\n\\(Y_r\\)\n\n\n\n\n\\(\\vdots\\)\n\n\n\n\n\\(\\vdots\\)\n\n\n\n\n\\(X_p\\)\n\n\n\n\n\\(Y_{p}\\)\n\n\n\n\n\n\n\n\\(\\rm{Var}[\\mathbf{y}]\\): Máxima"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#esquematicamente-1",
+    "href": "aulas/analise_comp_princ/comp_princ.html#esquematicamente-1",
+    "title": "Análise de Componentes Principais",
+    "section": "Esquematicamente",
+    "text": "Esquematicamente\nIdeia básica da técnica de Análise de Componentes Principais:\n\n\n\n\n\n\nVariáveis Originais\n\n\n\n\nComponentes Principais\n\n\n\n\n\n\n\\(X_1\\)\n\n\nACP\n\n\n\\(Y_1\\)\n\n\n\n\n\\(X_2\\)\n\n\n\\(\\Longrightarrow\\)\n\n\n\\(Y_2\\)\n\n\n\n\n\\(\\vdots\\)\n\n\n\n\n\\(\\vdots\\)\n\n\n\n\n\\(X_{p}\\)\n\n\n\n\n\\(Y_r\\)\n\n\n\n\n\n\n\n\n\\(\\vdots\\)\n\n\n\n\n\n\n\n\n\\(Y_{p}\\)\n\n\n\n\n\n\n\n\\(r\\) primeiras componentes resumam, por exemplo, 80% do comportamento geral das \\(p\\) variáveis originais"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#principais-objetivos",
+    "href": "aulas/analise_comp_princ/comp_princ.html#principais-objetivos",
+    "title": "Análise de Componentes Principais",
+    "section": "Principais objetivos",
+    "text": "Principais objetivos\n\nRedução da dimensionalidade dos dados, projetando-os em uma dimensão \\(r &lt; p\\);"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#principais-objetivos-1",
+    "href": "aulas/analise_comp_princ/comp_princ.html#principais-objetivos-1",
+    "title": "Análise de Componentes Principais",
+    "section": "Principais objetivos",
+    "text": "Principais objetivos\n\nObtenção de combinações interpretáveis: determinar índices e produzir escores com base nos resultados avaliados para as \\(p\\) variáveis;"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#principais-objetivos-2",
+    "href": "aulas/analise_comp_princ/comp_princ.html#principais-objetivos-2",
+    "title": "Análise de Componentes Principais",
+    "section": "Principais objetivos",
+    "text": "Principais objetivos\n\nDescrição e entendimento da estrutura de correlação entre as variáveis, através de algumas combinações lineares das mesmas."
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#componentes-principais-o-que-são",
+    "href": "aulas/analise_comp_princ/comp_princ.html#componentes-principais-o-que-são",
+    "title": "Análise de Componentes Principais",
+    "section": "Componentes Principais: o que são?",
+    "text": "Componentes Principais: o que são?\nAlgebricamente: são combinações lineares das \\(p\\) variáveis originais, \\(X_1, X_2, \\cdots, X_p\\).\n\nGeometricamente: são as coordenadas dos pontos amostrais em um sistema de eixos obtido pela rotação do sistema de eixos original, na direção de variabilidade máxima."
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#componentes-principais-alguns-comentários",
+    "href": "aulas/analise_comp_princ/comp_princ.html#componentes-principais-alguns-comentários",
+    "title": "Análise de Componentes Principais",
+    "section": "Componentes Principais: alguns comentários",
+    "text": "Componentes Principais: alguns comentários\n\nNão pressupõe normalidade dos dados, embora componentes derivadas de populações normais tenham interpretações úteis.\n\n\n\nCom frequência, revela relações insuspeitas. Pode permitir interpretações que não seriam obtidas preliminarmente.\n\n\n\n\nEm algumas aplicações, os componentes da ACP configuram o objetivo final do estudo. Em outras, servem como passo intermediário para realização de outras análises, como regressão, classificação, agrupamento, etc…"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#componentes-principais-como-obtê-los",
+    "href": "aulas/analise_comp_princ/comp_princ.html#componentes-principais-como-obtê-los",
+    "title": "Análise de Componentes Principais",
+    "section": "Componentes Principais: como obtê-los?",
+    "text": "Componentes Principais: como obtê-los?\n\nSejam \\(X_1, \\hspace{0.1cm} X_2, \\hspace{0.1cm} \\cdots, \\hspace{0.1cm} X_p\\) as variáveis originais\n\n\n\nA ideia é encontrar um novo conjunto de variáveis \\(Y_1, \\hspace{0.1cm} Y_2, \\hspace{0.1cm} \\cdots, \\hspace{0.1cm} Y_p\\), tais que:\n\n\\[\\textrm{Var}[Y_1] \\geqslant \\textrm{Var}[Y_2] \\geqslant \\cdots \\geqslant \\textrm{Var}[Y_p]\\]\n\n\n\nVamos tomar cada nova variável \\(Y_i\\), \\(i = 1, \\cdots, p\\), como uma combinação linear das variáveis originais \\(\\mathbf{x}\\):\n\n\\[Y_i = a_{i1}X_1 + a_{i2}X_2 + \\cdots + a_{ip}X_p = \\mathbf{a}_i^t \\mathbf{x}\\]"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#componentes-principais-como-obtê-los-componentes-principais-como-obtê-los",
+    "href": "aulas/analise_comp_princ/comp_princ.html#componentes-principais-como-obtê-los-componentes-principais-como-obtê-los",
+    "title": "Análise de Componentes Principais",
+    "section": "Componentes Principais: como obtê-los?## Componentes Principais: como obtê-los?",
+    "text": "Componentes Principais: como obtê-los?## Componentes Principais: como obtê-los?\n\nPara fixar problemas de escala, adicionamos uma primeira restrição aos vetores \\(\\mathbf{a}_i\\):\n\n\\[\\mathbf{a}_i^t \\mathbf{a}_i = \\displaystyle{ \\sum_{j=1}^p a_{ij}^2} = 1\\]\n\n\nPara evitar que duas variáveis \\(Y_i\\) e \\(Y_k\\), \\(i \\neq k\\), \\(i,k = 1, \\cdots, p\\), compartilhem informação, adicionamos uma segunda restrição aos vetores \\(\\mathbf{a}_i\\):\n\n\\[\\mathbf{a}_i^t \\mathbf{a}_k = \\displaystyle{ \\sum_{j=1}^p a_{ij}a_{kj}}  = 0\\] . . .\n\nGarantia: ortogalidade, componentes não correlacionadas, independência"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#componentes-principais-como-obtê-los-1",
+    "href": "aulas/analise_comp_princ/comp_princ.html#componentes-principais-como-obtê-los-1",
+    "title": "Análise de Componentes Principais",
+    "section": "Componentes Principais: como obtê-los?",
+    "text": "Componentes Principais: como obtê-los?\n\nPara fixar problemas de escala, adicionamos uma primeira restrição aos vetores \\(\\mathbf{a}_i\\):\n\n\\[\\mathbf{a}_i^t \\mathbf{a}_i = \\displaystyle{ \\sum_{j=1}^p a_{ij}^2} = 1\\]\n\n\nPara evitar que duas variáveis \\(Y_i\\) e \\(Y_k\\), \\(i \\neq k\\), \\(i,k = 1, \\cdots, p\\), compartilhem informação, adicionamos uma segunda restrição aos vetores \\(\\mathbf{a}_i\\):\n\n\\[\\mathbf{a}_i^t \\mathbf{a}_k = \\displaystyle{ \\sum_{j=1}^p a_{ij}a_{kj}}  = 0\\]"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#componentes-principais-como-obtê-los-2",
+    "href": "aulas/analise_comp_princ/comp_princ.html#componentes-principais-como-obtê-los-2",
+    "title": "Análise de Componentes Principais",
+    "section": "Componentes Principais: como obtê-los?",
+    "text": "Componentes Principais: como obtê-los?\n\n\n\n💡 Garantia: ortogalidade, componentes não correlacionadas, independência"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#componentes-principais-como-obtê-los-3",
+    "href": "aulas/analise_comp_princ/comp_princ.html#componentes-principais-como-obtê-los-3",
+    "title": "Análise de Componentes Principais",
+    "section": "Componentes Principais: como obtê-los?",
+    "text": "Componentes Principais: como obtê-los?\n\nPrimeira Componente Principal\n\n\\[Y_1 = a_{11}X_1 + a_{12}X_2 + \\cdots + a_{1p}X_p = \\boldsymbol{a}_1^t \\mathbf{x}\\]\n\nObjetivo: Encontrar \\(\\boldsymbol{a}_1^t = [a_{11} \\hspace{0.3cm} a_{12} \\hspace{0.3cm} \\cdots \\hspace{0.3cm} a_{1p}]^t\\) tal que:\n\n\\(\\rm{Var}[Y_1]\\) seja máxima\n\n\n\nSujeita à restrição:\n\\[\\boldsymbol{a}_1^t \\boldsymbol{a}_1 = a_{11}^2 + a_{12}^2 + \\cdots + a_{1p}^2 = 1\\]"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#componentes-principais-como-obtê-los-4",
+    "href": "aulas/analise_comp_princ/comp_princ.html#componentes-principais-como-obtê-los-4",
+    "title": "Análise de Componentes Principais",
+    "section": "Componentes Principais: como obtê-los?",
+    "text": "Componentes Principais: como obtê-los?\n\nSegunda Componente Principal\n\n\\[Y_2 = a_{21}X_1 + a_{22}X_2 + \\cdots + a_{2p}X_p = \\boldsymbol{a}_2^t \\mathbf{x}\\]\n\nObjetivo: Encontrar \\(\\boldsymbol{a}_2^t = [a_{21} \\hspace{0.3cm} a_{22} \\hspace{0.3cm} \\cdots \\hspace{0.3cm} a_{2p}]^t\\) tal que:\n\n\\(\\rm{Var}[Y_2]\\) seja máxima\n\n\n\nSujeita à restrição:\n\\[\\boldsymbol{a}_2^t \\boldsymbol{a}_2 = a_{21}^2 + a_{22}^2 + \\cdots + a_{2p}^2 = 1\\]\n\\[\\rm{Cov}[Y_1,Y_2] = 0\\]"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#componentes-principais-como-obtê-los-5",
+    "href": "aulas/analise_comp_princ/comp_princ.html#componentes-principais-como-obtê-los-5",
+    "title": "Análise de Componentes Principais",
+    "section": "Componentes Principais: como obtê-los?",
+    "text": "Componentes Principais: como obtê-los?\n\ni-ésima Componente Principal\n\n\\[Y_i = a_{i1}X_1 + a_{i2}X_2 + \\cdots + a_{ip}X_p = \\boldsymbol{a}_i^t \\mathbf{x}\\]\n\nObjetivo: Encontrar \\(\\boldsymbol{a}_i^t = [a_{i1} \\hspace{0.3cm} a_{i2} \\hspace{0.3cm} \\cdots \\hspace{0.3cm} a_{ip}]^t\\) tal que:\n\n\\(\\rm{Var}[Y_i]\\) seja máxima\n\n\n\nSujeita à restrição:\n\\[\\boldsymbol{a}_i^t \\boldsymbol{a}_i =  a_{i1}^2 + a_{i2}^2 + \\cdots + a_{ip}^2 = 1\\]\n\\[\\rm{Cov}[Y_,Y_k] = 0, \\text{para  } k &lt; i\\]"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#a-escolha-dos-vetores-mathbfa_i",
+    "href": "aulas/analise_comp_princ/comp_princ.html#a-escolha-dos-vetores-mathbfa_i",
+    "title": "Análise de Componentes Principais",
+    "section": "A escolha dos vetores \\(\\mathbf{a}_i\\)",
+    "text": "A escolha dos vetores \\(\\mathbf{a}_i\\)\n\nConsidere o vetor aleatório p-variado \\(\\mathbf{x} = [X_1 \\hspace{0.3cm} X_2 \\hspace{0.3cm} \\cdots \\hspace{0.3cm} X_p]^t\\) com vetor de médias \\(\\boldsymbol{\\mu}\\) e matriz de covariâncias \\(\\boldsymbol{\\Sigma}\\), positiva definida (todos os seus autovalores são positivos), sendo\n\n\\[\\boldsymbol{\\mu} = [\\mu_1 \\hspace{0.3cm} \\mu_2 \\hspace{0.3cm} \\cdots \\hspace{0.3cm} \\mu_p]^t \\hspace{0.5cm} \\textrm{e} \\hspace{0.5cm}\n\\boldsymbol{\\Sigma} = \\left[ \\begin{array}{cccc} \\sigma_{11} & \\sigma_{12} & \\cdots & \\sigma_{1p}\n\\\\ \\sigma_{21} & \\sigma_{22} & \\cdots & \\sigma_{2p}\n\\\\ \\vdots & \\vdots & \\ddots & \\vdots\n\\\\ \\sigma_{p1} & \\sigma_{p2} & \\cdots & \\sigma_{pp} \\end{array} \\right]\\]\n\n\nPara determinação dos componentes principais, com base no que foi exposto, usaremos o seguinte teorema:"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#a-escolha-dos-vetores-mathbfa_i-1",
+    "href": "aulas/analise_comp_princ/comp_princ.html#a-escolha-dos-vetores-mathbfa_i-1",
+    "title": "Análise de Componentes Principais",
+    "section": "A escolha dos vetores \\(\\mathbf{a}_i\\)",
+    "text": "A escolha dos vetores \\(\\mathbf{a}_i\\)\nAssim, no contexto de componentes principais, seja \\(\\mathbf{x} = [X_1 \\hspace{0.3cm} X_2 \\hspace{0.3cm} \\cdots \\hspace{0.3cm} X_p]^t\\) um vetor aleatório. Seja \\(\\boldsymbol{\\Sigma}\\) a matriz de variâncias e covariâncias e \\((\\lambda_1, \\boldsymbol{e}_1)\\), \\((\\lambda_2, \\boldsymbol{e}_2)\\), …, \\((\\lambda_p, \\boldsymbol{e}_p)\\) seus autovalores e autovetores, tal que \\(\\lambda_1 \\geqslant \\lambda_2 \\geqslant \\cdots \\geqslant \\lambda_p &gt; 0\\). Então:\n\\[\\max_{\\boldsymbol{a} \\neq \\boldsymbol{0}} \\dfrac{\\boldsymbol{a}^t \\boldsymbol{\\Sigma} \\boldsymbol{a}}{\\boldsymbol{a}^t \\boldsymbol{a}} = \\max_{\\boldsymbol{a} \\neq \\boldsymbol{0}}(\\boldsymbol{a}^t \\boldsymbol{\\Sigma} \\boldsymbol{a}) = \\lambda_1, \\text{ obtido quando } \\boldsymbol{a} = \\boldsymbol{e}_1;\\]\n\\[\\min_{\\boldsymbol{a} \\neq \\boldsymbol{0}} \\dfrac{\\boldsymbol{a}^t \\boldsymbol{\\Sigma} \\boldsymbol{a}}{\\boldsymbol{a}^t \\boldsymbol{a}} = \\min_{\\boldsymbol{a} \\neq \\boldsymbol{0}}(\\boldsymbol{a}^t \\boldsymbol{\\Sigma} \\boldsymbol{a}) = \\lambda_p, \\text{ obtido quando } \\boldsymbol{a} = \\boldsymbol{e}_p.\\]"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#a-escolha-dos-vetores-mathbfa_i-2",
+    "href": "aulas/analise_comp_princ/comp_princ.html#a-escolha-dos-vetores-mathbfa_i-2",
+    "title": "Análise de Componentes Principais",
+    "section": "A escolha dos vetores \\(\\mathbf{a}_i\\)",
+    "text": "A escolha dos vetores \\(\\mathbf{a}_i\\)\n\nAdicionalmente,\n\n\\[\\max_{\\boldsymbol{a} \\perp \\boldsymbol{e}_1, \\boldsymbol{e}_1, \\cdots, \\boldsymbol{e}_k} \\dfrac{\\boldsymbol{a}^t \\boldsymbol{\\Sigma} {\\boldsymbol a}}{\\boldsymbol{a}^t \\boldsymbol{a}} = \\max_{\\boldsymbol{a} \\perp \\boldsymbol{e}_1, \\boldsymbol{e}_1, \\cdots, \\boldsymbol{e}_k}(\\boldsymbol{a}^t \\boldsymbol{\\Sigma} \\boldsymbol{a})= \\lambda_{k+1}, \\text{ obtido quando } \\boldsymbol{a} = \\boldsymbol{e}_{k+1}.\\]"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#a-escolha-dos-vetores-boldsymbola_i",
+    "href": "aulas/analise_comp_princ/comp_princ.html#a-escolha-dos-vetores-boldsymbola_i",
+    "title": "Análise de Componentes Principais",
+    "section": "A escolha dos vetores \\(\\boldsymbol{a}_i\\)",
+    "text": "A escolha dos vetores \\(\\boldsymbol{a}_i\\)\n\nConsidere o vetor aleatório p-variado \\(\\mathbf{x} = [X_1 \\hspace{0.3cm} X_2 \\hspace{0.3cm} \\cdots \\hspace{0.3cm} X_p]^t\\) com vetor de médias \\(\\boldsymbol{\\mu}\\) e matriz de covariâncias \\(\\boldsymbol{\\Sigma}\\), positiva definida (todos os seus autovalores são positivos), sendo\n\n\\[\\boldsymbol{\\mu} = [\\mu_1 \\hspace{0.3cm} \\mu_2 \\hspace{0.3cm} \\cdots \\hspace{0.3cm} \\mu_p]^t \\hspace{0.5cm} \\textrm{e} \\hspace{0.5cm}\n\\boldsymbol{\\Sigma} = \\left[ \\begin{array}{cccc} \\sigma_{11} & \\sigma_{12} & \\cdots & \\sigma_{1p}\n\\\\ \\sigma_{21} & \\sigma_{22} & \\cdots & \\sigma_{2p}\n\\\\ \\vdots & \\vdots & \\ddots & \\vdots\n\\\\ \\sigma_{p1} & \\sigma_{p2} & \\cdots & \\sigma_{pp} \\end{array} \\right]\\]\n\n\nPara determinação dos componentes principais, com base no que foi exposto, usaremos o seguinte teorema:"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#a-escolha-dos-vetores-mathbfa_i-3",
+    "href": "aulas/analise_comp_princ/comp_princ.html#a-escolha-dos-vetores-mathbfa_i-3",
+    "title": "Análise de Componentes Principais",
+    "section": "A escolha dos vetores \\(\\mathbf{a}_i\\)",
+    "text": "A escolha dos vetores \\(\\mathbf{a}_i\\)\n\nUma escolha interessante para os vetores de constantes \\({\\boldsymbol{a}_i}\\), \\(i = 1, \\cdots, p\\) são os autovetores normalizados \\({\\boldsymbol{e}_i}\\) da matriz \\(\\boldsymbol{\\Sigma}\\).\n\n\n\nDessa forma, podemos definir a \\(i\\)-ésima componente principal da matriz \\(\\boldsymbol{\\Sigma}\\), \\(i = 1, \\cdots, p\\) como sendo\n\n\n\n\\[Y_i = {\\boldsymbol{e}_i^t}\\mathbf{x} =  e_{i1}X_1 + e_{i2}X_2 + \\cdots + e_{ip}X_p\\]"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#a-escolha-dos-vetores-boldsymbola_i-1",
+    "href": "aulas/analise_comp_princ/comp_princ.html#a-escolha-dos-vetores-boldsymbola_i-1",
+    "title": "Análise de Componentes Principais",
+    "section": "A escolha dos vetores \\(\\boldsymbol{a}_i\\)",
+    "text": "A escolha dos vetores \\(\\boldsymbol{a}_i\\)\nTeorema - Maximização de formas quadráticas: Seja \\(\\boldsymbol{B}\\) uma matriz positiva definida com autovalores \\(\\lambda_1 \\geqslant \\lambda_2 \\geqslant \\cdots \\geqslant \\lambda_p &gt; 0\\) e autovetores associados normalizados \\({\\boldsymbol{e}_1, \\boldsymbol{e}_2, \\cdots, \\boldsymbol{e}_p}\\). Então:\n\\[\\max_{\\mathbf{x} \\neq \\boldsymbol{0}} \\dfrac{\\mathbf{x}^t \\boldsymbol{B} \\mathbf{x}}{\\mathbf{x}^t \\mathbf{x}} =  \\lambda_1, \\text{ obtido quando } \\mathbf{x} = \\boldsymbol{e}_1;\\]\n\\[\\min_{\\mathbf{x} \\neq \\boldsymbol{0}} \\dfrac{\\mathbf{x}^t \\boldsymbol{B} \\mathbf{x}}{\\mathbf{x}^t \\mathbf{x}} =  \\lambda_p, \\text{ obtido quando } \\mathbf{x} = \\boldsymbol{e}_p.\\]\n\n\nAdicionalmente,\n\n\\[\\max_{\\mathbf{x} \\perp \\boldsymbol{e}_1, \\boldsymbol{e}_1, \\cdots, \\boldsymbol{e}_k} \\dfrac{\\mathbf{x}^t \\boldsymbol{B} \\mathbf{x}}{\\mathbf{x}^t \\mathbf{x}} =  \\lambda_{k+1}, \\text{ obtido quando } \\mathbf{x} = \\boldsymbol{e}_{k+1}.\\]"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#a-escolha-dos-vetores-boldsymbola_i-2",
+    "href": "aulas/analise_comp_princ/comp_princ.html#a-escolha-dos-vetores-boldsymbola_i-2",
+    "title": "Análise de Componentes Principais",
+    "section": "A escolha dos vetores \\(\\boldsymbol{a}_i\\)",
+    "text": "A escolha dos vetores \\(\\boldsymbol{a}_i\\)\nAssim, no contexto de componentes principais, seja \\(\\mathbf{x} = [X_1 \\hspace{0.3cm} X_2 \\hspace{0.3cm} \\cdots \\hspace{0.3cm} X_p]^t\\) um vetor aleatório. Seja \\(\\boldsymbol{\\Sigma}\\) a matriz de variâncias e covariâncias e \\((\\lambda_1, \\boldsymbol{e}_1)\\), \\((\\lambda_2, \\boldsymbol{e}_2)\\), …, \\((\\lambda_p, \\boldsymbol{e}_p)\\) seus autovalores e autovetores, tal que \\(\\lambda_1 \\geqslant \\lambda_2 \\geqslant \\cdots \\geqslant \\lambda_p &gt; 0\\). Então:\n\\[\\max_{\\boldsymbol{a} \\neq \\boldsymbol{0}} \\dfrac{\\boldsymbol{a}^t \\boldsymbol{\\Sigma} \\boldsymbol{a}}{\\boldsymbol{a}^t \\boldsymbol{a}} = \\max_{\\boldsymbol{a} \\neq \\boldsymbol{0}}(\\boldsymbol{a}^t \\boldsymbol{\\Sigma} \\boldsymbol{a}) = \\lambda_1, \\text{ obtido quando } \\boldsymbol{a} = \\boldsymbol{e}_1;\\]\n\\[\\min_{\\boldsymbol{a} \\neq \\boldsymbol{0}} \\dfrac{\\boldsymbol{a}^t \\boldsymbol{\\Sigma} \\boldsymbol{a}}{\\boldsymbol{a}^t \\boldsymbol{a}} = \\min_{\\boldsymbol{a} \\neq \\boldsymbol{0}}(\\boldsymbol{a}^t \\boldsymbol{\\Sigma} \\boldsymbol{a}) = \\lambda_p, \\text{ obtido quando } \\boldsymbol{a} = \\boldsymbol{e}_p.\\]"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#a-escolha-dos-vetores-boldsymbola_i-3",
+    "href": "aulas/analise_comp_princ/comp_princ.html#a-escolha-dos-vetores-boldsymbola_i-3",
+    "title": "Análise de Componentes Principais",
+    "section": "A escolha dos vetores \\(\\boldsymbol{a}_i\\)",
+    "text": "A escolha dos vetores \\(\\boldsymbol{a}_i\\)\n\nAdicionalmente,\n\n\\[\\max_{\\boldsymbol{a} \\perp \\boldsymbol{e}_1, \\boldsymbol{e}_1, \\cdots, \\boldsymbol{e}_k} \\dfrac{\\boldsymbol{a}^t \\boldsymbol{\\Sigma} {\\boldsymbol a}}{\\boldsymbol{a}^t \\boldsymbol{a}} = \\max_{\\boldsymbol{a} \\perp \\boldsymbol{e}_1, \\boldsymbol{e}_1, \\cdots, \\boldsymbol{e}_k}(\\boldsymbol{a}^t \\boldsymbol{\\Sigma} \\boldsymbol{a})= \\lambda_{k+1}, \\text{ obtido quando } \\boldsymbol{a} = \\boldsymbol{e}_{k+1}.\\]"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#a-escolha-dos-vetores-boldsymbola_i-4",
+    "href": "aulas/analise_comp_princ/comp_princ.html#a-escolha-dos-vetores-boldsymbola_i-4",
+    "title": "Análise de Componentes Principais",
+    "section": "A escolha dos vetores \\(\\boldsymbol{a}_i\\)",
+    "text": "A escolha dos vetores \\(\\boldsymbol{a}_i\\)\n\nUma escolha interessante para os vetores de constantes \\({\\boldsymbol{a}_i}\\), \\(i = 1, \\cdots, p\\) são os autovetores normalizados \\({\\boldsymbol{e}_i}\\) da matriz \\(\\boldsymbol{\\Sigma}\\).\n\n\n\nDessa forma, podemos definir a \\(i\\)-ésima componente principal da matriz \\(\\boldsymbol{\\Sigma}\\), \\(i = 1, \\cdots, p\\) como sendo\n\n\n\n\\[Y_i = {\\boldsymbol{e}_i^t}\\mathbf{x} =  e_{i1}X_1 + e_{i2}X_2 + \\cdots + e_{ip}X_p\\]"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#componentes-principais-propriedades",
+    "href": "aulas/analise_comp_princ/comp_princ.html#componentes-principais-propriedades",
+    "title": "Análise de Componentes Principais",
+    "section": "Componentes Principais: propriedades",
+    "text": "Componentes Principais: propriedades\n\nA esperança e a variância da componente \\(Y_i\\) são respectivamente dadas por:\n\n\\[\n\\begin{eqnarray*}\nE[Y_i] &=& E[e_{i1}X_1 + e_{i2}X_2 + \\cdots + e_{ip}X_p]  \\nonumber \\\\\n&=& e_{i1}E[X_1] + e_{i2}E[X_2] + \\cdots + e_{ip}E[X_p]  \\nonumber \\\\\n&=& e_{i1}\\mu_1 + e_{i2}\\mu_2 + \\cdots + e_{ip}\\mu_p \\nonumber \\\\\n&=& {\\boldsymbol{e}_i^t}{\\boldsymbol{\\mu}} \\nonumber\n\\end{eqnarray*}\n\\]\n\n\\[ \\textrm{Var}[Y_i] = \\textrm{Var}[{\\boldsymbol{e}_i^t}\\mathbf{x}] = {\\boldsymbol{e}_i^t} \\textrm{Var}[\\mathbf{x}] {\\boldsymbol{e}_i}\n=  {\\boldsymbol{e}_i^t} \\boldsymbol{\\Sigma} {\\boldsymbol{e}_i} = {\\boldsymbol{e}_i^t} \\lambda_i {\\boldsymbol{e}_i} =   \n{\\boldsymbol{e}_i^t} {\\boldsymbol{e}_i}\\lambda_i = \\lambda_i \\]"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#na-forma-matricial",
+    "href": "aulas/analise_comp_princ/comp_princ.html#na-forma-matricial",
+    "title": "Análise de Componentes Principais",
+    "section": "Na forma matricial",
+    "text": "Na forma matricial\n\nSejam \\(\\boldsymbol{O}\\) a matriz dos autovetores normalizados da matriz \\(\\boldsymbol{\\Sigma}\\), isto é,\n\n\\[\\boldsymbol{O} = \\left[ \\begin{array}{cccc} e_{11} & e_{21} & \\cdots & e_{p1}\n\\\\ e_{12} & e_{22} & \\cdots & e_{p2}\n\\\\ \\vdots & \\vdots & \\ddots & \\vdots\n\\\\ e_{1p} & e_{2p} & \\cdots & e_{pp} \\end{array} \\right] = [{\\boldsymbol{e}_1} \\hspace{0.5cm} {\\boldsymbol{e}_2}\n\\hspace{0.5cm} \\cdots \\hspace{0.5cm} {\\boldsymbol{e}_p}]\\]\ne \\(\\boldsymbol{y}\\) o vetor das componentes principais. Então, \\(\\boldsymbol{y} = \\boldsymbol{O}^t \\mathbf{x}\\) e a matriz de covariâncias de \\(\\boldsymbol{y}\\) será:\n\\[\\textrm{Var}[\\boldsymbol{y}] = \\textrm{Var}[\\boldsymbol{O}^t \\mathbf{x}] =  \\boldsymbol{O}^t \\textrm{Var}[\\mathbf{x}] \\boldsymbol{O} =\n\\boldsymbol{O}^t \\boldsymbol{\\Sigma} \\boldsymbol{O} = \\boldsymbol{\\Lambda}\\]"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#na-forma-matricial-1",
+    "href": "aulas/analise_comp_princ/comp_princ.html#na-forma-matricial-1",
+    "title": "Análise de Componentes Principais",
+    "section": "Na forma matricial",
+    "text": "Na forma matricial\nsendo\n\\[\\boldsymbol{\\Lambda} = \\left[ \\begin{array}{cccc} \\lambda_1 & 0 & \\cdots & 0\n\\\\ 0 & \\lambda_2 & \\cdots & 0\n\\\\ \\vdots & \\vdots & \\ddots & \\vdots\n\\\\ 0 & 0 & \\cdots & \\lambda_p \\end{array} \\right] \\]\nou ainda, \\(\\boldsymbol{\\Sigma} = \\boldsymbol{O} \\boldsymbol{\\Lambda} \\boldsymbol{O}^t = \\displaystyle \\sum_{i=1}^p \\lambda_i \\boldsymbol{e}_i \\boldsymbol{e}_i^t\\), uma vez que \\(\\boldsymbol{O}\\) é uma matriz ortogonal tal que \\(\\boldsymbol{O} \\boldsymbol{O}^t = \\boldsymbol{O}^t \\boldsymbol{O} = \\boldsymbol{I}\\). Estes resultados são conhecidos como Teorema da decomposição espectral."
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#variabilidade-explicada",
+    "href": "aulas/analise_comp_princ/comp_princ.html#variabilidade-explicada",
+    "title": "Análise de Componentes Principais",
+    "section": "Variabilidade explicada",
+    "text": "Variabilidade explicada\n\n\n\n\n\nVariável\n\n\nVariância\n\n\nComponente\n\n\nVariância\n\n\n\n\n\n\n\\(X_1\\)\n\n\n\\(\\sigma_{11}\\)\n\n\n\\(Y_1\\)\n\n\n\\(\\lambda_1\\)\n\n\n\n\n\\(X_2\\)\n\n\n\\(\\sigma_{22}\\)\n\n\n\\(Y_2\\)\n\n\n\\(\\lambda_2\\)\n\n\n\n\n\\(\\vdots\\)\n\n\n\\(\\vdots\\)\n\n\n\\(\\vdots\\)\n\n\n\\(\\vdots\\)\n\n\n\n\n\\(X_p\\)\n\n\n\\(\\sigma_{pp}\\)\n\n\n\\(Y_p\\)\n\n\n\\(\\lambda_p\\)\n\n\n\n\nTotal\n\n\n\\(\\sigma_T^2\\) = \\(\\displaystyle{\\sum_{j=1}^p \\sigma_{jj}} = \\rm{tr}(\\boldsymbol{\\Sigma})\\)\n\n\nTotal\n\n\n\\(\\lambda_T = \\displaystyle{\\sum_{j=1}^p \\lambda_j} = \\rm{tr}(\\boldsymbol{\\Lambda})\\)\n\n\n\n\n\n\\[\\rm{tr}(\\boldsymbol{\\Sigma}) = \\rm{tr}(\\boldsymbol{O} \\boldsymbol{\\Lambda} \\boldsymbol{O}^t) = \\rm{tr}(\\boldsymbol{\\Lambda} \\boldsymbol{O}^t \\boldsymbol{O}) = \\rm{tr}(\\boldsymbol{\\Lambda} \\boldsymbol{I}) = \\rm{tr}(\\boldsymbol{\\Lambda})\\]\n\n\n\\[\\sigma_T^2 = \\lambda_T\\]"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#variabilidade-explicada-1",
+    "href": "aulas/analise_comp_princ/comp_princ.html#variabilidade-explicada-1",
+    "title": "Análise de Componentes Principais",
+    "section": "Variabilidade explicada",
+    "text": "Variabilidade explicada\n\nPode-se então concluir que a j-ésima componente explica\n\n\\[\\displaystyle{\\frac{\\textrm{Var}[Y_j]}{\\textrm{Variância Total de X}}} = \\displaystyle{\\frac{\\lambda_j}{\\textrm{tr}(\\boldsymbol{\\Sigma})}} =\n\\displaystyle{\\frac{\\lambda_j}{\\displaystyle{\\sum_{i=1}^p \\lambda_i}}}\\]\nda variação total original, e ainda, que as \\(r\\) primeiras componentes explicam\n\\[\\displaystyle{\\frac{ \\displaystyle \\sum_{j=1}^r \\textrm{Var}[Y_j]}{\\textrm{Variância Total de X}}} = \\displaystyle{\\frac{\\displaystyle \\sum_{j=1}^r \\lambda_j}{\\textrm{tr}(\\boldsymbol{\\Sigma})}} =\n\\displaystyle{\\frac{\\displaystyle \\sum_{j=1}^r \\lambda_j}{\\displaystyle{\\sum_{i=1}^p \\lambda_i}}}\\]\nda variação total."
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#variabilidade-explicada-2",
+    "href": "aulas/analise_comp_princ/comp_princ.html#variabilidade-explicada-2",
+    "title": "Análise de Componentes Principais",
+    "section": "Variabilidade explicada",
+    "text": "Variabilidade explicada\n\nBusca-se analisar um conjunto menor de variáveis sem perder muita informação sobre a estrutura de variabilidade original\n\n\n\nAproximação de \\(\\boldsymbol{\\Sigma}\\): Analisando as \\(r\\) primeiras componentes principais\n\n\\[\\boldsymbol{\\Sigma} \\approx \\displaystyle \\sum_{i=1}^r \\lambda_i \\boldsymbol{e}_i \\boldsymbol{e}_i^t\\]\n\n\n\nCada parcela da soma envolve uma matriz de dimensão \\(p \\times p\\) correspondente apenas à informação da \\(j\\)-ésima componente principal"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#correlação-com-as-variáveis-originais",
+    "href": "aulas/analise_comp_princ/comp_princ.html#correlação-com-as-variáveis-originais",
+    "title": "Análise de Componentes Principais",
+    "section": "Correlação com as variáveis originais",
+    "text": "Correlação com as variáveis originais\n\nOs coeficientes de correlação entre a \\(j\\)-ésima variável e a \\(i\\)-ésima componente principal é dada por:\n\n\\[\\rho_{Y_i,X_j} = \\displaystyle{\\frac{e_{ij} \\sqrt{\\lambda_i}}{\\sqrt{\\sigma_{jj}}}}\\]\n\n\nAs correlações medem unicamente a importância de uma variável individual sem considerar a influência das demais. Não medem a importância de \\(X_i\\) na presença de outras variáveis.\n\n\n\n\nOs coeficientes (cargas) dos componentes (\\(e_{ij}\\)), seus sinais e magnitudes, permitem interpretar os componentes e avaliar a importância das variáveis em sua constituição."
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#estimação-das-componentes-principais",
+    "href": "aulas/analise_comp_princ/comp_princ.html#estimação-das-componentes-principais",
+    "title": "Análise de Componentes Principais",
+    "section": "Estimação das Componentes Principais",
+    "text": "Estimação das Componentes Principais\n\nEm geral, \\(\\boldsymbol{\\Sigma}\\) é estimada por \\(\\boldsymbol{S}\\)\n\n\\[\\boldsymbol{S} = \\left[ \\begin{array}{cccc} s_{11} & s_{12} & \\cdots & s_{1p}\n\\\\ s_{21} & s_{22} & \\cdots & s_{2p}\n\\\\ \\vdots & \\vdots & \\ddots & \\vdots\n\\\\ s_{p1} & s_{p2} & \\cdots & s_{pp} \\end{array} \\right]\\]\n\n\nAutovalores de \\(\\boldsymbol{S}\\): \\(\\hat{\\lambda}_1, \\hat{\\lambda}_2, \\cdots, \\hat{\\lambda}_p\\)\n\n\n\n\nAutovetores de \\(\\boldsymbol{S}\\): \\(\\hat{\\boldsymbol{e}}_1, \\hat{\\boldsymbol{e}}_2, \\cdots, \\hat{\\boldsymbol{e}}_p\\)"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#estimação-das-componentes-principais-1",
+    "href": "aulas/analise_comp_princ/comp_princ.html#estimação-das-componentes-principais-1",
+    "title": "Análise de Componentes Principais",
+    "section": "Estimação das Componentes Principais",
+    "text": "Estimação das Componentes Principais\n\nEstimação da \\(j\\)-ésima componente principal de \\(\\boldsymbol{S}\\):\n\n\\[\\hat{Y}_j = {\\hat{\\boldsymbol{e}}_j^t}\\mathbf{x} =  \\hat{e}_{j1}X_1 + \\hat{e}_{j2}X_2 + \\cdots + \\hat{e}_{jp}X_p, \\,\\,\\,\\,\\,\\, j = 1, 2, \\cdots, p\\]\n\n\nComponentes principais amostrais - Propriedades\n\nVariância: \\(\\text{Var}(\\hat{Y}_j) = \\hat{\\lambda}_j\\)\nCovariância entre as componentes: \\(\\text{Cov}(\\hat{Y}_j, \\hat{Y}_k) = 0, \\,\\,\\, j \\neq k\\)\nVariância total estimada explicada pela componente: \\[\\dfrac{\\text{Var}(\\hat{Y}_j)}{\\text{Variância total estimada de } \\mathbf{x}} = \\dfrac{\\hat{\\lambda}_j}{\\text{tr}(\\boldsymbol{S})} =  \\dfrac{\\hat{\\lambda}_j}{\\sum \\limits_{i=1}^p \\hat{\\lambda}_i}\\]"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#estimação-das-componentes-principais-2",
+    "href": "aulas/analise_comp_princ/comp_princ.html#estimação-das-componentes-principais-2",
+    "title": "Análise de Componentes Principais",
+    "section": "Estimação das Componentes Principais",
+    "text": "Estimação das Componentes Principais\n\nCorrelação estimada entre componente e variável: \\[r_{\\hat{Y}_j,\\hat{X}_k} = \\displaystyle{\\frac{\\hat{e}_{jk} \\sqrt{\\hat{\\lambda}_j}}{\\sqrt{\\sigma_{kk}}}}\\]\n\n\n\nDecomposição espectral de \\(\\boldsymbol{S}\\):\n\n\\[\\boldsymbol{S} = \\displaystyle \\sum_{j=1}^p \\hat{\\lambda}_j  \\hat{\\boldsymbol{e}}_j  \\hat{\\boldsymbol{e}}_j^t\\]"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#estimação-das-componentes-principais-3",
+    "href": "aulas/analise_comp_princ/comp_princ.html#estimação-das-componentes-principais-3",
+    "title": "Análise de Componentes Principais",
+    "section": "Estimação das Componentes Principais",
+    "text": "Estimação das Componentes Principais\n\nAproximação de \\(\\boldsymbol{S}\\) pelas \\(r\\) primeiras componentes\n\n\\[\\boldsymbol{S} \\approx \\displaystyle \\sum_{j=1}^r \\hat{\\lambda}_j \\hat{\\boldsymbol{e}}_j  \\hat{\\boldsymbol{e}}_j^t\\]\n\n\nEscores das componentes\n\nValor das componentes para cada elemento amostral\nNa prática, o uso das componentes relevantes se dá através dos escores"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#primeiro-exemplo-mingoti2007",
+    "href": "aulas/analise_comp_princ/comp_princ.html#primeiro-exemplo-mingoti2007",
+    "title": "Análise de Componentes Principais",
+    "section": "Primeiro Exemplo: (Mingoti,2007)",
+    "text": "Primeiro Exemplo: (Mingoti,2007)\n\n12 empresas, 3 variáveis: ganho bruto (\\(X_1\\)), ganho líquido (\\(X_2\\)) e patrimônio acumulado (\\(X_3\\))\n\n\n\n\n\n\nEmpresa\n\n\nGanho bruto \\((X_1)\\)\n\n\nGanho líquido \\((X_2)\\)\n\n\nPatrimônio \\((X_3)\\)\n\n\n\n\n\n\nE1\n\n\n9893\n\n\n564\n\n\n17689\n\n\n\n\nE2\n\n\n8776\n\n\n389\n\n\n17359\n\n\n\n\nE3\n\n\n13572\n\n\n1103\n\n\n18597\n\n\n\n\nE4\n\n\n6455\n\n\n743\n\n\n8745\n\n\n\n\nE5\n\n\n5129\n\n\n203\n\n\n14397\n\n\n\n\nE6\n\n\n5432\n\n\n215\n\n\n3467\n\n\n\n\nE7\n\n\n3807\n\n\n385\n\n\n4679\n\n\n\n\nE8\n\n\n3423\n\n\n187\n\n\n6754\n\n\n\n\nE9\n\n\n3708\n\n\n127\n\n\n2275\n\n\n\n\nE10\n\n\n3294\n\n\n297\n\n\n6754\n\n\n\n\nE11\n\n\n5433\n\n\n432\n\n\n5589\n\n\n\n\nE12\n\n\n6287\n\n\n451\n\n\n8972"
   }
 ]
