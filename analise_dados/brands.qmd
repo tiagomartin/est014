@@ -1,0 +1,313 @@
+---
+title: "Mapas Perceptuais com PCA: estudo de marcas"
+format:
+  html:
+    toc: true
+    toc-title: "Navegação"
+    number-sections: true
+    df-print: paged
+  pdf:
+    toc: true
+    number-sections: true
+    df-print: kable
+    documentclass: article
+    geometry: margin=1in
+    keep-tex: false
+editor: visual
+execute:
+  echo: true
+  warning: false
+  message: false
+  fig-width: 7
+  fig-height: 5
+  fig-dpi: 300
+  fig-path: "figures/"
+  # fig-format: "png"   # opcional; descomente se preferir PNG sempre
+bibliography: references.bib
+---
+
+
+# Objetivos
+
+Nesta análise, vamos construir **mapas perceptuais** de marcas por meio da **Análise de Componentes Principais (PCA)**. O objetivo é reduzir nove atributos avaliados em escala de 1 a 10 para poucas dimensões interpretáveis, preservando a maior parte possível da variabilidade e oferecendo **insights** sobre similaridade entre marcas.
+
+Vamos usar a base `brand.csv` (100 respondentes, 10 marcas `a`–`j`, atributos: *perform, leader, latest, fun, serious, bargain, value, trendy, rebuy*).
+
+
+- Características das marcas: perguntas
+
+<style type="text/css">
+.tg  {border:none;border-collapse:collapse;border-color:#ccc;border-spacing:0;margin:0px auto;}
+.tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:0px;color:#333;
+  font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:0px;color:#333;
+  font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-7btt{border-color:inherit;font-weight:bold;text-align:center;vertical-align:top}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+</style>
+<table class="tg"><thead>
+  <tr>
+    <th class="tg-7btt">Atributo</th>
+    <th class="tg-7btt">Exemplo de pergunta</th>
+  </tr></thead>
+<tbody>
+  <tr>
+    <td class="tg-0pky">`perform`</td>
+    <td class="tg-0pky">Marca tem um forte desempenho?</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">`leader`</td>
+    <td class="tg-0pky">Marca é líder no mercado?</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">`latest`</td>
+    <td class="tg-0pky">Marca tem os produtos mais recentes?</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">`fun`</td>
+    <td class="tg-0pky">Marca é divertida?</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">`serious`</td>
+    <td class="tg-0pky">Marca é séria?</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">`bargain`</td>
+    <td class="tg-0pky">Produtos da marca são uma pechincha?</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">`value`</td>
+    <td class="tg-0pky">Produtos da marca possuem um bom valor?</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">`trendy`</td>
+    <td class="tg-0pky">Marca está na moda?</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">`rebuy`</td>
+    <td class="tg-0pky">Eu compraria a marca novamente?</td>
+  </tr>
+</tbody></table>
+
+---
+
+# Preparação e inspeção dos dados
+
+```{r}
+load <- function(pkg){
+  new.pkg <- pkg[!(pkg %in% installed.packages()[, "Package"])]
+  if (length(new.pkg))
+    install.packages(new.pkg, dependencies = TRUE)
+  sapply(pkg, require, character.only = TRUE)
+} 
+
+## Pacotes utilizados nessa análise
+
+packages = c("tidyverse", "factoextra", "psych", "gridExtra", "readr", "janitor", "ggrepel", "patchwork", "corrplot", "corrr", "igraph", "ggraph")
+load(packages)
+```
+
+## Leitura dos dados
+
+```{r}
+path <- "https://raw.githubusercontent.com/tiagomartin/est014/refs/heads/master/dados/brand.csv"
+brands <- read_csv(path, show_col_types = FALSE) %>%
+  clean_names() 
+
+brands %>% 
+  glimpse()
+
+brands %>% 
+  summary()
+```
+
+
+De forma geral, observa-se que os atributos mais “positivos” em média são os relacionados à modernidade/diversão da marca (latest ≈ 6,2 e fun ≈ 6,1), enquanto atributos ligados a recompra (rebuy ≈ 3,7) e preço/valor percebido (bargain e value ≈ 4,3) apresentam avaliações mais baixas. Além disso, vários atributos têm 1º quartil baixo (ex.: perform Q1 = 1; bargain/value Q1 = 2), sugerindo que há uma parcela de consumidores que de fato avalia marca(s) de forma bem negativa em alguns aspectos. Esse padrão indica que a PCA provavelmente encontrará uma dimensão relacionada à inovação/modernidade e outra relacionada a valor/preço e recompra, uma vez que esses conjuntos de atributos apresentam distribuições centrais distintas e potencialmente estruturadas em blocos de correlação.
+
+
+## Visualização exploratória
+
+
+```{r}
+attr_names <- setdiff(names(brands), "brand")
+
+X <- brands %>% select(all_of(attr_names))
+
+X_long <- brands %>%
+pivot_longer(all_of(attr_names),
+names_to = "atributo", values_to = "nota")
+
+# Guardar a coluna de marca (fator) separada
+brand_fac <- brands %>% mutate(brand = as.factor(brand)) %>% pull(brand)
+
+# Padronizar as variáveis
+X_scaled <- scale(X)
+df_scaled <- data.frame(brand_fac = brand_fac, X_scaled)
+
+# histogramas facetados
+p_hist <- ggplot(X_long, aes(nota)) +
+geom_histogram(bins = 9, color = "white") +
+facet_wrap(~ atributo, scales="free_y") +
+labs(title = "Distribuição dos atributos (histogramas)") +
+theme_minimal()
+
+
+p_hist
+```
+
+Observa-se que a maior parte dos atributos tem uma massa grande de notas baixas (1 a 4), exceto `latest`, `fun` e (em menor grau) `trendy`, que apresentam caudas mais fortes para notas altas. Isso sugere que a percepção média de “inovação/modernidade/diversão” tende a ser mais positiva do que a percepção de “valor/preço/desempenho”. Além disso, `rebuy` é visivelmente o mais “puxado” para notas muito baixas, indicando que a disposição em recomprar é o atributo mais crítico (e possivelmente o mais difícil de conquistar), o que antecipa que a PCA provavelmente vai separar dimensões ligadas a modernidade/diversão versus valor/preço e recompra.
+
+```{r}
+# boxplots facetados por atributo
+p_box <- ggplot(X_long, aes(x = atributo, y = nota)) +
+geom_boxplot() +
+coord_flip() +
+labs(title = "Distribuição dos atributos (boxplots)") +
+theme_minimal()
+
+
+p_box
+```
+
+
+O boxplot reforça o padrão visto nos histogramas: os atributos ligados a “inovação/diversão” (`latest`, `fun`, `trendy`) apresentam medianas mais altas e intervalos interquartílicos deslocados para a direita, enquanto atributos relacionados a valor/preço (`bargain`, `value`) e especialmente rebuy permanecem com centrais mais baixas. Além disso, há bastante dispersão em todos os atributos, sugerindo heterogeneidade real na percepção das marcas. Esse contraste estrutural entre atributos “mais modernos” e atributos “valor/recompra” é exatamente o tipo de padrão latente que a PCA tende a capturar, separando dimensões latentes distintas no mapa perceptual.
+
+## Matriz de correlações
+
+```{r}
+cormat <- cor(X)
+corrplot(cormat, method = "color", type = "upper", addCoef.col = "black",
+tl.col = "black", tl.srt = 45, number.cex = .6,
+title = "Matriz de correlações entre atributos")
+```
+
+
+A matriz de correlações mostra claramente dois sub-blocos relevantes: (i) `bargain` e `value` são fortemente correlacionados (0,74), compondo um núcleo evidente de “valor/preço percebido”; (ii) `latest` e `trendy` também se correlacionam positivamente (0,63), sugerindo um eixo de “modernidade/moda”. Além disso, `rebuy` correlaciona moderadamente com `value` (0,51) e `perform` (0,31), indicando que intenção de recompra parece ancorar-se tanto em percepção de valor quanto em desempenho. 
+
+
+
+```{r}
+tidy_cors <- X %>%
+  correlate() %>%
+  stretch()
+graph_cors <- tidy_cors %>%
+  filter(abs(r) > .3) %>%
+  graph_from_data_frame(directed = FALSE)
+
+ggraph(graph_cors) + geom_edge_link() + geom_node_point() +   ## Variaveis aparentam se agrupar em dois grupos
+  geom_node_text(aes(label = name))
+```
+
+
+A visualização em rede ajuda a enxergar que os atributos não formam um único bloco homogêneo: existe um cluster bem definido formado por `latest`, `trendy`, `value` e `bargain`, o que reforça a ideia de um eixo “moda/modernidade/valor”. Em paralelo, `perform`, `leader` e `serious` aparecem mais conectados entre si, sugerindo outra dimensão ligada a “desempenho/liderança/seriedade”. `rebuy` fica numa posição intermediária, fazendo a ponte entre esses dois polos, o que é coerente com a lógica de que intenção de recompra é influenciada tanto pela percepção de modernidade quanto pela percepção de valor/desempenho. 
+
+---
+
+# Construção das componentes principais
+
+PCA é sensível a escala. Como nossos atributos são todos numa escala comum (1–10), poderíamos usar a matriz de correlações. Isso facilita a interpretação dos loadings como correlações entre variável e componente.
+
+```{r}
+# PCA sobre correlações (equivalente a prcomp com scale.=TRUE)
+pca <- prcomp(X, center = TRUE, scale. = TRUE)
+
+pca %>% 
+  summary()
+```
+
+Os dois primeiros componentes capturam 56,4% da variância total, e os três primeiros chegam a 68,4%. Isso é um resultado muito típico em dados de marketing com vários atributos perceptuais: algumas dimensões latentes bem “macro” explicam boa parte da estrutura. Olhando os números, faz sentido reter duas componentes para construção do mapa perceptual ($Y_1$ + $Y_2$), porque já carregam mais da metade da informação, e a $Y_3$ adicionaria relativamente pouco ganho incremental (≈ +12%). Portanto, a representação bidimensional preserva a maior parte dos contrastes relevantes entre atributos e marcas, mantendo uma visualização simples e interpretável.
+
+```{r}
+fviz_eig(pca, geom="line",  choice = c("eigenvalue"), addlabels = TRUE, main = "")
+```
+
+O scree plot mostra um “cotovelo” muito claro após o segundo componente: o autovalor cai de 3 → 2,1 → 1,1, e depois segue um declínio suave e quase linear. Esse formato clássico (queda acentuada nos dois primeiros PCs e cauda longa de autovalores pequenos) é um indicativo forte de que duas componentes já capturam a parte estrutural da variabilidade, enquanto as demais carregam essencialmente ruído/variação incomum. Em termos práticos de análise e comunicação gerencial, isso justifica a escolha de reduzir o espaço de 9 atributos para 2 dimensões para interpretar o mapa perceptual.
+
+```{r}
+fa.parallel(X, fa="pc", n.iter=1000)
+```
+
+A análise paralela confirma nossa escolha: apenas as duas primeiras componentes possuem autovalores claramente acima das linhas de referência do aleatório. A partir da terceira, os autovalores reais já ficam praticamente sobrepostos à distribuição simulada, indicando que o restante da variabilidade poderia ser explicado por ruído. Portanto, usando um critério mais robusto do que o scree visual, a conclusão é a mesma, ou seja, duas componentes são suficientes para capturar a estrutura latente relevante entre os 9 atributos avaliados.
+
+## Loadings, correlações e interpretação geométrica
+
+Temos que as componentes encontradas são dadas por:
+
+```{r}
+## Loadings (cargas)
+pca$rotation
+```
+
+$$Y_1 = 0,24 \times Z_{\text{perform}} + 0,21 \times Z_{\text{leader}} - 0,37 \times Z_{\text{latest}} - 0,25 \times Z_{\text{fun}} + 0,16 \times Z_{\text{serious}} + 0,40 \times Z_{\text{bargain}} + 0,45 \times Z_{\text{value}} - 0,35 \times Z_{\text{trendy}} + 0,44 \times Z_{\text{rebuy}}$$
+
+e, 
+
+
+$$Y_2 = 0,42 \times Z_{\text{perform}} + 0,52 \times Z_{\text{leader}} + 0,20 \times Z_{\text{latest}} - 0,25 \times Z_{\text{fun}} + 0,51 \times Z_{\text{serious}} - 0,22 \times Z_{\text{bargain}} - 0,19 \times Z_{\text{value}} + 0,32 \times Z_{\text{trendy}} + 0,02 \times Z_{\text{rebuy}}$$
+
+
+Observando as loadings, $Y_1$ tem cargas altas positivas em `value`, `bargain`, `rebuy` e `perform`, indicando que esta dimensão parece sintetizar uma percepção geral de benefício percebido/custo-benefício/probabilidade de recompra (mais “valor concreto” da marca). Já $Y_2$ tem cargas altas em `leader`, `serious` e `perform`, indicando que essa dimensão se aproxima mais de um eixo de prestígio/liderança/seriedade. Em síntese: $Y_1$ capta “valor concreto oferecido”, $Y_2$ capta “status institucional da marca”.
+
+
+
+```{r}
+fviz_pca_biplot(pca, repel = TRUE,
+                col.var = "#2E9FDF", # Variables color
+                col.ind = "#696969"  # Individuals color
+                )
+
+```
+
+No biplot com indivíduos, o padrão fica difícil de visualizar devido ao volume de pontos, sugerindo a execução da PCA usando avaliacoes agregadas por marca.
+
+```{r}
+## Medias dos atributos por marca
+brand.mean <- aggregate(. ~brand_fac, data = df_scaled, mean)
+rownames(brand.mean) <- brand.mean[, 1]  # usar marca para os nomes das linhas
+brand.mean <- brand.mean[, -1] # remover coluna de nome de marca
+brand.mean
+```
+
+
+```{r}
+pca_mu <- prcomp(brand.mean, scale = TRUE)
+pca_mu %>% 
+  summary()
+```
+
+Realizada nova padronização, as médias agregadas têm escala um pouco diferente que os dados padronizados. A PCA neste contexto é extremamente dominante nas duas primeiras dimensões, isto é, $Y_1$ sozinha já explica 50,6% da variância total, e $Y_1 + Y_2$ explicam 84,1%. Ou seja, praticamente toda a estrutura relevante dos 9 atributos pode ser projetada com segurança em apenas duas dimensões. 
+
+
+```{r}
+fviz_pca_biplot(pca_mu, repel = TRUE,
+                col.var = "#2E9FDF", # Variables color
+                col.ind = "#696969"  # Individuals color
+                )
+
+```
+
+Observamos aqui o mesmo agrupamento global de atributos e estrutura de associações. A Posição das variáveis nas componentes é consistente com ACP com todas as observações, de forma que podemos prosseguir com a interpretação do gráfico. No mapa perceptual, o eixo horizontal ($Y_1 \approx 50,6\%$) separa claramente marcas percebidas como mais “valor/custo-benefício/recompra” à direita ("f" e "g") versus marcas com avaliações mais baixas nesses atributos à esquerda ("a", "d", "j"). Já o eixo vertical ($Y_2 \approx 33,4\%$) separa marcas mais “sérias/líderes/desempenho” na parte superior ("b" e "c") versus marcas associadas a um perfil mais “divertido/jovem/informal” na parte inferior ("a" e "j"). Assim, as duas dimensões encontradas sintetizam de forma bem clara duas tensões estratégicas: valor concreto ($Y_1$) e prestígio vs. diversão ($Y_2$).
+
+
+A marca "e" aparece exatamente próxima ao centro do mapa perceptual, sugerindo que ela não se destaca nem positivamente nem negativamente em nenhuma das duas dimensões principais. Em outras palavras, ela tende a ser percebida como “mediana” ou “neutra”, não é vista como uma marca particularmente moderna/divertida, nem como uma marca de alto prestígio/seriedade, e também não se posiciona como forte em valor/custo-benefício. Ela estaria, portanto, no espaço de “marca genérica”, ou seja, não agride, mas também não diferencia.
+
+Isso pode ser bom ou ruim: há setores em que o consumidor valoriza o “não ter arestas”, ou seja, confiança, regularidade, estabilidade, não polêmica. Por exemplo, serviços financeiros conservadores, empresas B2B que vendem confiabilidade. Em um caso assim, estar no centro pode até ser seguro. Entretanto, se o jogo competitivo naquele setor depende de posicionamento claro (ex.: “premium”, “inovadora”, “low-cost”, “divertida”, etc.), então estar no centro é perigoso. A marca "e" pode estar sendo percebida como sem personalidade. Isso é típico de marcas que não conseguem defender um território mental.
+
+
+Uma alternativa para a marca "e" seria, na prática, intervir nas percepções associadas à marca (por comunicação, experiência, produto ou preço) para que ela passe a ser percebida de forma mais alinhada a um território desejado, por exemplo, se o interesse é em realizar um deslocamento da marca "e" → "c" no espaço dos atributos padronizados:
+
+```{r}
+## Diferenças entre a marca c e e
+brand.mean["c",] - brand.mean["e",]
+```
+
+O vetor de diferença mostra que "c" é muito mais forte que e em `serious` (+1,18), `perform` (+1,21) e `leader` (+0,97). Estes são os atributos que definem o território de "c": seriedade, liderança e desempenho. Por outro lado, "c" perde claramente em `fun` (−1,14), `bargain` (−1,16) e `value` (−0,86). Portanto, se a marca "e" quiser migrar na direção do território perceptual de "c", ela precisa subir principalmente em seriedade, performance e liderança, uma vez que é exatamente aí que "c" se diferencia. Contudo, ela não deveria tentar deslocar ao mesmo tempo a sua eventual vantagem em diversão ou custo-benefício, pois "c" não compete nesses atributos.
+
+
+Se o interesse é não seguir outra marca, mas obter espaço diferenciado, podemos deslocar nossa marca para áreas "vazias" no mapa. Agora estamos comparando a marca "e" a um cluster-alvo ("b", "c", "f", "g") que, pelo mapa, parece ser o cluster “das marcas vencedoras” em prestígio + valor concreto. 
+```{r}
+## Gap value-leader: Assumindo que o gap reflete aproximadamente a media dessas 4 marcas
+colMeans(brand.mean[c("b", "c", "f", "g"), ]) - brand.mean["e", ]
+```
+
+Esse vetor gerado é o *gap* necessário para que a marca "e" se deslocasse em direção ao centro de gravidade das marcas de melhor desempenho perceptual. Para aproximar-se do “centro de massa” das marcas superiores ("b","c","f","g"), a marca "e" deveria priorizar aumento de desempenho (`perform`: +1,17), maior seriedade (`serious`: +0,57) e maior intenção de recompra (`rebuy`: +0,67). Além disso, reduzir ênfase em `latest` e `fun`.
