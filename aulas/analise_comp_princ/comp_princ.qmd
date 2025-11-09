@@ -11,7 +11,7 @@ format:
     preview-links: auto
     self-contained: true
 incremental: false
-code-link: true
+code-link: false
 bibliography: references.bib
 title-slide-attributes:
     data-background-image: /images/back.png
@@ -1494,3 +1494,4 @@ fviz_contrib(acp_R, choice = "ind", axes = 1:2)
 
 
 - A empresa E3 é a maior influenciadora da PCA: sua contribuição para o plano principal é muito superior à média (linha vermelha), indicando que ela é um caso extremo na direção da primeira componente. Esse ponto está orientando de forma dominante a estrutura da análise.
+

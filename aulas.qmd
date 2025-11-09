@@ -8,7 +8,7 @@ title: "Aulas"
 
 - [Distribuição Normal Multivariada](/aulas/distr_normal_multi/distr_normal_multi.html#/title-slide)
 
-- Análise de Componentes Principais
+- [Análise de Componentes Principais](/aulas/analise_comp_princ/comp_princ.html#/title-slide)
 
 - Análise Fatorial
 
