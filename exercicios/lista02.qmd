@@ -1,5 +1,14 @@
 ---
 title: "Lista de exercícios 02: Introdução à Estatística Multivariada"
+format:
+  html:
+    number-sections: true
+    toc: true
+    toc-depth: 2
+  pdf:
+    number-sections: true
+    toc: false
+    toc-depth: 2
 ---
 
 <p align="center" style="font-size: 40px"> 
@@ -28,83 +37,19 @@ X_3 &= \text{fósforo disponível no solo.}
 $$
 
 
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;margin:0px auto;}
-.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
-</style>
-<table class="tg"><thead>
-  <tr>
-    <th class="tg-c3ow">Locais</th>
-    <th class="tg-c3ow">$X_1$</th>
-    <th class="tg-c3ow">$X_2$</th>
-    <th class="tg-c3ow">$X_3$</th>
-  </tr></thead>
-<tbody>
-  <tr>
-    <td class="tg-c3ow">1</td>
-    <td class="tg-c3ow">35</td>
-    <td class="tg-c3ow">12</td>
-    <td class="tg-c3ow">2,4</td>
-  </tr>
-  <tr>
-    <td class="tg-c3ow">2</td>
-    <td class="tg-c3ow">35</td>
-    <td class="tg-c3ow">13</td>
-    <td class="tg-c3ow">2,1</td>
-  </tr>
-  <tr>
-    <td class="tg-c3ow">3</td>
-    <td class="tg-c3ow">40</td>
-    <td class="tg-c3ow">14</td>
-    <td class="tg-c3ow">1,9</td>
-  </tr>
-  <tr>
-    <td class="tg-c3ow">4</td>
-    <td class="tg-c3ow">25</td>
-    <td class="tg-c3ow">11</td>
-    <td class="tg-c3ow">1,8</td>
-  </tr>
-  <tr>
-    <td class="tg-c3ow">5</td>
-    <td class="tg-c3ow">26</td>
-    <td class="tg-c3ow">15</td>
-    <td class="tg-c3ow">2,3</td>
-  </tr>
-  <tr>
-    <td class="tg-c3ow">6</td>
-    <td class="tg-c3ow">32</td>
-    <td class="tg-c3ow">11</td>
-    <td class="tg-c3ow">2,5</td>
-  </tr>
-  <tr>
-    <td class="tg-c3ow">7</td>
-    <td class="tg-c3ow">21</td>
-    <td class="tg-c3ow">10</td>
-    <td class="tg-c3ow">3,0</td>
-  </tr>
-  <tr>
-    <td class="tg-c3ow">8</td>
-    <td class="tg-c3ow">30</td>
-    <td class="tg-c3ow">5</td>
-    <td class="tg-c3ow">1,0</td>
-  </tr>
-  <tr>
-    <td class="tg-c3ow">9</td>
-    <td class="tg-c3ow">33</td>
-    <td class="tg-c3ow">15</td>
-    <td class="tg-c3ow">1,1</td>
-  </tr>
-  <tr>
-    <td class="tg-c3ow">10</td>
-    <td class="tg-c3ow">27</td>
-    <td class="tg-c3ow">16</td>
-    <td class="tg-c3ow">2,6</td>
-  </tr>
-</tbody></table>
+| Locais | $X_1$ | $X_2$ | $X_3$ |
+|:------:|--------:|--------:|--------:|
+| 1  | 35 | 12 | 2.4 |
+| 2  | 35 | 13 | 2.1 |
+| 3  | 40 | 14 | 1.9 |
+| 4  | 25 | 11 | 1.8 |
+| 5  | 26 | 15 | 2.3 |
+| 6  | 32 | 11 | 2.5 |
+| 7  | 21 | 10 | 3.0 |
+| 8  | 30 |  5 | 1.0 |
+| 9  | 33 | 15 | 1.1 |
+| 10 | 27 | 16 | 2.6 |
+
 
 
 a) Encontre o vetor de médias amostrais $\mathbf{\overline{x}}$.
@@ -154,51 +99,12 @@ b) Através de $\boldsymbol{S_z}$, encontre $\boldsymbol{R_z}$.
 
 8) Considere as amostras com 8 observações e 3 variáveis apresentadas a seguir:
 
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;margin:0px auto;}
-.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
-</style>
-<table class="tg"><thead>
-  <tr>
-    <th class="tg-c3ow">$X_1$</th>
-    <th class="tg-c3ow">3</th>
-    <th class="tg-c3ow">5</th>
-    <th class="tg-c3ow">6</th>
-    <th class="tg-c3ow">4</th>
-    <th class="tg-c3ow">8</th>
-    <th class="tg-c3ow">9</th>
-    <th class="tg-c3ow">6</th>
-    <th class="tg-c3ow">7</th>
-  </tr></thead>
-<tbody>
-  <tr>
-    <td class="tg-c3ow">$X_2$</td>
-    <td class="tg-c3ow">6</td>
-    <td class="tg-c3ow">11</td>
-    <td class="tg-c3ow">11</td>
-    <td class="tg-c3ow">9</td>
-    <td class="tg-c3ow">15</td>
-    <td class="tg-c3ow">16</td>
-    <td class="tg-c3ow">10</td>
-    <td class="tg-c3ow">12</td>
-  </tr>
-  <tr>
-    <td class="tg-c3ow">$X_3$</td>
-    <td class="tg-c3ow">14</td>
-    <td class="tg-c3ow">9</td>
-    <td class="tg-c3ow">9</td>
-    <td class="tg-c3ow">13</td>
-    <td class="tg-c3ow">2</td>
-    <td class="tg-c3ow">2</td>
-    <td class="tg-c3ow">9</td>
-    <td class="tg-c3ow">5</td>
-  </tr>
-</tbody>
-</table>
+|      |  1 |  2 |  3 |  4 |  5 |  6 |  7 |  8 |
+|:----:|---:|---:|---:|---:|---:|---:|---:|---:|
+| $X_1$ |  3 |  5 |  6 |  4 |  8 |  9 |  6 |  7 |
+| $X_2$ |  6 | 11 | 11 |  9 | 15 | 16 | 10 | 12 |
+| $X_3$ | 14 |  9 |  9 | 13 |  2 |  2 |  9 |  5 |
+
 
 
 a) Calcule $\overline{\mathbf{x}}, \boldsymbol{S}, \boldsymbol{R}$.

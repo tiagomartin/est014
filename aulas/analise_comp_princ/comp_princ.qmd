@@ -10,6 +10,9 @@ format:
     show-slide-number: all
     preview-links: auto
     self-contained: true
+  beamer:          # Slides em PDF (LaTeX/Beamer)
+    aspectratio: 169   # 16:9
+    keep-tex: true     # opcional, guarda o .tex gerado
 incremental: false
 code-link: false
 bibliography: references.bib
@@ -46,7 +49,7 @@ de tal forma que a informação contida em $\mathbf{x}$ esteja sendo bem represe
 
 ## Algumas questões
 
-<br>
+
 
 Vamos encontrar combinações lineares para representar informação.
 
@@ -55,9 +58,8 @@ Vamos encontrar combinações lineares para representar informação.
 
 
 
-<p style="text-align: center;"> <span style='font-size:50px;'>&#129300;</span> O que é **informação**?</p> 
 
-
+$$🤔 \text{O que é } \textbf{informação}?$$
 
 
 . . .
@@ -70,7 +72,7 @@ variância dos dados**
 
 ## Algumas questões
 
-<br>
+
 
 
 Outra questão importante:
@@ -81,8 +83,7 @@ Outra questão importante:
 
 
 
-<p style="text-align: center;"> <span style='font-size:50px;'>&#129300;</span> O que é **uma boa representação da informação**?</p> 
-
+$$🤔 \text{O que é } \textbf{uma boa representação da informação}?$$
 
 
 . . .
@@ -101,62 +102,27 @@ Nestas condições, temos que buscar **combinações lineares** $\mathbf{y}$ das
 
 . . .
 
+$$
+\begin{array}{c @{\quad} c @{\quad} c}
+\hline
+\textbf{Variáveis Originais} & & \textbf{Combinações Lineares} \\
+\hline
+X_1 & & Y_1 \\
+X_2 & & Y_2 \\
+\vdots & & \vdots \\
+X_r & \Longrightarrow & Y_r \\
+\vdots & & \vdots \\
+X_p & & Y_p \\
+\hline
+\end{array}
+$$
 
-<style type="text/css">
-.tg  {border-collapse:collapse;border-color:white;border-spacing:0;border-style:solid;border-width:1px;margin:0px auto;}
-.tg td{border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:36px;overflow:hidden;
-  padding:10px 5px;word-break:normal;}
-.tg th{border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:36px;font-weight:normal;
-  overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg .tg-c3ow{border-color:white;text-align:center;vertical-align:top}
-.tg .tg-7btt{border-color:white;font-weight:bold;text-align:center;vertical-align:top}
-</style>
-<table class="tg"><thead>
-  <tr>
-    <th class="tg-7btt">Variáveis Originais</th>
-    <th class="tg-c3ow"></th>
-    <th class="tg-7btt">Combinações Lineares</th>
-  </tr></thead>
-<tbody>
-  <tr>
-    <td class="tg-c3ow">$X_1$</td>
-    <td class="tg-c3ow"></td>
-    <td class="tg-c3ow">$Y_1$</td>
-  </tr>
-  <tr>
-    <td class="tg-c3ow">$X_2$</td>
-    <td class="tg-c3ow"></td>
-    <td class="tg-c3ow">$Y_2$</td>
-  </tr>
-  <tr>
-    <td class="tg-c3ow">$\vdots$</td>
-    <td class="tg-c3ow"></td>
-    <td class="tg-c3ow">$\vdots$</td>
-  </tr>
-  <tr>
-    <td class="tg-c3ow">$X_{r}$</td>
-    <td class="tg-c3ow">$\Longrightarrow$</td>
-    <td class="tg-c3ow">$Y_r$</td>
-  </tr>
-  <tr>
-    <td class="tg-c3ow">$\vdots$</td>
-    <td class="tg-c3ow"></td>
-    <td class="tg-c3ow">$\vdots$</td>
-  </tr>
-  <tr>
-    <td class="tg-c3ow">$X_p$</td>
-    <td class="tg-c3ow"></td>
-    <td class="tg-c3ow">$Y_{p}$</td>
-  </tr>
-</tbody>
-</table>
+
 
 . . .
 
 
-
-<p style="text-align: center;"> $\rm{Var}[\mathbf{y}]$: Máxima</p> 
-
+$$\large \mathrm{Var}[\mathbf{y}]:\ \text{Máxima}$$
 
 
 
@@ -168,63 +134,30 @@ Ideia básica da técnica de Análise de Componentes Principais:
 
 . . .
 
-
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;margin:0px auto;}
-.tg td{border-color:white;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:36px;
-  overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg th{border-color:white;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:36px;
-  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg .tg-dxqr{border-color:white;color:#fe0000;text-align:center;vertical-align:top}
-.tg .tg-c3ow{border-color:white;text-align:center;vertical-align:top}
-.tg .tg-7btt{border-color:white;font-weight:bold;text-align:center;vertical-align:top}
-</style>
-<table class="tg"><thead>
-  <tr>
-    <th class="tg-c3ow">Variáveis Originais</th>
-    <th class="tg-c3ow"></th>
-    <th class="tg-c3ow">Componentes Principais</th>
-  </tr></thead>
-<tbody>
-  <tr>
-    <td class="tg-c3ow">$X_1$</td>
-    <td class="tg-7btt">ACP</td>
-    <td class="tg-dxqr">$Y_1$</td>
-  </tr>
-  <tr>
-    <td class="tg-c3ow">$X_2$</td>
-    <td class="tg-c3ow">$\Longrightarrow$</td>
-    <td class="tg-dxqr">$Y_2$</td>
-  </tr>
-  <tr>
-    <td class="tg-c3ow">$\vdots$</td>
-    <td class="tg-c3ow"></td>
-    <td class="tg-dxqr">$\vdots$</td>
-  </tr>
-  <tr>
-    <td class="tg-c3ow">$X_{p}$</td>
-    <td class="tg-c3ow"></td>
-    <td class="tg-dxqr">$Y_r$</td>
-  </tr>
-  <tr>
-    <td class="tg-c3ow"></td>
-    <td class="tg-c3ow"></td>
-    <td class="tg-c3ow">$\vdots$</td>
-  </tr>
-  <tr>
-    <td class="tg-c3ow"></td>
-    <td class="tg-c3ow"></td>
-    <td class="tg-c3ow">$Y_{p}$</td>
-  </tr>
-</tbody>
-</table>
+$$
+\begin{array}{c @{\quad} c @{\quad} c}
+\hline
+\textbf{Variáveis Originais} & & \textbf{Componentes Principais} \\
+\hline
+X_1 & \text{ACP} & \color{red}{Y_1} \\
+X_2 & \Longrightarrow & \color{red}{Y_2} \\
+\vdots & & \color{red}{\vdots} \\
+X_p & & \color{red}{Y_r} \\
+ & & \vdots \\
+ & & Y_p \\
+\hline
+\end{array}
+$$
 
 
 . . .
 
-<p style="text-align: center;"> 
-$r$ primeiras componentes resumam, por exemplo, 80\% do comportamento geral das $p$ variáveis originais 
-</p>
+
+$$\scriptsize
+\text{As } r \text{ primeiras componentes resumem, por exemplo, } 80\% 
+\text{ do comportamento geral das } p \text{ variáveis originais.}
+$$
+
 
 
 ## Principais objetivos
@@ -267,9 +200,14 @@ $r$ primeiras componentes resumam, por exemplo, 80\% do comportamento geral das 
 
 **Geometricamente:** são as coordenadas dos pontos amostrais em um sistema de eixos obtido pela rotação do sistema de eixos original, na direção de variabilidade máxima.
 
-<p style="text-align: center;"> 
-[<span style='font-size:100px;'>&#128270;</span>](https://setosa.io/ev/principal-component-analysis)
-</p>
+$$
+\Huge
+\href{https://setosa.io/ev/principal-component-analysis}{\text{🔎}}
+$$
+
+
+
+
 
 ## Componentes Principais: alguns comentários
 
@@ -324,24 +262,28 @@ segunda restrição aos vetores $\mathbf{a}_i$:
 
 $$\mathbf{a}_i^t \mathbf{a}_k = \displaystyle{ \sum_{j=1}^p a_{ij}a_{kj}}  = 0$$
 
+
+. . .
+
+
+
+$$
+\textbf{💡 Garantia: } 
+\quad 
+\text{ortogonalidade, componentes não correlacionadas, independência}
+$$
+
+
+
+
 ## Componentes Principais: como obtê-los?
 
-<br>
-
-<br>
-
-<p style="text-align: center;"> 
-💡 **Garantia:** ortogalidade, componentes não correlacionadas, independência
-</p>
 
 
-## Componentes Principais: como obtê-los?
+$$
+{\color{red}{\Large \textbf{Primeira Componente Principal}}}
+$$
 
-
-
-<p style="text-align: center; color: red;"> 
-**Primeira Componente Principal**
-</p>
 
 $$Y_1 = a_{11}X_1 + a_{12}X_2 + \cdots + a_{1p}X_p = \boldsymbol{a}_1^t \mathbf{x}$$
 
@@ -351,9 +293,10 @@ $$Y_1 = a_{11}X_1 + a_{12}X_2 + \cdots + a_{1p}X_p = \boldsymbol{a}_1^t \mathbf{
 **Objetivo:** Encontrar $\boldsymbol{a}_1^t = [a_{11} \hspace{0.3cm} a_{12} \hspace{0.3cm} \cdots \hspace{0.3cm} a_{1p}]^t$
 tal que:
 
-<p style="text-align: center; color: red;"> 
-**$\rm{Var}[Y_1]$ seja máxima**
-</p>
+$$
+{\color{red}{ \rm{Var}[Y_1]\ \text{seja máxima}}}
+$$
+
 
 . . .
 
@@ -368,9 +311,10 @@ $$\boldsymbol{a}_1^t \boldsymbol{a}_1 = a_{11}^2 + a_{12}^2 + \cdots + a_{1p}^2 
 
 
 
-<p style="text-align: center; color: red;"> 
-**Segunda Componente Principal**
-</p>
+$$
+{\color{red}{\Large \textbf{Segunda Componente Principal}}}
+$$
+
 
 $$Y_2 = a_{21}X_1 + a_{22}X_2 + \cdots + a_{2p}X_p = \boldsymbol{a}_2^t \mathbf{x}$$
 
@@ -381,9 +325,9 @@ $$Y_2 = a_{21}X_1 + a_{22}X_2 + \cdots + a_{2p}X_p = \boldsymbol{a}_2^t \mathbf{
 **Objetivo:** Encontrar $\boldsymbol{a}_2^t = [a_{21} \hspace{0.3cm} a_{22} \hspace{0.3cm} \cdots \hspace{0.3cm} a_{2p}]^t$
 tal que:
 
-<p style="text-align: center; color: red;"> 
-**$\rm{Var}[Y_2]$ seja máxima**
-</p>
+$$
+{\color{red}{ \rm{Var}[Y_2]\ \text{seja máxima}}}
+$$
 
 . . .
 
@@ -400,9 +344,9 @@ $$\rm{Cov}[Y_1,Y_2] = 0$$
 
 
 
-<p style="text-align: center; color: red;"> 
-**i-ésima Componente Principal**
-</p>
+$$
+{\color{red}{\Large \textbf{i-ésima Componente Principal}}}
+$$
 
 $$Y_i = a_{i1}X_1 + a_{i2}X_2 + \cdots + a_{ip}X_p = \boldsymbol{a}_i^t \mathbf{x}$$
 
@@ -413,9 +357,9 @@ $$Y_i = a_{i1}X_1 + a_{i2}X_2 + \cdots + a_{ip}X_p = \boldsymbol{a}_i^t \mathbf{
 **Objetivo:** Encontrar $\boldsymbol{a}_i^t = [a_{i1} \hspace{0.3cm} a_{i2} \hspace{0.3cm} \cdots \hspace{0.3cm} a_{ip}]^t$
 tal que:
 
-<p style="text-align: center; color: red;"> 
-**$\rm{Var}[Y_i]$ seja máxima**
-</p>
+$$
+{\color{red}{ \rm{Var}[Y_i]\ \text{seja máxima}}}
+$$
 
 . . .
 
@@ -508,13 +452,15 @@ $$Y_i = {\boldsymbol{e}_i^t}\mathbf{x} =  e_{i1}X_1 + e_{i2}X_2 + \cdots + e_{ip
 - A esperança e a variância da componente $Y_i$ são respectivamente dadas por:
 
 $$
-\begin{eqnarray*}
- E[Y_i] &=& E[e_{i1}X_1 + e_{i2}X_2 + \cdots + e_{ip}X_p]  \nonumber \\
-&=& e_{i1}E[X_1] + e_{i2}E[X_2] + \cdots + e_{ip}E[X_p]  \nonumber \\
-&=& e_{i1}\mu_1 + e_{i2}\mu_2 + \cdots + e_{ip}\mu_p \nonumber \\
-&=& {\boldsymbol{e}_i^t}{\boldsymbol{\mu}} \nonumber
-\end{eqnarray*}
+\begin{aligned}
+E[Y_i] 
+  &= E[e_{i1}X_1 + e_{i2}X_2 + \cdots + e_{ip}X_p] \\
+  &= e_{i1}E[X_1] + e_{i2}E[X_2] + \cdots + e_{ip}E[X_p] \\
+  &= e_{i1}\mu_1 + e_{i2}\mu_2 + \cdots + e_{ip}\mu_p \\
+  &= \boldsymbol{e}_i^{\mathsf{T}}\boldsymbol{\mu}
+\end{aligned}
 $$
+
 
 . . .
 
@@ -560,60 +506,34 @@ ou ainda, $\boldsymbol{\Sigma} = \boldsymbol{O} \boldsymbol{\Lambda} \boldsymbol
 
 ## Variabilidade explicada
 
-<style type="text/css">
-.tg  {border:none;border-collapse:collapse;border-spacing:0;margin:0px auto;}
-.tg td{border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:36px;overflow:hidden;
-  padding:10px 5px;word-break:normal;}
-.tg th{border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:36px;font-weight:normal;
-  overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
-</style>
-<table class="tg"><thead>
-  <tr>
-    <th class="tg-c3ow">Variável</th>
-    <th class="tg-c3ow">Variância</th>
-    <th class="tg-c3ow">Componente</th>
-    <th class="tg-c3ow">Variância</th>
-  </tr></thead>
-<tbody>
-  <tr>
-    <td class="tg-c3ow">$X_1$</td>
-    <td class="tg-c3ow">$\sigma_{11}$</td>
-    <td class="tg-c3ow">$Y_1$</td>
-    <td class="tg-c3ow">$\lambda_1$</td>
-  </tr>
-  <tr>
-    <td class="tg-c3ow">$X_2$</td>
-    <td class="tg-c3ow">$\sigma_{22}$</td>
-    <td class="tg-c3ow">$Y_2$</td>
-    <td class="tg-c3ow">$\lambda_2$</td>
-  </tr>
-  <tr>
-    <td class="tg-c3ow">$\vdots$</td>
-    <td class="tg-c3ow">$\vdots$</td>
-    <td class="tg-c3ow">$\vdots$</td>
-    <td class="tg-c3ow">$\vdots$</td>
-  </tr>
-  <tr>
-    <td class="tg-c3ow">$X_p$</td>
-    <td class="tg-c3ow">$\sigma_{pp}$</td>
-    <td class="tg-c3ow">$Y_p$</td>
-    <td class="tg-c3ow">$\lambda_p$</td>
-  </tr>
-  <tr>
-    <td class="tg-c3ow">Total</td>
-    <td class="tg-c3ow">$\sigma_T^2$ = $\displaystyle{\sum_{j=1}^p \sigma_{jj}} = \rm{tr}(\boldsymbol{\Sigma})$</td>
-    <td class="tg-c3ow">Total</td>
-    <td class="tg-c3ow">$\lambda_T = \displaystyle{\sum_{j=1}^p \lambda_j} = \rm{tr}(\boldsymbol{\Lambda})$</td>
-  </tr>
-</tbody></table>
+$$
+\begin{array}{c @{\quad} c @{\quad} c @{\quad} c}
+\hline
+\textbf{Variável} & \textbf{Variância} & \textbf{Componente} & \textbf{Variância} \\
+\hline
+X_1 & \sigma_{11} & Y_1 & \lambda_1 \\
+X_2 & \sigma_{22} & Y_2 & \lambda_2 \\
+\vdots & \vdots & \vdots & \vdots \\
+X_p & \sigma_{pp} & Y_p & \lambda_p \\
+\text{Total} 
+  & \sigma_T^2 = \displaystyle\sum_{j=1}^p \sigma_{jj} = \mathrm{tr}(\boldsymbol{\Sigma})
+  & \text{Total}
+  & \lambda_T = \displaystyle\sum_{j=1}^p \lambda_j = \mathrm{tr}(\boldsymbol{\Lambda}) \\
+\hline
+\end{array}
+$$
+
 
 . . .
+
+
 
 $$\rm{tr}(\boldsymbol{\Sigma}) = \rm{tr}(\boldsymbol{O} \boldsymbol{\Lambda} \boldsymbol{O}^t) = \rm{tr}(\boldsymbol{\Lambda} \boldsymbol{O}^t \boldsymbol{O}) = \rm{tr}(\boldsymbol{\Lambda} \boldsymbol{I}) = \rm{tr}(\boldsymbol{\Lambda})$$
 
 
 . . .
+
+
 
 $$\sigma_T^2 = \lambda_T$$
 
@@ -750,100 +670,36 @@ $$\boldsymbol{S} \approx \displaystyle \sum_{j=1}^r \hat{\lambda}_j \hat{\boldsy
 
 ## Exemplo: (Mingoti,2007)
 
-<p style="text-align: center; color: black; font-size: 34px;"> 
-12 empresas, 3 variáveis: ganho bruto ($X_1$), ganho líquido ($X_2$) e patrimônio acumulado ($X_3$)
-</p>
+$$\small
+\text{12 empresas, 3 variáveis: ganho bruto }(X_1)\text{, ganho líquido }(X_2)\text{ e patrimônio acumulado }(X_3)
+$$
 
 
-<style type="text/css">
-.tg  {border:none;border-collapse:collapse;border-color:#ccc;border-spacing:0;margin:0px auto;}
-.tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:0px;color:#333;
-  font-family:Arial, sans-serif;font-size:30px;overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:0px;color:#333;
-  font-family:Arial, sans-serif;font-size:30px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg .tg-c3ow{border-color:white;text-align:center;vertical-align:top}
-</style>
-<table class="tg"><thead>
-  <tr>
-    <th class="tg-c3ow">Empresa</th>
-    <th class="tg-c3ow">Ganho bruto $(X_1)$</th>
-    <th class="tg-c3ow">Ganho líquido $(X_2)$</th>
-    <th class="tg-c3ow">Patrimônio $(X_3)$</th>
-  </tr></thead>
-<tbody>
-  <tr>
-    <td class="tg-c3ow">E1</td>
-    <td class="tg-c3ow">9893</td>
-    <td class="tg-c3ow">564</td>
-    <td class="tg-c3ow">17689</td>
-  </tr>
-  <tr>
-    <td class="tg-c3ow">E2</td>
-    <td class="tg-c3ow">8776</td>
-    <td class="tg-c3ow">389</td>
-    <td class="tg-c3ow">17359</td>
-  </tr>
-  <tr>
-    <td class="tg-c3ow">E3</td>
-    <td class="tg-c3ow">13572</td>
-    <td class="tg-c3ow">1103</td>
-    <td class="tg-c3ow">18597</td>
-  </tr>
-  <tr>
-    <td class="tg-c3ow">E4</td>
-    <td class="tg-c3ow">6455</td>
-    <td class="tg-c3ow">743</td>
-    <td class="tg-c3ow">8745</td>
-  </tr>
-  <tr>
-    <td class="tg-c3ow">E5</td>
-    <td class="tg-c3ow">5129</td>
-    <td class="tg-c3ow">203</td>
-    <td class="tg-c3ow">14397</td>
-  </tr>
-  <tr>
-    <td class="tg-c3ow">E6</td>
-    <td class="tg-c3ow">5432</td>
-    <td class="tg-c3ow">215</td>
-    <td class="tg-c3ow">3467</td>
-  </tr>
-  <tr>
-    <td class="tg-c3ow">E7</td>
-    <td class="tg-c3ow">3807</td>
-    <td class="tg-c3ow">385</td>
-    <td class="tg-c3ow">4679</td>
-  </tr>
-  <tr>
-    <td class="tg-c3ow">E8</td>
-    <td class="tg-c3ow">3423</td>
-    <td class="tg-c3ow">187</td>
-    <td class="tg-c3ow">6754</td>
-  </tr>
-  <tr>
-    <td class="tg-c3ow">E9</td>
-    <td class="tg-c3ow">3708</td>
-    <td class="tg-c3ow">127</td>
-    <td class="tg-c3ow">2275</td>
-  </tr>
-  <tr>
-    <td class="tg-c3ow">E10</td>
-    <td class="tg-c3ow">3294</td>
-    <td class="tg-c3ow">297</td>
-    <td class="tg-c3ow">6754</td>
-  </tr>
-  <tr>
-    <td class="tg-c3ow">E11</td>
-    <td class="tg-c3ow">5433</td>
-    <td class="tg-c3ow">432</td>
-    <td class="tg-c3ow">5589</td>
-  </tr>
-  <tr>
-    <td class="tg-c3ow">E12</td>
-    <td class="tg-c3ow">6287</td>
-    <td class="tg-c3ow">451</td>
-    <td class="tg-c3ow">8972</td>
-  </tr>
-</tbody></table>
+$$\scriptsize
+\begin{array}{l @{\quad} r @{\quad} r @{\quad} r}
+\hline
+\textbf{Empresa} &
+\textbf{Ganho bruto }(X_1) &
+\textbf{Ganho líquido }(X_2) &
+\textbf{Patrimônio }(X_3) \\
+\hline
+\mathit{E1}  & 9893  & 564  & 17689 \\
+\mathit{E2}  & 8776  & 389  & 17359 \\
+\mathit{E3}  & 13572 & 1103 & 18597 \\
+\mathit{E4}  & 6455  & 743  & 8745 \\
+\mathit{E5}  & 5129  & 203  & 14397 \\
+\mathit{E6}  & 5432  & 215  & 3467 \\
+\mathit{E7}  & 3807  & 385  & 4679 \\
+\mathit{E8}  & 3423  & 187  & 6754 \\
+\mathit{E9}  & 3708  & 127  & 2275 \\
+\mathit{E10} & 3294  & 297  & 6754 \\
+\mathit{E11} & 5433  & 432  & 5589 \\
+\mathit{E12} & 6287  & 451  & 8972 \\
+\hline
+\end{array}
+$$
+
+
 
 
 
@@ -894,6 +750,8 @@ S
 
 
 ```{r}
+#| fig-align: "center"
+#| out-width: "70%"   # tente 60%, 70%, 80%...
 dados %>% 
   boxplot() 
 ```
@@ -929,15 +787,13 @@ $$Y_1 = 0,425 \times \text{GB} + 0,028 \times \text{GL} + 0,905 \times \text{PA}
 . . .
 
 
-<p style="text-align: center; color: red; font-size: 46px;"> 
-**Qual a variável mais importante para $Y_1$?**
-</p>
+$$\Large
+\color{red}{\textbf{Qual a variável mais importante para } Y_1 \textbf{?}}$$
 
 
 ::: {.fragment .fade-in}
-<p style="text-align: center; color: black; font-size: 46px;"> 
-**Patrimônio**
-</p>
+$$\Large
+\textbf{Patrimônio}$$
 :::
 
 ::: {.fragment .fade-up}
@@ -949,9 +805,8 @@ $$Y_1 = 0,425 \times \text{GB} + 0,028 \times \text{GL} + 0,905 \times \text{PA}
 :::
 
 ::: {.column width="40%"}
-<p style="text-align: center; color: red; font-size: 100px;"> 
-<span style='font-size:150px;'>&#129300;</span>**Será?**
-</p>
+$$\Huge
+\color{red}{🤔 \textbf{Será?}}$$
 :::
 ::::
 :::
@@ -1100,6 +955,8 @@ ela retém mais informação do que a variância média por dimensão do espaço
 
 
 ```{r,  echo=FALSE}
+#| fig-align: "center"
+#| out-width: "70%"   # tente 60%, 70%, 80%...
 pca <- prcomp(scale(iris[,1:4]))
 fviz_eig(pca, geom="line",  choice = c("eigenvalue"), addlabels = TRUE, main = "")
 ```
@@ -1112,6 +969,8 @@ fviz_eig(pca, geom="line",  choice = c("eigenvalue"), addlabels = TRUE, main = "
 
 
 ```{r, echo=FALSE}
+#| fig-align: "center"
+#| out-width: "70%"   # tente 60%, 70%, 80%...
 fviz_eig(pca, geom="bar",  choice = c("variance"), addlabels = TRUE, main = "")
 ```
 
@@ -1138,6 +997,8 @@ fviz_eig(pca, geom="bar",  choice = c("variance"), addlabels = TRUE, main = "")
 
 
 ```{r, echo=FALSE}
+#| fig-align: "center"
+#| out-width: "70%"   # tente 60%, 70%, 80%...
 pca <- principal(iris[,1:4], nfactors = 4, rotate = "none")
 fa.parallel(iris[,1:4], fa="pc", n.iter=1000)
 ```
@@ -1177,100 +1038,34 @@ fa.parallel(iris[,1:4], fa="pc", n.iter=1000)
 ## Voltando ao Exemplo
 
 
-<p style="text-align: center; color: black; font-size: 34px;"> 
-12 empresas, 3 variáveis: ganho bruto ($X_1$), ganho líquido ($X_2$) e patrimônio acumulado ($X_3$)
-</p>
+$$\small
+\text{12 empresas, 3 variáveis: ganho bruto }(X_1)\text{, ganho líquido }(X_2)\text{ e patrimônio acumulado }(X_3)
+$$
 
 
-<style type="text/css">
-.tg  {border:none;border-collapse:collapse;border-color:#ccc;border-spacing:0;margin:0px auto;}
-.tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:0px;color:#333;
-  font-family:Arial, sans-serif;font-size:30px;overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:0px;color:#333;
-  font-family:Arial, sans-serif;font-size:30px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg .tg-c3ow{border-color:white;text-align:center;vertical-align:top}
-</style>
-<table class="tg"><thead>
-  <tr>
-    <th class="tg-c3ow">Empresa</th>
-    <th class="tg-c3ow">Ganho bruto $(X_1)$</th>
-    <th class="tg-c3ow">Ganho líquido $(X_2)$</th>
-    <th class="tg-c3ow">Patrimônio $(X_3)$</th>
-  </tr></thead>
-<tbody>
-  <tr>
-    <td class="tg-c3ow">E1</td>
-    <td class="tg-c3ow">9893</td>
-    <td class="tg-c3ow">564</td>
-    <td class="tg-c3ow">17689</td>
-  </tr>
-  <tr>
-    <td class="tg-c3ow">E2</td>
-    <td class="tg-c3ow">8776</td>
-    <td class="tg-c3ow">389</td>
-    <td class="tg-c3ow">17359</td>
-  </tr>
-  <tr>
-    <td class="tg-c3ow">E3</td>
-    <td class="tg-c3ow">13572</td>
-    <td class="tg-c3ow">1103</td>
-    <td class="tg-c3ow">18597</td>
-  </tr>
-  <tr>
-    <td class="tg-c3ow">E4</td>
-    <td class="tg-c3ow">6455</td>
-    <td class="tg-c3ow">743</td>
-    <td class="tg-c3ow">8745</td>
-  </tr>
-  <tr>
-    <td class="tg-c3ow">E5</td>
-    <td class="tg-c3ow">5129</td>
-    <td class="tg-c3ow">203</td>
-    <td class="tg-c3ow">14397</td>
-  </tr>
-  <tr>
-    <td class="tg-c3ow">E6</td>
-    <td class="tg-c3ow">5432</td>
-    <td class="tg-c3ow">215</td>
-    <td class="tg-c3ow">3467</td>
-  </tr>
-  <tr>
-    <td class="tg-c3ow">E7</td>
-    <td class="tg-c3ow">3807</td>
-    <td class="tg-c3ow">385</td>
-    <td class="tg-c3ow">4679</td>
-  </tr>
-  <tr>
-    <td class="tg-c3ow">E8</td>
-    <td class="tg-c3ow">3423</td>
-    <td class="tg-c3ow">187</td>
-    <td class="tg-c3ow">6754</td>
-  </tr>
-  <tr>
-    <td class="tg-c3ow">E9</td>
-    <td class="tg-c3ow">3708</td>
-    <td class="tg-c3ow">127</td>
-    <td class="tg-c3ow">2275</td>
-  </tr>
-  <tr>
-    <td class="tg-c3ow">E10</td>
-    <td class="tg-c3ow">3294</td>
-    <td class="tg-c3ow">297</td>
-    <td class="tg-c3ow">6754</td>
-  </tr>
-  <tr>
-    <td class="tg-c3ow">E11</td>
-    <td class="tg-c3ow">5433</td>
-    <td class="tg-c3ow">432</td>
-    <td class="tg-c3ow">5589</td>
-  </tr>
-  <tr>
-    <td class="tg-c3ow">E12</td>
-    <td class="tg-c3ow">6287</td>
-    <td class="tg-c3ow">451</td>
-    <td class="tg-c3ow">8972</td>
-  </tr>
-</tbody></table>
+$$\scriptsize
+\begin{array}{l @{\quad} r @{\quad} r @{\quad} r}
+\hline
+\textbf{Empresa} &
+\textbf{Ganho bruto }(X_1) &
+\textbf{Ganho líquido }(X_2) &
+\textbf{Patrimônio }(X_3) \\
+\hline
+\mathit{E1}  & 9893  & 564  & 17689 \\
+\mathit{E2}  & 8776  & 389  & 17359 \\
+\mathit{E3}  & 13572 & 1103 & 18597 \\
+\mathit{E4}  & 6455  & 743  & 8745 \\
+\mathit{E5}  & 5129  & 203  & 14397 \\
+\mathit{E6}  & 5432  & 215  & 3467 \\
+\mathit{E7}  & 3807  & 385  & 4679 \\
+\mathit{E8}  & 3423  & 187  & 6754 \\
+\mathit{E9}  & 3708  & 127  & 2275 \\
+\mathit{E10} & 3294  & 297  & 6754 \\
+\mathit{E11} & 5433  & 432  & 5589 \\
+\mathit{E12} & 6287  & 451  & 8972 \\
+\hline
+\end{array}
+$$
 
 
 
@@ -1283,6 +1078,8 @@ fa.parallel(iris[,1:4], fa="pc", n.iter=1000)
 
 
 ```{r}
+#| fig-align: "center"
+#| out-width: "70%"   # tente 60%, 70%, 80%...
 dados %>% 
   scale(center=TRUE, scale=TRUE) 
 ```
@@ -1293,6 +1090,8 @@ dados %>%
 ## Voltando ao Exemplo
 
 ```{r}
+#| fig-align: "center"
+#| out-width: "70%"   # tente 60%, 70%, 80%...
 dados %>% 
   scale(center=TRUE, scale=TRUE) %>% 
   boxplot()
@@ -1339,6 +1138,8 @@ Ryx_R
 ## Voltando ao Exemplo
 
 ```{r}
+#| fig-align: "center"
+#| out-width: "70%"   # tente 60%, 70%, 80%...
 fa.parallel(dados %>% scale(center=TRUE, scale=TRUE), fa="pc", n.iter=1000)
 ```
 
@@ -1385,6 +1186,8 @@ $$Y_2 =  -0,001 \times Z_{GB} - 0,706 \times Z_{GL} + 0,708 \times Z_{PA} \Longr
 
 
 ```{r}
+#| fig-align: "center"
+#| out-width: "70%"   # tente 60%, 70%, 80%...
 fviz_pca_biplot(acp_R, repel = TRUE,
                 col.var = "#2E9FDF", # Variables color
                 col.ind = "#696969"  # Individuals color
@@ -1462,6 +1265,8 @@ Quanto maior Patrimônio / Ganho Bruto / Ganho Líquido → mais à direita o in
 ## Voltando a Exemplo
 
 ```{r}
+#| fig-align: "center"
+#| out-width: "70%"   # tente 60%, 70%, 80%...
 # Contribuições das variáveis para a PC1
 fviz_contrib(acp_R, choice = "var", axes = 1)
 ```
@@ -1482,6 +1287,8 @@ fviz_contrib(acp_R, choice = "var", axes = 1)
 ## Voltando ao Exemplo
 
 ```{r}
+#| fig-align: "center"
+#| out-width: "70%"   # tente 60%, 70%, 80%...
 fviz_contrib(acp_R, choice = "ind", axes = 1:2)
 ```
 

@@ -406,28 +406,28 @@
     "href": "aulas/analise_comp_princ/comp_princ.html#algumas-questões",
     "title": "Análise de Componentes Principais",
     "section": "Algumas questões",
-    "text": "Algumas questões\n\nVamos encontrar combinações lineares para representar informação.\n\n\n🤔 O que é informação?\n\n\n\nInformação \\(\\Longrightarrow\\) Variância: quanto maior a variabilidade, maior a informação contida nos dados, maior a variância dos dados"
+    "text": "Algumas questões\nVamos encontrar combinações lineares para representar informação.\n\n\\[🤔 \\text{O que é } \\textbf{informação}?\\]\n\n\nInformação \\(\\Longrightarrow\\) Variância: quanto maior a variabilidade, maior a informação contida nos dados, maior a variância dos dados"
   },
   {
     "objectID": "aulas/analise_comp_princ/comp_princ.html#algumas-questões-1",
     "href": "aulas/analise_comp_princ/comp_princ.html#algumas-questões-1",
     "title": "Análise de Componentes Principais",
     "section": "Algumas questões",
-    "text": "Algumas questões\n\nOutra questão importante:\n\n\n🤔 O que é uma boa representação da informação?\n\n\n\nBoa representação da informação \\(\\Longrightarrow\\) tomar as componentes de \\(\\mathbf{y}\\) que assegurem uma variância similar à de \\(\\mathbf{x}\\)"
+    "text": "Algumas questões\nOutra questão importante:\n\n\\[🤔 \\text{O que é } \\textbf{uma boa representação da informação}?\\]\n\n\nBoa representação da informação \\(\\Longrightarrow\\) tomar as componentes de \\(\\mathbf{y}\\) que assegurem uma variância similar à de \\(\\mathbf{x}\\)"
   },
   {
     "objectID": "aulas/analise_comp_princ/comp_princ.html#esquematicamente",
     "href": "aulas/analise_comp_princ/comp_princ.html#esquematicamente",
     "title": "Análise de Componentes Principais",
     "section": "Esquematicamente",
-    "text": "Esquematicamente\nNestas condições, temos que buscar combinações lineares \\(\\mathbf{y}\\) das variáveis \\(\\mathbf{x}\\) de forma que se maximize a variância\n\n\n\n\n\n\nVariáveis Originais\n\n\n\n\nCombinações Lineares\n\n\n\n\n\n\n\\(X_1\\)\n\n\n\n\n\\(Y_1\\)\n\n\n\n\n\\(X_2\\)\n\n\n\n\n\\(Y_2\\)\n\n\n\n\n\\(\\vdots\\)\n\n\n\n\n\\(\\vdots\\)\n\n\n\n\n\\(X_{r}\\)\n\n\n\\(\\Longrightarrow\\)\n\n\n\\(Y_r\\)\n\n\n\n\n\\(\\vdots\\)\n\n\n\n\n\\(\\vdots\\)\n\n\n\n\n\\(X_p\\)\n\n\n\n\n\\(Y_{p}\\)\n\n\n\n\n\n\n\n\\(\\rm{Var}[\\mathbf{y}]\\): Máxima"
+    "text": "Esquematicamente\nNestas condições, temos que buscar combinações lineares \\(\\mathbf{y}\\) das variáveis \\(\\mathbf{x}\\) de forma que se maximize a variância\n\n\\[\n\\begin{array}{c @{\\quad} c @{\\quad} c}\n\\hline\n\\textbf{Variáveis Originais} & & \\textbf{Combinações Lineares} \\\\\n\\hline\nX_1 & & Y_1 \\\\\nX_2 & & Y_2 \\\\\n\\vdots & & \\vdots \\\\\nX_r & \\Longrightarrow & Y_r \\\\\n\\vdots & & \\vdots \\\\\nX_p & & Y_p \\\\\n\\hline\n\\end{array}\n\\]\n\n\n\\[\\large \\mathrm{Var}[\\mathbf{y}]:\\ \\text{Máxima}\\]"
   },
   {
     "objectID": "aulas/analise_comp_princ/comp_princ.html#esquematicamente-1",
     "href": "aulas/analise_comp_princ/comp_princ.html#esquematicamente-1",
     "title": "Análise de Componentes Principais",
     "section": "Esquematicamente",
-    "text": "Esquematicamente\nIdeia básica da técnica de Análise de Componentes Principais:\n\n\n\n\n\n\nVariáveis Originais\n\n\n\n\nComponentes Principais\n\n\n\n\n\n\n\\(X_1\\)\n\n\nACP\n\n\n\\(Y_1\\)\n\n\n\n\n\\(X_2\\)\n\n\n\\(\\Longrightarrow\\)\n\n\n\\(Y_2\\)\n\n\n\n\n\\(\\vdots\\)\n\n\n\n\n\\(\\vdots\\)\n\n\n\n\n\\(X_{p}\\)\n\n\n\n\n\\(Y_r\\)\n\n\n\n\n\n\n\n\n\\(\\vdots\\)\n\n\n\n\n\n\n\n\n\\(Y_{p}\\)\n\n\n\n\n\n\n\n\\(r\\) primeiras componentes resumam, por exemplo, 80% do comportamento geral das \\(p\\) variáveis originais"
+    "text": "Esquematicamente\nIdeia básica da técnica de Análise de Componentes Principais:\n\n\\[\n\\begin{array}{c @{\\quad} c @{\\quad} c}\n\\hline\n\\textbf{Variáveis Originais} & & \\textbf{Componentes Principais} \\\\\n\\hline\nX_1 & \\text{ACP} & \\color{red}{Y_1} \\\\\nX_2 & \\Longrightarrow & \\color{red}{Y_2} \\\\\n\\vdots & & \\color{red}{\\vdots} \\\\\nX_p & & \\color{red}{Y_r} \\\\\n& & \\vdots \\\\\n& & Y_p \\\\\n\\hline\n\\end{array}\n\\]\n\n\n\\[\\scriptsize\n\\text{As } r \\text{ primeiras componentes resumem, por exemplo, } 80\\%\n\\text{ do comportamento geral das } p \\text{ variáveis originais.}\n\\]"
   },
   {
     "objectID": "aulas/analise_comp_princ/comp_princ.html#principais-objetivos",
@@ -455,7 +455,7 @@
     "href": "aulas/analise_comp_princ/comp_princ.html#componentes-principais-o-que-são",
     "title": "Análise de Componentes Principais",
     "section": "Componentes Principais: o que são?",
-    "text": "Componentes Principais: o que são?\nAlgebricamente: são combinações lineares das \\(p\\) variáveis originais, \\(X_1, X_2, \\cdots, X_p\\).\n\nGeometricamente: são as coordenadas dos pontos amostrais em um sistema de eixos obtido pela rotação do sistema de eixos original, na direção de variabilidade máxima.\n\n🔎"
+    "text": "Componentes Principais: o que são?\nAlgebricamente: são combinações lineares das \\(p\\) variáveis originais, \\(X_1, X_2, \\cdots, X_p\\).\n\nGeometricamente: são as coordenadas dos pontos amostrais em um sistema de eixos obtido pela rotação do sistema de eixos original, na direção de variabilidade máxima.\n\\[\n\\Huge\n\\href{https://setosa.io/ev/principal-component-analysis}{\\text{🔎}}\n\\]"
   },
   {
     "objectID": "aulas/analise_comp_princ/comp_princ.html#componentes-principais-alguns-comentários",
@@ -476,28 +476,28 @@
     "href": "aulas/analise_comp_princ/comp_princ.html#componentes-principais-como-obtê-los-1",
     "title": "Análise de Componentes Principais",
     "section": "Componentes Principais: como obtê-los?",
-    "text": "Componentes Principais: como obtê-los?\n\nPara fixar problemas de escala, adicionamos uma primeira restrição aos vetores \\(\\mathbf{a}_i\\):\n\n\\[\\mathbf{a}_i^t \\mathbf{a}_i = \\displaystyle{ \\sum_{j=1}^p a_{ij}^2} = 1\\]\n\n\nPara evitar que duas variáveis \\(Y_i\\) e \\(Y_k\\), \\(i \\neq k\\), \\(i,k = 1, \\cdots, p\\), compartilhem informação, adicionamos uma segunda restrição aos vetores \\(\\mathbf{a}_i\\):\n\n\\[\\mathbf{a}_i^t \\mathbf{a}_k = \\displaystyle{ \\sum_{j=1}^p a_{ij}a_{kj}}  = 0\\]"
+    "text": "Componentes Principais: como obtê-los?\n\nPara fixar problemas de escala, adicionamos uma primeira restrição aos vetores \\(\\mathbf{a}_i\\):\n\n\\[\\mathbf{a}_i^t \\mathbf{a}_i = \\displaystyle{ \\sum_{j=1}^p a_{ij}^2} = 1\\]\n\n\nPara evitar que duas variáveis \\(Y_i\\) e \\(Y_k\\), \\(i \\neq k\\), \\(i,k = 1, \\cdots, p\\), compartilhem informação, adicionamos uma segunda restrição aos vetores \\(\\mathbf{a}_i\\):\n\n\\[\\mathbf{a}_i^t \\mathbf{a}_k = \\displaystyle{ \\sum_{j=1}^p a_{ij}a_{kj}}  = 0\\]\n\n\n\\[\n\\textbf{💡 Garantia: }\n\\quad\n\\text{ortogonalidade, componentes não correlacionadas, independência}\n\\]"
   },
   {
     "objectID": "aulas/analise_comp_princ/comp_princ.html#componentes-principais-como-obtê-los-2",
     "href": "aulas/analise_comp_princ/comp_princ.html#componentes-principais-como-obtê-los-2",
     "title": "Análise de Componentes Principais",
     "section": "Componentes Principais: como obtê-los?",
-    "text": "Componentes Principais: como obtê-los?\n\n\n\n💡 Garantia: ortogalidade, componentes não correlacionadas, independência"
+    "text": "Componentes Principais: como obtê-los?\n\\[\n{\\color{red}{\\Large \\textbf{Primeira Componente Principal}}}\n\\]\n\\[Y_1 = a_{11}X_1 + a_{12}X_2 + \\cdots + a_{1p}X_p = \\boldsymbol{a}_1^t \\mathbf{x}\\]\n\nObjetivo: Encontrar \\(\\boldsymbol{a}_1^t = [a_{11} \\hspace{0.3cm} a_{12} \\hspace{0.3cm} \\cdots \\hspace{0.3cm} a_{1p}]^t\\) tal que:\n\\[\n{\\color{red}{ \\rm{Var}[Y_1]\\ \\text{seja máxima}}}\n\\]\n\n\nSujeita à restrição:\n\\[\\boldsymbol{a}_1^t \\boldsymbol{a}_1 = a_{11}^2 + a_{12}^2 + \\cdots + a_{1p}^2 = 1\\]"
   },
   {
     "objectID": "aulas/analise_comp_princ/comp_princ.html#componentes-principais-como-obtê-los-3",
     "href": "aulas/analise_comp_princ/comp_princ.html#componentes-principais-como-obtê-los-3",
     "title": "Análise de Componentes Principais",
     "section": "Componentes Principais: como obtê-los?",
-    "text": "Componentes Principais: como obtê-los?\n\nPrimeira Componente Principal\n\n\\[Y_1 = a_{11}X_1 + a_{12}X_2 + \\cdots + a_{1p}X_p = \\boldsymbol{a}_1^t \\mathbf{x}\\]\n\nObjetivo: Encontrar \\(\\boldsymbol{a}_1^t = [a_{11} \\hspace{0.3cm} a_{12} \\hspace{0.3cm} \\cdots \\hspace{0.3cm} a_{1p}]^t\\) tal que:\n\n\\(\\rm{Var}[Y_1]\\) seja máxima\n\n\n\nSujeita à restrição:\n\\[\\boldsymbol{a}_1^t \\boldsymbol{a}_1 = a_{11}^2 + a_{12}^2 + \\cdots + a_{1p}^2 = 1\\]"
+    "text": "Componentes Principais: como obtê-los?\n\\[\n{\\color{red}{\\Large \\textbf{Segunda Componente Principal}}}\n\\]\n\\[Y_2 = a_{21}X_1 + a_{22}X_2 + \\cdots + a_{2p}X_p = \\boldsymbol{a}_2^t \\mathbf{x}\\]\n\nObjetivo: Encontrar \\(\\boldsymbol{a}_2^t = [a_{21} \\hspace{0.3cm} a_{22} \\hspace{0.3cm} \\cdots \\hspace{0.3cm} a_{2p}]^t\\) tal que:\n\\[\n{\\color{red}{ \\rm{Var}[Y_2]\\ \\text{seja máxima}}}\n\\]\n\n\nSujeita à restrição:\n\\[\\boldsymbol{a}_2^t \\boldsymbol{a}_2 = a_{21}^2 + a_{22}^2 + \\cdots + a_{2p}^2 = 1\\]\n\\[\\rm{Cov}[Y_1,Y_2] = 0\\]"
   },
   {
     "objectID": "aulas/analise_comp_princ/comp_princ.html#componentes-principais-como-obtê-los-4",
     "href": "aulas/analise_comp_princ/comp_princ.html#componentes-principais-como-obtê-los-4",
     "title": "Análise de Componentes Principais",
     "section": "Componentes Principais: como obtê-los?",
-    "text": "Componentes Principais: como obtê-los?\n\nSegunda Componente Principal\n\n\\[Y_2 = a_{21}X_1 + a_{22}X_2 + \\cdots + a_{2p}X_p = \\boldsymbol{a}_2^t \\mathbf{x}\\]\n\nObjetivo: Encontrar \\(\\boldsymbol{a}_2^t = [a_{21} \\hspace{0.3cm} a_{22} \\hspace{0.3cm} \\cdots \\hspace{0.3cm} a_{2p}]^t\\) tal que:\n\n\\(\\rm{Var}[Y_2]\\) seja máxima\n\n\n\nSujeita à restrição:\n\\[\\boldsymbol{a}_2^t \\boldsymbol{a}_2 = a_{21}^2 + a_{22}^2 + \\cdots + a_{2p}^2 = 1\\]\n\\[\\rm{Cov}[Y_1,Y_2] = 0\\]"
+    "text": "Componentes Principais: como obtê-los?\n\\[\n{\\color{red}{\\Large \\textbf{i-ésima Componente Principal}}}\n\\]\n\\[Y_i = a_{i1}X_1 + a_{i2}X_2 + \\cdots + a_{ip}X_p = \\boldsymbol{a}_i^t \\mathbf{x}\\]\n\nObjetivo: Encontrar \\(\\boldsymbol{a}_i^t = [a_{i1} \\hspace{0.3cm} a_{i2} \\hspace{0.3cm} \\cdots \\hspace{0.3cm} a_{ip}]^t\\) tal que:\n\\[\n{\\color{red}{ \\rm{Var}[Y_i]\\ \\text{seja máxima}}}\n\\]\n\n\nSujeita à restrição:\n\\[\\boldsymbol{a}_i^t \\boldsymbol{a}_i =  a_{i1}^2 + a_{i2}^2 + \\cdots + a_{ip}^2 = 1\\]\n\\[\\rm{Cov}[Y_,Y_k] = 0, \\text{para  } k &lt; i\\]"
   },
   {
     "objectID": "aulas/analise_comp_princ/comp_princ.html#componentes-principais-como-obtê-los-5",
@@ -546,7 +546,7 @@
     "href": "aulas/analise_comp_princ/comp_princ.html#componentes-principais-propriedades",
     "title": "Análise de Componentes Principais",
     "section": "Componentes Principais: propriedades",
-    "text": "Componentes Principais: propriedades\n\nA esperança e a variância da componente \\(Y_i\\) são respectivamente dadas por:\n\n\\[\n\\begin{eqnarray*}\nE[Y_i] &=& E[e_{i1}X_1 + e_{i2}X_2 + \\cdots + e_{ip}X_p]  \\nonumber \\\\\n&=& e_{i1}E[X_1] + e_{i2}E[X_2] + \\cdots + e_{ip}E[X_p]  \\nonumber \\\\\n&=& e_{i1}\\mu_1 + e_{i2}\\mu_2 + \\cdots + e_{ip}\\mu_p \\nonumber \\\\\n&=& {\\boldsymbol{e}_i^t}{\\boldsymbol{\\mu}} \\nonumber\n\\end{eqnarray*}\n\\]\n\n\\[ \\textrm{Var}[Y_i] = \\textrm{Var}[{\\boldsymbol{e}_i^t}\\mathbf{x}] = {\\boldsymbol{e}_i^t} \\textrm{Var}[\\mathbf{x}] {\\boldsymbol{e}_i}\n=  {\\boldsymbol{e}_i^t} \\boldsymbol{\\Sigma} {\\boldsymbol{e}_i} = {\\boldsymbol{e}_i^t} \\lambda_i {\\boldsymbol{e}_i} =   \n{\\boldsymbol{e}_i^t} {\\boldsymbol{e}_i}\\lambda_i = \\lambda_i \\]"
+    "text": "Componentes Principais: propriedades\n\nA esperança e a variância da componente \\(Y_i\\) são respectivamente dadas por:\n\n\\[\n\\begin{aligned}\nE[Y_i]\n  &= E[e_{i1}X_1 + e_{i2}X_2 + \\cdots + e_{ip}X_p] \\\\\n  &= e_{i1}E[X_1] + e_{i2}E[X_2] + \\cdots + e_{ip}E[X_p] \\\\\n  &= e_{i1}\\mu_1 + e_{i2}\\mu_2 + \\cdots + e_{ip}\\mu_p \\\\\n  &= \\boldsymbol{e}_i^{\\mathsf{T}}\\boldsymbol{\\mu}\n\\end{aligned}\n\\]\n\n\\[ \\textrm{Var}[Y_i] = \\textrm{Var}[{\\boldsymbol{e}_i^t}\\mathbf{x}] = {\\boldsymbol{e}_i^t} \\textrm{Var}[\\mathbf{x}] {\\boldsymbol{e}_i}\n=  {\\boldsymbol{e}_i^t} \\boldsymbol{\\Sigma} {\\boldsymbol{e}_i} = {\\boldsymbol{e}_i^t} \\lambda_i {\\boldsymbol{e}_i} =   \n{\\boldsymbol{e}_i^t} {\\boldsymbol{e}_i}\\lambda_i = \\lambda_i \\]"
   },
   {
     "objectID": "aulas/analise_comp_princ/comp_princ.html#na-forma-matricial",
@@ -567,7 +567,7 @@
     "href": "aulas/analise_comp_princ/comp_princ.html#variabilidade-explicada",
     "title": "Análise de Componentes Principais",
     "section": "Variabilidade explicada",
-    "text": "Variabilidade explicada\n\n\n\n\n\nVariável\n\n\nVariância\n\n\nComponente\n\n\nVariância\n\n\n\n\n\n\n\\(X_1\\)\n\n\n\\(\\sigma_{11}\\)\n\n\n\\(Y_1\\)\n\n\n\\(\\lambda_1\\)\n\n\n\n\n\\(X_2\\)\n\n\n\\(\\sigma_{22}\\)\n\n\n\\(Y_2\\)\n\n\n\\(\\lambda_2\\)\n\n\n\n\n\\(\\vdots\\)\n\n\n\\(\\vdots\\)\n\n\n\\(\\vdots\\)\n\n\n\\(\\vdots\\)\n\n\n\n\n\\(X_p\\)\n\n\n\\(\\sigma_{pp}\\)\n\n\n\\(Y_p\\)\n\n\n\\(\\lambda_p\\)\n\n\n\n\nTotal\n\n\n\\(\\sigma_T^2\\) = \\(\\displaystyle{\\sum_{j=1}^p \\sigma_{jj}} = \\rm{tr}(\\boldsymbol{\\Sigma})\\)\n\n\nTotal\n\n\n\\(\\lambda_T = \\displaystyle{\\sum_{j=1}^p \\lambda_j} = \\rm{tr}(\\boldsymbol{\\Lambda})\\)\n\n\n\n\n\n\\[\\rm{tr}(\\boldsymbol{\\Sigma}) = \\rm{tr}(\\boldsymbol{O} \\boldsymbol{\\Lambda} \\boldsymbol{O}^t) = \\rm{tr}(\\boldsymbol{\\Lambda} \\boldsymbol{O}^t \\boldsymbol{O}) = \\rm{tr}(\\boldsymbol{\\Lambda} \\boldsymbol{I}) = \\rm{tr}(\\boldsymbol{\\Lambda})\\]\n\n\n\\[\\sigma_T^2 = \\lambda_T\\]"
+    "text": "Variabilidade explicada\n\\[\n\\begin{array}{c @{\\quad} c @{\\quad} c @{\\quad} c}\n\\hline\n\\textbf{Variável} & \\textbf{Variância} & \\textbf{Componente} & \\textbf{Variância} \\\\\n\\hline\nX_1 & \\sigma_{11} & Y_1 & \\lambda_1 \\\\\nX_2 & \\sigma_{22} & Y_2 & \\lambda_2 \\\\\n\\vdots & \\vdots & \\vdots & \\vdots \\\\\nX_p & \\sigma_{pp} & Y_p & \\lambda_p \\\\\n\\text{Total}\n  & \\sigma_T^2 = \\displaystyle\\sum_{j=1}^p \\sigma_{jj} = \\mathrm{tr}(\\boldsymbol{\\Sigma})\n  & \\text{Total}\n  & \\lambda_T = \\displaystyle\\sum_{j=1}^p \\lambda_j = \\mathrm{tr}(\\boldsymbol{\\Lambda}) \\\\\n\\hline\n\\end{array}\n\\]\n\n\\[\\rm{tr}(\\boldsymbol{\\Sigma}) = \\rm{tr}(\\boldsymbol{O} \\boldsymbol{\\Lambda} \\boldsymbol{O}^t) = \\rm{tr}(\\boldsymbol{\\Lambda} \\boldsymbol{O}^t \\boldsymbol{O}) = \\rm{tr}(\\boldsymbol{\\Lambda} \\boldsymbol{I}) = \\rm{tr}(\\boldsymbol{\\Lambda})\\]\n\n\n\\[\\sigma_T^2 = \\lambda_T\\]"
   },
   {
     "objectID": "aulas/analise_comp_princ/comp_princ.html#variabilidade-explicada-1",
@@ -623,7 +623,7 @@
     "href": "aulas/analise_comp_princ/comp_princ.html#exemplo-mingoti2007",
     "title": "Análise de Componentes Principais",
     "section": "Exemplo: (Mingoti,2007)",
-    "text": "Exemplo: (Mingoti,2007)\n\n12 empresas, 3 variáveis: ganho bruto (\\(X_1\\)), ganho líquido (\\(X_2\\)) e patrimônio acumulado (\\(X_3\\))\n\n\n\n\n\n\nEmpresa\n\n\nGanho bruto \\((X_1)\\)\n\n\nGanho líquido \\((X_2)\\)\n\n\nPatrimônio \\((X_3)\\)\n\n\n\n\n\n\nE1\n\n\n9893\n\n\n564\n\n\n17689\n\n\n\n\nE2\n\n\n8776\n\n\n389\n\n\n17359\n\n\n\n\nE3\n\n\n13572\n\n\n1103\n\n\n18597\n\n\n\n\nE4\n\n\n6455\n\n\n743\n\n\n8745\n\n\n\n\nE5\n\n\n5129\n\n\n203\n\n\n14397\n\n\n\n\nE6\n\n\n5432\n\n\n215\n\n\n3467\n\n\n\n\nE7\n\n\n3807\n\n\n385\n\n\n4679\n\n\n\n\nE8\n\n\n3423\n\n\n187\n\n\n6754\n\n\n\n\nE9\n\n\n3708\n\n\n127\n\n\n2275\n\n\n\n\nE10\n\n\n3294\n\n\n297\n\n\n6754\n\n\n\n\nE11\n\n\n5433\n\n\n432\n\n\n5589\n\n\n\n\nE12\n\n\n6287\n\n\n451\n\n\n8972"
+    "text": "Exemplo: (Mingoti,2007)\n\\[\\small\n\\text{12 empresas, 3 variáveis: ganho bruto }(X_1)\\text{, ganho líquido }(X_2)\\text{ e patrimônio acumulado }(X_3)\n\\]\n\\[\\scriptsize\n\\begin{array}{l @{\\quad} r @{\\quad} r @{\\quad} r}\n\\hline\n\\textbf{Empresa} &\n\\textbf{Ganho bruto }(X_1) &\n\\textbf{Ganho líquido }(X_2) &\n\\textbf{Patrimônio }(X_3) \\\\\n\\hline\n\\mathit{E1}  & 9893  & 564  & 17689 \\\\\n\\mathit{E2}  & 8776  & 389  & 17359 \\\\\n\\mathit{E3}  & 13572 & 1103 & 18597 \\\\\n\\mathit{E4}  & 6455  & 743  & 8745 \\\\\n\\mathit{E5}  & 5129  & 203  & 14397 \\\\\n\\mathit{E6}  & 5432  & 215  & 3467 \\\\\n\\mathit{E7}  & 3807  & 385  & 4679 \\\\\n\\mathit{E8}  & 3423  & 187  & 6754 \\\\\n\\mathit{E9}  & 3708  & 127  & 2275 \\\\\n\\mathit{E10} & 3294  & 297  & 6754 \\\\\n\\mathit{E11} & 5433  & 432  & 5589 \\\\\n\\mathit{E12} & 6287  & 451  & 8972 \\\\\n\\hline\n\\end{array}\n\\]"
   },
   {
     "objectID": "aulas/analise_comp_princ/comp_princ.html#primeiro-exemplo-mingoti2007",
@@ -658,7 +658,7 @@
     "href": "aulas/analise_comp_princ/comp_princ.html#primeiro-exemplo-mingoti2007-4",
     "title": "Análise de Componentes Principais",
     "section": "Primeiro Exemplo: (Mingoti,2007)",
-    "text": "Primeiro Exemplo: (Mingoti,2007)\n\\[Y_1 = 0,425 \\times \\text{GB} + 0,028 \\times \\text{GL} + 0,905 \\times \\text{PA} \\Longrightarrow\n94,18\\% \\text{ da informação total de } \\mathbf{x}\\]\n\n\nQual a variável mais importante para \\(Y_1\\)?\n\n\n\nPatrimônio\n\n\n\n\n\n\n\n\n\n\n\n\n🤔Será?"
+    "text": "Primeiro Exemplo: (Mingoti,2007)\n\\[Y_1 = 0,425 \\times \\text{GB} + 0,028 \\times \\text{GL} + 0,905 \\times \\text{PA} \\Longrightarrow\n94,18\\% \\text{ da informação total de } \\mathbf{x}\\]\n\n\\[\\Large\n\\color{red}{\\textbf{Qual a variável mais importante para } Y_1 \\textbf{?}}\\]\n\n\\[\\Large\n\\textbf{Patrimônio}\\]\n\n\n\n\n\n\n\n\n\n\n\\[\\Huge\n\\color{red}{🤔 \\textbf{Será?}}\\]"
   },
   {
     "objectID": "aulas/analise_comp_princ/comp_princ.html#componentes-principais-variáveis-padronizadas",
@@ -763,7 +763,7 @@
     "href": "aulas/analise_comp_princ/comp_princ.html#voltando-ao-exemplo",
     "title": "Análise de Componentes Principais",
     "section": "Voltando ao Exemplo",
-    "text": "Voltando ao Exemplo\n\n12 empresas, 3 variáveis: ganho bruto (\\(X_1\\)), ganho líquido (\\(X_2\\)) e patrimônio acumulado (\\(X_3\\))\n\n\n\n\n\n\nEmpresa\n\n\nGanho bruto \\((X_1)\\)\n\n\nGanho líquido \\((X_2)\\)\n\n\nPatrimônio \\((X_3)\\)\n\n\n\n\n\n\nE1\n\n\n9893\n\n\n564\n\n\n17689\n\n\n\n\nE2\n\n\n8776\n\n\n389\n\n\n17359\n\n\n\n\nE3\n\n\n13572\n\n\n1103\n\n\n18597\n\n\n\n\nE4\n\n\n6455\n\n\n743\n\n\n8745\n\n\n\n\nE5\n\n\n5129\n\n\n203\n\n\n14397\n\n\n\n\nE6\n\n\n5432\n\n\n215\n\n\n3467\n\n\n\n\nE7\n\n\n3807\n\n\n385\n\n\n4679\n\n\n\n\nE8\n\n\n3423\n\n\n187\n\n\n6754\n\n\n\n\nE9\n\n\n3708\n\n\n127\n\n\n2275\n\n\n\n\nE10\n\n\n3294\n\n\n297\n\n\n6754\n\n\n\n\nE11\n\n\n5433\n\n\n432\n\n\n5589\n\n\n\n\nE12\n\n\n6287\n\n\n451\n\n\n8972"
+    "text": "Voltando ao Exemplo\n\\[\\small\n\\text{12 empresas, 3 variáveis: ganho bruto }(X_1)\\text{, ganho líquido }(X_2)\\text{ e patrimônio acumulado }(X_3)\n\\]\n\\[\\scriptsize\n\\begin{array}{l @{\\quad} r @{\\quad} r @{\\quad} r}\n\\hline\n\\textbf{Empresa} &\n\\textbf{Ganho bruto }(X_1) &\n\\textbf{Ganho líquido }(X_2) &\n\\textbf{Patrimônio }(X_3) \\\\\n\\hline\n\\mathit{E1}  & 9893  & 564  & 17689 \\\\\n\\mathit{E2}  & 8776  & 389  & 17359 \\\\\n\\mathit{E3}  & 13572 & 1103 & 18597 \\\\\n\\mathit{E4}  & 6455  & 743  & 8745 \\\\\n\\mathit{E5}  & 5129  & 203  & 14397 \\\\\n\\mathit{E6}  & 5432  & 215  & 3467 \\\\\n\\mathit{E7}  & 3807  & 385  & 4679 \\\\\n\\mathit{E8}  & 3423  & 187  & 6754 \\\\\n\\mathit{E9}  & 3708  & 127  & 2275 \\\\\n\\mathit{E10} & 3294  & 297  & 6754 \\\\\n\\mathit{E11} & 5433  & 432  & 5589 \\\\\n\\mathit{E12} & 6287  & 451  & 8972 \\\\\n\\hline\n\\end{array}\n\\]"
   },
   {
     "objectID": "aulas/analise_comp_princ/comp_princ.html#voltando-ao-exemplo-1",
@@ -903,7 +903,7 @@
     "href": "analise_dados/brands.html",
     "title": "Mapas Perceptuais com PCA: estudo de marcas",
     "section": "",
-    "text": "Nesta análise, vamos construir mapas perceptuais de marcas por meio da Análise de Componentes Principais (PCA). O objetivo é reduzir nove atributos avaliados em escala de 1 a 10 para poucas dimensões interpretáveis, preservando a maior parte possível da variabilidade e oferecendo insights sobre similaridade entre marcas.\nVamos usar a base brand.csv (100 respondentes, 10 marcas a–j, atributos: perform, leader, latest, fun, serious, bargain, value, trendy, rebuy).\n\nCaracterísticas das marcas: perguntas\n\n\n\n\n\n\nAtributo\n\n\nExemplo de pergunta\n\n\n\n\n\n\nperform\n\n\nMarca tem um forte desempenho?\n\n\n\n\nleader\n\n\nMarca é líder no mercado?\n\n\n\n\nlatest\n\n\nMarca tem os produtos mais recentes?\n\n\n\n\nfun\n\n\nMarca é divertida?\n\n\n\n\nserious\n\n\nMarca é séria?\n\n\n\n\nbargain\n\n\nProdutos da marca são uma pechincha?\n\n\n\n\nvalue\n\n\nProdutos da marca possuem um bom valor?\n\n\n\n\ntrendy\n\n\nMarca está na moda?\n\n\n\n\nrebuy\n\n\nEu compraria a marca novamente?"
+    "text": "Nesta análise, vamos construir mapas perceptuais de marcas por meio da Análise de Componentes Principais (PCA). O objetivo é reduzir nove atributos avaliados em escala de 1 a 10 para poucas dimensões interpretáveis, preservando a maior parte possível da variabilidade e oferecendo insights sobre similaridade entre marcas.\nVamos usar a base brand.csv (100 respondentes, 10 marcas a–j, atributos: perform, leader, latest, fun, serious, bargain, value, trendy, rebuy).\n\nCaracterísticas das marcas: perguntas\n\n\n\n\n\n\n\n\n\nAtributo\nExemplo de pergunta\n\n\n\n\n`perform`\nMarca tem um forte desempenho?\n\n\n`leader`\nMarca é líder no mercado?\n\n\n`latest`\nMarca tem os produtos mais recentes?\n\n\n`fun`\nMarca é divertida?\n\n\n`serious`\nMarca é séria?\n\n\n`bargain`\nProdutos da marca são uma pechincha?\n\n\n`value`\nProdutos da marca possuem um bom valor?\n\n\n`trendy`\nMarca está na moda?\n\n\n`rebuy`\nEu compraria a marca novamente?"
   },
   {
     "objectID": "analise_dados/brands.html#leitura-dos-dados",
@@ -945,7 +945,7 @@
     "href": "analises.html",
     "title": "Análise de dados",
     "section": "",
-    "text": "Descrição e Visualização da base de dados Iris",
+    "text": "Esta página contém scripts de análises de dados comentados utilizando algumas técnicas que serão apresentadas ao longo do semestre. Você pode baixar as análises em versão PDF.\n\n\n Descrição e Visualização da base de dados Iris \n Ver análise PDF \n\n\n Mapas Perceptuais com PCA: estudo de marcas \n Ver análise PDF",
     "crumbs": [
       "Análise de dados"
     ]
@@ -1431,7 +1431,7 @@
     "href": "cronograma.html",
     "title": "Cronograma da Disciplina",
     "section": "",
-    "text": "Esta página contém um esboço dos tópicos, conteúdos e tarefas para o semestre. Este cronograma será atualizado conforme o semestre avança.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSemana\nData\nTópico\nArtigo\nSlides\nEC\nLE\nScript\nMC\nProjeto\n\n\n\n\n1\nTer, 07/10\nApresentação da disciplina\n\n\n\n\n\n\n\n\n\n\nQui, 09/10\nNão haverá aula!\n\n\n\n\n\n\n\n\n\n2\nTer, 14/10\nRevisão de Álgebra Linear\n\n\n\n\n\n\n\n\n\n\nQui, 16/10\nRevisão de Álgebra Linear\n\n\n\n\n\n\n\n\n\n3\nTer, 21/10\nIntrodução à Estatística Multivariada\n\n\n\n\n\n\n\n\n\n\nQui, 23/10\nIntrodução à Estatística Multivariada\n\n\n\n\n\n\n\n\n\n4\nTer, 28/10\nIntrodução à Estatística Multivariada\n\n\n\n\n\n\n\n\n\n\nQui, 30/10\nNão haverá aula: Paralização docente\n\n\n\n\n\n\n\n\n\n5\nTer, 04/11\nDistribuição Normal Multivariada\n\n\n\n\n\n\n\n\n\n\nQui, 06/11\nDistribuição Normal Multivariada\n\n\n\n\n\n\n\n\n\n6\nTer, 11/11\nAnálise de Componentes Principais\n\n\n\n\n\n\n\n\n\n\nQui, 13/11\nAnálise de Componentes Principais",
+    "text": "Esta página contém um esboço dos tópicos, conteúdos e tarefas para o semestre. Este cronograma será atualizado conforme o semestre avança.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSemana\nData\nTópico\nArtigo\nSlides\nEC\nLE\nScript\nMC\nProjeto\n\n\n\n\n1\nTer, 07/10\nApresentação da disciplina\n\n\n\n\n\n\n\n\n\n\nQui, 09/10\nNão haverá aula!\n\n\n\n\n\n\n\n\n\n2\nTer, 14/10\nRevisão de Álgebra Linear\n\n\n\n\n\n\n\n\n\n\nQui, 16/10\nRevisão de Álgebra Linear\n\n\n\n\n\n\n\n\n\n3\nTer, 21/10\nIntrodução à Estatística Multivariada\n\n\n\n\n\n\n\n\n\n\nQui, 23/10\nIntrodução à Estatística Multivariada\n\n\n\n\n\n\n\n\n\n4\nTer, 28/10\nIntrodução à Estatística Multivariada\n\n\n\n\n\n\n\n\n\n\nQui, 30/10\nNão haverá aula: Paralização docente\n\n\n\n\n\n\n\n\n\n5\nTer, 04/11\nDistribuição Normal Multivariada\n\n\n\n\n\n\n\n\n\n\nQui, 06/11\nDistribuição Normal Multivariada\n\n\n\n\n\n\n\n\n\n6\nTer, 11/11\nAnálise de Componentes Principais\n\n\n\n\n\n\n\n\n\n\nQui, 13/11\nAnálise de Componentes Principais\n\n\n\n\n\n\n\n\n\n7\nTer, 18/11\nNão haverá aula\n\n\n\n\n\n\n\n\n\n\nQui, 20/11\nFeriado: não haverá aula\n\n\n\n\n\n\n\n\n\n8\nTer, 25/11\nAnálise de Componentes Principais\n\n\n\n\n\n\n\n\n\n\nQui, 27/11\nAnálise de Componentes Principais",
     "crumbs": [
       "Cronograma da Disciplina"
     ]
@@ -1441,16 +1441,16 @@
     "href": "exercicios/lista02.html",
     "title": "Lista de exercícios 02: Introdução à Estatística Multivariada",
     "section": "",
-    "text": "Data de entrega: 17 de novembro de 2025\n\n\n\nSe \\(z_i = ay_i\\), para \\(i = 1 \\cdots n\\), mostre que \\({\\overline{z}} =  a {\\overline{y}}\\).\n\n\n\nSe \\(z_i = ay_i\\), para \\(i = 1 \\cdots n\\), mostre que \\(s^2_z = a^2s^2\\).\n\n\n\nA tabela abaixo fornece os dados de três variáveis (g/kg) medidas em 10 locais diferentes no Estado de Minas Gerais. As variáveis são:\n\n\\[\n\\begin{aligned}\nX_1 &= \\text{cálcio disponível no solo;} \\\\\nX_2 &= \\text{potássio disponível no solo;} \\\\\nX_3 &= \\text{fósforo disponível no solo.}\n\\end{aligned}\n\\]\n\n\n\n\n\nLocais\n\n\n\\(X_1\\)\n\n\n\\(X_2\\)\n\n\n\\(X_3\\)\n\n\n\n\n\n\n1\n\n\n35\n\n\n12\n\n\n2,4\n\n\n\n\n2\n\n\n35\n\n\n13\n\n\n2,1\n\n\n\n\n3\n\n\n40\n\n\n14\n\n\n1,9\n\n\n\n\n4\n\n\n25\n\n\n11\n\n\n1,8\n\n\n\n\n5\n\n\n26\n\n\n15\n\n\n2,3\n\n\n\n\n6\n\n\n32\n\n\n11\n\n\n2,5\n\n\n\n\n7\n\n\n21\n\n\n10\n\n\n3,0\n\n\n\n\n8\n\n\n30\n\n\n5\n\n\n1,0\n\n\n\n\n9\n\n\n33\n\n\n15\n\n\n1,1\n\n\n\n\n10\n\n\n27\n\n\n16\n\n\n2,6\n\n\n\n\n\nEncontre o vetor de médias amostrais \\(\\mathbf{\\overline{x}}\\).\nCalcule a matriz de covariâncias amostrais \\(\\boldsymbol{S}\\).\nObtenha a matriz de correlações amostrais \\(\\boldsymbol{R}\\).\n\n\n\nUsando os dados apresentados na Tabela acima, calcule:\n\n\nA variância generalizada amostral.\nA variância total amostral.\n\n\n\nUsando os dados apresentados na Tabela do exercício 3, defina \\(Z = 3X_1 - X_2 + 2X_3\\) e calcule \\(\\overline{z}\\) e \\(s^2_Z\\)\n\n\n\nUsando os dados apresentados na Tabela do exercício 3, defina \\(W = -2X_1 + 3X_2 + X_3\\) e calcule:\n\n\n\\(\\overline{w}\\) e \\(s^2_W\\).\n\\(\\overline{\\mathbf{y}}\\) e \\(\\boldsymbol{S}_y\\) se \\(\\boldsymbol{y} = \\left[\\begin{array}{cc} Z & W \\end{array} \\right]\\).\nEncontre a matriz \\(\\boldsymbol{R}_{y}\\).\n\n\n\nAinda utilizando os dados da Tabela do exercício 3, defina as seguintes combinações lineares das variáveis:\n\n\\[\n\\begin{aligned}\nZ_1 &= X_1 + X_2 + X_3 \\\\\nZ_2 &= 2X_1 - 3X_2 + 2X_3 \\\\\nZ_3 &= -X_1 - 2X_2 - 3X_3\n\\end{aligned}\n\\]\n\nEncontre \\(\\overline{\\mathbf{z}}\\) e \\(\\boldsymbol{S_z}\\).\nAtravés de \\(\\boldsymbol{S_z}\\), encontre \\(\\boldsymbol{R_z}\\).\n\n\n\nConsidere as amostras com 8 observações e 3 variáveis apresentadas a seguir:\n\n\n\n\n\n\n\\(X_1\\)\n\n\n3\n\n\n5\n\n\n6\n\n\n4\n\n\n8\n\n\n9\n\n\n6\n\n\n7\n\n\n\n\n\n\n\\(X_2\\)\n\n\n6\n\n\n11\n\n\n11\n\n\n9\n\n\n15\n\n\n16\n\n\n10\n\n\n12\n\n\n\n\n\\(X_3\\)\n\n\n14\n\n\n9\n\n\n9\n\n\n13\n\n\n2\n\n\n2\n\n\n9\n\n\n5\n\n\n\n\n\nCalcule \\(\\overline{\\mathbf{x}}, \\boldsymbol{S}, \\boldsymbol{R}\\).\nCalcule as distâncias euclidiana, euclidiana padronizada e Mahalanobis de um ponto \\(P = (X_1, X_2, X_3) = (5, 12, 8)\\) em relação ao a \\(\\overline{\\mathbf{x}}\\).\n\n\n\nSejam dois vetores aleatórios \\({\\mathbf{x}} = [2 \\hspace{0.2cm} 3]^t\\) e \\({\\mathbf{y}} = [2 \\hspace{0.2cm} 1]^t\\) e considere a matriz de covariâncias amostral igual a \\(\\boldsymbol{S} = \\left[ \\begin{array}{ll} 10 & 6 \\\\6 & 8 \\end{array} \\right]\\). Determine:\n\n\nA distância euclidiana entre os dois vetores.\nA distância generalizada de Karl Pearson.\nA distância generalizada de Mahalanobis.\n\n\n\nObtenha as variâncias generalizada e total da matriz de covariâncias amostral apresentada a seguir. Determine a matriz de correlações e as variâncias generalizada e total correspondentes.\n\n\\[\\boldsymbol{S} = \\left[ \\begin{array}{ll} 32 & 12 \\\\ 12 & 10 \\end{array} \\right]\\]"
+    "text": "Data de entrega: 17 de novembro de 2025\n\n\n\nSe \\(z_i = ay_i\\), para \\(i = 1 \\cdots n\\), mostre que \\({\\overline{z}} =  a {\\overline{y}}\\).\n\n\n\nSe \\(z_i = ay_i\\), para \\(i = 1 \\cdots n\\), mostre que \\(s^2_z = a^2s^2\\).\n\n\n\nA tabela abaixo fornece os dados de três variáveis (g/kg) medidas em 10 locais diferentes no Estado de Minas Gerais. As variáveis são:\n\n\\[\n\\begin{aligned}\nX_1 &= \\text{cálcio disponível no solo;} \\\\\nX_2 &= \\text{potássio disponível no solo;} \\\\\nX_3 &= \\text{fósforo disponível no solo.}\n\\end{aligned}\n\\]\n\n\n\nLocais\n\\(X_1\\)\n\\(X_2\\)\n\\(X_3\\)\n\n\n\n\n1\n35\n12\n2.4\n\n\n2\n35\n13\n2.1\n\n\n3\n40\n14\n1.9\n\n\n4\n25\n11\n1.8\n\n\n5\n26\n15\n2.3\n\n\n6\n32\n11\n2.5\n\n\n7\n21\n10\n3.0\n\n\n8\n30\n5\n1.0\n\n\n9\n33\n15\n1.1\n\n\n10\n27\n16\n2.6\n\n\n\n\nEncontre o vetor de médias amostrais \\(\\mathbf{\\overline{x}}\\).\nCalcule a matriz de covariâncias amostrais \\(\\boldsymbol{S}\\).\nObtenha a matriz de correlações amostrais \\(\\boldsymbol{R}\\).\n\n\n\nUsando os dados apresentados na Tabela acima, calcule:\n\n\nA variância generalizada amostral.\nA variância total amostral.\n\n\n\nUsando os dados apresentados na Tabela do exercício 3, defina \\(Z = 3X_1 - X_2 + 2X_3\\) e calcule \\(\\overline{z}\\) e \\(s^2_Z\\)\n\n\n\nUsando os dados apresentados na Tabela do exercício 3, defina \\(W = -2X_1 + 3X_2 + X_3\\) e calcule:\n\n\n\\(\\overline{w}\\) e \\(s^2_W\\).\n\\(\\overline{\\mathbf{y}}\\) e \\(\\boldsymbol{S}_y\\) se \\(\\boldsymbol{y} = \\left[\\begin{array}{cc} Z & W \\end{array} \\right]\\).\nEncontre a matriz \\(\\boldsymbol{R}_{y}\\).\n\n\n\nAinda utilizando os dados da Tabela do exercício 3, defina as seguintes combinações lineares das variáveis:\n\n\\[\n\\begin{aligned}\nZ_1 &= X_1 + X_2 + X_3 \\\\\nZ_2 &= 2X_1 - 3X_2 + 2X_3 \\\\\nZ_3 &= -X_1 - 2X_2 - 3X_3\n\\end{aligned}\n\\]\n\nEncontre \\(\\overline{\\mathbf{z}}\\) e \\(\\boldsymbol{S_z}\\).\nAtravés de \\(\\boldsymbol{S_z}\\), encontre \\(\\boldsymbol{R_z}\\).\n\n\n\nConsidere as amostras com 8 observações e 3 variáveis apresentadas a seguir:\n\n\n\n\n\n1\n2\n3\n4\n5\n6\n7\n8\n\n\n\n\n\\(X_1\\)\n3\n5\n6\n4\n8\n9\n6\n7\n\n\n\\(X_2\\)\n6\n11\n11\n9\n15\n16\n10\n12\n\n\n\\(X_3\\)\n14\n9\n9\n13\n2\n2\n9\n5\n\n\n\n\nCalcule \\(\\overline{\\mathbf{x}}, \\boldsymbol{S}, \\boldsymbol{R}\\).\nCalcule as distâncias euclidiana, euclidiana padronizada e Mahalanobis de um ponto \\(P = (X_1, X_2, X_3) = (5, 12, 8)\\) em relação ao a \\(\\overline{\\mathbf{x}}\\).\n\n\n\nSejam dois vetores aleatórios \\({\\mathbf{x}} = [2 \\hspace{0.2cm} 3]^t\\) e \\({\\mathbf{y}} = [2 \\hspace{0.2cm} 1]^t\\) e considere a matriz de covariâncias amostral igual a \\(\\boldsymbol{S} = \\left[ \\begin{array}{ll} 10 & 6 \\\\6 & 8 \\end{array} \\right]\\). Determine:\n\n\nA distância euclidiana entre os dois vetores.\nA distância generalizada de Karl Pearson.\nA distância generalizada de Mahalanobis.\n\n\n\nObtenha as variâncias generalizada e total da matriz de covariâncias amostral apresentada a seguir. Determine a matriz de correlações e as variâncias generalizada e total correspondentes.\n\n\\[\\boldsymbol{S} = \\left[ \\begin{array}{ll} 32 & 12 \\\\ 12 & 10 \\end{array} \\right]\\]"
   },
   {
     "objectID": "exercicios.html",
     "href": "exercicios.html",
-    "title": "Listas de exercícios",
+    "title": "Listas de Exercícios",
     "section": "",
-    "text": "Lista de exercícios 01\nLista de exercícios 02\nLista de exercícios 03",
+    "text": "Esta página contém as listas de exercícios que serão apresentadas ao longo do semestre. Você pode baixar as listas em versão PDF.\n\n\n\n1. Revisão de Álgebra Linear\n\n\n Ver lista PDF \n Entrega: 02/12/2025 \n\n\n\n\n2. Introdução à Estatística Multivariada\n\n\n Ver lista PDF \n Entrega: 02/12/2025 \n\n\n\n\n3. Distribuição Normal Multivariada\n\n\n Ver lista PDF \n Entrega: 02/12/2025",
     "crumbs": [
-      "Listas de exercícios"
+      "Listas de Exercícios"
     ]
   },
   {
@@ -1458,7 +1458,7 @@
     "href": "plano.html",
     "title": "Plano de Ensino",
     "section": "",
-    "text": "Leia com atenção o plano de ensino da disciplina que será oferecida neste período. Nele estão as regras do jogo.\n\nPlano de ensino",
+    "text": "Leia com atenção o plano de ensino da disciplina que será oferecida neste período. Nele estão as regras do jogo.\n\n\n\nPlano de ensino\n\n\n Ver plano",
     "crumbs": [
       "Plano de Ensino"
     ]
@@ -1532,5 +1532,40 @@
     "title": "Semana 06",
     "section": "Entrega lista de exercícios 03",
     "text": "Entrega lista de exercícios 03\n\n\n\n\n\n\nFique Atento!\n\n\n\n Lista de exercícios 03\nEntrega via Moodle\n\nData de entrega:\n\n24 de novembro de 2025"
+  },
+  {
+    "objectID": "programacao/semana-7.html",
+    "href": "programacao/semana-7.html",
+    "title": "Semana 07",
+    "section": "",
+    "text": "Não haverá aula!"
+  },
+  {
+    "objectID": "programacao/semana-7.html#entrega-lista-de-exercícios-03",
+    "href": "programacao/semana-7.html#entrega-lista-de-exercícios-03",
+    "title": "Semana 07",
+    "section": "Entrega lista de exercícios 03",
+    "text": "Entrega lista de exercícios 03\n\n\n\n\n\n\nFique Atento!\n\n\n\n Lista de exercícios 03\nEntrega via Moodle\n\nData de entrega:\n\n02 de dezembro de 2025"
+  },
+  {
+    "objectID": "aulas/analise_comp_princ/comp_princ.html#section",
+    "href": "aulas/analise_comp_princ/comp_princ.html#section",
+    "title": "Análise de Componentes Principais",
+    "section": "🔍",
+    "text": "🔍"
+  },
+  {
+    "objectID": "programacao/semana-8.html",
+    "href": "programacao/semana-8.html",
+    "title": "Semana 08",
+    "section": "",
+    "text": "Análise de Componentes Principais \n\n\nVer slides PDF"
+  },
+  {
+    "objectID": "programacao/semana-8.html#slides",
+    "href": "programacao/semana-8.html#slides",
+    "title": "Semana 08",
+    "section": "",
+    "text": "Análise de Componentes Principais \n\n\nVer slides PDF"
   }
 ]

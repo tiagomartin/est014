@@ -1,5 +1,78 @@
 ---
 title: "Análise de dados"
+format:
+  html:
+    theme: cosmo
+    include-in-header:
+      text: |
+        <style>
+        /* Estilos visuais EST304 sem quebrar tipografia do Quarto */
+        .aulas-list .list-group-item {
+          border-left: 4px solid #2761E3;
+          padding-top: 0.8rem;
+          padding-bottom: 0.8rem;
+        }
+        .aulas-list .list-group-item:hover {
+          background-color: #F2F2F2;
+        }
+        .disciplina-badge {
+          background-color: #2761E3;
+        }
+        .btn-est304-main {
+          background-color: #2761E3;
+          border-color: #2761E3;
+          color: #fff;
+        }
+        .btn-est304-main:hover {
+          background-color: #789CEB;
+          border-color: #789CEB;
+          color: #fff;
+        }
+        .btn-est304-outline {
+          color: #2761E3;
+          border-color: #2761E3;
+        }
+        .btn-est304-outline:hover {
+          background-color: #2761E3;
+          color: #fff;
+        }
+        .due-date-badge {
+          color: red;
+          border-color: #7F2E2F;
+          font-size: 16pt;  
+          font-weight: 600;
+          padding: 4px 8px;
+        }
+        </style>
 ---
 
--   [Descrição e Visualização da base de dados Iris](analise_dados/descr_vis_iris.html "Script análise de dados"){aria-label="Script análise de dados"}
+
+Esta página contém scripts de análises de dados comentados utilizando algumas técnicas que serão apresentadas ao longo do semestre. Você pode baixar as análises em versão PDF.
+
+
+::: {.list-group .aulas-list}
+
+::: {.list-group-item .d-flex .justify-content-between .align-items-center}
+<span class="fw-bold">
+  Descrição e Visualização da base de dados Iris
+</span>
+
+<span>
+[Ver análise](/analise_dados/descr_vis_iris.html){.btn .btn-est304-main .btn-sm}
+[PDF](/analise_dados/descr_vis_iris.pdf){.btn .btn-est304-outline .btn-sm}
+</span>
+:::
+
+::: {.list-group-item .d-flex .justify-content-between .align-items-center}
+<span class="fw-bold">
+  Mapas Perceptuais com PCA: estudo de marcas
+</span>
+
+<span>
+[Ver análise](/analise_dados/brands.html){.btn .btn-est304-main .btn-sm}
+[PDF](/analise_dados/brands.pdf){.btn .btn-est304-outline .btn-sm}
+</span>
+:::
+
+
+:::
