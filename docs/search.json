@@ -2147,14 +2147,14 @@
     "href": "programacao/semana-9.html",
     "title": "Semana 09",
     "section": "",
-    "text": "Análise Fatorial \n\n\nVer slides PDF"
+    "text": "Análise Fatorial \n\n\nVer slides PDF\n\n\n\n\n\n  Análise da necessidade de cognição usando PCA \n Ver projeto PDF"
   },
   {
     "objectID": "programacao/semana-9.html#slides",
     "href": "programacao/semana-9.html#slides",
     "title": "Semana 09",
     "section": "",
-    "text": "Análise Fatorial \n\n\nVer slides PDF"
+    "text": "Análise Fatorial \n\n\nVer slides PDF\n\n\n\n\n\n  Análise da necessidade de cognição usando PCA \n Ver projeto PDF"
   },
   {
     "objectID": "projeto/acp/acp.html",
@@ -2169,5 +2169,22 @@
     "title": "Análise da necessidade de cognição usando PCA",
     "section": "Referências",
     "text": "Referências\n\n\nCacioppo, John T., Richard E. Petty, and Chuan Feng Kao. 1984. “A avaliação eficiente da necessidade de cognição.” Journal of Personality Assessment 48: 306–7.\n\n\nOfir, Chezy, and Itamar Simonson. 2001. “Em busca de feedback negativo de clientes: o efeito da expectativa de avaliação sobre julgamentos de satisfação.” Journal of Marketing Research 38 (2): 170–82."
+  },
+  {
+    "objectID": "programacao/semana-9.html#projeto-análise-de-componentes-principais",
+    "href": "programacao/semana-9.html#projeto-análise-de-componentes-principais",
+    "title": "Semana 09",
+    "section": "",
+    "text": "Análise da necessidade de cognição usando PCA \n Ver projeto PDF"
+  },
+  {
+    "objectID": "projeto.html",
+    "href": "projeto.html",
+    "title": "Projetos",
+    "section": "",
+    "text": "Esta página contém os projetos de análise de dados que serão apresentados ao longo do semestre. Você pode baixar os projetos em versão PDF.\n\n\n\n1. Análise de Componentes Principais\n\n\n Ver projeto PDF \n Entrega: 19/12/2025",
+    "crumbs": [
+      "Projetos"
+    ]
   }
 ]
