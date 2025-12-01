@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://professortp.com.br/est014/projeto.html</loc>
+    <lastmod>2025-12-01T15:21:26.395Z</lastmod>
+  </url>
+  <url>
+    <loc>http://professortp.com.br/est014/programacao/semana-9.html</loc>
+    <lastmod>2025-12-01T15:14:23.631Z</lastmod>
+  </url>
+  <url>
+    <loc>http://professortp.com.br/est014/programacao/semana-7.html</loc>
+    <lastmod>2025-11-25T13:29:47.545Z</lastmod>
+  </url>
+  <url>
     <loc>http://professortp.com.br/est014/programacao/semana-5.html</loc>
     <lastmod>2025-11-03T13:20:11.393Z</lastmod>
   </url>
@@ -33,24 +45,28 @@
     <lastmod>2025-10-13T15:20:37.734Z</lastmod>
   </url>
   <url>
-    <loc>http://professortp.com.br/est014/aulas/analise_comp_princ/comp_princ.html</loc>
-    <lastmod>2025-11-25T17:24:36.974Z</lastmod>
+    <loc>http://professortp.com.br/est014/aulas/analise_fatorial/fatorial.html</loc>
+    <lastmod>2025-12-01T13:46:22.578Z</lastmod>
   </url>
   <url>
-    <loc>http://professortp.com.br/est014/analise_dados/brands.html</loc>
-    <lastmod>2025-11-25T17:55:28.660Z</lastmod>
-  </url>
-  <url>
-    <loc>http://professortp.com.br/est014/about.html</loc>
-    <lastmod>2025-10-06T23:15:02.169Z</lastmod>
+    <loc>http://professortp.com.br/est014/analise_dados/descr_vis_iris.html</loc>
+    <lastmod>2025-10-13T22:14:04.288Z</lastmod>
   </url>
   <url>
     <loc>http://professortp.com.br/est014/analises.html</loc>
     <lastmod>2025-11-25T18:02:22.628Z</lastmod>
   </url>
   <url>
-    <loc>http://professortp.com.br/est014/analise_dados/descr_vis_iris.html</loc>
-    <lastmod>2025-10-13T22:14:04.288Z</lastmod>
+    <loc>http://professortp.com.br/est014/about.html</loc>
+    <lastmod>2025-10-06T23:15:02.169Z</lastmod>
+  </url>
+  <url>
+    <loc>http://professortp.com.br/est014/analise_dados/brands.html</loc>
+    <lastmod>2025-11-25T17:55:28.660Z</lastmod>
+  </url>
+  <url>
+    <loc>http://professortp.com.br/est014/aulas/analise_comp_princ/comp_princ.html</loc>
+    <lastmod>2025-11-25T17:24:36.974Z</lastmod>
   </url>
   <url>
     <loc>http://professortp.com.br/est014/aulas/distr_normal_multi/distr_normal_multi.html</loc>
@@ -89,27 +105,11 @@
     <lastmod>2025-11-09T16:44:52.649Z</lastmod>
   </url>
   <url>
-    <loc>http://professortp.com.br/est014/programacao/semana-7.html</loc>
-    <lastmod>2025-11-25T13:29:47.545Z</lastmod>
-  </url>
-  <url>
     <loc>http://professortp.com.br/est014/programacao/semana-8.html</loc>
     <lastmod>2025-11-27T16:08:52.331Z</lastmod>
   </url>
   <url>
-    <loc>http://professortp.com.br/est014/aulas/analise_fatorial/fatorial.html</loc>
-    <lastmod>2025-12-01T13:46:22.578Z</lastmod>
-  </url>
-  <url>
-    <loc>http://professortp.com.br/est014/programacao/semana-9.html</loc>
-    <lastmod>2025-12-01T15:14:23.631Z</lastmod>
-  </url>
-  <url>
     <loc>http://professortp.com.br/est014/projeto/acp/acp.html</loc>
     <lastmod>2025-12-01T15:02:30.815Z</lastmod>
-  </url>
-  <url>
-    <loc>http://professortp.com.br/est014/projeto.html</loc>
-    <lastmod>2025-12-01T15:21:26.395Z</lastmod>
   </url>
 </urlset>
