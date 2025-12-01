@@ -79,6 +79,46 @@
   \KOMAoptions{parskip=half}}
 \makeatother
 
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{241,243,245}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.40,0.45,0.13}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.28,0.35,0.67}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.07,0.07,0.07}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
 
 \usepackage{longtable,booktabs,array}
 \usepackage{calc} % for calculating minipage widths
@@ -368,7 +408,7 @@ Questão principal:
 \phantomsection\label{planejamento-de-uma-anuxe1lise-fatorial-1}
 \begin{block}{GIGO: Garbage In, Garbage Out!}
 \phantomsection\label{gigo-garbage-in-garbage-out}
-\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, toprule=.15mm, colframe=quarto-callout-warning-color-frame, colbacktitle=quarto-callout-warning-color!10!white, breakable, toptitle=1mm, colback=white, rightrule=.15mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Cuidado!}, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, titlerule=0mm, arc=.35mm, left=2mm, bottomrule=.15mm, opacityback=0]
+\begin{tcolorbox}[enhanced jigsaw, bottomtitle=1mm, coltitle=black, colbacktitle=quarto-callout-warning-color!10!white, titlerule=0mm, toprule=.15mm, colframe=quarto-callout-warning-color-frame, breakable, leftrule=.75mm, toptitle=1mm, bottomrule=.15mm, arc=.35mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Cuidado!}, opacitybacktitle=0.6, colback=white, left=2mm, opacityback=0, rightrule=.15mm]
 
 \begin{itemize}
 \tightlist
@@ -680,7 +720,7 @@ padronizadas como combinação linear de \(m < p\) fatores comuns
 \[
 \begin{aligned}
 Z_1 &= l_{11}F_1 + l_{12}F_2 + \cdots + l_{1m}F_m + \epsilon_1 \\
-Z_2 &= l_{21}F_1 + l_{22}F_2 + \cdots + l_{2m}F_m + \epsilon_2 \\ && \hspace{-30cm} \vdots \\
+Z_2 &= l_{21}F_1 + l_{22}F_2 + \cdots + l_{2m}F_m + \epsilon_2 \\ && \hspace{-25cm} \vdots \\
 Z_p &= l_{p1}F_1 + l_{p2}F_2 + \cdots + l_{pm}F_m + \epsilon_p 
 \end{aligned}
 \]
@@ -752,7 +792,13 @@ fazem necessárias:
 \end{enumerate}
 
 \[\boxed{E({\boldsymbol{F}}) = \boldsymbol{0}\,\, \text{e} \,\, \rm{Var}({\boldsymbol{F}}) = E({\boldsymbol{F}}{\boldsymbol{F}}^t)  = \boldsymbol{I} }\]
+\end{block}
+\end{frame}
 
+\begin{frame}{O modelo fatorial ortogonal}
+\phantomsection\label{o-modelo-fatorial-ortogonal-3}
+\begin{block}{Suposições do modelo}
+\phantomsection\label{suposiuxe7uxf5es-do-modelo-1}
 \begin{enumerate}
 [a)]
 \setcounter{enumi}{1}
@@ -765,13 +811,7 @@ fazem necessárias:
 \[\boxed{E({\boldsymbol{\epsilon}}) = \boldsymbol{0} e  \rm{Var}({\boldsymbol{\epsilon}}) = \boldsymbol{\Psi} = \rm{diag}(\psi_1, \psi_2, \cdots, \psi_p)
 = E({\boldsymbol{\epsilon}}{\boldsymbol{\epsilon}}^t)
 }\]
-\end{block}
-\end{frame}
 
-\begin{frame}{O modelo fatorial ortogonal}
-\phantomsection\label{o-modelo-fatorial-ortogonal-3}
-\begin{block}{Suposições do modelo}
-\phantomsection\label{suposiuxe7uxf5es-do-modelo-1}
 \begin{enumerate}
 [a)]
 \setcounter{enumi}{2}
@@ -1088,7 +1128,7 @@ por:
 
 \begin{frame}{Métodos de estimação: Máxima Verossimilhança}
 \phantomsection\label{muxe9todos-de-estimauxe7uxe3o-muxe1xima-verossimilhanuxe7a-3}
-\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, toprule=.15mm, colframe=quarto-callout-warning-color-frame, colbacktitle=quarto-callout-warning-color!10!white, breakable, toptitle=1mm, colback=white, rightrule=.15mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Cuidado!}, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, titlerule=0mm, arc=.35mm, left=2mm, bottomrule=.15mm, opacityback=0]
+\begin{tcolorbox}[enhanced jigsaw, bottomtitle=1mm, coltitle=black, colbacktitle=quarto-callout-warning-color!10!white, titlerule=0mm, toprule=.15mm, colframe=quarto-callout-warning-color-frame, breakable, leftrule=.75mm, toptitle=1mm, bottomrule=.15mm, arc=.35mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Cuidado!}, opacitybacktitle=0.6, colback=white, left=2mm, opacityback=0, rightrule=.15mm]
 
 \begin{itemize}
 \tightlist
@@ -1104,6 +1144,23 @@ por:
   \item
     Fatores e erros são variáveis aleatórias não observáveis
   \end{itemize}
+\end{itemize}
+
+\end{tcolorbox}
+
+\pause
+
+\begin{tcolorbox}[enhanced jigsaw, bottomtitle=1mm, coltitle=black, colbacktitle=quarto-callout-tip-color!10!white, titlerule=0mm, toprule=.15mm, colframe=quarto-callout-tip-color-frame, breakable, leftrule=.75mm, toptitle=1mm, bottomrule=.15mm, arc=.35mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Observação Importante}, opacitybacktitle=0.6, colback=white, left=2mm, opacityback=0, rightrule=.15mm]
+
+\begin{itemize}
+\tightlist
+\item
+  O método de estimação por Máxima Verossimilhança (ML) pode ser
+  utilizado na Análise Fatorial mesmo quando os dados não seguem uma
+  distribuição normal multivariada. A falta de normalidade afeta
+  principalmente os testes de significância (\(\chi^2\), \(IC\)), mas
+  não compromete a qualidade da extração dos fatores. ML é robusto para
+  escalas Likert com 5 ou mais categorias.
 \end{itemize}
 
 \end{tcolorbox}
@@ -1506,6 +1563,875 @@ Carga Fatorial & Tamanho da amostra \\
 0,75 & 50 \\
 \bottomrule\noalign{}
 \end{longtable}
+\end{frame}
+
+\begin{frame}{Interpretação dos fatores}
+\phantomsection\label{interpretauxe7uxe3o-dos-fatores-1}
+\[\text{Interpretação de uma matriz de cargas fatoriais em 5 passos}\]
+
+\begin{center}
+\includegraphics[width=5.20833in,height=\textheight,keepaspectratio]{../../images/AF/passos.jpg}
+\end{center}
+\end{frame}
+
+\begin{frame}{Interpretação dos fatores}
+\phantomsection\label{interpretauxe7uxe3o-dos-fatores-2}
+\[\text{Algumas situações podem ser encontradas}\]
+
+\[\textbf{A variável tem carga cruzada}\]
+
+\begin{longtable}[]{@{}cccc@{}}
+\toprule\noalign{}
+\textbf{Variável} & \textbf{Fator 01} & \textbf{Fator 02} &
+\textbf{Comunalidade} \\
+\midrule\noalign{}
+\endhead
+\(\cdots\) & \(\cdots\) & \(\cdots\) & \(\cdots\) \\
+\(V_i\) & \(-0,64\) & \(-0,56\) & \(0,72\) \\
+\(\cdots\) & \(\cdots\) & \(\cdots\) & \(\cdots\) \\
+\bottomrule\noalign{}
+\end{longtable}
+\end{frame}
+
+\begin{frame}{Interpretação dos fatores}
+\phantomsection\label{interpretauxe7uxe3o-dos-fatores-3}
+\[\text{Algumas situações podem ser encontradas}\]
+
+\[\textbf{A variável não possui cargas significantes}\]
+
+\begin{longtable}[]{@{}cccc@{}}
+\toprule\noalign{}
+\textbf{Variável} & \textbf{Fator 01} & \textbf{Fator 02} &
+\textbf{Comunalidade} \\
+\midrule\noalign{}
+\endhead
+\(\cdots\) & \(\cdots\) & \(\cdots\) & \(\cdots\) \\
+\(V_i\) & \(-0,25\) & \(0,19\) & \(0,10\) \\
+\(\cdots\) & \(\cdots\) & \(\cdots\) & \(\cdots\) \\
+\bottomrule\noalign{}
+\end{longtable}
+\end{frame}
+
+\begin{frame}{Interpretação dos fatores}
+\phantomsection\label{interpretauxe7uxe3o-dos-fatores-4}
+\[\text{Algumas situações podem ser encontradas}\]
+
+\[\textbf{Mesmo com cargas significantes, a comunalidade é baixa}\]
+
+\begin{longtable}[]{@{}cccc@{}}
+\toprule\noalign{}
+\textbf{Variável} & \textbf{Fator 01} & \textbf{Fator 02} &
+\textbf{Comunalidade} \\
+\midrule\noalign{}
+\endhead
+\(\cdots\) & \(\cdots\) & \(\cdots\) & \(\cdots\) \\
+\(V_i\) & 0,00 & 0,40 & 0,16 \\
+\(\cdots\) & \(\cdots\) & \(\cdots\) & \(\cdots\) \\
+\bottomrule\noalign{}
+\end{longtable}
+\end{frame}
+
+\begin{frame}{Interpretação dos fatores}
+\phantomsection\label{interpretauxe7uxe3o-dos-fatores-5}
+\[\text{Alternativas}\]
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Ignorar as variáveis problemáticas} e interpretar a solução
+  fatorial como ela é, observando que as variáveis em questão são
+  pobremente representadas na solução fatorial;
+\end{itemize}
+
+\vspace{0.3cm}
+
+\pause
+
+\begin{itemize}
+\tightlist
+\item
+  Avaliar cada variável para uma \textbf{possível eliminação} e
+  reespecificar o modelo após sua retirada;
+\end{itemize}
+
+\vspace{0.3cm}
+
+\pause
+
+\begin{itemize}
+\tightlist
+\item
+  Empregar um \textbf{método alternativo de rotação};
+\end{itemize}
+
+\vspace{0.3cm}
+
+\pause
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Diminuir/aumentar o número de fatores} para avaliar se a nova
+  estrutura fatorial representará as variáveis problemáticas;
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Comentários finais sobre análise fatorial}
+\phantomsection\label{comentuxe1rios-finais-sobre-anuxe1lise-fatorial}
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Matriz de resíduos:} A observação da matriz de resíduos muitas
+  vezes, pode indicar quando o número de fatores está superdimensionado
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Ex.: Se \(m\) não for muito pequeno e a matriz de resíduos estiver
+    próxima de zero, recomenda-se testar outras soluções para \(m\)
+    menores que o valor já especificado
+  \end{itemize}
+\end{itemize}
+
+\vspace{0.3cm}
+
+\pause
+
+\begin{itemize}
+\tightlist
+\item
+  A análise fatorial deve ser utilizada apenas se utilizada em situações
+  em que as variáveis originais são correlacionadas: Evitar soluções com
+  \(m\) elevado tal que determinados fatores fiquem relacionados com uma
+  única variável original
+\end{itemize}
+
+\vspace{0.3cm}
+
+\pause
+
+\begin{itemize}
+\tightlist
+\item
+  Em situações em que aparecem fatores relacionados a uma única variável
+  \(Z_i\) é recomendável retirar a variável \(Z_i\) e reestimar o modelo
+  de análise fatorial
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Usos adicionais dos resultados da AFE}
+\phantomsection\label{usos-adicionais-dos-resultados-da-afe}
+\[\textbf{Como posso usar os resultados de uma AFE em análises subsequentes?}\]
+
+\begin{itemize}
+\tightlist
+\item
+  Seleção de variáveis substitutas para análise subseqüente
+
+  \begin{itemize}
+  \tightlist
+  \item
+    É selecionada a variável com maior carga no fator para atuar como
+    \textbf{variável substituta representativa} (deve considerar o
+    conhecimento que o pesquisador tem da teoria).
+  \end{itemize}
+\end{itemize}
+
+\vspace{0.3cm}
+
+\pause
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Escores Fatoriais:} representação de cada indivíduo no espaço
+  fatorial. A estimação dos escores fatoriais necessita de métodos
+  estatíscos elaborados, sendo os mais conhecidos os métodos da
+  regressão e dos mínimos quadrados ponderados.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Escores fatoriais}
+\phantomsection\label{escores-fatoriais}
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Método dos Mínimos Quadrados Ponderados:}
+\end{itemize}
+
+\[\hat{\boldsymbol{f}} = ( \hat{\boldsymbol{L}}^t \hat{\boldsymbol{\Psi}}^{-1} \hat{\boldsymbol{L}})^{-1}  \hat{\boldsymbol{L}}^t \hat{\boldsymbol{\Psi}}^{-1} \boldsymbol{z}\]
+
+\bigskip
+
+\pause
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Método da Regressão:} suposição de normalidade multivariada
+  para \(\boldsymbol{z}\), \(\boldsymbol{F}\) e
+  \(\boldsymbol{\epsilon}\)
+\end{itemize}
+
+\[\hat{\boldsymbol{f}} = \hat{\boldsymbol{L}}^t (\hat{\boldsymbol{L}} \hat{\boldsymbol{L}}^t + \hat{\boldsymbol{\Psi}})^{-1}\boldsymbol{z}\]
+\end{frame}
+
+\begin{frame}{Contexto: empresa Telco}
+\phantomsection\label{contexto-empresa-telco}
+\begin{itemize}
+\tightlist
+\item
+  Operadora de telefonia móvel em cidade do interior
+\item
+  Pesquisa de satisfação com os clientes após um ano de operação
+\item
+  Questionário com \textbf{10 itens (P1--P10)} em escala de 0 a 10
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Contexto: empresa Telco}
+\phantomsection\label{contexto-empresa-telco-1}
+Os itens avaliam, por exemplo:
+
+\begin{itemize}
+\tightlist
+\item
+  Intensidade do sinal
+\item
+  Qualidade do serviço e das informações
+\item
+  Justiça nas tarifas
+\item
+  Distribuição geográfica do sinal
+\item
+  Plano de serviços
+\item
+  Desconfiança em relação à empresa
+\item
+  Tecnologia, atenção e atendimento
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Itens e variáveis}
+\phantomsection\label{itens-e-variuxe1veis}
+Vamos representar os 10 itens por variáveis \(X_1, \ldots, X_{10}\):
+
+\begin{itemize}
+\tightlist
+\item
+  \(X_1\): intensidade do sinal
+\item
+  \(X_2\): distribuição geográfica do sinal
+\item
+  \(X_3\): tecnologia adotada
+\item
+  \(X_4\): atendimento como um todo
+\item
+  \(X_5\): injustiça nas tarifas
+\item
+  \(X_6\): plano de serviços
+\item
+  \(X_7\): qualidade das informações
+\item
+  \(X_8\): serviço prestado ao cliente
+\item
+  \(X_9\): atenção dedicada ao cliente
+\item
+  \(X_{10}\): atendimento especificamente ao cliente
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Objetivo da análise}
+\phantomsection\label{objetivo-da-anuxe1lise}
+\textbf{Objetivo:} \textbf{identificar dimensões latentes} da qualidade
+percebida.
+
+\pause
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Instale o pacote pacman primeiro, se ainda não o tiver}
+\ControlFlowTok{if}\NormalTok{ (}\SpecialCharTok{!}\FunctionTok{requireNamespace}\NormalTok{(}\StringTok{"pacman"}\NormalTok{, }\AttributeTok{quietly =} \ConstantTok{TRUE}\NormalTok{)) \{}
+  \FunctionTok{install.packages}\NormalTok{(}\StringTok{"pacman"}\NormalTok{)}
+\NormalTok{\}}
+
+\CommentTok{\# Use p\_load para instalar e carregar pacotes}
+\NormalTok{pacman}\SpecialCharTok{::}\FunctionTok{p\_load}\NormalTok{(tidyverse, psych, GPArotation, ggcorrplot, janitor, corrr, igraph, ggraph, ggrepel)}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}[fragile]{Lendo os dados Telco}
+\phantomsection\label{lendo-os-dados-telco}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{path }\OtherTok{\textless{}{-}} \StringTok{"https://raw.githubusercontent.com/tiagomartin/est014/refs/heads/master/dados/telco.csv"}
+\NormalTok{telco }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(path, }\AttributeTok{show\_col\_types =} \ConstantTok{FALSE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{clean\_names}\NormalTok{() }
+
+\FunctionTok{glimpse}\NormalTok{(telco)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Rows: 875
+Columns: 10
+$ x1  <dbl> 2.021634, 2.634654, 2.161853, 2.611833, 2.296529, 2.265094, 2.7789~
+$ x2  <dbl> 3.417002, 4.989637, 4.369748, 5.058855, 2.652786, 4.401388, 5.0625~
+$ x3  <dbl> 3.203575, 3.548522, 3.423754, 3.438870, 3.394790, 3.446864, 3.4617~
+$ x4  <dbl> 4.674381, 5.167249, 5.076795, 5.145240, 4.935702, 4.960152, 5.0267~
+$ x5  <dbl> 7.845196, 7.527241, 7.432190, 7.381899, 7.572431, 7.401869, 7.3539~
+$ x6  <dbl> 4.474652, 5.155799, 4.955571, 5.005566, 4.857968, 4.987190, 5.0357~
+$ x7  <dbl> 1.652540, 2.303569, 3.000841, 3.084402, 2.834656, 4.363538, 4.4467~
+$ x8  <dbl> 3.192175, 3.652853, 4.442697, 4.541976, 4.221692, 4.371027, 4.4521~
+$ x9  <dbl> 7.092796, 7.518412, 6.690318, 6.761366, 6.098145, 6.766362, 6.8473~
+$ x10 <dbl> 2.882242, 3.046624, 3.350822, 3.388591, 3.197836, 3.273597, 3.3047~
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dim}\NormalTok{(telco)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 875  10
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Matriz de correlação}
+\phantomsection\label{matriz-de-correlauxe7uxe3o}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{R }\OtherTok{\textless{}{-}} \FunctionTok{cor}\NormalTok{(telco, }\AttributeTok{use =} \StringTok{"pairwise.complete.obs"}\NormalTok{)}
+\NormalTok{R}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+               x1            x2            x3            x4            x5
+x1   1.0000000000  0.4781493696  0.7589493789 -2.140846e-03  0.0053772224
+x2   0.4781493696  1.0000000000  0.5673144741 -6.145747e-03  0.0072963197
+x3   0.7589493789  0.5673144741  1.0000000000 -5.368382e-04  0.0047779539
+x4  -0.0021408464 -0.0061457470 -0.0005368382  1.000000e+00 -0.5773156240
+x5   0.0053772224  0.0072963197  0.0047779539 -5.773156e-01  1.0000000000
+x6   0.5414366524  0.4011884586  0.6425555030  7.028403e-01 -0.4256035677
+x7   0.0014174056 -0.0011068157  0.0020693251  5.251678e-01 -0.3252902914
+x8   0.0075964582  0.0028010661  0.0011511906  7.496806e-03 -0.0041722500
+x9   0.0001745702  0.0013298066  0.0008497782 -3.530898e-03 -0.0026125521
+x10  0.0067917792  0.0001410227  0.0044244904  3.148538e-05  0.0004600118
+              x6            x7           x8            x9           x10
+x1   0.541436652  0.0014174056  0.007596458  0.0001745702  6.791779e-03
+x2   0.401188459 -0.0011068157  0.002801066  0.0013298066  1.410227e-04
+x3   0.642555503  0.0020693251  0.001151191  0.0008497782  4.424490e-03
+x4   0.702840339  0.5251677868  0.007496806 -0.0035308985  3.148538e-05
+x5  -0.425603568 -0.3252902914 -0.004172250 -0.0026125521  4.600118e-04
+x6   1.000000000  0.3942750794  0.008252132 -0.0023037351  3.223454e-03
+x7   0.394275079  1.0000000000  0.004857482 -0.0009232318  1.151786e-03
+x8   0.008252132  0.0048574820  1.000000000 -0.7925700049  5.324280e-01
+x9  -0.002303735 -0.0009232318 -0.792570005  1.0000000000 -4.301518e-01
+x10  0.003223454  0.0011517859  0.532427996 -0.4301518161  1.000000e+00
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Visualização da matriz de correlação}
+\phantomsection\label{visualizauxe7uxe3o-da-matriz-de-correlauxe7uxe3o}
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggcorrplot}\NormalTok{(}
+\NormalTok{R,}
+\AttributeTok{type =} \StringTok{"full"}\NormalTok{,}
+\AttributeTok{lab =} \ConstantTok{TRUE}\NormalTok{,}
+\AttributeTok{title =} \StringTok{"Matriz de correlação – Itens Telco"}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{fatorial_files/figure-beamer/ggcorr-1.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Blocos de correlações altas sugerem possíveis fatores latentes}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}[fragile]{Visualização da matriz de correlação}
+\phantomsection\label{visualizauxe7uxe3o-da-matriz-de-correlauxe7uxe3o-1}
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Variaveis aparentam se agrupar em tres grupos}
+\NormalTok{tidy\_cors }\OtherTok{\textless{}{-}}\NormalTok{ telco }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{correlate}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{stretch}\NormalTok{()}
+\NormalTok{graph\_cors }\OtherTok{\textless{}{-}}\NormalTok{ tidy\_cors }\SpecialCharTok{\%\textgreater{}\%}  \FunctionTok{filter}\NormalTok{(}\FunctionTok{abs}\NormalTok{(r) }\SpecialCharTok{\textgreater{}}\NormalTok{ .}\DecValTok{3}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{graph\_from\_data\_frame}\NormalTok{(}\AttributeTok{directed =} \ConstantTok{FALSE}\NormalTok{)}
+\FunctionTok{ggraph}\NormalTok{(graph\_cors, }\AttributeTok{layout =} \StringTok{"stress"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_edge\_link}\NormalTok{(}\AttributeTok{alpha =} \FloatTok{0.5}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_node\_point}\NormalTok{(}\AttributeTok{size =} \DecValTok{4}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_node\_text}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{label =}\NormalTok{ name), }\AttributeTok{repel =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{size =} \DecValTok{5}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{fatorial_files/figure-beamer/unnamed-chunk-2-1.pdf}}
+\end{frame}
+
+\begin{frame}[fragile]{Medidas de adequação à AFE}
+\phantomsection\label{medidas-de-adequauxe7uxe3o-uxe0-afe}
+\begin{block}{KMO -- Kaiser-Meyer-Olkin}
+\phantomsection\label{kmo-kaiser-meyer-olkin}
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{KMO}\NormalTok{(R)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Kaiser-Meyer-Olkin factor adequacy
+Call: KMO(r = R)
+Overall MSA =  0.63
+MSA for each item = 
+  x1   x2   x3   x4   x5   x6   x7   x8   x9  x10 
+0.85 0.93 0.56 0.46 0.93 0.55 0.94 0.58 0.60 0.79 
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  KMO geral \textgreater{} 0,60 → dados adequados para AFE
+\item
+  MSA de \(X_4 < 0,5\) → apresenta adequabilidade insuficiente, podendo
+  ser retirada da analise
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Medidas de adequação à AFE}
+\phantomsection\label{medidas-de-adequauxe7uxe3o-uxe0-afe-1}
+\begin{block}{Teste de esfericidade de Bartlett}
+\phantomsection\label{teste-de-esfericidade-de-bartlett}
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cortest.bartlett}\NormalTok{(R, }\AttributeTok{n =} \FunctionTok{nrow}\NormalTok{(telco))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+$chisq
+[1] 5049.455
+
+$p.value
+[1] 0
+
+$df
+[1] 45
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  p-valor de Bartlett \textless{} 0,05 → correlações não são nulas
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Escolha do número de fatores: Parallel Analysis}
+\phantomsection\label{escolha-do-nuxfamero-de-fatores-parallel-analysis}
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+
+\FunctionTok{fa.parallel}\NormalTok{(}
+\NormalTok{telco,}
+\AttributeTok{fm =} \StringTok{"ml"}\NormalTok{,}
+\AttributeTok{fa =} \StringTok{"fa"}\NormalTok{,}
+\AttributeTok{main =} \StringTok{"Parallel Analysis – Caso Telco"}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{fatorial_files/figure-beamer/parallel-1.pdf}}
+
+\begin{verbatim}
+Parallel analysis suggests that the number of factors =  3  and the number of components =  NA 
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Escolha do número de fatores: Parallel Analysis}
+\phantomsection\label{escolha-do-nuxfamero-de-fatores-parallel-analysis-1}
+\begin{itemize}
+\item
+  Comparamos autovalores observados com autovalores obtidos ao acaso.
+\item
+  Mantemos os fatores com autovalores acima da linha simulada.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{n\_fatores }\OtherTok{\textless{}{-}} \DecValTok{3}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}[fragile]{Ajuste da AFE}
+\phantomsection\label{ajuste-da-afe}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fa\_telco }\OtherTok{\textless{}{-}} \FunctionTok{factanal}\NormalTok{(}
+  \AttributeTok{x        =}\NormalTok{ telco,}
+  \AttributeTok{factors  =}\NormalTok{ n\_fatores,}
+  \AttributeTok{rotation =} \StringTok{"none"}\NormalTok{,}
+  \AttributeTok{scores   =} \StringTok{"none"}
+\NormalTok{)}
+
+\FunctionTok{print}\NormalTok{(fa\_telco, }\AttributeTok{digits =} \DecValTok{3}\NormalTok{, }\AttributeTok{cut =} \FloatTok{0.30}\NormalTok{) }\CommentTok{\# n = 875: cargas acima de 0,30 sao significativas}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+
+Call:
+factanal(x = telco, factors = n_fatores, scores = "none", rotation = "none")
+
+Uniquenesses:
+   x1    x2    x3    x4    x5    x6    x7    x8    x9   x10 
+0.359 0.642 0.101 0.056 0.647 0.016 0.707 0.019 0.360 0.711 
+
+Loadings:
+    Factor1 Factor2 Factor3
+x1   0.514           0.614 
+x2   0.380           0.462 
+x3   0.610           0.726 
+x4   0.743          -0.626 
+x5  -0.451           0.387 
+x6   0.990                 
+x7   0.416          -0.346 
+x8           0.990         
+x9          -0.800         
+x10          0.537         
+
+               Factor1 Factor2 Factor3
+SS loadings      2.691   1.910   1.780
+Proportion Var   0.269   0.191   0.178
+Cumulative Var   0.269   0.460   0.638
+
+Test of the hypothesis that 3 factors are sufficient.
+The chi square statistic is 0.32 on 18 degrees of freedom.
+The p-value is 1 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Podemos notar que os 3 fatores explicam juntos 63,8\% da variacao total do sistema original}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}{Ajuste da AFE}
+\phantomsection\label{ajuste-da-afe-1}
+\textbf{Analisando as cargas significativas}
+
+\begin{itemize}
+\tightlist
+\item
+  \(X_1\) - Apresenta cargas cruzadas - fatores 01 e 03 - \(h^2\): 0,641
+  - MSA: 0,85
+\item
+  \(X_2\) - Apresenta cargas cruzadas - fatores 01 e 03 - \(h^2\): 0,358
+  - MSA: 0,93
+\item
+  \(X_3\) - Apresenta cargas cruzadas - fatores 01 e 03 - \(h^2\): 0,899
+  - MSA: 0,56
+\item
+  \(X_4\) - Apresenta cargas cruzadas - fatores 01 e 03 - \(h^2\): 0,944
+  - MSA: 0,46
+\item
+  \(X_5\) - Apresenta cargas cruzadas - fatores 01 e 03 - \(h^2\): 0,353
+  - MSA: 0,93
+\item
+  \(X_6\) - fator 01 - \(h^2\): 0,984 - MSA: 0,55
+\item
+  \(X_7\) - Apresenta cargas cruzadas - fatores 01 e 03 - \(h^2\): 0,293
+  - MSA: 0,94
+\item
+  \(X_8\) - fator 02 - \(h^2\): 0,981 - MSA: 0,58
+\item
+  \(X_9\) - fator 02 - \(h^2\): 0,640 - MSA: 0,60
+\item
+  \(X_{10}\) - fator 02 - \(h^2\): 0,289 - MSA: 0,79
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Vamos em busca de uma solucao melhor: rotacao
+Varimax()}
+\phantomsection\label{vamos-em-busca-de-uma-solucao-melhor-rotacao-varimax}
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{varimax}\NormalTok{(fa\_telco}\SpecialCharTok{$}\NormalTok{loadings)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+$loadings
+
+Loadings:
+    Factor1 Factor2 Factor3
+x1                   0.801 
+x2                   0.598 
+x3                   0.948 
+x4   0.971                 
+x5  -0.594                 
+x6   0.729           0.673 
+x7   0.541                 
+x8           0.991         
+x9          -0.800         
+x10          0.538         
+
+               Factor1 Factor2 Factor3
+SS loadings      2.121   1.910   2.350
+Proportion Var   0.212   0.191   0.235
+Cumulative Var   0.212   0.403   0.638
+
+$rotmat
+            [,1]        [,2]        [,3]
+[1,]  0.76987948 0.025103554  0.63769538
+[2,] -0.01744908 0.999680498 -0.01828749
+[3,] -0.63795072 0.002951969  0.77007153
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Note que a proporcao total da variacao explicada pelos 3 fatores nao muda (63,8\%). O que muda eh a proporcao da variacao total explicada por cada fator}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}{Rotação Varimax()}
+\phantomsection\label{rotauxe7uxe3o-varimax}
+\textbf{Analisando novamente as cargas significativas}
+
+\begin{itemize}
+\tightlist
+\item
+  \(X_1\) - fator 03
+\item
+  \(X_2\) - fator 03
+\item
+  \(X_3\) - fator 03
+\item
+  \(X_4\) - fator 01
+\item
+  \(X_5\) - fator 01
+\item
+  \(X_6\) - Apresenta cargas cruzadas - fatores 01 e 03 - \(h^2\): 0,984
+  - MSA: 0,55
+\item
+  \(X_7\) - fator 01
+\item
+  \(X_8\) - fator 02
+\item
+  \(X_9\) - fator 02
+\item
+  \(X_{10}\) - fator 02
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Segunda tentativa: excluir da analise a variavel
+\(X_4\) (MSA inadequado)}
+\phantomsection\label{segunda-tentativa-excluir-da-analise-a-variavel-x_4-msa-inadequado}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{telco2 }\OtherTok{\textless{}{-}}\NormalTok{ telco }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{x4)}
+
+\NormalTok{fa\_telco2 }\OtherTok{\textless{}{-}} \FunctionTok{factanal}\NormalTok{(}
+  \AttributeTok{x        =}\NormalTok{ telco2,}
+  \AttributeTok{factors  =}\NormalTok{ n\_fatores,}
+  \AttributeTok{rotation =} \StringTok{"varimax"}\NormalTok{,}
+  \AttributeTok{scores   =} \StringTok{"none"}
+\NormalTok{)}
+
+\FunctionTok{print}\NormalTok{(fa\_telco2, }\AttributeTok{digits =} \DecValTok{3}\NormalTok{, }\AttributeTok{cut =} \FloatTok{0.30}\NormalTok{) }\CommentTok{\# n = 875: cargas acima de 0,30 sao significativas}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+
+Call:
+factanal(x = telco2, factors = n_fatores, scores = "none", rotation = "varimax")
+
+Uniquenesses:
+   x1    x2    x3    x5    x6    x7    x8    x9   x10 
+0.360 0.642 0.101 0.644 0.023 0.702 0.019 0.360 0.711 
+
+Loadings:
+    Factor1 Factor2 Factor3
+x1   0.800                 
+x2   0.598                 
+x3   0.948                 
+x5                  -0.596 
+x6   0.662           0.734 
+x7                   0.546 
+x8           0.991         
+x9          -0.800         
+x10          0.537         
+
+               Factor1 Factor2 Factor3
+SS loadings      2.335   1.910   1.193
+Proportion Var   0.259   0.212   0.133
+Cumulative Var   0.259   0.472   0.604
+
+Test of the hypothesis that 3 factors are sufficient.
+The chi square statistic is 0.23 on 12 degrees of freedom.
+The p-value is 1 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Podemos notar que os 3 fatores explicam juntos 60,4\% da variacao total do sistema original e não resolveu o problema}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}[fragile]{Terceira tentativa: voltar para a análise a
+variável \(X_4\) e retirar a variável \(X_6\)}
+\phantomsection\label{terceira-tentativa-voltar-para-a-anuxe1lise-a-variuxe1vel-x_4-e-retirar-a-variuxe1vel-x_6}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{telco3 }\OtherTok{\textless{}{-}}\NormalTok{ telco }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{x6)}
+
+\NormalTok{fa\_telco3 }\OtherTok{\textless{}{-}} \FunctionTok{factanal}\NormalTok{(}
+  \AttributeTok{x        =}\NormalTok{ telco3,}
+  \AttributeTok{factors  =}\NormalTok{ n\_fatores,}
+  \AttributeTok{rotation =} \StringTok{"none"}\NormalTok{,}
+  \AttributeTok{scores   =} \StringTok{"Bartlett"}
+\NormalTok{)}
+
+\FunctionTok{print}\NormalTok{(fa\_telco3, }\AttributeTok{digits =} \DecValTok{3}\NormalTok{, }\AttributeTok{cut =} \FloatTok{0.30}\NormalTok{) }\CommentTok{\# n = 875: cargas acima de 0,30 sao significativas}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+
+Call:
+factanal(x = telco3, factors = n_fatores, scores = "Bartlett",     rotation = "none")
+
+Uniquenesses:
+   x1    x2    x3    x4    x5    x7    x8    x9   x10 
+0.360 0.643 0.100 0.068 0.642 0.704 0.019 0.360 0.711 
+
+Loadings:
+    Factor1 Factor2 Factor3
+x1           0.800         
+x2           0.598         
+x3           0.949         
+x4                   0.965 
+x5                  -0.598 
+x7                   0.544 
+x8   0.991                 
+x9  -0.800                 
+x10  0.537                 
+
+               Factor1 Factor2 Factor3
+SS loadings      1.911   1.897   1.586
+Proportion Var   0.212   0.211   0.176
+Cumulative Var   0.212   0.423   0.599
+
+Test of the hypothesis that 3 factors are sufficient.
+The chi square statistic is 0.24 on 12 degrees of freedom.
+The p-value is 1 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Podemos notar que os 3 fatores explicam juntos 59,9\% da variacao total do sistema original}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}{Solução final excluindo \(X_6\) da análise}
+\phantomsection\label{soluuxe7uxe3o-final-excluindo-x_6-da-anuxe1lise}
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Fator 01:} associado a \(X_8\), \(X_9\) e \(X_{10}\)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{Interpretação:} dimensão relacionada a atendimento /
+    relacionamento com o cliente
+  \end{itemize}
+\item
+  \textbf{Fator 02:} associado a \(X_1\), \(X_2\) e \(X_3\)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{Interpretação:} dimensão de qualidade técnica /
+    infraestrutura (sinal, distribuição, tecnologia)
+  \end{itemize}
+\item
+  \textbf{Fator 03:} associado a \(X_4\), \(X_5\) e \(X_7\)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{Interpretação:} dimensão de plano, informações e justiça
+    tarifária
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Solução final excluindo \(X_6\) da análise}
+\phantomsection\label{soluuxe7uxe3o-final-excluindo-x_6-da-anuxe1lise-1}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{loadings\_nr }\OtherTok{\textless{}{-}}\NormalTok{ fa\_telco3}\SpecialCharTok{$}\NormalTok{loadings }\SpecialCharTok{|\textgreater{}}
+\FunctionTok{unclass}\NormalTok{() }\SpecialCharTok{|\textgreater{}}
+\FunctionTok{as.data.frame}\NormalTok{() }\SpecialCharTok{|\textgreater{}}
+\FunctionTok{rownames\_to\_column}\NormalTok{(}\StringTok{"item"}\NormalTok{)}
+
+\FunctionTok{ggplot}\NormalTok{(loadings\_nr, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Factor1, }\AttributeTok{y =}\NormalTok{ Factor2, }\AttributeTok{label =}\NormalTok{ item)) }\SpecialCharTok{+}
+\FunctionTok{geom\_hline}\NormalTok{(}\AttributeTok{yintercept =} \DecValTok{0}\NormalTok{, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{color =} \StringTok{"grey70"}\NormalTok{) }\SpecialCharTok{+}
+\FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept =} \DecValTok{0}\NormalTok{, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{color =} \StringTok{"grey70"}\NormalTok{) }\SpecialCharTok{+}
+\FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{size =} \DecValTok{3}\NormalTok{) }\SpecialCharTok{+}
+\FunctionTok{geom\_text\_repel}\NormalTok{(}\AttributeTok{size =} \DecValTok{5}\NormalTok{) }\SpecialCharTok{+}
+\FunctionTok{labs}\NormalTok{(}
+\AttributeTok{title =} \StringTok{"Mapa das cargas não rotacionadas – Fator 1 × Fator 2"}\NormalTok{,}
+\AttributeTok{x =} \StringTok{"Factor 1"}\NormalTok{,}
+\AttributeTok{y =} \StringTok{"Factor 2"}
+\NormalTok{) }\SpecialCharTok{+}
+\FunctionTok{theme\_minimal}\NormalTok{(}\AttributeTok{base\_size =} \DecValTok{14}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{fatorial_files/figure-beamer/unnamed-chunk-7-1.pdf}}
+\end{frame}
+
+\begin{frame}{Solução final excluindo \(X_6\) da análise}
+\phantomsection\label{soluuxe7uxe3o-final-excluindo-x_6-da-anuxe1lise-2}
+\textbf{Pontos a destacar:}
+
+\begin{itemize}
+\item
+  Proporção da variabilidade explicada por cada fator
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{Fator 1:} cerca de 21\%
+  \item
+    \textbf{Fator 2:} cerca de 21\%
+  \item
+    \textbf{Fator 3:} cerca de 18\%
+  \end{itemize}
+\item
+  Proporção da variabilidade explicada pelo modelo ≈ 0.60:
+\item
+  A solução de 3 fatores explica aproximadamente 60\% da variância total
+  das variáveis padronizadas.
+\item
+  Para um estudo com itens de questionário (escala de 0 a 10), essa
+  proporção é considerada muito boa.
+\end{itemize}
 \end{frame}
 
 

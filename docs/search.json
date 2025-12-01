@@ -1431,7 +1431,7 @@
     "href": "cronograma.html",
     "title": "Cronograma da Disciplina",
     "section": "",
-    "text": "Esta página contém um esboço dos tópicos, conteúdos e tarefas para o semestre. Este cronograma será atualizado conforme o semestre avança.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSemana\nData\nTópico\nArtigo\nSlides\nEC\nLE\nScript\nMC\nProjeto\n\n\n\n\n1\nTer, 07/10\nApresentação da disciplina\n\n\n\n\n\n\n\n\n\n\nQui, 09/10\nNão haverá aula!\n\n\n\n\n\n\n\n\n\n2\nTer, 14/10\nRevisão de Álgebra Linear\n\n\n\n\n\n\n\n\n\n\nQui, 16/10\nRevisão de Álgebra Linear\n\n\n\n\n\n\n\n\n\n3\nTer, 21/10\nIntrodução à Estatística Multivariada\n\n\n\n\n\n\n\n\n\n\nQui, 23/10\nIntrodução à Estatística Multivariada\n\n\n\n\n\n\n\n\n\n4\nTer, 28/10\nIntrodução à Estatística Multivariada\n\n\n\n\n\n\n\n\n\n\nQui, 30/10\nNão haverá aula: Paralização docente\n\n\n\n\n\n\n\n\n\n5\nTer, 04/11\nDistribuição Normal Multivariada\n\n\n\n\n\n\n\n\n\n\nQui, 06/11\nDistribuição Normal Multivariada\n\n\n\n\n\n\n\n\n\n6\nTer, 11/11\nAnálise de Componentes Principais\n\n\n\n\n\n\n\n\n\n\nQui, 13/11\nAnálise de Componentes Principais\n\n\n\n\n\n\n\n\n\n7\nTer, 18/11\nNão haverá aula\n\n\n\n\n\n\n\n\n\n\nQui, 20/11\nFeriado: não haverá aula\n\n\n\n\n\n\n\n\n\n8\nTer, 25/11\nAnálise de Componentes Principais\n\n\n\n\n\n\n\n\n\n\nQui, 27/11\nAnálise de Componentes Principais",
+    "text": "Esta página contém um esboço dos tópicos, conteúdos e tarefas para o semestre. Este cronograma será atualizado conforme o semestre avança.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSemana\nData\nTópico\nArtigo\nSlides\nEC\nLE\nScript\nMC\nProjeto\n\n\n\n\n1\nTer, 07/10\nApresentação da disciplina\n\n\n\n\n\n\n\n\n\n\nQui, 09/10\nNão haverá aula!\n\n\n\n\n\n\n\n\n\n2\nTer, 14/10\nRevisão de Álgebra Linear\n\n\n\n\n\n\n\n\n\n\nQui, 16/10\nRevisão de Álgebra Linear\n\n\n\n\n\n\n\n\n\n3\nTer, 21/10\nIntrodução à Estatística Multivariada\n\n\n\n\n\n\n\n\n\n\nQui, 23/10\nIntrodução à Estatística Multivariada\n\n\n\n\n\n\n\n\n\n4\nTer, 28/10\nIntrodução à Estatística Multivariada\n\n\n\n\n\n\n\n\n\n\nQui, 30/10\nNão haverá aula: Paralização docente\n\n\n\n\n\n\n\n\n\n5\nTer, 04/11\nDistribuição Normal Multivariada\n\n\n\n\n\n\n\n\n\n\nQui, 06/11\nDistribuição Normal Multivariada\n\n\n\n\n\n\n\n\n\n6\nTer, 11/11\nAnálise de Componentes Principais\n\n\n\n\n\n\n\n\n\n\nQui, 13/11\nAnálise de Componentes Principais\n\n\n\n\n\n\n\n\n\n7\nTer, 18/11\nNão haverá aula\n\n\n\n\n\n\n\n\n\n\nQui, 20/11\nFeriado: não haverá aula\n\n\n\n\n\n\n\n\n\n8\nTer, 25/11\nAnálise de Componentes Principais\n\n\n\n\n\n\n\n\n\n\nQui, 27/11\nAnálise de Componentes Principais\n\n\n\n\n\n\n\n\n\n9\nTer, 02/12\nAnálise Fatorial\n\n\n\n\n\n\n\n\n\n\nQui, 04/12\nAnálise Fatorial",
     "crumbs": [
       "Cronograma da Disciplina"
     ]
@@ -2141,5 +2141,33 @@
     "title": "Análise Fatorial",
     "section": "Solução final excluindo \\(X_6\\) da análise",
     "text": "Solução final excluindo \\(X_6\\) da análise\nPontos a destacar:\n\nProporção da variabilidade explicada por cada fator\n\nFator 1: cerca de 21%\nFator 2: cerca de 21%\nFator 3: cerca de 18%\n\nProporção da variabilidade explicada pelo modelo ≈ 0.60:\nA solução de 3 fatores explica aproximadamente 60% da variância total das variáveis padronizadas.\nPara um estudo com itens de questionário (escala de 0 a 10), essa proporção é considerada muito boa."
+  },
+  {
+    "objectID": "programacao/semana-9.html",
+    "href": "programacao/semana-9.html",
+    "title": "Semana 09",
+    "section": "",
+    "text": "Análise Fatorial \n\n\nVer slides PDF"
+  },
+  {
+    "objectID": "programacao/semana-9.html#slides",
+    "href": "programacao/semana-9.html#slides",
+    "title": "Semana 09",
+    "section": "",
+    "text": "Análise Fatorial \n\n\nVer slides PDF"
+  },
+  {
+    "objectID": "projeto/acp/acp.html",
+    "href": "projeto/acp/acp.html",
+    "title": "Análise da necessidade de cognição usando PCA",
+    "section": "",
+    "text": "Data de entrega: 19 de dezembro de 2025\nUm bom exemplo de redução da dimensionalidade é a criação de índices de dados de levantamentos ou de dados experimentais. Pesquisadores frequentemente usam muitas questões diferentes para obter uma propriedade ou característica particular dos respondentes de pesquisas. Por exemplo, Ofir and Simonson (2001) usaram uma bateria de 18 questões desenvolvida por Cacioppo, Petty, and Kao (1984) para obter a “necessidade de cognição” de cada sujeito (isto é, a extensão com que o sujeito gosta e se envolve no raciocínio e na resolução de problemas). A lista de questões é apresentada na Tabela 1 (observe que algumas são “codificadas de modo invertido”, de modo que um escore mais alto para a questão reflete uma necessidade mais baixa de cognição).\n(R) indica um item de código reverso. Fonte: Cacioppo, Petty e Kao (1984).\nCriar um único índice de “necessidade de cognição” é não somente mais parcimonioso do que usar várias medidas separadas, mas também mais confiável do que usar uma única medida (porque somos menos suscetíveis ao erro de medida associado a uma questão particular do estudo). Uma abordagem possível para se criar tal índice é tomar uma soma de escores (subtrair ao invés de somar as medidas codificadas de modo invertido) de todas as 18 variáveis. Uma abordagem alternativa é a análise de componentes principais: o primeiro componente principal será a combinação linear das 18 questões que captar a quantidade máxima de informações nos dados.\nOs dados brutos colhidos por Ofir and Simonson (2001) para medir a “necessidade de cognição” estão disponíveis no arquivo COGNITION.txt. A base de dados contém 19 variáveis: o número de identificação de um respondente e os escores para os 18 itens listados na Tabela 1."
+  },
+  {
+    "objectID": "projeto/acp/acp.html#referências",
+    "href": "projeto/acp/acp.html#referências",
+    "title": "Análise da necessidade de cognição usando PCA",
+    "section": "Referências",
+    "text": "Referências\n\n\nCacioppo, John T., Richard E. Petty, and Chuan Feng Kao. 1984. “A avaliação eficiente da necessidade de cognição.” Journal of Personality Assessment 48: 306–7.\n\n\nOfir, Chezy, and Itamar Simonson. 2001. “Em busca de feedback negativo de clientes: o efeito da expectativa de avaliação sobre julgamentos de satisfação.” Journal of Marketing Research 38 (2): 170–82."
   }
 ]

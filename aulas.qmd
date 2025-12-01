@@ -10,7 +10,7 @@ title: "Aulas"
 
 - [Análise de Componentes Principais](/aulas/analise_comp_princ/comp_princ.html#/title-slide)
 
-- Análise Fatorial
+- [Análise Fatorial](/aulas/analise_fatorial/fatorial.html#/title-slide)
 
 - Análise de Conglomerados ou Agrupamentos
 

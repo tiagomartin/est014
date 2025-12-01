@@ -1,0 +1,71 @@
+---
+title: "Análise da necessidade de cognição usando PCA"
+format:
+  html:
+    number-sections: true
+    toc: true
+    toc-depth: 2
+  pdf:
+    number-sections: true
+    toc: false
+    toc-depth: 2
+bibliography: references.bib
+---
+
+
+<p align="center" style="font-size: 40px"> 
+`Data de entrega: 19 de dezembro de 2025`
+</p>
+
+
+---
+
+Um bom exemplo de redução da dimensionalidade é a criação de índices de dados de levantamentos ou de dados experimentais. Pesquisadores frequentemente usam muitas questões diferentes para obter uma propriedade ou característica particular dos respondentes de pesquisas. Por exemplo, @OfirSimonson2001 usaram uma bateria de 18 questões desenvolvida por @Cacioppo1984 para obter a "necessidade de cognição" de cada sujeito (isto é, a extensão com que o sujeito gosta e se envolve no raciocínio e na resolução de problemas). A lista de questões é apresentada na Tabela 1 (observe que algumas são "codificadas de modo invertido", de modo que um escore mais alto para a questão reflete uma necessidade mais baixa de cognição).
+
+
+Table: Dezoito itens utilizados na mensuração de um levantamento da “necessidade de cognição” do respondente. {#tbl-itens-nfc}
+
+| Item      | Questão                                                                                                                                                                      |
+|:---------:|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| $C_{1}$   | Eu prefiro problemas complexos a problemas simples.                                                                                                                          |
+| $C_{2}$   | Gosto de ser responsável ao lidar com uma situação que requeira muito raciocínio.                                                                                            |
+| $C_{3}$   | Raciocinar não é minha ideia de diversão. (R)                                                                                                                                |
+| $C_{4}$   | Eu prefiro fazer algo que exija pouco raciocínio do que algo que com certeza desafiaria minhas capacidades de raciocínio. (R)                                               |
+| $C_{5}$   | Tento prever e evito situações em que haja uma provável chance de eu ter que pensar profundamente sobre alguma coisa. (R)                                                   |
+| $C_{6}$   | Encontro satisfação em debater profundamente por longas horas.                                                                                                               |
+| $C_{7}$   | Penso apenas o necessário. (R)                                                                                                                                                |
+| $C_{8}$   | Prefiro pensar em pequenos projetos diários do que em projetos em longo prazo. (R)                                                                                           |
+| $C_{9}$   | Gosto de tarefas que exijam pouca reflexão após eu tê-las aprendido. (R)                                                                                                     |
+| $C_{10}$  | A ideia de confiar em meu raciocínio para chegar ao topo me atrai.                                                                                                           |
+| $C_{11}$  | Eu realmente gosto de uma tarefa que envolva fornecer novas soluções para os problemas.                                                                                      |
+| $C_{12}$  | Aprender novas maneiras de raciocinar não me anima muito. (R)                                                                                                                |
+| $C_{13}$  | Prefiro que minha vida esteja repleta de problemas que devo resolver.                                                                                                        |
+| $C_{14}$  | A noção de pensar abstratamente é atraente para mim.                                                                                                                         |
+| $C_{15}$  | Prefiro tarefas que envolvam raciocínio, sejam difíceis e importantes a aquelas que não exigem muito raciocínio.                                                            |
+| $C_{16}$  | Sinto alívio ao invés de satisfação quando termino uma tarefa que exigiu muito esforço mental. (R)                                                                          |
+| $C_{17}$  | É suficiente para mim que algo termine o trabalho: não me importo como ou por que funciona. (R)                                                                             |
+| $C_{18}$  | Normalmente, acabo por debater as questões, mesmo que não me afetem pessoalmente.                                                                                            |
+
+*(R) indica um item de código reverso. Fonte: Cacioppo, Petty e Kao (1984).*
+
+
+
+Criar um único índice de "necessidade de cognição" é não somente mais parcimonioso do que usar várias medidas separadas, mas também mais confiável do que usar uma única medida (porque somos menos suscetíveis ao erro de medida associado a uma questão particular do estudo). Uma abordagem possível para se criar tal índice é tomar uma soma de escores (subtrair ao invés de somar as medidas codificadas de modo invertido) de todas as 18 variáveis. Uma abordagem alternativa é a análise de componentes principais: o primeiro componente principal será a combinação linear das 18 questões que captar a quantidade máxima de informações nos dados.
+
+Os dados brutos colhidos por @OfirSimonson2001 para medir a "necessidade de cognição" estão disponíveis no arquivo [COGNITION.txt](/dados/COGNITION.txt). A base de dados contém 19 variáveis: o número de identificação de um respondente e os escores para os 18 itens listados na Tabela 1.
+
+
+
+
+
+1) Analise os dados para a necessidade de cognição usando componentes principais. Quanta variância é explicada pelo primeiro componente? Sua análise sugere que um único componente realiza um trabalho adequado de captação da necessidade de cognição? Justifique.
+	
+		
+2) Os pesquisadores, em geral, formam a escala de cognição, adicionando os escores dos itens (itens de códigos reversos são subtraídos). Como essa medida se compara com o primeiro componente principal da análise no item ``a"? Qual você usaria e por quê?
+
+
+
+## Referências {.unnumbered}
+
+::: {#refs}
+:::
