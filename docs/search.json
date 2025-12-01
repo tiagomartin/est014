@@ -1818,7 +1818,7 @@
     "href": "aulas/analise_fatorial/fatorial.html#métodos-de-estimação-máxima-verossimilhança-3",
     "title": "Análise Fatorial",
     "section": "Métodos de estimação: Máxima Verossimilhança",
-    "text": "Métodos de estimação: Máxima Verossimilhança\n\n\n\n\n\n\n\nCuidado!\n\n\n\nEstá fundamentado na suposição de normalidade multivariada dos vetores \\(\\boldsymbol{z}\\), \\(\\boldsymbol{F}\\) e \\(\\boldsymbol{\\epsilon}\\).\n\nApenas a normalidade do vetor \\(\\boldsymbol{z}\\) pode ser investigada a priori a partir dos dados amostrais\nFatores e erros são variáveis aleatórias não observáveis"
+    "text": "Métodos de estimação: Máxima Verossimilhança\n\n\n\n\n\n\n\nCuidado!\n\n\n\nEstá fundamentado na suposição de normalidade multivariada dos vetores \\(\\boldsymbol{z}\\), \\(\\boldsymbol{F}\\) e \\(\\boldsymbol{\\epsilon}\\).\n\nApenas a normalidade do vetor \\(\\boldsymbol{z}\\) pode ser investigada a priori a partir dos dados amostrais\nFatores e erros são variáveis aleatórias não observáveis\n\n\n\n\n\n\n\n\n\n\n\n\n\nObservação Importante\n\n\n\nO método de estimação por Máxima Verossimilhança (ML) pode ser utilizado na Análise Fatorial mesmo quando os dados não seguem uma distribuição normal multivariada. A falta de normalidade afeta principalmente os testes de significância (\\(\\chi^2\\), \\(IC\\)), mas não compromete a qualidade da extração dos fatores. ML é robusto para escalas Likert com 5 ou mais categorias."
   },
   {
     "objectID": "aulas/analise_fatorial/fatorial.html#rotação-dos-fatores",
