@@ -1574,5 +1574,572 @@
     "title": "Semana 08",
     "section": "",
     "text": "Mapas Perceptuais com PCA: estudo de marcas \n Ver análise PDF"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#análise-fatorial",
+    "href": "aulas/analise_fatorial/fatorial.html#análise-fatorial",
+    "title": "Análise Fatorial",
+    "section": "Análise Fatorial",
+    "text": "Análise Fatorial\n\nObjetivo: Descrever as relações de covariância entre muitas variáveis em termos de poucas quantidades aleatórias subjacentes e não observáveis\n\n\n\nMotivação: Variáveis de um grupo altamente correlacionadas entre si, mas com pequenas correlações de outros grupos.\n\nÉ concebível que cada grupo de variáveis represente um fator (ou construto) que seja o responsável pelas correlações observadas"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#análise-fatorial-1",
+    "href": "aulas/analise_fatorial/fatorial.html#análise-fatorial-1",
+    "title": "Análise Fatorial",
+    "section": "Análise Fatorial",
+    "text": "Análise Fatorial\nVamos supor cinco variáveis \\(Y_1\\), \\(Y_2\\), \\(Y_3\\), \\(Y_4\\) e \\(Y_5\\) correspondentes às notas de estudantes em Espanhol, Inglês, Química, Física e Matemática, respectivamente.\n\n\n\nTable 1: Matriz de correlações hipotética\n\n\n\n\n\n\n\\(Y_1\\)\n\\(Y_2\\)\n\\(Y_3\\)\n\\(Y_4\\)\n\\(Y_5\\)\n\n\n\n\n\\(Y_1\\)\n1\n0,90\n0,05\n0,05\n0,10\n\n\n\\(Y_2\\)\n0,90\n1\n0,05\n0,10\n0,05\n\n\n\\(Y_3\\)\n0,05\n0,05\n1\n0,95\n0,85\n\n\n\\(Y_4\\)\n0,05\n0,10\n0,95\n1\n0,90\n\n\n\\(Y_5\\)\n0,10\n0,05\n0,85\n0,90\n1"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#análise-fatorial-2",
+    "href": "aulas/analise_fatorial/fatorial.html#análise-fatorial-2",
+    "title": "Análise Fatorial",
+    "section": "Análise Fatorial",
+    "text": "Análise Fatorial\nCom base nas correlações, poderíamos imaginar dois fatores subjacentes, e não observáveis:\n\nFator 1: Conhecimento em línguas - associado aos desempenhos em Espanhol e Inglês, fortemente correlacionados;\n\n\n\nFator 2: Conhecimento em ciências exatas - associado aos desempenhos em Química, Física e Matemática.\n\n\n\nÉ importante compreender que “conhecimento” é algo que não se mede diretamente, mas que pode se manifestar através de variáveis observáveis, como as notas obtidas nos exames."
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#análise-fatorial-3",
+    "href": "aulas/analise_fatorial/fatorial.html#análise-fatorial-3",
+    "title": "Análise Fatorial",
+    "section": "Análise Fatorial",
+    "text": "Análise Fatorial\nPode ser considerada uma extensão da Análise de Componentes Principais\n\n\nAmbas são tentativas de aproximar \\(\\boldsymbol{S}\\).\n\n\n\n\nA aproximação baseada em Análise Fatorial é mais elaborada\n\n\n\nQuestão principal:\n\nDados são consistentes com a estrutura prescrita?"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#tipos-de-análise-fatorial",
+    "href": "aulas/analise_fatorial/fatorial.html#tipos-de-análise-fatorial",
+    "title": "Análise Fatorial",
+    "section": "Tipos de Análise Fatorial",
+    "text": "Tipos de Análise Fatorial\nAnálise Fatorial Exploratória\n\nBusca encontrar os fatores subjacentes às variáveis originais amostradas\nEm geral, efetuada quando não se tem noção clara da quantidade de fatores do modelo e nem do que representam\n\nAnálise Fatorial Confirmatória\n\nTem-se em mãos um modelo fatorial pré-especificado (modelo hipotético) e deseja-se verificar se é aplicável ou consistente com os dados amostrais de que dispõe"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#planejamento-de-uma-análise-fatorial",
+    "href": "aulas/analise_fatorial/fatorial.html#planejamento-de-uma-análise-fatorial",
+    "title": "Análise Fatorial",
+    "section": "Planejamento de uma análise fatorial",
+    "text": "Planejamento de uma análise fatorial\n\nVerificar a adequabilidade da base de dados: tamanho da amostra (desejável a razão de 5 indivíduos para cada variável), correlações significativas, KMO adequado.\n\n\n\nDeterminar o método de extração e o número de fatores a serem extraídos: métodos de extração (componentes principais, fatores principais, máxima verossimilhança), número de fatores (critério de kaiser, screeplot, variância acumulada).\n\n\n\n\nDecidir o tipo de rotação: Varimax, Quartimax, Orthomax…"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#gigo-garbage-in-garbage-out",
+    "href": "aulas/analise_fatorial/fatorial.html#gigo-garbage-in-garbage-out",
+    "title": "Análise Fatorial",
+    "section": "GIGO: Garbage In, Garbage Out!",
+    "text": "GIGO: Garbage In, Garbage Out!\n\n\n\n\n\n\n\nCuidado!\n\n\n\nA análise fatorial sempre produzirá fatores. Desta forma, ela é sempre um candidato para o fenômeno “lixo dentro, lixo fora”.\n\n\nSe o pesquisador incluir indiscriminadamente um grande número de variáveis e esperar que a análise fatorial “faça revelações”, a possibilidade de resultados pobres será alta.\n\n\nA qualidade e o significado dos fatores determinados refletem estruturas conceituais das variáveis incluídas na análise (base conceitual)."
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#planejamento-de-uma-análise-fatorial-1",
+    "href": "aulas/analise_fatorial/fatorial.html#planejamento-de-uma-análise-fatorial-1",
+    "title": "Análise Fatorial",
+    "section": "Planejamento de uma análise fatorial",
+    "text": "Planejamento de uma análise fatorial\nGIGO: Garbage In, Garbage Out!\n\n\n\n\n\n\n\nCuidado!\n\n\n\nA análise fatorial sempre produzirá fatores. Desta forma, ela é sempre um candidato para o fenômeno “lixo dentro, lixo fora”.\n\n\nSe o pesquisador incluir indiscriminadamente um grande número de variáveis e esperar que a análise fatorial “faça revelações”, a possibilidade de resultados pobres será alta.\n\n\nA qualidade e o significado dos fatores determinados refletem estruturas conceituais das variáveis incluídas na análise (base conceitual)."
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#planejamento-de-uma-análise-fatorial-2",
+    "href": "aulas/analise_fatorial/fatorial.html#planejamento-de-uma-análise-fatorial-2",
+    "title": "Análise Fatorial",
+    "section": "Planejamento de uma análise fatorial",
+    "text": "Planejamento de uma análise fatorial\nQuestões conceituais…\n\nÉ responsabilidade do pesquisador garantir que os padrões observados sejam conceitualmente válidos. A AF é capaz somente de determinar a adequação das correlações entre variáveis.\n\n\nO pesquisador deve garantir que a amostra esteja adequada à estrutura fatorial inerente.\n\n\nPor exemplo, ao avaliar os fatores de risco de uma acidente vascular, se nenhuma variável relacionada aos fatores genéticos for incluída, a AF não será capaz de identificar esta dimensão."
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#planejamento-de-uma-análise-fatorial-3",
+    "href": "aulas/analise_fatorial/fatorial.html#planejamento-de-uma-análise-fatorial-3",
+    "title": "Análise Fatorial",
+    "section": "Planejamento de uma análise fatorial",
+    "text": "Planejamento de uma análise fatorial\nQuestões conceituais…\n\nA qualidade e o significado dos fatores obtidos refletem as bases conceituais das variáveis incluídas na análise.\n\n\nO pesquisador não deve incluir indiscriminadamente inúmeras variáveis e esperar que a AF “arrume as coisas”.\n\n\nNo exemplo da avaliação dos fatores de risco de uma acidente vascular, incluir a variável, por exemplo, “cor dos olhos” interfere nos resultados da AF e não traz nenhuma informação relevante para o objeto de estudo."
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#planejamento-de-uma-análise-fatorial-4",
+    "href": "aulas/analise_fatorial/fatorial.html#planejamento-de-uma-análise-fatorial-4",
+    "title": "Análise Fatorial",
+    "section": "Planejamento de uma análise fatorial",
+    "text": "Planejamento de uma análise fatorial\nQuestões estatísticas…\n\nEspera-se que haja correlações significativas, pois o objetivo é identificar conjuntos de variáveis inter-relacionadas.\n\n\nSe todas as correlações são pequenas ou iguais, o pesquisador deve questionar o uso da análise fatorial.\n\n\nInspeção visual da matriz de correlação – coeficientes pelo menos em torno de 0,30."
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#planejamento-de-uma-análise-fatorial-5",
+    "href": "aulas/analise_fatorial/fatorial.html#planejamento-de-uma-análise-fatorial-5",
+    "title": "Análise Fatorial",
+    "section": "Planejamento de uma análise fatorial",
+    "text": "Planejamento de uma análise fatorial\n\nTeste de esfericidade de Bartlett (BTS): O teste de esfericidade de Bartlett testa a hipótese de que as variáveis não sejam correlacionadas na população.\n\n\\[H_0: \\boldsymbol{P} = \\boldsymbol{I}\\]\nA estatística do teste é dada por\n\\[\\chi^2 = -\\left[ (n-1)-\\dfrac{2p + 5}{6}\\right] \\ln|\\boldsymbol{R}|\\]\nque tem uma distribuição qui-quadrado com \\(\\nu\\) graus de liberdade, sendo \\(\\nu = \\dfrac{p(p-1)}{2}\\), \\(n\\) igual ao tamanho da amostra, \\(p\\) igual ao número de variáveis e \\(|\\boldsymbol{R}|\\), o determinante da matriz de correlação amostral."
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#planejamento-de-uma-análise-fatorial-6",
+    "href": "aulas/analise_fatorial/fatorial.html#planejamento-de-uma-análise-fatorial-6",
+    "title": "Análise Fatorial",
+    "section": "Planejamento de uma análise fatorial",
+    "text": "Planejamento de uma análise fatorial\n\nMedida de adequação da amostra: comumente utilizado o KMO (Kaiser-Meyer-Olkin). Rencher(2002) sugere que para um modelo de Análise Fatorial possa ser ajustado adequadamente aos dados é necessário que \\(\\boldsymbol{R}^{-1}\\) seja próxima da matriz diagonal. O coeficiente KMO baseia-se nesse princípio\n\n\\[KMO = \\dfrac{\\displaystyle{\\sum_{i=1}^p}\\displaystyle{\\sum_{j=1}^p} r^2_{ij}}{\\displaystyle{\\sum_{i=1}^p}\\displaystyle{\\sum_{j=1}^p} r_{ij}^2 + \\displaystyle{\\sum_{i=1}^p}\\displaystyle{\\sum_{j=1}^p}v_{ij}^2},\\]"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#planejamento-de-uma-análise-fatorial-7",
+    "href": "aulas/analise_fatorial/fatorial.html#planejamento-de-uma-análise-fatorial-7",
+    "title": "Análise Fatorial",
+    "section": "Planejamento de uma análise fatorial",
+    "text": "Planejamento de uma análise fatorial\nem que \\(r_{ij}\\) e \\(v_{ij}\\) são, respectivamente, os elementos na posição \\((i,j)\\) da matriz de correlações amostral, \\(\\boldsymbol{R}\\), e da matriz \\(\\boldsymbol{V} = \\boldsymbol{U} \\boldsymbol{R}^{-1} \\boldsymbol{U}\\), na qual \\(\\boldsymbol{U} = \\left[{\\rm diag} (\\boldsymbol{R}^{-1})^{\\frac{1}{2}}\\right]^{-1}\\). Note que \\({\\rm diag}(\\boldsymbol{R}^{-1})\\) é a matriz cuja diagonal coincide com a diagonal de \\(\\boldsymbol{R}^{-1}\\) mas com os demais elementos nulos e \\({\\rm diag}(\\boldsymbol{R}^{-1})^{\\frac{1}{2}}\\) é a matriz diagonal cujo \\(i\\)-ésimo elemento diagonal é a raiz quadrada do \\(i\\)-ésimo elemento diagonal de \\({\\rm diag}(\\boldsymbol{R}^{-1})\\). A matriz \\(\\boldsymbol{V}\\) é usualmente designada por matriz de correlação anti-imagem."
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#planejamento-de-uma-análise-fatorial-8",
+    "href": "aulas/analise_fatorial/fatorial.html#planejamento-de-uma-análise-fatorial-8",
+    "title": "Análise Fatorial",
+    "section": "Planejamento de uma análise fatorial",
+    "text": "Planejamento de uma análise fatorial\n\nMedida de adequação da amostra: Para cada variável: MSA (Measure of sampling adequacy). Essa medida é bastante similar ao \\(KMO\\). Novamente, desejamos verificar a possibilidade de existência de uma estrutura fatorial nos dados. A \\(MSA\\) deve ser calculada separadamente para cada variável, através de\n\n\\[MSA_i = \\dfrac{\\displaystyle{\\sum_{j=1}^p} r^2_{ij}}{\\displaystyle{\\sum_{j=1}^p} r_{ij}^2 + \\displaystyle{\\sum_{j=1}^p}v_{ij}^2}.\\]"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#planejamento-de-uma-análise-fatorial-9",
+    "href": "aulas/analise_fatorial/fatorial.html#planejamento-de-uma-análise-fatorial-9",
+    "title": "Análise Fatorial",
+    "section": "Planejamento de uma análise fatorial",
+    "text": "Planejamento de uma análise fatorial\n\nO objetivo é verificar se uma dada variável pode ser explicada pelas demais, o que é esperado em um modelo fatorial.\n\n\n\nValores baixos de \\(MSA_i\\) são indícios de que a respectiva variável pode ser retirada da análise, sem maiores prejuízos.\n\n\n\n\nNote que esta medida é bastante similar ao \\(KMO\\), apresentando uma lógica semelhante."
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#planejamento-de-uma-análise-fatorial-10",
+    "href": "aulas/analise_fatorial/fatorial.html#planejamento-de-uma-análise-fatorial-10",
+    "title": "Análise Fatorial",
+    "section": "Planejamento de uma análise fatorial",
+    "text": "Planejamento de uma análise fatorial\nAmbos variam de 0 a 1, sendo:\n\n\n\nTable 2: Tabela de interpretação do índice KMO/MSA\n\n\n\n\n\nKMO/MSA\nInterpretação\n\n\n\n\n\\(0,80 - 1,00\\)\nExcelente\n\n\n\\(0,70 - 0,80\\)\nÓtimo\n\n\n\\(0,60 - 0,70\\)\nBom\n\n\n\\(0,50 - 0,60\\)\nRegular\n\n\n\\(0,00 - 0,50\\)\nInsuficiente"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#o-modelo-fatorial-ortogonal-via-matriz-de-correlações",
+    "href": "aulas/analise_fatorial/fatorial.html#o-modelo-fatorial-ortogonal-via-matriz-de-correlações",
+    "title": "Análise Fatorial",
+    "section": "O modelo fatorial ortogonal via matriz de correlações",
+    "text": "O modelo fatorial ortogonal via matriz de correlações\n\nSeja o vetor aleatório \\(\\mathbf{x} = [X_1, X_2, \\cdots, X_p]^t\\), com vetor de médias \\(\\boldsymbol{\\mu}\\), matriz de covariâncias \\(\\boldsymbol{\\Sigma}\\) e matriz de correlações \\(\\boldsymbol{P}\\).\n\n\n\nSejam as variáveis originais padronizadas: \\(Z_i = \\dfrac{X_i - \\mu_i}{\\sqrt{\\sigma_{ii}}}\\)\n\n\n\n\n\\(\\boldsymbol{P}\\) é a matriz de covariâncias do velor aleatório \\(\\boldsymbol{z}\\), cujas componentes são as variáveis padronizadas."
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#o-modelo-fatorial-ortogonal-via-matriz-de-correlações-1",
+    "href": "aulas/analise_fatorial/fatorial.html#o-modelo-fatorial-ortogonal-via-matriz-de-correlações-1",
+    "title": "Análise Fatorial",
+    "section": "O modelo fatorial ortogonal via matriz de correlações",
+    "text": "O modelo fatorial ortogonal via matriz de correlações\n\nModelo fatorial ortogonal\n\nConstruído via a matriz de correlação populacional\nRelaciona linearmente as variáveis padronizadas e os \\(m\\) fatores comuns (que são desconhecidos)\nFatores são variáveis independentes"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#o-modelo-fatorial-ortogonal-via-matriz-de-correlações-2",
+    "href": "aulas/analise_fatorial/fatorial.html#o-modelo-fatorial-ortogonal-via-matriz-de-correlações-2",
+    "title": "Análise Fatorial",
+    "section": "O modelo fatorial ortogonal via matriz de correlações",
+    "text": "O modelo fatorial ortogonal via matriz de correlações\nNa análise fatorial, vamos expressar cada uma das \\(p\\) variáveis padronizadas como combinação linear de \\(m &lt; p\\) fatores comuns \\(F_1, F_2, \\cdots, F_m\\) a menos de um termo correspondente ao erro \\(\\epsilon_1, \\epsilon_2, \\cdots, \\epsilon_p\\):\n\\[\n\\begin{aligned}\nZ_1 &= l_{11}F_1 + l_{12}F_2 + \\cdots + l_{1m}F_m + \\epsilon_1 \\\\\nZ_2 &= l_{21}F_1 + l_{22}F_2 + \\cdots + l_{2m}F_m + \\epsilon_2 \\\\ && \\hspace{-25cm} \\vdots \\\\\nZ_p &= l_{p1}F_1 + l_{p2}F_2 + \\cdots + l_{pm}F_m + \\epsilon_p\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#o-modelo-fatorial-ortogonal",
+    "href": "aulas/analise_fatorial/fatorial.html#o-modelo-fatorial-ortogonal",
+    "title": "Análise Fatorial",
+    "section": "O modelo fatorial ortogonal",
+    "text": "O modelo fatorial ortogonal\n\n\\(F_1, F_2, \\cdots, F_m\\) são os fatores comuns não observáveis, ou (latentes);\n\n\n\\(\\epsilon_1, \\epsilon_2, \\cdots,\\epsilon_p\\) são os fatores específicos associados a cada variável e,\n\n\n\\(l_{ij}\\), \\(i = 1, 2, \\cdots,p\\), \\(j = 1, 2, \\cdots, m\\) são chamados de cargas fatoriais, ou (loadings)."
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#o-modelo-fatorial-ortogonal-1",
+    "href": "aulas/analise_fatorial/fatorial.html#o-modelo-fatorial-ortogonal-1",
+    "title": "Análise Fatorial",
+    "section": "O modelo fatorial ortogonal",
+    "text": "O modelo fatorial ortogonal\nNotação Matricial\n\\[\\boxed{\\boldsymbol{D}^{-1}(\\mathbf{x} - \\boldsymbol{\\mu}) = \\boldsymbol{L} \\boldsymbol{F} + \\boldsymbol{\\epsilon}}\\]\n\\[\\boldsymbol{F} = \\left[\\begin{array}{c} F_1 \\\\ F_2 \\\\ \\vdots \\\\ F_m \\end{array} \\right] \\boldsymbol{\\epsilon} =\n\\left[\\begin{array}{c} \\epsilon_1 \\\\ \\epsilon_2 \\\\ \\vdots \\\\ \\epsilon_p \\end{array}\\right]\n\\boldsymbol{L} = \\left[ \\begin{array}{cccc} l_{11} & l_{12} & \\cdots & l_{1m}\n\\\\ l_{21} & l_{22} & \\cdots & l_{2m}\n\\\\ \\vdots & \\vdots  & \\ddots & \\vdots\n\\\\ l_{p1} & l_{p2} & \\cdots & l_{pm}\n\\end{array} \\right] \\,\\,\\, \\boldsymbol{D} = \\left[ \\begin{array}{cccc} \\sigma_{1} & 0 & \\cdots & 0\n\\\\ 0 & \\sigma_{2} & \\cdots & 0\n\\\\ \\vdots & \\vdots  & \\ddots & \\vdots\n\\\\ 0 & 0 & \\cdots & \\sigma_{p}\n\\end{array} \\right]\\]"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#o-modelo-fatorial-ortogonal-2",
+    "href": "aulas/analise_fatorial/fatorial.html#o-modelo-fatorial-ortogonal-2",
+    "title": "Análise Fatorial",
+    "section": "O modelo fatorial ortogonal",
+    "text": "O modelo fatorial ortogonal\nSuposições do modelo\nPara construção do modelo fatorial ortogonal, algumas suposições se fazem necessárias:\n\nOs fatores têm média igual a zero, variâncias iguais a 1 e não são correlacionados:\n\n\\[\\boxed{E({\\boldsymbol{F}}) = \\boldsymbol{0}\\,\\, \\text{e} \\,\\, \\rm{Var}({\\boldsymbol{F}}) = E({\\boldsymbol{F}}{\\boldsymbol{F}}^t)  = \\boldsymbol{I} }\\]"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#o-modelo-fatorial-ortogonal-3",
+    "href": "aulas/analise_fatorial/fatorial.html#o-modelo-fatorial-ortogonal-3",
+    "title": "Análise Fatorial",
+    "section": "O modelo fatorial ortogonal",
+    "text": "O modelo fatorial ortogonal\nSuposições do modelo\n\nOs erros têm média zero, são não correlacionados e não necessariamente tem a mesma variância:\n\n\\[\\boxed{E({\\boldsymbol{\\epsilon}}) = \\boldsymbol{0} e  \\rm{Var}({\\boldsymbol{\\epsilon}}) = \\boldsymbol{\\Psi} = \\rm{diag}(\\psi_1, \\psi_2, \\cdots, \\psi_p)\n= E({\\boldsymbol{\\epsilon}}{\\boldsymbol{\\epsilon}}^t)\n}\\]\n\n\\({\\boldsymbol{F}}\\) e \\({\\boldsymbol{\\epsilon}}\\) são independentes, isto é, fontes de variação distintas:\n\n\\[\\boxed{\\rm{Cov}({\\boldsymbol{F}},{\\boldsymbol{\\epsilon}}) = E({\\boldsymbol{\\epsilon}}{\\boldsymbol{F}}^t) = \\boldsymbol{0}}\\]"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#propriedades-do-modelo-fatorial",
+    "href": "aulas/analise_fatorial/fatorial.html#propriedades-do-modelo-fatorial",
+    "title": "Análise Fatorial",
+    "section": "Propriedades do modelo fatorial",
+    "text": "Propriedades do modelo fatorial\nComo consequência da definição do modelo e das suposições apresentadas, decorrem as seguintes propriedades:\n\\[\\boldsymbol{P} = \\boldsymbol{L}\\boldsymbol{L}^t + \\boldsymbol{\\Psi}\\]\n\n\nEsta decomposição implica que as variâncias das variáveis observadas podem ser escritas como:\n\n\\[\\text{Var}(Z_i) = \\underbrace{l_{i1}^2 + l_{i2}^2 + \\cdots + l_{im}^2}_{h_i^2} + \\psi_i = h_i^2 + \\psi_i, \\hspace{0.5cm} i = 1, \\cdots, p\\]"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#propriedades-do-modelo-fatorial-1",
+    "href": "aulas/analise_fatorial/fatorial.html#propriedades-do-modelo-fatorial-1",
+    "title": "Análise Fatorial",
+    "section": "Propriedades do modelo fatorial",
+    "text": "Propriedades do modelo fatorial\n\n\\(h_i^2\\) é a comunalidade: variância comum de \\(\\boldsymbol{z}\\) - expressa o quanto da variabiliade de \\(Z_i\\) é explicada pelo modelo\n\n\n\n\\(\\psi_i\\) é a especificidade: variância específica de cada \\(Z_i\\) - expressa o quanto da variabilidade de \\(Z_i\\) não é explicada pelo modelo.\n\n\nAlém disso, as covariâncias das variáveis observadas podem ser escritas como:\n\n\\[\\text{Cov}(Z_i, Z_k) = {l_{i1}l_{k1} + l_{i2}l_{k2} + \\cdots + l_{im}l_{km}}, \\,\\,\\, i,k = 1, \\cdots, p \\,\\,(i\\neq k)\\]\n\n\ne,\n\\[\\text{Cov}(\\boldsymbol{z}, \\boldsymbol{F}) = \\text{Cor}(\\boldsymbol{z}, \\boldsymbol{F}) = \\boldsymbol{L}\\]"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#métodos-de-estimação",
+    "href": "aulas/analise_fatorial/fatorial.html#métodos-de-estimação",
+    "title": "Análise Fatorial",
+    "section": "Métodos de Estimação",
+    "text": "Métodos de Estimação\n\nMétodo das componentes principais: baseia-se na análise de componentes principais. Em geral, utilizado como um análise exploratória dos dados, em termos dos fatores subjacentes\n\n\n\nMétodo dos fatores principais: refina a solução apresentada pelo método das componentes principais\n\n\n\n\nMétodo da máxima verossimilhança: supõe que os dados seguem uma distribuição normal multivariada"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#métodos-de-estimação-componentes-principais",
+    "href": "aulas/analise_fatorial/fatorial.html#métodos-de-estimação-componentes-principais",
+    "title": "Análise Fatorial",
+    "section": "Métodos de estimação: Componentes Principais",
+    "text": "Métodos de estimação: Componentes Principais\nConsiderando \\(m &lt; p\\) o número de fatores comuns, a matriz de cargas fatoriais, estimada pelo método dos componentes principais, fica dada por:\n\\[\n\\begin{aligned}\n\\hat{\\boldsymbol{L}} &= \\left[\\begin{array}{cccc} \\sqrt{\\hat{\\lambda}}_1 \\hat{\\boldsymbol{e}}_1 & \\sqrt{\\hat{\\lambda}}_2 \\hat{\\boldsymbol{e}}_2 & \\cdots & \\sqrt{\\hat{\\lambda}}_m \\hat{\\boldsymbol{e}}_m \\end{array}\\right]\n\\end{aligned}\n\\]\n\nE a matriz de especificidades é dada por:\n\\[\\hat{\\boldsymbol{\\Psi}} = \\rm{diag}(\\boldsymbol{R} - \\hat{\\boldsymbol{L}} \\hat{\\boldsymbol{L}}^t)\\]\n\n\nAproximação de \\(\\boldsymbol{R}\\)\n\\[\\boldsymbol{R} \\approx  \\hat{\\boldsymbol{L}} \\hat{\\boldsymbol{L}}^t +  \\hat{\\boldsymbol{\\Psi}}\\]"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#métodos-de-estimação-componentes-principais-1",
+    "href": "aulas/analise_fatorial/fatorial.html#métodos-de-estimação-componentes-principais-1",
+    "title": "Análise Fatorial",
+    "section": "Métodos de estimação: Componentes Principais",
+    "text": "Métodos de estimação: Componentes Principais\nMatriz residual:\n\\[\\boldsymbol{MRes} = \\boldsymbol{R} - (\\hat{\\boldsymbol{L}} \\hat{\\boldsymbol{L}}^t + \\hat{\\boldsymbol{\\Psi}})\\]\n\n\nPode servir como critério de avaliação do modelo\n\nSeus valores deveriam ser próximos de zero\nMatriz é nula somente quando o valor de \\(m\\) é igual a \\(p\\)\n\n\n\n\n\nOs elementos da diagonal da matriz \\(\\boldsymbol{R}\\) são reproduzidos exatamente pelo modelo\n\nO mesmo não ocorre para os outros elementos da matriz \\(\\boldsymbol{R}\\) (covariâncias das variáveis \\(Z_i\\) e \\(Z_j\\))"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#métodos-de-estimação-componentes-principais-2",
+    "href": "aulas/analise_fatorial/fatorial.html#métodos-de-estimação-componentes-principais-2",
+    "title": "Análise Fatorial",
+    "section": "Métodos de estimação: Componentes Principais",
+    "text": "Métodos de estimação: Componentes Principais\nProporção da variabilidade total explicada pelo fator\n\\[\\text{Proporção explicada}_{F_j} = \\dfrac{\\sum \\limits_{i=1}^p l_{ij}^2}{p}\\]\n\n\nRepresenta o quanto cada fator consegue captar da variabilidade original das variáveis \\(Z_i\\)."
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#métodos-de-estimação-fatores-principais",
+    "href": "aulas/analise_fatorial/fatorial.html#métodos-de-estimação-fatores-principais",
+    "title": "Análise Fatorial",
+    "section": "Métodos de estimação: Fatores Principais",
+    "text": "Métodos de estimação: Fatores Principais\n\nTambém chamado Método de Componentes Principais Iterativo\n\n\n\nIdeia básica: Refinar as estimativas de \\(\\hat{\\boldsymbol{L}}\\) e \\(\\hat{\\boldsymbol{\\Psi}}\\), encontradas a partir do método das componentes principais.\n\n\n\n\nProcedimento:\n\nEstimativas iniciais pelo método das componentes principais\nTroca dos elementos da diagonal de \\(\\boldsymbol{R}\\) pelas comunalidades estimadas\nNovas estimações a partir da matriz \\(\\boldsymbol{R}^*\\)\nSubstituição dos elementos da diagonal principal pelas comunalidades estimadas\nProcedimento é repetido até que as diferenças entres as comunalidades estimadas sejam desprezíveis"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#métodos-de-estimação-máxima-verossimilhança",
+    "href": "aulas/analise_fatorial/fatorial.html#métodos-de-estimação-máxima-verossimilhança",
+    "title": "Análise Fatorial",
+    "section": "Métodos de estimação: Máxima Verossimilhança",
+    "text": "Métodos de estimação: Máxima Verossimilhança\nSó pode ser utilizado quando a forma da distribuição de probabilidades é conhecida\n\nSuposição:\n\nVetor aleatório \\(\\boldsymbol{z}\\) tem distribuição normal \\(p\\)-variada\n\n\n\n\nConsequência:\n\nVetor das variáveis padronizadas é normal \\(p\\)-variado\nFatores tem distribuição normal multivariada com vetor de médias zero e matriz de covariâncias \\(\\boldsymbol{I}_m\\)\nErros tem distribuição normal \\(p\\)-variada com vetor de médias zero e matriz de covariâncias \\(\\boldsymbol{\\Psi}\\)."
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#métodos-de-estimação-máxima-verossimilhança-1",
+    "href": "aulas/analise_fatorial/fatorial.html#métodos-de-estimação-máxima-verossimilhança-1",
+    "title": "Análise Fatorial",
+    "section": "Métodos de estimação: Máxima Verossimilhança",
+    "text": "Métodos de estimação: Máxima Verossimilhança\nA função de verossimilhança considerando uma amostra aleatória de tamanho \\(n\\) observada no vetor aleatório \\(\\boldsymbol{z}\\) é dada por:\n\\[\n\\boldsymbol{L}(\\boldsymbol{0},\\boldsymbol{P}) =  \\displaystyle \\frac{1}{(2\\pi)^{\\frac{np}{2}} |(\\boldsymbol{L} \\boldsymbol{L}^t + \\boldsymbol{\\Psi})|^{\\frac{n}{2}}} \\exp \\left\\{-\\frac{1}{2} \\displaystyle \\sum_{j=1}^n \\boldsymbol{z}_j^t (\\boldsymbol{L}\\boldsymbol{L}^t + \\boldsymbol{\\Psi})^{-1} \\boldsymbol{z}_j  \\right\\}\n\\]\n\n\nA função de verossimilhança depende da matrizes \\(\\boldsymbol{L}\\) e \\(\\boldsymbol{\\Psi}\\), através da matriz de correlação \\(\\boldsymbol{P}\\)."
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#métodos-de-estimação-máxima-verossimilhança-2",
+    "href": "aulas/analise_fatorial/fatorial.html#métodos-de-estimação-máxima-verossimilhança-2",
+    "title": "Análise Fatorial",
+    "section": "Métodos de estimação: Máxima Verossimilhança",
+    "text": "Métodos de estimação: Máxima Verossimilhança\n\nOs estimadores de máxima verossimilhança de \\(\\boldsymbol{L}\\) e \\(\\boldsymbol{\\Psi}\\) são as matrizes \\(\\hat{\\boldsymbol{L}}\\) e \\(\\hat{\\boldsymbol{\\Psi}}\\) que maximizam a função de verossimilhança \\(\\boldsymbol{L}(\\boldsymbol{0},\\boldsymbol{P})\\).\n\n\n\nMaximização é feita por métodos numéricos.\n\n\n\n\nMétodo mais sofisticado que os métodos de componentes e fatores principais: produz estimativas mais precisas"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#métodos-de-estimação-máxima-verossimilhança-3",
+    "href": "aulas/analise_fatorial/fatorial.html#métodos-de-estimação-máxima-verossimilhança-3",
+    "title": "Análise Fatorial",
+    "section": "Métodos de estimação: Máxima Verossimilhança",
+    "text": "Métodos de estimação: Máxima Verossimilhança\n\n\n\n\n\n\n\nCuidado!\n\n\n\nEstá fundamentado na suposição de normalidade multivariada dos vetores \\(\\boldsymbol{z}\\), \\(\\boldsymbol{F}\\) e \\(\\boldsymbol{\\epsilon}\\).\n\nApenas a normalidade do vetor \\(\\boldsymbol{z}\\) pode ser investigada a priori a partir dos dados amostrais\nFatores e erros são variáveis aleatórias não observáveis"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#rotação-dos-fatores",
+    "href": "aulas/analise_fatorial/fatorial.html#rotação-dos-fatores",
+    "title": "Análise Fatorial",
+    "section": "Rotação dos fatores",
+    "text": "Rotação dos fatores\nUma propriedade importante do modelo fatorial ortogonal é a falta de unicidade das cargas fatoriais: se \\(\\boldsymbol{L}\\) satisfaz à relação \\(\\boldsymbol{P} = \\boldsymbol{L}\\boldsymbol{L}^t + \\boldsymbol{\\Psi}\\), então \\(\\boldsymbol{L}^* = \\boldsymbol{L} \\boldsymbol{T}\\), tal que \\(\\boldsymbol{T} \\boldsymbol{T}^t = \\boldsymbol{T}^t\\boldsymbol{T} = \\boldsymbol{I}\\) (\\(\\boldsymbol{T}\\) ortogonal), também satisfaz:\n\\[\n\\begin{aligned}\n\\boldsymbol{L}^* \\boldsymbol{L}^{*t} + \\boldsymbol{\\Psi} &= (\\boldsymbol{L} \\boldsymbol{T})(\\boldsymbol{L} \\boldsymbol{T})^t + \\boldsymbol{\\Psi} = \\boldsymbol{L} \\boldsymbol{T}\\boldsymbol{T}^t \\boldsymbol{L}^t + \\boldsymbol{\\Psi} \\\\ &= \\boldsymbol{L} \\boldsymbol{I} \\boldsymbol{L}^t + \\boldsymbol{\\Psi} =\n\\boldsymbol{L}\\boldsymbol{L}^t + \\boldsymbol{\\Psi } = \\boldsymbol{P}\n\\end{aligned}\n\\]\n\nA matriz de resíduos permanece a mesma (\\(\\hat{h}_i^2\\) e \\(\\hat{\\Psi}_i\\))\n\\[\\boldsymbol{R} - \\hat{\\boldsymbol{L}} \\hat{\\boldsymbol{L}}^t - \\hat{\\boldsymbol{\\Psi}} = \\boldsymbol{R} - \\hat{\\boldsymbol{L}}^* \\hat{\\boldsymbol{L}}^{*t} - \\hat{\\boldsymbol{\\Psi}}\\]\n\n\n\nDo ponto de vista estatístico é irrelevante obter \\(\\hat{\\boldsymbol{L}}\\) ou \\(\\hat{\\boldsymbol{L}}^*\\)"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#rotação-dos-fatores-1",
+    "href": "aulas/analise_fatorial/fatorial.html#rotação-dos-fatores-1",
+    "title": "Análise Fatorial",
+    "section": "Rotação dos fatores",
+    "text": "Rotação dos fatores\nComentários\n\nUma vez extraídos os fatores, temos a chamada matriz de cargas fatoriais. Nesta matriz, cada elemento indica o grau de correspondência entre a variável e o fator;\n\n\nCom a rotação, busca-se uma estrutura mais simples: loadings originais podem não ter fácil interpretação\n\n\nIdeal: encontrar um padrão de loadings tais que cada variável carregue-se fortemente em um único fator (com loadings moderados nos outros fatores)\n\n\nNem sempre é possível obter esta estrutura mais simples"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#rotação-dos-fatores-2",
+    "href": "aulas/analise_fatorial/fatorial.html#rotação-dos-fatores-2",
+    "title": "Análise Fatorial",
+    "section": "Rotação dos fatores",
+    "text": "Rotação dos fatores\nAo rotacionar a matriz fatorial, busca-se redistribuir a variância dos primeiros fatores para os últimos, a fim de atingir um padrão fatorial mais simples e teoricamente mais significativo.\n\n\n\nTable 3: Cargas fatoriais dos dois fatores extraídos\n\n\n\n\n\nVariáveis\nFator 01\nFator 02\n\n\n\n\n\\(V_1\\)\n\\(0,50\\)\n\\(0,82\\)\n\n\n\\(V_2\\)\n\\(0,60\\)\n\\(0,61\\)\n\n\n\\(V_3\\)\n\\(0,91\\)\n\\(-0,22\\)\n\n\n\\(V_4\\)\n\\(0,82\\)\n\\(-0,30\\)\n\n\n\\(V_5\\)\n\\(0,49\\)\n\\(-0,50\\)"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#rotação-dos-fatores-3",
+    "href": "aulas/analise_fatorial/fatorial.html#rotação-dos-fatores-3",
+    "title": "Análise Fatorial",
+    "section": "Rotação dos fatores",
+    "text": "Rotação dos fatores\n\\[\\text{ 2 agrupamentos: As cargas fatoriais, contudo, não parecem tão óbvias}\\]"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#rotação-dos-fatores-4",
+    "href": "aulas/analise_fatorial/fatorial.html#rotação-dos-fatores-4",
+    "title": "Análise Fatorial",
+    "section": "Rotação dos fatores",
+    "text": "Rotação dos fatores\n\\[\\text{Rotação Ortogonal}\\]\n\n\n\n\n\nTable 4: Cargas fatoriais estimadas para dois fatores\n\n\n\n\n\nVariáveis\nFator 01\nFator 02\n\n\n\n\n\\(V_1\\)\n\\(0,03\\)\n\\(0,90\\)\n\n\n\\(V_2\\)\n\\(0,19\\)\n\\(0,82\\)\n\n\n\\(V_3\\)\n\\(0,95\\)\n\\(0,22\\)\n\n\n\\(V_4\\)\n\\(0,89\\)\n\\(0,12\\)\n\n\n\\(V_5\\)\n\\(0,78\\)\n\\(-0,12\\)"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#rotação-dos-fatores-5",
+    "href": "aulas/analise_fatorial/fatorial.html#rotação-dos-fatores-5",
+    "title": "Análise Fatorial",
+    "section": "Rotação dos fatores",
+    "text": "Rotação dos fatores\n\nOs métodos de rotação têm como objetivo simplificar as linhas e colunas da matriz fatorial para facilitar a interpretação\n\nMaximizar a carga de uma variável em um único fator\nReduzir ao máximo o número de variáveis com cargas altas por fator\n\n\n\n\nAlguns critérios para encontrar matriz ortogonal:\n\nVarimax\nQuartimax\nOrthomax"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#rotação-dos-fatores-6",
+    "href": "aulas/analise_fatorial/fatorial.html#rotação-dos-fatores-6",
+    "title": "Análise Fatorial",
+    "section": "Rotação dos fatores",
+    "text": "Rotação dos fatores\n\nCritério Varimax: É um dos mais utilizados. Em geral, produz soluções mais simples\n\n\n\nCritério Quartimax: Tem tendência de gerar fatores, onde todas as variáveis têm loadings elevados\n\n\n\n\nCritério Orthomax: É uma média ponderada dos dois outros métodos"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#rotação-dos-fatores-7",
+    "href": "aulas/analise_fatorial/fatorial.html#rotação-dos-fatores-7",
+    "title": "Análise Fatorial",
+    "section": "Rotação dos fatores",
+    "text": "Rotação dos fatores\nComentários\n\nQualidade de ajuste: A rotação não acrescenta nenhuma melhoria em relação ao ajuste original\n\nMatriz residual original não é alterada pela transformação ortogonal\nValores estimados de comunalidade e variâncias específicas permanecem inalterados\n\n\n\nInterpretação: Novos fatores podem ser de mais fácil interpretação\n\n\nQuando a solução sem rotação já é de boa qualidade, não se recomenda rotação: Solução rotacionada pode ser pior"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#quantos-fatores-usar",
+    "href": "aulas/analise_fatorial/fatorial.html#quantos-fatores-usar",
+    "title": "Análise Fatorial",
+    "section": "Quantos fatores usar?",
+    "text": "Quantos fatores usar?\nPara determinar o valor de \\(m\\)…\n\nAnalisar a proporção da variação total dos dados atribuída ao \\(j\\)-ésimo fator, dada por:\n\n\\[\\dfrac{\\hat{\\lambda}_j}{p}, \\,\\,\\,\\, j = 1,2, \\cdots, m, \\text{ se usarmos } \\boldsymbol{R}\\]\n\n\nCritério de Kaiser: retenção dos fatores com autovalor associado superior a 1;\n\n\n\n\nGráfico scree-plot\n\n\n\n\nAnálise paralela de Horn"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#quantos-fatores-usar-1",
+    "href": "aulas/analise_fatorial/fatorial.html#quantos-fatores-usar-1",
+    "title": "Análise Fatorial",
+    "section": "Quantos fatores usar?",
+    "text": "Quantos fatores usar?\n\nConjugar indicadores estatísticos a:\n\nInterpretação prática dos resultados;\nBusca de uma solução parcimoniosa;\nPossível indicação do número de fatores segundo a teoria da área;\n\n\n\n\nBom senso (sempre!)."
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#quantos-fatores-usar-2",
+    "href": "aulas/analise_fatorial/fatorial.html#quantos-fatores-usar-2",
+    "title": "Análise Fatorial",
+    "section": "Quantos fatores usar?",
+    "text": "Quantos fatores usar?\nComentários\n\nMétodo de máxima verossimilhança: Mudança de valor de \\(m\\) altera as estimativas dos loadings\n\n\nMétodo de componentes principais: Aumento no valor de \\(m\\) não altera os loadings para os fatores obtidos anteriormente\n\n\nQuando os dados provêm de distribuição normal multivariada\n\nUsar método de componentes principais como análise exploratória dos fatores e estimação do valor provável de \\(m\\)\nPosteriormente, qualidade da solução inicial poderá ser melhorada pelo uso do método de máxima verossimilhança"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#interpretação-dos-fatores",
+    "href": "aulas/analise_fatorial/fatorial.html#interpretação-dos-fatores",
+    "title": "Análise Fatorial",
+    "section": "Interpretação dos fatores",
+    "text": "Interpretação dos fatores\n\\[\\text{Avaliação da significância estatística baseada no tamanho da amostra}\\]\n\n  \n\nTamanho mínimo de amostra recomendado em função da carga fatorial\n\n\nCarga Fatorial\nTamanho da amostra\n\n\n\n\n0,30\n350\n\n\n0,35\n250\n\n\n0,40\n200\n\n\n0,45\n150\n\n\n0,50\n120\n\n\n0,55\n100\n\n\n0,60\n85\n\n\n0,65\n70\n\n\n0,70\n60\n\n\n0,75\n50"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#interpretação-dos-fatores-1",
+    "href": "aulas/analise_fatorial/fatorial.html#interpretação-dos-fatores-1",
+    "title": "Análise Fatorial",
+    "section": "Interpretação dos fatores",
+    "text": "Interpretação dos fatores\n\\[\\text{Interpretação de uma matriz de cargas fatoriais em 5 passos}\\]"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#interpretação-dos-fatores-2",
+    "href": "aulas/analise_fatorial/fatorial.html#interpretação-dos-fatores-2",
+    "title": "Análise Fatorial",
+    "section": "Interpretação dos fatores",
+    "text": "Interpretação dos fatores\n\\[\\text{Algumas situações podem ser encontradas}\\]\n\\[\\textbf{A variável tem carga cruzada}\\]\n\n\n\nVariável\nFator 01\nFator 02\nComunalidade\n\n\n\n\n\\(\\cdots\\)\n\\(\\cdots\\)\n\\(\\cdots\\)\n\\(\\cdots\\)\n\n\n\\(V_i\\)\n\\(-0,64\\)\n\\(-0,56\\)\n\\(0,72\\)\n\n\n\\(\\cdots\\)\n\\(\\cdots\\)\n\\(\\cdots\\)\n\\(\\cdots\\)"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#interpretação-dos-fatores-3",
+    "href": "aulas/analise_fatorial/fatorial.html#interpretação-dos-fatores-3",
+    "title": "Análise Fatorial",
+    "section": "Interpretação dos fatores",
+    "text": "Interpretação dos fatores\n\\[\\text{Algumas situações podem ser encontradas}\\]\n\\[\\textbf{A variável não possui cargas significantes}\\]\n\n\n\nVariável\nFator 01\nFator 02\nComunalidade\n\n\n\n\n\\(\\cdots\\)\n\\(\\cdots\\)\n\\(\\cdots\\)\n\\(\\cdots\\)\n\n\n\\(V_i\\)\n\\(-0,25\\)\n\\(0,19\\)\n\\(0,10\\)\n\n\n\\(\\cdots\\)\n\\(\\cdots\\)\n\\(\\cdots\\)\n\\(\\cdots\\)"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#interpretação-dos-fatores-4",
+    "href": "aulas/analise_fatorial/fatorial.html#interpretação-dos-fatores-4",
+    "title": "Análise Fatorial",
+    "section": "Interpretação dos fatores",
+    "text": "Interpretação dos fatores\n\\[\\text{Algumas situações podem ser encontradas}\\]\n\\[\\textbf{Mesmo com cargas significantes, a comunalidade é baixa}\\]\n\n\n\nVariável\nFator 01\nFator 02\nComunalidade\n\n\n\n\n\\(\\cdots\\)\n\\(\\cdots\\)\n\\(\\cdots\\)\n\\(\\cdots\\)\n\n\n\\(V_i\\)\n0,00\n0,40\n0,16\n\n\n\\(\\cdots\\)\n\\(\\cdots\\)\n\\(\\cdots\\)\n\\(\\cdots\\)"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#interpretação-dos-fatores-5",
+    "href": "aulas/analise_fatorial/fatorial.html#interpretação-dos-fatores-5",
+    "title": "Análise Fatorial",
+    "section": "Interpretação dos fatores",
+    "text": "Interpretação dos fatores\n\\[\\text{Alternativas}\\]\n\nIgnorar as variáveis problemáticas e interpretar a solução fatorial como ela é, observando que as variáveis em questão são pobremente representadas na solução fatorial;\n\n\n\nAvaliar cada variável para uma possível eliminação e reespecificar o modelo após sua retirada;\n\n\n\n\nEmpregar um método alternativo de rotação;\n\n\n\n\n\nDiminuir/aumentar o número de fatores para avaliar se a nova estrutura fatorial representará as variáveis problemáticas;"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#comentários-finais-sobre-análise-fatorial",
+    "href": "aulas/analise_fatorial/fatorial.html#comentários-finais-sobre-análise-fatorial",
+    "title": "Análise Fatorial",
+    "section": "Comentários finais sobre análise fatorial",
+    "text": "Comentários finais sobre análise fatorial\n\nMatriz de resíduos: A observação da matriz de resíduos muitas vezes, pode indicar quando o número de fatores está superdimensionado\n\nEx.: Se \\(m\\) não for muito pequeno e a matriz de resíduos estiver próxima de zero, recomenda-se testar outras soluções para \\(m\\) menores que o valor já especificado\n\n\n\n\nA análise fatorial deve ser utilizada apenas se utilizada em situações em que as variáveis originais são correlacionadas: Evitar soluções com \\(m\\) elevado tal que determinados fatores fiquem relacionados com uma única variável original\n\n\n\n\nEm situações em que aparecem fatores relacionados a uma única variável \\(Z_i\\) é recomendável retirar a variável \\(Z_i\\) e reestimar o modelo de análise fatorial"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#usos-adicionais-dos-resultados-da-afe",
+    "href": "aulas/analise_fatorial/fatorial.html#usos-adicionais-dos-resultados-da-afe",
+    "title": "Análise Fatorial",
+    "section": "Usos adicionais dos resultados da AFE",
+    "text": "Usos adicionais dos resultados da AFE\n\\[\\textbf{Como posso usar os resultados de uma AFE em análises subsequentes?}\\]\n\nSeleção de variáveis substitutas para análise subseqüente\n\nÉ selecionada a variável com maior carga no fator para atuar como variável substituta representativa (deve considerar o conhecimento que o pesquisador tem da teoria).\n\n\n\n\nEscores Fatoriais: representação de cada indivíduo no espaço fatorial. A estimação dos escores fatoriais necessita de métodos estatíscos elaborados, sendo os mais conhecidos os métodos da regressão e dos mínimos quadrados ponderados."
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#escores-fatoriais",
+    "href": "aulas/analise_fatorial/fatorial.html#escores-fatoriais",
+    "title": "Análise Fatorial",
+    "section": "Escores fatoriais",
+    "text": "Escores fatoriais\n\nMétodo dos Mínimos Quadrados Ponderados:\n\n\\[\\hat{\\boldsymbol{f}} = ( \\hat{\\boldsymbol{L}}^t \\hat{\\boldsymbol{\\Psi}}^{-1} \\hat{\\boldsymbol{L}})^{-1}  \\hat{\\boldsymbol{L}}^t \\hat{\\boldsymbol{\\Psi}}^{-1} \\boldsymbol{z}\\]\n\n\nMétodo da Regressão: suposição de normalidade multivariada para \\(\\boldsymbol{z}\\), \\(\\boldsymbol{F}\\) e \\(\\boldsymbol{\\epsilon}\\)\n\n\\[\\hat{\\boldsymbol{f}} = \\hat{\\boldsymbol{L}}^t (\\hat{\\boldsymbol{L}} \\hat{\\boldsymbol{L}}^t + \\hat{\\boldsymbol{\\Psi}})^{-1}\\boldsymbol{z}\\]"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#contexto-empresa-telco",
+    "href": "aulas/analise_fatorial/fatorial.html#contexto-empresa-telco",
+    "title": "Análise Fatorial",
+    "section": "Contexto: empresa Telco",
+    "text": "Contexto: empresa Telco\n\nOperadora de telefonia móvel em cidade do interior\nPesquisa de satisfação com os clientes após um ano de operação\nQuestionário com 10 itens (P1–P10) em escala de 0 a 10"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#itens-e-variáveis",
+    "href": "aulas/analise_fatorial/fatorial.html#itens-e-variáveis",
+    "title": "Análise Fatorial",
+    "section": "Itens e variáveis",
+    "text": "Itens e variáveis\nVamos representar os 10 itens por variáveis \\(X_1, \\ldots, X_{10}\\):\n\n\\(X_1\\): intensidade do sinal\n\\(X_2\\): distribuição geográfica do sinal\n\\(X_3\\): tecnologia adotada\n\\(X_4\\): atendimento como um todo\n\\(X_5\\): injustiça nas tarifas\n\\(X_6\\): plano de serviços\n\\(X_7\\): qualidade das informações\n\\(X_8\\): serviço prestado ao cliente\n\\(X_9\\): atenção dedicada ao cliente\n\\(X_{10}\\): atendimento especificamente ao cliente"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#contexto-empresa-telco-1",
+    "href": "aulas/analise_fatorial/fatorial.html#contexto-empresa-telco-1",
+    "title": "Análise Fatorial",
+    "section": "Contexto: empresa Telco",
+    "text": "Contexto: empresa Telco\nOs itens avaliam, por exemplo:\n\nIntensidade do sinal\nQualidade do serviço e das informações\nJustiça nas tarifas\nDistribuição geográfica do sinal\nPlano de serviços\nDesconfiança em relação à empresa\nTecnologia, atenção e atendimento"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#itens-e-variáveis-1",
+    "href": "aulas/analise_fatorial/fatorial.html#itens-e-variáveis-1",
+    "title": "Análise Fatorial",
+    "section": "Itens e variáveis",
+    "text": "Itens e variáveis\nObjetivo: identificar dimensões latentes da qualidade percebida.\n\n\n# Instale o pacote pacman primeiro, se ainda não o tiver\nif (!requireNamespace(\"pacman\", quietly = TRUE)) {\n  install.packages(\"pacman\")\n}\n\n# Use p_load para instalar e carregar pacotes\npacman::p_load(tidyverse, psych, GPArotation, ggcorrplot)"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#objetivo-da-análise",
+    "href": "aulas/analise_fatorial/fatorial.html#objetivo-da-análise",
+    "title": "Análise Fatorial",
+    "section": "Objetivo da análise",
+    "text": "Objetivo da análise\nObjetivo: identificar dimensões latentes da qualidade percebida.\n\n\n# Instale o pacote pacman primeiro, se ainda não o tiver\nif (!requireNamespace(\"pacman\", quietly = TRUE)) {\n  install.packages(\"pacman\")\n}\n\n# Use p_load para instalar e carregar pacotes\npacman::p_load(tidyverse, psych, GPArotation, ggcorrplot, janitor, corrr, igraph, ggraph, ggrepel)"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#lendo-os-dados-telco",
+    "href": "aulas/analise_fatorial/fatorial.html#lendo-os-dados-telco",
+    "title": "Análise Fatorial",
+    "section": "Lendo os dados Telco",
+    "text": "Lendo os dados Telco\n\npath &lt;- \"https://raw.githubusercontent.com/tiagomartin/est014/refs/heads/master/dados/telco.csv\"\ntelco &lt;- read_csv(path, show_col_types = FALSE) %&gt;%\n  clean_names() \n\nglimpse(telco)\n\nRows: 875\nColumns: 10\n$ x1  &lt;dbl&gt; 2.021634, 2.634654, 2.161853, 2.611833, 2.296529, 2.265094, 2.7789…\n$ x2  &lt;dbl&gt; 3.417002, 4.989637, 4.369748, 5.058855, 2.652786, 4.401388, 5.0625…\n$ x3  &lt;dbl&gt; 3.203575, 3.548522, 3.423754, 3.438870, 3.394790, 3.446864, 3.4617…\n$ x4  &lt;dbl&gt; 4.674381, 5.167249, 5.076795, 5.145240, 4.935702, 4.960152, 5.0267…\n$ x5  &lt;dbl&gt; 7.845196, 7.527241, 7.432190, 7.381899, 7.572431, 7.401869, 7.3539…\n$ x6  &lt;dbl&gt; 4.474652, 5.155799, 4.955571, 5.005566, 4.857968, 4.987190, 5.0357…\n$ x7  &lt;dbl&gt; 1.652540, 2.303569, 3.000841, 3.084402, 2.834656, 4.363538, 4.4467…\n$ x8  &lt;dbl&gt; 3.192175, 3.652853, 4.442697, 4.541976, 4.221692, 4.371027, 4.4521…\n$ x9  &lt;dbl&gt; 7.092796, 7.518412, 6.690318, 6.761366, 6.098145, 6.766362, 6.8473…\n$ x10 &lt;dbl&gt; 2.882242, 3.046624, 3.350822, 3.388591, 3.197836, 3.273597, 3.3047…\n\ndim(telco)\n\n[1] 875  10"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#matriz-de-correlação",
+    "href": "aulas/analise_fatorial/fatorial.html#matriz-de-correlação",
+    "title": "Análise Fatorial",
+    "section": "Matriz de correlação",
+    "text": "Matriz de correlação\n\nR &lt;- cor(telco, use = \"pairwise.complete.obs\")\nR\n\n               x1            x2            x3            x4            x5\nx1   1.0000000000  0.4781493696  0.7589493789 -2.140846e-03  0.0053772224\nx2   0.4781493696  1.0000000000  0.5673144741 -6.145747e-03  0.0072963197\nx3   0.7589493789  0.5673144741  1.0000000000 -5.368382e-04  0.0047779539\nx4  -0.0021408464 -0.0061457470 -0.0005368382  1.000000e+00 -0.5773156240\nx5   0.0053772224  0.0072963197  0.0047779539 -5.773156e-01  1.0000000000\nx6   0.5414366524  0.4011884586  0.6425555030  7.028403e-01 -0.4256035677\nx7   0.0014174056 -0.0011068157  0.0020693251  5.251678e-01 -0.3252902914\nx8   0.0075964582  0.0028010661  0.0011511906  7.496806e-03 -0.0041722500\nx9   0.0001745702  0.0013298066  0.0008497782 -3.530898e-03 -0.0026125521\nx10  0.0067917792  0.0001410227  0.0044244904  3.148538e-05  0.0004600118\n              x6            x7           x8            x9           x10\nx1   0.541436652  0.0014174056  0.007596458  0.0001745702  6.791779e-03\nx2   0.401188459 -0.0011068157  0.002801066  0.0013298066  1.410227e-04\nx3   0.642555503  0.0020693251  0.001151191  0.0008497782  4.424490e-03\nx4   0.702840339  0.5251677868  0.007496806 -0.0035308985  3.148538e-05\nx5  -0.425603568 -0.3252902914 -0.004172250 -0.0026125521  4.600118e-04\nx6   1.000000000  0.3942750794  0.008252132 -0.0023037351  3.223454e-03\nx7   0.394275079  1.0000000000  0.004857482 -0.0009232318  1.151786e-03\nx8   0.008252132  0.0048574820  1.000000000 -0.7925700049  5.324280e-01\nx9  -0.002303735 -0.0009232318 -0.792570005  1.0000000000 -4.301518e-01\nx10  0.003223454  0.0011517859  0.532427996 -0.4301518161  1.000000e+00"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#visualização-da-matriz-de-correlação",
+    "href": "aulas/analise_fatorial/fatorial.html#visualização-da-matriz-de-correlação",
+    "title": "Análise Fatorial",
+    "section": "Visualização da matriz de correlação",
+    "text": "Visualização da matriz de correlação\n\nggcorrplot(\nR,\ntype = \"full\",\nlab = TRUE,\ntitle = \"Matriz de correlação – Itens Telco\"\n)\n\n# Blocos de correlações altas sugerem possíveis fatores latentes"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#medidas-de-adequação-à-afe",
+    "href": "aulas/analise_fatorial/fatorial.html#medidas-de-adequação-à-afe",
+    "title": "Análise Fatorial",
+    "section": "Medidas de adequação à AFE",
+    "text": "Medidas de adequação à AFE\nKMO – Kaiser-Meyer-Olkin\n\nKMO(R)\n\nKaiser-Meyer-Olkin factor adequacy\nCall: KMO(r = R)\nOverall MSA =  0.63\nMSA for each item = \n  x1   x2   x3   x4   x5   x6   x7   x8   x9  x10 \n0.85 0.93 0.56 0.46 0.93 0.55 0.94 0.58 0.60 0.79 \n\n\n\nKMO geral &gt; 0,60 → dados adequados para AFE\nMSA de \\(X_4 &lt; 0,5\\) → apresenta adequabilidade insuficiente, podendo ser retirada da analise"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#escolha-do-número-de-fatores-parallel-analysis",
+    "href": "aulas/analise_fatorial/fatorial.html#escolha-do-número-de-fatores-parallel-analysis",
+    "title": "Análise Fatorial",
+    "section": "Escolha do número de fatores: Parallel Analysis",
+    "text": "Escolha do número de fatores: Parallel Analysis\n\nset.seed(123)\n\nfa.parallel(\ntelco,\nfm = \"ml\",\nfa = \"fa\",\nmain = \"Parallel Analysis – Caso Telco\"\n)\n\n\nParallel analysis suggests that the number of factors =  3  and the number of components =  NA"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#escolha-do-número-de-fatores-parallel-analysis-1",
+    "href": "aulas/analise_fatorial/fatorial.html#escolha-do-número-de-fatores-parallel-analysis-1",
+    "title": "Análise Fatorial",
+    "section": "Escolha do número de fatores: Parallel Analysis",
+    "text": "Escolha do número de fatores: Parallel Analysis\n\nComparamos autovalores observados com autovalores obtidos ao acaso.\nMantemos os fatores com autovalores acima da linha simulada.\n\n\nn_fatores &lt;- 3"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#ajuste-da-afe",
+    "href": "aulas/analise_fatorial/fatorial.html#ajuste-da-afe",
+    "title": "Análise Fatorial",
+    "section": "Ajuste da AFE",
+    "text": "Ajuste da AFE\n\nfa_telco &lt;- factanal(\n  x        = telco,\n  factors  = n_fatores,\n  rotation = \"none\",\n  scores   = \"none\"\n)\n\nprint(fa_telco, digits = 3, cut = 0.30) # n = 875: cargas acima de 0,30 sao significativas\n\n\nCall:\nfactanal(x = telco, factors = n_fatores, scores = \"none\", rotation = \"none\")\n\nUniquenesses:\n   x1    x2    x3    x4    x5    x6    x7    x8    x9   x10 \n0.359 0.642 0.101 0.056 0.647 0.016 0.707 0.019 0.360 0.711 \n\nLoadings:\n    Factor1 Factor2 Factor3\nx1   0.514           0.614 \nx2   0.380           0.462 \nx3   0.610           0.726 \nx4   0.743          -0.626 \nx5  -0.451           0.387 \nx6   0.990                 \nx7   0.416          -0.346 \nx8           0.990         \nx9          -0.800         \nx10          0.537         \n\n               Factor1 Factor2 Factor3\nSS loadings      2.691   1.910   1.780\nProportion Var   0.269   0.191   0.178\nCumulative Var   0.269   0.460   0.638\n\nTest of the hypothesis that 3 factors are sufficient.\nThe chi square statistic is 0.32 on 18 degrees of freedom.\nThe p-value is 1 \n\n# Podemos notar que os 3 fatores explicam juntos 63,8% da variacao total do sistema original"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#ajuste-da-afe-1",
+    "href": "aulas/analise_fatorial/fatorial.html#ajuste-da-afe-1",
+    "title": "Análise Fatorial",
+    "section": "Ajuste da AFE",
+    "text": "Ajuste da AFE\nAnalisando as cargas significativas\n\n\\(X_1\\) - Apresenta cargas cruzadas - fatores 01 e 03 - \\(h^2\\): 0,641 - MSA: 0,85\n\\(X_2\\) - Apresenta cargas cruzadas - fatores 01 e 03 - \\(h^2\\): 0,358 - MSA: 0,93\n\\(X_3\\) - Apresenta cargas cruzadas - fatores 01 e 03 - \\(h^2\\): 0,899 - MSA: 0,56\n\\(X_4\\) - Apresenta cargas cruzadas - fatores 01 e 03 - \\(h^2\\): 0,944 - MSA: 0,46\n\\(X_5\\) - Apresenta cargas cruzadas - fatores 01 e 03 - \\(h^2\\): 0,353 - MSA: 0,93\n\\(X_6\\) - fator 01 - \\(h^2\\): 0,984 - MSA: 0,55\n\\(X_7\\) - Apresenta cargas cruzadas - fatores 01 e 03 - \\(h^2\\): 0,293 - MSA: 0,94\n\\(X_8\\) - fator 02 - \\(h^2\\): 0,981 - MSA: 0,58\n\\(X_9\\) - fator 02 - \\(h^2\\): 0,640 - MSA: 0,60\n\\(X_{10}\\) - fator 02 - \\(h^2\\): 0,289 - MSA: 0,79"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#ajuste-da-afe-2",
+    "href": "aulas/analise_fatorial/fatorial.html#ajuste-da-afe-2",
+    "title": "Análise Fatorial",
+    "section": "Ajuste da AFE",
+    "text": "Ajuste da AFE\nAnalisando as cargas significativas\n\n\\(X_1\\) - Apresenta cargas cruzadas - fatores 01 e 03 - \\(h^2\\): 0,641 - MSA: 0,85\n\\(X_2\\) - Apresenta cargas cruzadas - fatores 01 e 03 - \\(h^2\\): 0,358 - MSA: 0,93\n\\(X_3\\) - Apresenta cargas cruzadas - fatores 01 e 03 - \\(h^2\\): 0,899 - MSA: 0,56\n\\(X_4\\) - Apresenta cargas cruzadas - fatores 01 e 03 - \\(h^2\\): 0,944 - MSA: 0,46\n\\(X_5\\) - Apresenta cargas cruzadas - fatores 01 e 03 - \\(h^2\\): 0,353 - MSA: 0,93\n\\(X_6\\) - fator 01 - \\(h^2\\): 0,984 - MSA: 0,55\n\\(X_7\\) - Apresenta cargas cruzadas - fatores 01 e 03 - \\(h^2\\): 0,293 - MSA: 0,94\n\\(X_8\\) - fator 02 - \\(h^2\\): 0,981 - MSA: 0,58\n\\(X_9\\) - fator 02 - \\(h^2\\): 0,640 - MSA: 0,60\n\\(X_{10}\\) - fator 02 - \\(h^2\\): 0,289 - MSA: 0,79"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#vamos-em-busca-de-uma-solucao-melhor-rotacao-varimax",
+    "href": "aulas/analise_fatorial/fatorial.html#vamos-em-busca-de-uma-solucao-melhor-rotacao-varimax",
+    "title": "Análise Fatorial",
+    "section": "Vamos em busca de uma solucao melhor: rotacao Varimax()",
+    "text": "Vamos em busca de uma solucao melhor: rotacao Varimax()\n\nvarimax(fa_telco$loadings)\n\n$loadings\n\nLoadings:\n    Factor1 Factor2 Factor3\nx1                   0.801 \nx2                   0.598 \nx3                   0.948 \nx4   0.971                 \nx5  -0.594                 \nx6   0.729           0.673 \nx7   0.541                 \nx8           0.991         \nx9          -0.800         \nx10          0.538         \n\n               Factor1 Factor2 Factor3\nSS loadings      2.121   1.910   2.350\nProportion Var   0.212   0.191   0.235\nCumulative Var   0.212   0.403   0.638\n\n$rotmat\n            [,1]        [,2]        [,3]\n[1,]  0.76987948 0.025103554  0.63769538\n[2,] -0.01744908 0.999680498 -0.01828749\n[3,] -0.63795072 0.002951969  0.77007153\n\n# Note que a proporcao total da variacao explicada pelos 3 fatores nao muda (63,8%). O que muda eh a proporcao da variacao total explicada por cada fator"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#vamos-em-busca-de-uma-solucao-melhor-rotacao-varimax-1",
+    "href": "aulas/analise_fatorial/fatorial.html#vamos-em-busca-de-uma-solucao-melhor-rotacao-varimax-1",
+    "title": "Análise Fatorial",
+    "section": "Vamos em busca de uma solucao melhor: rotacao Varimax()",
+    "text": "Vamos em busca de uma solucao melhor: rotacao Varimax()\nAnalisando novamente as cargas significativas\n\n\\(X_1\\) - fator 03\n\\(X_2\\) - fator 03\n\\(X_3\\) - fator 03\n\\(X_4\\) - fator 01\n\\(X_5\\) - fator 01\n\\(X_6\\) - Apresenta cargas cruzadas - fatores 01 e 03 - \\(h^2\\): 0,984 - MSA: 0,55\n\\(X_7\\) - fator 01\n\\(X_8\\) - fator 02\n\\(X_9\\) - fator 02\n\\(X_{10}\\) - fator 02"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#visualização-da-matriz-de-correlação-1",
+    "href": "aulas/analise_fatorial/fatorial.html#visualização-da-matriz-de-correlação-1",
+    "title": "Análise Fatorial",
+    "section": "Visualização da matriz de correlação",
+    "text": "Visualização da matriz de correlação\n\n## Variaveis aparentam se agrupar em tres grupos\ntidy_cors &lt;- telco %&gt;% correlate() %&gt;% stretch()\ngraph_cors &lt;- tidy_cors %&gt;%  filter(abs(r) &gt; .3) %&gt;% graph_from_data_frame(directed = FALSE)\nggraph(graph_cors, layout = \"stress\") +\n  geom_edge_link(alpha = 0.5) +\n  geom_node_point(size = 4) +\n  geom_node_text(aes(label = name), repel = TRUE, size = 5) +\n  theme_minimal()"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#medidas-de-adequação-à-afe-1",
+    "href": "aulas/analise_fatorial/fatorial.html#medidas-de-adequação-à-afe-1",
+    "title": "Análise Fatorial",
+    "section": "Medidas de adequação à AFE",
+    "text": "Medidas de adequação à AFE\nTeste de esfericidade de Bartlett\n\ncortest.bartlett(R, n = nrow(telco))\n\n$chisq\n[1] 5049.455\n\n$p.value\n[1] 0\n\n$df\n[1] 45\n\n\n\np-valor de Bartlett &lt; 0,05 → correlações não são nulas"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#segunda-tentativa-excluir-da-analise-a-variavel-x_4-msa-inadequado",
+    "href": "aulas/analise_fatorial/fatorial.html#segunda-tentativa-excluir-da-analise-a-variavel-x_4-msa-inadequado",
+    "title": "Análise Fatorial",
+    "section": "Segunda tentativa: excluir da analise a variavel \\(X_4\\) (MSA inadequado)",
+    "text": "Segunda tentativa: excluir da analise a variavel \\(X_4\\) (MSA inadequado)\n\ntelco2 &lt;- telco %&gt;% select(-x4)\n\nfa_telco2 &lt;- factanal(\n  x        = telco2,\n  factors  = n_fatores,\n  rotation = \"varimax\",\n  scores   = \"none\"\n)\n\nprint(fa_telco2, digits = 3, cut = 0.30) # n = 875: cargas acima de 0,30 sao significativas\n\n\nCall:\nfactanal(x = telco2, factors = n_fatores, scores = \"none\", rotation = \"varimax\")\n\nUniquenesses:\n   x1    x2    x3    x5    x6    x7    x8    x9   x10 \n0.360 0.642 0.101 0.644 0.023 0.702 0.019 0.360 0.711 \n\nLoadings:\n    Factor1 Factor2 Factor3\nx1   0.800                 \nx2   0.598                 \nx3   0.948                 \nx5                  -0.596 \nx6   0.662           0.734 \nx7                   0.546 \nx8           0.991         \nx9          -0.800         \nx10          0.537         \n\n               Factor1 Factor2 Factor3\nSS loadings      2.335   1.910   1.193\nProportion Var   0.259   0.212   0.133\nCumulative Var   0.259   0.472   0.604\n\nTest of the hypothesis that 3 factors are sufficient.\nThe chi square statistic is 0.23 on 12 degrees of freedom.\nThe p-value is 1 \n\n# Podemos notar que os 3 fatores explicam juntos 60,4% da variacao total do sistema original e não resolveu o problema"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#rotação-varimax",
+    "href": "aulas/analise_fatorial/fatorial.html#rotação-varimax",
+    "title": "Análise Fatorial",
+    "section": "Rotação Varimax()",
+    "text": "Rotação Varimax()\nAnalisando novamente as cargas significativas\n\n\\(X_1\\) - fator 03\n\\(X_2\\) - fator 03\n\\(X_3\\) - fator 03\n\\(X_4\\) - fator 01\n\\(X_5\\) - fator 01\n\\(X_6\\) - Apresenta cargas cruzadas - fatores 01 e 03 - \\(h^2\\): 0,984 - MSA: 0,55\n\\(X_7\\) - fator 01\n\\(X_8\\) - fator 02\n\\(X_9\\) - fator 02\n\\(X_{10}\\) - fator 02"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#terceira-tentativa-voltar-para-a-análise-a-variável-x_4-e-retirar-a-variável-x_6",
+    "href": "aulas/analise_fatorial/fatorial.html#terceira-tentativa-voltar-para-a-análise-a-variável-x_4-e-retirar-a-variável-x_6",
+    "title": "Análise Fatorial",
+    "section": "Terceira tentativa: voltar para a análise a variável \\(X_4\\) e retirar a variável \\(X_6\\)",
+    "text": "Terceira tentativa: voltar para a análise a variável \\(X_4\\) e retirar a variável \\(X_6\\)\n\ntelco3 &lt;- telco %&gt;% select(-x6)\n\nfa_telco3 &lt;- factanal(\n  x        = telco3,\n  factors  = n_fatores,\n  rotation = \"none\",\n  scores   = \"Bartlett\"\n)\n\nprint(fa_telco3, digits = 3, cut = 0.30) # n = 875: cargas acima de 0,30 sao significativas\n\n\nCall:\nfactanal(x = telco3, factors = n_fatores, scores = \"Bartlett\",     rotation = \"none\")\n\nUniquenesses:\n   x1    x2    x3    x4    x5    x7    x8    x9   x10 \n0.360 0.643 0.100 0.068 0.642 0.704 0.019 0.360 0.711 \n\nLoadings:\n    Factor1 Factor2 Factor3\nx1           0.800         \nx2           0.598         \nx3           0.949         \nx4                   0.965 \nx5                  -0.598 \nx7                   0.544 \nx8   0.991                 \nx9  -0.800                 \nx10  0.537                 \n\n               Factor1 Factor2 Factor3\nSS loadings      1.911   1.897   1.586\nProportion Var   0.212   0.211   0.176\nCumulative Var   0.212   0.423   0.599\n\nTest of the hypothesis that 3 factors are sufficient.\nThe chi square statistic is 0.24 on 12 degrees of freedom.\nThe p-value is 1 \n\n# Podemos notar que os 3 fatores explicam juntos 59,9% da variacao total do sistema original"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#solução-final-excluindo-x_6-da-análise",
+    "href": "aulas/analise_fatorial/fatorial.html#solução-final-excluindo-x_6-da-análise",
+    "title": "Análise Fatorial",
+    "section": "Solução final excluindo \\(X_6\\) da análise",
+    "text": "Solução final excluindo \\(X_6\\) da análise\n\nFator 01: associado a \\(X_8\\), \\(X_9\\) e \\(X_{10}\\)\n\nInterpretação: dimensão relacionada a atendimento / relacionamento com o cliente\n\nFator 02: associado a \\(X_1\\), \\(X_2\\) e \\(X_3\\)\n\nInterpretação: dimensão de qualidade técnica / infraestrutura (sinal, distribuição, tecnologia)\n\nFator 03: associado a \\(X_4\\), \\(X_5\\) e \\(X_7\\)\n\nInterpretação: dimensão de plano, informações e justiça tarifária"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#section",
+    "href": "aulas/analise_fatorial/fatorial.html#section",
+    "title": "Análise Fatorial",
+    "section": "",
+    "text": "loadings_nr &lt;- fa_telco3$loadings |&gt;\nunclass() |&gt;\nas.data.frame() |&gt;\nrownames_to_column(\"item\")\n\nggplot(loadings_nr, aes(x = Factor1, y = Factor2, label = item)) +\ngeom_hline(yintercept = 0, linetype = \"dashed\", color = \"grey70\") +\ngeom_vline(xintercept = 0, linetype = \"dashed\", color = \"grey70\") +\ngeom_point(size = 3) +\ngeom_text_repel(size = 5) +\nlabs(\ntitle = \"Mapa das cargas não rotacionadas – Fator 1 × Fator 2\",\nx = \"Factor 1\",\ny = \"Factor 2\"\n) +\ntheme_minimal(base_size = 14)"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#solução-final-excluindo-x_6-da-análise-1",
+    "href": "aulas/analise_fatorial/fatorial.html#solução-final-excluindo-x_6-da-análise-1",
+    "title": "Análise Fatorial",
+    "section": "Solução final excluindo \\(X_6\\) da análise",
+    "text": "Solução final excluindo \\(X_6\\) da análise\n\nloadings_nr &lt;- fa_telco3$loadings |&gt;\nunclass() |&gt;\nas.data.frame() |&gt;\nrownames_to_column(\"item\")\n\nggplot(loadings_nr, aes(x = Factor1, y = Factor2, label = item)) +\ngeom_hline(yintercept = 0, linetype = \"dashed\", color = \"grey70\") +\ngeom_vline(xintercept = 0, linetype = \"dashed\", color = \"grey70\") +\ngeom_point(size = 3) +\ngeom_text_repel(size = 5) +\nlabs(\ntitle = \"Mapa das cargas não rotacionadas – Fator 1 × Fator 2\",\nx = \"Factor 1\",\ny = \"Factor 2\"\n) +\ntheme_minimal(base_size = 14)"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#solução-final-excluindo-x_6-da-análise-1-output",
+    "href": "aulas/analise_fatorial/fatorial.html#solução-final-excluindo-x_6-da-análise-1-output",
+    "title": "Análise Fatorial",
+    "section": "Solução final excluindo \\(X_6\\) da análise",
+    "text": "Solução final excluindo \\(X_6\\) da análise"
+  },
+  {
+    "objectID": "aulas/analise_fatorial/fatorial.html#solução-final-excluindo-x_6-da-análise-2",
+    "href": "aulas/analise_fatorial/fatorial.html#solução-final-excluindo-x_6-da-análise-2",
+    "title": "Análise Fatorial",
+    "section": "Solução final excluindo \\(X_6\\) da análise",
+    "text": "Solução final excluindo \\(X_6\\) da análise\nPontos a destacar:\n\nProporção da variabilidade explicada por cada fator\n\nFator 1: cerca de 21%\nFator 2: cerca de 21%\nFator 3: cerca de 18%\n\nProporção da variabilidade explicada pelo modelo ≈ 0.60:\nA solução de 3 fatores explica aproximadamente 60% da variância total das variáveis padronizadas.\nPara um estudo com itens de questionário (escala de 0 a 10), essa proporção é considerada muito boa."
   }
 ]

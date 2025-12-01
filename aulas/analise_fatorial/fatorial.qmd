@@ -1,0 +1,1373 @@
+---
+title: "Análise Fatorial"
+format: 
+  revealjs:
+    width: 1600
+    height: 900
+    footer: ""
+    theme: quartomonothemer.scss
+    slide-number: c/t
+    show-slide-number: all
+    preview-links: auto
+    self-contained: true
+  beamer:          # Slides em PDF (LaTeX/Beamer)
+    aspectratio: 169   # 16:9
+    keep-tex: true     # opcional, guarda o .tex gerado
+incremental: false
+code-link: false
+bibliography: references.bib
+title-slide-attributes:
+    data-background-image: /images/back.png
+    data-background-size: cover
+    data-background-opacity: "0.3"
+execute:
+  echo: true
+---
+
+
+## Análise Fatorial
+
+
+- **Objetivo:** Descrever as relações de covariância entre muitas variáveis em termos de poucas quantidades aleatórias subjacentes e não observáveis
+
+. . .
+
+- **Motivação:**  Variáveis de um grupo altamente correlacionadas entre si, mas com pequenas correlações de outros grupos. 
+    - É concebível que cada grupo de variáveis represente um fator (ou construto) que seja o responsável pelas correlações observadas
+
+
+
+## Análise Fatorial
+
+Vamos supor cinco variáveis $Y_1$, $Y_2$, $Y_3$, $Y_4$ e $Y_5$ correspondentes às notas de estudantes em Espanhol, Inglês, Química, Física e Matemática, respectivamente.
+
+|       | $Y_1$ | $Y_2$ | $Y_3$ | $Y_4$ | $Y_5$ |
+|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|
+| $Y_1$ | 1     | 0,90  | 0,05  | 0,05  | 0,10  |
+| $Y_2$ | 0,90  | 1     | 0,05  | 0,10  | 0,05  |
+| $Y_3$ | 0,05  | 0,05  | 1     | 0,95  | 0,85  |
+| $Y_4$ | 0,05  | 0,10  | 0,95  | 1     | 0,90  |
+| $Y_5$ | 0,10  | 0,05  | 0,85  | 0,90  | 1     |
+
+: Matriz de correlações hipotética {#tbl-correlacao}
+
+
+
+## Análise Fatorial
+
+Com base nas correlações, poderíamos imaginar dois fatores subjacentes, e não observáveis:
+
+- **Fator 1:** Conhecimento em línguas - associado aos desempenhos em Espanhol e Inglês, fortemente correlacionados;
+
+. . .
+
+- **Fator 2:** Conhecimento em ciências exatas - associado aos desempenhos em Química, Física e Matemática.
+
+
+. . .
+
+
+É importante compreender que "conhecimento" é algo que não se mede diretamente, mas que pode se manifestar através de variáveis observáveis, como as notas obtidas nos exames.
+
+
+## Análise Fatorial
+
+
+Pode ser considerada uma extensão da Análise de Componentes Principais
+
+. . .
+
+
+- Ambas são tentativas de aproximar $\boldsymbol{S}$.
+
+
+. . .
+
+
+- A aproximação baseada em Análise Fatorial é mais elaborada
+
+
+. . .
+
+
+Questão principal:
+
+
+-  Dados são consistentes com a estrutura prescrita?
+
+
+
+## Tipos de Análise Fatorial
+
+
+### Análise Fatorial Exploratória
+
+
+\medskip
+
+- Busca encontrar os fatores subjacentes às variáveis originais amostradas
+
+- Em geral, efetuada quando não se tem noção clara da quantidade de fatores do modelo e nem do que representam
+
+
+
+### Análise Fatorial Confirmatória
+
+
+- Tem-se em mãos um modelo fatorial pré-especificado (modelo hipotético) e deseja-se verificar se é aplicável ou consistente com os dados amostrais de que dispõe
+
+
+
+## Planejamento de uma análise fatorial
+
+
+- **Verificar a adequabilidade da base de dados:** tamanho da amostra (desejável a razão de 5 indivíduos para cada variável), correlações significativas, KMO adequado.
+
+
+. . .
+
+
+- **Determinar o método de extração e o número de fatores a serem extraídos:** métodos de extração (componentes principais, fatores principais, máxima verossimilhança), número de fatores (critério de kaiser, screeplot, variância acumulada).
+
+
+
+. . .
+
+
+- **Decidir o tipo de rotação:** Varimax, Quartimax, Orthomax...
+
+
+## Planejamento de uma análise fatorial
+
+###  GIGO: Garbage In, Garbage Out!
+
+
+::: {.callout-warning title="Cuidado!"}
+- A análise fatorial sempre produzirá fatores. Desta forma, ela é sempre um candidato para o fenômeno **"lixo dentro, lixo fora"**.
+
+\medskip
+
+- Se o pesquisador incluir indiscriminadamente um grande número de variáveis e esperar que a análise fatorial "faça revelações", a possibilidade de resultados pobres será alta.
+
+\medskip
+
+- A qualidade e o significado dos fatores determinados refletem **estruturas conceituais** das variáveis incluídas na análise (base conceitual).
+:::
+
+
+## Planejamento de uma análise fatorial
+
+
+### Questões conceituais...
+
+ 
+\bigskip
+ 
+
+
+- É responsabilidade do pesquisador garantir que os padrões observados sejam conceitualmente válidos. A AF é capaz somente de determinar a adequação das correlações entre variáveis.
+
+\medskip
+
+- O pesquisador deve garantir que a amostra esteja adequada à estrutura fatorial inerente.
+
+\medskip
+
+- Por exemplo, ao avaliar os fatores de risco de uma acidente vascular, se nenhuma variável relacionada aos fatores genéticos for incluída, a AF não será capaz de identificar esta dimensão. 
+
+
+
+## Planejamento de uma análise fatorial
+
+
+### Questões conceituais...
+
+- A qualidade e o significado dos fatores obtidos refletem as bases conceituais das variáveis incluídas na análise.
+
+\medskip
+
+- O pesquisador não deve incluir indiscriminadamente inúmeras variáveis e esperar que a AF "arrume as coisas".
+
+\medskip
+
+- No exemplo da avaliação dos fatores de risco de uma acidente vascular, incluir a variável, por exemplo,  "cor dos olhos" interfere nos resultados da AF e não traz nenhuma informação relevante para o objeto de estudo.
+
+
+
+
+## Planejamento de uma análise fatorial
+
+
+### Questões estatísticas...
+
+
+- Espera-se que haja correlações significativas, pois o objetivo é identificar conjuntos de variáveis inter-relacionadas.
+
+\vspace{0.3cm}
+
+
+- Se todas as correlações são pequenas ou iguais, o pesquisador deve questionar o uso da análise fatorial.
+
+\vspace{0.3cm}
+
+- Inspeção visual da matriz de correlação – coeficientes pelo menos em torno de 0,30.
+
+
+
+## Planejamento de uma análise fatorial
+
+
+- **Teste de esfericidade de Bartlett (BTS):** O teste de esfericidade de Bartlett testa a hipótese de que as variáveis não sejam correlacionadas na população. 
+
+
+$$H_0: \boldsymbol{P} = \boldsymbol{I}$$
+
+A estatística do teste é dada por
+
+$$\chi^2 = -\left[ (n-1)-\dfrac{2p + 5}{6}\right] \ln|\boldsymbol{R}|$$
+
+que tem uma distribuição qui-quadrado com $\nu$ graus de liberdade, sendo $\nu = \dfrac{p(p-1)}{2}$, $n$ igual ao tamanho da amostra, $p$ igual ao número de variáveis e $|\boldsymbol{R}|$, o determinante da matriz de correlação amostral. 
+
+
+## Planejamento de uma análise fatorial
+
+
+- **Medida de adequação da amostra:** comumente utilizado o KMO (Kaiser-Meyer-Olkin). Rencher(2002) sugere que para um modelo de Análise Fatorial possa ser ajustado adequadamente aos dados é necessário que $\boldsymbol{R}^{-1}$ seja próxima da matriz diagonal. O coeficiente KMO baseia-se nesse princípio
+
+
+$$KMO = \dfrac{\displaystyle{\sum_{i=1}^p}\displaystyle{\sum_{j=1}^p} r^2_{ij}}{\displaystyle{\sum_{i=1}^p}\displaystyle{\sum_{j=1}^p} r_{ij}^2 + \displaystyle{\sum_{i=1}^p}\displaystyle{\sum_{j=1}^p}v_{ij}^2},$$
+
+## Planejamento de uma análise fatorial
+
+
+em que $r_{ij}$ e $v_{ij}$ são, respectivamente, os elementos na posição $(i,j)$ da matriz de correlações amostral, $\boldsymbol{R}$, e da matriz $\boldsymbol{V} = \boldsymbol{U} \boldsymbol{R}^{-1} \boldsymbol{U}$, na qual $\boldsymbol{U} = \left[{\rm diag} (\boldsymbol{R}^{-1})^{\frac{1}{2}}\right]^{-1}$. Note que ${\rm diag}(\boldsymbol{R}^{-1})$ é a matriz cuja diagonal  coincide com a diagonal de $\boldsymbol{R}^{-1}$ mas com os demais elementos nulos e ${\rm diag}(\boldsymbol{R}^{-1})^{\frac{1}{2}}$ é a matriz diagonal cujo $i$-ésimo elemento diagonal é a raiz quadrada do $i$-ésimo elemento diagonal de ${\rm diag}(\boldsymbol{R}^{-1})$. A matriz $\boldsymbol{V}$ é usualmente designada por matriz de correlação anti-imagem.
+
+
+
+## Planejamento de uma análise fatorial
+
+
+- **Medida de adequação da amostra:** Para cada variável: MSA (Measure of sampling adequacy). Essa medida é bastante similar ao $KMO$. Novamente, desejamos verificar a possibilidade de existência de uma estrutura fatorial nos dados. A $MSA$ deve ser calculada separadamente para cada variável, através de
+
+
+$$MSA_i = \dfrac{\displaystyle{\sum_{j=1}^p} r^2_{ij}}{\displaystyle{\sum_{j=1}^p} r_{ij}^2 + \displaystyle{\sum_{j=1}^p}v_{ij}^2}.$$
+
+
+
+
+## Planejamento de uma análise fatorial
+
+- O objetivo é verificar se uma dada variável pode ser explicada pelas demais, o que é esperado em um modelo fatorial. 
+
+. . .
+
+
+- Valores baixos de $MSA_i$ são indícios de que a respectiva variável pode ser retirada da análise, sem maiores prejuízos. 
+
+
+. . .
+
+- Note que esta medida é bastante similar ao $KMO$, apresentando uma lógica semelhante.
+
+
+
+
+## Planejamento de uma análise fatorial
+
+
+Ambos variam de 0 a 1, sendo:
+
+
+| KMO/MSA        | Interpretação  |
+|:--------------:|:---------------|
+| $0,80 - 1,00$  | Excelente      |
+| $0,70 - 0,80$  | Ótimo          |
+| $0,60 - 0,70$  | Bom            |
+| $0,50 - 0,60$  | Regular        |
+| $0,00 - 0,50$  | Insuficiente   |
+
+: Tabela de interpretação do índice KMO/MSA {#tbl-kmo}
+
+
+
+## O modelo fatorial ortogonal via matriz de correlações
+
+
+
+
+- Seja o vetor aleatório $\mathbf{x} = [X_1, X_2, \cdots, X_p]^t$, com vetor de médias $\boldsymbol{\mu}$, matriz de covariâncias $\boldsymbol{\Sigma}$ e matriz de correlações $\boldsymbol{P}$. 
+
+. . .
+
+- Sejam as variáveis originais padronizadas: $Z_i = \dfrac{X_i - \mu_i}{\sqrt{\sigma_{ii}}}$
+
+
+. . .
+
+- $\boldsymbol{P}$ é a matriz de covariâncias do velor aleatório $\boldsymbol{z}$, cujas componentes são as variáveis padronizadas.
+
+
+
+
+## O modelo fatorial ortogonal via matriz de correlações
+
+- Modelo fatorial ortogonal
+    - Construído via a matriz de correlação populacional
+    - Relaciona linearmente as variáveis padronizadas e os $m$ fatores comuns (que são desconhecidos)
+    - Fatores são variáveis independentes
+
+
+
+## O modelo fatorial ortogonal via matriz de correlações
+
+Na análise fatorial, vamos expressar cada uma das $p$ variáveis padronizadas como combinação linear de $m < p$ fatores comuns $F_1, F_2, \cdots, F_m$ a menos de um termo correspondente ao erro $\epsilon_1, \epsilon_2, \cdots, \epsilon_p$:
+
+$$
+\begin{aligned}
+Z_1 &= l_{11}F_1 + l_{12}F_2 + \cdots + l_{1m}F_m + \epsilon_1 \\
+Z_2 &= l_{21}F_1 + l_{22}F_2 + \cdots + l_{2m}F_m + \epsilon_2 \\ && \hspace{-25cm} \vdots \\
+Z_p &= l_{p1}F_1 + l_{p2}F_2 + \cdots + l_{pm}F_m + \epsilon_p 
+\end{aligned}
+$$
+
+
+
+## O modelo fatorial ortogonal
+
+- $F_1, F_2, \cdots, F_m$ são os fatores comuns **não observáveis**, ou (*latentes*); 
+
+\vspace{0.5cm}
+
+- $\epsilon_1, \epsilon_2, \cdots,\epsilon_p$ são os fatores específicos associados a cada variável e,
+
+\vspace{0.5cm}
+
+
+- $l_{ij}$, $i = 1, 2, \cdots,p$, $j = 1, 2, \cdots, m$ são chamados de cargas fatoriais, ou (*loadings*).
+
+
+
+## O modelo fatorial ortogonal
+
+
+### Notação Matricial
+
+
+$$\boxed{\boldsymbol{D}^{-1}(\mathbf{x} - \boldsymbol{\mu}) = \boldsymbol{L} \boldsymbol{F} + \boldsymbol{\epsilon}}$$
+
+
+$$\boldsymbol{F} = \left[\begin{array}{c} F_1 \\ F_2 \\ \vdots \\ F_m \end{array} \right] \boldsymbol{\epsilon} = 
+\left[\begin{array}{c} \epsilon_1 \\ \epsilon_2 \\ \vdots \\ \epsilon_p \end{array}\right]
+\boldsymbol{L} = \left[ \begin{array}{cccc} l_{11} & l_{12} & \cdots & l_{1m} 
+\\ l_{21} & l_{22} & \cdots & l_{2m} 
+\\ \vdots & \vdots  & \ddots & \vdots 
+\\ l_{p1} & l_{p2} & \cdots & l_{pm}
+ \end{array} \right] \,\,\, \boldsymbol{D} = \left[ \begin{array}{cccc} \sigma_{1} & 0 & \cdots & 0 
+\\ 0 & \sigma_{2} & \cdots & 0 
+\\ \vdots & \vdots  & \ddots & \vdots 
+\\ 0 & 0 & \cdots & \sigma_{p}
+ \end{array} \right]$$
+ 
+ 
+ 
+## O modelo fatorial ortogonal
+
+
+### Suposições do modelo
+
+
+
+Para construção do modelo fatorial ortogonal, algumas suposições se fazem necessárias:
+
+\vspace{0.5cm}
+
+a) Os fatores têm média igual a zero, variâncias iguais a 1 e não são correlacionados:
+
+
+$$\boxed{E({\boldsymbol{F}}) = \boldsymbol{0}\,\, \text{e} \,\, \rm{Var}({\boldsymbol{F}}) = E({\boldsymbol{F}}{\boldsymbol{F}}^t)  = \boldsymbol{I} }$$
+
+
+
+
+## O modelo fatorial ortogonal
+
+
+### Suposições do modelo
+
+
+
+
+b) Os erros têm média zero, são não correlacionados e não necessariamente tem a mesma variância:
+
+
+$$\boxed{E({\boldsymbol{\epsilon}}) = \boldsymbol{0} e  \rm{Var}({\boldsymbol{\epsilon}}) = \boldsymbol{\Psi} = \rm{diag}(\psi_1, \psi_2, \cdots, \psi_p)
+= E({\boldsymbol{\epsilon}}{\boldsymbol{\epsilon}}^t)
+}$$
+
+
+
+
+
+
+c) ${\boldsymbol{F}}$ e ${\boldsymbol{\epsilon}}$ são independentes, isto é, fontes de variação distintas:
+
+$$\boxed{\rm{Cov}({\boldsymbol{F}},{\boldsymbol{\epsilon}}) = E({\boldsymbol{\epsilon}}{\boldsymbol{F}}^t) = \boldsymbol{0}}$$
+
+
+
+## Propriedades do modelo fatorial
+
+Como consequência da definição do modelo e das suposições apresentadas, decorrem as seguintes propriedades:
+ 
+
+$$\boldsymbol{P} = \boldsymbol{L}\boldsymbol{L}^t + \boldsymbol{\Psi}$$
+
+. . .
+ 
+- Esta decomposição implica que as variâncias das variáveis observadas podem ser escritas como:
+ 
+ $$\text{Var}(Z_i) = \underbrace{l_{i1}^2 + l_{i2}^2 + \cdots + l_{im}^2}_{h_i^2} + \psi_i = h_i^2 + \psi_i, \hspace{0.5cm} i = 1, \cdots, p$$
+
+## Propriedades do modelo fatorial
+
+- $h_i^2$ é a **comunalidade:** variância comum de $\boldsymbol{z}$ - expressa o quanto da variabiliade de $Z_i$ é explicada pelo modelo
+ 
+ \vspace{0.2cm}
+ 
+- $\psi_i$ é a **especificidade:** variância específica de cada $Z_i$ - expressa o quanto da variabilidade de $Z_i$ não é explicada pelo modelo.
+
+
+. . .
+
+
+Além disso, as covariâncias das variáveis observadas podem ser escritas como:
+ 
+ \vspace{-0.3cm}
+ 
+ $$\text{Cov}(Z_i, Z_k) = {l_{i1}l_{k1} + l_{i2}l_{k2} + \cdots + l_{im}l_{km}}, \,\,\, i,k = 1, \cdots, p \,\,(i\neq k)$$
+ 
+ 
+ . . .
+ 
+ e,
+ 
+$$\text{Cov}(\boldsymbol{z}, \boldsymbol{F}) = \text{Cor}(\boldsymbol{z}, \boldsymbol{F}) = \boldsymbol{L}$$
+
+
+
+## Métodos de Estimação
+
+
+- **Método das componentes principais:** baseia-se na análise de componentes principais.  Em geral, utilizado como um análise exploratória dos dados, em termos dos fatores subjacentes
+
+
+. . .
+
+
+- **Método dos fatores principais:** refina a solução apresentada pelo método das componentes principais
+
+
+
+. . .
+
+
+- **Método da máxima verossimilhança:** supõe que os dados seguem uma distribuição normal multivariada
+
+
+## Métodos de estimação: Componentes Principais
+
+Considerando $m < p$ o número de fatores comuns, a matriz de cargas fatoriais, estimada pelo método dos componentes principais, fica dada por:
+
+\vspace{-0.3cm}
+$$
+\begin{aligned}
+\hat{\boldsymbol{L}} &= \left[\begin{array}{cccc} \sqrt{\hat{\lambda}}_1 \hat{\boldsymbol{e}}_1 & \sqrt{\hat{\lambda}}_2 \hat{\boldsymbol{e}}_2 & \cdots & \sqrt{\hat{\lambda}}_m \hat{\boldsymbol{e}}_m \end{array}\right] 
+\end{aligned}
+$$
+
+. . .
+
+
+
+E a matriz de especificidades é dada por:
+
+$$\hat{\boldsymbol{\Psi}} = \rm{diag}(\boldsymbol{R} - \hat{\boldsymbol{L}} \hat{\boldsymbol{L}}^t)$$
+
+. . .
+
+
+Aproximação de $\boldsymbol{R}$
+
+$$\boldsymbol{R} \approx  \hat{\boldsymbol{L}} \hat{\boldsymbol{L}}^t +  \hat{\boldsymbol{\Psi}}$$
+
+
+
+
+## Métodos de estimação: Componentes Principais
+
+Matriz residual:
+
+
+$$\boldsymbol{MRes} = \boldsymbol{R} - (\hat{\boldsymbol{L}} \hat{\boldsymbol{L}}^t + \hat{\boldsymbol{\Psi}})$$
+
+. . .
+
+- Pode servir como critério de avaliação do modelo
+    - Seus valores deveriam ser próximos de zero
+    - Matriz é nula somente quando o valor de $m$ é igual a $p$
+
+
+. . .
+
+- Os elementos da diagonal da matriz $\boldsymbol{R}$ são reproduzidos exatamente pelo modelo
+    - O mesmo não ocorre para os outros elementos da matriz $\boldsymbol{R}$ (covariâncias das variáveis $Z_i$ e $Z_j$)
+
+
+
+## Métodos de estimação: Componentes Principais
+
+
+Proporção da variabilidade total explicada pelo fator
+
+
+$$\text{Proporção explicada}_{F_j} = \dfrac{\sum \limits_{i=1}^p l_{ij}^2}{p}$$
+
+
+. . .
+
+
+- Representa o quanto cada fator consegue captar da variabilidade original das variáveis $Z_i$.
+
+
+
+## Métodos de estimação: Fatores Principais
+
+
+- Também chamado Método de Componentes Principais Iterativo
+ 
+. . .
+
+- **Ideia básica:** Refinar as estimativas de $\hat{\boldsymbol{L}}$ e $\hat{\boldsymbol{\Psi}}$, encontradas a partir do método das componentes principais.
+
+
+. . .
+
+- **Procedimento:**
+    - Estimativas iniciais pelo método das componentes principais
+    - Troca dos elementos da diagonal de $\boldsymbol{R}$ pelas comunalidades estimadas
+    - Novas estimações a partir da matriz $\boldsymbol{R}^*$
+    - Substituição dos elementos da diagonal principal pelas comunalidades estimadas 
+    - Procedimento é repetido até que as diferenças entres as comunalidades estimadas sejam desprezíveis
+    
+
+
+## Métodos de estimação: Máxima Verossimilhança
+
+
+Só pode ser utilizado quando a forma da distribuição de probabilidades é conhecida
+
+\bigskip
+
+- **Suposição:**
+    - Vetor aleatório $\boldsymbol{z}$ tem distribuição normal $p$-variada
+
+. . .
+
+- **Consequência:**
+    - Vetor das variáveis padronizadas é normal $p$-variado
+    - Fatores tem distribuição normal multivariada com vetor de médias zero e matriz de covariâncias $\boldsymbol{I}_m$
+    - Erros tem distribuição normal $p$-variada com vetor de médias zero e matriz de covariâncias $\boldsymbol{\Psi}$.
+
+
+## Métodos de estimação: Máxima Verossimilhança
+
+
+A função de verossimilhança considerando uma amostra aleatória de tamanho $n$ observada no vetor aleatório $\boldsymbol{z}$ é dada por:
+
+$$
+\boldsymbol{L}(\boldsymbol{0},\boldsymbol{P}) =  \displaystyle \frac{1}{(2\pi)^{\frac{np}{2}} |(\boldsymbol{L} \boldsymbol{L}^t + \boldsymbol{\Psi})|^{\frac{n}{2}}} \exp \left\{-\frac{1}{2} \displaystyle \sum_{j=1}^n \boldsymbol{z}_j^t (\boldsymbol{L}\boldsymbol{L}^t + \boldsymbol{\Psi})^{-1} \boldsymbol{z}_j  \right\} 
+$$
+
+. . .
+
+
+- A função de verossimilhança depende da matrizes $\boldsymbol{L}$ e $\boldsymbol{\Psi}$, através da matriz de correlação $\boldsymbol{P}$.
+
+
+## Métodos de estimação: Máxima Verossimilhança
+
+
+- Os estimadores de máxima verossimilhança de $\boldsymbol{L}$ e $\boldsymbol{\Psi}$ são as matrizes $\hat{\boldsymbol{L}}$ e $\hat{\boldsymbol{\Psi}}$ que **maximizam** a função de verossimilhança $\boldsymbol{L}(\boldsymbol{0},\boldsymbol{P})$.
+
+
+
+. . .
+
+
+- Maximização é feita por métodos numéricos. 
+
+. . .
+
+- Método mais sofisticado que os métodos de componentes e fatores principais: produz estimativas mais precisas
+
+
+## Métodos de estimação: Máxima Verossimilhança
+
+
+::: {.callout-warning title="Cuidado!"}
+- Está fundamentado na suposição de normalidade multivariada dos vetores $\boldsymbol{z}$, $\boldsymbol{F}$ e $\boldsymbol{\epsilon}$.
+    - Apenas a normalidade do vetor $\boldsymbol{z}$ pode ser investigada a priori a partir dos dados amostrais
+    - Fatores e erros são variáveis aleatórias não observáveis
+:::
+
+
+## Rotação dos fatores
+
+Uma propriedade importante do modelo fatorial ortogonal é a **falta de unicidade das cargas fatoriais:** se $\boldsymbol{L}$ satisfaz à relação $\boldsymbol{P} = \boldsymbol{L}\boldsymbol{L}^t + \boldsymbol{\Psi}$, então $\boldsymbol{L}^* = \boldsymbol{L} \boldsymbol{T}$, tal que $\boldsymbol{T} \boldsymbol{T}^t = \boldsymbol{T}^t\boldsymbol{T} = \boldsymbol{I}$ ($\boldsymbol{T}$ ortogonal), também satisfaz:
+
+
+$$
+\begin{aligned}
+\boldsymbol{L}^* \boldsymbol{L}^{*t} + \boldsymbol{\Psi} &= (\boldsymbol{L} \boldsymbol{T})(\boldsymbol{L} \boldsymbol{T})^t + \boldsymbol{\Psi} = \boldsymbol{L} \boldsymbol{T}\boldsymbol{T}^t \boldsymbol{L}^t + \boldsymbol{\Psi} \\ &= \boldsymbol{L} \boldsymbol{I} \boldsymbol{L}^t + \boldsymbol{\Psi} = 
+\boldsymbol{L}\boldsymbol{L}^t + \boldsymbol{\Psi } = \boldsymbol{P}
+\end{aligned}
+$$
+
+. . .
+
+
+A matriz de resíduos permanece a mesma ($\hat{h}_i^2$ e $\hat{\Psi}_i$)
+
+$$\boldsymbol{R} - \hat{\boldsymbol{L}} \hat{\boldsymbol{L}}^t - \hat{\boldsymbol{\Psi}} = \boldsymbol{R} - \hat{\boldsymbol{L}}^* \hat{\boldsymbol{L}}^{*t} - \hat{\boldsymbol{\Psi}}$$
+
+. . .
+
+
+-  Do ponto de vista estatístico é irrelevante obter $\hat{\boldsymbol{L}}$ ou $\hat{\boldsymbol{L}}^*$
+
+
+
+## Rotação dos fatores
+
+### Comentários
+
+- Uma vez extraídos os fatores, temos a chamada **matriz de cargas fatoriais**. Nesta matriz, cada elemento indica  o grau de correspondência entre a variável e o fator; 
+
+\vspace{0.3cm}
+
+- Com a rotação, busca-se uma estrutura mais simples: loadings originais podem não ter fácil interpretação
+
+
+\vspace{0.3cm}
+
+- **Ideal:** encontrar um padrão de loadings tais que cada variável carregue-se fortemente em um único fator (com loadings moderados nos outros fatores)
+
+\vspace{0.3cm}
+
+- Nem sempre é possível obter esta estrutura mais simples
+
+
+
+
+
+## Rotação dos fatores
+
+Ao rotacionar a matriz fatorial, busca-se redistribuir a variância dos primeiros fatores para os últimos, a fim de atingir um padrão fatorial mais simples e teoricamente mais significativo.
+
+
+| Variáveis | Fator 01 | Fator 02 |
+|:---------:|:--------:|:--------:|
+| $V_1$     | $0,50$   | $0,82$   |
+| $V_2$     | $0,60$   | $0,61$   |
+| $V_3$     | $0,91$   | $-0,22$  |
+| $V_4$     | $0,82$   | $-0,30$  |
+| $V_5$     | $0,49$   | $-0,50$  |
+
+: Cargas fatoriais dos dois fatores extraídos {#tbl-fatores}
+
+
+
+## Rotação dos fatores
+
+$$\text{ 2 agrupamentos: As cargas fatoriais, contudo, não parecem tão óbvias}$$
+
+::: columns
+::: column
+![](/images/AF/fator01.jpg){width=80%}
+:::
+
+::: column
+![](/images/AF/fator02.jpg){width=80%}
+:::
+:::
+
+
+
+
+## Rotação dos fatores
+
+$$\text{Rotação Ortogonal}$$
+
+::: columns
+::: column
+| Variáveis | Fator 01 | Fator 02 |
+|:---------:|:--------:|:--------:|
+| $V_1$     | $0,03$   | $0,90$   |
+| $V_2$     | $0,19$   | $0,82$   |
+| $V_3$     | $0,95$   | $0,22$   |
+| $V_4$     | $0,89$   | $0,12$   |
+| $V_5$     | $0,78$   | $-0,12$  |
+
+: Cargas fatoriais estimadas para dois fatores {#tbl-fatores2}
+
+:::
+
+::: column
+![](/images/AF/fator03.jpg){width=80%}
+:::
+:::
+
+
+
+## Rotação dos fatores
+
+
+- Os métodos de rotação têm como objetivo simplificar as linhas e colunas da matriz fatorial para facilitar a interpretação
+    - Maximizar a carga de uma variável em um único fator
+    - Reduzir ao máximo o número de variáveis com cargas altas por fator
+
+
+. . .
+
+
+- Alguns critérios para encontrar matriz ortogonal:
+    - Varimax
+    - Quartimax
+    - Orthomax
+
+
+## Rotação dos fatores
+
+
+
+- **Critério Varimax:**  É um dos mais utilizados. Em geral, produz soluções mais simples
+
+\bigskip
+
+. . .
+
+
+- **Critério Quartimax:** Tem tendência de gerar fatores, onde todas as variáveis têm loadings elevados
+
+\bigskip
+
+. . .
+
+
+- **Critério Orthomax:** É uma média ponderada dos dois outros métodos
+
+
+
+## Rotação dos fatores
+
+
+### Comentários
+
+- **Qualidade de ajuste:** A rotação não acrescenta nenhuma melhoria em relação ao ajuste original
+    - Matriz residual original não é alterada pela transformação ortogonal
+    - Valores estimados de comunalidade e variâncias específicas permanecem inalterados
+
+
+
+
+\medskip
+
+- **Interpretação:** Novos fatores podem ser de mais fácil interpretação
+
+
+\medskip
+
+
+
+- Quando a solução sem rotação já é de boa qualidade, não se recomenda rotação: Solução rotacionada pode ser pior
+
+
+
+
+## Quantos fatores usar?
+
+
+Para determinar o valor de $m$...
+
+
+- Analisar a proporção da variação total dos dados atribuída ao $j$-ésimo fator, dada por:
+
+$$\dfrac{\hat{\lambda}_j}{p}, \,\,\,\, j = 1,2, \cdots, m, \text{ se usarmos } \boldsymbol{R}$$
+
+\vspace{0.5cm}
+
+
+. . .
+
+
+- **Critério de Kaiser:** retenção dos fatores com autovalor associado superior a 1;
+ 
+
+\vspace{0.5cm}
+
+
+. . .
+
+- Gráfico scree-plot
+
+
+\vspace{0.5cm}
+
+
+. . .
+
+
+- Análise paralela de Horn
+
+
+
+
+## Quantos fatores usar?
+
+
+- Conjugar indicadores estatísticos a: 
+    - Interpretação prática dos resultados; 
+    - Busca de uma solução parcimoniosa;
+    - Possível indicação do número de fatores segundo a teoria da área;
+
+\vspace{0.3cm}
+
+. . .
+
+- **Bom senso (sempre!)**.
+
+
+
+
+## Quantos fatores usar?
+
+
+### Comentários
+
+
+- **Método de máxima verossimilhança:** Mudança de valor de $m$ altera as estimativas dos loadings
+ 
+
+\vspace{0.5cm}
+
+
+
+- **Método de componentes principais:** Aumento no valor de $m$ não altera os loadings para os fatores obtidos anteriormente
+
+
+\vspace{0.5cm}
+
+
+- Quando os dados provêm de distribuição normal multivariada
+    - Usar método de componentes principais como análise exploratória dos fatores e estimação do valor provável de $m$
+    - Posteriormente, qualidade da solução inicial poderá ser melhorada pelo uso do método de máxima verossimilhança
+    
+    
+    
+## Interpretação dos fatores
+
+$$\text{Avaliação da significância estatística baseada no tamanho da amostra}$$
+
+
+```{=html}
+<div style="font-size: 0.7em; width: 85%; margin: auto; text-align: center;">
+  <table>
+    <caption>Tamanho mínimo de amostra recomendado em função da carga fatorial</caption>
+    <thead> <tr> <th style="text-align: center;">Carga Fatorial</th> <th style="text-align: center;">Tamanho da amostra</th> </tr> </thead> <tbody> <tr><td style="text-align: center;">0,30</td><td style="text-align: center;">350</td></tr> <tr><td style="text-align: center;">0,35</td><td style="text-align: center;">250</td></tr> <tr><td style="text-align: center;">0,40</td><td style="text-align: center;">200</td></tr> <tr><td style="text-align: center;">0,45</td><td style="text-align: center;">150</td></tr> <tr><td style="text-align: center;">0,50</td><td style="text-align: center;">120</td></tr> <tr><td style="text-align: center;">0,55</td><td style="text-align: center;">100</td></tr> <tr><td style="text-align: center;">0,60</td><td style="text-align: center;">85</td></tr> <tr><td style="text-align: center;">0,65</td><td style="text-align: center;">70</td></tr> <tr><td style="text-align: center;">0,70</td><td style="text-align: center;">60</td></tr> <tr><td style="text-align: center;">0,75</td><td style="text-align: center;">50</td></tr> </tbody>
+  </table>
+</div>
+```
+
+
+
+## Interpretação dos fatores
+
+$$\text{Interpretação de uma matriz de cargas fatoriais em 5 passos}$$
+
+
+![](/images/AF/passos.jpg){width=500 fig-align="center"}
+
+
+
+## Interpretação dos fatores
+
+$$\text{Algumas situações podem ser encontradas}$$
+
+$$\textbf{A variável tem carga cruzada}$$
+
+| **Variável** | **Fator 01** | **Fator 02** | **Comunalidade** |
+|:------------:|:------------:|:------------:|:----------------:|
+| $\cdots$     | $\cdots$     | $\cdots$     | $\cdots$         |
+| $V_i$        | $-0,64$      | $-0,56$      | $0,72$           |
+| $\cdots$     | $\cdots$     | $\cdots$     | $\cdots$         |
+
+
+
+
+## Interpretação dos fatores
+
+$$\text{Algumas situações podem ser encontradas}$$
+
+$$\textbf{A variável não possui cargas significantes}$$
+
+
+| **Variável** | **Fator 01** | **Fator 02** | **Comunalidade** |
+|:------------:|:------------:|:------------:|:----------------:|
+| $\cdots$     | $\cdots$     | $\cdots$     | $\cdots$         |
+| $V_i$        | $-0,25$      | $0,19$       | $0,10$           |
+| $\cdots$     | $\cdots$     | $\cdots$     | $\cdots$         |
+
+
+
+
+## Interpretação dos fatores
+
+$$\text{Algumas situações podem ser encontradas}$$
+
+$$\textbf{Mesmo com cargas significantes, a comunalidade é baixa}$$
+
+| **Variável** | **Fator 01** | **Fator 02** | **Comunalidade** |
+|:------------:|:------------:|:------------:|:----------------:|
+| $\cdots$     | $\cdots$     | $\cdots$     | $\cdots$         |
+| $V_i$        | 0,00         | 0,40         | 0,16             |
+| $\cdots$     | $\cdots$     | $\cdots$     | $\cdots$         |
+
+
+
+
+## Interpretação dos fatores
+
+$$\text{Alternativas}$$
+
+- **Ignorar as variáveis problemáticas** e interpretar a solução fatorial como ela é, observando que as variáveis  em questão são pobremente representadas na solução fatorial;
+ 
+\vspace{0.3cm}
+ 
+. . .
+ 
+- Avaliar cada variável para uma **possível eliminação** e reespecificar o modelo após sua retirada;
+ 
+\vspace{0.3cm}
+
+
+. . .
+
+
+- Empregar um **método alternativo de rotação**;
+ 
+ \vspace{0.3cm}
+ 
+
+. . .
+ 
+- **Diminuir/aumentar o número de fatores** para avaliar se a nova estrutura fatorial representará as variáveis problemáticas;
+
+
+
+## Comentários finais sobre análise fatorial
+
+
+- **Matriz de resíduos:** A observação da matriz de resíduos muitas vezes, pode indicar quando o número de fatores está superdimensionado
+    - Ex.: Se $m$ não for muito pequeno e a matriz de resíduos estiver próxima de zero, recomenda-se testar outras soluções para $m$ menores que o valor já especificado
+
+ 
+\vspace{0.3cm}
+
+
+. . .
+
+
+- A análise fatorial deve ser utilizada apenas se utilizada em situações em que as variáveis originais são correlacionadas: Evitar soluções com $m$ elevado tal que determinados fatores fiquem relacionados com uma única variável original
+
+
+ 
+\vspace{0.3cm}
+
+
+. . .
+
+
+- Em situações em que aparecem fatores relacionados a uma única variável $Z_i$ é recomendável retirar a variável $Z_i$ e reestimar o modelo de análise fatorial
+
+
+
+## Usos adicionais dos resultados da AFE
+
+
+$$\textbf{Como posso usar os resultados de uma AFE em análises subsequentes?}$$
+
+
+- Seleção de variáveis substitutas para análise subseqüente
+    - É selecionada a variável com maior carga no fator para atuar como **variável substituta representativa** (deve considerar o conhecimento que o pesquisador tem da teoria).
+
+
+\vspace{0.3cm}
+
+. . .
+
+
+
+- **Escores Fatoriais:** representação de cada indivíduo no espaço fatorial. A estimação dos escores fatoriais necessita de métodos estatíscos elaborados, sendo os mais conhecidos os métodos da regressão e dos mínimos quadrados ponderados.
+
+
+
+## Escores fatoriais
+
+- **Método dos Mínimos Quadrados Ponderados:**
+
+$$\hat{\boldsymbol{f}} = ( \hat{\boldsymbol{L}}^t \hat{\boldsymbol{\Psi}}^{-1} \hat{\boldsymbol{L}})^{-1}  \hat{\boldsymbol{L}}^t \hat{\boldsymbol{\Psi}}^{-1} \boldsymbol{z}$$
+
+\bigskip
+
+. . .
+
+
+- **Método da Regressão:** suposição de normalidade multivariada para $\boldsymbol{z}$, $\boldsymbol{F}$ e $\boldsymbol{\epsilon}$ 
+
+$$\hat{\boldsymbol{f}} = \hat{\boldsymbol{L}}^t (\hat{\boldsymbol{L}} \hat{\boldsymbol{L}}^t + \hat{\boldsymbol{\Psi}})^{-1}\boldsymbol{z}$$
+
+
+
+
+
+
+## Contexto: empresa Telco
+
+- Operadora de telefonia móvel em cidade do interior
+- Pesquisa de satisfação com os clientes após um ano de operação
+- Questionário com **10 itens (P1–P10)** em escala de 0 a 10
+
+
+## Contexto: empresa Telco
+
+Os itens avaliam, por exemplo:
+
+- Intensidade do sinal
+- Qualidade do serviço e das informações
+- Justiça nas tarifas
+- Distribuição geográfica do sinal
+- Plano de serviços
+- Desconfiança em relação à empresa
+- Tecnologia, atenção e atendimento
+
+
+## Itens e variáveis
+
+Vamos representar os 10 itens por variáveis $X_1, \ldots, X_{10}$:
+
+- $X_1$: intensidade do sinal
+- $X_2$: distribuição geográfica do sinal
+- $X_3$: tecnologia adotada
+- $X_4$: atendimento como um todo
+- $X_5$: injustiça nas tarifas
+- $X_6$: plano de serviços
+- $X_7$: qualidade das informações
+- $X_8$: serviço prestado ao cliente
+- $X_9$: atenção dedicada ao cliente
+- $X_{10}$: atendimento especificamente ao cliente
+
+
+## Objetivo da análise
+
+**Objetivo:** **identificar dimensões latentes** da qualidade percebida.
+
+
+. . .
+
+
+
+```{r}
+# Instale o pacote pacman primeiro, se ainda não o tiver
+if (!requireNamespace("pacman", quietly = TRUE)) {
+  install.packages("pacman")
+}
+
+# Use p_load para instalar e carregar pacotes
+pacman::p_load(tidyverse, psych, GPArotation, ggcorrplot, janitor, corrr, igraph, ggraph, ggrepel)
+```
+
+
+## Lendo os dados Telco
+
+```{r}
+#| label: leitura-dados
+
+path <- "https://raw.githubusercontent.com/tiagomartin/est014/refs/heads/master/dados/telco.csv"
+telco <- read_csv(path, show_col_types = FALSE) %>%
+  clean_names() 
+
+glimpse(telco)
+
+dim(telco)
+```
+
+
+## Matriz de correlação
+
+```{r}
+#| label: matriz-cor
+#| fig-width: 7
+#| fig-height: 5
+
+R <- cor(telco, use = "pairwise.complete.obs")
+R
+```
+
+
+## Visualização da matriz de correlação
+
+
+```{r}
+#| label: ggcorr
+#| fig-width: 7
+#| fig-height: 5
+
+
+ggcorrplot(
+R,
+type = "full",
+lab = TRUE,
+title = "Matriz de correlação – Itens Telco"
+)
+
+# Blocos de correlações altas sugerem possíveis fatores latentes
+```
+
+
+
+## Visualização da matriz de correlação
+
+
+```{r}
+## Variaveis aparentam se agrupar em tres grupos
+tidy_cors <- telco %>% correlate() %>% stretch()
+graph_cors <- tidy_cors %>%  filter(abs(r) > .3) %>% graph_from_data_frame(directed = FALSE)
+ggraph(graph_cors, layout = "stress") +
+  geom_edge_link(alpha = 0.5) +
+  geom_node_point(size = 4) +
+  geom_node_text(aes(label = name), repel = TRUE, size = 5) +
+  theme_minimal()
+```
+
+
+## Medidas de adequação à AFE
+
+### KMO – Kaiser-Meyer-Olkin
+
+```{r}
+#| label: kmo
+
+KMO(R)
+```
+
+- KMO geral > 0,60 → dados adequados para AFE
+- MSA de $X_4 < 0,5$ → apresenta adequabilidade insuficiente, podendo ser retirada da analise
+
+## Medidas de adequação à AFE
+
+### Teste de esfericidade de Bartlett
+
+```{r}
+#| label: bartlett
+
+cortest.bartlett(R, n = nrow(telco))
+```
+
+
+
+- p-valor de Bartlett < 0,05 → correlações não são nulas
+
+
+
+## Escolha do número de fatores: Parallel Analysis
+
+```{r}
+#| label: parallel
+#| fig-width: 7
+#| fig-height: 5
+
+set.seed(123)
+
+fa.parallel(
+telco,
+fm = "ml",
+fa = "fa",
+main = "Parallel Analysis – Caso Telco"
+)
+```
+
+
+## Escolha do número de fatores: Parallel Analysis
+
+- Comparamos autovalores observados com autovalores obtidos ao acaso.
+
+- Mantemos os fatores com autovalores acima da linha simulada.
+
+
+
+```{r}
+n_fatores <- 3
+```
+
+## Ajuste da AFE
+
+```{r}
+#| label: fa-telco
+
+fa_telco <- factanal(
+  x        = telco,
+  factors  = n_fatores,
+  rotation = "none",
+  scores   = "none"
+)
+
+print(fa_telco, digits = 3, cut = 0.30) # n = 875: cargas acima de 0,30 sao significativas
+# Podemos notar que os 3 fatores explicam juntos 63,8% da variacao total do sistema original
+```
+
+## Ajuste da AFE
+
+
+**Analisando as cargas significativas** 
+
+- $X_1$  - Apresenta cargas cruzadas - fatores 01 e 03  - $h^2$: 0,641  -  MSA: 0,85
+- $X_2$  - Apresenta cargas cruzadas - fatores 01 e 03  - $h^2$: 0,358  -  MSA: 0,93
+- $X_3$  - Apresenta cargas cruzadas - fatores 01 e 03  - $h^2$: 0,899  -  MSA: 0,56
+- $X_4$  - Apresenta cargas cruzadas - fatores 01 e 03  - $h^2$: 0,944  -  MSA: 0,46
+- $X_5$  - Apresenta cargas cruzadas - fatores 01 e 03  - $h^2$: 0,353  -  MSA: 0,93
+- $X_6$  - fator 01 - $h^2$: 0,984  -  MSA: 0,55
+- $X_7$  - Apresenta cargas cruzadas - fatores 01 e 03  - $h^2$: 0,293  -  MSA: 0,94
+- $X_8$  - fator 02 - $h^2$: 0,981  -  MSA: 0,58
+- $X_9$  - fator 02 - $h^2$: 0,640  -  MSA: 0,60
+- $X_{10}$ - fator 02 - $h^2$: 0,289  -  MSA: 0,79
+
+
+## Vamos em busca de uma solucao melhor: rotacao Varimax()
+
+```{r}
+varimax(fa_telco$loadings)
+
+# Note que a proporcao total da variacao explicada pelos 3 fatores nao muda (63,8%). O que muda eh a proporcao da variacao total explicada por cada fator
+```
+
+
+## Rotação Varimax()
+
+
+**Analisando novamente as cargas significativas**
+
+- $X_1$  - fator 03
+- $X_2$  - fator 03
+- $X_3$  - fator 03
+- $X_4$  - fator 01
+- $X_5$  - fator 01
+- $X_6$  - Apresenta cargas cruzadas - fatores 01 e 03  - $h^2$: 0,984  -  MSA: 0,55
+- $X_7$  - fator 01
+- $X_8$  - fator 02
+- $X_9$  - fator 02
+- $X_{10}$ - fator 02
+
+
+
+## Segunda tentativa: excluir da analise a variavel $X_4$ (MSA inadequado)
+
+```{r}
+telco2 <- telco %>% select(-x4)
+
+fa_telco2 <- factanal(
+  x        = telco2,
+  factors  = n_fatores,
+  rotation = "varimax",
+  scores   = "none"
+)
+
+print(fa_telco2, digits = 3, cut = 0.30) # n = 875: cargas acima de 0,30 sao significativas
+# Podemos notar que os 3 fatores explicam juntos 60,4% da variacao total do sistema original e não resolveu o problema
+```
+
+
+## Terceira tentativa: voltar para a análise a variável $X_4$ e retirar a variável $X_6$
+
+
+```{r}
+telco3 <- telco %>% select(-x6)
+
+fa_telco3 <- factanal(
+  x        = telco3,
+  factors  = n_fatores,
+  rotation = "none",
+  scores   = "Bartlett"
+)
+
+print(fa_telco3, digits = 3, cut = 0.30) # n = 875: cargas acima de 0,30 sao significativas
+# Podemos notar que os 3 fatores explicam juntos 59,9% da variacao total do sistema original
+```
+
+
+
+
+## Solução final excluindo $X_6$ da análise
+
+- **Fator 01:** associado a $X_8$, $X_9$ e $X_{10}$
+    - **Interpretação:** dimensão relacionada a atendimento / relacionamento com o cliente
+    
+- **Fator 02:** associado a $X_1$, $X_2$ e $X_3$
+    - **Interpretação:** dimensão de qualidade técnica / infraestrutura (sinal, distribuição, tecnologia)
+
+- **Fator 03:** associado a $X_4$, $X_5$ e $X_7$
+    - **Interpretação:** dimensão de plano, informações e justiça tarifária
+    
+    
+
+## Solução final excluindo $X_6$ da análise
+
+```{r}
+#| fig-width: 7
+#| fig-height: 6
+#| output-location: slide
+#| 
+loadings_nr <- fa_telco3$loadings |>
+unclass() |>
+as.data.frame() |>
+rownames_to_column("item")
+
+ggplot(loadings_nr, aes(x = Factor1, y = Factor2, label = item)) +
+geom_hline(yintercept = 0, linetype = "dashed", color = "grey70") +
+geom_vline(xintercept = 0, linetype = "dashed", color = "grey70") +
+geom_point(size = 3) +
+geom_text_repel(size = 5) +
+labs(
+title = "Mapa das cargas não rotacionadas – Fator 1 × Fator 2",
+x = "Factor 1",
+y = "Factor 2"
+) +
+theme_minimal(base_size = 14)
+
+```
+
+
+## Solução final excluindo $X_6$ da análise
+
+
+**Pontos a destacar:**
+
+- Proporção da variabilidade explicada por cada fator
+    - **Fator 1:** cerca de 21%
+    - **Fator 2:** cerca de 21%
+    - **Fator 3:** cerca de 18%
+
+- Proporção da variabilidade explicada pelo modelo ≈ 0.60:
+
+- A solução de 3 fatores explica aproximadamente 60% da variância total das variáveis padronizadas.
+
+- Para um estudo com itens de questionário (escala de 0 a 10), essa proporção é considerada muito boa.
