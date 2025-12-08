@@ -64,7 +64,7 @@ Esta página contém as listas de exercícios que serão apresentadas ao longo d
   </span>
 
   <span class="badge due-date-badge">
-    Entrega: 02/12/2025
+    Entrega: 12/12/2025
   </span>
 
 </div>
@@ -86,7 +86,7 @@ Esta página contém as listas de exercícios que serão apresentadas ao longo d
   </span>
 
   <span class="badge due-date-badge">
-    Entrega: 02/12/2025
+    Entrega: 12/12/2025
   </span>
 
 </div>
@@ -109,7 +109,7 @@ Esta página contém as listas de exercícios que serão apresentadas ao longo d
   </span>
 
   <span class="badge due-date-badge">
-    Entrega: 02/12/2025
+    Entrega: 12/12/2025
   </span>
 
 </div>
