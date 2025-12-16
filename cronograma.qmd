@@ -50,8 +50,9 @@ Esta página contém um esboço dos tópicos, conteúdos e tarefas para o semest
 |  | Qui, 04/12 | Análise Fatorial |  | [{{< fa file-powerpoint size=2xl >}}](/aulas/analise_fatorial/fatorial.html#/title-slide "Análise Fatorial"){aria-label="Análise Fatorial"} |  |  |  |  |  |
 | [10](programacao/semana-10.html) | Ter, 09/12 | Não haverá aula! |  |  |  |  |  |  |  |
 |  | Qui, 11/12 | Análise Fatorial |  | [{{< fa file-powerpoint size=2xl >}}](/aulas/analise_fatorial/fatorial.html#/rotação-dos-fatores "Análise Fatorial"){aria-label="Análise Fatorial"} |  |  |  |  |  |
-<!-- | [11](programacao/semana-11.html) | Ter, 15/07 | Não haverá aula |  |  |  |  |  |  |  | -->
-<!-- |  | Qui, 17/07 | Não haverá aula |  |  |  |  |  |  |  | -->
+| [11](programacao/semana-11.html) | Ter, 16/12 | Análise Fatorial |  | [{{< fa file-powerpoint size=2xl >}}](/aulas/analise_fatorial/fatorial.html#/contexto-empresa-telco "Análise Fatorial"){aria-label="Análise Fatorial"} |  |  |  |  |  |
+|  | Qui, 18/12 | Não haverá aula |  |  |  |  |  |  |  |
+|  |  | **22/12 a 17/01  -  Recesso Acadêmico** |  |  |  |  |  |  |  |
 <!-- | [12](programacao/semana-12.html) | Ter, 22/07 | Recesso Acadêmico |  |  |  |  |  |  |  | -->
 <!-- |  | Qui, 24/07 | Recesso Acadêmico |  |  |  |  |  |  |  | -->
 <!-- | [13](programacao/semana-13.html) | Ter, 29/07 | Não haverá aula |  |  |  |  |  |  |  | -->
