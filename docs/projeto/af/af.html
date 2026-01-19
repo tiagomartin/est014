@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.29">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Análise Fatorial Aplicada ao Comportamento do Consumidor – EST014 - Estatística Multivariada I</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-748b535e376f14d4692bf2b2e5fd6380.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-b09848b6287391c45069fed345a57cb2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-e9f3ba5fbee03b112b18b9666ab66a2c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-b09848b6287391c45069fed345a57cb2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<meta property="og:title" content="Análise Fatorial Aplicada ao Comportamento do Consumidor – EST014 - Estatística Multivariada I">
+<meta property="og:description" content="Homepage da disciplina EST014 - Estatística Multivariada I, 2025/2">
+<meta property="og:site_name" content="EST014 - Estatística Multivariada I">
+</head>
+
+<body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Análise Fatorial Aplicada ao Comportamento do Consumidor</li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+      <a href="../../index.html" class="sidebar-logo-link">
+      <img src="../../images/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      <div class="sidebar-tools-main">
+    <a href="https://github.com/tiagomartin/est014" title="github" class="quarto-navigation-tool px-1" aria-label="github"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../aulas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Aulas</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../exercicios.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Listas de Exercícios</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../analises.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Análise de dados</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../plano.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Plano de Ensino</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../projeto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Projetos</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../cronograma.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cronograma da Disciplina</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#introdução" id="toc-introdução" class="nav-link active" data-scroll-target="#introdução"><span class="header-section-number">1</span> Introdução</a></li>
+  <li><a href="#descrição-da-base-de-dados" id="toc-descrição-da-base-de-dados" class="nav-link" data-scroll-target="#descrição-da-base-de-dados"><span class="header-section-number">2</span> Descrição da Base de Dados</a></li>
+  <li><a href="#análise-descritiva-inicial" id="toc-análise-descritiva-inicial" class="nav-link" data-scroll-target="#análise-descritiva-inicial"><span class="header-section-number">3</span> Análise Descritiva Inicial</a>
+  <ul class="collapse">
+  <li><a href="#medidas-de-adequação" id="toc-medidas-de-adequação" class="nav-link" data-scroll-target="#medidas-de-adequação"><span class="header-section-number">3.1</span> Medidas de Adequação</a></li>
+  </ul></li>
+  <li><a href="#análise-fatorial-exploratória" id="toc-análise-fatorial-exploratória" class="nav-link" data-scroll-target="#análise-fatorial-exploratória"><span class="header-section-number">4</span> Análise Fatorial Exploratória</a>
+  <ul class="collapse">
+  <li><a href="#métodos-de-extração" id="toc-métodos-de-extração" class="nav-link" data-scroll-target="#métodos-de-extração"><span class="header-section-number">4.1</span> Métodos de Extração</a></li>
+  <li><a href="#determinação-do-número-de-fatores" id="toc-determinação-do-número-de-fatores" class="nav-link" data-scroll-target="#determinação-do-número-de-fatores"><span class="header-section-number">4.2</span> Determinação do Número de Fatores</a></li>
+  <li><a href="#rotações-fatoriais" id="toc-rotações-fatoriais" class="nav-link" data-scroll-target="#rotações-fatoriais"><span class="header-section-number">4.3</span> Rotações Fatoriais</a></li>
+  </ul></li>
+  <li><a href="#resultados-da-análise-fatorial" id="toc-resultados-da-análise-fatorial" class="nav-link" data-scroll-target="#resultados-da-análise-fatorial"><span class="header-section-number">5</span> Resultados da Análise Fatorial</a>
+  <ul class="collapse">
+  <li><a href="#matriz-de-cargas-fatoriais" id="toc-matriz-de-cargas-fatoriais" class="nav-link" data-scroll-target="#matriz-de-cargas-fatoriais"><span class="header-section-number">5.1</span> Matriz de Cargas Fatoriais</a></li>
+  <li><a href="#comunalidades-e-variâncias-específicas" id="toc-comunalidades-e-variâncias-específicas" class="nav-link" data-scroll-target="#comunalidades-e-variâncias-específicas"><span class="header-section-number">5.2</span> Comunalidades e Variâncias Específicas</a></li>
+  <li><a href="#variância-total-explicada" id="toc-variância-total-explicada" class="nav-link" data-scroll-target="#variância-total-explicada"><span class="header-section-number">5.3</span> Variância Total Explicada</a></li>
+  <li><a href="#correlações-residuais" id="toc-correlações-residuais" class="nav-link" data-scroll-target="#correlações-residuais"><span class="header-section-number">5.4</span> Correlações Residuais</a></li>
+  </ul></li>
+  <li><a href="#interpretação-dos-fatores" id="toc-interpretação-dos-fatores" class="nav-link" data-scroll-target="#interpretação-dos-fatores"><span class="header-section-number">6</span> Interpretação dos Fatores</a></li>
+  <li><a href="#escores-fatoriais" id="toc-escores-fatoriais" class="nav-link" data-scroll-target="#escores-fatoriais"><span class="header-section-number">7</span> Escores Fatoriais</a></li>
+  <li><a href="#comparação-entre-estratégias" id="toc-comparação-entre-estratégias" class="nav-link" data-scroll-target="#comparação-entre-estratégias"><span class="header-section-number">8</span> Comparação entre Estratégias</a></li>
+  <li><a href="#conclusões" id="toc-conclusões" class="nav-link" data-scroll-target="#conclusões"><span class="header-section-number">9</span> Conclusões</a></li>
+  </ul>
+<div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/tiagomartin/est014/edit/main/projeto/af/af.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/tiagomartin/est014/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="af.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Análise Fatorial Aplicada ao Comportamento do Consumidor</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p align="center" style="font-size: 40px">
+<code>Data de entrega: 03 de fevereiro de 2026</code>
+</p>
+<hr>
+<section id="introdução" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Introdução</h1>
+<p>A Análise Fatorial é uma técnica estatística multivariada amplamente utilizada para explorar estruturas latentes de correlação entre variáveis observadas, permitindo a identificação de fatores comuns subjacentes que explicam padrões de associação nos dados.</p>
+<p>Neste trabalho, será aplicada a análise fatorial a uma base de dados oriunda de uma pesquisa de mercado, com o objetivo de compreender quais dimensões latentes influenciam a decisão de compra de consumidores ao adquirir um pack de cerveja.</p>
+<hr>
+</section>
+<section id="descrição-da-base-de-dados" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Descrição da Base de Dados</h1>
+<p>A base de dados está disponível no arquivo <a href="../..\dados/AnaFatBeer.txt">AnaFatBeer.txt</a> e é composta por 200 consumidores, os quais atribuíram escores de 0 a 100 à importância de sete atributos considerados na decisão de compra de um pack contendo seis garrafas de cerveja.</p>
+<p>As variáveis avaliadas são:</p>
+<p><code>COST</code> – Custo do pack</p>
+<p><code>SIZE</code> – Volume total de cerveja</p>
+<p><code>ALCOHOL</code> – Percentual de álcool</p>
+<p><code>REPUTATION</code> – Reputação da marca</p>
+<p><code>COLOR</code> – Cor da bebida</p>
+<p><code>AROMA</code> – Aroma da bebida</p>
+<p><code>TASTE</code> – Sabor da bebida</p>
+<p>Cada observação corresponde a um consumidor, e cada variável representa um critério de decisão avaliado individualmente.</p>
+<hr>
+</section>
+<section id="análise-descritiva-inicial" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Análise Descritiva Inicial</h1>
+<p>Antes da aplicação da análise fatorial, é fundamental realizar uma análise exploratória dos dados, contemplando:</p>
+<ul>
+<li><p>Estatísticas descritivas (média, mediana, desvio-padrão, assimetria);</p></li>
+<li><p>Avaliação de outliers;</p></li>
+<li><p>Análise da matriz de correlações;</p></li>
+<li><p>Verificação da adequação dos dados à análise fatorial.</p></li>
+</ul>
+<section id="medidas-de-adequação" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="medidas-de-adequação"><span class="header-section-number">3.1</span> Medidas de Adequação</h2>
+<p>Devem ser calculadas e interpretadas:</p>
+<ul>
+<li><p>Teste de Esfericidade de Bartlett;</p></li>
+<li><p>Medida KMO (Kaiser–Meyer–Olkin), tanto global quanto individual por variável.</p></li>
+</ul>
+<p>Essas medidas indicam se a estrutura de correlação observada é apropriada para a extração de fatores comuns.</p>
+<hr>
+</section>
+</section>
+<section id="análise-fatorial-exploratória" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Análise Fatorial Exploratória</h1>
+<p>A análise fatorial deverá ser conduzida considerando diferentes estratégias metodológicas, permitindo uma comparação crítica entre os resultados.</p>
+<section id="métodos-de-extração" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="métodos-de-extração"><span class="header-section-number">4.1</span> Métodos de Extração</h2>
+<p>Aplicar e comparar, sempre que possível:</p>
+<ul>
+<li><p>Método das Componentes Principais;</p></li>
+<li><p>Método dos Fatores Principais;</p></li>
+<li><p>Método da Máxima Verossimilhança.</p></li>
+</ul>
+<p>Discutir vantagens, limitações e pressupostos de cada método.</p>
+</section>
+<section id="determinação-do-número-de-fatores" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="determinação-do-número-de-fatores"><span class="header-section-number">4.2</span> Determinação do Número de Fatores</h2>
+<p>O número de fatores a serem retidos deve ser avaliado com base em múltiplos critérios, tais como:</p>
+<ul>
+<li><p>Critério de Kaiser;</p></li>
+<li><p>Gráfico Scree Plot;</p></li>
+<li><p>Proporção da variância explicada;</p></li>
+<li><p>Análise paralela.</p></li>
+</ul>
+</section>
+<section id="rotações-fatoriais" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="rotações-fatoriais"><span class="header-section-number">4.3</span> Rotações Fatoriais</h2>
+<p>Realizar rotações fatoriais com o objetivo de facilitar a interpretação dos fatores:</p>
+<ul>
+<li>Rotações ortogonais.</li>
+</ul>
+<p>Comparar as soluções rotacionadas e discutir diferenças na estrutura das cargas fatoriais.</p>
+<hr>
+</section>
+</section>
+<section id="resultados-da-análise-fatorial" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Resultados da Análise Fatorial</h1>
+<p>Os resultados devem contemplar, obrigatoriamente:</p>
+<section id="matriz-de-cargas-fatoriais" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="matriz-de-cargas-fatoriais"><span class="header-section-number">5.1</span> Matriz de Cargas Fatoriais</h2>
+<ul>
+<li><p>Apresentar a matriz de cargas fatoriais;</p></li>
+<li><p>Identificar cargas relevantes;</p></li>
+</ul>
+<p>Discutir possíveis problemas de cargas cruzadas (cross-loading).</p>
+</section>
+<section id="comunalidades-e-variâncias-específicas" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="comunalidades-e-variâncias-específicas"><span class="header-section-number">5.2</span> Comunalidades e Variâncias Específicas</h2>
+<ul>
+<li><p>Avaliar o quanto da variância de cada variável é explicada pelos fatores;</p></li>
+<li><p>Identificar variáveis com baixa comunalidade.</p></li>
+</ul>
+</section>
+<section id="variância-total-explicada" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="variância-total-explicada"><span class="header-section-number">5.3</span> Variância Total Explicada</h2>
+<ul>
+<li><p>Proporção individual da variância explicada por cada fator;</p></li>
+<li><p>Proporção acumulada da variância total explicada.</p></li>
+</ul>
+</section>
+<section id="correlações-residuais" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="correlações-residuais"><span class="header-section-number">5.4</span> Correlações Residuais</h2>
+<ul>
+<li><p>Avaliar a matriz de correlações residuais;</p></li>
+<li><p>Identificar padrões que indiquem inadequação do modelo.</p></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="interpretação-dos-fatores" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Interpretação dos Fatores</h1>
+<p>Com base na composição das cargas fatoriais:</p>
+<ul>
+<li><p>Interpretar cada fator extraído;</p></li>
+<li><p>Propor nomes conceituais para os fatores (ex.: atributos sensoriais, valor econômico, imagem da marca);</p></li>
+<li><p>Relacionar os fatores ao comportamento do consumidor.</p></li>
+</ul>
+<hr>
+</section>
+<section id="escores-fatoriais" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Escores Fatoriais</h1>
+<ul>
+<li><p>Descrever o método utilizado para a extração dos escores fatoriais;</p></li>
+<li><p>Interpretar os escores no contexto do estudo;</p></li>
+<li><p>Discutir possíveis aplicações práticas, como segmentação de consumidores.</p></li>
+</ul>
+<hr>
+</section>
+<section id="comparação-entre-estratégias" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Comparação entre Estratégias</h1>
+<p>Comparar os resultados obtidos a partir de:</p>
+<ul>
+<li><p>Diferentes métodos de extração;</p></li>
+<li><p>Diferentes rotações fatoriais.</p></li>
+</ul>
+<p>Discutir:</p>
+<ul>
+<li><p>Estabilidade da solução fatorial;</p></li>
+<li><p>Sensibilidade do modelo às escolhas metodológicas;</p></li>
+<li><p>Possíveis limitações da análise.</p></li>
+</ul>
+<hr>
+</section>
+<section id="conclusões" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Conclusões</h1>
+<p>Apresentar uma síntese dos principais achados, destacando:</p>
+<ul>
+<li><p>A estrutura latente identificada;</p></li>
+<li><p>Implicações práticas para análise de mercado;</p></li>
+<li><p>Limitações do estudo e sugestões para análises futuras.</p></li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("http:\/\/professortp\.com\.br\/est014\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Copyright 2025, Tiago Pereira</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/tiagomartin/est014/edit/main/projeto/af/af.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/tiagomartin/est014/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>Página construída usando <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

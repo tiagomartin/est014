@@ -2165,5 +2165,803 @@
     "title": "Semana 11",
     "section": "",
     "text": "Análise Fatorial \n\n\nVer slides PDF"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#o-que-é-clustering",
+    "href": "aulas/analise_agrupamento/agrupamento.html#o-que-é-clustering",
+    "title": "Análise de Agrupamentos",
+    "section": "O que é clustering?",
+    "text": "O que é clustering?\nÉ uma técnica estatística multivariada para identificar agrupamentos dos dados de acordo com o grau de semelhança. Queremos achar um grupo de objetos, que são similares entre si e diferentes de outros grupos.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nO objetivo típico em clustering é descobrir os “agrupamentos naturais” presente nos dados."
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#o-que-é-clustering-1",
+    "href": "aulas/analise_agrupamento/agrupamento.html#o-que-é-clustering-1",
+    "title": "Análise de Agrupamentos",
+    "section": "O que é clustering?",
+    "text": "O que é clustering?\n\nConjunto de dados contendo agrupamentos “naturais”:"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#o-que-é-clustering-2",
+    "href": "aulas/analise_agrupamento/agrupamento.html#o-que-é-clustering-2",
+    "title": "Análise de Agrupamentos",
+    "section": "O que é clustering?",
+    "text": "O que é clustering?\n\nConjunto de dados sem agrupamentos “naturais”:"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#tendência-de-agrupamentos",
+    "href": "aulas/analise_agrupamento/agrupamento.html#tendência-de-agrupamentos",
+    "title": "Análise de Agrupamentos",
+    "section": "Tendência de agrupamentos",
+    "text": "Tendência de agrupamentos\nMétodo visual: Avaliação visual da tendência de agrupamento (VAT)\n\nA Avaliação Visual da Tendência de Agrupamento (VAT) é um método exploratório que avalia, de forma gráfica, se um conjunto de dados apresenta evidência de agrupamentos naturais.\nO procedimento baseia-se na matriz de distâncias entre as observações. Após o cálculo da matriz \\[\nD = [d(x_i,x_j)]_{n\\times n},\n\\] as observações são reordenadas de modo que pontos similares fiquem próximos, e a matriz resultante é exibida como um mapa de calor."
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#tendência-de-agrupamentos-faz-sentido-aplicar-um-algoritmo-de-clusterização-nesses-dados",
+    "href": "aulas/analise_agrupamento/agrupamento.html#tendência-de-agrupamentos-faz-sentido-aplicar-um-algoritmo-de-clusterização-nesses-dados",
+    "title": "Análise de Agrupamentos",
+    "section": "Tendência de agrupamentos: “Faz sentido aplicar um algoritmo de clusterização nesses dados?”",
+    "text": "Tendência de agrupamentos: “Faz sentido aplicar um algoritmo de clusterização nesses dados?”\nMétodo estatístico: Estatística de Hopkins\nA Estatística de Hopkins é uma medida pré-clusterização muito usada para avaliar se um conjunto de dados apresenta tendência natural à formação de agrupamentos (clusters) ou se os pontos estão distribuídos de forma aproximadamente aleatória no espaço das variáveis."
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#tendência-de-agrupamentos-faz-sentido-aplicar-um-algoritmo-de-clusterização-nesses-dados-1",
+    "href": "aulas/analise_agrupamento/agrupamento.html#tendência-de-agrupamentos-faz-sentido-aplicar-um-algoritmo-de-clusterização-nesses-dados-1",
+    "title": "Análise de Agrupamentos",
+    "section": "Tendência de agrupamentos: “Faz sentido aplicar um algoritmo de clusterização nesses dados?”",
+    "text": "Tendência de agrupamentos: “Faz sentido aplicar um algoritmo de clusterização nesses dados?”\nMétodo estatístico: Estatística de Hopkins\n\nA ideia central é comparar distâncias:\n\nDistâncias entre pontos reais do conjunto de dados\nDistâncias entre pontos artificiais gerados aleatoriamente no mesmo espaço amostral\n\nSe os dados tiverem estrutura de clusters, os pontos reais tendem a estar mais próximos entre si do que pontos gerados aleatoriamente."
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#tendência-de-agrupamentos-faz-sentido-aplicar-um-algoritmo-de-clusterização-nesses-dados-2",
+    "href": "aulas/analise_agrupamento/agrupamento.html#tendência-de-agrupamentos-faz-sentido-aplicar-um-algoritmo-de-clusterização-nesses-dados-2",
+    "title": "Análise de Agrupamentos",
+    "section": "Tendência de agrupamentos: “Faz sentido aplicar um algoritmo de clusterização nesses dados?”",
+    "text": "Tendência de agrupamentos: “Faz sentido aplicar um algoritmo de clusterização nesses dados?”\nMétodo estatístico: Estatística de Hopkins\n\nConsiderando um inteiro \\(m \\ll n\\), de pontos amostrados (normalizados), calcula-se a distância de cada ponto até o vizinho mais próximo, excluindo o próprio ponto\n\n\\[\nw_i\n=\n\\min_{x_j \\in X \\setminus \\{x_i\\}}\nd(x_i, x_j),\n\\qquad i = 1,\\ldots,m\n\\]"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#tendência-de-agrupamentos-faz-sentido-aplicar-um-algoritmo-de-clusterização-nesses-dados-3",
+    "href": "aulas/analise_agrupamento/agrupamento.html#tendência-de-agrupamentos-faz-sentido-aplicar-um-algoritmo-de-clusterização-nesses-dados-3",
+    "title": "Análise de Agrupamentos",
+    "section": "Tendência de agrupamentos: “Faz sentido aplicar um algoritmo de clusterização nesses dados?”",
+    "text": "Tendência de agrupamentos: “Faz sentido aplicar um algoritmo de clusterização nesses dados?”\nMétodo estatístico: Estatística de Hopkins\n\nGeram-se \\(m\\) pontos artificiais \\(y_1, \\ldots, y_m\\), assumindo distribuição uniforme no hipercubo definido pelos limites dos dados e independência entre as dimensões. Para cada ponto artificial \\(j\\), calcula-se a distância até o vizinho mais próximo no conjunto real.\n\n\\[\nu_i\n=\n\\min_{x \\in X}\nd(y_i, x),\n\\qquad i = 1,\\ldots,m\n\\]"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#tendência-de-agrupamentos-faz-sentido-aplicar-um-algoritmo-de-clusterização-nesses-dados-4",
+    "href": "aulas/analise_agrupamento/agrupamento.html#tendência-de-agrupamentos-faz-sentido-aplicar-um-algoritmo-de-clusterização-nesses-dados-4",
+    "title": "Análise de Agrupamentos",
+    "section": "Tendência de agrupamentos: “Faz sentido aplicar um algoritmo de clusterização nesses dados?”",
+    "text": "Tendência de agrupamentos: “Faz sentido aplicar um algoritmo de clusterização nesses dados?”\nMétodo estatístico: Estatística de Hopkins\n\\[H = \\dfrac{\\sum \\limits_{i=1}^m u_i}{\\sum \\limits_{i=1}^m u_i + \\sum \\limits_{i=1}^m w_i}\\]\n\n\\(w_i\\): distância do ponto real ao vizinho mais próximo\n\\(u_i\\): distância do ponto artificial ao ponto real mais próximo"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#tendência-de-agrupamentos-faz-sentido-aplicar-um-algoritmo-de-clusterização-nesses-dados-5",
+    "href": "aulas/analise_agrupamento/agrupamento.html#tendência-de-agrupamentos-faz-sentido-aplicar-um-algoritmo-de-clusterização-nesses-dados-5",
+    "title": "Análise de Agrupamentos",
+    "section": "Tendência de agrupamentos: “Faz sentido aplicar um algoritmo de clusterização nesses dados?”",
+    "text": "Tendência de agrupamentos: “Faz sentido aplicar um algoritmo de clusterização nesses dados?”\nInterpretação da Estatística de Hopkins\nSob a hipótese de ausência de clusters (padrão de referência), espera-se que as distâncias \\(u_i\\) e \\(w_i\\) sejam, em média, comparáveis, o que leva a: \\[\nH \\approx 0.5\n\\]\nEm termos práticos:\n\n\\(H \\approx 0.5\\): dados compatíveis com padrão aleatório (baixa tendência à clusterização);\n\\(H &gt; 0.5\\): evidência de tendência à formação de clusters (quanto mais próximo de 1, mais agregado);\n\\(H &lt; 0.5\\): padrão mais regular ou espalhado do que o aleatório."
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#tendência-de-agrupamentos-faz-sentido-aplicar-um-algoritmo-de-clusterização-nesses-dados-6",
+    "href": "aulas/analise_agrupamento/agrupamento.html#tendência-de-agrupamentos-faz-sentido-aplicar-um-algoritmo-de-clusterização-nesses-dados-6",
+    "title": "Análise de Agrupamentos",
+    "section": "Tendência de agrupamentos: “Faz sentido aplicar um algoritmo de clusterização nesses dados?”",
+    "text": "Tendência de agrupamentos: “Faz sentido aplicar um algoritmo de clusterização nesses dados?”\nInterpretação da Estatística de Hopkins\n\nObservação: como \\(H\\) depende de amostragem aleatória (seleção dos \\(m\\) pontos e geração dos pontos artificiais), é recomendável repetir o cálculo várias vezes e resumir o resultado por média ou mediana."
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#tendência-de-agrupamentos-1",
+    "href": "aulas/analise_agrupamento/agrupamento.html#tendência-de-agrupamentos-1",
+    "title": "Análise de Agrupamentos",
+    "section": "Tendência de agrupamentos",
+    "text": "Tendência de agrupamentos\nMétodo visual: Avaliação visual da tendência de agrupamento (VAT)"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#tendência-de-agrupamentos-2",
+    "href": "aulas/analise_agrupamento/agrupamento.html#tendência-de-agrupamentos-2",
+    "title": "Análise de Agrupamentos",
+    "section": "Tendência de agrupamentos",
+    "text": "Tendência de agrupamentos\nMétodo visual: Avaliação visual da tendência de agrupamento (VAT)\n\nA interpretação é feita visualmente:\n\nblocos escuros ao longo da diagonal indicam possível presença de clusters;\nausência de blocos bem definidos sugere padrão aleatório ou ausência de estrutura de agrupamento.\n\nO VAT é uma ferramenta pré-clusterização e deve ser utilizado de forma complementar a medidas quantitativas, como a Estatística de Hopkins."
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#que-perguntas-o-cluster-pode-responder",
+    "href": "aulas/analise_agrupamento/agrupamento.html#que-perguntas-o-cluster-pode-responder",
+    "title": "Análise de Agrupamentos",
+    "section": "Que perguntas o cluster pode responder?",
+    "text": "Que perguntas o cluster pode responder?\n\nComo agrupo os clientes que compram no site? (cluster é o objetivo final)\n\nmarketing segmentado\npersonalização de ofertas\n\nOnde coloco uma antena de operadora de celular?\n\n\nOnde deixo uma ambulância estacionada para atender a uma emergência?\n\n\nComo classifico cervejas em categorias distintas?"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#que-perguntas-a-clusterização-pode-responder",
+    "href": "aulas/analise_agrupamento/agrupamento.html#que-perguntas-a-clusterização-pode-responder",
+    "title": "Análise de Agrupamentos",
+    "section": "Que perguntas a clusterização pode responder?",
+    "text": "Que perguntas a clusterização pode responder?\nA clusterização é uma técnica de aprendizado não supervisionado cujo objetivo é identificar grupos de observações semelhantes, sem rótulos prévios. Ela é usada tanto como objetivo final quanto como ferramenta de apoio à decisão.\n\n\nComo agrupo os clientes que compram no site?\nA clusterização permite identificar perfis de clientes com comportamentos de compra semelhantes, apoiando estratégias de segmentação e marketing.\n\n\n\n\nOnde coloco uma antena de operadora de celular?\nA partir da clusterização espacial de usuários ou regiões, é possível identificar áreas de alta concentração de demanda, sugerindo locais estratégicos para instalação."
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#que-perguntas-a-clusterização-pode-responder-1",
+    "href": "aulas/analise_agrupamento/agrupamento.html#que-perguntas-a-clusterização-pode-responder-1",
+    "title": "Análise de Agrupamentos",
+    "section": "Que perguntas a clusterização pode responder?",
+    "text": "Que perguntas a clusterização pode responder?\n\nOnde deixo uma ambulância estacionada para atender uma emergência?\nA clusterização de ocorrências passadas ajuda a identificar zonas críticas, auxiliando na alocação eficiente de recursos de emergência.\n\n\n\nComo classifico cervejas em categorias distintas?\nA clusterização explora similaridades entre produtos e pode revelar categorias naturais ou estilos semelhantes, apoiando a construção de classificações."
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#algumas-questões",
+    "href": "aulas/analise_agrupamento/agrupamento.html#algumas-questões",
+    "title": "Análise de Agrupamentos",
+    "section": "Algumas questões…",
+    "text": "Algumas questões…\n🤔 Como medir a homogeneidade entre indivíduos?\n🤔 E entre grupos de indivíduos?\n🤔 Dado um conjunto de indivíduos, quantos grupos posso formar?"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#algumas-questões-1",
+    "href": "aulas/analise_agrupamento/agrupamento.html#algumas-questões-1",
+    "title": "Análise de Agrupamentos",
+    "section": "Algumas questões…",
+    "text": "Algumas questões…\nImagine que você tenha 16 cartas figuradas (\\(A,K,Q,J\\)) e que queira formar grupos de cartas semelhantes…\n\n\n\n\n\n\n\n\n\n\nComo você formaria esses grupos?"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#algumas-questões-2",
+    "href": "aulas/analise_agrupamento/agrupamento.html#algumas-questões-2",
+    "title": "Análise de Agrupamentos",
+    "section": "Algumas questões…",
+    "text": "Algumas questões…\n\n\n\n\n\n\nCartas individuais?\n\n\n\n\n\n\n\nAgrupar por naipes?"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#algumas-questões-3",
+    "href": "aulas/analise_agrupamento/agrupamento.html#algumas-questões-3",
+    "title": "Análise de Agrupamentos",
+    "section": "Algumas questões…",
+    "text": "Algumas questões…\n\n\n\n\n\n\nAgrupar por cor do naipe?\n\n\n\n\n\n\n\nAgrupar por naipes maiores e menores?"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#algumas-questões-4",
+    "href": "aulas/analise_agrupamento/agrupamento.html#algumas-questões-4",
+    "title": "Análise de Agrupamentos",
+    "section": "Algumas questões…",
+    "text": "Algumas questões…\n\n\n\n\n\n\nCopas mais a Rainha de espadas e outros naipes?\n\n\n\n\n\n\n\nAgrupar por face da carta?"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#algumas-questões-5",
+    "href": "aulas/analise_agrupamento/agrupamento.html#algumas-questões-5",
+    "title": "Análise de Agrupamentos",
+    "section": "Algumas questões…",
+    "text": "Algumas questões…\nResumindo…\nNecessidade da definição de medidas de similaridade (ou dissimilaridade)"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#similaridade-e-dissimilaridade",
+    "href": "aulas/analise_agrupamento/agrupamento.html#similaridade-e-dissimilaridade",
+    "title": "Análise de Agrupamentos",
+    "section": "Similaridade e dissimilaridade",
+    "text": "Similaridade e dissimilaridade\nMedidas de Similaridade: quanto maior o valor, maior a semelhança entre os objetos\n\nMedidas de Dissimilaridade (Distância): quanto maior o valor, mais diferentes são os objetos"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#similaridade-e-dissimilaridade-1",
+    "href": "aulas/analise_agrupamento/agrupamento.html#similaridade-e-dissimilaridade-1",
+    "title": "Análise de Agrupamentos",
+    "section": "Similaridade e dissimilaridade",
+    "text": "Similaridade e dissimilaridade"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#base-de-dados-exemplo",
+    "href": "aulas/analise_agrupamento/agrupamento.html#base-de-dados-exemplo",
+    "title": "Análise de Agrupamentos",
+    "section": "Base de dados (exemplo)",
+    "text": "Base de dados (exemplo)\n\n\n\n\n\n\n\n\n\n\n\n\nCliente\nIdade\nN.º de carros\nClasse social\nPotência do motor\nCombustível\nModelo\n\n\n\n\n1\n20\n1\nA\nBaixa\nGasolina\nEsporte\n\n\n2\n37\n2\nA\nAlta\nGasolina\nLuxo\n\n\n3\n51\n1\nC\nMédia\nGasolina\nEsporte\n\n\n4\n32\n1\nD\nAlta\nÁlcool\nStandard\n\n\n5\n30\n2\nB\nMédia\nÁlcool\nStandard\n\n\n6\n55\n3\nA\nAlta\nGasolina\nLuxo\n\n\n\n\nComo medir a similaridade ou dissimilaridade entre os indivíduos?"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#similaridade-e-dissimilaridade-exemplo",
+    "href": "aulas/analise_agrupamento/agrupamento.html#similaridade-e-dissimilaridade-exemplo",
+    "title": "Análise de Agrupamentos",
+    "section": "Similaridade e dissimilaridade (exemplo)",
+    "text": "Similaridade e dissimilaridade (exemplo)\nPesquisa com clientes de uma loja de equipamentos automotivos\n\nVariáveis mensuradas\n\nIdade (em anos completos) - Variável quantitativa discreta\nNúmero de carros - Variável quantitativa discreta\nClasse social: A, B, C ou D - Variável qualitativa ordinal\nPotência do motor: Baixa, Média ou Alta - Variável qualitativa ordinal\nCombustível: Gasolina ou Álcool - Variável qualitativa nominal\nModelo: Esporte, Luxo ou Standard - Variável qualitativa nominal"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#dissimilaridade",
+    "href": "aulas/analise_agrupamento/agrupamento.html#dissimilaridade",
+    "title": "Análise de Agrupamentos",
+    "section": "Dissimilaridade",
+    "text": "Dissimilaridade\nAs distâncias são as medidas de dissimilaridade mais utilizadas no estudo de bancos de dados com variáveis numéricas\n\n\nUma medida \\(d_{ij}\\) representa uma medida de distância entre os indivíduos \\(i\\) e \\(j\\) se, e somente se,\n\n\\(d_{ij} \\geqslant 0\\) para todo \\(i\\) e \\(j\\);\n\\(d_{ij} = 0\\) se, e somente se, \\(i = j\\);\n\\(d_{ij} = d_{ji}\\)\n\\(d_{ij} \\leqslant d_{ik} + d_{kj}\\) para qualquer indivíduo \\(k\\)."
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#dissimilaridade-1",
+    "href": "aulas/analise_agrupamento/agrupamento.html#dissimilaridade-1",
+    "title": "Análise de Agrupamentos",
+    "section": "Dissimilaridade",
+    "text": "Dissimilaridade\n\nDesigualdade triangular"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#dissimilaridade-2",
+    "href": "aulas/analise_agrupamento/agrupamento.html#dissimilaridade-2",
+    "title": "Análise de Agrupamentos",
+    "section": "Dissimilaridade",
+    "text": "Dissimilaridade\nPrincipais medidas de distância\nDistância Euclidiana\n\\[d_{ij} = \\displaystyle{\\sqrt{(\\mathbf{x}_i - \\mathbf{x}_j)^t(\\mathbf{x}_i - \\mathbf{x}_j)}} = \\sqrt{\\displaystyle{\\sum_{k=1}^p(x_{ik} - x_{jk})^2}}\\]\nDistância geométrica entre dois pontos"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#dissimilaridade-3",
+    "href": "aulas/analise_agrupamento/agrupamento.html#dissimilaridade-3",
+    "title": "Análise de Agrupamentos",
+    "section": "Dissimilaridade",
+    "text": "Dissimilaridade\nPrincipais medidas de distância\nDistância Euclidiana Generalizada\n\\[d_{ij} = \\displaystyle{\\sqrt{(\\mathbf{x}_i - \\mathbf{x}_j)^t\\boldsymbol{W}(\\mathbf{x}_i - \\mathbf{x}_j)}}\\]\n\nSe \\(\\boldsymbol{W} = \\textrm{diag}\\left(\\dfrac{1}{p}\\right)\\): distância euclidiana média\nSe \\(\\boldsymbol{W} = \\boldsymbol{\\Sigma}^{-1}\\): distância de Mahalanobis"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#dissimilaridade-4",
+    "href": "aulas/analise_agrupamento/agrupamento.html#dissimilaridade-4",
+    "title": "Análise de Agrupamentos",
+    "section": "Dissimilaridade",
+    "text": "Dissimilaridade\nPrincipais medidas de distância\nDistância de Minkowski\n\\[d_{ij} = \\left( \\displaystyle{\\sum_{k=1}^P} |X_{ik} - X_{jk}|^{\\lambda}\\right)^{\\frac{1}{\\lambda}}\\]\n\nSe \\(\\lambda = 1\\), temos a chamada métrica de Manhattan. É também conhecida como city block.\n\nSe \\(\\lambda = 2\\), temos a distância euclidiana.\nA métrica de Minkowski é menos afetada pela presença de valores discrepantes na amostra do que a distância Euclidiana."
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#dissimilaridade-5",
+    "href": "aulas/analise_agrupamento/agrupamento.html#dissimilaridade-5",
+    "title": "Análise de Agrupamentos",
+    "section": "Dissimilaridade",
+    "text": "Dissimilaridade\nPrincipais medidas de distância\nDistância de Manhattan (city block)"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#dissimilaridade-6",
+    "href": "aulas/analise_agrupamento/agrupamento.html#dissimilaridade-6",
+    "title": "Análise de Agrupamentos",
+    "section": "Dissimilaridade",
+    "text": "Dissimilaridade\nDissimilaridade \\(\\Longrightarrow\\) Similaridade\n\\[s_{ij} = 1 - d_{ij}^0\\]\nem que\n\\[d_{ij}^0 = \\displaystyle{\\frac{d_{ij} - \\min(\\boldsymbol{D})}{\\max(\\boldsymbol{D}) - \\min(\\boldsymbol{D})}}\\]\nSendo \\(\\min(\\boldsymbol{D})\\) e \\(\\max(\\boldsymbol{D})\\) o menor e o maior valor de distância observados na matriz de distâncias \\(\\boldsymbol{D}_{n \\times n}\\), sem levar em consideração os elementos da diagonal principal dessa matriz."
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#similaridade",
+    "href": "aulas/analise_agrupamento/agrupamento.html#similaridade",
+    "title": "Análise de Agrupamentos",
+    "section": "Similaridade",
+    "text": "Similaridade\nVariáveis qualitativas nominais\nNeste caso, utilizamos variáveis fictícias (variáveis dummy) para codificar as variáveis:\n\n\n\n\n\nCombustível\n\\(N_1\\)\n\n\n\n\nGasolina\n1\n\n\nÁlcool\n0\n\n\n\n\n\n\n\nModelo\n\\(N_2\\)\n\\(N_3\\)\n\n\n\n\nEsporte\n1\n0\n\n\nLuxo\n0\n1\n\n\nStandard\n0\n0"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#codificação-de-variáveis-categóricas",
+    "href": "aulas/analise_agrupamento/agrupamento.html#codificação-de-variáveis-categóricas",
+    "title": "Análise de Agrupamentos",
+    "section": "Codificação de variáveis categóricas",
+    "text": "Codificação de variáveis categóricas\n\n\nCombustível\n\n\n\nCombustível\n\\(N_1\\)\n\n\n\n\nGasolina\n1\n\n\nÁlcool\n0\n\n\n\n\nModelo\n\n\n\nModelo\n\\(N_2\\)\n\\(N_3\\)\n\n\n\n\nEsporte\n1\n0\n\n\nLuxo\n0\n1\n\n\nStandard\n0\n0"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#similaridade-1",
+    "href": "aulas/analise_agrupamento/agrupamento.html#similaridade-1",
+    "title": "Análise de Agrupamentos",
+    "section": "Similaridade",
+    "text": "Similaridade\nVariáveis qualitativas nominais\nNo exemplo:\n\n\n\n\n\nCliente\nCombustível\n\\(N_1\\)\n\n\n\n\n1\nGasolina\n1\n\n\n2\nGasolina\n1\n\n\n3\nGasolina\n1\n\n\n4\nÁlcool\n0\n\n\n5\nÁlcool\n0\n\n\n6\nGasolina\n1\n\n\n\n\n\n\n\nCliente\nModelo\n\\(N_2\\)\n\\(N_3\\)\n\n\n\n\n1\nEsporte\n1\n0\n\n\n2\nLuxo\n0\n1\n\n\n3\nEsporte\n1\n0\n\n\n4\nStandard\n0\n0\n\n\n5\nStandard\n0\n0\n\n\n6\nLuxo\n0\n1"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#similaridade-2",
+    "href": "aulas/analise_agrupamento/agrupamento.html#similaridade-2",
+    "title": "Análise de Agrupamentos",
+    "section": "Similaridade",
+    "text": "Similaridade\nVariáveis qualitativas nominais\nDe forma que,\n\n\n\nCliente\n\\(N_1\\)\n\\(N_2\\)\n\\(N_3\\)\n\n\n\n\n1\n1\n1\n0\n\n\n2\n1\n0\n1\n\n\n3\n1\n1\n0\n\n\n4\n0\n0\n0\n\n\n5\n0\n0\n0\n\n\n6\n1\n0\n1"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#similaridade-3",
+    "href": "aulas/analise_agrupamento/agrupamento.html#similaridade-3",
+    "title": "Análise de Agrupamentos",
+    "section": "Similaridade",
+    "text": "Similaridade\nVariáveis qualitativas ordinais\nUtilizamos variáveis fictícias (variáveis dummy) para codificar as variáveis, levando em consideração a ordinalidade das variáveis:\n\n\n\n\n\nClasse social\n\\(O_1\\)\n\\(O_2\\)\n\\(O_3\\)\n\n\n\n\nA\n1\n1\n1\n\n\nB\n0\n1\n1\n\n\nC\n0\n0\n1\n\n\nD\n0\n0\n0\n\n\n\n\n\n\n\nPotência\n\\(O_4\\)\n\\(O_5\\)\n\n\n\n\nAlta\n1\n1\n\n\nMédia\n0\n1\n\n\nBaixa\n0\n0"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#similaridade-4",
+    "href": "aulas/analise_agrupamento/agrupamento.html#similaridade-4",
+    "title": "Análise de Agrupamentos",
+    "section": "Similaridade",
+    "text": "Similaridade\nObservação\nAs variáveis Classe social e Potência do motor possuem ordem natural. Por isso, foram codificadas por meio de variáveis ordinais cumulativas:\n\nvalores mais altos acumulam mais indicadores iguais a 1;\nvalores mais baixos recebem apenas zeros.\n\nEssa codificação preserva a informação de ordem, mas impõe uma estrutura geométrica específica ao espaço dos dados."
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#similaridade-5",
+    "href": "aulas/analise_agrupamento/agrupamento.html#similaridade-5",
+    "title": "Análise de Agrupamentos",
+    "section": "Similaridade",
+    "text": "Similaridade\nVariáveis qualitativas ordinais\nNo exemplo:\n\n\n\n\n\nCliente\nClasse social\n\\(O_1\\)\n\\(O_2\\)\n\\(O_3\\)\n\n\n\n\n1\nA\n1\n1\n1\n\n\n2\nA\n1\n1\n1\n\n\n3\nC\n0\n0\n1\n\n\n4\nD\n0\n0\n0\n\n\n5\nB\n0\n1\n1\n\n\n6\nA\n1\n1\n1\n\n\n\n\n\n\n\nCliente\nPotência\n\\(O_4\\)\n\\(O_5\\)\n\n\n\n\n1\nBaixa\n0\n0\n\n\n2\nAlta\n1\n1\n\n\n3\nMédia\n0\n1\n\n\n4\nAlta\n1\n1\n\n\n5\nMédia\n0\n1\n\n\n6\nAlta\n1\n1"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#similaridade-6",
+    "href": "aulas/analise_agrupamento/agrupamento.html#similaridade-6",
+    "title": "Análise de Agrupamentos",
+    "section": "Similaridade",
+    "text": "Similaridade\nVariáveis qualitativas ordinais\nDe forma que,\n\n\n\nCliente\n\\(O_1\\)\n\\(O_2\\)\n\\(O_3\\)\n\\(O_4\\)\n\\(O_5\\)\n\n\n\n\n1\n1\n1\n1\n0\n0\n\n\n2\n1\n1\n1\n1\n1\n\n\n3\n0\n0\n1\n0\n1\n\n\n4\n0\n0\n0\n1\n1\n\n\n5\n0\n1\n1\n0\n1\n\n\n6\n1\n1\n1\n1\n1"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#similaridade-7",
+    "href": "aulas/analise_agrupamento/agrupamento.html#similaridade-7",
+    "title": "Análise de Agrupamentos",
+    "section": "Similaridade",
+    "text": "Similaridade\nVariáveis qualitativas nominais e ordinais\nJuntando tudo…\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCliente\n\\(O_1\\)\n\\(O_2\\)\n\\(O_3\\)\n\\(O_4\\)\n\\(O_5\\)\n\\(N_1\\)\n\\(N_2\\)\n\\(N_3\\)\n\n\n\n\n1\n1\n1\n1\n0\n0\n1\n1\n0\n\n\n2\n1\n1\n1\n1\n1\n1\n0\n1\n\n\n3\n0\n0\n1\n0\n1\n1\n1\n0\n\n\n4\n0\n0\n0\n1\n1\n0\n0\n0\n\n\n5\n0\n1\n1\n0\n1\n0\n0\n0\n\n\n6\n1\n1\n1\n1\n1\n1\n0\n1"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#similaridade-8",
+    "href": "aulas/analise_agrupamento/agrupamento.html#similaridade-8",
+    "title": "Análise de Agrupamentos",
+    "section": "Similaridade",
+    "text": "Similaridade\nVariáveis qualitativas nominais e ordinais\nConsidere os clientes 1 e 3. Vamos calcular a medida de similaridade entre eles:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCliente\n\\(O_1\\)\n\\(O_2\\)\n\\(O_3\\)\n\\(O_4\\)\n\\(O_5\\)\n\\(N_1\\)\n\\(N_2\\)\n\\(N_3\\)\n\n\n\n\n1\n1\n1\n1\n0\n0\n1\n1\n0\n\n\n3\n0\n0\n1\n0\n1\n1\n1\n0"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#similaridade-9",
+    "href": "aulas/analise_agrupamento/agrupamento.html#similaridade-9",
+    "title": "Análise de Agrupamentos",
+    "section": "Similaridade",
+    "text": "Similaridade\nTabela de concordância entre dois indivíduos\n\n\n\nIndivíduo \\(i\\) \\ Indivíduo \\(j\\)\n1\n0\nTotal\n\n\n\n\n1\n\\(a\\)\n\\(b\\)\n\\(a + b\\)\n\n\n0\n\\(c\\)\n\\(d\\)\n\\(c + d\\)\n\n\nTotal\n\\(a + c\\)\n\\(b + d\\)\n\\(p\\)\n\n\n\n\n\\(a\\): número de variáveis em que ambos têm valor 1\n\\(b\\): número de variáveis em que \\(i=1\\) e \\(j=0\\)\n\\(c\\): número de variáveis em que \\(i=0\\) e \\(j=1\\)\n\\(d\\): número de variáveis em que ambos têm valor 0\n\n\\[p = a + b + c + d\\]"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#similaridade-10",
+    "href": "aulas/analise_agrupamento/agrupamento.html#similaridade-10",
+    "title": "Análise de Agrupamentos",
+    "section": "Similaridade",
+    "text": "Similaridade\nTabela de concordância entre dois indivíduos\nNo exemplo:\n\n\n\nIndivíduo 1 \\ Indivíduo 3\n1\n0\nTotal\n\n\n\n\n1\n3\n2\n5\n\n\n0\n1\n2\n3\n\n\nTotal\n4\n4\n8"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#critérios-de-similaridade",
+    "href": "aulas/analise_agrupamento/agrupamento.html#critérios-de-similaridade",
+    "title": "Análise de Agrupamentos",
+    "section": "Critérios de similaridade",
+    "text": "Critérios de similaridade\nCoeficiente de Concordância Simples\n\\[\\Large s_{ij} = \\displaystyle{\\frac{a + d}{p}}\\]\n\n\n\n\n\nIndivíduo 1 \\ Indivíduo 3\n1\n0\nTotal\n\n\n\n\n1\n3\n2\n5\n\n\n0\n1\n2\n3\n\n\nTotal\n4\n4\n8\n\n\n\n\n\\[\ns_{13} = \\dfrac{a + d}{p}\n               = \\dfrac{3 + 2}{8}\n               = \\dfrac{5}{8}\n               = 0,625\n\\]"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#critérios-de-similaridade-1",
+    "href": "aulas/analise_agrupamento/agrupamento.html#critérios-de-similaridade-1",
+    "title": "Análise de Agrupamentos",
+    "section": "Critérios de similaridade",
+    "text": "Critérios de similaridade\nCoeficiente de Concordância Simples\nInterpretação:\n\nO valor 0,625 indica que os indivíduos 1 e 3 concordam em 62,5% das variáveis binárias.\nTanto concordâncias em 1 quanto em 0 contribuem igualmente para a similaridade."
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#critérios-de-similaridade-2",
+    "href": "aulas/analise_agrupamento/agrupamento.html#critérios-de-similaridade-2",
+    "title": "Análise de Agrupamentos",
+    "section": "Critérios de similaridade",
+    "text": "Critérios de similaridade\nCoeficiente de Concordância Positiva\n\\[\\Large s_{ij} = \\displaystyle{\\frac{a}{p}}\\]\n\n\n\n\n\nIndivíduo 1 \\ Indivíduo 3\n1\n0\nTotal\n\n\n\n\n1\n3\n2\n5\n\n\n0\n1\n2\n3\n\n\nTotal\n4\n4\n8\n\n\n\n\n\\[\ns_{13} = \\dfrac{a}{p}=\n               \\dfrac{3}{8} = 0,375\n\\]"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#critérios-de-similaridade-3",
+    "href": "aulas/analise_agrupamento/agrupamento.html#critérios-de-similaridade-3",
+    "title": "Análise de Agrupamentos",
+    "section": "Critérios de similaridade",
+    "text": "Critérios de similaridade\nCoeficiente de Concordância Positiva\nInterpretação:\n\nOs indivíduos 1 e 3 compartilham simultaneamente o valor 1 em 37,5% das variáveis.\nAusências simultâneas (valor 0) não contribuem para a similaridade.\nO critério enfatiza presença conjunta, não coincidência geral."
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#critérios-de-similaridade-4",
+    "href": "aulas/analise_agrupamento/agrupamento.html#critérios-de-similaridade-4",
+    "title": "Análise de Agrupamentos",
+    "section": "Critérios de similaridade",
+    "text": "Critérios de similaridade\nCoeficiente de Concordância de Jaccard\n\\[\\Large s_{ij} = \\displaystyle{\\frac{a}{a + b + c}}\\]\n\n\n\n\n\nIndivíduo 1 \\ Indivíduo 3\n1\n0\nTotal\n\n\n\n\n1\n3\n2\n5\n\n\n0\n1\n2\n3\n\n\nTotal\n4\n4\n8\n\n\n\n\n\\[\ns_{13} = \\dfrac{3}{3 + 2 + 1}\n       = \\dfrac{3}{6}\n       = 0,5\n\\]"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#critérios-de-similaridade-5",
+    "href": "aulas/analise_agrupamento/agrupamento.html#critérios-de-similaridade-5",
+    "title": "Análise de Agrupamentos",
+    "section": "Critérios de similaridade",
+    "text": "Critérios de similaridade\nCoeficiente de Concordância de Jaccard\nInterpretação:\n\nOs indivíduos 1 e 3 compartilham 50% das presenças observadas.\nAusências simultâneas (valor 0) não contribuem para a similaridade.\nO coeficiente foca exclusivamente na interseção de atributos presentes."
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#critérios-de-similaridade-6",
+    "href": "aulas/analise_agrupamento/agrupamento.html#critérios-de-similaridade-6",
+    "title": "Análise de Agrupamentos",
+    "section": "Critérios de similaridade",
+    "text": "Critérios de similaridade\nCoeficiente de Concordância de Gower e Legendre\nO Coeficiente de Concordância de Gower–Legendre é uma medida de similaridade projetada para dados mistos, isto é, conjuntos de dados que contêm, ao mesmo tempo:\n\nvariáveis quantitativas,\nvariáveis qualitativas nominais,\nvariáveis qualitativas ordinais.\n\nEle permite combinar diferentes tipos de variáveis em uma única medida de similaridade, respeitando a natureza de cada uma."
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#critérios-de-similaridade-7",
+    "href": "aulas/analise_agrupamento/agrupamento.html#critérios-de-similaridade-7",
+    "title": "Análise de Agrupamentos",
+    "section": "Critérios de similaridade",
+    "text": "Critérios de similaridade\nCoeficiente de Concordância de Gower e Legendre\nConsidere dois indivíduos \\(i\\) e \\(j\\) descritos por \\(p\\) variáveis. A similaridade de Gower–Legendre é definida como:\n\\[\nS_{ij}\n=\n\\dfrac{\\sum_{k=1}^{p} w_{ijk}\\, s_{ijk}}\n{\\sum_{k=1}^{p} w_{ijk}},\n\\] onde:\n\n\\(s_{ijk}\\) é a similaridade parcial da variável \\(k\\) entre os indivíduos \\(i\\) e \\(j\\);\n\\(w_{ijk}\\) é um peso (geralmente \\(0\\) ou \\(1\\)), usado para tratar dados ausentes."
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#critérios-de-similaridade-8",
+    "href": "aulas/analise_agrupamento/agrupamento.html#critérios-de-similaridade-8",
+    "title": "Análise de Agrupamentos",
+    "section": "Critérios de similaridade",
+    "text": "Critérios de similaridade\nCoeficiente de Concordância de Gower e Legendre\nO coeficiente assume valores em \\([0,1]\\):\n\n\\(S_{ij} = 1\\) indica indivíduos idênticos;\n\\(S_{ij} = 0\\) indica máxima dissimilaridade."
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#critérios-de-similaridade-9",
+    "href": "aulas/analise_agrupamento/agrupamento.html#critérios-de-similaridade-9",
+    "title": "Análise de Agrupamentos",
+    "section": "Critérios de similaridade",
+    "text": "Critérios de similaridade\nCoeficiente de Concordância de Gower e Legendre\nSimilaridade parcial por tipo de variável\nVariáveis quantitativas\n\nPara uma variável quantitativa \\(k\\):\n\n\\[\ns_{ijk}\n=\n1 - \\dfrac{|x_{ik} - x_{jk}|}{R_k},\n\\]\nonde \\(R_k\\) é o intervalo da variável \\(k\\) (máximo − mínimo)."
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#critérios-de-similaridade-10",
+    "href": "aulas/analise_agrupamento/agrupamento.html#critérios-de-similaridade-10",
+    "title": "Análise de Agrupamentos",
+    "section": "Critérios de similaridade",
+    "text": "Critérios de similaridade\nCoeficiente de Concordância de Gower e Legendre\nSimilaridade parcial por tipo de variável\nVariáveis qualitativas nominais\n\nPara uma variável nominal:\n\n\\[\ns_{ijk}\n=\n\\begin{cases}\n1, & \\text{se } x_{ik} = x_{jk}, \\\\\n0, & \\text{caso contrário}.\n\\end{cases}\n\\]"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#critérios-de-similaridade-11",
+    "href": "aulas/analise_agrupamento/agrupamento.html#critérios-de-similaridade-11",
+    "title": "Análise de Agrupamentos",
+    "section": "Critérios de similaridade",
+    "text": "Critérios de similaridade\nCoeficiente de Concordância de Gower e Legendre\nSimilaridade parcial por tipo de variável\nVariáveis qualitativas ordinais\nPara variáveis ordinais, os níveis são primeiro convertidos em postos normalizados no intervalo \\([0,1]\\). Em seguida, aplica-se a mesma fórmula das variáveis quantitativas:\n\\[\ns_{ijk}\n=\n1 - |r_{ik} - r_{jk}|,\n\\]\nonde \\(r_{ik}\\) e \\(r_{jk}\\) são os postos normalizados."
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#critérios-de-similaridade-12",
+    "href": "aulas/analise_agrupamento/agrupamento.html#critérios-de-similaridade-12",
+    "title": "Análise de Agrupamentos",
+    "section": "Critérios de similaridade",
+    "text": "Critérios de similaridade\nCoeficiente de Concordância de Gower e Legendre\nInterpretação:\n\nCada variável contribui de forma controlada para a similaridade total.\nVariáveis com escalas diferentes não dominam o cálculo.\nA ordem das categorias é respeitada para variáveis ordinais, sem impor distâncias artificiais."
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#critérios-de-similaridade-13",
+    "href": "aulas/analise_agrupamento/agrupamento.html#critérios-de-similaridade-13",
+    "title": "Análise de Agrupamentos",
+    "section": "Critérios de similaridade",
+    "text": "Critérios de similaridade\nSimilaridade \\(\\Longrightarrow\\) Dissimilaridade\n\\[\\Large d_{ij}^* = 1 - s_{ij}\\]"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#critérios-de-similaridade-14",
+    "href": "aulas/analise_agrupamento/agrupamento.html#critérios-de-similaridade-14",
+    "title": "Análise de Agrupamentos",
+    "section": "Critérios de similaridade",
+    "text": "Critérios de similaridade\nCoeficiente de Concordância de Gower e Legendre\nNo exemplo:\n\n\n\n\n\n\n\n\n\n\n\n\nCliente\nIdade\nN.º de carros\nClasse social\nPotência do motor\nCombustível\nModelo\n\n\n\n\n1\n20\n1\nA\nBaixa\nGasolina\nEsporte\n\n\n2\n37\n2\nA\nAlta\nGasolina\nLuxo\n\n\n3\n51\n1\nC\nMédia\nGasolina\nEsporte\n\n\n4\n32\n1\nD\nAlta\nÁlcool\nStandard\n\n\n5\n30\n2\nB\nMédia\nÁlcool\nStandard\n\n\n6\n55\n3\nA\nAlta\nGasolina\nLuxo"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#critérios-de-similaridade-15",
+    "href": "aulas/analise_agrupamento/agrupamento.html#critérios-de-similaridade-15",
+    "title": "Análise de Agrupamentos",
+    "section": "Critérios de similaridade",
+    "text": "Critérios de similaridade\nCoeficiente de Concordância de Gower e Legendre\nTemos que:\n\nCliente 1: Idade = 20, Carros = 1, Classe = A, Potência = Baixa, Combustível = Gasolina, Modelo = Esporte\nCliente 3: Idade = 51, Carros = 1, Classe = C, Potência = Média, Combustível = Gasolina, Modelo = Esporte"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#critérios-de-similaridade-16",
+    "href": "aulas/analise_agrupamento/agrupamento.html#critérios-de-similaridade-16",
+    "title": "Análise de Agrupamentos",
+    "section": "Critérios de similaridade",
+    "text": "Critérios de similaridade\nCoeficiente de Concordância de Gower e Legendre\nSimilaridades parciais\n\nIdade\n\n\\[\ns=\\;1-\\dfrac{|20-51|}{35}=1-\\dfrac{31}{35}=\\dfrac{4}{35}\\approx 0,1143\n\\]\n\nNº de carros\n\n\\[\ns=\\;1-\\dfrac{|1-1|}{2}=1\n\\]"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#critérios-de-similaridade-17",
+    "href": "aulas/analise_agrupamento/agrupamento.html#critérios-de-similaridade-17",
+    "title": "Análise de Agrupamentos",
+    "section": "Critérios de similaridade",
+    "text": "Critérios de similaridade\nCoeficiente de Concordância de Gower e Legendre\nSimilaridades parciais\n\nClasse social (ordinal)\n\n\\(r(A)=1\\) e \\(r(C)=\\tfrac{1}{3}\\): \\[\ns=\\;1-\\left|1-\\tfrac{1}{3}\\right|=1-\\tfrac{2}{3}=\\tfrac{1}{3}\\approx 0,3333\n\\]\n\nPotência (ordinal)\n\n\\(r(\\text{Baixa})=0\\) e \\(r(\\text{Média})=\\tfrac{1}{2}\\): \\[\ns=\\;1-\\left|0-\\tfrac{1}{2}\\right|=\\tfrac{1}{2}=0,5\n\\]"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#critérios-de-similaridade-18",
+    "href": "aulas/analise_agrupamento/agrupamento.html#critérios-de-similaridade-18",
+    "title": "Análise de Agrupamentos",
+    "section": "Critérios de similaridade",
+    "text": "Critérios de similaridade\nCoeficiente de Concordância de Gower e Legendre\nSimilaridades parciais\n\nCombustível (nominal)\n\nGasolina = Gasolina \\(\\Rightarrow s=1\\)\n\nModelo (nominal)\n\nEsporte = Esporte \\(\\Rightarrow s=1\\)"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#critérios-de-similaridade-19",
+    "href": "aulas/analise_agrupamento/agrupamento.html#critérios-de-similaridade-19",
+    "title": "Análise de Agrupamentos",
+    "section": "Critérios de similaridade",
+    "text": "Critérios de similaridade\nCoeficiente de Concordância de Gower e Legendre\nSimilaridade total\nSão \\(p=6\\) variáveis: \\[\nS_{1,3}\n=\\dfrac{0,1143+1+0,3333+0,5+1+1}{6}\n\\approx 0,6579\n\\]"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-1",
+    "href": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-1",
+    "title": "Análise de Agrupamentos",
+    "section": "Métodos de Agrupamento",
+    "text": "Métodos de Agrupamento\n\nMétodos hierárquicos: Baseiam-se na realização de sucessivas aglomerações ou de sucessivas divisões dos dados. Envolvem a construção de uma hierarquia através de uma estrutura do tipo árvore.\n\n\n\nMétodos não-hierárquicos: Produzem uma partição em um número fixo de classes, com sucessivas alocações e re-alocações dos indivíduos, conforme as distâncias aos demais indivíduos. Necessário definir o número de grupos à {}."
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#métodos-hierárquicos",
+    "href": "aulas/analise_agrupamento/agrupamento.html#métodos-hierárquicos",
+    "title": "Análise de Agrupamentos",
+    "section": "Métodos hierárquicos",
+    "text": "Métodos hierárquicos\n\n\n\nAglomerativos: Os agrupamentos são formados a partir de uma matriz de parecença, que é atualizada a cada união de um par de objetos. Neste procedimento, cada indivíduo, originalmente, é um cluster, configurando \\(n\\) clusters. Indivíduos similares são sucessivamente agrupados, até a formação de um único grupo, contendo toda a amostra."
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#métodos-hierárquicos-1",
+    "href": "aulas/analise_agrupamento/agrupamento.html#métodos-hierárquicos-1",
+    "title": "Análise de Agrupamentos",
+    "section": "Métodos hierárquicos",
+    "text": "Métodos hierárquicos\n\n\n\nDivisivos (ou de Partição): Fazem o caminho oposto aos métodos hierárquicos aglomerativos. Neste método, um único grupo de objetos é subdividido em dois com a maior distância. Estes subgrupos são então particionados sucessivamente até se obter os objetos individuais."
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos",
+    "href": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos",
+    "title": "Análise de Agrupamentos",
+    "section": "Métodos de Agrupamento Hierárquicos",
+    "text": "Métodos de Agrupamento Hierárquicos\nAgrupamentos hierárquicos aglomerativos\n\nConsiderar inicialmente \\(n\\) grupos, sendo \\(n\\) o número de indivíduos. A matriz de distâncias \\(\\boldsymbol{D}_{n \\times n}\\) é a matriz de distâncias entre os elementos originais;\nSelecionar os dois indivíduos mais próximos na matriz \\(\\boldsymbol{D}_{n \\times n}\\) e formar com eles um grupo;\nSubstituir os indivíduos utilizados no passo b) para definir o grupo por um novo elemento que represente o grupo construído. A distância entre esse novo elemento e os indivíduos restantes são calculadas utilizando um dos critérios que serão definidos a seguir;\nVoltar ao passo b) e repetir os passos b) e c) até que tenhamos todos os elementos agrupados em um único grupo."
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-1",
+    "href": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-1",
+    "title": "Análise de Agrupamentos",
+    "section": "Métodos de Agrupamento Hierárquicos",
+    "text": "Métodos de Agrupamento Hierárquicos\nResultado da aplicação do método\n\n\n\n\n\n\n\n\n\nRepresenta uma síntese gráfica do método de agrupamento\nEsse gráfico é de grande utilidade para a classificação, comparação e discussão de agrupamentos."
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-2",
+    "href": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-2",
+    "title": "Análise de Agrupamentos",
+    "section": "Métodos de Agrupamento Hierárquicos",
+    "text": "Métodos de Agrupamento Hierárquicos\nComo definir distância entre grupos?\n\nSuponha que temos um grupo \\(K\\) com \\(n_k\\) indivíduos e um grupo \\(L\\) com \\(n_l\\) indivíduos.\nA distância entre os grupos \\(K\\) e \\(L\\) pode ser calculada com base em um dos cinco métodos seguintes:\n\nMétodo do vizinho mais próximo (single linkage)\nMétodo do vizinho mais distante (complete linkage)\nMétodo da distância média (average linkage)\nMétodo do centroide (Centroid)\nMétodo de Ward"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-3",
+    "href": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-3",
+    "title": "Análise de Agrupamentos",
+    "section": "Métodos de Agrupamento Hierárquicos",
+    "text": "Métodos de Agrupamento Hierárquicos\nMétodo do vizinho mais próximo\nConsiste em considerar que a distância entre os dois grupos é a menor distância entre as possíveis combinações de indivíduos tomados dos dois grupos considerados, isto é,\n\n\n\\[\\Large d_{(K,L)} =  \\underbrace{\\min(d_{ij})}_{i \\in K, j \\in L}\\]"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-4",
+    "href": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-4",
+    "title": "Análise de Agrupamentos",
+    "section": "Métodos de Agrupamento Hierárquicos",
+    "text": "Métodos de Agrupamento Hierárquicos\nMétodo do vizinho mais próximo\nEsquematicamente:"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-5",
+    "href": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-5",
+    "title": "Análise de Agrupamentos",
+    "section": "Métodos de Agrupamento Hierárquicos",
+    "text": "Métodos de Agrupamento Hierárquicos\nMétodo do vizinho mais próximo\nEsquematicamente:"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-6",
+    "href": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-6",
+    "title": "Análise de Agrupamentos",
+    "section": "Métodos de Agrupamento Hierárquicos",
+    "text": "Métodos de Agrupamento Hierárquicos\nMétodo do vizinho mais distante\nConsiste em considerar que a distância entre os dois grupos é a maior distância entre as possíveis combinações de indivíduos tomados dos dois grupos considerados, isto é,\n\n\n\\[\\Large d_{(K,L)} =  \\underbrace{\\max(d_{ij})}_{i \\in K, j \\in L}\\]"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-7",
+    "href": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-7",
+    "title": "Análise de Agrupamentos",
+    "section": "Métodos de Agrupamento Hierárquicos",
+    "text": "Métodos de Agrupamento Hierárquicos\nMétodo da distância média\nConsiste em considerar que a distância entre os dois grupos é a média aritmética das distâncias entre as possíveis combinações de indivíduos tomados dos dois grupos considerados, isto é,\n\n\n\\[\\Large d_{(K,L)} = \\displaystyle{\\sum_{i \\in K} \\sum_{j \\in L}} \\displaystyle{\\frac{d_{ij}}{n_kn_l}}\\]"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-8",
+    "href": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-8",
+    "title": "Análise de Agrupamentos",
+    "section": "Métodos de Agrupamento Hierárquicos",
+    "text": "Métodos de Agrupamento Hierárquicos\nMétodo do centroide\nConsiste em considerar que a distância entre os dois grupos é a distância euclidiana ao quadrado entre os centroides dos dois grupos. O centroide de um grupo é o ponto médio dos objetos contidos no grupo, isto é,\n\n\n\\[\\Large d_{(K,L)} = (\\bar{K} - \\bar{L})^t(\\bar{K} - \\bar{L})\\]\n\\[\\bar{K} = \\displaystyle{\\frac{\\displaystyle{\\sum_{i \\in K} i}}{n_k}} \\hspace{0.2cm} {\\rm e} \\hspace{0.2cm}\n\\bar{L} = \\displaystyle{\\frac{\\displaystyle{\\sum_{j \\in L} j}}{n_l}}\\]"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-9",
+    "href": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-9",
+    "title": "Análise de Agrupamentos",
+    "section": "Métodos de Agrupamento Hierárquicos",
+    "text": "Métodos de Agrupamento Hierárquicos\nMétodo de Ward\n\nConsidere a soma de quadrados intra-cluster de um cluster \\(A\\):\n\n\\[SQE_A = \\displaystyle{\\sum_{i = 1}^{n_A}}(x_{i} - \\bar{\\bf x}_A)^t(x_{i} - \\bar{\\bf x}_A)\\]\n\nDefinimos o acréscimo na soma de quadrados resultante da junção de dois clusters \\(A\\) e \\(B\\) em um cluster \\(AB\\) por:\n\n\\[I_{AB} = SQE_{AB} - (SQE_A + SQE_B)\\]"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-10",
+    "href": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-10",
+    "title": "Análise de Agrupamentos",
+    "section": "Métodos de Agrupamento Hierárquicos",
+    "text": "Métodos de Agrupamento Hierárquicos\nMétodo de Ward\n\nA união entre clusters \\(A\\) e \\(B\\) que proporcionarem menor acréscimo na \\(SQE\\) é executada.\nPara usar o método de Ward, as variáveis devem ser quantitativas."
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-11",
+    "href": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-11",
+    "title": "Análise de Agrupamentos",
+    "section": "Métodos de Agrupamento Hierárquicos",
+    "text": "Métodos de Agrupamento Hierárquicos\nExemplo\n\n\nA fim de exemplificar a aplicação dos métodos de agrupamento, considere os dados da Tabela ao lado. Os sete casos são considerados as observações de cada indivíduo para as variáveis \\(X_1\\) e \\(X_2\\).\n\n\n\n\nCaso\n\\(X_1\\)\n\\(X_2\\)\n\n\n\n\n1\n1\n1\n\n\n2\n2\n1\n\n\n3\n3\n2\n\n\n4\n2\n4,5\n\n\n5\n1\n5\n\n\n6\n3\n7\n\n\n7\n6\n5"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-12",
+    "href": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-12",
+    "title": "Análise de Agrupamentos",
+    "section": "Métodos de Agrupamento Hierárquicos",
+    "text": "Métodos de Agrupamento Hierárquicos\nExemplo\nRepresentação dos casos no plano"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-13",
+    "href": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-13",
+    "title": "Análise de Agrupamentos",
+    "section": "Métodos de Agrupamento Hierárquicos",
+    "text": "Métodos de Agrupamento Hierárquicos\nExemplo\nMatriz de distâncias\n\\[D_0 = \\left[ \\begin{matrix}\n&1 & 2&3&4&5&6&7\\\\\n1& 0,000 & 1,000 & 2,236 & 3,640 & 4,000 & 6,325 & 6,403 \\\\\n2&  & 0,000 & 1,414 & 3,500 & 4,123 & 6,083 & 5,657 \\\\\n3&  &  & 0,000 & 2,693 & 3,606 & 5,000 & 4,243 \\\\\n4&  &  &  & 0,000 & 1,118 & 2,693 & 4,031 \\\\\n5& &  &  &  & 0,000 & 2,828 & 5,000 \\\\\n6&  &  &  &  &  & 0,000 & 3,606 \\\\\n7&  &  &  &  &  &  & 0,000\n                    \\end{matrix} \\right]\\]"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-14",
+    "href": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-14",
+    "title": "Análise de Agrupamentos",
+    "section": "Métodos de Agrupamento Hierárquicos",
+    "text": "Métodos de Agrupamento Hierárquicos\nExemplo\nMatriz de distâncias\n\\[D_0 = \\left[ \\begin{matrix}\n&1 & 2&3&4&5&6&7\\\\\n1& 0,000 & \\textbf{1,000} & 2,236 & 3,640 & 4,000 & 6,325 & 6,403 \\\\\n2&  & 0,000 & 1,414 & 3,500 & 4,123 & 6,083 & 5,657 \\\\\n3&  &  & 0,000 & 2,693 & 3,606 & 5,000 & 4,243 \\\\\n4&  &  &  & 0,000 & 1,118 & 2,693 & 4,031 \\\\\n5& &  &  &  & 0,000 & 2,828 & 5,000 \\\\\n6&  &  &  &  &  & 0,000 & 3,606 \\\\\n7&  &  &  &  &  &  & 0,000\n                    \\end{matrix} \\right]\\]\n\\[\\scriptsize d_{12} = \\sqrt{\\displaystyle{(X_{11} - X_{21})^2 + (X_{12} - X_{22})^2}} =\n\\sqrt{\\displaystyle{(1 - 1)^2 + (2 - 1)^2}} = \\sqrt{1} = 1\\]"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-15",
+    "href": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-15",
+    "title": "Análise de Agrupamentos",
+    "section": "Métodos de Agrupamento Hierárquicos",
+    "text": "Métodos de Agrupamento Hierárquicos\nExemplo\nPasso 1: juntar os casos 1 e 2\n\nRedefinir a matriz de distâncias considerando os casos mais parecidos como se fossem um único grupo.\nAqui os métodos se diferenciam!\nMétodo do vizinho mais próximo"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-16",
+    "href": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-16",
+    "title": "Análise de Agrupamentos",
+    "section": "Métodos de Agrupamento Hierárquicos",
+    "text": "Métodos de Agrupamento Hierárquicos\nExemplo\nConstrução da nova matriz de distâncias\n\\[\n\\begin{aligned}\nd_{((1,2)3)} &=  \\min(d_{13};d_{23}) = \\min(2,236; 1,414) = 1,414 \\\\[6pt]\nd_{((1,2)4)} &=  \\min(d_{14};d_{24}) = \\min(3,640; 3,500) = 3,500 \\\\[6pt]\nd_{((1,2)5)} &=  \\min(d_{15};d_{25}) = \\min(4,000; 4,123) = 4,000 \\\\[6pt]\nd_{((1,2)6)} &=  \\min(d_{16};d_{26}) = \\min(6,325; 6,083) = 6,083 \\\\[6pt]\nd_{((1,2)7)} &=  \\min(d_{17};d_{27}) = \\min(6,403; 5,657) = 5,657\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-17",
+    "href": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-17",
+    "title": "Análise de Agrupamentos",
+    "section": "Métodos de Agrupamento Hierárquicos",
+    "text": "Métodos de Agrupamento Hierárquicos\nExemplo\nMatriz de distâncias\n\\[D_1 = \\left[ \\begin{matrix}\n&(1,2)&3&4&5&6&7\\\\\n(1,2)& 0,000 & 1,414 & 3,500 & 4,000 & 6,083 & 5,657 \\\\\n3  &  & 0,000 & 2,693 & 3,606 & 5,000 & 4,243 \\\\\n4  &  &  & 0,000 & 1,118 & 2,693 & 4,031 \\\\\n5 &  &  &  & 0,000 & 2,828 & 5,000 \\\\\n6  &  &  &  &  & 0,000 & 3,606 \\\\\n7  &  &  &  &  &  & 0,000\n                    \\end{matrix} \\right]\\]"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-18",
+    "href": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-18",
+    "title": "Análise de Agrupamentos",
+    "section": "Métodos de Agrupamento Hierárquicos",
+    "text": "Métodos de Agrupamento Hierárquicos\nExemplo\nMatriz de distâncias\n\\[D_1 = \\left[ \\begin{matrix}\n&(1,2)&3&4&5&6&7\\\\\n(1,2)& 0,000 & 1,414 & 3,500 & 4,000 & 6,083 & 5,657 \\\\\n3  &  & 0,000 & 2,693 & 3,606 & 5,000 & 4,243 \\\\\n4  &  &  & 0,000 & \\textbf{1,118} & 2,693 & 4,031 \\\\\n5 &  &  &  & 0,000 & 2,828 & 5,000 \\\\\n6  &  &  &  &  & 0,000 & 3,606 \\\\\n7  &  &  &  &  &  & 0,000\n                    \\end{matrix} \\right]\\]"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-19",
+    "href": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-19",
+    "title": "Análise de Agrupamentos",
+    "section": "Métodos de Agrupamento Hierárquicos",
+    "text": "Métodos de Agrupamento Hierárquicos\nExemplo\nPasso 2: juntar os casos 4 e 5\nRedefinir a matriz de distâncias considerando os casos mais parecidos como se fossem um único grupo.\n\\[\n\\begin{aligned}\nd_{((4,5)(1,2))} &=  \\min(d_{14};d_{24};d_{15};d_{25}) = \\min(3,640; 3,500; 4,000; 4,123) = 3,500 \\\\ &=\n\\min(d_{(1,2)4};d_{(1,2)5}) = \\min(3,500;4,000) \\\\\nd_{((4,5)3)} &=  \\min(d_{34};d_{35}) = \\min(2,693; 3,606) = 2,693 \\\\\nd_{((4,5)6)} &=  \\min(d_{46};d_{56}) = \\min(2,693; 2,828) = 2,693 \\\\\nd_{((4,5)7)} &=  \\min(d_{47};d_{57}) = \\min(4,031; 5,000) = 4,031\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-20",
+    "href": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-20",
+    "title": "Análise de Agrupamentos",
+    "section": "Métodos de Agrupamento Hierárquicos",
+    "text": "Métodos de Agrupamento Hierárquicos\nExemplo\nMatriz de distâncias\n\\[D_2 = \\left[ \\begin{matrix}\n&(1,2)&3&(4,5)&6&7\\\\\n(1,2)& 0,000 & 1,414 & 3,500 &  6,083 & 5,657 \\\\\n3  &  & 0,000 & 2,693 & 5,000 & 4,243 \\\\\n(4,5)  &  &  & 0,000 &  2,693 & 4,031 \\\\\n6  &  &    &  & 0,000 & 3,606 \\\\\n7  &  &    &  &  & 0,000\n                    \\end{matrix} \\right]\\]"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-21",
+    "href": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-21",
+    "title": "Análise de Agrupamentos",
+    "section": "Métodos de Agrupamento Hierárquicos",
+    "text": "Métodos de Agrupamento Hierárquicos\nExemplo\nMatriz de distâncias\n\\[D_2 = \\left[ \\begin{matrix}\n&(1,2)&3&(4,5)&6&7\\\\\n(1,2)& 0,000 & \\textbf{1,414} & 3,500 &  6,083 & 5,657 \\\\\n3  &  & 0,000 & 2,693 & 5,000 & 4,243 \\\\\n(4,5)  &  &  & 0,000 &  2,693 & 4,031 \\\\\n6  &  &    &  & 0,000 & 3,606 \\\\\n7  &  &    &  &  & 0,000\n                    \\end{matrix} \\right]\\]"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-22",
+    "href": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-22",
+    "title": "Análise de Agrupamentos",
+    "section": "Métodos de Agrupamento Hierárquicos",
+    "text": "Métodos de Agrupamento Hierárquicos\nExemplo\nPasso 3: juntar o grupo \\((1,2)\\) como caso 3\nRedefinir a matriz de distâncias considerando os casos mais parecidos como se fossem um único grupo.\n\\[ \\small\n\\begin{aligned}\nd_{(((1,2,3)(4,5))} &=  \\min(d_{14};d_{24};d_{34};d_{15};d_{25};d_{35}) \\\\ &= \\min(3,640; 3,500; 2,693; 4,000; 4,123; 3,606) = 2,693 \\\\ &=\n\\min(d_{(1,2)(4,5)};d_{(4,5)3}) = \\min(3,500;2,693) \\\\\nd_{((1,2,3)6)} &= \\min(d_{16};d_{26};d_{36}) =  \\min(6,325; 6,083; 5,000) = 5,000 \\\\ &=  \\min(d_{((1,2)6)};d_{36}) = \\min(6,083;5,000) \\\\\nd_{((1,2,3)7)} &= \\min(d_{17};d_{27};d_{37}) =  \\min(6,403; 5,657; 4,243) = 4,243 \\\\ &=  \\min(d_{((1,2)7)};d_{37}) = \\min(5,657;4,243) \\\\\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-23",
+    "href": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-23",
+    "title": "Análise de Agrupamentos",
+    "section": "Métodos de Agrupamento Hierárquicos",
+    "text": "Métodos de Agrupamento Hierárquicos\nExemplo\nMatriz de distâncias\n\\[D_3 = \\left[ \\begin{matrix}\n&(1,2,3) &(4,5)&6&7\\\\\n(1,2,3)& 0,000 & 2,693 & 5,000 & 4,243 \\\\\n(4,5)    &  & 0,000 &  2,693 & 4,031 \\\\\n6  &     &  & 0,000 & 3,606 \\\\\n7  &      &  &  & 0,000\n                    \\end{matrix} \\right]\\]"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-24",
+    "href": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-24",
+    "title": "Análise de Agrupamentos",
+    "section": "Métodos de Agrupamento Hierárquicos",
+    "text": "Métodos de Agrupamento Hierárquicos\nExemplo\nMatriz de distâncias\n\\[D_3 = \\left[ \\begin{matrix}\n&(1,2,3) &(4,5)&6&7\\\\\n(1,2,3)& 0,000 & \\textbf{2,693} & 5,000 & 4,243 \\\\\n(4,5)    &  & 0,000 &  \\textbf{2,693} & 4,031 \\\\\n6  &     &  & 0,000 & 3,606 \\\\\n7  &      &  &  & 0,000\n                    \\end{matrix} \\right]\\]"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-25",
+    "href": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-25",
+    "title": "Análise de Agrupamentos",
+    "section": "Métodos de Agrupamento Hierárquicos",
+    "text": "Métodos de Agrupamento Hierárquicos\nExemplo\nPasso 4: juntar o grupo \\((4,5)\\) como caso 6\nRedefinir a matriz de distâncias considerando os casos mais parecidos como se fossem um único grupo.\n\\[ \\small\n\\begin{aligned}\nd_{(((4,5,6)(1,2,3))} &=  \\min(d_{14};d_{24};d_{34};d_{15};d_{25};d_{35};d_{16};d_{26};d_{36}) \\\\\n&= \\min(3,640; 3,500; 2,693; 4,000; 4,123; 3,606; 6,325; 6,083; 5,000) = 2,693 \\\\ &=\n\\min(d_{(1,2,3)(4,5)};d_{(1,2,3)6}) = \\min(2,693; 5,000) \\\\\nd_{((4,5,6)7)} &= \\min(d_{47};d_{57};d_{67}) =  \\min(4,031; 5,000; 3,606) = 3,606 \\\\ &=  \\min(d_{((4,5)7)};d_{67}) = \\min(4,031;3,606) \\\\\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-26",
+    "href": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-26",
+    "title": "Análise de Agrupamentos",
+    "section": "Métodos de Agrupamento Hierárquicos",
+    "text": "Métodos de Agrupamento Hierárquicos\nExemplo\nMatriz de distâncias\n\\[D_4 = \\left[ \\begin{matrix}\n&(1,2,3) &(4,5,6) &7\\\\\n(1,2,3)& 0,000 & 2,693 &  4,243 \\\\\n(4,5,6)    &  & 0,000 &  3,606 \\\\\n7  &       &  & 0,000\n                    \\end{matrix} \\right]\\]"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-27",
+    "href": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-27",
+    "title": "Análise de Agrupamentos",
+    "section": "Métodos de Agrupamento Hierárquicos",
+    "text": "Métodos de Agrupamento Hierárquicos\nExemplo\nMatriz de distâncias\n\\[D_4 = \\left[ \\begin{matrix}\n&(1,2,3) &(4,5,6) &7\\\\\n(1,2,3)& 0,000 & \\textbf{2,693} &  4,243 \\\\\n(4,5,6)    &  & 0,000 &  3,606 \\\\\n7  &       &  & 0,000\n                    \\end{matrix} \\right]\\]"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-28",
+    "href": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-28",
+    "title": "Análise de Agrupamentos",
+    "section": "Métodos de Agrupamento Hierárquicos",
+    "text": "Métodos de Agrupamento Hierárquicos\nExemplo\nPasso 5: juntar o grupo \\((1,2,3)\\) com o grupo \\((4,5,6)\\)\nRedefinir a matriz de distâncias considerando os casos mais parecidos como se fossem um único grupo.\n\\[\n\\begin{aligned}\nd_{((1,2,3,4,5,6)7)} &=  \\min(d_{17};d_{27};d_{37};d_{47};d_{57};d_{67}) \\\\\n&= \\min(6,403; 5,657; 4,243; 4,031; 5,000; 3,606) = 3,606 \\\\ &=\n\\min(d_{(1,2,3)7};d_{(4,5,6)7}) = \\min(4,243; 3,606) \\\\\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-29",
+    "href": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-29",
+    "title": "Análise de Agrupamentos",
+    "section": "Métodos de Agrupamento Hierárquicos",
+    "text": "Métodos de Agrupamento Hierárquicos\nExemplo\nMatriz de distâncias\n\\[D_5 = \\left[ \\begin{matrix}\n&(1,2,3,4,5,6) & 7\\\\\n(1,2,3,4,5,6 )& 0,000 & 3,606 \\\\\n7         &  & 0,000\n                    \\end{matrix} \\right]\\]"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-30",
+    "href": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-30",
+    "title": "Análise de Agrupamentos",
+    "section": "Métodos de Agrupamento Hierárquicos",
+    "text": "Métodos de Agrupamento Hierárquicos\nExemplo\nMatriz de distâncias\n\\[D_5 = \\left[ \\begin{matrix}\n&(1,2,3,4,5,6) & 7\\\\\n(1,2,3,4,5,6 )& 0,000 & \\textbf{3,606} \\\\\n7         &  & 0,000\n                    \\end{matrix} \\right]\\]"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-31",
+    "href": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-31",
+    "title": "Análise de Agrupamentos",
+    "section": "Métodos de Agrupamento Hierárquicos",
+    "text": "Métodos de Agrupamento Hierárquicos\nExemplo\nResumo do método de agrupamento\n\n\n\nPasso\nNº de grupos\nGrupos\nDistância\n\n\n\n\n1\n7\n1, 2, 3, 4, 5, 6, 7\n0,000\n\n\n2\n6\n(1,2), 3, 4, 5, 6, 7\n1,000\n\n\n3\n5\n(1,2), 3, (4,5), 6, 7\n1,118\n\n\n4\n4\n(1,2,3), (4,5), 6, 7\n1,414\n\n\n5\n3\n(1,2,3), (4,5,6), 7\n2,693\n\n\n6\n2\n(1,2,3,4,5,6), 7\n2,693\n\n\n7\n1\n(1,2,3,4,5,6,7)\n3,606"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-32",
+    "href": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-32",
+    "title": "Análise de Agrupamentos",
+    "section": "Métodos de Agrupamento Hierárquicos",
+    "text": "Métodos de Agrupamento Hierárquicos\nExemplo"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-33",
+    "href": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-33",
+    "title": "Análise de Agrupamentos",
+    "section": "Métodos de Agrupamento Hierárquicos",
+    "text": "Métodos de Agrupamento Hierárquicos\nDeterminação do número de grupos\n\nO dendrograma permite ao pesquisador consultar a distância em que os clusters foram combinados para formar um novo cluster.\nClusters que são semelhantes entre si são combinados a baixas distâncias, enquanto grupos que são mais dissimilares são combinados em altas distâncias.\nA diferença de distâncias define como os clusters próximos são um do outro."
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-34",
+    "href": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-34",
+    "title": "Análise de Agrupamentos",
+    "section": "Métodos de Agrupamento Hierárquicos",
+    "text": "Métodos de Agrupamento Hierárquicos\nDeterminação do número de grupos\n\nUma partição dos dados em um número especificado de grupos pode ser obtida “cortando” o dendograma a uma distância apropriada.\nSe traçarmos uma linha horizontal no dendograma a uma determinada distância, então o número \\(k\\) das linhas verticais cortadas por essa linha horizontal identificará uma solução \\(k\\)-cluster.\nA intersecção da linha horizontal e uma dessas linhas verticais representa um cluster, e os itens localizados no final de todos os ramos abaixo interseção constituem os membros do cluster."
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-35",
+    "href": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-hierárquicos-35",
+    "title": "Análise de Agrupamentos",
+    "section": "Métodos de Agrupamento Hierárquicos",
+    "text": "Métodos de Agrupamento Hierárquicos\nDeterminação do número de grupos"
+  },
+  {
+    "objectID": "projeto/af/af.html",
+    "href": "projeto/af/af.html",
+    "title": "Análise Fatorial Aplicada ao Comportamento do Consumidor",
+    "section": "",
+    "text": "Data de entrega: 03 de fevereiro de 2026"
+  },
+  {
+    "objectID": "projeto/af/af.html#medidas-de-adequação",
+    "href": "projeto/af/af.html#medidas-de-adequação",
+    "title": "Análise Fatorial Aplicada ao Comportamento do Consumidor",
+    "section": "3.1 Medidas de Adequação",
+    "text": "3.1 Medidas de Adequação\nDevem ser calculadas e interpretadas:\n\nTeste de Esfericidade de Bartlett;\nMedida KMO (Kaiser–Meyer–Olkin), tanto global quanto individual por variável.\n\nEssas medidas indicam se a estrutura de correlação observada é apropriada para a extração de fatores comuns."
+  },
+  {
+    "objectID": "projeto/af/af.html#métodos-de-extração",
+    "href": "projeto/af/af.html#métodos-de-extração",
+    "title": "Análise Fatorial Aplicada ao Comportamento do Consumidor",
+    "section": "4.1 Métodos de Extração",
+    "text": "4.1 Métodos de Extração\nAplicar e comparar, sempre que possível:\n\nMétodo das Componentes Principais;\nMétodo dos Fatores Principais;\nMétodo da Máxima Verossimilhança.\n\nDiscutir vantagens, limitações e pressupostos de cada método."
+  },
+  {
+    "objectID": "projeto/af/af.html#determinação-do-número-de-fatores",
+    "href": "projeto/af/af.html#determinação-do-número-de-fatores",
+    "title": "Análise Fatorial Aplicada ao Comportamento do Consumidor",
+    "section": "4.2 Determinação do Número de Fatores",
+    "text": "4.2 Determinação do Número de Fatores\nO número de fatores a serem retidos deve ser avaliado com base em múltiplos critérios, tais como:\n\nCritério de Kaiser;\nGráfico Scree Plot;\nProporção da variância explicada;\nAnálise paralela."
+  },
+  {
+    "objectID": "projeto/af/af.html#rotações-fatoriais",
+    "href": "projeto/af/af.html#rotações-fatoriais",
+    "title": "Análise Fatorial Aplicada ao Comportamento do Consumidor",
+    "section": "4.3 Rotações Fatoriais",
+    "text": "4.3 Rotações Fatoriais\nRealizar rotações fatoriais com o objetivo de facilitar a interpretação dos fatores:\n\nRotações ortogonais.\n\nComparar as soluções rotacionadas e discutir diferenças na estrutura das cargas fatoriais."
+  },
+  {
+    "objectID": "projeto/af/af.html#resultados-da-análise-fatorial",
+    "href": "projeto/af/af.html#resultados-da-análise-fatorial",
+    "title": "Análise Fatorial Aplicada ao Comportamento do Consumidor",
+    "section": "4.4 Resultados da Análise Fatorial",
+    "text": "4.4 Resultados da Análise Fatorial\nOs resultados devem contemplar, obrigatoriamente:\n\n4.4.1 Matriz de Cargas Fatoriais\n\nApresentar a matriz de cargas fatoriais;\nIdentificar cargas relevantes;\n\nDiscutir possíveis problemas de cargas cruzadas (cross-loading)."
+  },
+  {
+    "objectID": "projeto/af/af.html#matriz-de-cargas-fatoriais",
+    "href": "projeto/af/af.html#matriz-de-cargas-fatoriais",
+    "title": "Análise Fatorial Aplicada ao Comportamento do Consumidor",
+    "section": "5.1 Matriz de Cargas Fatoriais",
+    "text": "5.1 Matriz de Cargas Fatoriais\n\nApresentar a matriz de cargas fatoriais;\nIdentificar cargas relevantes;\n\nDiscutir possíveis problemas de cargas cruzadas (cross-loading)."
+  },
+  {
+    "objectID": "projeto/af/af.html#comunalidades-e-variâncias-específicas",
+    "href": "projeto/af/af.html#comunalidades-e-variâncias-específicas",
+    "title": "Análise Fatorial Aplicada ao Comportamento do Consumidor",
+    "section": "5.2 Comunalidades e Variâncias Específicas",
+    "text": "5.2 Comunalidades e Variâncias Específicas\n\nAvaliar o quanto da variância de cada variável é explicada pelos fatores;\nIdentificar variáveis com baixa comunalidade."
+  },
+  {
+    "objectID": "projeto/af/af.html#variância-total-explicada",
+    "href": "projeto/af/af.html#variância-total-explicada",
+    "title": "Análise Fatorial Aplicada ao Comportamento do Consumidor",
+    "section": "5.3 Variância Total Explicada",
+    "text": "5.3 Variância Total Explicada\n\nProporção individual da variância explicada por cada fator;\nProporção acumulada da variância total explicada."
+  },
+  {
+    "objectID": "projeto/af/af.html#correlações-residuais",
+    "href": "projeto/af/af.html#correlações-residuais",
+    "title": "Análise Fatorial Aplicada ao Comportamento do Consumidor",
+    "section": "5.4 Correlações Residuais",
+    "text": "5.4 Correlações Residuais\n\nAvaliar a matriz de correlações residuais;\nIdentificar padrões que indiquem inadequação do modelo."
   }
 ]

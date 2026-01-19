@@ -1,0 +1,1785 @@
+---
+title: "Análise de Agrupamentos"
+format: 
+  revealjs:
+    width: 1600
+    height: 900
+    footer: ""
+    theme: quartomonothemer.scss
+    slide-number: c/t
+    show-slide-number: all
+    preview-links: auto
+    self-contained: true
+  beamer:          # Slides em PDF (LaTeX/Beamer)
+    aspectratio: 169   # 16:9
+    keep-tex: true     # opcional, guarda o .tex gerado
+incremental: false
+code-link: false
+bibliography: references.bib
+title-slide-attributes:
+    data-background-image: /images/back.png
+    data-background-size: cover
+    data-background-opacity: "0.3"
+execute:
+  echo: true
+---
+
+
+## O que é clustering?
+
+É uma **técnica estatística multivariada** para identificar agrupamentos dos dados de acordo com o grau de semelhança. Queremos achar um grupo de objetos, que são similares entre si e diferentes de outros grupos.
+
+
+:::: {layout="[ 50, 50 ]"}
+
+::: {#first-column}
+![](/images/AA/grafico_AA-01.jpg){fig-align="center"}
+:::
+
+::: {#second-column}
+![](/images/AA/grafico_AA-02.jpg){fig-align="center"}
+:::
+
+::::
+
+-  O **objetivo** típico em clustering é descobrir os "agrupamentos naturais" presente nos dados.
+
+
+
+## O que é clustering?
+
+- Conjunto de dados **contendo** agrupamentos "naturais":
+
+
+![](/images/AA/grupos_naturais.jpg){fig-align="center"}
+
+
+
+## O que é clustering?
+
+- Conjunto de dados **sem** agrupamentos "naturais":
+
+![](/images/AA/grupos_nao_naturais.jpg){fig-align="center"}
+
+
+
+## Tendência de agrupamentos: “Faz sentido aplicar um algoritmo de clusterização nesses dados?”
+
+### **Método estatístico:** Estatística de Hopkins
+
+
+A **Estatística de Hopkins** é uma medida pré-clusterização muito usada para avaliar se um conjunto de dados apresenta tendência natural à formação de agrupamentos (clusters) ou se os pontos estão distribuídos de forma aproximadamente aleatória no espaço das variáveis.
+
+
+
+## Tendência de agrupamentos: “Faz sentido aplicar um algoritmo de clusterização nesses dados?”
+
+### **Método estatístico:** Estatística de Hopkins
+
+
+- A ideia central é comparar distâncias:
+    - Distâncias entre pontos reais do conjunto de dados
+    - Distâncias entre pontos artificiais gerados aleatoriamente no mesmo espaço amostral
+
+- Se os dados tiverem estrutura de clusters, os pontos reais tendem a estar mais próximos entre si do que pontos gerados aleatoriamente.
+
+
+
+
+## Tendência de agrupamentos: “Faz sentido aplicar um algoritmo de clusterização nesses dados?”
+
+### **Método estatístico:** Estatística de Hopkins
+
+
+- Considerando um inteiro $m \ll n$, de pontos amostrados (normalizados), calcula-se a distância de cada ponto até o vizinho mais próximo, excluindo o próprio ponto
+
+$$
+w_i
+=
+\min_{x_j \in X \setminus \{x_i\}}
+d(x_i, x_j),
+\qquad i = 1,\ldots,m
+$$
+
+
+
+
+
+## Tendência de agrupamentos: “Faz sentido aplicar um algoritmo de clusterização nesses dados?”
+
+### **Método estatístico:** Estatística de Hopkins
+
+
+- Geram-se $m$ pontos artificiais $y_1, \ldots, y_m$, assumindo distribuição uniforme no hipercubo definido pelos limites dos dados e independência entre as dimensões. Para cada ponto artificial $j$, calcula-se a distância até o vizinho mais próximo no conjunto real.
+
+
+$$
+u_i
+=
+\min_{x \in X}
+d(y_i, x),
+\qquad i = 1,\ldots,m
+$$
+
+
+
+
+
+
+
+
+## Tendência de agrupamentos: “Faz sentido aplicar um algoritmo de clusterização nesses dados?”
+
+### **Método estatístico:** Estatística de Hopkins
+
+$$H = \dfrac{\sum \limits_{i=1}^m u_i}{\sum \limits_{i=1}^m u_i + \sum \limits_{i=1}^m w_i}$$
+
+
+- $w_i$: distância do ponto real ao vizinho mais próximo
+
+- $u_i$: distância do ponto artificial ao ponto real mais próximo
+
+
+
+## Tendência de agrupamentos: “Faz sentido aplicar um algoritmo de clusterização nesses dados?”
+
+
+### Interpretação da Estatística de Hopkins
+
+Sob a hipótese de ausência de clusters (padrão de referência), espera-se que as distâncias $u_i$ e $w_i$ sejam, em média, comparáveis, o que leva a:
+$$
+H \approx 0.5
+$$
+
+Em termos práticos:
+
+- $H \approx 0.5$: dados compatíveis com **padrão aleatório** (baixa tendência à clusterização);
+- $H > 0.5$: evidência de **tendência à formação de clusters** (quanto mais próximo de 1, mais agregado);
+- $H < 0.5$: padrão mais **regular ou espalhado** do que o aleatório.
+
+
+## Tendência de agrupamentos: “Faz sentido aplicar um algoritmo de clusterização nesses dados?”
+
+
+### Interpretação da Estatística de Hopkins
+
+
+
+> **Observação:** como $H$ depende de amostragem aleatória (seleção dos $m$ pontos e geração dos pontos artificiais), é recomendável repetir o cálculo várias vezes e resumir o resultado por média ou mediana.
+
+
+
+
+
+
+
+## Tendência de agrupamentos
+
+
+### **Método visual:** Avaliação visual da tendência de agrupamento (VAT)
+
+
+- A Avaliação Visual da Tendência de Agrupamento (VAT) é um método exploratório que avalia, de forma gráfica, se um conjunto de dados apresenta evidência de agrupamentos naturais.
+
+
+
+
+
+
+
+- O procedimento baseia-se na matriz de distâncias entre as observações. Após o cálculo da matriz
+$$
+D = [d(x_i,x_j)]_{n\times n},
+$$
+as observações são reordenadas de modo que pontos similares fiquem próximos, e a matriz resultante é exibida como um mapa de calor.
+
+
+## Tendência de agrupamentos
+
+
+### **Método visual:** Avaliação visual da tendência de agrupamento (VAT)
+
+
+![](/images/AA/metodo_visual.jpg){fig-align="center"}
+
+
+## Tendência de agrupamentos
+
+
+### **Método visual:** Avaliação visual da tendência de agrupamento (VAT)
+
+
+- A interpretação é feita visualmente:
+    - blocos escuros ao longo da diagonal indicam possível presença de clusters;
+    - ausência de blocos bem definidos sugere padrão aleatório ou ausência de estrutura de agrupamento.
+
+- O VAT é uma ferramenta pré-clusterização e deve ser utilizado de forma complementar a medidas quantitativas, como a Estatística de Hopkins.
+
+
+
+## Que perguntas a clusterização pode responder?
+
+A clusterização é uma técnica de aprendizado não supervisionado cujo objetivo é identificar grupos de observações semelhantes, sem rótulos prévios. Ela é usada tanto como **objetivo final** quanto como **ferramenta de apoio à decisão**.
+
+
+. . .
+
+
+- **Como agrupo os clientes que compram no site?**  
+  A clusterização permite identificar perfis de clientes com comportamentos de compra semelhantes, apoiando estratégias de segmentação e marketing.
+
+
+. . .
+
+
+- **Onde coloco uma antena de operadora de celular?**  
+  A partir da clusterização espacial de usuários ou regiões, é possível identificar áreas de alta concentração de demanda, sugerindo locais estratégicos para instalação.
+
+
+## Que perguntas a clusterização pode responder?
+
+
+- **Onde deixo uma ambulância estacionada para atender uma emergência?**  
+  A clusterização de ocorrências passadas ajuda a identificar zonas críticas, auxiliando na alocação eficiente de recursos de emergência.
+
+
+. . .
+
+
+- **Como classifico cervejas em categorias distintas?**  
+  A clusterização explora similaridades entre produtos e pode revelar categorias naturais ou estilos semelhantes, apoiando a construção de classificações.
+
+
+
+## Algumas questões...
+
+
+🤔  Como medir a homogeneidade entre indivíduos?
+
+
+
+🤔  E entre grupos de indivíduos?
+
+
+ 
+🤔 Dado um conjunto de indivíduos, quantos grupos posso formar?
+
+
+
+## Algumas questões...
+
+
+Imagine que você tenha 16 cartas figuradas ($A,K,Q,J$) e que queira formar grupos de cartas semelhantes...
+
+
+
+:::: {layout="[ 70, 30 ]"}
+
+::: {#first-column}
+![](/images/AA/bar.png){fig-align="center"}
+:::
+
+::: {#second-column .fragment}
+**Como você formaria esses grupos?**
+:::
+
+::::
+
+
+
+
+
+
+## Algumas questões...
+
+
+
+::: {layout-ncol=2}
+![Cartas individuais?](/images/AA/barsit1.jpg){fig-align="center" width=85%}
+
+![Agrupar por naipes?](/images/AA/barsit2.jpg){fig-align="center" width=90%}
+:::
+
+
+
+## Algumas questões...
+
+
+
+::: {layout-ncol=2}
+![Agrupar por cor do naipe?](/images/AA/barsit3.jpg){fig-align="center" width=100%}
+
+![Agrupar por naipes maiores e menores?](/images/AA/barsit4.jpg){fig-align="center" width=80%}
+:::
+
+
+
+## Algumas questões...
+
+
+
+::: {layout-ncol=2}
+![Copas mais a Rainha de espadas e outros naipes?](/images/AA/barsit5.jpg){fig-align="center" width=85%}
+
+![Agrupar por face da carta?](/images/AA/barsit6.jpg){fig-align="center" width=96%}
+:::
+
+
+
+
+
+## Algumas questões...
+
+
+### Resumindo...
+
+
+**Necessidade** da definição de medidas de **similaridade** (ou dissimilaridade)
+
+
+![](/images/AA/medidas.jpg){fig-align="center" width=100%}
+
+
+
+## Similaridade e dissimilaridade
+
+
+**Medidas de Similaridade:** quanto **maior** o valor, **maior a semelhança** entre os objetos
+
+
+. . .
+
+
+**Medidas de Dissimilaridade (Distância):**  quanto **maior**  o valor, **mais diferentes** são os objetos
+
+
+
+## Similaridade e dissimilaridade (exemplo)
+
+
+**Pesquisa com clientes de uma loja de equipamentos automotivos**
+
+
+. . .
+
+
+**Variáveis mensuradas**
+
+- **Idade** (em anos completos) -  Variável quantitativa discreta
+
+- **Número de carros** - Variável quantitativa discreta
+
+- **Classe social**: A, B, C ou D -  Variável qualitativa ordinal
+
+- **Potência do motor**: Baixa, Média ou Alta - Variável qualitativa ordinal
+
+- **Combustível**: Gasolina ou Álcool -  Variável qualitativa nominal
+
+- **Modelo**: Esporte, Luxo ou Standard  -  Variável qualitativa nominal
+
+
+
+
+## Base de dados (exemplo)
+
+| Cliente | **Idade** | **N.º de carros** | **Classe social** | **Potência do motor** | **Combustível** | **Modelo** |
+|--------:|----------:|------------------:|-------------------|----------------------|---------------|-----------|
+| 1 | 20 | 1 | A | Baixa | Gasolina | Esporte |
+| 2 | 37 | 2 | A | Alta | Gasolina | Luxo |
+| 3 | 51 | 1 | C | Média | Gasolina | Esporte |
+| 4 | 32 | 1 | D | Alta | Álcool | Standard |
+| 5 | 30 | 2 | B | Média | Álcool | Standard |
+| 6 | 55 | 3 | A | Alta | Gasolina | Luxo |
+
+
+. . .
+
+
+**Como medir a similaridade ou dissimilaridade entre os indivíduos?**
+
+
+
+
+# Variáveis quantitativas
+
+
+## Dissimilaridade
+
+
+As **distâncias** são as medidas de **dissimilaridade** mais utilizadas no estudo de bancos de dados com variáveis numéricas
+
+
+. . .
+
+
+- Uma medida $d_{ij}$ representa uma **medida de distância** entre os indivíduos $i$ e $j$ se, e somente se,
+    a) $d_{ij} \geqslant 0$ para todo $i$ e $j$;
+    b) $d_{ij} = 0$ se, e somente se, $i = j$;
+    c) $d_{ij} = d_{ji}$
+    d) $d_{ij} \leqslant d_{ik} + d_{kj}$ para qualquer indivíduo $k$. 
+
+
+
+## Dissimilaridade
+
+
+![Desigualdade triangular](/images/AA/desig_tri.jpg){fig-align="center" width=100%}
+
+
+## Dissimilaridade
+
+### Principais medidas de distância
+
+**Distância Euclidiana**
+
+$$d_{ij} = \displaystyle{\sqrt{(\mathbf{x}_i - \mathbf{x}_j)^t(\mathbf{x}_i - \mathbf{x}_j)}} = \sqrt{\displaystyle{\sum_{k=1}^p(x_{ik} - x_{jk})^2}}$$
+
+Distância geométrica entre dois pontos
+
+
+## Dissimilaridade
+
+### Principais medidas de distância
+
+**Distância Euclidiana Generalizada**
+
+$$d_{ij} = \displaystyle{\sqrt{(\mathbf{x}_i - \mathbf{x}_j)^t\boldsymbol{W}(\mathbf{x}_i - \mathbf{x}_j)}}$$
+
+
+
+
+- Se $\boldsymbol{W} = \textrm{diag}\left(\dfrac{1}{p}\right)$: **distância euclidiana média**
+
+- Se $\boldsymbol{W} = \boldsymbol{\Sigma}^{-1}$: **distância de Mahalanobis**
+
+
+
+
+## Dissimilaridade
+
+### Principais medidas de distância
+
+**Distância de Minkowski**
+
+
+$$d_{ij} = \left( \displaystyle{\sum_{k=1}^P} |X_{ik} - X_{jk}|^{\lambda}\right)^{\frac{1}{\lambda}}$$
+
+
+- Se $\lambda = 1$, temos a chamada **métrica de Manhattan**. É também conhecida como *city block*.  
+- Se $\lambda = 2$, temos a distância euclidiana.
+- A métrica de Minkowski é menos afetada pela presença de valores discrepantes na amostra do que a distância Euclidiana.
+
+
+
+## Dissimilaridade
+
+### Principais medidas de distância
+
+**Distância de Manhattan (city block)**
+
+![](/images/AA/cityblock.png){fig-align="center" width=100%}
+
+
+
+
+## Dissimilaridade
+
+###  Dissimilaridade $\Longrightarrow$ Similaridade
+
+
+$$s_{ij} = 1 - d_{ij}^0$$
+
+em que
+
+$$d_{ij}^0 = \displaystyle{\frac{d_{ij} - \min(\boldsymbol{D})}{\max(\boldsymbol{D}) - \min(\boldsymbol{D})}}$$
+
+
+Sendo $\min(\boldsymbol{D})$ e $\max(\boldsymbol{D})$ o menor e o maior valor de distância observados na matriz de distâncias $\boldsymbol{D}_{n \times n}$, sem levar
+em consideração os elementos da diagonal principal dessa matriz.
+
+
+# Variáveis qualitativas
+
+
+## Similaridade
+
+### Variáveis qualitativas nominais
+
+
+Neste caso, utilizamos variáveis fictícias (variáveis *dummy*) para **codificar** as variáveis:
+
+:::: {.columns}
+
+::: {.column width="50%"}
+| Combustível | $N_1$ |
+|------------|------:|
+| Gasolina   | 1 |
+| Álcool     | 0 |
+:::
+
+::: {.column width="50%" .fragment}
+| Modelo   | $N_2$ | $N_3$ |
+|----------|------:|------:|
+| Esporte  | 1 | 0 |
+| Luxo     | 0 | 1 |
+| Standard | 0 | 0 |
+:::
+
+::::
+
+
+
+
+
+## Similaridade
+
+### Variáveis qualitativas nominais
+
+
+**No exemplo:**
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+| Cliente | Combustível | $N_1$ |
+|--------:|-------------|------:|
+| 1 | Gasolina | 1 |
+| 2 | Gasolina | 1 |
+| 3 | Gasolina | 1 |
+| 4 | Álcool   | 0 |
+| 5 | Álcool   | 0 |
+| 6 | Gasolina | 1 |
+:::
+
+::: {.column width="50%" .fragment}
+| Cliente | Modelo   | $N_2$ | $N_3$ |
+|--------:|----------|------:|------:|
+| 1 | Esporte  | 1 | 0 |
+| 2 | Luxo     | 0 | 1 |
+| 3 | Esporte  | 1 | 0 |
+| 4 | Standard | 0 | 0 |
+| 5 | Standard | 0 | 0 |
+| 6 | Luxo     | 0 | 1 |
+:::
+
+::::
+
+
+
+## Similaridade
+
+### Variáveis qualitativas nominais
+
+
+De forma que,
+
+| Cliente | $N_1$ | $N_2$ | $N_3$ |
+|--------:|------:|------:|------:|
+| 1 | 1 | 1 | 0 |
+| 2 | 1 | 0 | 1 |
+| 3 | 1 | 1 | 0 |
+| 4 | 0 | 0 | 0 |
+| 5 | 0 | 0 | 0 |
+| 6 | 1 | 0 | 1 |
+
+
+
+
+## Similaridade
+
+### Variáveis qualitativas ordinais
+
+Utilizamos variáveis fictícias (variáveis *dummy*) para **codificar** as variáveis, levando em consideração a ordinalidade das variáveis:
+
+:::: {.columns}
+
+::: {.column width="50%"}
+| Classe social | $O_1$ | $O_2$ | $O_3$ |
+|---------------|------:|------:|------:|
+| A | 1 | 1 | 1 |
+| B | 0 | 1 | 1 |
+| C | 0 | 0 | 1 |
+| D | 0 | 0 | 0 |
+:::
+
+::: {.column width="50%" .fragment}
+| Potência | $O_4$ | $O_5$ |
+|----------|------:|------:|
+| Alta  | 1 | 1 |
+| Média | 0 | 1 |
+| Baixa | 0 | 0 |
+:::
+
+::::
+
+
+## Similaridade
+
+### Observação
+
+As variáveis **Classe social** e **Potência do motor** possuem **ordem natural**.
+Por isso, foram codificadas por meio de **variáveis ordinais cumulativas**:
+
+- valores mais altos acumulam mais indicadores iguais a 1;
+- valores mais baixos recebem apenas zeros.
+
+Essa codificação preserva a informação de ordem, mas impõe uma estrutura
+geométrica específica ao espaço dos dados.
+
+
+
+
+## Similaridade
+
+### Variáveis qualitativas ordinais
+
+
+**No exemplo:**
+
+:::: {.columns}
+
+::: {.column width="50%"}
+| Cliente | Classe social | $O_1$ | $O_2$ | $O_3$ |
+|--------:|---------------|------:|------:|------:|
+| 1 | A | 1 | 1 | 1 |
+| 2 | A | 1 | 1 | 1 |
+| 3 | C | 0 | 0 | 1 |
+| 4 | D | 0 | 0 | 0 |
+| 5 | B | 0 | 1 | 1 |
+| 6 | A | 1 | 1 | 1 |
+:::
+
+::: {.column width="50%" .fragment}
+| Cliente | Potência | $O_4$ | $O_5$ |
+|--------:|----------|------:|------:|
+| 1 | Baixa | 0 | 0 |
+| 2 | Alta  | 1 | 1 |
+| 3 | Média | 0 | 1 |
+| 4 | Alta  | 1 | 1 |
+| 5 | Média | 0 | 1 |
+| 6 | Alta  | 1 | 1 |
+:::
+
+::::
+
+
+
+## Similaridade
+
+### Variáveis qualitativas ordinais
+
+
+De forma que,
+
+| Cliente | $O_1$ | $O_2$ | $O_3$ | $O_4$ | $O_5$ |
+|--------:|------:|------:|------:|------:|------:|
+| 1 | 1 | 1 | 1 | 0 | 0 |
+| 2 | 1 | 1 | 1 | 1 | 1 |
+| 3 | 0 | 0 | 1 | 0 | 1 |
+| 4 | 0 | 0 | 0 | 1 | 1 |
+| 5 | 0 | 1 | 1 | 0 | 1 |
+| 6 | 1 | 1 | 1 | 1 | 1 |
+
+
+
+## Similaridade
+
+### Variáveis qualitativas nominais e ordinais
+
+
+Juntando tudo...
+
+
+
+| Cliente | $O_1$ | $O_2$ | $O_3$ | $O_4$ | $O_5$ | $N_1$ | $N_2$ | $N_3$ |
+|--------:|------:|------:|------:|------:|------:|------:|------:|------:|
+| 1 | 1 | 1 | 1 | 0 | 0 | 1 | 1 | 0 |
+| 2 | 1 | 1 | 1 | 1 | 1 | 1 | 0 | 1 |
+| 3 | 0 | 0 | 1 | 0 | 1 | 1 | 1 | 0 |
+| 4 | 0 | 0 | 0 | 1 | 1 | 0 | 0 | 0 |
+| 5 | 0 | 1 | 1 | 0 | 1 | 0 | 0 | 0 |
+| 6 | 1 | 1 | 1 | 1 | 1 | 1 | 0 | 1 |
+
+
+
+## Similaridade
+
+### Variáveis qualitativas nominais e ordinais
+
+
+Considere os clientes 1 e 3. Vamos calcular a medida de similaridade entre eles:
+
+
+| Cliente | $O_1$ | $O_2$ | $O_3$ | $O_4$ | $O_5$ | $N_1$ | $N_2$ | $N_3$ |
+|--------:|------:|------:|------:|------:|------:|------:|------:|------:|
+| 1 | 1 | 1 | 1 | 0 | 0 | 1 | 1 | 0 |
+| 3 | 0 | 0 | 1 | 0 | 1 | 1 | 1 | 0 |
+
+
+
+## Similaridade
+
+### Tabela de concordância entre dois indivíduos
+
+| Indivíduo $i$ \\ Indivíduo $j$ | 1 | 0 | Total |
+|-------------------------------|---|---|-------|
+| 1 | $a$ | $b$ | $a + b$ |
+| 0 | $c$ | $d$ | $c + d$ |
+| **Total** | $a + c$ | $b + d$ | $p$ |
+
+
+
+- $a$: número de variáveis em que ambos têm valor 1
+- $b$: número de variáveis em que $i=1$ e $j=0$
+- $c$: número de variáveis em que $i=0$ e $j=1$
+- $d$: número de variáveis em que ambos têm valor 0
+
+$$p = a + b + c + d$$
+
+
+
+## Similaridade
+
+### Tabela de concordância entre dois indivíduos
+
+**No exemplo:**
+
+
+| Indivíduo 1 \\ Indivíduo 3 | 1 | 0 | Total |
+|---------------------------|---|---|-------|
+| 1 | 3 | 2 | 5 |
+| 0 | 1 | 2 | 3 |
+| **Total** | 4 | 4 | 8 |
+
+
+# Como extrair as **medidas de similaridade** baseadas na **tabela de concordância** dos elementos?
+
+
+## Critérios de similaridade
+
+### Coeficiente de Concordância Simples
+
+$$\Large s_{ij} = \displaystyle{\frac{a + d}{p}}$$
+
+
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+| Indivíduo 1 \\ Indivíduo 3 | 1 | 0 | Total |
+|---------------------------|---|---|-------|
+| 1 | 3 | 2 | 5 |
+| 0 | 1 | 2 | 3 |
+| **Total** | 4 | 4 | 8 |
+:::
+
+::: {.column width="50%" .fragment}
+$$
+s_{13} = \dfrac{a + d}{p}
+               = \dfrac{3 + 2}{8}
+               = \dfrac{5}{8}
+               = 0,625
+$$
+:::
+
+::::
+
+
+## Critérios de similaridade
+
+### Coeficiente de Concordância Simples
+
+**Interpretação:**
+
+- O valor 0,625 indica que os indivíduos 1 e 3 concordam em 62,5% das variáveis binárias.
+
+
+
+- Tanto concordâncias em 1 quanto em 0 contribuem igualmente para a similaridade.
+
+
+
+## Critérios de similaridade
+
+### Coeficiente de Concordância Positiva
+
+
+$$\Large s_{ij} = \displaystyle{\frac{a}{p}}$$
+
+
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+| Indivíduo 1 \\ Indivíduo 3 | 1 | 0 | Total |
+|---------------------------|---|---|-------|
+| 1 | 3 | 2 | 5 |
+| 0 | 1 | 2 | 3 |
+| **Total** | 4 | 4 | 8 |
+:::
+
+::: {.column width="50%" .fragment}
+$$
+s_{13} = \dfrac{a}{p}= 
+               \dfrac{3}{8} = 0,375
+$$
+:::
+
+::::
+
+
+
+## Critérios de similaridade
+
+### Coeficiente de Concordância Positiva
+
+**Interpretação:**
+
+
+- Os indivíduos 1 e 3 compartilham simultaneamente o valor 1 em **37,5%** das variáveis.
+- Ausências simultâneas (valor 0) **não contribuem** para a similaridade.
+- O critério enfatiza **presença conjunta**, não coincidência geral.
+
+
+
+## Critérios de similaridade
+
+### Coeficiente de Concordância de Jaccard
+
+$$\Large s_{ij} = \displaystyle{\frac{a}{a + b + c}}$$
+
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+| Indivíduo 1 \\ Indivíduo 3 | 1 | 0 | Total |
+|---------------------------|---|---|-------|
+| 1 | 3 | 2 | 5 |
+| 0 | 1 | 2 | 3 |
+| **Total** | 4 | 4 | 8 |
+:::
+
+::: {.column width="50%" .fragment}
+$$
+s_{13} = \dfrac{3}{3 + 2 + 1}
+       = \dfrac{3}{6}
+       = 0,5
+$$
+:::
+
+::::
+
+
+
+## Critérios de similaridade
+
+### Coeficiente de Concordância de Jaccard
+
+**Interpretação:**
+
+
+- Os indivíduos 1 e 3 compartilham **50% das presenças observadas**.
+- Ausências simultâneas (valor 0) **não contribuem** para a similaridade.
+- O coeficiente foca exclusivamente na **interseção de atributos presentes**.
+
+
+
+
+## Critérios de similaridade
+
+### Coeficiente de Concordância de Gower e Legendre
+
+
+O **Coeficiente de Concordância de Gower–Legendre** é uma medida de similaridade projetada para **dados mistos**, isto é, conjuntos de dados que contêm, ao mesmo tempo:
+
+- variáveis quantitativas,
+- variáveis qualitativas nominais,
+- variáveis qualitativas ordinais.
+
+
+Ele permite combinar diferentes tipos de variáveis em **uma única medida de similaridade**, respeitando a natureza de cada uma.
+
+
+
+## Critérios de similaridade
+
+### Coeficiente de Concordância de Gower e Legendre
+
+Considere dois indivíduos $i$ e $j$ descritos por $p$ variáveis. A similaridade de Gower–Legendre é definida como:
+
+$$
+S_{ij}
+=
+\dfrac{\sum_{k=1}^{p} w_{ijk}\, s_{ijk}}
+{\sum_{k=1}^{p} w_{ijk}},
+$$
+onde:
+
+- $s_{ijk}$ é a similaridade parcial da variável $k$ entre os indivíduos $i$ e $j$;
+- $w_{ijk}$ é um peso (geralmente $0$ ou $1$), usado para tratar dados ausentes.
+
+
+
+## Critérios de similaridade
+
+### Coeficiente de Concordância de Gower e Legendre
+
+
+O coeficiente assume valores em $[0,1]$:
+
+- $S_{ij} = 1$ indica indivíduos idênticos;
+- $S_{ij} = 0$ indica máxima dissimilaridade.
+
+
+
+## Critérios de similaridade
+
+### Coeficiente de Concordância de Gower e Legendre
+
+#### Similaridade parcial por tipo de variável
+
+**Variáveis quantitativas**
+
+- Para uma variável quantitativa $k$:
+
+$$
+s_{ijk}
+=
+1 - \dfrac{|x_{ik} - x_{jk}|}{R_k},
+$$
+
+onde $R_k$ é o intervalo da variável $k$ (máximo − mínimo).
+
+
+
+
+## Critérios de similaridade
+
+### Coeficiente de Concordância de Gower e Legendre
+
+#### Similaridade parcial por tipo de variável
+
+**Variáveis qualitativas nominais**
+
+- Para uma variável nominal:
+
+
+$$
+s_{ijk}
+=
+\begin{cases}
+1, & \text{se } x_{ik} = x_{jk}, \\
+0, & \text{caso contrário}.
+\end{cases}
+$$
+
+
+
+## Critérios de similaridade
+
+### Coeficiente de Concordância de Gower e Legendre
+
+#### Similaridade parcial por tipo de variável
+
+**Variáveis qualitativas ordinais**
+
+
+Para variáveis ordinais, os níveis são primeiro convertidos em **postos normalizados** no intervalo $[0,1]$. Em seguida, aplica-se a mesma fórmula das
+variáveis quantitativas:
+
+$$
+s_{ijk}
+=
+1 - |r_{ik} - r_{jk}|,
+$$
+
+onde $r_{ik}$ e $r_{jk}$ são os postos normalizados.
+
+
+## Critérios de similaridade
+
+### Coeficiente de Concordância de Gower e Legendre
+
+**Interpretação:**
+
+- Cada variável contribui **de forma controlada** para a similaridade total.
+- Variáveis com escalas diferentes **não dominam** o cálculo.
+- A ordem das categorias é respeitada para variáveis ordinais, **sem impor distâncias artificiais**.
+
+
+
+## Critérios de similaridade
+
+### Similaridade $\Longrightarrow$ Dissimilaridade
+
+
+$$\Large d_{ij}^* = 1 - s_{ij}$$
+
+
+
+## Critérios de similaridade
+
+### Coeficiente de Concordância de Gower e Legendre
+
+**No exemplo:**
+
+| Cliente | **Idade** | **N.º de carros** | **Classe social** | **Potência do motor** | **Combustível** | **Modelo** |
+|--------:|----------:|------------------:|-------------------|----------------------|---------------|-----------|
+| 1 | 20 | 1 | A | Baixa | Gasolina | Esporte |
+| 2 | 37 | 2 | A | Alta | Gasolina | Luxo |
+| 3 | 51 | 1 | C | Média | Gasolina | Esporte |
+| 4 | 32 | 1 | D | Alta | Álcool | Standard |
+| 5 | 30 | 2 | B | Média | Álcool | Standard |
+| 6 | 55 | 3 | A | Alta | Gasolina | Luxo |
+
+
+## Critérios de similaridade
+
+### Coeficiente de Concordância de Gower e Legendre
+
+Temos que:
+
+- **Cliente 1:** Idade = 20, Carros = 1, Classe = A, Potência = Baixa, Combustível = Gasolina, Modelo = Esporte
+
+- **Cliente 3:** Idade = 51, Carros = 1, Classe = C, Potência = Média, Combustível = Gasolina, Modelo = Esporte
+
+
+
+## Critérios de similaridade
+
+### Coeficiente de Concordância de Gower e Legendre
+
+#### Similaridades parciais
+
+- **Idade**
+
+$$
+s=\;1-\dfrac{|20-51|}{35}=1-\dfrac{31}{35}=\dfrac{4}{35}\approx 0,1143
+$$
+
+- **Nº de carros**
+
+$$
+s=\;1-\dfrac{|1-1|}{2}=1
+$$
+
+
+## Critérios de similaridade
+
+### Coeficiente de Concordância de Gower e Legendre
+
+#### Similaridades parciais
+
+- **Classe social (ordinal)** 
+
+$r(A)=1$ e $r(C)=\tfrac{1}{3}$:
+$$
+s=\;1-\left|1-\tfrac{1}{3}\right|=1-\tfrac{2}{3}=\tfrac{1}{3}\approx 0,3333
+$$
+
+
+- **Potência (ordinal)** 
+
+$r(\text{Baixa})=0$ e $r(\text{Média})=\tfrac{1}{2}$:
+$$
+s=\;1-\left|0-\tfrac{1}{2}\right|=\tfrac{1}{2}=0,5
+$$
+
+
+
+
+
+## Critérios de similaridade
+
+### Coeficiente de Concordância de Gower e Legendre
+
+#### Similaridades parciais
+
+
+- **Combustível (nominal)**  
+
+Gasolina = Gasolina $\Rightarrow s=1$
+
+- **Modelo (nominal)**  
+
+Esporte = Esporte $\Rightarrow s=1$
+
+
+## Critérios de similaridade
+
+### Coeficiente de Concordância de Gower e Legendre
+
+#### Similaridade total
+
+São $p=6$ variáveis:
+$$
+S_{1,3}
+=\dfrac{0,1143+1+0,3333+0,5+1+1}{6}
+\approx 0,6579
+$$
+
+
+
+
+# Métodos de Agrupamento
+
+
+## Métodos de Agrupamento
+
+
+- **Métodos hierárquicos:**  Baseiam-se na realização de sucessivas aglomerações ou de sucessivas divisões dos dados. Envolvem a construção de uma hierarquia através de uma estrutura do tipo árvore.
+
+. . .
+
+
+- **Métodos não-hierárquicos:** Produzem uma partição em um número fixo de classes, com sucessivas alocações e re-alocações dos indivíduos, conforme as distâncias aos demais indivíduos. Necessário definir o número de grupos 
+à {\it priori}.
+
+
+## Métodos hierárquicos
+
+:::: {.columns}
+
+::: {.column width="75%"}
+- **Aglomerativos:** Os agrupamentos são formados a partir de uma matriz de parecença, que é atualizada a cada união de um par de objetos. Neste procedimento, cada indivíduo, originalmente, é um cluster, configurando $n$ clusters. Indivíduos similares são sucessivamente agrupados, até a formação de um único grupo, contendo toda a amostra.
+:::
+
+::: {.column width="25%" .fragment}
+![](/images/AA/aglom.jpg){fig-align="center" width=80%}
+:::
+
+::::
+
+
+
+## Métodos hierárquicos
+
+:::: {.columns}
+
+::: {.column width="75%"}
+- **Divisivos (ou de Partição):** Fazem o caminho oposto aos métodos hierárquicos aglomerativos. Neste método, um único grupo de objetos é subdividido em dois com a maior distância. Estes subgrupos são então particionados sucessivamente até se obter os objetos individuais.
+:::
+
+::: {.column width="25%" .fragment}
+![](/images/AA/part.jpg){fig-align="center" width=80%}
+:::
+
+::::
+
+
+
+## Métodos de Agrupamento Hierárquicos
+
+### Agrupamentos hierárquicos aglomerativos
+
+a) Considerar inicialmente $n$ grupos, sendo $n$ o número de indivíduos. A matriz de distâncias $\boldsymbol{D}_{n \times n}$ é a matriz de
+distâncias entre os elementos originais;
+
+
+b) Selecionar os dois indivíduos mais próximos na matriz $\boldsymbol{D}_{n \times n}$ e formar com eles um grupo;
+
+c) Substituir os indivíduos utilizados no passo b) para definir o grupo por um novo elemento que represente o grupo construído. A distância entre esse novo elemento e os indivíduos restantes são calculadas utilizando um dos critérios que serão definidos a seguir;
+
+d) Voltar ao passo b) e repetir os passos b) e c) até que tenhamos todos os elementos agrupados em um único grupo.
+
+
+
+## Métodos de Agrupamento Hierárquicos
+
+### Resultado da aplicação do método
+
+
+
+:::: {.columns}
+
+::: {.column width="75%"}
+![](/images/AA/dend2.jpg){fig-align="center" width=80%}
+:::
+
+::: {.column width="25%" .fragment}
+- Representa uma síntese gráfica do método de agrupamento
+
+- Esse gráfico é de grande utilidade para a classificação, comparação e discussão de agrupamentos.
+:::
+
+::::
+
+
+
+## Métodos de Agrupamento Hierárquicos
+
+### Como definir distância entre grupos?
+
+
+- Suponha que temos um grupo $K$ com $n_k$ indivíduos e um grupo $L$ com $n_l$ indivíduos.
+
+
+
+- A distância entre os grupos $K$ e $L$ pode ser calculada com base em um dos cinco métodos seguintes:
+    - Método do vizinho mais próximo (*single linkage*)
+    - Método do vizinho mais distante (*complete linkage*)
+    - Método da distância média (*average linkage*)
+    - Método do centroide (*Centroid*)
+    - Método de Ward
+    
+    
+    
+## Métodos de Agrupamento Hierárquicos
+
+### Método do vizinho mais próximo
+
+Consiste em considerar que a distância entre os dois grupos é a **menor distância entre as possíveis combinações de indivíduos** tomados dos dois grupos considerados, isto é,
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+$$\Large d_{(K,L)} =  \underbrace{\min(d_{ij})}_{i \in K, j \in L}$$
+:::
+
+::: {.column width="50%" .fragment}
+![](/images/AA/mvmp.jpg){fig-align="center" width=80%}
+:::
+
+::::
+
+
+## Métodos de Agrupamento Hierárquicos
+
+### Método do vizinho mais próximo
+
+**Esquematicamente:**
+
+![](/images/AA/metvmprox.jpg){fig-align="center" width=100%}
+
+
+
+## Métodos de Agrupamento Hierárquicos
+
+### Método do vizinho mais próximo
+
+**Esquematicamente:**
+
+![](/images/AA/dend_mvmp.jpg){fig-align="center" width=100%}
+
+
+
+
+## Métodos de Agrupamento Hierárquicos
+
+### Método do vizinho mais distante
+
+Consiste em considerar que a distância entre os dois grupos é a **maior distância entre as possíveis combinações de indivíduos** tomados dos dois grupos considerados, isto é,
+
+:::: {.columns}
+
+::: {.column width="50%"}
+$$\Large d_{(K,L)} =  \underbrace{\max(d_{ij})}_{i \in K, j \in L}$$
+:::
+
+::: {.column width="50%" .fragment}
+![](/images/AA/mvmd.jpg){fig-align="center" width=80%}
+:::
+
+::::
+
+
+
+
+
+## Métodos de Agrupamento Hierárquicos
+
+### Método da distância média
+
+Consiste em considerar que a distância entre os dois grupos é a **média aritmética das distâncias entre as possíveis combinações de indivíduos** tomados dos dois grupos considerados, isto é,
+
+:::: {.columns}
+
+::: {.column width="50%"}
+$$\Large d_{(K,L)} = \displaystyle{\sum_{i \in K} \sum_{j \in L}} \displaystyle{\frac{d_{ij}}{n_kn_l}}$$
+:::
+
+::: {.column width="50%" .fragment}
+![](/images/AA/mdm.jpg){fig-align="center" width=80%}
+:::
+
+::::
+
+
+
+
+## Métodos de Agrupamento Hierárquicos
+
+### Método do centroide
+
+Consiste em considerar que a distância entre os dois grupos é a **distância euclidiana ao quadrado entre os centroides** dos dois grupos. O centroide de um grupo é o ponto médio dos objetos contidos no grupo, isto é,
+
+:::: {.columns}
+
+::: {.column width="50%"}
+$$\Large d_{(K,L)} = (\bar{K} - \bar{L})^t(\bar{K} - \bar{L})$$
+
+$$\bar{K} = \displaystyle{\frac{\displaystyle{\sum_{i \in K} i}}{n_k}} \hspace{0.2cm} {\rm e} \hspace{0.2cm} 
+\bar{L} = \displaystyle{\frac{\displaystyle{\sum_{j \in L} j}}{n_l}}$$
+:::
+
+::: {.column width="50%" .fragment}
+![](/images/AA/mc.jpg){fig-align="center" width=80%}
+:::
+
+::::
+
+
+
+
+## Métodos de Agrupamento Hierárquicos
+
+### Método de Ward
+
+
+- Considere a soma de quadrados intra-cluster de um cluster $A$:
+ 
+$$SQE_A = \displaystyle{\sum_{i = 1}^{n_A}}(x_{i} - \bar{\bf x}_A)^t(x_{i} - \bar{\bf x}_A)$$
+
+
+
+- Definimos o acréscimo na soma de quadrados resultante da junção de dois clusters $A$ e $B$ em um cluster $AB$ por:
+
+$$I_{AB} = SQE_{AB} - (SQE_A + SQE_B)$$
+
+
+
+## Métodos de Agrupamento Hierárquicos
+
+### Método de Ward
+
+
+- A união entre clusters $A$ e $B$ que proporcionarem menor acréscimo na $SQE$ é executada.
+
+
+- Para usar o método de Ward, as variáveis devem ser **quantitativas**.
+
+
+
+## Métodos de Agrupamento Hierárquicos
+
+### Exemplo
+
+
+:::: {.columns}
+
+::: {.column width="70%"}
+A fim de exemplificar a aplicação dos métodos de agrupamento, considere os dados da Tabela ao lado. Os sete casos são considerados as observações de cada indivíduo para as variáveis $X_1$ e $X_2$.
+:::
+
+::: {.column width="30%" .fragment}
+
+| Caso | $X_1$ | $X_2$ |
+|-----:|------:|------:|
+| 1 | 1 | 1 |
+| 2 | 2 | 1 |
+| 3 | 3 | 2 |
+| 4 | 2 | 4,5 |
+| 5 | 1 | 5 |
+| 6 | 3 | 7 |
+| 7 | 6 | 5 |
+:::
+
+::::
+
+
+## Métodos de Agrupamento Hierárquicos
+
+### Exemplo
+
+**Representação dos casos no plano**
+
+
+![](/images/AA/plano.jpg){fig-align="center" width=80%}
+
+
+
+## Métodos de Agrupamento Hierárquicos
+
+### Exemplo
+
+**Matriz de distâncias**
+
+
+$$D_0 = \left[ \begin{matrix}
+&1 & 2&3&4&5&6&7\\ 
+1& 0,000 & 1,000 & 2,236 & 3,640 & 4,000 & 6,325 & 6,403 \\
+2&  & 0,000 & 1,414 & 3,500 & 4,123 & 6,083 & 5,657 \\
+3&  &  & 0,000 & 2,693 & 3,606 & 5,000 & 4,243 \\
+4&  &  &  & 0,000 & 1,118 & 2,693 & 4,031 \\
+5& &  &  &  & 0,000 & 2,828 & 5,000 \\
+6&  &  &  &  &  & 0,000 & 3,606 \\
+7&  &  &  &  &  &  & 0,000
+                    \end{matrix} \right]$$
+                    
+                    
+                    
+## Métodos de Agrupamento Hierárquicos
+
+### Exemplo
+
+**Matriz de distâncias**
+
+
+$$D_0 = \left[ \begin{matrix}
+&1 & 2&3&4&5&6&7\\ 
+1& 0,000 & \textbf{1,000} & 2,236 & 3,640 & 4,000 & 6,325 & 6,403 \\
+2&  & 0,000 & 1,414 & 3,500 & 4,123 & 6,083 & 5,657 \\
+3&  &  & 0,000 & 2,693 & 3,606 & 5,000 & 4,243 \\
+4&  &  &  & 0,000 & 1,118 & 2,693 & 4,031 \\
+5& &  &  &  & 0,000 & 2,828 & 5,000 \\
+6&  &  &  &  &  & 0,000 & 3,606 \\
+7&  &  &  &  &  &  & 0,000
+                    \end{matrix} \right]$$
+                    
+                    
+$$\scriptsize d_{12} = \sqrt{\displaystyle{(X_{11} - X_{21})^2 + (X_{12} - X_{22})^2}} = 
+\sqrt{\displaystyle{(1 - 1)^2 + (2 - 1)^2}} = \sqrt{1} = 1$$
+
+
+## Métodos de Agrupamento Hierárquicos
+
+### Exemplo
+
+**Passo 1: juntar os casos 1 e 2**
+
+- Redefinir a matriz de distâncias considerando os casos mais parecidos como se fossem um único grupo.
+
+
+- **Aqui os métodos se diferenciam!**
+
+- **Método do vizinho mais próximo**
+
+
+
+## Métodos de Agrupamento Hierárquicos
+
+### Exemplo
+
+**Construção da nova matriz de distâncias**
+
+$$
+\begin{aligned}
+d_{((1,2)3)} &=  \min(d_{13};d_{23}) = \min(2,236; 1,414) = 1,414 \\[6pt]
+d_{((1,2)4)} &=  \min(d_{14};d_{24}) = \min(3,640; 3,500) = 3,500 \\[6pt]
+d_{((1,2)5)} &=  \min(d_{15};d_{25}) = \min(4,000; 4,123) = 4,000 \\[6pt]
+d_{((1,2)6)} &=  \min(d_{16};d_{26}) = \min(6,325; 6,083) = 6,083 \\[6pt]
+d_{((1,2)7)} &=  \min(d_{17};d_{27}) = \min(6,403; 5,657) = 5,657
+\end{aligned}
+$$
+
+
+## Métodos de Agrupamento Hierárquicos
+
+### Exemplo
+
+**Matriz de distâncias**
+
+
+ $$D_1 = \left[ \begin{matrix}
+&(1,2)&3&4&5&6&7\\ 
+(1,2)& 0,000 & 1,414 & 3,500 & 4,000 & 6,083 & 5,657 \\
+3  &  & 0,000 & 2,693 & 3,606 & 5,000 & 4,243 \\
+4  &  &  & 0,000 & 1,118 & 2,693 & 4,031 \\
+5 &  &  &  & 0,000 & 2,828 & 5,000 \\
+6  &  &  &  &  & 0,000 & 3,606 \\
+7  &  &  &  &  &  & 0,000
+                    \end{matrix} \right]$$
+                    
+
+## Métodos de Agrupamento Hierárquicos
+
+### Exemplo
+
+**Matriz de distâncias**
+
+
+ $$D_1 = \left[ \begin{matrix}
+&(1,2)&3&4&5&6&7\\ 
+(1,2)& 0,000 & 1,414 & 3,500 & 4,000 & 6,083 & 5,657 \\
+3  &  & 0,000 & 2,693 & 3,606 & 5,000 & 4,243 \\
+4  &  &  & 0,000 & \textbf{1,118} & 2,693 & 4,031 \\
+5 &  &  &  & 0,000 & 2,828 & 5,000 \\
+6  &  &  &  &  & 0,000 & 3,606 \\
+7  &  &  &  &  &  & 0,000
+                    \end{matrix} \right]$$
+                    
+                    
+                    
+                    
+## Métodos de Agrupamento Hierárquicos
+
+### Exemplo                    
+                    
+**Passo 2: juntar os casos 4 e 5** 
+
+**Redefinir a matriz de distâncias considerando os casos mais parecidos como se fossem um único grupo.**
+
+$$
+\begin{aligned}
+d_{((4,5)(1,2))} &=  \min(d_{14};d_{24};d_{15};d_{25}) = \min(3,640; 3,500; 4,000; 4,123) = 3,500 \\ &= 
+\min(d_{(1,2)4};d_{(1,2)5}) = \min(3,500;4,000) \\
+d_{((4,5)3)} &=  \min(d_{34};d_{35}) = \min(2,693; 3,606) = 2,693 \\
+d_{((4,5)6)} &=  \min(d_{46};d_{56}) = \min(2,693; 2,828) = 2,693 \\
+d_{((4,5)7)} &=  \min(d_{47};d_{57}) = \min(4,031; 5,000) = 4,031 
+\end{aligned}
+$$
+
+
+## Métodos de Agrupamento Hierárquicos
+
+### Exemplo
+
+**Matriz de distâncias**
+
+
+ $$D_2 = \left[ \begin{matrix}
+&(1,2)&3&(4,5)&6&7\\ 
+(1,2)& 0,000 & 1,414 & 3,500 &  6,083 & 5,657 \\
+3  &  & 0,000 & 2,693 & 5,000 & 4,243 \\
+(4,5)  &  &  & 0,000 &  2,693 & 4,031 \\
+6  &  &    &  & 0,000 & 3,606 \\
+7  &  &    &  &  & 0,000
+                    \end{matrix} \right]$$
+                    
+
+## Métodos de Agrupamento Hierárquicos
+
+### Exemplo
+
+**Matriz de distâncias**
+
+
+ $$D_2 = \left[ \begin{matrix}
+&(1,2)&3&(4,5)&6&7\\ 
+(1,2)& 0,000 & \textbf{1,414} & 3,500 &  6,083 & 5,657 \\
+3  &  & 0,000 & 2,693 & 5,000 & 4,243 \\
+(4,5)  &  &  & 0,000 &  2,693 & 4,031 \\
+6  &  &    &  & 0,000 & 3,606 \\
+7  &  &    &  &  & 0,000
+                    \end{matrix} \right]$$
+                    
+                    
+
+## Métodos de Agrupamento Hierárquicos
+
+### Exemplo                    
+                    
+**Passo 3: juntar o grupo $(1,2)$ como caso 3** 
+
+**Redefinir a matriz de distâncias considerando os casos mais parecidos como se fossem um único grupo.**
+
+$$ \small
+\begin{aligned}
+d_{(((1,2,3)(4,5))} &=  \min(d_{14};d_{24};d_{34};d_{15};d_{25};d_{35}) \\ &= \min(3,640; 3,500; 2,693; 4,000; 4,123; 3,606) = 2,693 \\ &= 
+\min(d_{(1,2)(4,5)};d_{(4,5)3}) = \min(3,500;2,693) \\
+d_{((1,2,3)6)} &= \min(d_{16};d_{26};d_{36}) =  \min(6,325; 6,083; 5,000) = 5,000 \\ &=  \min(d_{((1,2)6)};d_{36}) = \min(6,083;5,000) \\
+d_{((1,2,3)7)} &= \min(d_{17};d_{27};d_{37}) =  \min(6,403; 5,657; 4,243) = 4,243 \\ &=  \min(d_{((1,2)7)};d_{37}) = \min(5,657;4,243) \\ 
+\end{aligned}
+$$
+
+
+
+
+## Métodos de Agrupamento Hierárquicos
+
+### Exemplo
+
+**Matriz de distâncias**
+
+
+ $$D_3 = \left[ \begin{matrix}
+&(1,2,3) &(4,5)&6&7\\ 
+(1,2,3)& 0,000 & 2,693 & 5,000 & 4,243 \\
+(4,5)    &  & 0,000 &  2,693 & 4,031 \\
+6  &     &  & 0,000 & 3,606 \\
+7  &      &  &  & 0,000
+                    \end{matrix} \right]$$
+                    
+
+## Métodos de Agrupamento Hierárquicos
+
+### Exemplo
+
+**Matriz de distâncias**
+
+
+ $$D_3 = \left[ \begin{matrix}
+&(1,2,3) &(4,5)&6&7\\ 
+(1,2,3)& 0,000 & \textbf{2,693} & 5,000 & 4,243 \\
+(4,5)    &  & 0,000 &  \textbf{2,693} & 4,031 \\
+6  &     &  & 0,000 & 3,606 \\
+7  &      &  &  & 0,000
+                    \end{matrix} \right]$$
+
+
+
+
+
+## Métodos de Agrupamento Hierárquicos
+
+### Exemplo                    
+                    
+**Passo 4: juntar o grupo $(4,5)$ como caso 6** 
+
+**Redefinir a matriz de distâncias considerando os casos mais parecidos como se fossem um único grupo.**
+
+$$ \small
+\begin{aligned}
+d_{(((4,5,6)(1,2,3))} &=  \min(d_{14};d_{24};d_{34};d_{15};d_{25};d_{35};d_{16};d_{26};d_{36}) \\ 
+&= \min(3,640; 3,500; 2,693; 4,000; 4,123; 3,606; 6,325; 6,083; 5,000) = 2,693 \\ &= 
+\min(d_{(1,2,3)(4,5)};d_{(1,2,3)6}) = \min(2,693; 5,000) \\
+d_{((4,5,6)7)} &= \min(d_{47};d_{57};d_{67}) =  \min(4,031; 5,000; 3,606) = 3,606 \\ &=  \min(d_{((4,5)7)};d_{67}) = \min(4,031;3,606) \\ 
+\end{aligned}
+$$                    
+
+
+
+## Métodos de Agrupamento Hierárquicos
+
+### Exemplo
+
+**Matriz de distâncias**
+
+
+  $$D_4 = \left[ \begin{matrix}
+&(1,2,3) &(4,5,6) &7\\ 
+(1,2,3)& 0,000 & 2,693 &  4,243 \\
+(4,5,6)    &  & 0,000 &  3,606 \\
+7  &       &  & 0,000
+                    \end{matrix} \right]$$
+                    
+
+## Métodos de Agrupamento Hierárquicos
+
+### Exemplo
+
+**Matriz de distâncias**
+
+
+  $$D_4 = \left[ \begin{matrix}
+&(1,2,3) &(4,5,6) &7\\ 
+(1,2,3)& 0,000 & \textbf{2,693} &  4,243 \\
+(4,5,6)    &  & 0,000 &  3,606 \\
+7  &       &  & 0,000
+                    \end{matrix} \right]$$
+                    
+                    
+                    
+## Métodos de Agrupamento Hierárquicos
+
+### Exemplo                    
+                    
+**Passo 5: juntar o grupo $(1,2,3)$ com o grupo $(4,5,6)$** 
+
+**Redefinir a matriz de distâncias considerando os casos mais parecidos como se fossem um único grupo.**
+
+$$
+\begin{aligned}
+d_{((1,2,3,4,5,6)7)} &=  \min(d_{17};d_{27};d_{37};d_{47};d_{57};d_{67}) \\ 
+&= \min(6,403; 5,657; 4,243; 4,031; 5,000; 3,606) = 3,606 \\ &= 
+\min(d_{(1,2,3)7};d_{(4,5,6)7}) = \min(4,243; 3,606) \\
+\end{aligned}
+$$  
+
+
+
+## Métodos de Agrupamento Hierárquicos
+
+### Exemplo
+
+**Matriz de distâncias**
+
+
+$$D_5 = \left[ \begin{matrix}
+&(1,2,3,4,5,6) & 7\\ 
+(1,2,3,4,5,6 )& 0,000 & 3,606 \\
+7         &  & 0,000
+                    \end{matrix} \right]$$
+                    
+
+## Métodos de Agrupamento Hierárquicos
+
+### Exemplo
+
+**Matriz de distâncias**
+
+
+$$D_5 = \left[ \begin{matrix}
+&(1,2,3,4,5,6) & 7\\ 
+(1,2,3,4,5,6 )& 0,000 & \textbf{3,606} \\
+7         &  & 0,000
+                    \end{matrix} \right]$$
+                    
+                    
+
+## Métodos de Agrupamento Hierárquicos
+
+### Exemplo                    
+                    
+**Resumo do método de agrupamento**
+
+
+| Passo | Nº de grupos | Grupos | Distância |
+|------:|-------------:|--------|----------:|
+| 1 | 7 | 1, 2, 3, 4, 5, 6, 7 | 0,000 |
+| 2 | 6 | (1,2), 3, 4, 5, 6, 7 | 1,000 |
+| 3 | 5 | (1,2), 3, (4,5), 6, 7 | 1,118 |
+| 4 | 4 | (1,2,3), (4,5), 6, 7 | 1,414 |
+| 5 | 3 | (1,2,3), (4,5,6), 7 | 2,693 |
+| 6 | 2 | (1,2,3,4,5,6), 7 | 2,693 |
+| 7 | 1 | (1,2,3,4,5,6,7) | 3,606 |
+
+
+
+## Métodos de Agrupamento Hierárquicos
+
+### Exemplo                    
+                    
+
+
+
+![](/images/AA/dend3.jpg){fig-align="center" width=100%}
+
+
+
+## Métodos de Agrupamento Hierárquicos
+
+### Determinação do número de grupos
+
+
+- O dendrograma permite ao pesquisador consultar a distância em que os clusters foram combinados para formar um novo cluster.
+
+- Clusters que são semelhantes entre si são combinados a baixas distâncias, enquanto grupos que são mais dissimilares são combinados em altas distâncias.
+
+- A diferença de distâncias define como os clusters próximos são um do outro.
+
+
+## Métodos de Agrupamento Hierárquicos
+
+### Determinação do número de grupos
+
+- Uma partição dos dados em um número especificado de grupos pode ser obtida "cortando" o dendograma a uma distância apropriada.
+
+- Se traçarmos uma linha horizontal no dendograma a uma determinada distância, então o número $k$ das linhas verticais cortadas por essa linha horizontal identificará uma solução $k$-cluster.
+
+- A intersecção da linha horizontal e uma dessas linhas verticais representa um cluster, e os itens localizados no final de todos os ramos abaixo interseção constituem os membros do cluster.
+
+
+
+
+## Métodos de Agrupamento Hierárquicos
+
+### Determinação do número de grupos
+
+
+![](/images/AA/num_grupos.jpg){fig-align="center" width=100%}

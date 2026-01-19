@@ -1,0 +1,212 @@
+---
+title: "Análise Fatorial Aplicada ao Comportamento do Consumidor"
+format:
+  html:
+    number-sections: true
+    toc: true
+    toc-depth: 2
+  pdf:
+    number-sections: true
+    toc: false
+    toc-depth: 2
+bibliography: references.bib
+---
+
+
+<p align="center" style="font-size: 40px"> 
+`Data de entrega: 03 de fevereiro de 2026`
+</p>
+
+
+---
+
+# Introdução
+
+A Análise Fatorial é uma técnica estatística multivariada amplamente utilizada para explorar estruturas latentes de correlação entre variáveis observadas, permitindo a identificação de fatores comuns subjacentes que explicam padrões de associação nos dados.
+
+Neste trabalho, será aplicada a análise fatorial a uma base de dados oriunda de uma pesquisa de mercado, com o objetivo de compreender quais dimensões latentes influenciam a decisão de compra de consumidores ao adquirir um pack de cerveja.
+
+---
+
+# Descrição da Base de Dados
+
+A base de dados está disponível no arquivo [AnaFatBeer.txt](/dados/AnaFatBeer.txt) e é composta por 200 consumidores, os quais atribuíram escores de 0 a 100 à importância de sete atributos considerados na decisão de compra de um pack contendo seis garrafas de cerveja.
+
+As variáveis avaliadas são:
+
+`COST` – Custo do pack
+
+`SIZE` – Volume total de cerveja
+
+`ALCOHOL` – Percentual de álcool
+
+`REPUTATION` – Reputação da marca
+
+`COLOR` – Cor da bebida
+
+`AROMA` – Aroma da bebida
+
+`TASTE` – Sabor da bebida
+
+Cada observação corresponde a um consumidor, e cada variável representa um critério de decisão avaliado individualmente.
+
+---
+
+# Análise Descritiva Inicial
+
+Antes da aplicação da análise fatorial, é fundamental realizar uma análise exploratória dos dados, contemplando:
+
+- Estatísticas descritivas (média, mediana, desvio-padrão, assimetria);
+
+- Avaliação de outliers;
+
+- Análise da matriz de correlações;
+
+- Verificação da adequação dos dados à análise fatorial.
+
+
+## Medidas de Adequação
+
+Devem ser calculadas e interpretadas:
+
+- Teste de Esfericidade de Bartlett;
+
+- Medida KMO (Kaiser–Meyer–Olkin), tanto global quanto individual por variável.
+
+Essas medidas indicam se a estrutura de correlação observada é apropriada para a extração de fatores comuns.
+
+
+---
+
+
+# Análise Fatorial Exploratória
+
+A análise fatorial deverá ser conduzida considerando diferentes estratégias metodológicas, permitindo uma comparação crítica entre os resultados.
+
+
+## Métodos de Extração
+
+Aplicar e comparar, sempre que possível:
+
+- Método das Componentes Principais;
+
+- Método dos Fatores Principais;
+
+- Método da Máxima Verossimilhança.
+
+
+Discutir vantagens, limitações e pressupostos de cada método.
+
+
+
+## Determinação do Número de Fatores
+
+O número de fatores a serem retidos deve ser avaliado com base em múltiplos critérios, tais como:
+
+- Critério de Kaiser;
+
+- Gráfico Scree Plot;
+
+- Proporção da variância explicada;
+
+- Análise paralela.
+
+
+## Rotações Fatoriais
+
+Realizar rotações fatoriais com o objetivo de facilitar a interpretação dos fatores:
+
+- Rotações ortogonais.
+
+Comparar as soluções rotacionadas e discutir diferenças na estrutura das cargas fatoriais.
+
+---
+
+
+# Resultados da Análise Fatorial
+
+Os resultados devem contemplar, obrigatoriamente:
+
+## Matriz de Cargas Fatoriais
+
+- Apresentar a matriz de cargas fatoriais;
+
+- Identificar cargas relevantes;
+
+Discutir possíveis problemas de cargas cruzadas (cross-loading).
+
+
+
+## Comunalidades e Variâncias Específicas
+
+- Avaliar o quanto da variância de cada variável é explicada pelos fatores;
+
+- Identificar variáveis com baixa comunalidade.
+
+
+## Variância Total Explicada
+
+- Proporção individual da variância explicada por cada fator;
+
+- Proporção acumulada da variância total explicada.
+
+
+## Correlações Residuais
+
+- Avaliar a matriz de correlações residuais;
+
+- Identificar padrões que indiquem inadequação do modelo.
+
+---
+
+
+# Interpretação dos Fatores
+
+Com base na composição das cargas fatoriais:
+
+- Interpretar cada fator extraído;
+
+- Propor nomes conceituais para os fatores (ex.: atributos sensoriais, valor econômico, imagem da marca);
+
+- Relacionar os fatores ao comportamento do consumidor.
+
+---
+
+# Escores Fatoriais
+
+- Descrever o método utilizado para a extração dos escores fatoriais;
+
+- Interpretar os escores no contexto do estudo;
+
+- Discutir possíveis aplicações práticas, como segmentação de consumidores.
+
+---
+
+# Comparação entre Estratégias
+
+Comparar os resultados obtidos a partir de:
+
+- Diferentes métodos de extração;
+
+- Diferentes rotações fatoriais.
+
+Discutir:
+
+- Estabilidade da solução fatorial;
+
+- Sensibilidade do modelo às escolhas metodológicas;
+
+- Possíveis limitações da análise.
+
+
+---
+
+# Conclusões
+
+Apresentar uma síntese dos principais achados, destacando:
+
+- A estrutura latente identificada;
+
+- Implicações práticas para análise de mercado;
+
+- Limitações do estudo e sugestões para análises futuras.
