@@ -1,5 +1,5 @@
 ---
-title: "Análise de dados"
+title: "Semana 12"
 format:
   html:
     theme: cosmo
@@ -47,37 +47,33 @@ format:
 ---
 
 
-Esta página contém scripts de análises de dados comentados utilizando algumas técnicas que serão apresentadas ao longo do semestre. Você pode baixar as análises em versão PDF.
 
+## Slides
 
 ::: {.list-group .aulas-list}
 
 ::: {.list-group-item .d-flex .justify-content-between .align-items-center}
-<span class="fw-bold">
-  Descrição e Visualização da base de dados Iris
-</span>
 
-<span>
-[Ver análise](/analise_dados/descr_vis_iris.html){.btn .btn-est304-main .btn-sm}
-[PDF](/analise_dados/descr_vis_iris.pdf){.btn .btn-est304-outline .btn-sm}
-</span>
+<div>
+  <span class="fw-bold">{{< fa file-powerpoint size=lg >}} Análise de Agrupamentos </span>
+</div>
+
+<div class="d-flex align-items-center gap-3">
+
+[Ver slides](/aulas/analise_agrupamento/agrupamento.html#/title-slide){.btn .btn-est304-main .btn-sm}
+[PDF](/aulas/analise_agrupamento/agrupamento.pdf){.btn .btn-est304-outline .btn-sm}
+
+</div>
+
 :::
 
-::: {.list-group-item .d-flex .justify-content-between .align-items-center}
-<span class="fw-bold">
-  Mapas Perceptuais com PCA: estudo de marcas
-</span>
 
-<span>
-[Ver análise](/analise_dados/brands.html){.btn .btn-est304-main .btn-sm}
-[PDF](/analise_dados/brands.pdf){.btn .btn-est304-outline .btn-sm}
-</span>
-:::
+## Script de análise de dados
 
 
 ::: {.list-group-item .d-flex .justify-content-between .align-items-center}
 <span class="fw-bold">
-  Avaliação da Satisfação de Estudantes Universitários
+{{< fa brands r-project size=lg >}}  Avaliação da Satisfação de Estudantes Universitários
 </span>
 
 <span>
@@ -87,4 +83,21 @@ Esta página contém scripts de análises de dados comentados utilizando algumas
 :::
 
 
+## Projeto: Análise Fatorial
+
+
+::: {.list-group-item .d-flex .justify-content-between .align-items-center}
+<span class="fw-bold">
+{{< fa list-check size=lg >}}  Análise fatorial aplicada ao comportamento do consumidor
+</span>
+
+<span>
+[Ver projeto](/projeto/af/af.html){.btn .btn-est304-main .btn-sm}
+[PDF](/projeto/af/af.pdf){.btn .btn-est304-outline .btn-sm}
+</span>
 :::
+
+:::
+
+
+

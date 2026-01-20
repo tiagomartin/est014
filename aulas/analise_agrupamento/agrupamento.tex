@@ -2204,6 +2204,237 @@ d_{((4,5)7)} &=  \min(d_{47};d_{57}) = \min(4,031; 5,000) = 4,031
 \end{block}
 \end{frame}
 
+\begin{frame}{Métodos de Agrupamento Hierárquicos}
+\phantomsection\label{muxe9todos-de-agrupamento-hieruxe1rquicos-22}
+\begin{block}{Exemplo}
+\phantomsection\label{exemplo-11}
+\textbf{Passo 3: juntar o grupo \((1,2)\) como caso 3}
+
+\textbf{Redefinir a matriz de distâncias considerando os casos mais
+parecidos como se fossem um único grupo.}
+
+\[ \small
+\begin{aligned}
+d_{(((1,2,3)(4,5))} &=  \min(d_{14};d_{24};d_{34};d_{15};d_{25};d_{35}) \\ &= \min(3,640; 3,500; 2,693; 4,000; 4,123; 3,606) = 2,693 \\ &= 
+\min(d_{(1,2)(4,5)};d_{(4,5)3}) = \min(3,500;2,693) \\
+d_{((1,2,3)6)} &= \min(d_{16};d_{26};d_{36}) =  \min(6,325; 6,083; 5,000) = 5,000 \\ &=  \min(d_{((1,2)6)};d_{36}) = \min(6,083;5,000) \\
+d_{((1,2,3)7)} &= \min(d_{17};d_{27};d_{37}) =  \min(6,403; 5,657; 4,243) = 4,243 \\ &=  \min(d_{((1,2)7)};d_{37}) = \min(5,657;4,243) \\ 
+\end{aligned}
+\]
+\end{block}
+\end{frame}
+
+\begin{frame}{Métodos de Agrupamento Hierárquicos}
+\phantomsection\label{muxe9todos-de-agrupamento-hieruxe1rquicos-23}
+\begin{block}{Exemplo}
+\phantomsection\label{exemplo-12}
+\textbf{Matriz de distâncias}
+
+\[D_3 = \left[ \begin{matrix}
+&(1,2,3) &(4,5)&6&7\\ 
+(1,2,3)& 0,000 & 2,693 & 5,000 & 4,243 \\
+(4,5)    &  & 0,000 &  2,693 & 4,031 \\
+6  &     &  & 0,000 & 3,606 \\
+7  &      &  &  & 0,000
+                    \end{matrix} \right]\]
+\end{block}
+\end{frame}
+
+\begin{frame}{Métodos de Agrupamento Hierárquicos}
+\phantomsection\label{muxe9todos-de-agrupamento-hieruxe1rquicos-24}
+\begin{block}{Exemplo}
+\phantomsection\label{exemplo-13}
+\textbf{Matriz de distâncias}
+
+\[D_3 = \left[ \begin{matrix}
+&(1,2,3) &(4,5)&6&7\\ 
+(1,2,3)& 0,000 & \textbf{2,693} & 5,000 & 4,243 \\
+(4,5)    &  & 0,000 &  \textbf{2,693} & 4,031 \\
+6  &     &  & 0,000 & 3,606 \\
+7  &      &  &  & 0,000
+                    \end{matrix} \right]\]
+\end{block}
+\end{frame}
+
+\begin{frame}{Métodos de Agrupamento Hierárquicos}
+\phantomsection\label{muxe9todos-de-agrupamento-hieruxe1rquicos-25}
+\begin{block}{Exemplo}
+\phantomsection\label{exemplo-14}
+\textbf{Passo 4: juntar o grupo \((4,5)\) como caso 6}
+
+\textbf{Redefinir a matriz de distâncias considerando os casos mais
+parecidos como se fossem um único grupo.}
+
+\[ \small
+\begin{aligned}
+d_{(((4,5,6)(1,2,3))} &=  \min(d_{14};d_{24};d_{34};d_{15};d_{25};d_{35};d_{16};d_{26};d_{36}) \\ 
+&= \min(3,640; 3,500; 2,693; 4,000; 4,123; 3,606; 6,325; 6,083; 5,000) = 2,693 \\ &= 
+\min(d_{(1,2,3)(4,5)};d_{(1,2,3)6}) = \min(2,693; 5,000) \\
+d_{((4,5,6)7)} &= \min(d_{47};d_{57};d_{67}) =  \min(4,031; 5,000; 3,606) = 3,606 \\ &=  \min(d_{((4,5)7)};d_{67}) = \min(4,031;3,606) \\ 
+\end{aligned}
+\]
+\end{block}
+\end{frame}
+
+\begin{frame}{Métodos de Agrupamento Hierárquicos}
+\phantomsection\label{muxe9todos-de-agrupamento-hieruxe1rquicos-26}
+\begin{block}{Exemplo}
+\phantomsection\label{exemplo-15}
+\textbf{Matriz de distâncias}
+
+\[D_4 = \left[ \begin{matrix}
+&(1,2,3) &(4,5,6) &7\\ 
+(1,2,3)& 0,000 & 2,693 &  4,243 \\
+(4,5,6)    &  & 0,000 &  3,606 \\
+7  &       &  & 0,000
+                    \end{matrix} \right]\]
+\end{block}
+\end{frame}
+
+\begin{frame}{Métodos de Agrupamento Hierárquicos}
+\phantomsection\label{muxe9todos-de-agrupamento-hieruxe1rquicos-27}
+\begin{block}{Exemplo}
+\phantomsection\label{exemplo-16}
+\textbf{Matriz de distâncias}
+
+\[D_4 = \left[ \begin{matrix}
+&(1,2,3) &(4,5,6) &7\\ 
+(1,2,3)& 0,000 & \textbf{2,693} &  4,243 \\
+(4,5,6)    &  & 0,000 &  3,606 \\
+7  &       &  & 0,000
+                    \end{matrix} \right]\]
+\end{block}
+\end{frame}
+
+\begin{frame}{Métodos de Agrupamento Hierárquicos}
+\phantomsection\label{muxe9todos-de-agrupamento-hieruxe1rquicos-28}
+\begin{block}{Exemplo}
+\phantomsection\label{exemplo-17}
+\textbf{Passo 5: juntar o grupo \((1,2,3)\) com o grupo \((4,5,6)\)}
+
+\textbf{Redefinir a matriz de distâncias considerando os casos mais
+parecidos como se fossem um único grupo.}
+
+\[
+\begin{aligned}
+d_{((1,2,3,4,5,6)7)} &=  \min(d_{17};d_{27};d_{37};d_{47};d_{57};d_{67}) \\ 
+&= \min(6,403; 5,657; 4,243; 4,031; 5,000; 3,606) = 3,606 \\ &= 
+\min(d_{(1,2,3)7};d_{(4,5,6)7}) = \min(4,243; 3,606) \\
+\end{aligned}
+\]
+\end{block}
+\end{frame}
+
+\begin{frame}{Métodos de Agrupamento Hierárquicos}
+\phantomsection\label{muxe9todos-de-agrupamento-hieruxe1rquicos-29}
+\begin{block}{Exemplo}
+\phantomsection\label{exemplo-18}
+\textbf{Matriz de distâncias}
+
+\[D_5 = \left[ \begin{matrix}
+&(1,2,3,4,5,6) & 7\\ 
+(1,2,3,4,5,6 )& 0,000 & 3,606 \\
+7         &  & 0,000
+                    \end{matrix} \right]\]
+\end{block}
+\end{frame}
+
+\begin{frame}{Métodos de Agrupamento Hierárquicos}
+\phantomsection\label{muxe9todos-de-agrupamento-hieruxe1rquicos-30}
+\begin{block}{Exemplo}
+\phantomsection\label{exemplo-19}
+\textbf{Matriz de distâncias}
+
+\[D_5 = \left[ \begin{matrix}
+&(1,2,3,4,5,6) & 7\\ 
+(1,2,3,4,5,6 )& 0,000 & \textbf{3,606} \\
+7         &  & 0,000
+                    \end{matrix} \right]\]
+\end{block}
+\end{frame}
+
+\begin{frame}{Métodos de Agrupamento Hierárquicos}
+\phantomsection\label{muxe9todos-de-agrupamento-hieruxe1rquicos-31}
+\begin{block}{Exemplo}
+\phantomsection\label{exemplo-20}
+\textbf{Resumo do método de agrupamento}
+
+\begin{longtable}[]{@{}rrlr@{}}
+\toprule\noalign{}
+Passo & Nº de grupos & Grupos & Distância \\
+\midrule\noalign{}
+\endhead
+1 & 7 & 1, 2, 3, 4, 5, 6, 7 & 0,000 \\
+2 & 6 & (1,2), 3, 4, 5, 6, 7 & 1,000 \\
+3 & 5 & (1,2), 3, (4,5), 6, 7 & 1,118 \\
+4 & 4 & (1,2,3), (4,5), 6, 7 & 1,414 \\
+5 & 3 & (1,2,3), (4,5,6), 7 & 2,693 \\
+6 & 2 & (1,2,3,4,5,6), 7 & 2,693 \\
+7 & 1 & (1,2,3,4,5,6,7) & 3,606 \\
+\bottomrule\noalign{}
+\end{longtable}
+\end{block}
+\end{frame}
+
+\begin{frame}{Métodos de Agrupamento Hierárquicos}
+\phantomsection\label{muxe9todos-de-agrupamento-hieruxe1rquicos-32}
+\begin{block}{Exemplo}
+\phantomsection\label{exemplo-21}
+\begin{center}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{../../images/AA/dend3.jpg}
+\end{center}
+\end{block}
+\end{frame}
+
+\begin{frame}{Métodos de Agrupamento Hierárquicos}
+\phantomsection\label{muxe9todos-de-agrupamento-hieruxe1rquicos-33}
+\begin{block}{Determinação do número de grupos}
+\phantomsection\label{determinauxe7uxe3o-do-nuxfamero-de-grupos}
+\begin{itemize}
+\item
+  O dendrograma permite ao pesquisador consultar a distância em que os
+  clusters foram combinados para formar um novo cluster.
+\item
+  Clusters que são semelhantes entre si são combinados a baixas
+  distâncias, enquanto grupos que são mais dissimilares são combinados
+  em altas distâncias.
+\item
+  A diferença de distâncias define como os clusters próximos são um do
+  outro.
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Métodos de Agrupamento Hierárquicos}
+\phantomsection\label{muxe9todos-de-agrupamento-hieruxe1rquicos-34}
+\begin{block}{Determinação do número de grupos}
+\phantomsection\label{determinauxe7uxe3o-do-nuxfamero-de-grupos-1}
+\begin{itemize}
+\item
+  Uma partição dos dados em um número especificado de grupos pode ser
+  obtida ``cortando'' o dendograma a uma distância apropriada.
+\item
+  Se traçarmos uma linha horizontal no dendograma a uma determinada
+  distância, então o número \(k\) das linhas verticais cortadas por essa
+  linha horizontal identificará uma solução \(k\)-cluster.
+\item
+  A intersecção da linha horizontal e uma dessas linhas verticais
+  representa um cluster, e os itens localizados no final de todos os
+  ramos abaixo interseção constituem os membros do cluster.
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Métodos de Agrupamento Hierárquicos}
+\phantomsection\label{muxe9todos-de-agrupamento-hieruxe1rquicos-35}
+\begin{block}{Determinação do número de grupos}
+\phantomsection\label{determinauxe7uxe3o-do-nuxfamero-de-grupos-2}
+\begin{center}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{../../images/AA/num_grupos.jpg}
+\end{center}
+\end{block}
+\end{frame}
+
 
 
 
