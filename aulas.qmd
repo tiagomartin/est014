@@ -12,6 +12,6 @@ title: "Aulas"
 
 - [Análise Fatorial](/aulas/analise_fatorial/fatorial.html#/title-slide)
 
-- Análise de Conglomerados ou Agrupamentos
+- [Análise de Conglomerados ou Agrupamentos](/aulas/analise_agrupamento/agrupamento.html#/title-slide)
 
 - Análise Discriminante

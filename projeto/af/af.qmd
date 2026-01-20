@@ -1,5 +1,5 @@
 ---
-title: "Análise Fatorial Aplicada ao Comportamento do Consumidor"
+title: "Análise fatorial aplicada ao comportamento do consumidor"
 format:
   html:
     number-sections: true

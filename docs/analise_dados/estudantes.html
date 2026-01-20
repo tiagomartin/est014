@@ -1,0 +1,1673 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.29">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Avaliação da Satisfação de Estudantes Universitários – EST014 - Estatística Multivariada I</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-748b535e376f14d4692bf2b2e5fd6380.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-b09848b6287391c45069fed345a57cb2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-e9f3ba5fbee03b112b18b9666ab66a2c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-b09848b6287391c45069fed345a57cb2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link href="../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+
+<script src="../site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="Avaliação da Satisfação de Estudantes Universitários – EST014 - Estatística Multivariada I">
+<meta property="og:description" content="Homepage da disciplina EST014 - Estatística Multivariada I, 2025/2">
+<meta property="og:image" content="http://professortp.com.br/est014/analise_dados/estudantes_files/figure-html/unnamed-chunk-5-1.png">
+<meta property="og:site_name" content="EST014 - Estatística Multivariada I">
+<meta property="og:image:height" content="3000">
+<meta property="og:image:width" content="4200">
+</head>
+
+<body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Avaliação da Satisfação de Estudantes Universitários</li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../images/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      <div class="sidebar-tools-main">
+    <a href="https://github.com/tiagomartin/est014" title="github" class="quarto-navigation-tool px-1" aria-label="github"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../aulas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Aulas</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercicios.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Listas de Exercícios</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../analises.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Análise de dados</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../plano.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Plano de Ensino</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../projeto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Projetos</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../cronograma.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cronograma da Disciplina</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Navegação</h2>
+   
+  <ul>
+  <li><a href="#contexto-e-objetivo" id="toc-contexto-e-objetivo" class="nav-link active" data-scroll-target="#contexto-e-objetivo"><span class="header-section-number">1</span> Contexto e Objetivo</a></li>
+  <li><a href="#pacotes-utilizados" id="toc-pacotes-utilizados" class="nav-link" data-scroll-target="#pacotes-utilizados"><span class="header-section-number">2</span> Pacotes utilizados</a></li>
+  <li><a href="#leitura-e-exploração-dos-dados" id="toc-leitura-e-exploração-dos-dados" class="nav-link" data-scroll-target="#leitura-e-exploração-dos-dados"><span class="header-section-number">3</span> Leitura e exploração dos dados</a></li>
+  <li><a href="#matriz-de-correlações" id="toc-matriz-de-correlações" class="nav-link" data-scroll-target="#matriz-de-correlações"><span class="header-section-number">4</span> Matriz de correlações</a></li>
+  <li><a href="#adequação-para-análise-fatorial-kmo-e-bartlett" id="toc-adequação-para-análise-fatorial-kmo-e-bartlett" class="nav-link" data-scroll-target="#adequação-para-análise-fatorial-kmo-e-bartlett"><span class="header-section-number">5</span> Adequação para Análise Fatorial: KMO e Bartlett</a></li>
+  <li><a href="#quantos-fatores-reter" id="toc-quantos-fatores-reter" class="nav-link" data-scroll-target="#quantos-fatores-reter"><span class="header-section-number">6</span> Quantos fatores reter?</a>
+  <ul class="collapse">
+  <li><a href="#autovalores-da-matriz-de-correlação-critério-de-kaiser" id="toc-autovalores-da-matriz-de-correlação-critério-de-kaiser" class="nav-link" data-scroll-target="#autovalores-da-matriz-de-correlação-critério-de-kaiser"><span class="header-section-number">6.1</span> Autovalores da Matriz de Correlação (Critério de Kaiser)</a></li>
+  <li><a href="#scree-plot" id="toc-scree-plot" class="nav-link" data-scroll-target="#scree-plot"><span class="header-section-number">6.2</span> Scree Plot</a></li>
+  <li><a href="#análise-paralela" id="toc-análise-paralela" class="nav-link" data-scroll-target="#análise-paralela"><span class="header-section-number">6.3</span> Análise Paralela</a></li>
+  </ul></li>
+  <li><a href="#estimação-do-modelo-fatorial-ortogonal" id="toc-estimação-do-modelo-fatorial-ortogonal" class="nav-link" data-scroll-target="#estimação-do-modelo-fatorial-ortogonal"><span class="header-section-number">7</span> Estimação do modelo fatorial ortogonal</a>
+  <ul class="collapse">
+  <li><a href="#método-das-componentes-principais-mcp" id="toc-método-das-componentes-principais-mcp" class="nav-link" data-scroll-target="#método-das-componentes-principais-mcp"><span class="header-section-number">7.1</span> Método das Componentes Principais (MCP)</a></li>
+  <li><a href="#método-dos-fatores-principais-paf" id="toc-método-dos-fatores-principais-paf" class="nav-link" data-scroll-target="#método-dos-fatores-principais-paf"><span class="header-section-number">7.2</span> Método dos Fatores Principais (PAF)</a></li>
+  <li><a href="#método-da-máxima-verossimilhança" id="toc-método-da-máxima-verossimilhança" class="nav-link" data-scroll-target="#método-da-máxima-verossimilhança"><span class="header-section-number">7.3</span> Método da Máxima Verossimilhança</a></li>
+  </ul></li>
+  <li><a href="#interpretação-dos-fatores" id="toc-interpretação-dos-fatores" class="nav-link" data-scroll-target="#interpretação-dos-fatores"><span class="header-section-number">8</span> Interpretação dos Fatores</a></li>
+  <li><a href="#conclusão" id="toc-conclusão" class="nav-link" data-scroll-target="#conclusão"><span class="header-section-number">9</span> Conclusão</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/tiagomartin/est014/edit/main/analise_dados/estudantes.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/tiagomartin/est014/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="estudantes.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Avaliação da Satisfação de Estudantes Universitários</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="contexto-e-objetivo" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="contexto-e-objetivo"><span class="header-section-number">1</span> Contexto e Objetivo</h2>
+<p>Uma universidade realizou uma pesquisa institucional com <strong>250 estudantes de graduação</strong>, solicitando que atribuíssem escores de <strong>0 a 10</strong> para diferentes aspectos relacionados à sua experiência acadêmica no campus.</p>
+<p>O <strong>objetivo</strong> da pesquisa é identificar <strong>dimensões latentes de satisfação</strong>, permitindo que a gestão universitária compreenda quais fatores estruturais e acadêmicos influenciam a percepção geral dos estudantes.</p>
+<p>As variáveis analisadas são:</p>
+<ul>
+<li><code>TEACH</code> – qualidade do ensino<br>
+</li>
+<li><code>CURRIC</code> – organização curricular<br>
+</li>
+<li><code>FACULTY</code> – acessibilidade dos professores<br>
+</li>
+<li><code>INFRA</code> – infraestrutura do campus<br>
+</li>
+<li><code>LIBRARY</code> – qualidade da biblioteca<br>
+</li>
+<li><code>IT</code> – serviços de tecnologia/internet<br>
+</li>
+<li><code>SUPPORT</code> – serviços administrativos e apoio ao estudante</li>
+</ul>
+</section>
+<section id="pacotes-utilizados" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="pacotes-utilizados"><span class="header-section-number">2</span> Pacotes utilizados</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>load <span class="ot">&lt;-</span> <span class="cf">function</span>(pkg){</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  new.pkg <span class="ot">&lt;-</span> pkg[<span class="sc">!</span>(pkg <span class="sc">%in%</span> <span class="fu">installed.packages</span>()[, <span class="st">"Package"</span>])]</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">length</span>(new.pkg))</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">install.packages</span>(new.pkg, <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sapply</span>(pkg, require, <span class="at">character.only =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>} </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="do">## Pacotes utilizados nessa análise</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>packages <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"tidyverse"</span>, <span class="st">"factoextra"</span>, <span class="st">"psych"</span>, <span class="st">"gridExtra"</span>, <span class="st">"readr"</span>, <span class="st">"janitor"</span>, <span class="st">"ggrepel"</span>, <span class="st">"patchwork"</span>, <span class="st">"corrplot"</span>, <span class="st">"corrr"</span>, <span class="st">"igraph"</span>, <span class="st">"ggraph"</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(packages)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> tidyverse factoextra      psych  gridExtra      readr    janitor    ggrepel 
+      TRUE       TRUE       TRUE       TRUE       TRUE       TRUE       TRUE 
+ patchwork   corrplot      corrr     igraph     ggraph 
+      TRUE       TRUE       TRUE       TRUE       TRUE </code></pre>
+</div>
+</div>
+</section>
+<section id="leitura-e-exploração-dos-dados" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="leitura-e-exploração-dos-dados"><span class="header-section-number">3</span> Leitura e exploração dos dados</h2>
+<p>os dados para esta análise estão disponíveis <a href="..\dados/estudantes.csv">aqui</a>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dados <span class="sc">%&gt;%</span> </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 250
+Columns: 7
+$ TEACH   &lt;dbl&gt; 5.8985922, 3.3027234, 7.8017635, 4.9177419, 6.4700030, 4.30953…
+$ CURRIC  &lt;dbl&gt; 2.326107, 1.752990, 5.484877, 6.937882, 5.243526, 4.351941, 9.…
+$ FACULTY &lt;dbl&gt; 4.124222, 4.497515, 4.783184, 6.922000, 4.170623, 4.158718, 4.…
+$ INFRA   &lt;dbl&gt; 5.895502, 6.007559, 4.546493, 2.214890, 7.474016, 3.967869, 6.…
+$ LIBRARY &lt;dbl&gt; 4.039993, 3.081426, 1.716670, 4.122501, 5.972514, 5.655724, 3.…
+$ IT      &lt;dbl&gt; 5.2079898, 3.5865059, 1.5114832, 4.0599907, 5.5201308, 4.29062…
+$ SUPPORT &lt;dbl&gt; 4.8756247, 3.4446785, 2.2867263, 4.4366685, 4.7626816, 4.84769…</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>dados <span class="sc">%&gt;%</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     TEACH            CURRIC          FACULTY           INFRA       
+ Min.   : 0.000   Min.   : 0.000   Min.   : 0.000   Min.   : 0.000  
+ 1st Qu.: 3.732   1st Qu.: 3.764   1st Qu.: 3.948   1st Qu.: 3.707  
+ Median : 5.109   Median : 4.940   Median : 4.932   Median : 5.257  
+ Mean   : 5.006   Mean   : 5.001   Mean   : 5.001   Mean   : 4.994  
+ 3rd Qu.: 6.462   3rd Qu.: 6.352   3rd Qu.: 6.232   3rd Qu.: 6.242  
+ Max.   :10.000   Max.   :10.000   Max.   :10.000   Max.   :10.000  
+    LIBRARY             IT            SUPPORT      
+ Min.   : 0.000   Min.   : 0.000   Min.   : 0.000  
+ 1st Qu.: 3.631   1st Qu.: 3.777   1st Qu.: 3.589  
+ Median : 4.996   Median : 4.845   Median : 4.954  
+ Mean   : 5.002   Mean   : 5.000   Mean   : 4.997  
+ 3rd Qu.: 6.284   3rd Qu.: 6.451   3rd Qu.: 6.360  
+ Max.   :10.000   Max.   :10.000   Max.   :10.000  </code></pre>
+</div>
+</div>
+<p>A base de dados contém 250 observações e 7 variáveis numéricas, todas armazenadas como dbl, correspondendo às avaliações de satisfação dos estudantes em escala contínua de 0 a 10. Não há variáveis categóricas nem valores ausentes aparentes, o que facilita a aplicação direta de métodos baseados em matriz de correlação, como PCA e Análise Fatorial Exploratória.</p>
+<p>Em média, os estudantes atribuem avaliações moderadas a todos os aspectos analisados. Não há evidência de satisfação extrema nem de insatisfação generalizada. Os quartis mostram ampla dispersão:</p>
+<ul>
+<li><p>1º quartil geralmente entre 3.6 e 3.9</p></li>
+<li><p>3º quartil geralmente entre 6.2 e 6.4</p></li>
+</ul>
+<p>Isso indica que:</p>
+<ul>
+<li><p>Há heterogeneidade real entre estudantes;</p></li>
+<li><p>Diferentes perfis de satisfação coexistem na amostra.</p></li>
+</ul>
+<p>Análise fatorial exige variabilidade. Se todos os estudantes atribuíssem notas muito semelhantes, não haveria estrutura de correlação suficiente para extrair fatores.</p>
+<p>A análise descritiva inicial indica que as variáveis apresentam comportamento adequado para a aplicação de técnicas multivariadas baseadas em correlação. Todas as variáveis respeitam a escala proposta, exibem variabilidade suficiente, não apresentam concentrações excessivas em valores extremos e possuem distribuições aproximadamente simétricas. Dessa forma, a base de dados é apropriada para a aplicação da Análise Fatorial Exploratória.</p>
+</section>
+<section id="matriz-de-correlações" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="matriz-de-correlações"><span class="header-section-number">4</span> Matriz de correlações</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>cor_mat <span class="ot">&lt;-</span> <span class="fu">cor</span>(dados)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(cor_mat, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        TEACH CURRIC FACULTY INFRA LIBRARY   IT SUPPORT
+TEACH    1.00   0.54    0.51  0.21    0.17 0.22    0.33
+CURRIC   0.54   1.00    0.46  0.12    0.17 0.20    0.22
+FACULTY  0.51   0.46    1.00  0.31    0.30 0.24    0.40
+INFRA    0.21   0.12    0.31  1.00    0.65 0.59    0.52
+LIBRARY  0.17   0.17    0.30  0.65    1.00 0.59    0.51
+IT       0.22   0.20    0.24  0.59    0.59 1.00    0.53
+SUPPORT  0.33   0.22    0.40  0.52    0.51 0.53    1.00</code></pre>
+</div>
+</div>
+<p>A matriz de correlação entre as sete variáveis evidencia padrões claros de associação, sugerindo a presença de estruturas latentes passíveis de modelagem por meio de Análise de Componentes Principais e Análise Fatorial Exploratória.</p>
+<p>As variáveis <code>TEACH</code>, <code>CURRIC</code> e <code>FACULTY</code> apresentam correlações moderadas a elevadas entre si:</p>
+<ul>
+<li><p><code>TEACH × CURRIC</code>: 0,54</p></li>
+<li><p><code>TEACH × FACULTY</code>: 0,51</p></li>
+<li><p><code>CURRIC × FACULTY</code>: 0,46</p></li>
+</ul>
+<p>Essas correlações indicam que estudantes que avaliam positivamente um desses aspectos acadêmicos tendem a avaliar positivamente os demais, sugerindo a existência de um fator comum associado à Qualidade Acadêmica.</p>
+<p>Do ponto de vista da análise fatorial, esse padrão é típico de um conjunto de variáveis que compartilham variância comum, condição essencial para a extração de fatores.</p>
+<p>As variáveis <code>INFRA</code>, <code>LIBRARY</code> e <code>IT</code> apresentam correlações elevadas entre si, destacando-se:</p>
+<ul>
+<li><p><code>INFRA × LIBRARY</code>: 0,65</p></li>
+<li><p><code>INFRA × IT</code>: 0,59</p></li>
+<li><p><code>LIBRARY × IT</code>: 0,59</p></li>
+</ul>
+<p>Esses valores indicam uma forte associação entre aspectos de infraestrutura física e tecnológica do campus, sugerindo a presença de um fator latente relacionado à Estrutura e Recursos Institucionais.</p>
+<p>Esse bloco de correlações é mais intenso do que o observado no bloco acadêmico, o que sugere que essa dimensão pode ser particularmente bem definida na estrutura fatorial.</p>
+<p>A variável <code>SUPPORT</code> apresenta correlações moderadas com ambos os blocos:</p>
+<p>Com variáveis acadêmicas:</p>
+<ul>
+<li><p><code>SUPPORT × TEACH</code>: 0,33</p></li>
+<li><p><code>SUPPORT × FACULTY</code>: 0,40</p></li>
+</ul>
+<p>Com variáveis estruturais:</p>
+<ul>
+<li><p><code>SUPPORT × INFRA</code>: 0,52</p></li>
+<li><p><code>SUPPORT × LIBRARY</code>: 0,51</p></li>
+<li><p><code>SUPPORT × IT</code>: 0,53</p></li>
+</ul>
+<p>Esse padrão sugere que SUPPORT possui uma natureza híbrida, relacionada tanto à experiência acadêmica quanto ao suporte institucional. Em termos de análise fatorial, isso antecipa a possibilidade de cargas cruzadas (cross-loading), isto é, a variável apresentar cargas relevantes em mais de um fator.</p>
+<p>Esse comportamento não representa um problema metodológico, desde que seja substantivamente justificável, como é o caso neste contexto.</p>
+<p>As correlações entre variáveis acadêmicas e estruturais são, em geral, baixas a moderadas, por exemplo:</p>
+<ul>
+<li><p><code>TEACH × INFRA</code>: 0,21</p></li>
+<li><p><code>CURRIC × INFRA</code>: 0,12</p></li>
+<li><p><code>FACULTY × IT</code>: 0,24</p></li>
+</ul>
+<p>Esses valores indicam que, embora as dimensões acadêmica e estrutural estejam relacionadas, elas não são redundantes, o que reforça a hipótese de mais de um fator latente.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(cor_mat, <span class="at">method =</span> <span class="st">"color"</span>, <span class="at">type =</span> <span class="st">"upper"</span>, <span class="at">addCoef.col =</span> <span class="st">"black"</span>,</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="at">tl.col =</span> <span class="st">"black"</span>, <span class="at">tl.srt =</span> <span class="dv">45</span>, <span class="at">number.cex =</span> .<span class="dv">6</span>,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="at">title =</span> <span class="st">"Matriz de correlações entre atributos"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="estudantes_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>O gráfico apresenta o mapa de calor da matriz de correlações entre os atributos avaliados pelos estudantes, no qual a intensidade da cor azul indica maior associação positiva entre as variáveis, enquanto cores mais claras indicam associações fracas.</p>
+<p>De modo geral, observa-se a presença de padrões bem definidos de correlação, sugerindo uma estrutura latente adequada para aplicação de Análise Fatorial Exploratória.</p>
+</section>
+<section id="adequação-para-análise-fatorial-kmo-e-bartlett" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="adequação-para-análise-fatorial-kmo-e-bartlett"><span class="header-section-number">5</span> Adequação para Análise Fatorial: KMO e Bartlett</h2>
+<p>Antes da aplicação da Análise Fatorial Exploratória, avaliou-se a adequação da matriz de correlações por meio da Medida de Adequação da Amostra de Kaiser–Meyer–Olkin (KMO) e do Teste de Esfericidade de Bartlett.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">KMO</span>(cor_mat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Kaiser-Meyer-Olkin factor adequacy
+Call: KMO(r = cor_mat)
+Overall MSA =  0.8
+MSA for each item = 
+  TEACH  CURRIC FACULTY   INFRA LIBRARY      IT SUPPORT 
+   0.74    0.71    0.81    0.80    0.81    0.83    0.87 </code></pre>
+</div>
+</div>
+<p>O valor global da medida KMO foi:</p>
+<p><span class="math display">\[KMO=0,80\]</span></p>
+<p>De acordo com a classificação proposta por Kaiser, valores de KMO entre 0,80 e 0,89 são considerados muito bons, indicando que a proporção de variância comum entre as variáveis é elevada.</p>
+<p>Além disso, as medidas individuais (MSA) para cada variável foram:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Variável</th>
+<th>MSA</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>TEACH</td>
+<td>0,74</td>
+</tr>
+<tr class="even">
+<td>CURRIC</td>
+<td>0,71</td>
+</tr>
+<tr class="odd">
+<td>FACULTY</td>
+<td>0,81</td>
+</tr>
+<tr class="even">
+<td>INFRA</td>
+<td>0,80</td>
+</tr>
+<tr class="odd">
+<td>LIBRARY</td>
+<td>0,81</td>
+</tr>
+<tr class="even">
+<td>IT</td>
+<td>0,83</td>
+</tr>
+<tr class="odd">
+<td>SUPPORT</td>
+<td>0,87</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>Todas as variáveis apresentam MSA superiores a 0,70, indicando que nenhuma delas compromete a estrutura fatorial.</p></li>
+<li><p>A variável <code>SUPPORT</code> apresenta o maior valor de MSA (0,87), sugerindo que ela compartilha uma quantidade considerável de variância com as demais variáveis, apesar de seu caráter transversal.</p></li>
+<li><p>Não há necessidade de remoção de variáveis com base na medida KMO.</p></li>
+</ul>
+<p>Do ponto de vista metodológico, esses resultados indicam que os dados apresentam correlações parciais relativamente pequenas, condição desejável para a extração de fatores comuns.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cortest.bartlett</span>(cor_mat, <span class="at">n =</span> n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$chisq
+[1] 619.4078
+
+$p.value
+[1] 1.319619e-117
+
+$df
+[1] 21</code></pre>
+</div>
+</div>
+<p>O teste de Bartlett produziu os seguintes resultados:</p>
+<ul>
+<li><p>Estatística qui-quadrado: <span class="math inline">\(\chi^2 =619,41\)</span></p></li>
+<li><p>Graus de liberdade: <span class="math inline">\(df = 21\)</span></p></li>
+<li><p>Valor-p: <span class="math inline">\(p&lt;0,001\)</span></p></li>
+</ul>
+<p>O valor-p extremamente pequeno leva à rejeição da hipótese nula de que a matriz de correlações populacional é a matriz identidade. Isso indica que existem correlações significativas entre as variáveis, condição essencial para a aplicação da análise fatorial.</p>
+<p>Os resultados da medida KMO e do teste de esfericidade de Bartlett indicam que a matriz de correlações apresenta adequação muito boa para a aplicação da análise fatorial. Assim, procede-se à determinação do número de fatores a serem retidos e à estimação dos modelos por diferentes métodos, visando comparar soluções alternativas e avaliar a robustez da estrutura latente identificada.</p>
+</section>
+<section id="quantos-fatores-reter" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="quantos-fatores-reter"><span class="header-section-number">6</span> Quantos fatores reter?</h2>
+<p>A determinação do número de fatores a serem retidos foi realizada com base em múltiplos critérios, conforme recomendado na literatura, evitando decisões baseadas em um único procedimento.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eigen</span>(cor_mat)<span class="sc">$</span>values</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.2620926 1.4938782 0.5752384 0.5140682 0.4425829 0.3802312 0.3319084</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fa.parallel</span>(dados, <span class="at">fa =</span> <span class="st">"fa"</span>, <span class="at">fm =</span> <span class="st">"pa"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="estudantes_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Parallel analysis suggests that the number of factors =  2  and the number of components =  NA </code></pre>
+</div>
+</div>
+<section id="autovalores-da-matriz-de-correlação-critério-de-kaiser" class="level3" data-number="6.1">
+<h3 data-number="6.1" class="anchored" data-anchor-id="autovalores-da-matriz-de-correlação-critério-de-kaiser"><span class="header-section-number">6.1</span> Autovalores da Matriz de Correlação (Critério de Kaiser)</h3>
+<p>Os autovalores obtidos a partir da decomposição espectral da matriz de correlação foram:</p>
+<p><span class="math display">\[
+\lambda = (3{,}26,\; 1{,}49,\; 0{,}58,\; 0{,}51,\; 0{,}44,\; 0{,}38,\; 0{,}33)
+\]</span></p>
+<p>De acordo com o <strong>critério de Kaiser</strong>, devem ser retidos os fatores com autovalores superiores a 1. Assim, esse critério sugere a retenção de <strong>dois fatores</strong>, uma vez que apenas os dois primeiros autovalores satisfazem essa condição.</p>
+<p>Do ponto de vista interpretativo, os dois primeiros fatores concentram a maior parte da variância total padronizada, enquanto os fatores subsequentes apresentam contribuições marginais, indicando que a estrutura essencial dos dados pode ser adequadamente representada por duas dimensões latentes.</p>
+</section>
+<section id="scree-plot" class="level3" data-number="6.2">
+<h3 data-number="6.2" class="anchored" data-anchor-id="scree-plot"><span class="header-section-number">6.2</span> Scree Plot</h3>
+<p>A inspeção visual do Scree Plot evidencia um <strong>ponto de inflexão pronunciado após o segundo fator</strong>, a partir do qual os autovalores passam a decrescer de forma aproximadamente linear e com pequena magnitude.</p>
+<p>Esse padrão sugere que os fatores a partir do terceiro capturam predominantemente variância específica ou ruído, reforçando a escolha de <strong>dois fatores</strong> como solução parcimoniosa.</p>
+</section>
+<section id="análise-paralela" class="level3" data-number="6.3">
+<h3 data-number="6.3" class="anchored" data-anchor-id="análise-paralela"><span class="header-section-number">6.3</span> Análise Paralela</h3>
+<p>A análise paralela compara os autovalores observados com aqueles obtidos a partir de dados aleatórios simulados com a mesma dimensão da base original.</p>
+<p>Observa-se que:</p>
+<ul>
+<li>Os dois primeiros autovalores empíricos são claramente superiores aos autovalores provenientes dos dados simulados;</li>
+<li>A partir do terceiro fator, os autovalores observados tornam-se inferiores aos autovalores simulados.</li>
+</ul>
+<p>Segundo esse critério, apenas os dois primeiros fatores apresentam evidência estatística de estrutura não aleatória, corroborando a retenção de <strong>dois fatores</strong>.</p>
+</section>
+</section>
+<section id="estimação-do-modelo-fatorial-ortogonal" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="estimação-do-modelo-fatorial-ortogonal"><span class="header-section-number">7</span> Estimação do modelo fatorial ortogonal</h2>
+<section id="método-das-componentes-principais-mcp" class="level3" data-number="7.1">
+<h3 data-number="7.1" class="anchored" data-anchor-id="método-das-componentes-principais-mcp"><span class="header-section-number">7.1</span> Método das Componentes Principais (MCP)</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>AF_pca <span class="ot">&lt;-</span> <span class="fu">principal</span>(dados, <span class="at">nfactors =</span> <span class="dv">2</span>, <span class="at">rotate =</span> <span class="st">"varimax"</span>, <span class="at">scores =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>AF_pca</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Principal Components Analysis
+Call: principal(r = dados, nfactors = 2, rotate = "varimax", scores = TRUE)
+Standardized loadings (pattern matrix) based upon correlation matrix
+         RC1  RC2   h2   u2 com
+TEACH   0.13 0.83 0.71 0.29 1.0
+CURRIC  0.05 0.83 0.69 0.31 1.0
+FACULTY 0.28 0.74 0.63 0.37 1.3
+INFRA   0.85 0.09 0.73 0.27 1.0
+LIBRARY 0.84 0.09 0.72 0.28 1.0
+IT      0.81 0.11 0.68 0.32 1.0
+SUPPORT 0.71 0.31 0.61 0.39 1.4
+
+                       RC1  RC2
+SS loadings           2.70 2.06
+Proportion Var        0.39 0.29
+Cumulative Var        0.39 0.68
+Proportion Explained  0.57 0.43
+Cumulative Proportion 0.57 1.00
+
+Mean item complexity =  1.1
+Test of the hypothesis that 2 components are sufficient.
+
+The root mean square of the residuals (RMSR) is  0.09 
+ with the empirical chi square  78.37  with prob &lt;  1e-13 
+
+Fit based upon off diagonal values = 0.95</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(AF_pca<span class="sc">$</span>loadings, <span class="at">cutoff =</span> <span class="fl">0.30</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Loadings:
+        RC1   RC2  
+TEACH         0.834
+CURRIC        0.827
+FACULTY       0.743
+INFRA   0.850      
+LIBRARY 0.841      
+IT      0.814      
+SUPPORT 0.715 0.309
+
+                 RC1   RC2
+SS loadings    2.699 2.057
+Proportion Var 0.386 0.294
+Cumulative Var 0.386 0.679</code></pre>
+</div>
+</div>
+<p>O método das Componentes Principais foi aplicada à matriz de correlações das variáveis, considerando a extração de <strong>dois fatores</strong>, conforme indicado pelos critérios de Kaiser, Scree Plot e Análise Paralela. Utilizou-se rotação <strong>Varimax</strong>, com o objetivo de facilitar a interpretação das componentes.</p>
+<section id="cargas-fatoriais" class="level4" data-number="7.1.1">
+<h4 data-number="7.1.1" class="anchored" data-anchor-id="cargas-fatoriais"><span class="header-section-number">7.1.1</span> Cargas fatoriais</h4>
+<p>A Tabela a seguir apresenta as <strong>cargas padronizadas</strong> das variáveis nas duas componentes principais, bem como as comunalidades (<span class="math inline">\(h^2\)</span>), unicidades (<span class="math inline">\(u^2\)</span>) e complexidade.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Variável</th>
+<th>RC1</th>
+<th>RC2</th>
+<th><span class="math inline">\(h^2\)</span></th>
+<th><span class="math inline">\(u^2\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>TEACH</td>
+<td>0,13</td>
+<td>0,83</td>
+<td>0,71</td>
+<td>0,29</td>
+</tr>
+<tr class="even">
+<td>CURRIC</td>
+<td>0,05</td>
+<td>0,83</td>
+<td>0,69</td>
+<td>0,31</td>
+</tr>
+<tr class="odd">
+<td>FACULTY</td>
+<td>0,28</td>
+<td>0,74</td>
+<td>0,63</td>
+<td>0,37</td>
+</tr>
+<tr class="even">
+<td>INFRA</td>
+<td>0,85</td>
+<td>0,09</td>
+<td>0,73</td>
+<td>0,27</td>
+</tr>
+<tr class="odd">
+<td>LIBRARY</td>
+<td>0,84</td>
+<td>0,09</td>
+<td>0,72</td>
+<td>0,28</td>
+</tr>
+<tr class="even">
+<td>IT</td>
+<td>0,81</td>
+<td>0,11</td>
+<td>0,68</td>
+<td>0,32</td>
+</tr>
+<tr class="odd">
+<td>SUPPORT</td>
+<td>0,71</td>
+<td>0,31</td>
+<td>0,61</td>
+<td>0,39</td>
+</tr>
+</tbody>
+</table>
+<p>Observa-se que:</p>
+<ul>
+<li>O <strong>Fator 1 (RC1)</strong> apresenta cargas elevadas para <strong>INFRA</strong>, <strong>LIBRARY</strong>, <strong>IT</strong> e <strong>SUPPORT</strong>, caracterizando uma dimensão associada à <strong>Estrutura e Suporte Institucional</strong>;</li>
+<li>O <strong>Fator 2 (RC2)</strong> apresenta cargas elevadas para <strong>TEACH</strong>, <strong>CURRIC</strong> e <strong>FACULTY</strong>, caracterizando uma dimensão associada à <strong>Qualidade Acadêmica</strong>;</li>
+<li>A variável <strong>SUPPORT</strong> apresenta carga relevante no Fator 1 e carga secundária no Fator 2, refletindo sua natureza transversal.</li>
+</ul>
+</section>
+<section id="variância-explicada" class="level4" data-number="7.1.2">
+<h4 data-number="7.1.2" class="anchored" data-anchor-id="variância-explicada"><span class="header-section-number">7.1.2</span> Variância Explicada</h4>
+<p>A decomposição da variância total é apresentada a seguir:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 19%">
+<col style="width: 33%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Componente</th>
+<th>SS Loadings</th>
+<th>Proporção da Variância</th>
+<th>Variância Acumulada</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>RC1</td>
+<td>2,70</td>
+<td>0,39</td>
+<td>0,39</td>
+</tr>
+<tr class="even">
+<td>RC2</td>
+<td>2,06</td>
+<td>0,29</td>
+<td>0,68</td>
+</tr>
+</tbody>
+</table>
+<p>As duas componentes explicam conjuntamente aproximadamente <strong>68% da variância total</strong>, o que é considerado um valor elevado em aplicações nas ciências sociais.</p>
+<p>Além disso, observa-se que:</p>
+<ul>
+<li>O primeiro fator responde por cerca de <strong>39%</strong> da variância;</li>
+<li>O segundo fator adiciona aproximadamente <strong>29%</strong>;</li>
+<li>A distribuição da variância é relativamente equilibrada entre as componentes.</li>
+</ul>
+</section>
+<section id="comunalidades-e-complexidade" class="level4" data-number="7.1.3">
+<h4 data-number="7.1.3" class="anchored" data-anchor-id="comunalidades-e-complexidade"><span class="header-section-number">7.1.3</span> Comunalidades e Complexidade</h4>
+<p>As comunalidades (<span class="math inline">\(h^2\)</span>) variam entre <strong>0,61 e 0,73</strong>, indicando que todas as variáveis são bem representadas pela solução com dois fatores.</p>
+<p>A <strong>complexidade média dos itens</strong> é aproximadamente <strong>1,1</strong>, sugerindo que:</p>
+<ul>
+<li>A maioria das variáveis apresenta carga dominante em apenas uma componente;</li>
+<li>A estrutura resultante é simples e facilmente interpretável;</li>
+<li>Não há evidência de componentes mal definidas ou altamente sobrepostas.</li>
+</ul>
+</section>
+<section id="qualidade-de-ajuste-da-solução" class="level4" data-number="7.1.4">
+<h4 data-number="7.1.4" class="anchored" data-anchor-id="qualidade-de-ajuste-da-solução"><span class="header-section-number">7.1.4</span> Qualidade de Ajuste da Solução</h4>
+<p>A qualidade de ajuste da solução com dois fatores pode ser avaliada por meio dos resíduos:</p>
+<ul>
+<li><strong>RMSR (Root Mean Square of Residuals)</strong> = 0,09<br>
+</li>
+<li><strong>Qui-quadrado empírico</strong> = 78,37, com <span class="math inline">\(p &lt; 10^{-13}\)</span><br>
+</li>
+<li><strong>Ajuste baseado nos elementos fora da diagonal</strong> = 0,95</li>
+</ul>
+<p>Esses resultados indicam que:</p>
+<ul>
+<li>A magnitude média dos resíduos é relativamente pequena;</li>
+<li>A solução reproduz adequadamente a estrutura de correlações observada;</li>
+<li>Embora o teste qui-quadrado seja significativo (como esperado em amostras moderadas a grandes), os índices globais indicam <strong>bom ajuste prático</strong>.</li>
+</ul>
+</section>
+</section>
+<section id="método-dos-fatores-principais-paf" class="level3" data-number="7.2">
+<h3 data-number="7.2" class="anchored" data-anchor-id="método-dos-fatores-principais-paf"><span class="header-section-number">7.2</span> Método dos Fatores Principais (PAF)</h3>
+<p>A Análise Fatorial Exploratória foi conduzida utilizando o método dos <strong>Fatores Principais</strong> (<em>Principal Axis Factoring – PAF</em>), com extração de <strong>dois fatores</strong>, conforme indicado pelos critérios de Kaiser, Scree Plot e Análise Paralela. Para facilitar a interpretação, aplicou-se rotação <strong>Varimax</strong>, assumindo fatores ortogonais.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>AF_fp <span class="ot">&lt;-</span> <span class="fu">fa</span>(dados, <span class="at">nfactors =</span> <span class="dv">2</span>, <span class="at">fm =</span> <span class="st">"pa"</span>, <span class="at">rotate =</span> <span class="st">"varimax"</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(AF_fp<span class="sc">$</span>loadings, <span class="at">cutoff =</span> <span class="fl">0.3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Loadings:
+        PA1   PA2  
+TEACH         0.758
+CURRIC        0.691
+FACULTY       0.636
+INFRA   0.796      
+LIBRARY 0.780      
+IT      0.727      
+SUPPORT 0.627 0.314
+
+                 PA1   PA2
+SS loadings    2.260 1.609
+Proportion Var 0.323 0.230
+Cumulative Var 0.323 0.553</code></pre>
+</div>
+</div>
+<section id="estrutura-das-cargas-fatoriais" class="level4" data-number="7.2.1">
+<h4 data-number="7.2.1" class="anchored" data-anchor-id="estrutura-das-cargas-fatoriais"><span class="header-section-number">7.2.1</span> Estrutura das Cargas Fatoriais</h4>
+<p>A Tabela a seguir apresenta as <strong>cargas fatoriais padronizadas</strong> das variáveis nos dois fatores extraídos, considerando apenas cargas com magnitude superior a 0,30.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Variável</th>
+<th>PA1</th>
+<th>PA2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>TEACH</td>
+<td></td>
+<td>0,758</td>
+</tr>
+<tr class="even">
+<td>CURRIC</td>
+<td></td>
+<td>0,691</td>
+</tr>
+<tr class="odd">
+<td>FACULTY</td>
+<td></td>
+<td>0,636</td>
+</tr>
+<tr class="even">
+<td>INFRA</td>
+<td>0,796</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>LIBRARY</td>
+<td>0,780</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>IT</td>
+<td>0,727</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>SUPPORT</td>
+<td>0,627</td>
+<td>0,314</td>
+</tr>
+</tbody>
+</table>
+<p>Observa-se uma <strong>estrutura simples e bem definida</strong>, na qual a maioria das variáveis apresenta carga elevada em apenas um fator.</p>
+</section>
+<section id="variância-explicada-pelos-fatores" class="level4" data-number="7.2.2">
+<h4 data-number="7.2.2" class="anchored" data-anchor-id="variância-explicada-pelos-fatores"><span class="header-section-number">7.2.2</span> Variância Explicada pelos Fatores</h4>
+<p>A variância explicada pelos fatores pode ser resumida conforme a tabela a seguir:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Fator</th>
+<th>SS Loadings</th>
+<th>Proporção da Variância</th>
+<th>Variância Acumulada</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>PA1</td>
+<td>2,260</td>
+<td>0,323</td>
+<td>0,323</td>
+</tr>
+<tr class="even">
+<td>PA2</td>
+<td>1,609</td>
+<td>0,230</td>
+<td>0,553</td>
+</tr>
+</tbody>
+</table>
+<p>Os dois fatores explicam conjuntamente aproximadamente <strong>55,3% da variância comum</strong>, valor considerado adequado em estudos aplicados nas ciências sociais, especialmente quando se utiliza um modelo de fatores comuns.</p>
+<p>Observa-se que:</p>
+<ul>
+<li>O primeiro fator responde por cerca de <strong>32,3%</strong> da variância comum;</li>
+<li>O segundo fator adiciona aproximadamente <strong>23,0%</strong>;</li>
+<li>A distribuição da variância entre os fatores é relativamente equilibrada.</li>
+</ul>
+</section>
+<section id="comparação-conceitual-com-a-a-solução-usando-o-método-das-componentes-principais" class="level4" data-number="7.2.3">
+<h4 data-number="7.2.3" class="anchored" data-anchor-id="comparação-conceitual-com-a-a-solução-usando-o-método-das-componentes-principais"><span class="header-section-number">7.2.3</span> Comparação conceitual com a a solução usando o método das componentes principais</h4>
+<p>Em comparação com a solução obtida usando o método das componentes principais, a solução PAF apresenta:</p>
+<ul>
+<li><strong>Menor proporção de variância explicada</strong>;</li>
+<li>Estrutura de cargas semelhante à da PCA, indicando <strong>estabilidade da dimensionalidade</strong>;</li>
+<li>Interpretação substantiva consistente, reforçando a existência de duas dimensões latentes bem definidas.</li>
+</ul>
+<p>Assim, a análise por Fatores Principais confirma que a estrutura identificada pela PCA não é um artefato da decomposição da variância total, mas reflete <strong>fatores comuns subjacentes</strong> às variáveis observadas.</p>
+</section>
+</section>
+<section id="método-da-máxima-verossimilhança" class="level3" data-number="7.3">
+<h3 data-number="7.3" class="anchored" data-anchor-id="método-da-máxima-verossimilhança"><span class="header-section-number">7.3</span> Método da Máxima Verossimilhança</h3>
+<p>A Análise Fatorial Exploratória foi estimada utilizando o método da <strong>Máxima Verossimilhança (ML)</strong>, com extração de <strong>dois fatores</strong> e rotação <strong>Varimax</strong>. Esse método permite, além da estimação das cargas fatoriais, a avaliação formal da <strong>qualidade de ajuste do modelo</strong>, sob a suposição de normalidade multivariada aproximada.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>AF_ml <span class="ot">&lt;-</span> <span class="fu">fa</span>(dados, <span class="at">nfactors =</span> <span class="dv">2</span>, <span class="at">fm =</span> <span class="st">"ml"</span>, <span class="at">rotate =</span> <span class="st">"varimax"</span>, <span class="at">scores =</span> <span class="st">"regression"</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>AF_ml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Factor Analysis using method =  ml
+Call: fa(r = dados, nfactors = 2, rotate = "varimax", scores = "regression", 
+    fm = "ml")
+Standardized loadings (pattern matrix) based upon correlation matrix
+         ML1  ML2   h2   u2 com
+TEACH   0.13 0.76 0.60 0.40 1.1
+CURRIC  0.08 0.69 0.48 0.52 1.0
+FACULTY 0.27 0.63 0.47 0.53 1.4
+INFRA   0.80 0.12 0.65 0.35 1.0
+LIBRARY 0.78 0.12 0.63 0.37 1.0
+IT      0.72 0.15 0.55 0.45 1.1
+SUPPORT 0.62 0.32 0.49 0.51 1.5
+
+                       ML1  ML2
+SS loadings           2.26 1.61
+Proportion Var        0.32 0.23
+Cumulative Var        0.32 0.55
+Proportion Explained  0.58 0.42
+Cumulative Proportion 0.58 1.00
+
+Mean item complexity =  1.2
+Test of the hypothesis that 2 factors are sufficient.
+
+df null model =  21  with the objective function =  2.52 with Chi Square =  619.41
+df of  the model are 8  and the objective function was  0.06 
+
+The root mean square of the residuals (RMSR) is  0.02 
+The df corrected root mean square of the residuals is  0.04 
+
+The harmonic n.obs is  250 with the empirical chi square  5.91  with prob &lt;  0.66 
+The total n.obs was  250  with Likelihood Chi Square =  13.92  with prob &lt;  0.084 
+
+Tucker Lewis Index of factoring reliability =  0.974
+RMSEA index =  0.054  and the 90 % confidence intervals are  0 0.101
+BIC =  -30.25
+Fit based upon off diagonal values = 1
+Measures of factor score adequacy             
+                                                   ML1  ML2
+Correlation of (regression) scores with factors   0.91 0.86
+Multiple R square of scores with factors          0.83 0.75
+Minimum correlation of possible factor scores     0.66 0.49</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(AF_ml<span class="sc">$</span>loadings, <span class="at">cutoff =</span> <span class="fl">0.30</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Loadings:
+        ML1   ML2  
+TEACH         0.764
+CURRIC        0.690
+FACULTY       0.631
+INFRA   0.797      
+LIBRARY 0.784      
+IT      0.724      
+SUPPORT 0.622 0.316
+
+                 ML1   ML2
+SS loadings    2.259 1.611
+Proportion Var 0.323 0.230
+Cumulative Var 0.323 0.553</code></pre>
+</div>
+</div>
+<section id="estrutura-das-cargas-fatoriais-1" class="level4" data-number="7.3.1">
+<h4 data-number="7.3.1" class="anchored" data-anchor-id="estrutura-das-cargas-fatoriais-1"><span class="header-section-number">7.3.1</span> Estrutura das Cargas Fatoriais</h4>
+<p>A Tabela a seguir apresenta as <strong>cargas fatoriais padronizadas</strong>, bem como as <strong>comunalidades (<span class="math inline">\(h^2\)</span>)</strong>, <strong>unicidades (<span class="math inline">\(u^2\)</span>)</strong> e <strong>complexidade</strong> dos itens.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Variável</th>
+<th>ML1</th>
+<th>ML2</th>
+<th><span class="math inline">\(h^2\)</span></th>
+<th><span class="math inline">\(u^2\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>TEACH</td>
+<td>0,13</td>
+<td>0,76</td>
+<td>0,60</td>
+<td>0,40</td>
+</tr>
+<tr class="even">
+<td>CURRIC</td>
+<td>0,08</td>
+<td>0,69</td>
+<td>0,48</td>
+<td>0,52</td>
+</tr>
+<tr class="odd">
+<td>FACULTY</td>
+<td>0,27</td>
+<td>0,63</td>
+<td>0,47</td>
+<td>0,53</td>
+</tr>
+<tr class="even">
+<td>INFRA</td>
+<td>0,80</td>
+<td>0,12</td>
+<td>0,65</td>
+<td>0,35</td>
+</tr>
+<tr class="odd">
+<td>LIBRARY</td>
+<td>0,78</td>
+<td>0,12</td>
+<td>0,63</td>
+<td>0,37</td>
+</tr>
+<tr class="even">
+<td>IT</td>
+<td>0,72</td>
+<td>0,15</td>
+<td>0,55</td>
+<td>0,45</td>
+</tr>
+<tr class="odd">
+<td>SUPPORT</td>
+<td>0,62</td>
+<td>0,32</td>
+<td>0,49</td>
+<td>0,51</td>
+</tr>
+</tbody>
+</table>
+<p>Observa-se que a maioria das variáveis apresenta <strong>cargas elevadas em apenas um fator</strong>, caracterizando uma estrutura simples e facilmente interpretável. A variável <strong>SUPPORT</strong> apresenta carga principal no fator ML1 e carga secundária no fator ML2, indicando novamente seu <strong>caráter transversal</strong>.</p>
+</section>
+<section id="variância-explicada-pelos-fatores-1" class="level4" data-number="7.3.2">
+<h4 data-number="7.3.2" class="anchored" data-anchor-id="variância-explicada-pelos-fatores-1"><span class="header-section-number">7.3.2</span> Variância Explicada pelos Fatores</h4>
+<p>A decomposição da variância pode ser resumida conforme a tabela a seguir:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Fator</th>
+<th>SS Loadings</th>
+<th>Proporção da Variância</th>
+<th>Variância Acumulada</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ML1</td>
+<td>2,26</td>
+<td>0,32</td>
+<td>0,32</td>
+</tr>
+<tr class="even">
+<td>ML2</td>
+<td>1,61</td>
+<td>0,23</td>
+<td>0,55</td>
+</tr>
+</tbody>
+</table>
+<p>Os dois fatores explicam conjuntamente cerca de <strong>55% da variância comum</strong>, valor compatível com aplicações empíricas em ciências sociais e humanas.</p>
+</section>
+<section id="comparação-com-mcp-e-paf" class="level4" data-number="7.3.3">
+<h4 data-number="7.3.3" class="anchored" data-anchor-id="comparação-com-mcp-e-paf"><span class="header-section-number">7.3.3</span> Comparação com MCP e PAF</h4>
+<p>Comparativamente às soluções obtidas por MCP e PAF, o método de Máxima Verossimilhança:</p>
+<ul>
+<li>Produz uma estrutura de cargas <strong>altamente consistente</strong>;</li>
+<li>Confirma que a menor variância explicada em relação à MCP é esperada, pois apenas a variância comum é modelada.</li>
+</ul>
+<p>Assim, a solução ML reforça a conclusão de que a estrutura identificada reflete <strong>fatores latentes reais</strong>, e não apenas artefatos da decomposição da variância total.</p>
+</section>
+</section>
+</section>
+<section id="interpretação-dos-fatores" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="interpretação-dos-fatores"><span class="header-section-number">8</span> Interpretação dos Fatores</h2>
+<p>Com base no padrão das cargas fatoriais obtidas através na estimação do modelo fatorial utilizando o método da máxima verossimilhança, os fatores estimados podem ser interpretados da seguinte forma:</p>
+<ul>
+<li><p><strong>Fator 1 (ML1 – Estrutura e Suporte Institucional)</strong><br>
+Apresenta cargas elevadas para <strong>INFRA</strong>, <strong>LIBRARY</strong>, <strong>IT</strong> e <strong>SUPPORT</strong>, representando aspectos relacionados à infraestrutura física, recursos tecnológicos e serviços administrativos de apoio ao estudante.</p></li>
+<li><p><strong>Fator 2 (ML2 – Qualidade Acadêmica)</strong><br>
+Apresenta cargas elevadas para <strong>TEACH</strong>, <strong>CURRIC</strong> e <strong>FACULTY</strong>, caracterizando uma dimensão associada à qualidade do ensino, organização curricular e interação entre docentes e estudantes.</p></li>
+</ul>
+<p>Essa interpretação é plenamente coerente com as soluções obtidas por MCP e PAF, indicando <strong>estabilidade da estrutura latente</strong> independentemente do método de estimação.</p>
+</section>
+<section id="conclusão" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="conclusão"><span class="header-section-number">9</span> Conclusão</h2>
+<p>A análise identificou duas dimensões latentes de satisfação estudantil: Qualidade Acadêmica e Estrutura/Suporte Institucional. A comparação entre MCP, PAF e ML mostrou consistência geral na interpretação. Os escores fatoriais permitem análises adicionais, como segmentação de estudantes e priorização de políticas de melhoria institucional.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("http:\/\/professortp\.com\.br\/est014\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Copyright 2025, Tiago Pereira</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/tiagomartin/est014/edit/main/analise_dados/estudantes.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/tiagomartin/est014/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>Página construída usando <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
