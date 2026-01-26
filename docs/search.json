@@ -3096,5 +3096,215 @@
     "title": "Semana 12",
     "section": "",
     "text": "Análise fatorial aplicada ao comportamento do consumidor \n Ver projeto PDF"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#métodos-hierárquicos-comentários-finais",
+    "href": "aulas/analise_agrupamento/agrupamento.html#métodos-hierárquicos-comentários-finais",
+    "title": "Análise de Agrupamentos",
+    "section": "Métodos hierárquicos: comentários finais",
+    "text": "Métodos hierárquicos: comentários finais\n\nFontes de erros e de variação não são formalmente considerados nos procedimentos hierárquicos: Significa que esses métodos são sensíveis a outliers ou pontos de perturbação\n\n\n\nDeve-se sempre verificar a sensibilidade da configuração dos grupos: Os métodos não permitem a realocação de objetos que possam ter sido agrupados incorretamente nos estágios iniciais\n\n\n\n\nÉ recomendado tentar vários métodos de agrupamento e de atribuição de distâncias (similaridades)\n\n\n\n\nEmpates na matriz de distâncias podem produzir múltiplas soluções ao problema de agrupamento hierárquico"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#métodos-hierárquicos-comentários-finais-1",
+    "href": "aulas/analise_agrupamento/agrupamento.html#métodos-hierárquicos-comentários-finais-1",
+    "title": "Análise de Agrupamentos",
+    "section": "Métodos hierárquicos: comentários finais",
+    "text": "Métodos hierárquicos: comentários finais\n\nA maioria dos métodos produz clusters esféricos ou elípticos\n\n\n\nO método de ligação simples é um dos poucos métodos que pode delinear cluster não-elípticos\n\nTem a capacidade de gerar estruturas geométricas diferentes\nEntretanto, ele é incapaz de perceber grupos pouco separados\n\n\n\n\n\nOs clusters formados pelo método de ligação simples não serão modificados por qualquer atribuição de distância (similaridade) que dá as mesmas ordenações relativas"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#métodos-hierárquicos-comentários-finais-2",
+    "href": "aulas/analise_agrupamento/agrupamento.html#métodos-hierárquicos-comentários-finais-2",
+    "title": "Análise de Agrupamentos",
+    "section": "Métodos hierárquicos: comentários finais",
+    "text": "Métodos hierárquicos: comentários finais\n\nO método de ligação completa tende a produzir conglomerados de aproximadamente mesmo diâmetro\n\nTem a tendência de isolar os valores discrepantes nos estágios iniciais do agrupamento\n\n\n\n\nO método da média das distâncias tende a produzir conglomerados de aproximadamente mesma variância interna\n\nEm geral, produz melhores partições que os métodos de ligação simples e completa"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#métodos-hierárquicos-comentários-finais-3",
+    "href": "aulas/analise_agrupamento/agrupamento.html#métodos-hierárquicos-comentários-finais-3",
+    "title": "Análise de Agrupamentos",
+    "section": "Métodos hierárquicos: comentários finais",
+    "text": "Métodos hierárquicos: comentários finais\n\nOs métodos de ligação simples, completa e da média podem ser utilizados tanto para variáveis quantitativas quanto para variáveis qualitativas\n\n\n\nOs métodos do centróide e de Ward são apropriados apenas para variáveis quantitativas\n\n\n\n\nO método de Ward tende a produzir grupos com aproximadamente o mesmo número de elementos\n\n\n\n\nEspera-se sempre que haja uma certa consistência entre as soluções obtidas por métodos diferentes: pode não ocorrer a igualdade das soluções apresentadas pelos vários métodos"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#validação-dos-agrupamentos",
+    "href": "aulas/analise_agrupamento/agrupamento.html#validação-dos-agrupamentos",
+    "title": "Análise de Agrupamentos",
+    "section": "Validação dos agrupamentos",
+    "text": "Validação dos agrupamentos\n\nMANOVA\n\n\n\nAnálise Discriminante\n\n\n\n\nCorrelação Cofenética\n\n\n\n\nGráfico da Silhueta"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#validação-dos-agrupamentos-1",
+    "href": "aulas/analise_agrupamento/agrupamento.html#validação-dos-agrupamentos-1",
+    "title": "Análise de Agrupamentos",
+    "section": "Validação dos agrupamentos",
+    "text": "Validação dos agrupamentos\nCorrelação Cofenética\n\nMedida de validação usada nos métodos hierárquicos principalmente\nIdéia: realizar uma comparação das distâncias observadas e preditas (via a formação de agrupamentos) entre os objetos"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#validação-dos-agrupamentos-2",
+    "href": "aulas/analise_agrupamento/agrupamento.html#validação-dos-agrupamentos-2",
+    "title": "Análise de Agrupamentos",
+    "section": "Validação dos agrupamentos",
+    "text": "Validação dos agrupamentos"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#validação-dos-agrupamentos-3",
+    "href": "aulas/analise_agrupamento/agrupamento.html#validação-dos-agrupamentos-3",
+    "title": "Análise de Agrupamentos",
+    "section": "Validação dos agrupamentos",
+    "text": "Validação dos agrupamentos"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#validação-dos-agrupamentos-4",
+    "href": "aulas/analise_agrupamento/agrupamento.html#validação-dos-agrupamentos-4",
+    "title": "Análise de Agrupamentos",
+    "section": "Validação dos agrupamentos",
+    "text": "Validação dos agrupamentos"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#validação-dos-agrupamentos-5",
+    "href": "aulas/analise_agrupamento/agrupamento.html#validação-dos-agrupamentos-5",
+    "title": "Análise de Agrupamentos",
+    "section": "Validação dos agrupamentos",
+    "text": "Validação dos agrupamentos\nCorrelação Cofenética\n\nEm um bom agrupamento, espera-se que as distâncias previstas respeitem a ordem determinada pelas distâncias observadas.\nPara avaliar a ocorrência desse comportamento, define-se a correlação cofenética como sendo a correlação entre as distâncias efetivamente observadas e as previstas."
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#validação-dos-agrupamentos-6",
+    "href": "aulas/analise_agrupamento/agrupamento.html#validação-dos-agrupamentos-6",
+    "title": "Análise de Agrupamentos",
+    "section": "Validação dos agrupamentos",
+    "text": "Validação dos agrupamentos\nGráfico da Silhueta\n\nA análise (gráfico) da silhueta é um método utilizado para interpretação e validação de uma análise de clusters.\nConsiste no cálculo e representação gráfica de uma medida de quão bem cada elemento está alocado ao respectivo cluster.\nTomando a média dessas medidas em um particular cluster, tem-se uma medida de coesão do cluster;\nTomando-se a média dessas medidas em toda a amostra, tem-se uma medida de consistência dos agrupamentos formados."
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#validação-dos-agrupamentos-7",
+    "href": "aulas/analise_agrupamento/agrupamento.html#validação-dos-agrupamentos-7",
+    "title": "Análise de Agrupamentos",
+    "section": "Validação dos agrupamentos",
+    "text": "Validação dos agrupamentos\nGráfico da Silhueta\n\n\\(a_{(i)}\\) = distância média do objeto \\(i\\) para os elementos de seu próprio grupo\n\\(b_{(i)}\\) = distância média do objeto \\(i\\) para os elementos do grupo mais próximo\n\n\\[s_{(i)} = \\displaystyle{\\dfrac{b_{(i)} - a_{(i)}}{\\max(b_{(i)},a_{(i)})}}, \\,\\,\\, i = 1, \\cdots, n\\]\n\nPor definição, \\(-1 \\leqslant s_{(i)} \\leqslant 1\\)."
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#validação-dos-agrupamentos-8",
+    "href": "aulas/analise_agrupamento/agrupamento.html#validação-dos-agrupamentos-8",
+    "title": "Análise de Agrupamentos",
+    "section": "Validação dos agrupamentos",
+    "text": "Validação dos agrupamentos\nGráfico da Silhueta\n\nSe \\(a_{(i)} &lt;&lt;&lt; b_{(i)}, s_{(i)} \\approx 1\\), indicando que \\(i\\) é muito menos dissimilar dos elementos de seu grupo do que dos elementos dos outros grupos (\\(i\\) está bem alocado);\nSe \\(a_{(i)} &gt;&gt;&gt; b_{(i)}, s_{(i)} \\approx −1\\), indicando que \\(i\\) é muito mais dissimilar dos elementos de seu grupo do que dos elementos do grupo vizinho (\\(i\\) está mal alocado);\nSe \\(a_{(i)} \\approx b_{(i)}, s_{(i)} \\approx 0\\), indicando que \\(i\\) está na fronteira de seu grupo e do grupo vizinho."
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#validação-dos-agrupamentos-9",
+    "href": "aulas/analise_agrupamento/agrupamento.html#validação-dos-agrupamentos-9",
+    "title": "Análise de Agrupamentos",
+    "section": "Validação dos agrupamentos",
+    "text": "Validação dos agrupamentos\nGráfico da Silhueta\n\n\n\n\n\n\n\nSilhueta Média\nInterpretação Sugerida\n\n\n\n\n\\(0{,}71 - 1{,}00\\)\nGrupos encontrados possuem estrutura muito robusta\n\n\n\\(0{,}51 - 0{,}70\\)\nGrupos razoavelmente unidos\n\n\n\\(0{,}26 - 0{,}50\\)\nA estrutura encontrada é fraca, tente outros métodos de agrupamento\n\n\n\\(\\leqslant 0{,}25\\)\nNenhuma estrutura encontrada"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-não-hierárquicos---manh",
+    "href": "aulas/analise_agrupamento/agrupamento.html#métodos-de-agrupamento-não-hierárquicos---manh",
+    "title": "Análise de Agrupamentos",
+    "section": "Métodos de agrupamento não-hierárquicos - MANH",
+    "text": "Métodos de agrupamento não-hierárquicos - MANH\n\nOs MANH não se baseiam em sucessivas aglomerações (ou partições) dos elementos com base numa matiz de distâncias;\n\n\n\nNos MANH tem-se a possibilidade de realocar indivíduos entre clusters ao longo do processo, diferentemente do que ocorre nos métodos hierárquicos;\n\n\n\n\nHá diferentes técnicas não hierárquicas de agrupamento, dentre as quais aquelas baseadas em partições amostrais (particularmente o algoritmo k-means) são as mais populares."
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#método-k-médias-k-means",
+    "href": "aulas/analise_agrupamento/agrupamento.html#método-k-médias-k-means",
+    "title": "Análise de Agrupamentos",
+    "section": "Método k-médias (k-means)",
+    "text": "Método k-médias (k-means)\n\nSelecionar aleatoriamente \\(k\\) indivíduos como centroides iniciais (ou escolha os centroides iniciais de alguma forma);\n\n\n\nCalcular as distâncias entre cada indivíduo e o centro de cada um dos \\(k\\) grupos e classificar o indivíduo no grupo mais próximo.\n\n\n\n\nCalcule o centroide de cada grupo;\n\n\n\n\nRepita os passos \\(b)\\) e \\(c)\\) até que os centroides não apresentem mais mudanças."
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#método-k-médias-k-means-1",
+    "href": "aulas/analise_agrupamento/agrupamento.html#método-k-médias-k-means-1",
+    "title": "Análise de Agrupamentos",
+    "section": "Método k-médias (k-means)",
+    "text": "Método k-médias (k-means)\nEsquematicamente"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#método-k-médias-k-means-2",
+    "href": "aulas/analise_agrupamento/agrupamento.html#método-k-médias-k-means-2",
+    "title": "Análise de Agrupamentos",
+    "section": "Método k-médias (k-means)",
+    "text": "Método k-médias (k-means)\nEsquematicamente"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#método-k-médias-k-means-3",
+    "href": "aulas/analise_agrupamento/agrupamento.html#método-k-médias-k-means-3",
+    "title": "Análise de Agrupamentos",
+    "section": "Método k-médias (k-means)",
+    "text": "Método k-médias (k-means)\nEsquematicamente"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#método-k-médias-k-means-4",
+    "href": "aulas/analise_agrupamento/agrupamento.html#método-k-médias-k-means-4",
+    "title": "Análise de Agrupamentos",
+    "section": "Método k-médias (k-means)",
+    "text": "Método k-médias (k-means)\nEsquematicamente"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#método-k-médias-k-means-5",
+    "href": "aulas/analise_agrupamento/agrupamento.html#método-k-médias-k-means-5",
+    "title": "Análise de Agrupamentos",
+    "section": "Método k-médias (k-means)",
+    "text": "Método k-médias (k-means)\nEsquematicamente"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#método-k-médias-k-means-6",
+    "href": "aulas/analise_agrupamento/agrupamento.html#método-k-médias-k-means-6",
+    "title": "Análise de Agrupamentos",
+    "section": "Método k-médias (k-means)",
+    "text": "Método k-médias (k-means)\nEsquematicamente"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#método-k-médias-k-means-7",
+    "href": "aulas/analise_agrupamento/agrupamento.html#método-k-médias-k-means-7",
+    "title": "Análise de Agrupamentos",
+    "section": "Método k-médias (k-means)",
+    "text": "Método k-médias (k-means)\nEsquematicamente"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#método-k-médias-k-means-8",
+    "href": "aulas/analise_agrupamento/agrupamento.html#método-k-médias-k-means-8",
+    "title": "Análise de Agrupamentos",
+    "section": "Método k-médias (k-means)",
+    "text": "Método k-médias (k-means)\nEsquematicamente"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#método-k-médias-k-means-9",
+    "href": "aulas/analise_agrupamento/agrupamento.html#método-k-médias-k-means-9",
+    "title": "Análise de Agrupamentos",
+    "section": "Método k-médias (k-means)",
+    "text": "Método k-médias (k-means)\nEsquematicamente"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#método-k-médias-k-means-10",
+    "href": "aulas/analise_agrupamento/agrupamento.html#método-k-médias-k-means-10",
+    "title": "Análise de Agrupamentos",
+    "section": "Método k-médias (k-means)",
+    "text": "Método k-médias (k-means)\nEsquematicamente"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#método-k-médias-k-means-11",
+    "href": "aulas/analise_agrupamento/agrupamento.html#método-k-médias-k-means-11",
+    "title": "Análise de Agrupamentos",
+    "section": "Método k-médias (k-means)",
+    "text": "Método k-médias (k-means)\nEsquematicamente"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#método-k-médias-comentários-finais",
+    "href": "aulas/analise_agrupamento/agrupamento.html#método-k-médias-comentários-finais",
+    "title": "Análise de Agrupamentos",
+    "section": "Método k-médias: comentários finais",
+    "text": "Método k-médias: comentários finais\n\nO algoritmo é sensível à configuração inicial dos clusters (passo \\(a)\\)), podendo produzir resultados diferentes mediante diferentes partições iniciais.\n\n\n\nO usual é considerar, inicialmente, \\(k\\) “sementes”, que seriam \\(k\\) pontos definidos em \\(R^p\\).\n\n\n\n\nO processo inicia alocando cada elemento à semente mais próxima, e atualizando o ponto de referência do cluster (centroide) cada vez que ele incorpora um novo elemento.\n\n\n\n\nPodemos definir as sementes como os vetores de observações de \\(k\\) elementos selecionados aleatoriamente da base."
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#método-k-médias-comentários-finais-1",
+    "href": "aulas/analise_agrupamento/agrupamento.html#método-k-médias-comentários-finais-1",
+    "title": "Análise de Agrupamentos",
+    "section": "Método k-médias: comentários finais",
+    "text": "Método k-médias: comentários finais\n\nNota: Estabelecer alguma restrição quanto à distância das sementes, garantindo alguma distância mínima entre elas, pode ajudar na performance do método.\n\n\n\nAs sementes podem ser definidas como \\(k\\) vetores quaisquer definidos em \\(R^p\\);\n\n\n\n\nCaso se considere algum mecanismo aleatório de seleção de sementes, é recomendável que o processo seja repetido um número \\(m\\) de vezes, identificando-se, dentre as \\(m\\) soluções obtidas, a solução ótima;"
+  },
+  {
+    "objectID": "aulas/analise_agrupamento/agrupamento.html#método-k-médias-comentários-finais-2",
+    "href": "aulas/analise_agrupamento/agrupamento.html#método-k-médias-comentários-finais-2",
+    "title": "Análise de Agrupamentos",
+    "section": "Método k-médias: comentários finais",
+    "text": "Método k-médias: comentários finais\n\nUma alternativa é rodar, inicialmente, uma análise hierárquica, e definir \\(k\\) clusters;\n\n\n\nOs centroides dos \\(k\\) clusters obtidos podem servir de semente para o algoritmo k - means."
   }
 ]

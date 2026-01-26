@@ -1783,3 +1783,437 @@ $$D_5 = \left[ \begin{matrix}
 
 
 ![](/images/AA/num_grupos.jpg){fig-align="center" width=100%}
+
+
+
+
+## Métodos hierárquicos: comentários finais
+
+- Fontes de erros e de variação não são formalmente considerados nos procedimentos hierárquicos: Significa que esses métodos são sensíveis a outliers ou pontos de perturbação
+ 
+. . .
+
+- Deve-se sempre verificar a sensibilidade da configuração dos grupos: Os métodos não permitem a realocação de objetos que possam ter sido agrupados incorretamente nos
+estágios iniciais
+
+. . .
+
+
+- É recomendado tentar vários métodos de agrupamento e de atribuição de distâncias (similaridades)
+
+
+. . .
+
+- Empates na matriz de distâncias podem produzir múltiplas soluções ao problema de agrupamento hierárquico
+
+
+
+## Métodos hierárquicos: comentários finais
+
+
+- A maioria dos métodos produz clusters esféricos ou elípticos
+
+ 
+. . .
+
+
+- O método de **ligação simples** é um dos poucos métodos que pode delinear cluster não-elípticos
+  - Tem a capacidade de gerar estruturas geométricas diferentes
+  - Entretanto, ele é incapaz de perceber grupos pouco separados
+
+. . .
+
+
+- Os clusters formados pelo método de ligação simples não serão modificados por qualquer atribuição de distância (similaridade) que dá as mesmas ordenações relativas
+
+
+
+
+## Métodos hierárquicos: comentários finais
+
+
+- O método de **ligação completa** tende a produzir conglomerados de aproximadamente mesmo diâmetro
+    - Tem a tendência de isolar os valores discrepantes nos estágios iniciais do agrupamento
+
+. . .
+
+
+- O método da **média das distâncias** tende a produzir conglomerados de aproximadamente mesma variância interna
+    - Em geral, produz melhores partições que os métodos de ligação simples e completa
+    
+
+
+
+## Métodos hierárquicos: comentários finais    
+    
+    
+- Os métodos de ligação simples, completa e da média podem ser utilizados tanto para **variáveis quantitativas** quanto para **variáveis qualitativas**
+
+
+. . .
+
+
+- Os métodos do centróide e de Ward são apropriados apenas para **variáveis quantitativas**
+
+
+. . . 
+
+
+- O **método de Ward** tende a produzir grupos com aproximadamente o mesmo número de elementos
+
+
+. . .
+
+
+- Espera-se sempre que haja uma certa consistência entre as soluções obtidas por métodos diferentes: pode não ocorrer a igualdade das soluções apresentadas
+pelos vários métodos
+
+
+
+## Validação dos agrupamentos
+
+- MANOVA
+ 
+. . .
+
+- Análise Discriminante
+ 
+
+. . .
+
+
+- Correlação Cofenética
+ 
+. . .
+
+- Gráfico da Silhueta
+
+
+## Validação dos agrupamentos
+
+
+### Correlação Cofenética
+
+- Medida de validação usada nos métodos hierárquicos principalmente
+ 
+- **Idéia:** realizar uma comparação das distâncias observadas e preditas (via a formação de
+ agrupamentos) entre os objetos
+ 
+ 
+ 
+## Validação dos agrupamentos
+
+![](/images/AA/ccofenetica01.jpg){fig-align="center" width=100%}
+
+
+## Validação dos agrupamentos
+
+![](/images/AA/ccofenetica02.jpg){fig-align="center" width=100%}
+
+
+## Validação dos agrupamentos
+
+![](/images/AA/ccofenetica03.jpg){fig-align="center" width=100%}
+
+
+
+## Validação dos agrupamentos
+
+
+### Correlação Cofenética
+
+
+- Em um bom agrupamento, espera-se que as distâncias previstas respeitem a ordem determinada pelas distâncias observadas.
+ 
+- Para avaliar a ocorrência desse comportamento, define-se a correlação cofenética como sendo a correlação entre as distâncias
+ efetivamente observadas e as previstas.
+ 
+ 
+ 
+## Validação dos agrupamentos
+
+
+### Gráfico da Silhueta
+
+
+- A análise (gráfico) da silhueta é um método utilizado para interpretação e validação de uma análise de clusters.
+ 
+ 
+- Consiste no cálculo e representação gráfica de uma medida de quão bem cada elemento está alocado ao respectivo cluster.
+ 
+- Tomando a média dessas medidas em um particular cluster, tem-se uma medida de coesão do cluster;
+ 
+- Tomando-se a média dessas medidas em toda a amostra, tem-se uma medida de consistência dos agrupamentos formados.
+
+
+
+
+ 
+## Validação dos agrupamentos
+
+
+### Gráfico da Silhueta
+
+
+- $a_{(i)}$ = distância média do objeto $i$ para os elementos de seu próprio grupo
+ 
+- $b_{(i)}$ = distância média do objeto $i$ para os elementos do grupo mais próximo
+
+
+$$s_{(i)} = \displaystyle{\dfrac{b_{(i)} - a_{(i)}}{\max(b_{(i)},a_{(i)})}}, \,\,\, i = 1, \cdots, n$$
+
+
+
+- Por definição, $-1 \leqslant s_{(i)} \leqslant 1$.
+
+
+
+
+
+## Validação dos agrupamentos
+
+
+### Gráfico da Silhueta
+
+- Se $a_{(i)} <<< b_{(i)}, s_{(i)} \approx 1$, indicando que $i$ é muito menos dissimilar
+ dos elementos de seu grupo do que dos elementos dos outros grupos ($i$ está bem alocado);
+ 
+ 
+- Se $a_{(i)} >>> b_{(i)}, s_{(i)} \approx −1$, indicando que $i$ é muito mais dissimilar
+ dos elementos de seu grupo do que dos elementos do grupo vizinho ($i$ está mal alocado);
+  
+  
+- Se $a_{(i)} \approx b_{(i)}, s_{(i)} \approx 0$, indicando que $i$ está na fronteira de seu grupo
+  e do grupo vizinho.
+  
+  
+  
+## Validação dos agrupamentos
+
+
+### Gráfico da Silhueta
+
+
+| **Silhueta Média** | **Interpretação Sugerida** |
+|-------------------|----------------------------|
+| $0{,}71 - 1{,}00$ | Grupos encontrados possuem estrutura muito robusta |
+| $0{,}51 - 0{,}70$ | Grupos razoavelmente unidos |
+| $0{,}26 - 0{,}50$ | A estrutura encontrada é fraca, tente outros métodos de agrupamento |
+| $\leqslant 0{,}25$ | Nenhuma estrutura encontrada |
+
+
+
+
+## Métodos de agrupamento não-hierárquicos - MANH
+
+- Os MANH não se baseiam em sucessivas aglomerações (ou partições) dos elementos com base numa matiz de distâncias;
+ 
+. . .
+
+
+- Nos MANH tem-se a possibilidade de realocar indivíduos entre clusters ao longo do processo, diferentemente do que ocorre nos métodos hierárquicos;
+
+. . .
+
+
+- Há diferentes técnicas não hierárquicas de agrupamento, dentre as quais aquelas baseadas em partições amostrais (particularmente o algoritmo k-means) são as mais populares.
+
+
+
+## Método k-médias (*k-means*)
+
+
+a) Selecionar aleatoriamente $k$ indivíduos como centroides iniciais (ou escolha os centroides iniciais de alguma forma);
+ 
+. . .
+
+b) Calcular as distâncias entre cada indivíduo e o centro de cada um dos $k$ grupos e classificar o indivíduo no grupo mais 
+próximo.
+
+. . .
+
+
+c) Calcule o centroide de cada grupo; 
+
+. . .
+
+d) Repita os passos $b)$ e $c)$ até que os centroides não apresentem mais mudanças.
+
+
+
+## Método k-médias (*k-means*)
+
+
+### Esquematicamente
+
+
+
+![](/images/AA/kmeans1.jpg){fig-align="center" width=100%}
+
+## Método k-médias (*k-means*)
+
+
+### Esquematicamente
+
+
+
+![](/images/AA/kmeans2.jpg){fig-align="center" width=100%}
+
+## Método k-médias (*k-means*)
+
+
+### Esquematicamente
+
+
+
+![](/images/AA/kmeans3.jpg){fig-align="center" width=100%}
+
+## Método k-médias (*k-means*)
+
+
+### Esquematicamente
+
+
+
+![](/images/AA/kmeans4.jpg){fig-align="center" width=100%}
+
+
+
+## Método k-médias (*k-means*)
+
+
+### Esquematicamente
+
+
+
+![](/images/AA/kmeans5.jpg){fig-align="center" width=100%}
+
+
+
+## Método k-médias (*k-means*)
+
+
+### Esquematicamente
+
+
+
+![](/images/AA/kmeans6.jpg){fig-align="center" width=100%}
+
+
+
+## Método k-médias (*k-means*)
+
+
+### Esquematicamente
+
+
+
+![](/images/AA/kmeans7.jpg){fig-align="center" width=100%}
+
+
+
+## Método k-médias (*k-means*)
+
+
+### Esquematicamente
+
+
+
+![](/images/AA/kmeans8.jpg){fig-align="center" width=100%}
+
+
+
+## Método k-médias (*k-means*)
+
+
+### Esquematicamente
+
+
+
+![](/images/AA/kmeans9.jpg){fig-align="center" width=100%}
+
+
+## Método k-médias (*k-means*)
+
+
+### Esquematicamente
+
+
+
+![](/images/AA/kmeans10.jpg){fig-align="center" width=100%}
+
+
+
+## Método k-médias (*k-means*)
+
+
+### Esquematicamente
+
+
+
+![](/images/AA/kmeans11.jpg){fig-align="center" width=100%}
+
+
+
+
+## Método k-médias: comentários finais
+
+
+- O algoritmo \textit{k-means} é sensível à configuração inicial dos clusters (passo $a)$), podendo produzir resultados diferentes mediante diferentes partições iniciais.
+
+
+
+. . .
+
+
+- O usual é considerar, inicialmente, $k$ "sementes", que seriam $k$ pontos definidos em $R^p$.
+
+
+. . .
+
+
+- O processo inicia alocando cada elemento à semente mais próxima, e atualizando o ponto de referência do cluster (centroide) cada vez que ele incorpora um novo elemento.
+
+
+. . .
+
+
+- Podemos definir as sementes como os vetores de observações de $k$ elementos selecionados aleatoriamente da base.
+
+
+
+
+
+## Método k-médias: comentários finais
+
+
+- **Nota:** Estabelecer alguma restrição quanto à distância das sementes, garantindo alguma distância mínima entre elas, pode ajudar na performance do método.
+
+
+. . .
+
+
+- As sementes podem ser definidas como $k$ vetores quaisquer definidos em $R^p$;
+
+
+. . .
+
+
+- Caso se considere algum mecanismo aleatório de seleção de sementes, é recomendável que o processo seja repetido um número $m$ de vezes, identificando-se, dentre as $m$ soluções obtidas, a solução ótima;
+
+
+
+## Método k-médias: comentários finais
+
+
+
+- Uma alternativa é rodar, inicialmente, uma análise hierárquica, e definir $k$ clusters;
+
+
+
+
+
+. . .
+
+
+- Os centroides dos $k$ clusters obtidos podem servir de semente para o algoritmo *k - means*.
