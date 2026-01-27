@@ -2435,6 +2435,598 @@ Passo & Nº de grupos & Grupos & Distância \\
 \end{block}
 \end{frame}
 
+\begin{frame}{Métodos hierárquicos: comentários finais}
+\phantomsection\label{muxe9todos-hieruxe1rquicos-comentuxe1rios-finais}
+\begin{itemize}
+\tightlist
+\item
+  Fontes de erros e de variação não são formalmente considerados nos
+  procedimentos hierárquicos: Significa que esses métodos são sensíveis
+  a outliers ou pontos de perturbação
+\end{itemize}
+
+\pause
+
+\begin{itemize}
+\tightlist
+\item
+  Deve-se sempre verificar a sensibilidade da configuração dos grupos:
+  Os métodos não permitem a realocação de objetos que possam ter sido
+  agrupados incorretamente nos estágios iniciais
+\end{itemize}
+
+\pause
+
+\begin{itemize}
+\tightlist
+\item
+  É recomendado tentar vários métodos de agrupamento e de atribuição de
+  distâncias (similaridades)
+\end{itemize}
+
+\pause
+
+\begin{itemize}
+\tightlist
+\item
+  Empates na matriz de distâncias podem produzir múltiplas soluções ao
+  problema de agrupamento hierárquico
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Métodos hierárquicos: comentários finais}
+\phantomsection\label{muxe9todos-hieruxe1rquicos-comentuxe1rios-finais-1}
+\begin{itemize}
+\tightlist
+\item
+  A maioria dos métodos produz clusters esféricos ou elípticos
+\end{itemize}
+
+\pause
+
+\begin{itemize}
+\tightlist
+\item
+  O método de \textbf{ligação simples} é um dos poucos métodos que pode
+  delinear cluster não-elípticos
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Tem a capacidade de gerar estruturas geométricas diferentes
+  \item
+    Entretanto, ele é incapaz de perceber grupos pouco separados
+  \end{itemize}
+\end{itemize}
+
+\pause
+
+\begin{itemize}
+\tightlist
+\item
+  Os clusters formados pelo método de ligação simples não serão
+  modificados por qualquer atribuição de distância (similaridade) que dá
+  as mesmas ordenações relativas
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Métodos hierárquicos: comentários finais}
+\phantomsection\label{muxe9todos-hieruxe1rquicos-comentuxe1rios-finais-2}
+\begin{itemize}
+\tightlist
+\item
+  O método de \textbf{ligação completa} tende a produzir conglomerados
+  de aproximadamente mesmo diâmetro
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Tem a tendência de isolar os valores discrepantes nos estágios
+    iniciais do agrupamento
+  \end{itemize}
+\end{itemize}
+
+\pause
+
+\begin{itemize}
+\tightlist
+\item
+  O método da \textbf{média das distâncias} tende a produzir
+  conglomerados de aproximadamente mesma variância interna
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Em geral, produz melhores partições que os métodos de ligação
+    simples e completa
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Métodos hierárquicos: comentários finais}
+\phantomsection\label{muxe9todos-hieruxe1rquicos-comentuxe1rios-finais-3}
+\begin{itemize}
+\tightlist
+\item
+  Os métodos de ligação simples, completa e da média podem ser
+  utilizados tanto para \textbf{variáveis quantitativas} quanto para
+  \textbf{variáveis qualitativas}
+\end{itemize}
+
+\pause
+
+\begin{itemize}
+\tightlist
+\item
+  Os métodos do centróide e de Ward são apropriados apenas para
+  \textbf{variáveis quantitativas}
+\end{itemize}
+
+\pause
+
+\begin{itemize}
+\tightlist
+\item
+  O \textbf{método de Ward} tende a produzir grupos com aproximadamente
+  o mesmo número de elementos
+\end{itemize}
+
+\pause
+
+\begin{itemize}
+\tightlist
+\item
+  Espera-se sempre que haja uma certa consistência entre as soluções
+  obtidas por métodos diferentes: pode não ocorrer a igualdade das
+  soluções apresentadas pelos vários métodos
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Validação dos agrupamentos}
+\phantomsection\label{validauxe7uxe3o-dos-agrupamentos}
+\begin{itemize}
+\tightlist
+\item
+  MANOVA
+\end{itemize}
+
+\pause
+
+\begin{itemize}
+\tightlist
+\item
+  Análise Discriminante
+\end{itemize}
+
+\pause
+
+\begin{itemize}
+\tightlist
+\item
+  Correlação Cofenética
+\end{itemize}
+
+\pause
+
+\begin{itemize}
+\tightlist
+\item
+  Gráfico da Silhueta
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Validação dos agrupamentos}
+\phantomsection\label{validauxe7uxe3o-dos-agrupamentos-1}
+\begin{block}{Correlação Cofenética}
+\phantomsection\label{correlauxe7uxe3o-cofenuxe9tica}
+\begin{itemize}
+\item
+  Medida de validação usada nos métodos hierárquicos principalmente
+\item
+  \textbf{Idéia:} realizar uma comparação das distâncias observadas e
+  preditas (via a formação de agrupamentos) entre os objetos
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Validação dos agrupamentos}
+\phantomsection\label{validauxe7uxe3o-dos-agrupamentos-2}
+\begin{center}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{../../images/AA/ccofenetica01.jpg}
+\end{center}
+\end{frame}
+
+\begin{frame}{Validação dos agrupamentos}
+\phantomsection\label{validauxe7uxe3o-dos-agrupamentos-3}
+\begin{center}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{../../images/AA/ccofenetica02.jpg}
+\end{center}
+\end{frame}
+
+\begin{frame}{Validação dos agrupamentos}
+\phantomsection\label{validauxe7uxe3o-dos-agrupamentos-4}
+\begin{center}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{../../images/AA/ccofenetica03.jpg}
+\end{center}
+\end{frame}
+
+\begin{frame}{Validação dos agrupamentos}
+\phantomsection\label{validauxe7uxe3o-dos-agrupamentos-5}
+\begin{block}{Correlação Cofenética}
+\phantomsection\label{correlauxe7uxe3o-cofenuxe9tica-1}
+\begin{itemize}
+\item
+  Em um bom agrupamento, espera-se que as distâncias previstas respeitem
+  a ordem determinada pelas distâncias observadas.
+\item
+  Para avaliar a ocorrência desse comportamento, define-se a correlação
+  cofenética como sendo a correlação entre as distâncias efetivamente
+  observadas e as previstas.
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Validação dos agrupamentos}
+\phantomsection\label{validauxe7uxe3o-dos-agrupamentos-6}
+\begin{block}{Gráfico da Silhueta}
+\phantomsection\label{gruxe1fico-da-silhueta}
+\begin{itemize}
+\item
+  A análise (gráfico) da silhueta é um método utilizado para
+  interpretação e validação de uma análise de clusters.
+\item
+  Consiste no cálculo e representação gráfica de uma medida de quão bem
+  cada elemento está alocado ao respectivo cluster.
+\item
+  Tomando a média dessas medidas em um particular cluster, tem-se uma
+  medida de coesão do cluster;
+\item
+  Tomando-se a média dessas medidas em toda a amostra, tem-se uma medida
+  de consistência dos agrupamentos formados.
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Validação dos agrupamentos}
+\phantomsection\label{validauxe7uxe3o-dos-agrupamentos-7}
+\begin{block}{Gráfico da Silhueta}
+\phantomsection\label{gruxe1fico-da-silhueta-1}
+\begin{itemize}
+\item
+  \(a_{(i)}\) = distância média do objeto \(i\) para os elementos de seu
+  próprio grupo
+\item
+  \(b_{(i)}\) = distância média do objeto \(i\) para os elementos do
+  grupo mais próximo
+\end{itemize}
+
+\[s_{(i)} = \displaystyle{\dfrac{b_{(i)} - a_{(i)}}{\max(b_{(i)},a_{(i)})}}, \,\,\, i = 1, \cdots, n\]
+
+\begin{itemize}
+\tightlist
+\item
+  Por definição, \(-1 \leqslant s_{(i)} \leqslant 1\).
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Validação dos agrupamentos}
+\phantomsection\label{validauxe7uxe3o-dos-agrupamentos-8}
+\begin{block}{Gráfico da Silhueta}
+\phantomsection\label{gruxe1fico-da-silhueta-2}
+\begin{itemize}
+\item
+  Se \(a_{(i)} <<< b_{(i)}, s_{(i)} \approx 1\), indicando que \(i\) é
+  muito menos dissimilar dos elementos de seu grupo do que dos elementos
+  dos outros grupos (\(i\) está bem alocado);
+\item
+  Se \(a_{(i)} >>> b_{(i)}, s_{(i)} \approx −1\), indicando que \(i\) é
+  muito mais dissimilar dos elementos de seu grupo do que dos elementos
+  do grupo vizinho (\(i\) está mal alocado);
+\item
+  Se \(a_{(i)} \approx b_{(i)}, s_{(i)} \approx 0\), indicando que \(i\)
+  está na fronteira de seu grupo e do grupo vizinho.
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Validação dos agrupamentos}
+\phantomsection\label{validauxe7uxe3o-dos-agrupamentos-9}
+\begin{block}{Gráfico da Silhueta}
+\phantomsection\label{gruxe1fico-da-silhueta-3}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.4043}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5957}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Silhueta Média}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Interpretação Sugerida}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\(0{,}71 - 1{,}00\) & Grupos encontrados possuem estrutura muito
+robusta \\
+\(0{,}51 - 0{,}70\) & Grupos razoavelmente unidos \\
+\(0{,}26 - 0{,}50\) & A estrutura encontrada é fraca, tente outros
+métodos de agrupamento \\
+\(\leqslant 0{,}25\) & Nenhuma estrutura encontrada \\
+\bottomrule\noalign{}
+\end{longtable}
+\end{block}
+\end{frame}
+
+\begin{frame}{Métodos de agrupamento não-hierárquicos - MANH}
+\phantomsection\label{muxe9todos-de-agrupamento-nuxe3o-hieruxe1rquicos---manh}
+\begin{itemize}
+\tightlist
+\item
+  Os MANH não se baseiam em sucessivas aglomerações (ou partições) dos
+  elementos com base numa matiz de distâncias;
+\end{itemize}
+
+\pause
+
+\begin{itemize}
+\tightlist
+\item
+  Nos MANH tem-se a possibilidade de realocar indivíduos entre clusters
+  ao longo do processo, diferentemente do que ocorre nos métodos
+  hierárquicos;
+\end{itemize}
+
+\pause
+
+\begin{itemize}
+\tightlist
+\item
+  Há diferentes técnicas não hierárquicas de agrupamento, dentre as
+  quais aquelas baseadas em partições amostrais (particularmente o
+  algoritmo k-means) são as mais populares.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Método k-médias (\emph{k-means})}
+\phantomsection\label{muxe9todo-k-muxe9dias-k-means}
+\begin{enumerate}
+[a)]
+\tightlist
+\item
+  Selecionar aleatoriamente \(k\) indivíduos como centroides iniciais
+  (ou escolha os centroides iniciais de alguma forma);
+\end{enumerate}
+
+\pause
+
+\begin{enumerate}
+[a)]
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Calcular as distâncias entre cada indivíduo e o centro de cada um dos
+  \(k\) grupos e classificar o indivíduo no grupo mais próximo.
+\end{enumerate}
+
+\pause
+
+\begin{enumerate}
+[a)]
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Calcule o centroide de cada grupo;
+\end{enumerate}
+
+\pause
+
+\begin{enumerate}
+[a)]
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Repita os passos \(b)\) e \(c)\) até que os centroides não apresentem
+  mais mudanças.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Método k-médias (\emph{k-means})}
+\phantomsection\label{muxe9todo-k-muxe9dias-k-means-1}
+\begin{block}{Esquematicamente}
+\phantomsection\label{esquematicamente}
+\begin{center}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{../../images/AA/kmeans1.jpg}
+\end{center}
+\end{block}
+\end{frame}
+
+\begin{frame}{Método k-médias (\emph{k-means})}
+\phantomsection\label{muxe9todo-k-muxe9dias-k-means-2}
+\begin{block}{Esquematicamente}
+\phantomsection\label{esquematicamente-1}
+\begin{center}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{../../images/AA/kmeans2.jpg}
+\end{center}
+\end{block}
+\end{frame}
+
+\begin{frame}{Método k-médias (\emph{k-means})}
+\phantomsection\label{muxe9todo-k-muxe9dias-k-means-3}
+\begin{block}{Esquematicamente}
+\phantomsection\label{esquematicamente-2}
+\begin{center}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{../../images/AA/kmeans3.jpg}
+\end{center}
+\end{block}
+\end{frame}
+
+\begin{frame}{Método k-médias (\emph{k-means})}
+\phantomsection\label{muxe9todo-k-muxe9dias-k-means-4}
+\begin{block}{Esquematicamente}
+\phantomsection\label{esquematicamente-3}
+\begin{center}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{../../images/AA/kmeans4.jpg}
+\end{center}
+\end{block}
+\end{frame}
+
+\begin{frame}{Método k-médias (\emph{k-means})}
+\phantomsection\label{muxe9todo-k-muxe9dias-k-means-5}
+\begin{block}{Esquematicamente}
+\phantomsection\label{esquematicamente-4}
+\begin{center}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{../../images/AA/kmeans5.jpg}
+\end{center}
+\end{block}
+\end{frame}
+
+\begin{frame}{Método k-médias (\emph{k-means})}
+\phantomsection\label{muxe9todo-k-muxe9dias-k-means-6}
+\begin{block}{Esquematicamente}
+\phantomsection\label{esquematicamente-5}
+\begin{center}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{../../images/AA/kmeans6.jpg}
+\end{center}
+\end{block}
+\end{frame}
+
+\begin{frame}{Método k-médias (\emph{k-means})}
+\phantomsection\label{muxe9todo-k-muxe9dias-k-means-7}
+\begin{block}{Esquematicamente}
+\phantomsection\label{esquematicamente-6}
+\begin{center}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{../../images/AA/kmeans7.jpg}
+\end{center}
+\end{block}
+\end{frame}
+
+\begin{frame}{Método k-médias (\emph{k-means})}
+\phantomsection\label{muxe9todo-k-muxe9dias-k-means-8}
+\begin{block}{Esquematicamente}
+\phantomsection\label{esquematicamente-7}
+\begin{center}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{../../images/AA/kmeans8.jpg}
+\end{center}
+\end{block}
+\end{frame}
+
+\begin{frame}{Método k-médias (\emph{k-means})}
+\phantomsection\label{muxe9todo-k-muxe9dias-k-means-9}
+\begin{block}{Esquematicamente}
+\phantomsection\label{esquematicamente-8}
+\begin{center}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{../../images/AA/kmeans9.jpg}
+\end{center}
+\end{block}
+\end{frame}
+
+\begin{frame}{Método k-médias (\emph{k-means})}
+\phantomsection\label{muxe9todo-k-muxe9dias-k-means-10}
+\begin{block}{Esquematicamente}
+\phantomsection\label{esquematicamente-9}
+\begin{center}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{../../images/AA/kmeans10.jpg}
+\end{center}
+\end{block}
+\end{frame}
+
+\begin{frame}{Método k-médias (\emph{k-means})}
+\phantomsection\label{muxe9todo-k-muxe9dias-k-means-11}
+\begin{block}{Esquematicamente}
+\phantomsection\label{esquematicamente-10}
+\begin{center}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{../../images/AA/kmeans11.jpg}
+\end{center}
+\end{block}
+\end{frame}
+
+\begin{frame}{Método k-médias: comentários finais}
+\phantomsection\label{muxe9todo-k-muxe9dias-comentuxe1rios-finais}
+\begin{itemize}
+\tightlist
+\item
+  O algoritmo \textit{k-means} é sensível à configuração inicial dos
+  clusters (passo \(a)\)), podendo produzir resultados diferentes
+  mediante diferentes partições iniciais.
+\end{itemize}
+
+\pause
+
+\begin{itemize}
+\tightlist
+\item
+  O usual é considerar, inicialmente, \(k\) ``sementes'', que seriam
+  \(k\) pontos definidos em \(R^p\).
+\end{itemize}
+
+\pause
+
+\begin{itemize}
+\tightlist
+\item
+  O processo inicia alocando cada elemento à semente mais próxima, e
+  atualizando o ponto de referência do cluster (centroide) cada vez que
+  ele incorpora um novo elemento.
+\end{itemize}
+
+\pause
+
+\begin{itemize}
+\tightlist
+\item
+  Podemos definir as sementes como os vetores de observações de \(k\)
+  elementos selecionados aleatoriamente da base.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Método k-médias: comentários finais}
+\phantomsection\label{muxe9todo-k-muxe9dias-comentuxe1rios-finais-1}
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Nota:} Estabelecer alguma restrição quanto à distância das
+  sementes, garantindo alguma distância mínima entre elas, pode ajudar
+  na performance do método.
+\end{itemize}
+
+\pause
+
+\begin{itemize}
+\tightlist
+\item
+  As sementes podem ser definidas como \(k\) vetores quaisquer definidos
+  em \(R^p\);
+\end{itemize}
+
+\pause
+
+\begin{itemize}
+\tightlist
+\item
+  Caso se considere algum mecanismo aleatório de seleção de sementes, é
+  recomendável que o processo seja repetido um número \(m\) de vezes,
+  identificando-se, dentre as \(m\) soluções obtidas, a solução ótima;
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Método k-médias: comentários finais}
+\phantomsection\label{muxe9todo-k-muxe9dias-comentuxe1rios-finais-2}
+\begin{itemize}
+\tightlist
+\item
+  Uma alternativa é rodar, inicialmente, uma análise hierárquica, e
+  definir \(k\) clusters;
+\end{itemize}
+
+\pause
+
+\begin{itemize}
+\tightlist
+\item
+  Os centroides dos \(k\) clusters obtidos podem servir de semente para
+  o algoritmo \emph{k - means}.
+\end{itemize}
+\end{frame}
+
 
 
 
