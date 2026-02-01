@@ -3334,5 +3334,341 @@
     "title": "Semana 13",
     "section": "",
     "text": "Análise fatorial aplicada ao comportamento do consumidor \n Ver projeto PDF"
+  },
+  {
+    "objectID": "aulas/analise_discr/discriminante.html#o-problema-da-classificação-e-discriminação",
+    "href": "aulas/analise_discr/discriminante.html#o-problema-da-classificação-e-discriminação",
+    "title": "Análise Discriminante",
+    "section": "O Problema da classificação e discriminação",
+    "text": "O Problema da classificação e discriminação\n\nDois tipos de problemas recorrentes em análise de dados, e que podem ser abordados por técnicas multivariadas, são discriminação e classificação.\n\n\n\nEm um problema de discriminação, o objetivo é aplicar e avaliar a contribuição de \\(p\\) variáveis na discriminação (separação) de \\(k\\) grupos pré-definidos;\n\n\n\n\nEm um problema de classificação, o objetivo é construir uma regra, baseada em \\(p\\) variáveis e \\(n\\) indivíduos, que permita classificar novos indivíduos em um de \\(k\\) grupos pré-definidos."
+  },
+  {
+    "objectID": "aulas/analise_discr/discriminante.html#discriminação-em-dois-grupos",
+    "href": "aulas/analise_discr/discriminante.html#discriminação-em-dois-grupos",
+    "title": "Análise Discriminante",
+    "section": "Discriminação em dois grupos",
+    "text": "Discriminação em dois grupos\n\nConsidere que desejamos discriminar indivíduos de duas populações \\(\\boldsymbol{\\pi}_1\\) e \\(\\boldsymbol{\\pi}_2\\) com base em \\(p\\) variáveis avaliadas \\(\\boldsymbol{x} = [X_1, X_2, \\cdots, X_p]^t\\).\n\n\n\nConsidere ainda conhecidas \\(\\boldsymbol{\\mu}_1\\), \\(\\boldsymbol{\\mu}_2\\), \\(\\boldsymbol{\\Sigma}_1\\) e \\(\\boldsymbol{\\Sigma}_2\\).\n\n\n\n\nSejam \\(f_1(\\boldsymbol{x})\\) e \\(f_2(\\boldsymbol{x})\\) as funções (densidade) de probabilidade de \\(\\boldsymbol{x}\\) em \\(\\boldsymbol{\\pi}_1\\) e \\(\\boldsymbol{\\pi}_2\\).\n\n\n\n\nSeja \\(\\Omega\\) o espaço amostral (conjunto de resultados possíveis para \\(\\boldsymbol{x}\\))."
+  },
+  {
+    "objectID": "aulas/analise_discr/discriminante.html#classificação-em-dois-grupos---regras-de-classificação",
+    "href": "aulas/analise_discr/discriminante.html#classificação-em-dois-grupos---regras-de-classificação",
+    "title": "Análise Discriminante",
+    "section": "Classificação em dois grupos - Regras de classificação",
+    "text": "Classificação em dois grupos - Regras de classificação\n\nVamos considerar uma partição de \\(\\Omega\\) em dois conjuntos \\(R_1\\) e \\(R_2\\), \\((R_1 \\cup R_2 = \\Omega; R_1 \\cap R_2 = \\emptyset)\\), tal que:\n\nTodo indivíduo tal que \\(\\boldsymbol{x} \\in R_1\\) seja classificado como pertencente a \\(\\boldsymbol{\\pi}_1\\);\nTodo indivíduo tal que \\(\\boldsymbol{x} \\in \\Omega - R_1 = R_2\\) seja classificado como pertencente a \\(\\boldsymbol{\\pi}_2\\)."
+  },
+  {
+    "objectID": "aulas/analise_discr/discriminante.html#classificação-em-dois-grupos---ilustração",
+    "href": "aulas/analise_discr/discriminante.html#classificação-em-dois-grupos---ilustração",
+    "title": "Análise Discriminante",
+    "section": "Classificação em dois grupos - Ilustração",
+    "text": "Classificação em dois grupos - Ilustração"
+  },
+  {
+    "objectID": "aulas/analise_discr/discriminante.html#classificação-em-dois-grupos---probabilidades-de-má-classificação",
+    "href": "aulas/analise_discr/discriminante.html#classificação-em-dois-grupos---probabilidades-de-má-classificação",
+    "title": "Análise Discriminante",
+    "section": "Classificação em dois grupos - Probabilidades de má-classificação",
+    "text": "Classificação em dois grupos - Probabilidades de má-classificação\nCom base no que foi apresentado, temos as seguintes probabilidades:\n\n\\(P(2|1)\\): Probabilidade de classificar um indivíduo em \\(\\boldsymbol{\\pi}_2\\) dado que ele pertence a \\(\\boldsymbol{\\pi}_1\\):\n\n\\[\\small P(2|1) = P(\\boldsymbol{x }\\in R_2| \\boldsymbol{\\pi}_1) = \\displaystyle{\\int_{R_2} f_1(\\boldsymbol{x}) d \\boldsymbol{x}}\\]\n\n\\(P(1|2)\\): Probabilidade de classificar um indivíduo em \\(\\boldsymbol{\\pi}_1\\) dado que ele pertence a \\(\\boldsymbol{\\pi}_2\\):\n\n\\[\\small P(1|2) = P(\\boldsymbol{x} \\in R_1| \\boldsymbol{\\pi}_2) = \\displaystyle{\\int_{R_1} f_2(\\boldsymbol{x}) d \\boldsymbol{x}}\\]"
+  },
+  {
+    "objectID": "aulas/analise_discr/discriminante.html#classificação-em-dois-grupos---ilustração-1",
+    "href": "aulas/analise_discr/discriminante.html#classificação-em-dois-grupos---ilustração-1",
+    "title": "Análise Discriminante",
+    "section": "Classificação em dois grupos - Ilustração",
+    "text": "Classificação em dois grupos - Ilustração"
+  },
+  {
+    "objectID": "aulas/analise_discr/discriminante.html#classificação-em-dois-grupos---incorporando-probabilidades-a-priori",
+    "href": "aulas/analise_discr/discriminante.html#classificação-em-dois-grupos---incorporando-probabilidades-a-priori",
+    "title": "Análise Discriminante",
+    "section": "Classificação em dois grupos - Incorporando probabilidades a priori",
+    "text": "Classificação em dois grupos - Incorporando probabilidades a priori\nVamos assumir probabilidades a priori \\(p_1 = P(\\boldsymbol{\\pi}_1)\\) e \\(p_2 = P(\\boldsymbol{\\pi}_2)\\) de um indivíduo pertencer a \\(\\boldsymbol{\\pi}_1\\) e \\(\\boldsymbol{\\pi}_2\\), respectivamente (\\(p_1 + p_2 = 1\\)). Então:\n\nProbabilidade de um indivíduo ser classificado na população 1 (\\(C_1\\)) e de fato pertencer a \\(\\boldsymbol{\\pi}_1\\):\n\n\\[P(C_1 \\cap \\boldsymbol{\\pi}_1) = P(C_1|\\boldsymbol{\\pi}_1)P(\\boldsymbol{\\pi}_1) = P(1|1)p_1\\]\n\nProbabilidade de um indivíduo ser incorretamente classificado na população \\(\\boldsymbol{\\pi}_1\\):\n\n\\[P(C_1 \\cap \\boldsymbol{\\pi}_2) = P(C_1|\\boldsymbol{\\pi}_2)P(\\boldsymbol{\\pi}_2) = P(1|2)p_2\\]"
+  },
+  {
+    "objectID": "aulas/analise_discr/discriminante.html#classificação-em-dois-grupos---incorporando-probabilidades-a-priori-1",
+    "href": "aulas/analise_discr/discriminante.html#classificação-em-dois-grupos---incorporando-probabilidades-a-priori-1",
+    "title": "Análise Discriminante",
+    "section": "Classificação em dois grupos - Incorporando probabilidades a priori",
+    "text": "Classificação em dois grupos - Incorporando probabilidades a priori\n\nProbabilidade de um indivíduo ser classificado na população 2 (\\(C_2\\)) e de fato pertencer a \\(\\boldsymbol{\\pi}_2\\):\n\n\\[P(C_2 \\cap \\boldsymbol{\\pi}_2) = P(C_2|\\boldsymbol{\\pi}_2)P(\\boldsymbol{\\pi}_2) = P(2|2)p_2\\]\n\nProbabilidade de um indivíduo ser incorretamente classificado na população \\(\\boldsymbol{\\pi}_2\\):\n\n\\[P(C_2 \\cap \\boldsymbol{\\pi}_1) = P(C_2|\\boldsymbol{\\pi}_1)P(\\boldsymbol{\\pi}_1) = P(2|1)p_1\\]"
+  },
+  {
+    "objectID": "aulas/analise_discr/discriminante.html#classificação-em-dois-grupos---incorporando-custos-de-má-classificação",
+    "href": "aulas/analise_discr/discriminante.html#classificação-em-dois-grupos---incorporando-custos-de-má-classificação",
+    "title": "Análise Discriminante",
+    "section": "Classificação em dois grupos - Incorporando custos de má-classificação",
+    "text": "Classificação em dois grupos - Incorporando custos de má-classificação\nAgora vamos incorporar custos de má-classificação:\n\nSeja \\(c(1|2)\\) o custo de classificar um indivíduo pertencente a \\(\\boldsymbol{\\pi}_2\\) como pertencente a \\(\\boldsymbol{\\pi}_1\\);\n\n\n\nSeja \\(c(2|1)\\) o custo de classificar um indivíduo pertencente a \\(\\boldsymbol{\\pi}_1\\) como pertencente a \\(\\boldsymbol{\\pi}_2\\);\n\n\n\nNaturalmente, consideramos \\(c(1|1) = c(2|2) = 0\\)."
+  },
+  {
+    "objectID": "aulas/analise_discr/discriminante.html#classificação-em-dois-grupos---custo-esperado-de-má-classificação-ecm",
+    "href": "aulas/analise_discr/discriminante.html#classificação-em-dois-grupos---custo-esperado-de-má-classificação-ecm",
+    "title": "Análise Discriminante",
+    "section": "Classificação em dois grupos - Custo esperado de má-classificação (\\(ECM\\))",
+    "text": "Classificação em dois grupos - Custo esperado de má-classificação (\\(ECM\\))\nDiferentes critérios podem ser utilizados para fins de determinar a regra de classificação. Um deles é a minimização do custo esperado de má-classificação.\n\nPara qualquer regra de classificação, o custo esperado de má-classificação (\\(ECM\\)) fica dado por:\n\n\\[ECM = c(2|1)P(2|1)p_1 + c(1|2)P(1|2)p_2\\]\n\nAssim, a melhor regra de classificação, baseada nesse critério, seria aquela que minimizasse \\(ECM\\)."
+  },
+  {
+    "objectID": "aulas/analise_discr/discriminante.html#classificação-em-dois-grupos---regras-de-classificação-para-mínimo-ecm",
+    "href": "aulas/analise_discr/discriminante.html#classificação-em-dois-grupos---regras-de-classificação-para-mínimo-ecm",
+    "title": "Análise Discriminante",
+    "section": "Classificação em dois grupos - Regras de classificação para mínimo (\\(ECM\\))",
+    "text": "Classificação em dois grupos - Regras de classificação para mínimo (\\(ECM\\))\nAs regiões \\(R_1\\) e \\(R_2\\), responsáveis por alocar qualquer observação \\(\\boldsymbol{x}\\) a \\(\\boldsymbol{\\pi}_1\\) ou \\(\\boldsymbol{\\pi}_2\\) (respectivamente), tal que \\(ECM\\) seja mínimo, são dadas por:\n\\[\\small R_1: = \\dfrac{f_1(\\boldsymbol{x})}{f_2(\\boldsymbol{x})} \\geqslant \\left( \\dfrac{c(1|2)}{c(2|1)}\\right) \\left( \\dfrac{p_2}{p_1}\\right)\\]\nou, de forma equivalente, \\(p_1c(2|1)f_1(\\boldsymbol{x}) \\geqslant p_2c(1|2)f_2(\\boldsymbol{x})\\);\n\\[\\small R_2: = \\dfrac{f_1(\\boldsymbol{x})}{f_2(\\boldsymbol{x})} &lt; \\left( \\dfrac{c(1|2)}{c(2|1)}\\right) \\left( \\dfrac{p_2}{p_1}\\right)\\]\nou, de forma equivalente, \\(p_1c(2|1)f_1(\\boldsymbol{x}) &lt; p_2c(1|2)f_2(\\boldsymbol{x})\\)."
+  },
+  {
+    "objectID": "aulas/analise_discr/discriminante.html#classificação-em-dois-grupos---casos-particulares",
+    "href": "aulas/analise_discr/discriminante.html#classificação-em-dois-grupos---casos-particulares",
+    "title": "Análise Discriminante",
+    "section": "Classificação em dois grupos - casos particulares",
+    "text": "Classificação em dois grupos - casos particulares\n\n\\(p_1 = p_2\\) (probabilidades a priori iguais):\n\n\\[\\small R_1: = \\dfrac{f_1(\\boldsymbol{x})}{f_2(\\boldsymbol{x})} \\geqslant \\left( \\dfrac{c(1|2)}{c(2|1)}\\right) \\,\\,\\,\\,\\,\\, R_2: = \\dfrac{f_1(\\boldsymbol{x})}{f_2(\\boldsymbol{x})} &lt; \\left( \\dfrac{c(1|2)}{c(2|1)}\\right)\\]\n\n\\(c(1|2) = c(2|1)\\) (custos de má-classificação iguais):\n\n\\[\\small R_1: = \\dfrac{f_1(\\boldsymbol{x})}{f_2(\\boldsymbol{x})} \\geqslant \\left( \\dfrac{p_2}{p_1}\\right) \\,\\,\\,\\,\\,\\, R_2: = \\dfrac{f_1(\\boldsymbol{x})}{f_2(\\boldsymbol{x})} &lt; \\left( \\dfrac{p_2}{p_1}\\right)\\]"
+  },
+  {
+    "objectID": "aulas/analise_discr/discriminante.html#classificação-em-dois-grupos---classificação-pelo-teorema-de-bayes",
+    "href": "aulas/analise_discr/discriminante.html#classificação-em-dois-grupos---classificação-pelo-teorema-de-bayes",
+    "title": "Análise Discriminante",
+    "section": "Classificação em dois grupos - Classificação pelo Teorema de Bayes",
+    "text": "Classificação em dois grupos - Classificação pelo Teorema de Bayes\nUsando o teorema de Bayes, podemos alocar uma nova observação \\(\\boldsymbol{x}_0\\) à população com maior probabilidade a posteriori:\n\\[P(\\boldsymbol{\\pi}_1|\\boldsymbol{x}_0) = \\dfrac{p_1f_1(\\boldsymbol{x}_0)}{p_1f_1(\\boldsymbol{x}_0) + p_2f_2(\\boldsymbol{x}_0)};\\]\n\\[P(\\boldsymbol{\\pi}_2|\\boldsymbol{x}_0) = 1 - P(\\boldsymbol{\\pi}_1|\\boldsymbol{x}_0)\\]"
+  },
+  {
+    "objectID": "aulas/analise_discr/discriminante.html#classificação-em-duas-população-normais",
+    "href": "aulas/analise_discr/discriminante.html#classificação-em-duas-população-normais",
+    "title": "Análise Discriminante",
+    "section": "Classificação em duas população normais",
+    "text": "Classificação em duas população normais\n1º caso: as populações possuem variância comum\n\nSuponha agora que \\(\\boldsymbol{x}\\) segue a distribuição normal multivariada. Assim, temos que\n\n\\[f_i(\\boldsymbol{x}) = \\left( 2\\pi\\right) ^{-p/2}\\left| \\boldsymbol{\\Sigma} \\right| ^{-1/2} \\exp\\left\\lbrace -\\dfrac{1}{2} \\left( \\boldsymbol{x} - \\boldsymbol{\\mu}_i\\right) ^t \\boldsymbol{\\Sigma}^{-1} \\left( \\boldsymbol{x} - \\boldsymbol{\\mu}_i\\right) \\right\\rbrace \\]\npara \\(i = 1,2\\) em que \\(\\boldsymbol{\\mu}_i\\) é o vetor de médias da \\(i\\)-ésima população e \\(\\boldsymbol{\\Sigma}\\) é a matriz de covariâncias positiva definida comum às duas populações."
+  },
+  {
+    "objectID": "aulas/analise_discr/discriminante.html#classificação-em-dois-grupos---casos-particulares-1",
+    "href": "aulas/analise_discr/discriminante.html#classificação-em-dois-grupos---casos-particulares-1",
+    "title": "Análise Discriminante",
+    "section": "Classificação em dois grupos - casos particulares",
+    "text": "Classificação em dois grupos - casos particulares\n\n\\(p_1 = p_2\\) e \\(c(1|2) = c(2|1)\\):\n\n\\[\\small R_1: = \\dfrac{f_1(\\boldsymbol{x})}{f_2(\\boldsymbol{x})} \\geqslant 1 \\,\\,\\,\\,\\,\\, R_2: = \\dfrac{f_1(\\boldsymbol{x})}{f_2(\\boldsymbol{x})} &lt; 1\\]"
+  },
+  {
+    "objectID": "aulas/analise_discr/discriminante.html#classificação-em-duas-população-normais-1",
+    "href": "aulas/analise_discr/discriminante.html#classificação-em-duas-população-normais-1",
+    "title": "Análise Discriminante",
+    "section": "Classificação em duas população normais",
+    "text": "Classificação em duas população normais\n1º caso: as populações possuem variância comum\n\nDe acordo com a regra do mínimo custo esperado de má-classificação \\((ECM)\\), devemos classificar \\(\\boldsymbol{x}\\) em \\(\\boldsymbol{\\pi}_1\\) se\n\n\\[\\small \\dfrac{f_1(\\boldsymbol{x})}{f_2(\\boldsymbol{x})} \\geqslant \\left( \\dfrac{c(1|2)}{c(2|1)}\\right) \\left( \\dfrac{p_2}{p_1}\\right)\\]\n\nSe substituirmos as densidades \\(f_1(\\boldsymbol{x})\\) e \\(f_2 (\\boldsymbol{x})\\) pela densidade normal correspondente teremos:\n\n\\[\\small \\exp\\left\\lbrace -\\dfrac{1}{2} \\left( \\boldsymbol{x} - \\boldsymbol{\\mu}_1\\right) ^t \\boldsymbol{\\Sigma}^{-1} \\left( \\boldsymbol{x} - \\boldsymbol{\\mu}_1\\right) + \\dfrac{1}{2} \\left( \\boldsymbol{x} - \\boldsymbol{\\mu}_2\\right) ^t \\boldsymbol{\\Sigma}^{-1} \\left( \\boldsymbol{x} - \\boldsymbol{\\mu}_2\\right)\\right\\rbrace \\geqslant \\left( \\dfrac{c(1|2)}{c(2|1)}\\right) \\left( \\dfrac{p_2}{p_1}\\right)\\]"
+  },
+  {
+    "objectID": "aulas/analise_discr/discriminante.html#classificação-em-duas-população-normais-2",
+    "href": "aulas/analise_discr/discriminante.html#classificação-em-duas-população-normais-2",
+    "title": "Análise Discriminante",
+    "section": "Classificação em duas população normais",
+    "text": "Classificação em duas população normais\n1º caso: as populações possuem variância comum\n\nQue, depois de algum algebrismo, torna-se\n\n\\[\\small \\exp\\left\\lbrace \\left( \\boldsymbol{\\mu}_1 - \\boldsymbol{\\mu}_2\\right) ^t \\boldsymbol{\\Sigma}^{-1}\\boldsymbol{x} - \\dfrac{1}{2} \\left( \\boldsymbol{\\mu}_1 - \\boldsymbol{\\mu}_2\\right) ^t \\boldsymbol{\\Sigma}^{-1} \\left( \\boldsymbol{\\mu}_1 + \\boldsymbol{\\mu}_2\\right) \\right\\rbrace \\geqslant \\left( \\dfrac{c(1|2)}{c(2|1)}\\right) \\left( \\dfrac{p_2}{p_1}\\right)\\]\n\nComo ambos os termos são positivos, podemos tomar o logaritmo preservando a ordem da desigualdade. Assim, devemos alocar \\(\\boldsymbol{x}\\) em \\(\\boldsymbol{\\pi}_1\\) se\n\n\\[\\small \\left( \\boldsymbol{\\mu}_1 - \\boldsymbol{\\mu}_2\\right) ^t \\boldsymbol{\\Sigma}^{-1}\\boldsymbol{x} - \\dfrac{1}{2} \\left( \\boldsymbol{\\mu}_1 - \\boldsymbol{\\mu}_2\\right) ^t \\boldsymbol{\\Sigma}^{-1} \\left( \\boldsymbol{\\mu}_1 + \\boldsymbol{\\mu}_2\\right) \\geqslant \\ln \\left\\lbrace  \\left( \\dfrac{c(1|2)}{c(2|1)}\\right) \\left( \\dfrac{p_2}{p_1}\\right) \\right\\rbrace \\]\ne em \\(\\boldsymbol{\\pi}_2\\), caso contrário."
+  },
+  {
+    "objectID": "aulas/analise_discr/discriminante.html#classificação-em-duas-população-normais-3",
+    "href": "aulas/analise_discr/discriminante.html#classificação-em-duas-população-normais-3",
+    "title": "Análise Discriminante",
+    "section": "Classificação em duas população normais",
+    "text": "Classificação em duas população normais\nPara dados amostrais\nSe considerarmos \\(n_1\\) observações \\(p\\)-variadas \\(X_{11}, X_{12}, \\cdots, X_{1n_1}\\) amostradas da população \\(\\boldsymbol{\\pi}_1\\) e \\(n_2\\), \\(X_{21}, X_{22}, \\cdots, X_{2n_2}\\) amostradas da população \\(\\boldsymbol{\\pi}_2\\), com \\(n_1 + n_2 - 2 \\geqslant p\\), então a regra de alocação estimada que minimiza o custo médio de má-classificação é dada por: alocar \\(\\boldsymbol{x}\\) na população \\(\\boldsymbol{\\pi}_1\\) se\n\\[(\\bar{\\boldsymbol{x}}_1 - \\bar{\\boldsymbol{x}}_2)^t \\boldsymbol{S}_c^{-1} \\boldsymbol{x} - \\dfrac{1}{2} (\\bar{\\boldsymbol{x}}_1 - \\bar{\\boldsymbol{x}}_2)^t \\boldsymbol{S}_c^{-1} (\\bar{\\boldsymbol{x}}_1 + \\bar{\\boldsymbol{x}}_2)\\geqslant \\ln \\left\\lbrace  \\left( \\dfrac{c(1|2)}{c(2|1)}\\right) \\left( \\dfrac{p_2}{p_1}\\right) \\right\\rbrace\\]\nem que\n\\[\\boldsymbol{S}_c =  \\displaystyle{\\frac{(n_1 - 1) {\\boldsymbol{S}_1} + (n_2 - 1) {\\boldsymbol{S}_2}}{n_1 + n_2 - 2}}\\]"
+  },
+  {
+    "objectID": "aulas/analise_discr/discriminante.html#classificação-em-duas-população-normais-4",
+    "href": "aulas/analise_discr/discriminante.html#classificação-em-duas-população-normais-4",
+    "title": "Análise Discriminante",
+    "section": "Classificação em duas população normais",
+    "text": "Classificação em duas população normais\n2º caso: as populações não possuem variância comum\nSob a suposição de homogeneidade das matrizes de covariâncias, verificamos que as regras de classificação originadas foram simples e lineares.\n\nSe considerarmos a situação geral em que \\(f_1(\\boldsymbol{x})\\) e \\(f_2(\\boldsymbol{x})\\) são modelos normais multivariados com parâmetros \\(\\boldsymbol{\\mu}_i\\) e \\(\\boldsymbol{\\Sigma}_i\\), \\(i = 1,2\\), sendo \\(\\boldsymbol{\\Sigma}_1 \\neq \\boldsymbol{\\Sigma}_2\\), devemos classificar \\(\\boldsymbol{x}\\) em \\(\\boldsymbol{\\pi}_1\\), se\n\n\\[-\\dfrac{1}{2} \\boldsymbol{x}^t \\left( \\boldsymbol{\\Sigma}_1 - \\boldsymbol{\\Sigma}_2\\right) \\boldsymbol{x} + \\left( \\boldsymbol{\\mu}_1^t \\boldsymbol{\\Sigma}_1^{-1} - \\boldsymbol{\\mu}_2^t \\boldsymbol{\\Sigma}_2^{-1}\\right) \\boldsymbol{x} - \\delta \\geqslant \\ln \\left\\lbrace  \\left( \\dfrac{c(1|2)}{c(2|1)}\\right) \\left( \\dfrac{p_2}{p_1}\\right) \\right\\rbrace\\]\ne em \\(\\boldsymbol{\\pi}_2\\), caso contrário."
+  },
+  {
+    "objectID": "aulas/analise_discr/discriminante.html#classificação-em-duas-população-normais-5",
+    "href": "aulas/analise_discr/discriminante.html#classificação-em-duas-população-normais-5",
+    "title": "Análise Discriminante",
+    "section": "Classificação em duas população normais",
+    "text": "Classificação em duas população normais\n2º caso: as populações não possuem variância comum\n\nSendo,\n\n\\[\\delta = \\dfrac{1}{2} \\ln \\left( \\dfrac{|\\boldsymbol{\\Sigma}_1|}{|\\boldsymbol{\\Sigma}_2|} \\right) + \\dfrac{1}{2} \\left( \\boldsymbol{\\mu}_1^t \\boldsymbol{\\Sigma}_1^{-1}\\boldsymbol{\\mu}_1 - \\boldsymbol{\\mu}_2^t \\boldsymbol{\\Sigma}_2^{-1}\\boldsymbol{\\mu}_2\\right) \\]\n\nAo contrário do caso homocedástico, as regiões de classificação são definidas por funções discriminantes quadráticas de \\(\\boldsymbol{x}\\)."
+  },
+  {
+    "objectID": "aulas/analise_discr/discriminante.html#classificação-em-duas-população-normais-6",
+    "href": "aulas/analise_discr/discriminante.html#classificação-em-duas-população-normais-6",
+    "title": "Análise Discriminante",
+    "section": "Classificação em duas população normais",
+    "text": "Classificação em duas população normais\nPara dados amostrais\n\nPodemos obter uma regra estimada substituindo os parâmetros \\(\\boldsymbol{\\mu}_i\\) e \\(\\boldsymbol{\\Sigma}_i\\), pelos respectivos estimadores \\(\\bar{\\boldsymbol{x}}_i\\) e \\(\\boldsymbol{S}_i\\), \\(i = 1,2\\). Assim, devemos alocar \\(\\boldsymbol{x}\\) na população \\(\\boldsymbol{\\pi}_1\\) se\n\n\\[-\\dfrac{1}{2} \\boldsymbol{x}^t \\left( \\boldsymbol{S}_1 - \\boldsymbol{S}_2\\right) \\boldsymbol{x} + \\left( \\bar{\\boldsymbol{x}}_1^t \\boldsymbol{S}_1^{-1} - \\bar{\\boldsymbol{x}}_2^t \\boldsymbol{S}_2^{-1}\\right) \\boldsymbol{x} - \\hat{\\delta} \\geqslant \\ln \\left\\lbrace  \\left( \\dfrac{c(1|2)}{c(2|1)}\\right) \\left( \\dfrac{p_2}{p_1}\\right) \\right\\rbrace\\]\ne em \\(\\boldsymbol{\\pi}_2\\), caso contrário, sendo\n\\[\\hat{\\delta} = \\dfrac{1}{2} \\ln \\left( \\dfrac{|\\boldsymbol{S}_1|}{|\\boldsymbol{S}_2|} \\right) + \\dfrac{1}{2} \\left( \\bar{\\boldsymbol{x}}_1^t \\boldsymbol{S}_1^{-1}\\bar{\\boldsymbol{x}}_1 - \\bar{\\boldsymbol{x}}_2^t \\boldsymbol{S}_2^{-1}\\bar{\\boldsymbol{x}}_2\\right)\n\\]"
+  },
+  {
+    "objectID": "aulas/analise_discr/discriminante.html#discriminação-em-duas-populações",
+    "href": "aulas/analise_discr/discriminante.html#discriminação-em-duas-populações",
+    "title": "Análise Discriminante",
+    "section": "Discriminação em duas populações",
+    "text": "Discriminação em duas populações\nA função discriminante linear de Fisher\n\nSuposição de linearidade: Homocedasticidade!\n\n\\[\\boldsymbol{\\Sigma}_1 = \\boldsymbol{\\Sigma}_2 = \\boldsymbol{\\Sigma}\\]\n\nMatriz de variância comum\nNão pressupõe normalidade multivariada dos dados!"
+  },
+  {
+    "objectID": "aulas/analise_discr/discriminante.html#discriminação-em-duas-populações-1",
+    "href": "aulas/analise_discr/discriminante.html#discriminação-em-duas-populações-1",
+    "title": "Análise Discriminante",
+    "section": "Discriminação em duas populações",
+    "text": "Discriminação em duas populações\nA função discriminante linear de Fisher\n\nBaseada na distância de Mahalanobis entre o indivíduo desconhecido \\(\\boldsymbol{x}_0\\) e as médias das populações:\n\n\\[d^2(\\boldsymbol{x}, \\boldsymbol{\\mu}_i) = (\\boldsymbol{x} - \\boldsymbol{\\mu}_i)^t \\boldsymbol{\\Sigma}^{-1}(\\boldsymbol{x} - \\boldsymbol{\\mu}_i), \\,\\,\\,\\,\\, i = 1,2\\]\n\nIntuitivamente, para um novo indivíduo \\(\\boldsymbol{x}_0\\), se \\(d^2(\\boldsymbol{x}_0, \\boldsymbol{\\mu}_1) &lt; d^2(\\boldsymbol{x}_0, \\boldsymbol{\\mu}_2)\\), classificamos \\(\\boldsymbol{x}_0\\) em \\(\\boldsymbol{\\pi}_1\\). Caso contrário, classificamos \\(\\boldsymbol{x}_0\\) em \\(\\boldsymbol{\\pi}_2\\)"
+  },
+  {
+    "objectID": "aulas/analise_discr/discriminante.html#discriminação-em-duas-populações-2",
+    "href": "aulas/analise_discr/discriminante.html#discriminação-em-duas-populações-2",
+    "title": "Análise Discriminante",
+    "section": "Discriminação em duas populações",
+    "text": "Discriminação em duas populações\nA função discriminante linear de Fisher\n\nExpressando essa regra como uma função discriminante:\n\n\\[\n\\begin{aligned}\nd^2(\\boldsymbol{x}, \\boldsymbol{\\mu}_2) - d^2(\\boldsymbol{x}, \\boldsymbol{\\mu}_1) &= (\\boldsymbol{x} - \\boldsymbol{\\mu}_2)^t \\boldsymbol{\\Sigma}^{-1}(\\boldsymbol{x} - \\boldsymbol{\\mu}_2) - (\\boldsymbol{x} - \\boldsymbol{\\mu}_1)^t \\boldsymbol{\\Sigma}^{-1}(\\boldsymbol{x} - \\boldsymbol{\\mu}_1)\n\\\\  &= (\\boldsymbol{\\mu}_2 - \\boldsymbol{\\mu}_1)^t \\boldsymbol{\\Sigma}^{-1}(\\boldsymbol{\\mu}_2 + \\boldsymbol{\\mu}_1) + 2 \\boldsymbol{x}^t\\boldsymbol{\\Sigma}^{-1}(\\boldsymbol{\\mu}_1 - \\boldsymbol{\\mu}_2)\n\\end{aligned}\n\\]\n\nA expressão acima pode ser reescrita como:\n\n\\[ L(\\boldsymbol{x}) = \\left[ \\boldsymbol{x} - \\displaystyle{\\frac{1}{2}(\\boldsymbol{\\mu}_1 + \\boldsymbol{\\mu}_2)} \\right]^t \\boldsymbol{\\Sigma}^{-1}(\\boldsymbol{\\mu}_1 - \\boldsymbol{\\mu}_2)\\]"
+  },
+  {
+    "objectID": "aulas/analise_discr/discriminante.html#discriminação-em-duas-populações-3",
+    "href": "aulas/analise_discr/discriminante.html#discriminação-em-duas-populações-3",
+    "title": "Análise Discriminante",
+    "section": "Discriminação em duas populações",
+    "text": "Discriminação em duas populações\nA função discriminante linear de Fisher\n\nOu ainda…\n\n\\[\nL(\\boldsymbol{x}) = (\\boldsymbol{\\mu}_1 - \\boldsymbol{\\mu}_2)^t\\boldsymbol{\\Sigma}^{-1}\\boldsymbol{x} - \\displaystyle{\\frac{1}{2}(\\boldsymbol{\\mu}_1 - \\boldsymbol{\\mu}_2)^t \\boldsymbol{\\Sigma}^{-1}(\\boldsymbol{\\mu}_1 + \\boldsymbol{\\mu}_2)}\n\\]\n\nO primeiro termo\n\n\\[D(\\boldsymbol{x}) = (\\boldsymbol{\\mu}_1 - \\boldsymbol{\\mu}_2)^t \\boldsymbol{\\Sigma}^{-1}\\boldsymbol{x}\\]\né chamado de função discriminante linear de Fisher."
+  },
+  {
+    "objectID": "aulas/analise_discr/discriminante.html#discriminação-em-duas-populações-4",
+    "href": "aulas/analise_discr/discriminante.html#discriminação-em-duas-populações-4",
+    "title": "Análise Discriminante",
+    "section": "Discriminação em duas populações",
+    "text": "Discriminação em duas populações\nA função discriminante linear de Fisher\n\nObserve o segundo termo de \\[\nL(\\boldsymbol{x}) = (\\boldsymbol{\\mu}_1 - \\boldsymbol{\\mu}_2)^t \\boldsymbol{\\Sigma}^{-1} \\boldsymbol{x} - \\displaystyle{\\frac{1}{2}(\\boldsymbol{\\mu}_1 - \\boldsymbol{\\mu}_2)^t \\boldsymbol{\\Sigma}^{-1}(\\boldsymbol{\\mu}_1 + \\boldsymbol{\\mu}_2)}\n\\]\n\napós algum algebrismo,\n\\[\n\\begin{aligned}\nm &= \\displaystyle{\\frac{1}{2}(\\boldsymbol{\\mu}_1 - \\boldsymbol{\\mu}_2)^t \\boldsymbol{\\Sigma}^{-1}(\\boldsymbol{\\mu}_1 + \\boldsymbol{\\mu}_2)} \\\\ &=\n\\displaystyle{\\frac{1}{2}} \\left[(\\boldsymbol{\\mu}_1 - \\boldsymbol{\\mu}_2)^t \\boldsymbol{\\Sigma}^{-1} \\boldsymbol{\\mu}_1 + (\\boldsymbol{\\mu}_1 - \\boldsymbol{\\mu}_2)^t \\boldsymbol{\\Sigma}^{-1} \\boldsymbol{\\mu}_2\\right] \\\\ &=\n\\displaystyle{\\frac{1}{2}} \\left[ D(\\boldsymbol{\\mu}_1) + D(\\boldsymbol{\\mu}_2) \\right]\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "aulas/analise_discr/discriminante.html#discriminação-em-duas-populações-5",
+    "href": "aulas/analise_discr/discriminante.html#discriminação-em-duas-populações-5",
+    "title": "Análise Discriminante",
+    "section": "Discriminação em duas populações",
+    "text": "Discriminação em duas populações\nA função discriminante linear de Fisher\n\nA regra de classificação fica: Se \\(D(\\boldsymbol{x}_0)  &gt; m\\), classificamos \\(\\boldsymbol{x}_0\\) em \\(\\boldsymbol{\\pi}_1\\). Caso contrário, classificamos \\(\\boldsymbol{x}_0\\) em \\(\\boldsymbol{\\pi}_2\\).\nÉ interessante observar que \\((\\boldsymbol{\\mu}_1 - \\boldsymbol{\\mu}_2)^t \\boldsymbol{\\Sigma}^{-1}\\boldsymbol{x}\\) = \\(\\boldsymbol{b}^t \\boldsymbol{x}\\), onde \\(\\boldsymbol{b}^t = (\\boldsymbol{\\mu}_1 - \\boldsymbol{\\mu}_2)^t \\boldsymbol{\\Sigma}^{-1}\\) é um vetor de dimensão \\(1 \\times p\\).\nDesse modo, a função discriminante de Fisher tem a forma:\n\n\\[(\\boldsymbol{\\mu}_1 - \\boldsymbol{\\mu}_2)^t \\boldsymbol{\\Sigma}^{-1} \\boldsymbol{x} = \\boldsymbol{b}^t \\boldsymbol{x} = b_1x_1 + b_2x_2 + \\cdots + b_px_p\\]"
+  },
+  {
+    "objectID": "aulas/analise_discr/discriminante.html#discriminação-em-duas-populações-6",
+    "href": "aulas/analise_discr/discriminante.html#discriminação-em-duas-populações-6",
+    "title": "Análise Discriminante",
+    "section": "Discriminação em duas populações",
+    "text": "Discriminação em duas populações\nPara dados amostrais\n\\[\\widehat{D}(\\boldsymbol{x}) = (\\bar{\\boldsymbol{x}}_1 - \\bar{\\boldsymbol{x}}_2)^tS_c^{-1}\\boldsymbol{x}\\] \\[\\widehat{m} = \\displaystyle{\\frac{1}{2}} \\left[ \\widehat{D}( \\bar{\\boldsymbol{x}}_1) + \\widehat{D}(\\bar{\\boldsymbol{x}}_2) \\right]\\]\n\\[\\boldsymbol{S}_c =  \\displaystyle{\\frac{(n_1 - 1) {\\boldsymbol{S}_1} + (n_2 - 1) {\\boldsymbol{S}_2}}{n_1 + n_2 - 2}}\\]"
+  },
+  {
+    "objectID": "aulas/analise_discr/discriminante.html#probabilidade-de-classificação-incorreta",
+    "href": "aulas/analise_discr/discriminante.html#probabilidade-de-classificação-incorreta",
+    "title": "Análise Discriminante",
+    "section": "Probabilidade de classificação incorreta",
+    "text": "Probabilidade de classificação incorreta\nEstimação das probabilidades de classificação incorreta\n\nSeja a seguinte tabela:\n\n\\[\\text{Frequências dos erros de classificação}\\]\n\n\n\nPopulação de origem\nClasse 1\nClasse 2\nTotal\n\n\n\n\n1\n\\(n_{11}\\)\n\\(n_{12}\\)\n\\(n_1\\)\n\n\n2\n\\(n_{21}\\)\n\\(n_{22}\\)\n\\(n_2\\)\n\n\n\n\\[n_{ij}: \\text{é o número de elementos de } i \\text{ classificados em } j\\]"
+  },
+  {
+    "objectID": "aulas/analise_discr/discriminante.html#probabilidade-de-classificação-incorreta-1",
+    "href": "aulas/analise_discr/discriminante.html#probabilidade-de-classificação-incorreta-1",
+    "title": "Análise Discriminante",
+    "section": "Probabilidade de classificação incorreta",
+    "text": "Probabilidade de classificação incorreta\nEstimação das probabilidades de classificação incorreta\n\nCom base nessas quantidades, podemos estimar as probabilidades de ocorrência dos erros 1 e 2 por:\n\n\\[\\widehat{p}(2|1) = \\displaystyle{\\frac{n_{12}}{n_1}} \\hspace{1cm} \\textrm{ e } \\hspace{1cm}\n\\widehat{p}(1|2) = \\displaystyle{\\frac{n_{21}}{n_2}}\\]\n\nAlém disso, podemos estimar a probabilidade global de acerto da função discriminante por:\n\n\\[\\widehat{p}(acerto) = \\displaystyle{\\frac{n_{11} + n_{22}}{n_1 + n_2}}\\]"
+  },
+  {
+    "objectID": "aulas/analise_discr/discriminante.html#probabilidade-de-classificação-incorreta-2",
+    "href": "aulas/analise_discr/discriminante.html#probabilidade-de-classificação-incorreta-2",
+    "title": "Análise Discriminante",
+    "section": "Probabilidade de classificação incorreta",
+    "text": "Probabilidade de classificação incorreta\nEstimação das probabilidades de classificação incorreta\n\nPodemos também, estimar a taxa de erro aparente (TEA):\n\n\\[TEA = \\displaystyle{\\frac{n_{12} + n_{21}}{n_1 + n_2}}\\]"
+  },
+  {
+    "objectID": "aulas/analise_discr/discriminante.html#probabilidade-de-classificação-incorreta-3",
+    "href": "aulas/analise_discr/discriminante.html#probabilidade-de-classificação-incorreta-3",
+    "title": "Análise Discriminante",
+    "section": "Probabilidade de classificação incorreta",
+    "text": "Probabilidade de classificação incorreta\n\nTrês métodos de determinação dessas probabilidades:\n\nMétodo da ressubstituição: os mesmos dados são utilizados para estimar e validar a função discriminante.\nMétodo da ressubstituição com divisão amostral: os dados são divididos em duas subamostras - treinamento: estima a fd, validação: estima as probabilidades de erro.\nMétodo da validação cruzada: a cada iteração é omitida uma observação e a fd é estimada a partir das demais. A observação omitida é utilizada para estimar as probabilidades de erro."
+  },
+  {
+    "objectID": "aulas/analise_discr/discriminante.html#classificação-em-k-grupos",
+    "href": "aulas/analise_discr/discriminante.html#classificação-em-k-grupos",
+    "title": "Análise Discriminante",
+    "section": "Classificação em \\(k\\) grupos",
+    "text": "Classificação em \\(k\\) grupos\n\nSejam \\(f_1(\\boldsymbol{x}), f_2(\\boldsymbol{x}), \\cdots, f_k(\\boldsymbol{x})\\) as distribuições do vetor aleatório \\(\\boldsymbol{x}\\) em cada uma de \\(k\\) populações, \\(\\boldsymbol{\\pi}_1, \\boldsymbol{\\pi}_2, \\cdots, \\boldsymbol{\\pi}_k\\);\n\n\n\nSejam \\(p_1, p_2, \\cdots, p_k\\) as probabilidades a priori e \\(c(i|j),\\,\\,\\, i, j = 1, 2, ..., k\\), os custos de má-classificação.\n\n\n\n\nSeja \\(R_i\\) o conjunto dos \\(\\boldsymbol{x}'s\\) classificados como \\(\\boldsymbol{\\pi}_i, \\,\\,\\, i = 1, 2, \\cdots, k\\), e\n\n\\[P(j|i) = \\displaystyle{\\int_{R_j} f_i(\\boldsymbol{x}) d\\boldsymbol{x}} \\,\\,\\,\\, i,j = 1,2, \\cdots, k\\]"
+  },
+  {
+    "objectID": "aulas/analise_discr/discriminante.html#classificação-em-k-grupos-1",
+    "href": "aulas/analise_discr/discriminante.html#classificação-em-k-grupos-1",
+    "title": "Análise Discriminante",
+    "section": "Classificação em \\(k\\) grupos",
+    "text": "Classificação em \\(k\\) grupos\n\nCusto esperado de má classificação:\n\n\\[ECM = p_1 ECM(1) + p_2 ECM(2) + \\cdots + p_k ECM(k)\\]\nem que,\n\\[ECM(i) = P(1|i)c(1|i) + P(2|i)c(2|i) + \\cdots + P(k|i)c(k|i), \\,\\,\\, i = 1, 2, \\cdots, k\\]\n\n\nA regra de classificação tal que \\(ECM\\) seja mínimo consiste em classificar uma observação \\(\\boldsymbol{x}\\) no grupo \\(j\\) tal que:\n\n\\[\\displaystyle{\\sum_{i=1, i \\neq j}^kp_if_i(\\boldsymbol{x})c(j|i)}, \\,\\,\\, \\text{seja mínimo.}\\]"
+  },
+  {
+    "objectID": "aulas/analise_discr/discriminante.html#classificação-em-k-grupos-2",
+    "href": "aulas/analise_discr/discriminante.html#classificação-em-k-grupos-2",
+    "title": "Análise Discriminante",
+    "section": "Classificação em \\(k\\) grupos",
+    "text": "Classificação em \\(k\\) grupos\n\nAssim, deve-se classificar \\(\\boldsymbol{x}\\) em \\(\\boldsymbol{\\pi}_j\\) caso a média dos custos de classificações incorretas nas demais populações seja mínima.\n\n\n\nObserve que para \\(k = 2\\) populações, essa regra de classificação fica simplificada, sendo dada pela regra de classificação para duas populações apresentada anteriormente."
+  },
+  {
+    "objectID": "aulas/analise_discr/discriminante.html#classificação-em-mais-de-duas-população-normais",
+    "href": "aulas/analise_discr/discriminante.html#classificação-em-mais-de-duas-população-normais",
+    "title": "Análise Discriminante",
+    "section": "Classificação em mais de duas população normais",
+    "text": "Classificação em mais de duas população normais\n\nSuponha agora que \\(\\boldsymbol{x}\\) segue a distribuição normal multivariada. Assim, temos que\n\n\\[f_i(\\boldsymbol{x}) = \\left( 2\\pi\\right) ^{-p/2}\\left| \\boldsymbol{\\Sigma}_i \\right| ^{-1/2} \\exp\\left\\lbrace -\\dfrac{1}{2} \\left( \\boldsymbol{x} - \\boldsymbol{\\mu}_i\\right) ^t \\boldsymbol{\\Sigma}_i^{-1} \\left( \\boldsymbol{x} - \\boldsymbol{\\mu}_i\\right) \\right\\rbrace \\]\npara \\(i = 1,2, \\cdots, k\\) em que \\(\\boldsymbol{\\mu}_i\\) é o vetor de médias da \\(i\\)-ésima população e \\(\\boldsymbol{\\Sigma}_i\\) é a matriz de covariâncias positiva definida da \\(i\\)-ésima população."
+  },
+  {
+    "objectID": "aulas/analise_discr/discriminante.html#classificação-em-mais-de-duas-população-normais-1",
+    "href": "aulas/analise_discr/discriminante.html#classificação-em-mais-de-duas-população-normais-1",
+    "title": "Análise Discriminante",
+    "section": "Classificação em mais de duas população normais",
+    "text": "Classificação em mais de duas população normais\n\nConsiderando que estes parâmetros são conhecidos, então pela regra de classificação de mínima probabilidade total de classificação incorreta, devemos classificar \\(\\boldsymbol{x}\\) na população \\(\\boldsymbol{\\pi}_i\\) se\n\n\\[\n\\begin{aligned}\n\\ln\\left[ p_i f_i(\\boldsymbol{x})\\right] &= \\ln\\left( p_i\\right) - \\dfrac{p}{2} \\ln\\left( 2 \\pi\\right) - \\dfrac{1}{2} \\ln \\left( |\\boldsymbol{\\Sigma}_i|\\right) - \\dfrac{1}{2} \\left( \\boldsymbol{x} - \\boldsymbol{\\mu}_i\\right) ^t \\boldsymbol{\\Sigma}_i^{-1} \\left( \\boldsymbol{x} - \\boldsymbol{\\mu}_i\\right) \\\\ &= \\max_j \\ln\\left[ p_j f_j(\\boldsymbol{x})\\right]\n\\end{aligned}  \n\\]\n\nAlocamos a observação \\(\\boldsymbol{x}\\) à população que maximiza \\(\\ln\\left[ p_j f_j(\\boldsymbol{x})\\right]\\), em relação a todos os valores de \\(j\\), \\(j = 1,2, \\cdots, k\\)."
+  },
+  {
+    "objectID": "aulas/analise_discr/discriminante.html#classificação-em-mais-de-duas-população-normais-2",
+    "href": "aulas/analise_discr/discriminante.html#classificação-em-mais-de-duas-população-normais-2",
+    "title": "Análise Discriminante",
+    "section": "Classificação em mais de duas população normais",
+    "text": "Classificação em mais de duas população normais\n\nO termo \\(\\dfrac{p}{2} \\ln\\left( 2 \\pi\\right)\\) é constante para todas as \\(k\\) populações e pode ser ignorado.\n\n\n\nO termo resultante é denominado de escore quadrático de discriminação e para a \\(i\\)-ésima população é dado por\n\n\\[\nd_i^Q(\\boldsymbol{x}) =  - \\dfrac{1}{2} \\ln \\left( |\\boldsymbol{\\Sigma}_i|\\right) - \\dfrac{1}{2} \\left( \\boldsymbol{x} - \\boldsymbol{\\mu}_i\\right) ^t \\boldsymbol{\\Sigma}_i^{-1} \\left( \\boldsymbol{x} - \\boldsymbol{\\mu}_i\\right) + \\ln\\left( p_i\\right)\n\\]"
+  },
+  {
+    "objectID": "aulas/analise_discr/discriminante.html#classificação-em-mais-de-duas-população-normais-4",
+    "href": "aulas/analise_discr/discriminante.html#classificação-em-mais-de-duas-população-normais-4",
+    "title": "Análise Discriminante",
+    "section": "Classificação em mais de duas população normais",
+    "text": "Classificação em mais de duas população normais\nPara dados amostrais\n\nPodemos obter uma regra estimada substituindo os parâmetros \\(\\boldsymbol{\\mu}_i\\) e \\(\\boldsymbol{\\Sigma}_i\\), pelos respectivos estimadores \\(\\bar{\\boldsymbol{x}}_i\\) e \\(\\boldsymbol{S}_i\\), \\(i = 1,2, \\cdots, k\\).\nO estimador da função quadrática \\(d_i^Q(\\boldsymbol{x})\\) é representado por \\(Q_i(\\boldsymbol{x})\\) e é dado por\n\n\\[\nQ_i(\\boldsymbol{x}) =  - \\dfrac{1}{2} \\ln \\left( |\\boldsymbol{S}_i|\\right) - \\dfrac{1}{2} \\left( \\boldsymbol{x} - \\bar{\\boldsymbol{x}}_i\\right) ^t \\boldsymbol{S}_i^{-1} \\left( \\boldsymbol{x} - \\bar{\\boldsymbol{x}}_i\\right) + \\ln\\left( p_i\\right)\n\\]\npara \\(i = 1, 2, \\cdots, k\\) e, pela regra estimada de mínima probabilidade total de classificação incorreta, devemos classificar a observação \\(\\boldsymbol{x}\\) em \\(\\boldsymbol{\\pi}_i\\) se\n\\[Q_i(\\boldsymbol{x}) = \\max_j \\left[Q_j(\\boldsymbol{x})\\right], \\,\\,\\,\\, j = 1, 2, \\cdots, k\\]"
+  },
+  {
+    "objectID": "aulas/analise_discr/discriminante.html#classificação-em-mais-de-duas-população-normais-5",
+    "href": "aulas/analise_discr/discriminante.html#classificação-em-mais-de-duas-população-normais-5",
+    "title": "Análise Discriminante",
+    "section": "Classificação em mais de duas população normais",
+    "text": "Classificação em mais de duas população normais\n\nNo caso particular em que \\(\\boldsymbol{\\Sigma}_1 = \\boldsymbol{\\Sigma}_2 = \\cdots = \\boldsymbol{\\Sigma}_k = \\boldsymbol{\\Sigma}\\):\n\n\\[\nd_i^Q(\\boldsymbol{x}) =  - \\dfrac{1}{2} \\ln \\left( |\\boldsymbol{\\Sigma}|\\right) - \\dfrac{1}{2} \\left( \\boldsymbol{x} - \\boldsymbol{\\mu}_i\\right) ^t \\boldsymbol{\\Sigma}^{-1} \\left( \\boldsymbol{x} - \\boldsymbol{\\mu}_i\\right) + \\ln\\left( p_i\\right)\n\\]\npara \\(i = 1, 2, \\cdots, k\\).\n\n\nSe ignorarmos os termos constantes a todas as \\(k\\) populações, obtemos o escore discriminante linear \\(d_i(\\boldsymbol{x})\\)\n\n\\[\nd_i(\\boldsymbol{x}) =  \\boldsymbol{\\mu}_i^t \\boldsymbol{\\Sigma}^{-1} \\boldsymbol{x} - \\dfrac{1}{2} \\boldsymbol{\\mu}_i^t \\boldsymbol{\\Sigma}^{-1} \\boldsymbol{\\mu}_i + \\ln\\left( p_i\\right)\n\\]\npara \\(i = 1, 2, \\cdots, k\\)."
+  },
+  {
+    "objectID": "aulas/analise_discr/discriminante.html#classificação-em-mais-de-duas-população-normais-6",
+    "href": "aulas/analise_discr/discriminante.html#classificação-em-mais-de-duas-população-normais-6",
+    "title": "Análise Discriminante",
+    "section": "Classificação em mais de duas população normais",
+    "text": "Classificação em mais de duas população normais\n\nPortanto, devemos classificar \\(\\boldsymbol{x}\\) em \\(\\boldsymbol{\\pi}_i\\) se\n\n\\[d_i(\\boldsymbol{x}) = \\max_j \\left[d_j(\\boldsymbol{x})\\right], \\,\\,\\,\\, j = 1, 2, \\cdots, k\\]"
+  },
+  {
+    "objectID": "aulas/analise_discr/discriminante.html#classificação-em-mais-de-duas-população-normais-7",
+    "href": "aulas/analise_discr/discriminante.html#classificação-em-mais-de-duas-população-normais-7",
+    "title": "Análise Discriminante",
+    "section": "Classificação em mais de duas população normais",
+    "text": "Classificação em mais de duas população normais\nPara dados amostrais\n\nUma estimativa dessa regra de classificação é obtida substituindo os parâmetros pelas estimativas.\n\n\\[\n\\hat{d}_i(\\boldsymbol{x}) = \\bar{\\boldsymbol{x}}_i^t \\boldsymbol{S}_c^{-1} \\boldsymbol{x} - \\dfrac{1}{2} \\bar{\\boldsymbol{x}}_i^t\\boldsymbol{S}_c^{-1}\\bar{\\boldsymbol{x}}_i + \\ln\\left( p_i\\right)\n\\]\nsendo\n\\[\\boldsymbol{S}_c = \\displaystyle{\\frac{(n_1 - 1)\\boldsymbol{S}_1 + (n_2 - 1)\\boldsymbol{S}_2 + \\cdots + (n_k - 1)\\boldsymbol{S}_k}{n_1 + n_2 + \\cdots + n_k - k}}\\]\npara \\(i = 1, 2, \\cdots, k\\)."
+  },
+  {
+    "objectID": "aulas/analise_discr/discriminante.html#classificação-em-mais-de-duas-população-normais-8",
+    "href": "aulas/analise_discr/discriminante.html#classificação-em-mais-de-duas-população-normais-8",
+    "title": "Análise Discriminante",
+    "section": "Classificação em mais de duas população normais",
+    "text": "Classificação em mais de duas população normais\nPara dados amostrais\n\nDevemos classificar \\(\\boldsymbol{x}\\) em \\(\\boldsymbol{\\pi}_i\\), se\n\n\\[\\hat{d}_i(\\boldsymbol{x}) = \\max_j \\left[\\hat{d}_j(\\boldsymbol{x})\\right], \\,\\,\\,\\, j = 1, 2,\n\\cdots, k\\]"
+  },
+  {
+    "objectID": "aulas/analise_discr/discriminante.html#classificação-em-mais-de-duas-população-normais-9",
+    "href": "aulas/analise_discr/discriminante.html#classificação-em-mais-de-duas-população-normais-9",
+    "title": "Análise Discriminante",
+    "section": "Classificação em mais de duas população normais",
+    "text": "Classificação em mais de duas população normais\nFunções discriminantes de Fisher para mais de duas populações\n\nSuposição de linearidade: Homocedasticidade!\n\n\\[\\boldsymbol{\\Sigma}_1 = \\boldsymbol{\\Sigma}_2 = \\cdots = \\boldsymbol{\\Sigma}_k = \\boldsymbol{\\Sigma}\\]\n\nA ideia é construir construir \\(s\\) combinações lineares, chamadas de funções discriminantes canônicas, dadas por:\n\n\\[\\widehat{Y}_j = \\widehat{\\boldsymbol{e}}_j^t {\\boldsymbol{x}}, \\hspace{0.5cm} j = 1, \\cdots, s \\leqslant \\min(k-1,p)\\]\nem que \\(\\widehat{\\boldsymbol{e}}_j\\) é o \\(j\\)-ésimo autovetor corresponde ao \\(j\\)-ésimo maior autovalor da matriz \\(\\boldsymbol{W}^{-1}\\boldsymbol{B}\\) e tal que \\(\\widehat{\\boldsymbol{e}}_j^t \\boldsymbol{W} \\widehat{\\boldsymbol{e}}_j = 1\\)"
+  },
+  {
+    "objectID": "aulas/analise_discr/discriminante.html#classificação-em-mais-de-duas-população-normais-10",
+    "href": "aulas/analise_discr/discriminante.html#classificação-em-mais-de-duas-população-normais-10",
+    "title": "Análise Discriminante",
+    "section": "Classificação em mais de duas população normais",
+    "text": "Classificação em mais de duas população normais\nFunções discriminantes de Fisher para mais de duas populações\n\nSendo a matriz de soma de quadrados e produtos cruzados intra grupos \\(\\boldsymbol{W}_{p \\times p}\\) e a matriz de soma de quadrados e produtos cruzados entre grupos \\(\\boldsymbol{B}_{p \\times p}\\), definidas respectivamente, por:\n\n\\[\\boldsymbol{W} = \\displaystyle{\\sum_{i=1}^k}\\displaystyle{\\sum_{b=1}^{n_i}}(\\boldsymbol{x}_{ib} - \\bar{\\boldsymbol{x}}_i)(\\boldsymbol{x}_{ib} - \\bar{\\boldsymbol{x}}_i)^t\\]\n\\[\\boldsymbol{B} = \\displaystyle{\\sum_{i=1}^k} n_i (\\bar{\\boldsymbol{x}}_i - \\bar{\\boldsymbol{x}})(\\bar{\\boldsymbol{x}}_i - \\bar{\\boldsymbol{x}})^t\\]"
+  },
+  {
+    "objectID": "aulas/analise_discr/discriminante.html#classificação-em-mais-de-duas-população-normais-11",
+    "href": "aulas/analise_discr/discriminante.html#classificação-em-mais-de-duas-população-normais-11",
+    "title": "Análise Discriminante",
+    "section": "Classificação em mais de duas população normais",
+    "text": "Classificação em mais de duas população normais\nFunções discriminantes de Fisher para mais de duas populações\nRegra de classificação\n\nPara cada indivíduo teremos um vetor com os seus escores nas funções, denotado por \\(\\widehat{Y}_j\\)\nTeremos também, os escores das funções discriminantes aplicadas aos vetores de médias amostrais observados para cada população, denotado por \\(\\widehat{\\bar{Y}}_i\\)"
+  },
+  {
+    "objectID": "aulas/analise_discr/discriminante.html#classificação-em-mais-de-duas-população-normais-12",
+    "href": "aulas/analise_discr/discriminante.html#classificação-em-mais-de-duas-população-normais-12",
+    "title": "Análise Discriminante",
+    "section": "Classificação em mais de duas população normais",
+    "text": "Classificação em mais de duas população normais\nFunções discriminantes de Fisher para mais de duas populações\nRegra de classificação\n\nCalcula-se a distância Euclidiana entre os vetores \\(\\widehat{Y}_j\\) e \\(\\widehat{\\bar{Y}}_i\\), para todo \\(i = 1, \\cdots, k\\)\n\n\\[d = \\displaystyle{(\\widehat{Y}_j - \\widehat{\\bar{Y}}_i)^t(\\widehat{Y}_j - \\widehat{\\bar{Y}}_i)})^{\\frac{1}{2}} \\]\n\nClassifica-se o indivíduo na população cuja distância é a menor"
+  },
+  {
+    "objectID": "aulas/analise_discr/discriminante.html#probabilidade-de-classificação-incorreta-4",
+    "href": "aulas/analise_discr/discriminante.html#probabilidade-de-classificação-incorreta-4",
+    "title": "Análise Discriminante",
+    "section": "Probabilidade de classificação incorreta",
+    "text": "Probabilidade de classificação incorreta\nOs erros de classificação são definidos como:\n\nErro(i,j): o elemento amostral pertence à população \\(\\pi_j\\) mas a regra de classificação o aloca na população \\(\\pi_i\\), \\(i,j = 1, \\cdots, g\\), \\(i \\neq j\\).\n\n\nE as probabilidades de ocorrência destes erros são estimadas por:\n\\[\\widehat{p}(i|j) = \\displaystyle{\\frac{n_{ji}}{n_j}}\\]\nonde \\(n_{ji}\\) é o número de elementos da população \\(\\pi_j\\) classificados incorretamente pela regra na população \\(\\pi_i\\), \\(i,j = 1, \\cdots, g\\), \\(i \\neq j\\)."
   }
 ]

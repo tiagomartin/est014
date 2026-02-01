@@ -1,0 +1,790 @@
+---
+title: "Análise Discriminante"
+format: 
+  revealjs:
+    width: 1600
+    height: 900
+    footer: ""
+    theme: quartomonothemer.scss
+    slide-number: c/t
+    show-slide-number: all
+    preview-links: auto
+    self-contained: true
+  beamer:          # Slides em PDF (LaTeX/Beamer)
+    aspectratio: 169   # 16:9
+    keep-tex: true     # opcional, guarda o .tex gerado
+incremental: false
+code-link: false
+bibliography: references.bib
+title-slide-attributes:
+    data-background-image: /images/back.png
+    data-background-size: cover
+    data-background-opacity: "0.3"
+execute:
+  echo: true
+---
+
+
+## O Problema da classificação e discriminação
+
+- Dois tipos de problemas recorrentes em análise de dados, e que podem ser abordados por técnicas multivariadas, são **discriminação** e **classificação**.
+ 
+
+
+. . .
+
+
+
+- Em um problema de **discriminação**, o objetivo é aplicar e avaliar a contribuição de $p$ variáveis na discriminação (separação) de $k$ grupos
+**pré-definidos**;
+
+
+. . .
+
+
+- Em um problema de **classificação**, o objetivo é construir uma regra, baseada em $p$ variáveis e $n$ indivíduos, que permita classificar novos
+indivíduos em um de $k$ grupos **pré-definidos**.
+
+
+## Discriminação em dois grupos
+
+
+- Considere que desejamos discriminar indivíduos de duas populações $\boldsymbol{\pi}_1$ e $\boldsymbol{\pi}_2$ com base em $p$ variáveis avaliadas $\boldsymbol{x} = [X_1, X_2, \cdots, X_p]^t$.
+ 
+
+. . .
+
+ 
+- Considere ainda conhecidas $\boldsymbol{\mu}_1$, $\boldsymbol{\mu}_2$, $\boldsymbol{\Sigma}_1$ e $\boldsymbol{\Sigma}_2$.
+
+
+. . .
+
+
+- Sejam $f_1(\boldsymbol{x})$ e $f_2(\boldsymbol{x})$ as funções (densidade) de probabilidade de $\boldsymbol{x}$ em $\boldsymbol{\pi}_1$ e $\boldsymbol{\pi}_2$.
+
+
+
+. . .
+
+
+- Seja $\Omega$ o espaço amostral (conjunto de resultados possíveis para $\boldsymbol{x}$).
+
+
+## Classificação em dois grupos - Regras de classificação
+
+
+- Vamos considerar uma partição de $\Omega$ em dois conjuntos $R_1$ e $R_2$,  $(R_1 \cup R_2 = \Omega; R_1 \cap R_2 = \emptyset)$, tal que:
+    - Todo indivíduo tal que $\boldsymbol{x} \in R_1$ seja classificado como pertencente a $\boldsymbol{\pi}_1$;
+    - Todo indivíduo tal que $\boldsymbol{x} \in \Omega - R_1 = R_2$ seja classificado como pertencente a $\boldsymbol{\pi}_2$.
+    
+    
+## Classificação em dois grupos - Ilustração
+
+![](/images/AD/discriminacao_2_grupos.jpg){fig-align="center"}
+
+
+
+## Classificação em dois grupos - Probabilidades de má-classificação
+
+Com base no que foi apresentado, temos as seguintes probabilidades:
+
+- $P(2|1)$: Probabilidade de classificar um indivíduo em $\boldsymbol{\pi}_2$ dado que ele pertence a  $\boldsymbol{\pi}_1$:
+
+$$\small P(2|1) = P(\boldsymbol{x }\in R_2| \boldsymbol{\pi}_1) = \displaystyle{\int_{R_2} f_1(\boldsymbol{x}) d \boldsymbol{x}}$$
+
+- $P(1|2)$: Probabilidade de classificar um indivíduo em $\boldsymbol{\pi}_1$ dado que ele pertence a  $\boldsymbol{\pi}_2$:
+
+$$\small P(1|2) = P(\boldsymbol{x} \in R_1| \boldsymbol{\pi}_2) = \displaystyle{\int_{R_1} f_2(\boldsymbol{x}) d \boldsymbol{x}}$$
+
+
+
+## Classificação em dois grupos - Ilustração
+
+![](/images/AD/prob_ma_class_2_pop.jpg){fig-align="center"}
+
+
+## Classificação em dois grupos - Incorporando probabilidades a priori
+
+Vamos assumir probabilidades a priori $p_1 = P(\boldsymbol{\pi}_1)$ e $p_2 = P(\boldsymbol{\pi}_2)$ de um indivíduo pertencer a $\boldsymbol{\pi}_1$ e $\boldsymbol{\pi}_2$, respectivamente ($p_1 + p_2 = 1$). Então:
+
+- Probabilidade de um indivíduo ser classificado na população 1 ($C_1$) e de fato pertencer a $\boldsymbol{\pi}_1$:
+
+$$P(C_1 \cap \boldsymbol{\pi}_1) = P(C_1|\boldsymbol{\pi}_1)P(\boldsymbol{\pi}_1) = P(1|1)p_1$$
+
+
+
+- Probabilidade de um indivíduo ser incorretamente classificado na população $\boldsymbol{\pi}_1$:
+
+$$P(C_1 \cap \boldsymbol{\pi}_2) = P(C_1|\boldsymbol{\pi}_2)P(\boldsymbol{\pi}_2) = P(1|2)p_2$$
+
+
+
+
+## Classificação em dois grupos - Incorporando probabilidades a priori
+
+
+- Probabilidade de um indivíduo ser classificado na população 2 ($C_2$) e de fato pertencer a $\boldsymbol{\pi}_2$:
+
+$$P(C_2 \cap \boldsymbol{\pi}_2) = P(C_2|\boldsymbol{\pi}_2)P(\boldsymbol{\pi}_2) = P(2|2)p_2$$
+
+- Probabilidade de um indivíduo ser incorretamente classificado na população $\boldsymbol{\pi}_2$:
+
+$$P(C_2 \cap \boldsymbol{\pi}_1) = P(C_2|\boldsymbol{\pi}_1)P(\boldsymbol{\pi}_1) = P(2|1)p_1$$
+
+
+
+
+## Classificação em dois grupos - Incorporando custos de má-classificação
+
+
+Agora vamos incorporar custos de má-classificação:
+
+
+- Seja $c(1|2)$ o custo de classificar um indivíduo pertencente a $\boldsymbol{\pi}_2$ como pertencente a $\boldsymbol{\pi}_1$;
+
+. . .
+
+- Seja $c(2|1)$ o custo de classificar um indivíduo pertencente a $\boldsymbol{\pi}_1$ como pertencente a $\boldsymbol{\pi}_2$;
+
+
+. . .
+
+Naturalmente, consideramos $c(1|1) = c(2|2) = 0$.
+
+
+## Classificação em dois grupos - Custo esperado de má-classificação ($ECM$)
+
+Diferentes critérios podem ser utilizados para fins de determinar a regra de classificação. Um deles é a minimização do **custo esperado de má-classificação**.
+
+
+- Para qualquer regra de classificação, o custo esperado de má-classificação ($ECM$) fica dado por:
+
+$$ECM = c(2|1)P(2|1)p_1 + c(1|2)P(1|2)p_2$$
+
+- Assim, a melhor regra de classificação, baseada nesse critério, seria aquela que minimizasse $ECM$.
+
+
+## Classificação em dois grupos - Regras de classificação para mínimo ($ECM$)
+
+As regiões $R_1$ e $R_2$, responsáveis por alocar qualquer observação $\boldsymbol{x}$ a $\boldsymbol{\pi}_1$ ou $\boldsymbol{\pi}_2$ (respectivamente), **tal que $ECM$ seja mínimo**, são dadas por:
+
+
+
+$$\small R_1: = \dfrac{f_1(\boldsymbol{x})}{f_2(\boldsymbol{x})} \geqslant \left( \dfrac{c(1|2)}{c(2|1)}\right) \left( \dfrac{p_2}{p_1}\right)$$
+
+ou, de forma equivalente, $p_1c(2|1)f_1(\boldsymbol{x}) \geqslant p_2c(1|2)f_2(\boldsymbol{x})$;
+
+$$\small R_2: = \dfrac{f_1(\boldsymbol{x})}{f_2(\boldsymbol{x})} < \left( \dfrac{c(1|2)}{c(2|1)}\right) \left( \dfrac{p_2}{p_1}\right)$$
+
+ou, de forma equivalente, $p_1c(2|1)f_1(\boldsymbol{x}) < p_2c(1|2)f_2(\boldsymbol{x})$.
+
+
+## Classificação em dois grupos - casos particulares
+
+
+- $p_1 = p_2$ (probabilidades a priori iguais):
+
+$$\small R_1: = \dfrac{f_1(\boldsymbol{x})}{f_2(\boldsymbol{x})} \geqslant \left( \dfrac{c(1|2)}{c(2|1)}\right) \,\,\,\,\,\, R_2: = \dfrac{f_1(\boldsymbol{x})}{f_2(\boldsymbol{x})} < \left( \dfrac{c(1|2)}{c(2|1)}\right)$$
+
+- $c(1|2) = c(2|1)$ (custos de má-classificação iguais):
+
+$$\small R_1: = \dfrac{f_1(\boldsymbol{x})}{f_2(\boldsymbol{x})} \geqslant \left( \dfrac{p_2}{p_1}\right) \,\,\,\,\,\, R_2: = \dfrac{f_1(\boldsymbol{x})}{f_2(\boldsymbol{x})} < \left( \dfrac{p_2}{p_1}\right)$$
+
+
+## Classificação em dois grupos - casos particulares
+
+
+- $p_1 = p_2$ e $c(1|2) = c(2|1)$:
+
+$$\small R_1: = \dfrac{f_1(\boldsymbol{x})}{f_2(\boldsymbol{x})} \geqslant 1 \,\,\,\,\,\, R_2: = \dfrac{f_1(\boldsymbol{x})}{f_2(\boldsymbol{x})} < 1$$
+
+
+
+
+## Classificação em dois grupos - Classificação pelo Teorema de Bayes
+
+
+Usando o teorema de Bayes, podemos alocar uma nova observação $\boldsymbol{x}_0$ à população com maior probabilidade a posteriori:
+
+
+$$P(\boldsymbol{\pi}_1|\boldsymbol{x}_0) = \dfrac{p_1f_1(\boldsymbol{x}_0)}{p_1f_1(\boldsymbol{x}_0) + p_2f_2(\boldsymbol{x}_0)};$$
+
+$$P(\boldsymbol{\pi}_2|\boldsymbol{x}_0) = 1 - P(\boldsymbol{\pi}_1|\boldsymbol{x}_0)$$
+
+
+
+## Classificação em duas população normais
+
+### 1º caso: as populações possuem variância comum
+
+
+-  Suponha agora que $\boldsymbol{x}$ segue a distribuição normal multivariada. Assim, temos que
+
+
+$$f_i(\boldsymbol{x}) = \left( 2\pi\right) ^{-p/2}\left| \boldsymbol{\Sigma} \right| ^{-1/2} \exp\left\lbrace -\dfrac{1}{2} \left( \boldsymbol{x} - \boldsymbol{\mu}_i\right) ^t \boldsymbol{\Sigma}^{-1} \left( \boldsymbol{x} - \boldsymbol{\mu}_i\right) \right\rbrace $$
+
+para $i = 1,2$ em que $\boldsymbol{\mu}_i$ é o vetor de médias da $i$-ésima população e $\boldsymbol{\Sigma}$ é a matriz de covariâncias positiva definida comum às duas populações. 
+
+
+
+## Classificação em duas população normais
+
+### 1º caso: as populações possuem variância comum
+
+- De acordo com a regra do mínimo custo esperado de má-classificação $(ECM)$, devemos classificar $\boldsymbol{x}$ em $\boldsymbol{\pi}_1$ se
+
+$$\small \dfrac{f_1(\boldsymbol{x})}{f_2(\boldsymbol{x})} \geqslant \left( \dfrac{c(1|2)}{c(2|1)}\right) \left( \dfrac{p_2}{p_1}\right)$$
+
+- Se substituirmos as densidades $f_1(\boldsymbol{x})$ e $f_2 (\boldsymbol{x})$ pela densidade normal correspondente teremos:
+
+$$\small \exp\left\lbrace -\dfrac{1}{2} \left( \boldsymbol{x} - \boldsymbol{\mu}_1\right) ^t \boldsymbol{\Sigma}^{-1} \left( \boldsymbol{x} - \boldsymbol{\mu}_1\right) + \dfrac{1}{2} \left( \boldsymbol{x} - \boldsymbol{\mu}_2\right) ^t \boldsymbol{\Sigma}^{-1} \left( \boldsymbol{x} - \boldsymbol{\mu}_2\right)\right\rbrace \geqslant \left( \dfrac{c(1|2)}{c(2|1)}\right) \left( \dfrac{p_2}{p_1}\right)$$
+
+
+
+## Classificação em duas população normais
+
+### 1º caso: as populações possuem variância comum
+
+
+- Que, depois de algum algebrismo, torna-se
+
+
+$$\small \exp\left\lbrace \left( \boldsymbol{\mu}_1 - \boldsymbol{\mu}_2\right) ^t \boldsymbol{\Sigma}^{-1}\boldsymbol{x} - \dfrac{1}{2} \left( \boldsymbol{\mu}_1 - \boldsymbol{\mu}_2\right) ^t \boldsymbol{\Sigma}^{-1} \left( \boldsymbol{\mu}_1 + \boldsymbol{\mu}_2\right) \right\rbrace \geqslant \left( \dfrac{c(1|2)}{c(2|1)}\right) \left( \dfrac{p_2}{p_1}\right)$$
+
+- Como ambos os termos são positivos, podemos tomar o logaritmo preservando a ordem da desigualdade. Assim, devemos alocar $\boldsymbol{x}$ em $\boldsymbol{\pi}_1$ se
+
+$$\small \left( \boldsymbol{\mu}_1 - \boldsymbol{\mu}_2\right) ^t \boldsymbol{\Sigma}^{-1}\boldsymbol{x} - \dfrac{1}{2} \left( \boldsymbol{\mu}_1 - \boldsymbol{\mu}_2\right) ^t \boldsymbol{\Sigma}^{-1} \left( \boldsymbol{\mu}_1 + \boldsymbol{\mu}_2\right) \geqslant \ln \left\lbrace  \left( \dfrac{c(1|2)}{c(2|1)}\right) \left( \dfrac{p_2}{p_1}\right) \right\rbrace $$
+
+e em $\boldsymbol{\pi}_2$, caso contrário.
+
+
+
+## Classificação em duas população normais
+
+
+### Para dados amostrais
+
+Se considerarmos $n_1$ observações $p$-variadas $X_{11}, X_{12}, \cdots, X_{1n_1}$ amostradas da população $\boldsymbol{\pi}_1$ e $n_2$, $X_{21}, X_{22}, \cdots, X_{2n_2}$ amostradas da população $\boldsymbol{\pi}_2$, com $n_1 + n_2 - 2 \geqslant p$, então a regra de alocação estimada que minimiza o custo médio de má-classificação é dada por: alocar $\boldsymbol{x}$ na população $\boldsymbol{\pi}_1$ se
+
+
+
+
+$$(\bar{\boldsymbol{x}}_1 - \bar{\boldsymbol{x}}_2)^t \boldsymbol{S}_c^{-1} \boldsymbol{x} - \dfrac{1}{2} (\bar{\boldsymbol{x}}_1 - \bar{\boldsymbol{x}}_2)^t \boldsymbol{S}_c^{-1} (\bar{\boldsymbol{x}}_1 + \bar{\boldsymbol{x}}_2)\geqslant \ln \left\lbrace  \left( \dfrac{c(1|2)}{c(2|1)}\right) \left( \dfrac{p_2}{p_1}\right) \right\rbrace$$
+
+em que
+
+$$\boldsymbol{S}_c =  \displaystyle{\frac{(n_1 - 1) {\boldsymbol{S}_1} + (n_2 - 1) {\boldsymbol{S}_2}}{n_1 + n_2 - 2}}$$
+
+
+
+## Classificação em duas população normais
+
+### 2º caso: as populações não possuem variância comum
+
+
+Sob a suposição de homogeneidade das matrizes de covariâncias, verificamos que as regras de classificação originadas foram simples e lineares.
+
+- Se considerarmos a situação geral em que $f_1(\boldsymbol{x})$ e $f_2(\boldsymbol{x})$ são modelos normais multivariados com parâmetros $\boldsymbol{\mu}_i$ e $\boldsymbol{\Sigma}_i$, $i = 1,2$, sendo $\boldsymbol{\Sigma}_1 \neq \boldsymbol{\Sigma}_2$, devemos classificar $\boldsymbol{x}$ em $\boldsymbol{\pi}_1$, se
+
+$$-\dfrac{1}{2} \boldsymbol{x}^t \left( \boldsymbol{\Sigma}_1 - \boldsymbol{\Sigma}_2\right) \boldsymbol{x} + \left( \boldsymbol{\mu}_1^t \boldsymbol{\Sigma}_1^{-1} - \boldsymbol{\mu}_2^t \boldsymbol{\Sigma}_2^{-1}\right) \boldsymbol{x} - \delta \geqslant \ln \left\lbrace  \left( \dfrac{c(1|2)}{c(2|1)}\right) \left( \dfrac{p_2}{p_1}\right) \right\rbrace$$
+
+e em $\boldsymbol{\pi}_2$, caso contrário.
+
+
+
+## Classificação em duas população normais
+
+### 2º caso: as populações não possuem variância comum
+
+
+- Sendo,
+
+$$\delta = \dfrac{1}{2} \ln \left( \dfrac{|\boldsymbol{\Sigma}_1|}{|\boldsymbol{\Sigma}_2|} \right) + \dfrac{1}{2} \left( \boldsymbol{\mu}_1^t \boldsymbol{\Sigma}_1^{-1}\boldsymbol{\mu}_1 - \boldsymbol{\mu}_2^t \boldsymbol{\Sigma}_2^{-1}\boldsymbol{\mu}_2\right) $$
+
+- Ao contrário do caso homocedástico, as regiões de classificação são definidas por funções discriminantes quadráticas de $\boldsymbol{x}$.
+
+
+
+## Classificação em duas população normais
+
+
+### Para dados amostrais
+
+
+- Podemos obter uma regra estimada substituindo os parâmetros $\boldsymbol{\mu}_i$ e $\boldsymbol{\Sigma}_i$, pelos respectivos estimadores $\bar{\boldsymbol{x}}_i$ e $\boldsymbol{S}_i$, $i = 1,2$. Assim, devemos alocar $\boldsymbol{x}$ na população $\boldsymbol{\pi}_1$ se
+
+$$-\dfrac{1}{2} \boldsymbol{x}^t \left( \boldsymbol{S}_1 - \boldsymbol{S}_2\right) \boldsymbol{x} + \left( \bar{\boldsymbol{x}}_1^t \boldsymbol{S}_1^{-1} - \bar{\boldsymbol{x}}_2^t \boldsymbol{S}_2^{-1}\right) \boldsymbol{x} - \hat{\delta} \geqslant \ln \left\lbrace  \left( \dfrac{c(1|2)}{c(2|1)}\right) \left( \dfrac{p_2}{p_1}\right) \right\rbrace$$
+
+e em $\boldsymbol{\pi}_2$, caso contrário, sendo
+
+$$\hat{\delta} = \dfrac{1}{2} \ln \left( \dfrac{|\boldsymbol{S}_1|}{|\boldsymbol{S}_2|} \right) + \dfrac{1}{2} \left( \bar{\boldsymbol{x}}_1^t \boldsymbol{S}_1^{-1}\bar{\boldsymbol{x}}_1 - \bar{\boldsymbol{x}}_2^t \boldsymbol{S}_2^{-1}\bar{\boldsymbol{x}}_2\right)
+$$
+
+
+
+
+
+
+## Discriminação em duas populações
+
+### A função discriminante linear de Fisher
+
+
+- Suposição de linearidade: **Homocedasticidade!**
+
+$$\boldsymbol{\Sigma}_1 = \boldsymbol{\Sigma}_2 = \boldsymbol{\Sigma}$$
+
+
+- Matriz de variância comum
+
+- Não pressupõe normalidade multivariada dos dados!
+
+
+
+## Discriminação em duas populações
+
+### A função discriminante linear de Fisher
+
+
+-  Baseada na **distância de Mahalanobis** entre o indivíduo desconhecido $\boldsymbol{x}_0$ e as médias das populações:
+
+$$d^2(\boldsymbol{x}, \boldsymbol{\mu}_i) = (\boldsymbol{x} - \boldsymbol{\mu}_i)^t \boldsymbol{\Sigma}^{-1}(\boldsymbol{x} - \boldsymbol{\mu}_i), \,\,\,\,\, i = 1,2$$
+
+
+- Intuitivamente, para um novo indivíduo $\boldsymbol{x}_0$, se $d^2(\boldsymbol{x}_0, \boldsymbol{\mu}_1) < d^2(\boldsymbol{x}_0, \boldsymbol{\mu}_2)$, classificamos $\boldsymbol{x}_0$ em  $\boldsymbol{\pi}_1$. Caso contrário, classificamos $\boldsymbol{x}_0$ em  $\boldsymbol{\pi}_2$ 
+
+
+
+
+
+## Discriminação em duas populações
+
+### A função discriminante linear de Fisher
+
+- Expressando essa regra como uma função discriminante:
+
+$$
+\begin{aligned}
+d^2(\boldsymbol{x}, \boldsymbol{\mu}_2) - d^2(\boldsymbol{x}, \boldsymbol{\mu}_1) &= (\boldsymbol{x} - \boldsymbol{\mu}_2)^t \boldsymbol{\Sigma}^{-1}(\boldsymbol{x} - \boldsymbol{\mu}_2) - (\boldsymbol{x} - \boldsymbol{\mu}_1)^t \boldsymbol{\Sigma}^{-1}(\boldsymbol{x} - \boldsymbol{\mu}_1) 
+\\  &= (\boldsymbol{\mu}_2 - \boldsymbol{\mu}_1)^t \boldsymbol{\Sigma}^{-1}(\boldsymbol{\mu}_2 + \boldsymbol{\mu}_1) + 2 \boldsymbol{x}^t\boldsymbol{\Sigma}^{-1}(\boldsymbol{\mu}_1 - \boldsymbol{\mu}_2)
+\end{aligned}
+$$
+
+- A expressão acima pode ser reescrita como:
+
+
+$$ L(\boldsymbol{x}) = \left[ \boldsymbol{x} - \displaystyle{\frac{1}{2}(\boldsymbol{\mu}_1 + \boldsymbol{\mu}_2)} \right]^t \boldsymbol{\Sigma}^{-1}(\boldsymbol{\mu}_1 - \boldsymbol{\mu}_2)$$
+
+
+
+
+
+## Discriminação em duas populações
+
+### A função discriminante linear de Fisher
+
+- Ou ainda...
+
+$$
+L(\boldsymbol{x}) = (\boldsymbol{\mu}_1 - \boldsymbol{\mu}_2)^t\boldsymbol{\Sigma}^{-1}\boldsymbol{x} - \displaystyle{\frac{1}{2}(\boldsymbol{\mu}_1 - \boldsymbol{\mu}_2)^t \boldsymbol{\Sigma}^{-1}(\boldsymbol{\mu}_1 + \boldsymbol{\mu}_2)}
+$$
+
+- O primeiro termo
+
+$$D(\boldsymbol{x}) = (\boldsymbol{\mu}_1 - \boldsymbol{\mu}_2)^t \boldsymbol{\Sigma}^{-1}\boldsymbol{x}$$
+
+é chamado de **função discriminante linear de Fisher**.
+
+
+
+
+## Discriminação em duas populações
+
+### A função discriminante linear de Fisher
+
+- Observe o segundo termo de
+$$
+L(\boldsymbol{x}) = (\boldsymbol{\mu}_1 - \boldsymbol{\mu}_2)^t \boldsymbol{\Sigma}^{-1} \boldsymbol{x} - \displaystyle{\frac{1}{2}(\boldsymbol{\mu}_1 - \boldsymbol{\mu}_2)^t \boldsymbol{\Sigma}^{-1}(\boldsymbol{\mu}_1 + \boldsymbol{\mu}_2)}
+$$
+
+após algum algebrismo,
+
+
+$$
+\begin{aligned}
+m &= \displaystyle{\frac{1}{2}(\boldsymbol{\mu}_1 - \boldsymbol{\mu}_2)^t \boldsymbol{\Sigma}^{-1}(\boldsymbol{\mu}_1 + \boldsymbol{\mu}_2)} \\ &= 
+\displaystyle{\frac{1}{2}} \left[(\boldsymbol{\mu}_1 - \boldsymbol{\mu}_2)^t \boldsymbol{\Sigma}^{-1} \boldsymbol{\mu}_1 + (\boldsymbol{\mu}_1 - \boldsymbol{\mu}_2)^t \boldsymbol{\Sigma}^{-1} \boldsymbol{\mu}_2\right] \\ &=
+\displaystyle{\frac{1}{2}} \left[ D(\boldsymbol{\mu}_1) + D(\boldsymbol{\mu}_2) \right] 
+\end{aligned}
+$$
+
+
+
+
+
+## Discriminação em duas populações
+
+### A função discriminante linear de Fisher
+
+
+- A regra de classificação fica: Se  $D(\boldsymbol{x}_0)  > m$, classificamos $\boldsymbol{x}_0$ em $\boldsymbol{\pi}_1$. Caso contrário, classificamos $\boldsymbol{x}_0$ em $\boldsymbol{\pi}_2$.
+
+
+
+
+-  É interessante observar que $(\boldsymbol{\mu}_1 - \boldsymbol{\mu}_2)^t \boldsymbol{\Sigma}^{-1}\boldsymbol{x}$ = $\boldsymbol{b}^t \boldsymbol{x}$, onde $\boldsymbol{b}^t = (\boldsymbol{\mu}_1 - \boldsymbol{\mu}_2)^t \boldsymbol{\Sigma}^{-1}$ é um vetor de dimensão $1 \times p$. 
+
+
+
+
+- Desse modo, a **função discriminante de Fisher** tem a forma:
+
+$$(\boldsymbol{\mu}_1 - \boldsymbol{\mu}_2)^t \boldsymbol{\Sigma}^{-1} \boldsymbol{x} = \boldsymbol{b}^t \boldsymbol{x} = b_1x_1 + b_2x_2 + \cdots + b_px_p$$
+
+
+
+
+## Discriminação em duas populações
+
+### Para dados amostrais
+
+
+$$\widehat{D}(\boldsymbol{x}) = (\bar{\boldsymbol{x}}_1 - \bar{\boldsymbol{x}}_2)^tS_c^{-1}\boldsymbol{x}$$
+$$\widehat{m} = \displaystyle{\frac{1}{2}} \left[ \widehat{D}( \bar{\boldsymbol{x}}_1) + \widehat{D}(\bar{\boldsymbol{x}}_2) \right]$$
+
+
+$$\boldsymbol{S}_c =  \displaystyle{\frac{(n_1 - 1) {\boldsymbol{S}_1} + (n_2 - 1) {\boldsymbol{S}_2}}{n_1 + n_2 - 2}}$$
+
+
+
+## Probabilidade de classificação incorreta
+
+### Estimação das probabilidades de classificação incorreta
+
+
+
+- Seja a seguinte tabela:
+
+$$\text{Frequências dos erros de classificação}$$
+
+| População de origem | Classe 1 | Classe 2 | Total |
+|---------------------|----------|----------|-------|
+| 1                   | $n_{11}$ | $n_{12}$ | $n_1$ |
+| 2                   | $n_{21}$ | $n_{22}$ | $n_2$ |
+
+
+
+$$n_{ij}: \text{é o número de elementos de } i \text{ classificados em } j$$
+
+
+
+## Probabilidade de classificação incorreta
+
+### Estimação das probabilidades de classificação incorreta
+
+
+- Com base nessas quantidades, podemos estimar as probabilidades de ocorrência dos erros 1 e 2 por:
+
+$$\widehat{p}(2|1) = \displaystyle{\frac{n_{12}}{n_1}} \hspace{1cm} \textrm{ e } \hspace{1cm} 
+\widehat{p}(1|2) = \displaystyle{\frac{n_{21}}{n_2}}$$
+
+- Além disso, podemos estimar a probabilidade global de acerto da função discriminante por:
+
+$$\widehat{p}(acerto) = \displaystyle{\frac{n_{11} + n_{22}}{n_1 + n_2}}$$
+
+
+
+## Probabilidade de classificação incorreta
+
+### Estimação das probabilidades de classificação incorreta
+
+
+- Podemos também, estimar a taxa de erro aparente (TEA):
+
+$$TEA = \displaystyle{\frac{n_{12} + n_{21}}{n_1 + n_2}}$$
+
+
+## Probabilidade de classificação incorreta
+
+
+- Três métodos de determinação dessas probabilidades:
+    - **Método da ressubstituição:** os mesmos dados são utilizados para estimar e validar a função discriminante.
+    - **Método da ressubstituição com divisão amostral:** os dados são divididos em duas subamostras - treinamento: estima a fd, validação: estima as probabilidades de erro.
+    - **Método da validação cruzada:** a cada iteração é omitida uma observação e a fd é estimada a partir das demais. A observação omitida é utilizada para estimar as probabilidades de erro. 
+
+
+## Classificação em $k$ grupos
+
+
+- Sejam $f_1(\boldsymbol{x}), f_2(\boldsymbol{x}), \cdots, f_k(\boldsymbol{x})$ as distribuições do vetor aleatório $\boldsymbol{x}$ em cada uma de $k$ populações, $\boldsymbol{\pi}_1, \boldsymbol{\pi}_2, \cdots, \boldsymbol{\pi}_k$;
+
+
+. . .
+
+
+- Sejam $p_1, p_2, \cdots, p_k$ as probabilidades a priori e $c(i|j),\,\,\, i, j = 1, 2, ..., k$, os custos de má-classificação.
+
+
+. . .
+
+
+- Seja $R_i$ o conjunto dos $\boldsymbol{x}'s$ classificados como $\boldsymbol{\pi}_i, \,\,\, i = 1, 2, \cdots, k$, e
+
+$$P(j|i) = \displaystyle{\int_{R_j} f_i(\boldsymbol{x}) d\boldsymbol{x}} \,\,\,\, i,j = 1,2, \cdots, k$$
+
+
+
+
+## Classificação em $k$ grupos
+
+
+- Custo esperado de má classificação:
+
+$$ECM = p_1 ECM(1) + p_2 ECM(2) + \cdots + p_k ECM(k)$$
+
+
+em que, 
+
+$$ECM(i) = P(1|i)c(1|i) + P(2|i)c(2|i) + \cdots + P(k|i)c(k|i), \,\,\, i = 1, 2, \cdots, k$$
+
+. . .
+
+
+
+- A regra de classificação **tal que $ECM$ seja mínimo** consiste em classificar uma observação $\boldsymbol{x}$ no grupo $j$ tal que:
+
+$$\displaystyle{\sum_{i=1, i \neq j}^kp_if_i(\boldsymbol{x})c(j|i)}, \,\,\, \text{seja mínimo.}$$
+
+
+## Classificação em $k$ grupos
+
+- Assim, deve-se classificar $\boldsymbol{x}$ em $\boldsymbol{\pi}_j$ caso a média dos custos de classificações incorretas nas demais populações seja mínima.
+
+
+. . .
+
+
+- Observe que para $k = 2$ populações, essa regra de classificação fica simplificada, sendo dada pela regra de classificação para duas populações apresentada anteriormente.
+
+
+## Classificação em mais de duas população normais
+
+- Suponha agora que $\boldsymbol{x}$ segue a distribuição normal multivariada. Assim, temos que
+
+
+$$f_i(\boldsymbol{x}) = \left( 2\pi\right) ^{-p/2}\left| \boldsymbol{\Sigma}_i \right| ^{-1/2} \exp\left\lbrace -\dfrac{1}{2} \left( \boldsymbol{x} - \boldsymbol{\mu}_i\right) ^t \boldsymbol{\Sigma}_i^{-1} \left( \boldsymbol{x} - \boldsymbol{\mu}_i\right) \right\rbrace $$
+
+para $i = 1,2, \cdots, k$ em que $\boldsymbol{\mu}_i$ é o vetor de médias da $i$-ésima população e $\boldsymbol{\Sigma}_i$ é a matriz de covariâncias positiva definida da $i$-ésima população. 
+
+
+
+
+
+## Classificação em mais de duas população normais
+
+- Considerando que estes parâmetros são conhecidos, então pela regra de classificação de mínima probabilidade total de classificação incorreta, devemos classificar $\boldsymbol{x}$ na população $\boldsymbol{\pi}_i$ se
+
+$$
+\begin{aligned}
+\ln\left[ p_i f_i(\boldsymbol{x})\right] &= \ln\left( p_i\right) - \dfrac{p}{2} \ln\left( 2 \pi\right) - \dfrac{1}{2} \ln \left( |\boldsymbol{\Sigma}_i|\right) - \dfrac{1}{2} \left( \boldsymbol{x} - \boldsymbol{\mu}_i\right) ^t \boldsymbol{\Sigma}_i^{-1} \left( \boldsymbol{x} - \boldsymbol{\mu}_i\right) \\ &= \max_j \ln\left[ p_j f_j(\boldsymbol{x})\right] 
+\end{aligned}  
+$$
+
+- Alocamos a observação $\boldsymbol{x}$ à população que maximiza $\ln\left[ p_j f_j(\boldsymbol{x})\right]$, em relação a todos os valores de $j$, $j = 1,2, \cdots, k$.
+
+
+
+
+## Classificação em mais de duas população normais
+
+
+-  O termo $\dfrac{p}{2} \ln\left( 2 \pi\right)$ é constante para todas as $k$ populações e pode ser ignorado.
+
+
+. . .
+
+
+- O termo resultante é denominado de escore quadrático de discriminação e para a $i$-ésima população é dado por
+
+
+$$
+d_i^Q(\boldsymbol{x}) =  - \dfrac{1}{2} \ln \left( |\boldsymbol{\Sigma}_i|\right) - \dfrac{1}{2} \left( \boldsymbol{x} - \boldsymbol{\mu}_i\right) ^t \boldsymbol{\Sigma}_i^{-1} \left( \boldsymbol{x} - \boldsymbol{\mu}_i\right) + \ln\left( p_i\right) 
+$$ 
+
+
+# Classificação em mais de duas população normais
+
+
+- Utilizando o escore quadrático $d_i^Q(\boldsymbol{x})$ de discriminação, podemos simplificar a regra de classificação. Classificamos $\boldsymbol{x}$ em $\boldsymbol{\pi}_i$ se
+
+$$d_i^Q(\boldsymbol{x}) = \max_j \left[ d_j^Q(\boldsymbol{x})\right]$$
+
+para $j = 1, 2, \cdots, k$.
+
+
+
+## Classificação em mais de duas população normais
+
+### Para dados amostrais
+
+-  Podemos obter uma regra estimada substituindo os parâmetros $\boldsymbol{\mu}_i$ e $\boldsymbol{\Sigma}_i$, pelos respectivos estimadores $\bar{\boldsymbol{x}}_i$ e $\boldsymbol{S}_i$, $i = 1,2, \cdots, k$. 
+
+
+
+- O estimador da função quadrática $d_i^Q(\boldsymbol{x})$ é representado por $Q_i(\boldsymbol{x})$ e é dado por
+
+$$
+Q_i(\boldsymbol{x}) =  - \dfrac{1}{2} \ln \left( |\boldsymbol{S}_i|\right) - \dfrac{1}{2} \left( \boldsymbol{x} - \bar{\boldsymbol{x}}_i\right) ^t \boldsymbol{S}_i^{-1} \left( \boldsymbol{x} - \bar{\boldsymbol{x}}_i\right) + \ln\left( p_i\right) 
+$$ 
+
+para $i = 1, 2, \cdots, k$ e, pela regra estimada de mínima probabilidade total de classificação incorreta, devemos classificar a observação $\boldsymbol{x}$ em $\boldsymbol{\pi}_i$ se 
+
+$$Q_i(\boldsymbol{x}) = \max_j \left[Q_j(\boldsymbol{x})\right], \,\,\,\, j = 1, 2, \cdots, k$$
+
+
+
+
+
+## Classificação em mais de duas população normais
+
+
+- No caso particular em que $\boldsymbol{\Sigma}_1 = \boldsymbol{\Sigma}_2 = \cdots = \boldsymbol{\Sigma}_k = \boldsymbol{\Sigma}$:
+
+
+$$
+d_i^Q(\boldsymbol{x}) =  - \dfrac{1}{2} \ln \left( |\boldsymbol{\Sigma}|\right) - \dfrac{1}{2} \left( \boldsymbol{x} - \boldsymbol{\mu}_i\right) ^t \boldsymbol{\Sigma}^{-1} \left( \boldsymbol{x} - \boldsymbol{\mu}_i\right) + \ln\left( p_i\right) 
+$$ 
+
+
+para $i = 1, 2, \cdots, k$.
+
+
+. . .
+
+
+- Se ignorarmos os termos constantes a todas as $k$ populações, obtemos o escore discriminante linear $d_i(\boldsymbol{x})$
+
+$$
+d_i(\boldsymbol{x}) =  \boldsymbol{\mu}_i^t \boldsymbol{\Sigma}^{-1} \boldsymbol{x} - \dfrac{1}{2} \boldsymbol{\mu}_i^t \boldsymbol{\Sigma}^{-1} \boldsymbol{\mu}_i + \ln\left( p_i\right) 
+$$ 
+
+para $i = 1, 2, \cdots, k$. 
+
+
+## Classificação em mais de duas população normais
+
+
+- Portanto, devemos classificar $\boldsymbol{x}$ em $\boldsymbol{\pi}_i$ se
+
+$$d_i(\boldsymbol{x}) = \max_j \left[d_j(\boldsymbol{x})\right], \,\,\,\, j = 1, 2, \cdots, k$$
+
+
+
+## Classificação em mais de duas população normais
+
+### Para dados amostrais
+
+- Uma estimativa dessa regra de classificação é obtida substituindo os parâmetros pelas estimativas. 
+
+$$
+\hat{d}_i(\boldsymbol{x}) = \bar{\boldsymbol{x}}_i^t \boldsymbol{S}_c^{-1} \boldsymbol{x} - \dfrac{1}{2} \bar{\boldsymbol{x}}_i^t\boldsymbol{S}_c^{-1}\bar{\boldsymbol{x}}_i + \ln\left( p_i\right) 
+$$ 
+
+sendo
+
+$$\boldsymbol{S}_c = \displaystyle{\frac{(n_1 - 1)\boldsymbol{S}_1 + (n_2 - 1)\boldsymbol{S}_2 + \cdots + (n_k - 1)\boldsymbol{S}_k}{n_1 + n_2 + \cdots + n_k - k}}$$
+
+para $i = 1, 2, \cdots, k$.
+
+
+
+## Classificação em mais de duas população normais
+
+### Para dados amostrais
+
+
+- Devemos classificar $\boldsymbol{x}$ em $\boldsymbol{\pi}_i$, se
+
+$$\hat{d}_i(\boldsymbol{x}) = \max_j \left[\hat{d}_j(\boldsymbol{x})\right], \,\,\,\, j = 1, 2, 
+\cdots, k$$
+
+
+
+## Classificação em mais de duas população normais
+
+### Funções discriminantes de Fisher para mais de duas populações
+
+
+- Suposição de linearidade: **Homocedasticidade!**
+
+$$\boldsymbol{\Sigma}_1 = \boldsymbol{\Sigma}_2 = \cdots = \boldsymbol{\Sigma}_k = \boldsymbol{\Sigma}$$
+
+
+- A ideia é construir construir $s$ combinações lineares,  chamadas de **funções discriminantes canônicas**, dadas por:
+
+$$\widehat{Y}_j = \widehat{\boldsymbol{e}}_j^t {\boldsymbol{x}}, \hspace{0.5cm} j = 1, \cdots, s \leqslant \min(k-1,p)$$
+
+em que $\widehat{\boldsymbol{e}}_j$ é o $j$-ésimo autovetor corresponde ao $j$-ésimo maior autovalor da matriz $\boldsymbol{W}^{-1}\boldsymbol{B}$ e tal que $\widehat{\boldsymbol{e}}_j^t \boldsymbol{W} \widehat{\boldsymbol{e}}_j = 1$
+
+
+
+## Classificação em mais de duas população normais
+
+### Funções discriminantes de Fisher para mais de duas populações
+
+
+- Sendo a **matriz de soma de quadrados e produtos cruzados intra grupos** $\boldsymbol{W}_{p \times p}$ e a **matriz  de soma de quadrados e produtos cruzados entre grupos** $\boldsymbol{B}_{p \times p}$, definidas respectivamente, por:
+
+$$\boldsymbol{W} = \displaystyle{\sum_{i=1}^k}\displaystyle{\sum_{b=1}^{n_i}}(\boldsymbol{x}_{ib} - \bar{\boldsymbol{x}}_i)(\boldsymbol{x}_{ib} - \bar{\boldsymbol{x}}_i)^t$$
+
+$$\boldsymbol{B} = \displaystyle{\sum_{i=1}^k} n_i (\bar{\boldsymbol{x}}_i - \bar{\boldsymbol{x}})(\bar{\boldsymbol{x}}_i - \bar{\boldsymbol{x}})^t$$
+
+
+
+
+## Classificação em mais de duas população normais
+
+### Funções discriminantes de Fisher para mais de duas populações
+
+
+
+#### Regra de classificação
+
+- Para cada indivíduo teremos um vetor com os seus escores nas funções, denotado por $\widehat{Y}_j$
+
+- Teremos também, os escores das funções discriminantes aplicadas aos vetores de médias amostrais observados para cada população, denotado por $\widehat{\bar{Y}}_i$
+
+
+
+
+## Classificação em mais de duas população normais
+
+### Funções discriminantes de Fisher para mais de duas populações
+
+#### Regra de classificação
+
+
+- Calcula-se a distância Euclidiana entre os vetores $\widehat{Y}_j$ e $\widehat{\bar{Y}}_i$, para todo $i = 1, \cdots, k$
+
+$$d = \displaystyle{(\widehat{Y}_j - \widehat{\bar{Y}}_i)^t(\widehat{Y}_j - \widehat{\bar{Y}}_i)})^{\frac{1}{2}} $$
+
+- **Classifica-se o indivíduo na população cuja distância é a menor**
+
+
+
+## Probabilidade de classificação incorreta
+
+Os erros de classificação são definidos como:
+
+- **Erro(i,j):** o elemento amostral pertence à população $\pi_j$ mas a regra de classificação o aloca na população $\pi_i$, $i,j = 1, \cdots, g$, $i \neq j$. 
+
+
+. . .
+
+
+E as probabilidades de ocorrência destes erros são estimadas por:
+
+$$\widehat{p}(i|j) = \displaystyle{\frac{n_{ji}}{n_j}}$$
+
+ onde $n_{ji}$ é o número de elementos da população $\pi_j$ classificados incorretamente pela regra na população $\pi_i$, $i,j = 1, \cdots, g$, $i \neq j$. 
