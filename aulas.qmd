@@ -14,4 +14,4 @@ title: "Aulas"
 
 - [Análise de Conglomerados ou Agrupamentos](/aulas/analise_agrupamento/agrupamento.html#/title-slide)
 
-- Análise Discriminante
+- [Análise Discriminante](/aulas/analise_discr/discriminante.html#/title-slide)
