@@ -1,0 +1,1476 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.29">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Segmentação de clientes de uma rede de academias – EST014 - Estatística Multivariada I</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-748b535e376f14d4692bf2b2e5fd6380.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-b09848b6287391c45069fed345a57cb2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-e9f3ba5fbee03b112b18b9666ab66a2c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-b09848b6287391c45069fed345a57cb2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link href="../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+
+<script src="../site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="Segmentação de clientes de uma rede de academias – EST014 - Estatística Multivariada I">
+<meta property="og:description" content="Homepage da disciplina EST014 - Estatística Multivariada I, 2025/2">
+<meta property="og:image" content="http://professortp.com.br/est014/analise_dados/clientes_files/figure-html/unnamed-chunk-4-1.png">
+<meta property="og:site_name" content="EST014 - Estatística Multivariada I">
+<meta property="og:image:height" content="3000">
+<meta property="og:image:width" content="4200">
+</head>
+
+<body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Segmentação de clientes de uma rede de academias</li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../images/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      <div class="sidebar-tools-main">
+    <a href="https://github.com/tiagomartin/est014" title="github" class="quarto-navigation-tool px-1" aria-label="github"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../aulas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Aulas</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercicios.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Listas de Exercícios</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../analises.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Análise de dados</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../plano.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Plano de Ensino</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../projeto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Projetos</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../cronograma.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cronograma da Disciplina</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Navegação</h2>
+   
+  <ul>
+  <li><a href="#contextualização" id="toc-contextualização" class="nav-link active" data-scroll-target="#contextualização"><span class="header-section-number">1</span> Contextualização</a></li>
+  <li><a href="#base-de-dados" id="toc-base-de-dados" class="nav-link" data-scroll-target="#base-de-dados"><span class="header-section-number">2</span> Base de dados</a></li>
+  <li><a href="#preparação-e-inspeção-dos-dados" id="toc-preparação-e-inspeção-dos-dados" class="nav-link" data-scroll-target="#preparação-e-inspeção-dos-dados"><span class="header-section-number">3</span> Preparação e inspeção dos dados</a>
+  <ul class="collapse">
+  <li><a href="#leitura-e-exploração-dos-dados" id="toc-leitura-e-exploração-dos-dados" class="nav-link" data-scroll-target="#leitura-e-exploração-dos-dados"><span class="header-section-number">3.1</span> Leitura e exploração dos dados</a></li>
+  <li><a href="#avaliação-da-tendência-de-agrupamento" id="toc-avaliação-da-tendência-de-agrupamento" class="nav-link" data-scroll-target="#avaliação-da-tendência-de-agrupamento"><span class="header-section-number">3.2</span> Avaliação da tendência de agrupamento</a></li>
+  </ul></li>
+  <li><a href="#métodos-de-agrupamento-hierárquicos" id="toc-métodos-de-agrupamento-hierárquicos" class="nav-link" data-scroll-target="#métodos-de-agrupamento-hierárquicos"><span class="header-section-number">4</span> Métodos de agrupamento hierárquicos</a>
+  <ul class="collapse">
+  <li><a href="#avaliando-outros-valores-de-k" id="toc-avaliando-outros-valores-de-k" class="nav-link" data-scroll-target="#avaliando-outros-valores-de-k"><span class="header-section-number">4.1</span> Avaliando outros valores de <span class="math inline">\(k\)</span></a>
+  <ul class="collapse">
+  <li><a href="#cluster-1-clientes-intensivos-premium-123-clientes-23" id="toc-cluster-1-clientes-intensivos-premium-123-clientes-23" class="nav-link" data-scroll-target="#cluster-1-clientes-intensivos-premium-123-clientes-23"><strong>Cluster 1: “Clientes intensivos / premium”</strong> (123 clientes, ~23%)</a></li>
+  <li><a href="#cluster-2-clientes-fiéis-e-econômicos-85-clientes-16" id="toc-cluster-2-clientes-fiéis-e-econômicos-85-clientes-16" class="nav-link" data-scroll-target="#cluster-2-clientes-fiéis-e-econômicos-85-clientes-16"><strong>Cluster 2: “Clientes fiéis e econômicos”</strong> (85 clientes, ~16%)</a></li>
+  <li><a href="#cluster-3-clientes-ocasionais-risco-322-clientes-61" id="toc-cluster-3-clientes-ocasionais-risco-322-clientes-61" class="nav-link" data-scroll-target="#cluster-3-clientes-ocasionais-risco-322-clientes-61"><strong>Cluster 3: “Clientes ocasionais / risco”</strong> (322 clientes, ~61%)</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#k-means" id="toc-k-means" class="nav-link" data-scroll-target="#k-means"><span class="header-section-number">5</span> K-means</a>
+  <ul class="collapse">
+  <li><a href="#cluster-1-clientes-ocasionais-risco-284-clientes-54" id="toc-cluster-1-clientes-ocasionais-risco-284-clientes-54" class="nav-link" data-scroll-target="#cluster-1-clientes-ocasionais-risco-284-clientes-54"><strong>Cluster 1: “Clientes ocasionais / risco”</strong> (284 clientes, ~54%)</a></li>
+  <li><a href="#cluster-2-clientes-intensivos-premium-125-clientes-24" id="toc-cluster-2-clientes-intensivos-premium-125-clientes-24" class="nav-link" data-scroll-target="#cluster-2-clientes-intensivos-premium-125-clientes-24"><strong>Cluster 2: “Clientes intensivos / premium”</strong> (125 clientes, ~24%)</a></li>
+  <li><a href="#cluster-3-clientes-fiéis-e-econômicos-121-clientes-23" id="toc-cluster-3-clientes-fiéis-e-econômicos-121-clientes-23" class="nav-link" data-scroll-target="#cluster-3-clientes-fiéis-e-econômicos-121-clientes-23"><strong>Cluster 3: “Clientes fiéis e econômicos”</strong> (121 clientes, ~23%)</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/tiagomartin/est014/edit/main/analise_dados/clientes.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/tiagomartin/est014/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="clientes.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Segmentação de clientes de uma rede de academias</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="contextualização" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Contextualização</h1>
+<p>Uma rede de academias de médio porte, presente em várias cidades brasileiras, deseja entender melhor o perfil de seus clientes ativos para:</p>
+<ul>
+<li><p>Criar planos personalizados</p></li>
+<li><p>Melhorar a retenção</p></li>
+<li><p>Identificar grupos com risco de evasão</p></li>
+<li><p>Direcionar campanhas de marketing</p></li>
+</ul>
+<p>Atualmente, a empresa possui apenas dados operacionais e nunca realizou uma segmentação formal baseada em dados. A equipe de dados foi acionada para realizar uma análise de agrupamentos (clusterização).</p>
+<hr>
+</section>
+<section id="base-de-dados" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Base de dados</h1>
+<p>Para cada cliente, foram coletadas as seguintes variáveis quantitativas:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Variável</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>idade</code></td>
+<td>Idade do cliente (anos)</td>
+</tr>
+<tr class="even">
+<td><code>frequencia</code></td>
+<td>Média de visitas à academia por semana</td>
+</tr>
+<tr class="odd">
+<td><code>tempo_treino</code></td>
+<td>Tempo médio de treino (minutos)</td>
+</tr>
+<tr class="even">
+<td><code>gasto_mensal</code></td>
+<td>Gasto médio mensal (R$)</td>
+</tr>
+<tr class="odd">
+<td><code>tempo_plano</code></td>
+<td>Tempo de permanência no plano (meses)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Objetivo:</strong> identificar grupos homogêneos de clientes com comportamentos semelhantes.</p>
+<hr>
+</section>
+<section id="preparação-e-inspeção-dos-dados" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Preparação e inspeção dos dados</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>load <span class="ot">&lt;-</span> <span class="cf">function</span>(pkg){</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  new.pkg <span class="ot">&lt;-</span> pkg[<span class="sc">!</span>(pkg <span class="sc">%in%</span> <span class="fu">installed.packages</span>()[, <span class="st">"Package"</span>])]</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">length</span>(new.pkg))</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">install.packages</span>(new.pkg, <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sapply</span>(pkg, require, <span class="at">character.only =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>} </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="do">## Pacotes utilizados nessa análise</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>packages <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"tidyverse"</span>, <span class="st">"dplyr"</span>, <span class="st">"ggplot2"</span>, <span class="st">"cluster"</span>, <span class="st">"seriation"</span>, <span class="st">"factoextra"</span>, <span class="st">"tibble"</span>, <span class="st">"dendextend"</span>, <span class="st">"hopkins"</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(packages)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> tidyverse      dplyr    ggplot2    cluster  seriation factoextra     tibble 
+      TRUE       TRUE       TRUE       TRUE       TRUE       TRUE       TRUE 
+dendextend    hopkins 
+      TRUE       TRUE </code></pre>
+</div>
+</div>
+<hr>
+<section id="leitura-e-exploração-dos-dados" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="leitura-e-exploração-dos-dados"><span class="header-section-number">3.1</span> Leitura e exploração dos dados</h2>
+<p>os dados para esta análise estão disponíveis <a href="..\dados/clientes.csv">aqui</a>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dados <span class="sc">%&gt;%</span> </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 530
+Columns: 5
+$ idade        &lt;dbl&gt; 27, 27, 35, 23, 28, 19, 26, 24, 30, 28, 32, 39, 32, 24, 3…
+$ frequencia   &lt;dbl&gt; 4.8, 5.7, 4.8, 5.1, 5.8, 5.4, 4.8, 4.9, 6.7, 4.7, 5.7, 5.…
+$ tempo_treino &lt;dbl&gt; 80, 78, 82, 49, 63, 79, 66, 91, 90, 82, 73, 85, 84, 61, 6…
+$ gasto_mensal &lt;dbl&gt; 233, 242, 233, 268, 253, 242, 241, 204, 172, 254, 249, 23…
+$ tempo_plano  &lt;dbl&gt; 32, 43, 31, 34, 15, 34, 37, 37, 48, 15, 19, 35, 20, 14, 2…</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>dados <span class="sc">%&gt;%</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     idade         frequencia     tempo_treino     gasto_mensal  
+ Min.   :18.00   Min.   :0.500   Min.   : 15.00   Min.   : 60.0  
+ 1st Qu.:25.00   1st Qu.:1.900   1st Qu.: 38.00   1st Qu.:112.0  
+ Median :30.00   Median :3.300   Median : 49.50   Median :139.0  
+ Mean   :30.88   Mean   :3.341   Mean   : 51.78   Mean   :148.9  
+ 3rd Qu.:35.00   3rd Qu.:4.700   3rd Qu.: 65.00   3rd Qu.:175.8  
+ Max.   :62.00   Max.   :7.000   Max.   :101.00   Max.   :331.0  
+  tempo_plano   
+ Min.   : 1.00  
+ 1st Qu.: 8.00  
+ Median :16.00  
+ Mean   :17.32  
+ 3rd Qu.:25.00  
+ Max.   :52.00  </code></pre>
+</div>
+</div>
+<p>A análise descritiva inicial revela elevada heterogeneidade entre os clientes da academia, tanto em termos de comportamento (frequência e tempo de treino) quanto de vínculo econômico e temporal (gasto mensal e tempo de plano). As distribuições apresentam amplitudes consideráveis e assimetrias moderadas, especialmente para gasto mensal e tempo de permanência, sugerindo a coexistência de múltiplos perfis de clientes. Esse padrão indica forte plausibilidade da existência de estrutura de agrupamento intrínseca, justificando o uso de métodos de clusterização baseados em distância após adequada padronização das variáveis.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reorganiza os dados para facilitar a plotagem</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>dados_long <span class="ot">&lt;-</span> dados <span class="sc">%&gt;%</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">everything</span>(),</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"variavel"</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"valor"</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Histogramas individuais (facilita leitura em aula)</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dados_long, <span class="fu">aes</span>(<span class="at">x =</span> valor)) <span class="sc">+</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">30</span>, <span class="at">fill =</span> <span class="st">"#4C72B0"</span>, <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">alpha =</span> <span class="fl">0.9</span>) <span class="sc">+</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> variavel, <span class="at">scales =</span> <span class="st">"free"</span>, <span class="at">ncol =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Histogramas das variáveis observadas"</span>,</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Distribuições marginais evidenciam heterogeneidade entre clientes"</span>,</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>,</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Frequência"</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="clientes_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Os histogramas das variáveis reforçam a conclusão obtida pela análise descritiva numérica. Observa-se elevada heterogeneidade nas distribuições marginais, com evidências de múltiplos regimes comportamentais, especialmente nas variáveis de frequência semanal, gasto mensal e tempo de permanência no plano. A presença de assimetrias, caudas longas e concentrações distintas sugere que os clientes não formam um grupo homogêneo, mas sim um conjunto de perfis latentes distintos, o que sustenta a aplicação de métodos de agrupamento multivariado.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>pca <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(dados, <span class="at">scale. =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>pca_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(pca<span class="sc">$</span>x[, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>])</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(pca_df) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"PC1"</span>,<span class="st">"PC2"</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(pca_df, <span class="fu">aes</span>(PC1, PC2)) <span class="sc">+</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"PCA (2 componentes) - visão inicial da estrutura"</span>) <span class="sc">+</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="clientes_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>A Figura apresenta a projeção dos dados nas duas primeiras componentes principais, obtidas a partir das variáveis padronizadas. Observa-se que os pontos não se distribuem de forma homogênea no espaço reduzido, mas sim formam regiões de maior densidade separadas por áreas de menor concentração. Esse padrão sugere a presença de estrutura multivariada latente compatível com a existência de grupos distintos de clientes.</p>
+<p>Como os métodos baseados em distância são sensíveis à escala, padronizamos (z-score).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">scale</span>(dados)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Distância Euclidiana </span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>D <span class="ot">&lt;-</span> <span class="fu">dist</span>(X, <span class="at">method =</span> <span class="st">"euclidean"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="avaliação-da-tendência-de-agrupamento" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="avaliação-da-tendência-de-agrupamento"><span class="header-section-number">3.2</span> Avaliação da tendência de agrupamento</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Tendência a agrupamento: Hopkins</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># - H ~ 0.5 sugere aleatoriedade (sem clusters)</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># - H alto (ex: &gt; 0.70) sugere forte estrutura de agrupamento</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Observação: Hopkins é sensível ao tamanho amostral e ao "m" (nº pontos amostrados).</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Aqui usamos m = ~10% do N (regra prática razoável).</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12345</span>)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">floor</span>(<span class="fl">0.1</span> <span class="sc">*</span> <span class="fu">nrow</span>(X))</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>hop <span class="ot">&lt;-</span> hopkins<span class="sc">::</span><span class="fu">hopkins</span>(X, <span class="at">m =</span> m)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>hop</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9970434</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">VAT</span>(D)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="clientes_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>A estatística de Hopkins apresentou valor extremamente elevado <span class="math inline">\((H=0,997)\)</span>, indicando que os dados estão muito distantes de um padrão aleatório no espaço multivariado e exibem forte tendência a agrupamento. Esse resultado é corroborado pelo método VAT, cuja matriz de distâncias reorganizada revela blocos bem definidos ao longo da diagonal principal, separados por regiões de menor similaridade. A concordância entre a evidência estatística formal e a avaliação visual fornece suporte robusto para a existência de estrutura de agrupamento intrínseca nos dados, legitimando a aplicação subsequente de métodos de clusterização hierárquica.</p>
+</section>
+</section>
+<section id="métodos-de-agrupamento-hierárquicos" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Métodos de agrupamento hierárquicos</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Vamos testar: single, complete, average, ward.D2</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Critério de comparação:</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   (a) correlação cofenética: quão bem o dendrograma preserva distâncias</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co">#       (maior tende a ser melhor, mas não é o único critério)</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co">#   (b) coerência com interpretação e separação por silhueta (mais adiante)</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>metodos <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"single"</span>, <span class="st">"complete"</span>, <span class="st">"centroid"</span>, <span class="st">"average"</span>, <span class="st">"ward.D2"</span>)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>hcl_list <span class="ot">&lt;-</span> <span class="fu">lapply</span>(metodos, <span class="cf">function</span>(met) <span class="fu">hclust</span>(D, <span class="at">method =</span> met))</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(hcl_list) <span class="ot">&lt;-</span> metodos</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Correlação cofenética</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>coph_corr <span class="ot">&lt;-</span> <span class="fu">sapply</span>(hcl_list, <span class="cf">function</span>(hc) {</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cor</span>(D, <span class="fu">cophenetic</span>(hc))</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>coph_corr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   single  complete  centroid   average   ward.D2 
+0.4504459 0.7146673 0.6463892 0.7016730 0.6990017 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Regra prática: maior correlação cofenética =&gt; dendrograma mais fiel às distâncias</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>melhor_met <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">which.max</span>(coph_corr))</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>melhor_met</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "complete"</code></pre>
+</div>
+</div>
+<p>Foram avaliados os métodos hierárquicos aglomerativos single, centroid, average, complete e Ward.D2, utilizando a correlação cofenética como critério de comparação. Os resultados indicaram que o método complete apresentou a maior correlação cofenética (0,715), sugerindo melhor preservação das distâncias originais entre as observações. O método single apresentou desempenho insatisfatório, evidenciando o efeito de encadeamento (chaining), enquanto average e Ward.D2 mostraram desempenho intermediário. Assim, com base no critério adotado, o método complete foi selecionado para a construção da solução hierárquica final.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>hc_best <span class="ot">&lt;-</span> hcl_list[[melhor_met]]</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualização de alta qualidade</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">fviz_dend</span>(hc_best, <span class="at">k =</span> <span class="dv">4</span>, <span class="co"># Número de grupos</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">cex =</span> <span class="fl">0.5</span>, <span class="co"># Tamanho da label</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">k_colors =</span> <span class="fu">c</span>(<span class="st">"#2E9FDF"</span>, <span class="st">"#ed2602"</span>, <span class="st">"#E7B800"</span>, <span class="st">"#0f2e0b"</span>),</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">color_labels_by_k =</span> <span class="cn">TRUE</span>, <span class="co"># Colorir labels</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">rect =</span> <span class="cn">TRUE</span>, <span class="co"># Adicionar retângulo</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">main =</span> <span class="st">"Dendrograma fviz_dend"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="clientes_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>cluster_hc <span class="ot">&lt;-</span> <span class="fu">cutree</span>(hc_best, <span class="at">k =</span> <span class="dv">4</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(cluster_hc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>cluster_hc
+  1   2   3   4 
+123  66 322  19 </code></pre>
+</div>
+</div>
+<p>O dendrograma obtido pelo método hierárquico com ligação completa evidencia a presença de quatro ramos principais bem definidos. O corte realizado em um nível de altura relativamente elevado resulta em quatro grupos com boa separação intergrupos e elevada coesão interna. Observa-se um grupo majoritário, representando o perfil predominante dos clientes, dois grupos intermediários com comportamentos distintos e um grupo minoritário altamente isolado, sugerindo um perfil extremo ou especializado. A estrutura observada é consistente com os resultados previamente obtidos pela estatística de Hopkins e pelo método VAT, reforçando a adequação da escolha de <span class="math inline">\(k=4\)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Silhueta para a solução hierárquica</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>sil_hc <span class="ot">&lt;-</span> <span class="fu">silhouette</span>(cluster_hc, D)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Silhueta média global</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>mean_sil <span class="ot">&lt;-</span> <span class="fu">mean</span>(sil_hc[, <span class="st">"sil_width"</span>])</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>mean_sil</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3270658</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fviz_silhouette</span>(sil_hc) <span class="sc">+</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Silhueta – Clustering hierárquico (complete, k = 4)"</span>,</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="fu">paste</span>(<span class="st">"Silhueta média ="</span>, <span class="fu">round</span>(mean_sil, <span class="dv">3</span>))</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  cluster size ave.sil.width
+1       1  123          0.35
+2       2   66          0.11
+3       3  322          0.37
+4       4   19          0.21</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="clientes_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>sil_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(sil_hc)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>sil_df<span class="sc">$</span>cluster <span class="ot">&lt;-</span> <span class="fu">factor</span>(cluster_hc)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>sil_df <span class="sc">%&gt;%</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cluster) <span class="sc">%&gt;%</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">sil_media =</span> <span class="fu">mean</span>(sil_width),</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">sil_min =</span> <span class="fu">min</span>(sil_width),</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">sil_max =</span> <span class="fu">max</span>(sil_width)</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["cluster"],"name":[1],"type":["fct"],"align":["left"]},{"label":["n"],"name":[2],"type":["int"],"align":["right"]},{"label":["sil_media"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["sil_min"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["sil_max"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"123","3":"0.3474965","4":"-0.27579260","5":"0.5509433"},{"1":"2","2":"66","3":"0.1086300","4":"-0.21660085","5":"0.3035377"},{"1":"3","2":"322","3":"0.3711726","4":"-0.49004420","5":"0.5919047"},{"1":"4","2":"19","3":"0.2060862","4":"-0.06893952","5":"0.3537319"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p>A qualidade da solução hierárquica com quatro grupos foi avaliada por meio do método da silhueta, resultando em valor médio de 0,327, o que indica estrutura de agrupamento moderada. A análise por grupo revelou que dois clusters apresentam coesão razoável, enquanto um grupo intermediário mostrou baixa silhueta média, sugerindo sobreposição com outros perfis. Esses resultados indicam que, embora exista forte estrutura de agrupamento intrínseca nos dados, evidenciada previamente pela estatística de Hopkins e pelo método VAT, a partição em quatro grupos não maximiza completamente a separação entre todos os perfis, motivando a avaliação de soluções alternativas com diferentes valores de <span class="math inline">\(k\)</span>.</p>
+<section id="avaliando-outros-valores-de-k" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="avaliando-outros-valores-de-k"><span class="header-section-number">4.1</span> Avaliando outros valores de <span class="math inline">\(k\)</span></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>ks <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>sil_results <span class="ot">&lt;-</span> <span class="fu">lapply</span>(ks, <span class="cf">function</span>(k) {</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  cl <span class="ot">&lt;-</span> <span class="fu">cutree</span>(hc_best, <span class="at">k =</span> k)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  sil <span class="ot">&lt;-</span> <span class="fu">silhouette</span>(cl, D)</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">k =</span> k,</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">sil_media =</span> <span class="fu">mean</span>(sil[, <span class="st">"sil_width"</span>]),</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">sil_min =</span> <span class="fu">min</span>(sil[, <span class="st">"sil_width"</span>]),</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">sil_max =</span> <span class="fu">max</span>(sil[, <span class="st">"sil_width"</span>])</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>sil_results <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(sil_results)</span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>sil_results</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["k"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["sil_media"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["sil_min"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["sil_max"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"3","2":"0.3721753","3":"-0.4527945","4":"0.5977440"},{"1":"4","2":"0.3270658","3":"-0.4900442","4":"0.5919047"},{"1":"5","2":"0.2200544","3":"-0.3775301","4":"0.5398297"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (k <span class="cf">in</span> ks) {</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  cl <span class="ot">&lt;-</span> <span class="fu">cutree</span>(hc_best, <span class="at">k =</span> k)</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  sil <span class="ot">&lt;-</span> <span class="fu">silhouette</span>(cl, D)</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>    sil,</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">main =</span> <span class="fu">paste</span>(<span class="st">"Silhueta – complete (k ="</span>, k, <span class="st">")"</span>),</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span>k,</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">border =</span> <span class="cn">NA</span></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="clientes_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Comparação objetiva dos valores de silhueta</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>k</th>
+<th>Silhueta média</th>
+<th>Silhueta mínima</th>
+<th>Silhueta máxima</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>3</strong></td>
+<td><strong>0,372</strong></td>
+<td>−0,453</td>
+<td>0,598</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>0,327</td>
+<td>−0,490</td>
+<td>0,592</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>0,221</td>
+<td>−0,378</td>
+<td>0,540</td>
+</tr>
+</tbody>
+</table>
+<p>A escolha do número de grupos foi baseada na comparação da silhueta média para diferentes valores de <span class="math inline">\(k\)</span>. Observou-se que a solução com três clusters apresentou o maior valor de silhueta média (0,372), além de uma distribuição mais equilibrada e coerente dos valores individuais, indicando melhor separação e coesão dos grupos. As soluções com quatro e cinco clusters resultaram em redução da silhueta média, evidenciando a presença de clusters fracos e fragmentação artificial. Assim, considerando critérios estatísticos e evidência visual, adotou-se a solução com três clusters como a partição final dos dados.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rótulos hierárquicos com k = 3</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>cluster_hc_k3 <span class="ot">&lt;-</span> <span class="fu">cutree</span>(hc_best, <span class="at">k =</span> <span class="dv">3</span>)</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>dados_hc3 <span class="ot">&lt;-</span> dados <span class="sc">%&gt;%</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cluster =</span> <span class="fu">factor</span>(cluster_hc_k3))</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>descr_hc3 <span class="ot">&lt;-</span> dados_hc3 <span class="sc">%&gt;%</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cluster) <span class="sc">%&gt;%</span></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">idade_media =</span> <span class="fu">mean</span>(idade),</span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">freq_media =</span> <span class="fu">mean</span>(frequencia),</span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">treino_media =</span> <span class="fu">mean</span>(tempo_treino),</span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">gasto_media =</span> <span class="fu">mean</span>(gasto_mensal),</span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">plano_media =</span> <span class="fu">mean</span>(tempo_plano),</span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a>descr_hc3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["cluster"],"name":[1],"type":["fct"],"align":["left"]},{"label":["n"],"name":[2],"type":["int"],"align":["right"]},{"label":["idade_media"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["freq_media"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["treino_media"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["gasto_media"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["plano_media"],"name":[7],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"123","3":"30.56098","4":"5.193496","5":"74.91057","6":"221.6423","7":"27.51220"},{"1":"2","2":"85","3":"42.81176","4":"4.614118","5":"58.72941","6":"120.7176","7":"26.21176"},{"1":"3","2":"322","3":"27.85404","4":"2.297516","5":"41.10248","6":"128.4783","7":"11.07143"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<section id="cluster-1-clientes-intensivos-premium-123-clientes-23" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="cluster-1-clientes-intensivos-premium-123-clientes-23"><strong>Cluster 1: “Clientes intensivos / premium”</strong> (123 clientes, ~23%)</h3>
+<ul>
+<li><strong>Padrão observado</strong>
+<ul>
+<li>Frequência muito alta (≈ 5,2x/semana)</li>
+<li>Sessões longas (≈ 75 min)</li>
+<li>Maior gasto mensal (≈ R$ 222)</li>
+<li>Tempo de plano elevado (≈ 28 meses)</li>
+</ul></li>
+<li><strong>Leitura substantiva</strong>
+<ul>
+<li>Clientes altamente engajados, com forte uso do serviço e alto valor econômico.</li>
+</ul></li>
+<li><strong>Coerência metodológica</strong>
+<ul>
+<li>Grupo bem separado no dendrograma</li>
+<li>Silhueta média alta</li>
+<li>Perfil extremo esperado dado Hopkins ≈ 0,997</li>
+</ul></li>
+<li>Cluster forte, estável e claramente interpretável</li>
+</ul>
+</section>
+<section id="cluster-2-clientes-fiéis-e-econômicos-85-clientes-16" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="cluster-2-clientes-fiéis-e-econômicos-85-clientes-16"><strong>Cluster 2: “Clientes fiéis e econômicos”</strong> (85 clientes, ~16%)</h3>
+<ul>
+<li><strong>Padrão observado</strong>
+<ul>
+<li>Idade mais elevada (≈ 43 anos)</li>
+<li>Frequência alta, mas menor que o cluster 1</li>
+<li>Treinos moderados</li>
+<li>Gasto baixo</li>
+<li>Tempo de plano longo</li>
+</ul></li>
+<li><strong>Leitura substantiva</strong>
+<ul>
+<li>Clientes consistentes e leais, sensíveis a preço, com padrão de uso regular, porém sem consumo premium.</li>
+</ul></li>
+<li><strong>Ponto importante</strong>
+<ul>
+<li>Esse cluster não apareceu bem separado em k = 4, mas emerge de forma clara em k = 3, o que explica o aumento da silhueta média.</li>
+</ul></li>
+<li>Cluster legítimo, que o <span class="math inline">\(k = 4\)</span> fragmentava artificialmente</li>
+</ul>
+</section>
+<section id="cluster-3-clientes-ocasionais-risco-322-clientes-61" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="cluster-3-clientes-ocasionais-risco-322-clientes-61"><strong>Cluster 3: “Clientes ocasionais / risco”</strong> (322 clientes, ~61%)</h3>
+<ul>
+<li><strong>Padrão observado</strong>
+<ul>
+<li>Frequência baixa</li>
+<li>Treinos curtos</li>
+<li>Gasto mensal reduzido</li>
+<li>Tempo de plano curto</li>
+<li>Idade mais jovem</li>
+</ul></li>
+<li><strong>Leitura substantiva</strong>
+<ul>
+<li>Representa o comportamento mais comum da base: clientes pouco engajados e com maior risco de evasão.</li>
+</ul></li>
+<li><strong>Leitura estatística</strong>
+<ul>
+<li>Maior heterogeneidade interna</li>
+<li>Silhueta moderada (esperado para clusters grandes)</li>
+</ul></li>
+<li>Cluster realista e indispensável do ponto de vista gerencial</li>
+</ul>
+<p>A solução hierárquica com três grupos revelou perfis claramente distintos de clientes. O primeiro grupo é composto por clientes intensivos, com elevada frequência, longas sessões de treino, alto gasto mensal e forte fidelização. O segundo grupo reúne clientes fiéis e consistentes, caracterizados por tempo de permanência elevado, frequência regular e menor gasto, indicando sensibilidade a preço. O terceiro grupo, majoritário, representa clientes ocasionais, com baixo engajamento e maior risco de evasão. A escolha de três clusters é sustentada pela maximização da silhueta média e pela concordância com a solução obtida via K-médias, reforçando a robustez da segmentação.</p>
+</section>
+</section>
+</section>
+<section id="k-means" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> K-means</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># K-médias depende de inicialização. Use nstart alto para estabilidade.</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12345</span>)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>km <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(X, <span class="at">centers =</span> <span class="dv">3</span>, <span class="at">nstart =</span> <span class="dv">50</span>)</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>cluster_km <span class="ot">&lt;-</span> km<span class="sc">$</span>cluster</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(cluster_km)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>cluster_km
+  1   2   3 
+284 125 121 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Inércia total (tot.withinss):"</span>, <span class="fu">round</span>(km<span class="sc">$</span>tot.withinss, <span class="dv">2</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Inércia total (tot.withinss): 1093.67 </code></pre>
+</div>
+</div>
+<p>O algoritmo K-médias foi aplicado com três clusters, utilizando múltiplas inicializações para garantir estabilidade da solução. Os tamanhos dos grupos obtidos foram relativamente equilibrados, refletindo a tendência do método em minimizar a variância intra-cluster. A escolha de <span class="math inline">\(k=3\)</span> é consistente com a solução hierárquica previamente selecionada com base no critério da silhueta, indicando concordância entre métodos fundamentados em princípios distintos. As diferenças observadas entre as soluções concentram-se principalmente em observações de fronteira, o que é esperado dado o caráter particional do K-médias.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dados com rótulos do K-médias</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>dados_km <span class="ot">&lt;-</span> dados <span class="sc">%&gt;%</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cluster =</span> <span class="fu">factor</span>(cluster_km))</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Estatísticas descritivas por cluster</span></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>descr_km <span class="ot">&lt;-</span> dados_km <span class="sc">%&gt;%</span></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cluster) <span class="sc">%&gt;%</span></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">idade_media =</span> <span class="fu">mean</span>(idade),</span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">freq_media =</span> <span class="fu">mean</span>(frequencia),</span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">treino_media =</span> <span class="fu">mean</span>(tempo_treino),</span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">gasto_media =</span> <span class="fu">mean</span>(gasto_mensal),</span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">plano_media =</span> <span class="fu">mean</span>(tempo_plano),</span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a>descr_km</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["cluster"],"name":[1],"type":["fct"],"align":["left"]},{"label":["n"],"name":[2],"type":["int"],"align":["right"]},{"label":["idade_media"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["freq_media"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["treino_media"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["gasto_media"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["plano_media"],"name":[7],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"284","3":"27.23239","4":"2.072887","5":"39.69014","6":"127.0669","7":"9.552817"},{"1":"2","2":"125","3":"29.80800","4":"5.128000","5":"74.10400","6":"221.6960","7":"27.672000"},{"1":"3","2":"121","3":"40.55372","4":"4.471901","5":"57.07438","6":"124.7438","7":"24.834711"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<section id="cluster-1-clientes-ocasionais-risco-284-clientes-54" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="cluster-1-clientes-ocasionais-risco-284-clientes-54"><strong>Cluster 1: “Clientes ocasionais / risco”</strong> (284 clientes, ~54%)</h3>
+<ul>
+<li><strong>Padrão observado</strong>
+<ul>
+<li>Frequência baixa</li>
+<li>Sessões curtas</li>
+<li>Menor tempo de plano</li>
+<li>Gasto mensal baixo–moderado</li>
+<li>Idade mais jovem</li>
+</ul></li>
+<li><strong>Leitura substantiva</strong>
+<ul>
+<li>Representa clientes pouco engajados, com uso esporádico da academia e maior risco de evasão.</li>
+</ul></li>
+<li><strong>Coerência estatística</strong>
+<ul>
+<li>Cluster grande → silhueta moderada (esperado)</li>
+<li>Corresponde ao cluster 3 da solução hierárquica</li>
+</ul></li>
+<li>Perfil realista e central do negócio</li>
+</ul>
+</section>
+<section id="cluster-2-clientes-intensivos-premium-125-clientes-24" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="cluster-2-clientes-intensivos-premium-125-clientes-24"><strong>Cluster 2: “Clientes intensivos / premium”</strong> (125 clientes, ~24%)</h3>
+<ul>
+<li><strong>Padrão observado</strong>
+<ul>
+<li>Maior frequência semanal</li>
+<li>Sessões mais longas</li>
+<li>Maior gasto mensal</li>
+<li>Maior tempo de permanência</li>
+<li>Idade intermediária</li>
+</ul></li>
+<li><strong>Leitura substantiva</strong>
+<ul>
+<li>Clientes altamente engajados, que utilizam intensamente o serviço e apresentam maior valor econômico.</li>
+</ul></li>
+<li><strong>Coerência estatística</strong>
+<ul>
+<li>Cluster bem separado</li>
+<li>Alto alinhamento com o cluster 1 do hierárquico</li>
+</ul></li>
+<li>Cluster forte, estável e estrategicamente valioso</li>
+</ul>
+</section>
+<section id="cluster-3-clientes-fiéis-e-econômicos-121-clientes-23" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="cluster-3-clientes-fiéis-e-econômicos-121-clientes-23"><strong>Cluster 3: “Clientes fiéis e econômicos”</strong> (121 clientes, ~23%)</h3>
+<ul>
+<li><strong>Padrão observado</strong>
+<ul>
+<li>Idade mais elevada</li>
+<li>Frequência relativamente alta</li>
+<li>Treinos médios</li>
+<li>Gasto baixo</li>
+<li>Tempo de plano longo</li>
+</ul></li>
+<li><strong>Leitura substantiva</strong>
+<ul>
+<li>Clientes consistentes e leais, que mantêm vínculo prolongado, mas sem consumo premium.</li>
+</ul></li>
+<li><strong>Coerência estatística</strong>
+<ul>
+<li>Perfil emerge claramente em <span class="math inline">\(k = 3\)</span></li>
+<li>Equivale ao cluster 2 da solução hierárquica</li>
+</ul></li>
+<li>Perfil importante que seria perdido em soluções mais grosseiras</li>
+</ul>
+<p>A análise descritiva dos clusters obtidos pelo algoritmo K-médias com três grupos revelou perfis claramente distintos de clientes. O primeiro cluster é composto majoritariamente por clientes ocasionais, com baixa frequência, sessões curtas e menor tempo de permanência no plano. O segundo cluster reúne clientes intensivos, caracterizados por elevada frequência semanal, treinos longos, maior gasto mensal e forte fidelização. O terceiro cluster representa clientes fiéis e econômicos, com idade mais elevada, frequência regular, gasto moderado e longo tempo de vínculo. Esses perfis são consistentes com aqueles identificados pela abordagem hierárquica, indicando concordância entre métodos baseados em princípios distintos.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("http:\/\/professortp\.com\.br\/est014\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Copyright 2025, Tiago Pereira</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/tiagomartin/est014/edit/main/analise_dados/clientes.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/tiagomartin/est014/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>Página construída usando <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

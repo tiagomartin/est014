@@ -1,0 +1,561 @@
+---
+title: "Segmentação de clientes de uma rede de academias"
+format:
+  html:
+    toc: true
+    toc-title: "Navegação"
+    number-sections: true
+    df-print: paged
+  pdf:
+    toc: true
+    number-sections: true
+    df-print: kable
+    documentclass: article
+    geometry: margin=1in
+    keep-tex: false
+editor: visual
+execute:
+  echo: true
+  warning: false
+  message: false
+  fig-width: 7
+  fig-height: 5
+  fig-dpi: 300
+  fig-path: "figures/"
+  # fig-format: "png"   # opcional; descomente se preferir PNG sempre
+---
+
+# Contextualização
+
+
+Uma rede de academias de médio porte, presente em várias cidades brasileiras, deseja entender melhor o perfil de seus clientes ativos para:
+
+- Criar planos personalizados
+
+- Melhorar a retenção
+
+- Identificar grupos com risco de evasão
+
+- Direcionar campanhas de marketing
+
+Atualmente, a empresa possui apenas dados operacionais e nunca realizou uma segmentação formal baseada em dados. A equipe de dados foi acionada para realizar uma análise de agrupamentos (clusterização).
+
+---
+
+
+# Base de dados
+
+Para cada cliente, foram coletadas as seguintes variáveis quantitativas:
+
+| Variável       | Descrição                              |
+| -------------- | -------------------------------------- |
+| `idade`        | Idade do cliente (anos)                |
+| `frequencia`   | Média de visitas à academia por semana |
+| `tempo_treino` | Tempo médio de treino (minutos)        |
+| `gasto_mensal` | Gasto médio mensal (R$)                |
+| `tempo_plano`  | Tempo de permanência no plano (meses)  |
+
+
+**Objetivo:** identificar grupos homogêneos de clientes com comportamentos semelhantes.
+
+---
+
+# Preparação e inspeção dos dados
+
+```{r, message=FALSE, warning=FALSE}
+load <- function(pkg){
+  new.pkg <- pkg[!(pkg %in% installed.packages()[, "Package"])]
+  if (length(new.pkg))
+    install.packages(new.pkg, dependencies = TRUE)
+  sapply(pkg, require, character.only = TRUE)
+} 
+
+## Pacotes utilizados nessa análise
+
+packages = c("tidyverse", "dplyr", "ggplot2", "cluster", "seriation", "factoextra", "tibble", "dendextend", "hopkins")
+load(packages)
+```
+
+
+```{r, echo=FALSE}
+# =========================
+# 1) Geração dos dados simulados (reprodutível)
+# =========================
+set.seed(20260201)
+
+# Comentário: Vamos simular 4 perfis "reais" (clusters latentes):
+# 1) fiéis intensivos (alta frequência, treino longo, gasto alto, plano longo)
+# 2) ocasionais (freq moderada, treino curto, gasto médio, plano médio)
+# 3) risco (freq baixa, treino curto, gasto baixo, plano curto)
+# 4) econômicos consistentes (freq alta, gasto baixo, plano longo)
+#
+# Saída esperada: um data.frame com variáveis em escalas realistas,
+# com ruído e alguma sobreposição (situação do mundo real).
+
+n1 <- 120; n2 <- 160; n3 <- 140; n4 <- 110
+N <- n1 + n2 + n3 + n4
+
+# Função auxiliar para truncar valores (evita negativos/absurdos)
+clamp <- function(x, lo, hi) pmin(pmax(x, lo), hi)
+
+# Cluster 1: fiéis intensivos
+idade1       <- rnorm(n1, mean = 32, sd = 6)
+freq1        <- rnorm(n1, mean = 5.2, sd = 0.8)
+tempo1       <- rnorm(n1, mean = 75,  sd = 12)
+gasto1       <- rnorm(n1, mean = 220, sd = 35)
+plano1       <- rnorm(n1, mean = 28,  sd = 8)
+
+# Cluster 2: ocasionais
+idade2       <- rnorm(n2, mean = 29, sd = 7)
+freq2        <- rnorm(n2, mean = 2.8, sd = 0.9)
+tempo2       <- rnorm(n2, mean = 45,  sd = 10)
+gasto2       <- rnorm(n2, mean = 150, sd = 30)
+plano2       <- rnorm(n2, mean = 14,  sd = 6)
+
+# Cluster 3: risco
+idade3       <- rnorm(n3, mean = 26, sd = 6)
+freq3        <- rnorm(n3, mean = 1.4, sd = 0.7)
+tempo3       <- rnorm(n3, mean = 32,  sd = 9)
+gasto3       <- rnorm(n3, mean = 105, sd = 25)
+plano3       <- rnorm(n3, mean = 6,   sd = 3.5)
+
+# Cluster 4: econômicos consistentes
+idade4       <- rnorm(n4, mean = 41, sd = 8)
+freq4        <- rnorm(n4, mean = 4.6, sd = 0.9)
+tempo4       <- rnorm(n4, mean = 58,  sd = 11)
+gasto4       <- rnorm(n4, mean = 120, sd = 20)
+plano4       <- rnorm(n4, mean = 26,  sd = 9)
+
+dados <- tibble(
+  idade       = c(idade1, idade2, idade3, idade4),
+  frequencia  = c(freq1,  freq2,  freq3,  freq4),
+  tempo_treino= c(tempo1, tempo2, tempo3, tempo4),
+  gasto_mensal= c(gasto1, gasto2, gasto3, gasto4),
+  tempo_plano = c(plano1, plano2, plano3, plano4)
+)
+
+# Ajustes de plausibilidade (comentário: evita valores fora do razoável)
+dados <- dados %>%
+  mutate(
+    idade        = round(clamp(idade, 18, 75)),
+    frequencia   = round(clamp(frequencia, 0.5, 7), 1),
+    tempo_treino = round(clamp(tempo_treino, 15, 120)),
+    gasto_mensal = round(clamp(gasto_mensal, 60, 350), 0),
+    tempo_plano  = round(clamp(tempo_plano, 1, 60), 0)
+  )
+
+write.csv(dados, "F:/SITE/est014/dados/clientes.csv", row.names = FALSE)
+```
+
+---
+
+## Leitura e exploração dos dados
+
+os dados para esta análise estão disponíveis [aqui](/dados/clientes.csv).
+
+```{r}
+dados %>% 
+  glimpse()
+
+dados %>% 
+  summary()
+```
+
+
+A análise descritiva inicial revela elevada heterogeneidade entre os clientes da academia, tanto em termos de comportamento (frequência e tempo de treino) quanto de vínculo econômico e temporal (gasto mensal e tempo de plano). As distribuições apresentam amplitudes consideráveis e assimetrias moderadas, especialmente para gasto mensal e tempo de permanência, sugerindo a coexistência de múltiplos perfis de clientes. Esse padrão indica forte plausibilidade da existência de estrutura de agrupamento intrínseca, justificando o uso de métodos de clusterização baseados em distância após adequada padronização das variáveis.
+
+
+```{r}
+# Reorganiza os dados para facilitar a plotagem
+dados_long <- dados %>%
+  pivot_longer(
+    cols = everything(),
+    names_to = "variavel",
+    values_to = "valor"
+  )
+
+# Histogramas individuais (facilita leitura em aula)
+ggplot(dados_long, aes(x = valor)) +
+  geom_histogram(bins = 30, fill = "#4C72B0", color = "white", alpha = 0.9) +
+  facet_wrap(~ variavel, scales = "free", ncol = 2) +
+  labs(
+    title = "Histogramas das variáveis observadas",
+    subtitle = "Distribuições marginais evidenciam heterogeneidade entre clientes",
+    x = NULL,
+    y = "Frequência"
+  ) +
+  theme_minimal(base_size = 13)
+```
+
+
+Os histogramas das variáveis reforçam a conclusão obtida pela análise descritiva numérica. Observa-se elevada heterogeneidade nas distribuições marginais, com evidências de múltiplos regimes comportamentais, especialmente nas variáveis de frequência semanal, gasto mensal e tempo de permanência no plano. A presença de assimetrias, caudas longas e concentrações distintas sugere que os clientes não formam um grupo homogêneo, mas sim um conjunto de perfis latentes distintos, o que sustenta a aplicação de métodos de agrupamento multivariado.
+
+
+```{r}
+pca <- prcomp(dados, scale. = TRUE)
+pca_df <- as.data.frame(pca$x[, 1:2])
+names(pca_df) <- c("PC1","PC2")
+
+ggplot(pca_df, aes(PC1, PC2)) +
+  geom_point(alpha = 0.6) +
+  labs(title = "PCA (2 componentes) - visão inicial da estrutura") +
+  theme_minimal()
+```
+
+
+A Figura apresenta a projeção dos dados nas duas primeiras componentes principais, obtidas a partir das variáveis padronizadas. Observa-se que os pontos não se distribuem de forma homogênea no espaço reduzido, mas sim formam regiões de maior densidade separadas por áreas de menor concentração. Esse padrão sugere a presença de estrutura multivariada latente compatível com a existência de grupos distintos de clientes. 
+
+
+
+Como os métodos baseados em distância são sensíveis à escala, padronizamos (z-score).
+
+```{r}
+X <- scale(dados)
+
+# Distância Euclidiana 
+D <- dist(X, method = "euclidean")
+```
+
+
+## Avaliação da tendência de agrupamento
+
+
+```{r}
+# Tendência a agrupamento: Hopkins
+# - H ~ 0.5 sugere aleatoriedade (sem clusters)
+# - H alto (ex: > 0.70) sugere forte estrutura de agrupamento
+# Observação: Hopkins é sensível ao tamanho amostral e ao "m" (nº pontos amostrados).
+# Aqui usamos m = ~10% do N (regra prática razoável).
+set.seed(12345)
+m <- floor(0.1 * nrow(X))
+hop <- hopkins::hopkins(X, m = m)
+hop
+```
+
+
+```{r}
+VAT(D)
+```
+
+
+A estatística de Hopkins apresentou valor extremamente elevado $(H=0,997)$, indicando que os dados estão muito distantes de um padrão aleatório no espaço multivariado e exibem forte tendência a agrupamento. Esse resultado é corroborado pelo método VAT, cuja matriz de distâncias reorganizada revela blocos bem definidos ao longo da diagonal principal, separados por regiões de menor similaridade. A concordância entre a evidência estatística formal e a avaliação visual fornece suporte robusto para a existência de estrutura de agrupamento intrínseca nos dados, legitimando a aplicação subsequente de métodos de clusterização hierárquica.
+
+
+# Métodos de agrupamento hierárquicos
+
+```{r}
+# Vamos testar: single, complete, average, ward.D2
+# Critério de comparação:
+#   (a) correlação cofenética: quão bem o dendrograma preserva distâncias
+#       (maior tende a ser melhor, mas não é o único critério)
+#   (b) coerência com interpretação e separação por silhueta (mais adiante)
+metodos <- c("single", "complete", "centroid", "average", "ward.D2")
+
+hcl_list <- lapply(metodos, function(met) hclust(D, method = met))
+names(hcl_list) <- metodos
+
+
+# Correlação cofenética
+coph_corr <- sapply(hcl_list, function(hc) {
+  cor(D, cophenetic(hc))
+})
+coph_corr
+
+
+# Regra prática: maior correlação cofenética => dendrograma mais fiel às distâncias
+melhor_met <- names(which.max(coph_corr))
+melhor_met
+```
+
+
+Foram avaliados os métodos hierárquicos aglomerativos single, centroid, average, complete e Ward.D2, utilizando a correlação cofenética como critério de comparação. Os resultados indicaram que o método complete apresentou a maior correlação cofenética (0,715), sugerindo melhor preservação das distâncias originais entre as observações. O método single apresentou desempenho insatisfatório, evidenciando o efeito de encadeamento (chaining), enquanto average e Ward.D2 mostraram desempenho intermediário. Assim, com base no critério adotado, o método complete foi selecionado para a construção da solução hierárquica final.
+
+```{r}
+hc_best <- hcl_list[[melhor_met]]
+
+# Visualização de alta qualidade
+fviz_dend(hc_best, k = 4, # Número de grupos
+          cex = 0.5, # Tamanho da label
+          k_colors = c("#2E9FDF", "#ed2602", "#E7B800", "#0f2e0b"),
+          color_labels_by_k = TRUE, # Colorir labels
+          rect = TRUE, # Adicionar retângulo
+          main = "Dendrograma fviz_dend")
+
+
+cluster_hc <- cutree(hc_best, k = 4)
+table(cluster_hc)
+```
+
+
+O dendrograma obtido pelo método hierárquico com ligação completa evidencia a presença de quatro ramos principais bem definidos. O corte realizado em um nível de altura relativamente elevado resulta em quatro grupos com boa separação intergrupos e elevada coesão interna. Observa-se um grupo majoritário, representando o perfil predominante dos clientes, dois grupos intermediários com comportamentos distintos e um grupo minoritário altamente isolado, sugerindo um perfil extremo ou especializado. A estrutura observada é consistente com os resultados previamente obtidos pela estatística de Hopkins e pelo método VAT, reforçando a adequação da escolha de $k=4$.
+
+
+```{r}
+# Silhueta para a solução hierárquica
+sil_hc <- silhouette(cluster_hc, D)
+
+# Silhueta média global
+mean_sil <- mean(sil_hc[, "sil_width"])
+mean_sil
+```
+
+
+```{r}
+fviz_silhouette(sil_hc) +
+  labs(
+    title = "Silhueta – Clustering hierárquico (complete, k = 4)",
+    subtitle = paste("Silhueta média =", round(mean_sil, 3))
+  )
+```
+
+
+```{r}
+sil_df <- as.data.frame(sil_hc)
+sil_df$cluster <- factor(cluster_hc)
+
+sil_df %>%
+  group_by(cluster) %>%
+  summarise(
+    n = n(),
+    sil_media = mean(sil_width),
+    sil_min = min(sil_width),
+    sil_max = max(sil_width)
+  )
+```
+
+A qualidade da solução hierárquica com quatro grupos foi avaliada por meio do método da silhueta, resultando em valor médio de 0,327, o que indica estrutura de agrupamento moderada. A análise por grupo revelou que dois clusters apresentam coesão razoável, enquanto um grupo intermediário mostrou baixa silhueta média, sugerindo sobreposição com outros perfis. Esses resultados indicam que, embora exista forte estrutura de agrupamento intrínseca nos dados, evidenciada previamente pela estatística de Hopkins e pelo método VAT, a partição em quatro grupos não maximiza completamente a separação entre todos os perfis, motivando a avaliação de soluções alternativas com diferentes valores de $k$.
+
+## Avaliando outros valores de $k$
+
+```{r}
+ks <- c(3, 4, 5)
+
+sil_results <- lapply(ks, function(k) {
+  cl <- cutree(hc_best, k = k)
+  sil <- silhouette(cl, D)
+  
+  tibble(
+    k = k,
+    sil_media = mean(sil[, "sil_width"]),
+    sil_min = min(sil[, "sil_width"]),
+    sil_max = max(sil[, "sil_width"])
+  )
+})
+
+sil_results <- bind_rows(sil_results)
+sil_results
+```
+
+
+```{r}
+par(mfrow = c(1,3))
+for (k in ks) {
+  cl <- cutree(hc_best, k = k)
+  sil <- silhouette(cl, D)
+  plot(
+    sil,
+    main = paste("Silhueta – complete (k =", k, ")"),
+    col = 1:k,
+    border = NA
+  )
+}
+par(mfrow = c(1,1))
+```
+
+Comparação objetiva dos valores de silhueta
+
+| k     | Silhueta média | Silhueta mínima | Silhueta máxima |
+| ----- | -------------- | --------------- | --------------- |
+| **3** | **0,372**      | −0,453          | 0,598           |
+| 4     | 0,327          | −0,490          | 0,592           |
+| 5     | 0,221          | −0,378          | 0,540           |
+
+
+
+A escolha do número de grupos foi baseada na comparação da silhueta média para diferentes valores de $k$. Observou-se que a solução com três clusters apresentou o maior valor de silhueta média (0,372), além de uma distribuição mais equilibrada e coerente dos valores individuais, indicando melhor separação e coesão dos grupos. As soluções com quatro e cinco clusters resultaram em redução da silhueta média, evidenciando a presença de clusters fracos e fragmentação artificial. Assim, considerando critérios estatísticos e evidência visual, adotou-se a solução com três clusters como a partição final dos dados.
+
+
+```{r}
+# Rótulos hierárquicos com k = 3
+cluster_hc_k3 <- cutree(hc_best, k = 3)
+
+dados_hc3 <- dados %>%
+  mutate(cluster = factor(cluster_hc_k3))
+
+descr_hc3 <- dados_hc3 %>%
+  group_by(cluster) %>%
+  summarise(
+    n = n(),
+    idade_media = mean(idade),
+    freq_media = mean(frequencia),
+    treino_media = mean(tempo_treino),
+    gasto_media = mean(gasto_mensal),
+    plano_media = mean(tempo_plano),
+    .groups = "drop"
+  )
+
+descr_hc3
+```
+
+
+### **Cluster 1: “Clientes intensivos / premium”** (123 clientes, ~23%) {-}
+
+- **Padrão observado**
+    - Frequência muito alta (≈ 5,2x/semana)
+    - Sessões longas (≈ 75 min)
+    - Maior gasto mensal (≈ R$ 222)
+    - Tempo de plano elevado (≈ 28 meses)
+
+
+- **Leitura substantiva**
+    - Clientes altamente engajados, com forte uso do serviço e alto valor econômico.
+
+- **Coerência metodológica**
+    - Grupo bem separado no dendrograma
+    - Silhueta média alta
+    - Perfil extremo esperado dado Hopkins ≈ 0,997
+
+- Cluster forte, estável e claramente interpretável
+
+
+
+### **Cluster 2: “Clientes fiéis e econômicos”** (85 clientes, ~16%) {-}
+
+- **Padrão observado**
+    - Idade mais elevada (≈ 43 anos)
+    - Frequência alta, mas menor que o cluster 1
+    - Treinos moderados
+    - Gasto baixo
+    - Tempo de plano longo
+
+- **Leitura substantiva**
+    - Clientes consistentes e leais, sensíveis a preço, com padrão de uso regular, porém sem consumo premium.
+
+- **Ponto importante**
+    - Esse cluster não apareceu bem separado em k = 4, mas emerge de forma clara em k = 3, o que explica o aumento da silhueta média.
+
+- Cluster legítimo, que o $k = 4$ fragmentava artificialmente
+
+
+### **Cluster 3: “Clientes ocasionais / risco”** (322 clientes, ~61%) {-}
+
+- **Padrão observado**
+    - Frequência baixa
+    - Treinos curtos
+    - Gasto mensal reduzido
+    - Tempo de plano curto
+    - Idade mais jovem
+
+- **Leitura substantiva**
+    - Representa o comportamento mais comum da base: clientes pouco engajados e com maior risco de evasão.
+
+- **Leitura estatística**
+    - Maior heterogeneidade interna
+    - Silhueta moderada (esperado para clusters grandes)
+
+- Cluster realista e indispensável do ponto de vista gerencial
+
+
+
+A solução hierárquica com três grupos revelou perfis claramente distintos de clientes. O primeiro grupo é composto por clientes intensivos, com elevada frequência, longas sessões de treino, alto gasto mensal e forte fidelização. O segundo grupo reúne clientes fiéis e consistentes, caracterizados por tempo de permanência elevado, frequência regular e menor gasto, indicando sensibilidade a preço. O terceiro grupo, majoritário, representa clientes ocasionais, com baixo engajamento e maior risco de evasão. A escolha de três clusters é sustentada pela maximização da silhueta média e pela concordância com a solução obtida via K-médias, reforçando a robustez da segmentação.
+
+
+
+# K-means
+
+```{r}
+# K-médias depende de inicialização. Use nstart alto para estabilidade.
+set.seed(12345)
+km <- kmeans(X, centers = 3, nstart = 50)
+
+cluster_km <- km$cluster
+
+table(cluster_km)
+cat("\nInércia total (tot.withinss):", round(km$tot.withinss, 2), "\n")
+```
+
+O algoritmo K-médias foi aplicado com três clusters, utilizando múltiplas inicializações para garantir estabilidade da solução. Os tamanhos dos grupos obtidos foram relativamente equilibrados, refletindo a tendência do método em minimizar a variância intra-cluster. A escolha de $k=3$ é consistente com a solução hierárquica previamente selecionada com base no critério da silhueta, indicando concordância entre métodos fundamentados em princípios distintos. As diferenças observadas entre as soluções concentram-se principalmente em observações de fronteira, o que é esperado dado o caráter particional do K-médias.
+
+
+```{r}
+# Dados com rótulos do K-médias
+dados_km <- dados %>%
+  mutate(cluster = factor(cluster_km))
+
+# Estatísticas descritivas por cluster
+descr_km <- dados_km %>%
+  group_by(cluster) %>%
+  summarise(
+    n = n(),
+    idade_media = mean(idade),
+    freq_media = mean(frequencia),
+    treino_media = mean(tempo_treino),
+    gasto_media = mean(gasto_mensal),
+    plano_media = mean(tempo_plano),
+    .groups = "drop"
+  )
+
+descr_km
+```
+
+
+### **Cluster 1: “Clientes ocasionais / risco”** (284 clientes, ~54%) {-}
+
+- **Padrão observado**
+    - Frequência baixa
+    - Sessões curtas
+    - Menor tempo de plano
+    - Gasto mensal baixo–moderado
+    - Idade mais jovem
+
+- **Leitura substantiva**
+    - Representa clientes pouco engajados, com uso esporádico da academia e maior risco de evasão.
+
+- **Coerência estatística**
+    - Cluster grande → silhueta moderada (esperado)
+    - Corresponde ao cluster 3 da solução hierárquica
+
+- Perfil realista e central do negócio
+
+
+### **Cluster 2: “Clientes intensivos / premium”** (125 clientes, ~24%) {-}
+
+- **Padrão observado**
+    - Maior frequência semanal
+    - Sessões mais longas
+    - Maior gasto mensal
+    - Maior tempo de permanência
+    - Idade intermediária
+
+
+- **Leitura substantiva**
+    - Clientes altamente engajados, que utilizam intensamente o serviço e apresentam maior valor econômico.
+
+- **Coerência estatística**
+    - Cluster bem separado
+    - Alto alinhamento com o cluster 1 do hierárquico
+
+- Cluster forte, estável e estrategicamente valioso
+
+
+### **Cluster 3: “Clientes fiéis e econômicos”** (121 clientes, ~23%) {-}
+
+- **Padrão observado**
+    - Idade mais elevada
+    - Frequência relativamente alta
+    - Treinos médios
+    - Gasto baixo
+    - Tempo de plano longo
+
+- **Leitura substantiva**
+    - Clientes consistentes e leais, que mantêm vínculo prolongado, mas sem consumo premium.
+
+- **Coerência estatística**
+    - Perfil emerge claramente em $k = 3$
+    - Equivale ao cluster 2 da solução hierárquica
+
+- Perfil importante que seria perdido em soluções mais grosseiras
+
+
+
+A análise descritiva dos clusters obtidos pelo algoritmo K-médias com três grupos revelou perfis claramente distintos de clientes. O primeiro cluster é composto majoritariamente por clientes ocasionais, com baixa frequência, sessões curtas e menor tempo de permanência no plano. O segundo cluster reúne clientes intensivos, caracterizados por elevada frequência semanal, treinos longos, maior gasto mensal e forte fidelização. O terceiro cluster representa clientes fiéis e econômicos, com idade mais elevada, frequência regular, gasto moderado e longo tempo de vínculo. Esses perfis são consistentes com aqueles identificados pela abordagem hierárquica, indicando concordância entre métodos baseados em princípios distintos.
