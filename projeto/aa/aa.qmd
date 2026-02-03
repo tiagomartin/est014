@@ -1,0 +1,222 @@
+---
+title: "Segmentação de Usuários de uma Plataforma de Streaming"
+format:
+  html:
+    number-sections: true
+    toc: true
+    toc-depth: 2
+  pdf:
+    number-sections: true
+    toc: false
+    toc-depth: 2
+bibliography: references.bib
+---
+
+
+<p align="center" style="font-size: 40px"> 
+`Data de entrega: 26 de fevereiro de 2026`
+</p>
+
+
+---
+
+# Contexto
+
+Uma plataforma de streaming de filmes e séries deseja compreender melhor o comportamento de seus usuários ativos, com o objetivo de:
+
+- personalizar recomendações;
+- melhorar estratégias de retenção;
+- identificar perfis com risco de cancelamento;
+- estruturar planos de assinatura mais adequados.
+
+Atualmente, a empresa possui apenas dados agregados de uso e **não realiza segmentação formal baseada em métodos estatísticos**.
+
+Você faz parte da equipe de Ciência de Dados responsável por conduzir uma **análise de agrupamentos multivariada**, identificando perfis homogêneos de usuários.
+
+
+---
+
+## Base de dados
+
+Cada observação representa um **usuário ativo** da plataforma.
+
+As variáveis disponíveis são:
+
+| Variável | Descrição |
+|--------|----------|
+| `idade` | Idade do usuário (anos) |
+| `horas_semana` | Horas médias de consumo por semana |
+| `dias_ativos` | Número médio de dias ativos por semana |
+| `avaliacoes` | Número médio de avaliações feitas por mês |
+| `tempo_assinatura` | Tempo de assinatura (meses) |
+| `valor_plano` | Valor mensal do plano (R$) |
+
+Todas as variáveis são **quantitativas contínuas**. Os dados para esta análise estão disponíveis [aqui](/dados/dados_streaming.csv).
+
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+set.seed(2026)
+
+library(dplyr)
+library(tibble)
+
+# Tamanhos dos grupos (não revelados ao aluno)
+n1 <- 300  # ocasionais
+n2 <- 140  # intensivos
+n3 <- 120  # fiéis econômicos
+
+# Função auxiliar para limitar valores
+clamp <- function(x, lo, hi) pmin(pmax(x, lo), hi)
+
+# Grupo 1: usuários ocasionais / risco
+g1 <- tibble(
+  idade = rnorm(n1, 27, 6),
+  horas_semana = rnorm(n1, 6, 3),
+  dias_ativos = rnorm(n1, 2.2, 0.8),
+  avaliacoes = rnorm(n1, 0.6, 0.5),
+  tempo_assinatura = rnorm(n1, 10, 5),
+  valor_plano = rnorm(n1, 35, 5)
+)
+
+# Grupo 2: usuários intensivos / premium
+g2 <- tibble(
+  idade = rnorm(n2, 30, 5),
+  horas_semana = rnorm(n2, 22, 6),
+  dias_ativos = rnorm(n2, 5.5, 0.8),
+  avaliacoes = rnorm(n2, 3.5, 1.2),
+  tempo_assinatura = rnorm(n2, 28, 8),
+  valor_plano = rnorm(n2, 65, 6)
+)
+
+# Grupo 3: usuários fiéis e econômicos
+g3 <- tibble(
+  idade = rnorm(n3, 42, 7),
+  horas_semana = rnorm(n3, 14, 4),
+  dias_ativos = rnorm(n3, 4.2, 0.9),
+  avaliacoes = rnorm(n3, 2.0, 0.9),
+  tempo_assinatura = rnorm(n3, 30, 9),
+  valor_plano = rnorm(n3, 40, 4)
+)
+
+# Junta tudo
+dados_streaming <- bind_rows(g1, g2, g3) %>%
+  mutate(
+    idade = round(clamp(idade, 18, 75)),
+    horas_semana = round(clamp(horas_semana, 0, 60), 1),
+    dias_ativos = round(clamp(dias_ativos, 0.5, 7), 1),
+    avaliacoes = round(clamp(avaliacoes, 0, 10), 1),
+    tempo_assinatura = round(clamp(tempo_assinatura, 1, 60)),
+    valor_plano = round(clamp(valor_plano, 25, 80), 2)
+  )
+write.csv(dados_streaming, "F:/SITE/est014/dados/dados_streaming.csv", row.names = FALSE)
+```
+
+---
+
+## Objetivo
+
+Identificar **perfis distintos de usuários** com base em padrões de uso,
+engajamento e fidelização, utilizando **métodos de análise de agrupamentos**.
+
+---
+
+# Etapas obrigatórias da análise
+
+## Análise exploratória dos dados (EDA)
+
+**Pergunta-guia:**  
+> Os dados sugerem a coexistência de múltiplos perfis de usuários?
+
+---
+
+## Pré-processamento
+
+- Padronize as variáveis;
+- Justifique a necessidade da padronização;
+- Defina a métrica de distância utilizada.
+
+---
+
+## Avaliação da tendência a agrupamento
+
+### Estatística de Hopkins
+- Calcule a estatística de Hopkins;
+- Interprete formalmente o valor obtido;
+
+
+### Método visual (VAT)
+- Aplique o método VAT;
+- Interprete a matriz de distâncias reorganizada;
+- Discuta valores plausíveis para o número de clusters.
+
+---
+
+### Análise de Componentes Principais (PCA)
+
+- Utilize PCA para **visualização exploratória**;
+- Construa o gráfico das duas primeiras componentes;
+
+---
+
+## Métodos hierárquicos
+
+Aplique os seguintes métodos hierárquicos aglomerativos:
+
+- Método do vizinho mais próximo (*single linkage*)
+- Método do vizinho mais distante (*complete linkage*)
+- Método da distância média (*average linkage*) 
+- Método do centroide (*centroid*)
+- Método de Ward (*Ward.D2*)  
+
+### Correlação cofenética
+- Calcule a correlação cofenética para cada método;
+- Compare os resultados;
+- Selecione o método mais adequado.
+
+---
+
+### Dendrograma e escolha do número de clusters
+
+- Construa o dendrograma do método selecionado;
+- Avalie visualmente possíveis cortes;
+- Teste pelo menos **três valores diferentes de `k`**;
+- Justifique a escolha final.
+
+---
+
+### Validação por silhueta
+
+- Calcule a silhueta média global;
+- Analise a silhueta por cluster;
+- Identifique clusters fracos ou observações de fronteira.
+
+---
+
+### Análise descritiva e leitura substantiva (Hierárquico)
+
+- Calcule estatísticas descritivas por cluster;
+- Realize a **leitura substantiva** dos grupos;
+- Atribua rótulos conceituais aos perfis identificados.
+
+---
+
+## K-médias como método confirmatório
+
+- Aplique K-médias com o valor final de `k`;
+- Utilize múltiplas inicializações (`nstart` elevado);
+- Compare os resultados com a solução hierárquica.
+
+---
+
+## Conclusão
+
+Apresente:
+
+- a segmentação final escolhida;
+- a justificativa metodológica completa;
+- a interpretação dos perfis encontrados;
+- implicações práticas para a plataforma de streaming.
+
+
+

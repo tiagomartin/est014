@@ -4,7 +4,7 @@
     "href": "projeto.html",
     "title": "Projetos",
     "section": "",
-    "text": "Esta página contém os projetos de análise de dados que serão apresentados ao longo do semestre. Você pode baixar os projetos em versão PDF.\n\n\n\n1. Análise de Componentes Principais\n\n\n Ver projeto PDF \n Entrega: 19/12/2025 \n\n\n\n\n2. Análise Fatorial\n\n\n Ver projeto PDF \n Entrega: 03/02/2026",
+    "text": "Esta página contém os projetos de análise de dados que serão apresentados ao longo do semestre. Você pode baixar os projetos em versão PDF.\n\n\n\n1. Análise de Componentes Principais\n\n\n Ver projeto PDF \n Entrega: 19/12/2025 \n\n\n\n\n2. Análise Fatorial\n\n\n Ver projeto PDF \n Entrega: 03/02/2026 \n\n\n\n\n3. Análise de Agrupamentos\n\n\n Ver projeto PDF \n Entrega: 26/02/2026",
     "crumbs": [
       "Projetos"
     ]
@@ -1018,7 +1018,7 @@
     "href": "analises.html",
     "title": "Análise de dados",
     "section": "",
-    "text": "Esta página contém scripts de análises de dados comentados utilizando algumas técnicas que serão apresentadas ao longo do semestre. Você pode baixar as análises em versão PDF.\n\n\n Descrição e Visualização da base de dados Iris \n Ver análise PDF \n\n\n Mapas Perceptuais com PCA: estudo de marcas \n Ver análise PDF \n\n\n Avaliação da Satisfação de Estudantes Universitários \n Ver análise PDF",
+    "text": "Esta página contém scripts de análises de dados comentados utilizando algumas técnicas que serão apresentadas ao longo do semestre. Você pode baixar as análises em versão PDF.\n\n\n Descrição e Visualização da base de dados Iris \n Ver análise PDF \n\n\n Mapas Perceptuais com PCA: estudo de marcas \n Ver análise PDF \n\n\n Avaliação da Satisfação de Estudantes Universitários \n Ver análise PDF \n\n\n Segmentação de clientes de uma rede de academias \n Ver análise PDF",
     "crumbs": [
       "Análise de dados"
     ]
@@ -2001,7 +2001,7 @@
     "href": "cronograma.html",
     "title": "Cronograma da Disciplina",
     "section": "",
-    "text": "Esta página contém um esboço dos tópicos, conteúdos e tarefas para o semestre. Este cronograma será atualizado conforme o semestre avança.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSemana\nData\nTópico\nArtigo\nSlides\nEC\nLE\nScript\nMC\nProjeto\n\n\n\n\n1\nTer, 07/10\nApresentação da disciplina\n\n\n\n\n\n\n\n\n\n\nQui, 09/10\nNão haverá aula!\n\n\n\n\n\n\n\n\n\n2\nTer, 14/10\nRevisão de Álgebra Linear\n\n\n\n\n\n\n\n\n\n\nQui, 16/10\nRevisão de Álgebra Linear\n\n\n\n\n\n\n\n\n\n3\nTer, 21/10\nIntrodução à Estatística Multivariada\n\n\n\n\n\n\n\n\n\n\nQui, 23/10\nIntrodução à Estatística Multivariada\n\n\n\n\n\n\n\n\n\n4\nTer, 28/10\nIntrodução à Estatística Multivariada\n\n\n\n\n\n\n\n\n\n\nQui, 30/10\nNão haverá aula: Paralização docente\n\n\n\n\n\n\n\n\n\n5\nTer, 04/11\nDistribuição Normal Multivariada\n\n\n\n\n\n\n\n\n\n\nQui, 06/11\nDistribuição Normal Multivariada\n\n\n\n\n\n\n\n\n\n6\nTer, 11/11\nAnálise de Componentes Principais\n\n\n\n\n\n\n\n\n\n\nQui, 13/11\nAnálise de Componentes Principais\n\n\n\n\n\n\n\n\n\n7\nTer, 18/11\nNão haverá aula\n\n\n\n\n\n\n\n\n\n\nQui, 20/11\nFeriado: não haverá aula\n\n\n\n\n\n\n\n\n\n8\nTer, 25/11\nAnálise de Componentes Principais\n\n\n\n\n\n\n\n\n\n\nQui, 27/11\nAnálise de Componentes Principais\n\n\n\n\n\n\n\n\n\n9\nTer, 02/12\nAnálise Fatorial\n\n\n\n\n\n\n\n\n\n\nQui, 04/12\nAnálise Fatorial\n\n\n\n\n\n\n\n\n\n10\nTer, 09/12\nNão haverá aula!\n\n\n\n\n\n\n\n\n\n\nQui, 11/12\nAnálise Fatorial\n\n\n\n\n\n\n\n\n\n11\nTer, 16/12\nAnálise Fatorial\n\n\n\n\n\n\n\n\n\n\nQui, 18/12\nNão haverá aula\n\n\n\n\n\n\n\n\n\n\n\n22/12 a 17/01 - Recesso Acadêmico\n\n\n\n\n\n\n\n\n\n12\nTer, 20/01\nAnálise de Agrupamentos\n\n\n\n\n\n\n\n\n\n\nQui, 22/01\nAnálise de Agrupamentos\n\n\n\n\n\n\n\n\n\n13\nTer, 27/01\nAnálise de Agrupamentos\n\n\n\n\n\n\n\n\n\n\nQui, 29/01\nAnálise de Agrupamentos\n\n\n\n\n\n\n\n\n\n14\nTer, 03/02\nAnálise Discriminante\n\n\n\n\n\n\n\n\n\n\nQui, 05/02\nAnálise Discriminante",
+    "text": "Esta página contém um esboço dos tópicos, conteúdos e tarefas para o semestre. Este cronograma será atualizado conforme o semestre avança.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSemana\nData\nTópico\nArtigo\nSlides\nEC\nLE\nScript\nMC\nProjeto\n\n\n\n\n1\nTer, 07/10\nApresentação da disciplina\n\n\n\n\n\n\n\n\n\n\nQui, 09/10\nNão haverá aula!\n\n\n\n\n\n\n\n\n\n2\nTer, 14/10\nRevisão de Álgebra Linear\n\n\n\n\n\n\n\n\n\n\nQui, 16/10\nRevisão de Álgebra Linear\n\n\n\n\n\n\n\n\n\n3\nTer, 21/10\nIntrodução à Estatística Multivariada\n\n\n\n\n\n\n\n\n\n\nQui, 23/10\nIntrodução à Estatística Multivariada\n\n\n\n\n\n\n\n\n\n4\nTer, 28/10\nIntrodução à Estatística Multivariada\n\n\n\n\n\n\n\n\n\n\nQui, 30/10\nNão haverá aula: Paralização docente\n\n\n\n\n\n\n\n\n\n5\nTer, 04/11\nDistribuição Normal Multivariada\n\n\n\n\n\n\n\n\n\n\nQui, 06/11\nDistribuição Normal Multivariada\n\n\n\n\n\n\n\n\n\n6\nTer, 11/11\nAnálise de Componentes Principais\n\n\n\n\n\n\n\n\n\n\nQui, 13/11\nAnálise de Componentes Principais\n\n\n\n\n\n\n\n\n\n7\nTer, 18/11\nNão haverá aula\n\n\n\n\n\n\n\n\n\n\nQui, 20/11\nFeriado: não haverá aula\n\n\n\n\n\n\n\n\n\n8\nTer, 25/11\nAnálise de Componentes Principais\n\n\n\n\n\n\n\n\n\n\nQui, 27/11\nAnálise de Componentes Principais\n\n\n\n\n\n\n\n\n\n9\nTer, 02/12\nAnálise Fatorial\n\n\n\n\n\n\n\n\n\n\nQui, 04/12\nAnálise Fatorial\n\n\n\n\n\n\n\n\n\n10\nTer, 09/12\nNão haverá aula!\n\n\n\n\n\n\n\n\n\n\nQui, 11/12\nAnálise Fatorial\n\n\n\n\n\n\n\n\n\n11\nTer, 16/12\nAnálise Fatorial\n\n\n\n\n\n\n\n\n\n\nQui, 18/12\nNão haverá aula\n\n\n\n\n\n\n\n\n\n\n\n22/12 a 17/01 - Recesso Acadêmico\n\n\n\n\n\n\n\n\n\n12\nTer, 20/01\nAnálise de Agrupamentos\n\n\n\n\n\n\n\n\n\n\nQui, 22/01\nAnálise de Agrupamentos\n\n\n\n\n\n\n\n\n\n13\nTer, 27/01\nAnálise de Agrupamentos\n\n\n\n\n\n\n\n\n\n\nQui, 29/01\nAnálise de Agrupamentos\n\n\n\n\n\n\n\n\n\n14\nTer, 03/02\nAnálise de Agrupamentos\n\n\n\n\n\n\n\n\n\n\nQui, 05/02\nAnálise Discriminante",
     "crumbs": [
       "Cronograma da Disciplina"
     ]
@@ -3676,14 +3676,14 @@
     "href": "programacao/semana-14.html",
     "title": "Semana 14",
     "section": "",
-    "text": "Análise de Agrupamentos \n\n\nVer slides PDF"
+    "text": "Análise Discriminante \n\n\nVer slides PDF\n\n\n\n\n\n  Segmentação de clientes de uma rede de academias \n Ver análise PDF \n\n\n\n\n\n  Segmentação de Usuários de uma Plataforma de Streaming \n Ver projeto PDF"
   },
   {
     "objectID": "programacao/semana-14.html#slides",
     "href": "programacao/semana-14.html#slides",
     "title": "Semana 14",
     "section": "",
-    "text": "Análise de Agrupamentos \n\n\nVer slides PDF"
+    "text": "Análise Discriminante \n\n\nVer slides PDF\n\n\n\n\n\n  Segmentação de clientes de uma rede de academias \n Ver análise PDF \n\n\n\n\n\n  Segmentação de Usuários de uma Plataforma de Streaming \n Ver projeto PDF"
   },
   {
     "objectID": "analise_dados/clientes.html",
@@ -3719,5 +3719,96 @@
     "title": "Segmentação de clientes de uma rede de academias",
     "section": "4.2 K-means",
     "text": "4.2 K-means\n\n# K-médias depende de inicialização. Use nstart alto para estabilidade.\nset.seed(12345)\nkm &lt;- kmeans(X, centers = 3, nstart = 50)\n\ncluster_km &lt;- km$cluster\n\ntable(cluster_km)\n\ncluster_km\n  1   2   3 \n284 125 121 \n\ncat(\"\\nInércia total (tot.withinss):\", round(km$tot.withinss, 2), \"\\n\")\n\n\nInércia total (tot.withinss): 1093.67 \n\n\nO algoritmo K-médias foi aplicado com três clusters, utilizando múltiplas inicializações para garantir estabilidade da solução. Os tamanhos dos grupos obtidos foram relativamente equilibrados, refletindo a tendência do método em minimizar a variância intra-cluster. A escolha de \\(k=3\\) é consistente com a solução hierárquica previamente selecionada com base no critério da silhueta, indicando concordância entre métodos fundamentados em princípios distintos. As diferenças observadas entre as soluções concentram-se principalmente em observações de fronteira, o que é esperado dado o caráter particional do K-médias.\n\n# Dados com rótulos do K-médias\ndados_km &lt;- dados %&gt;%\n  mutate(cluster = factor(cluster_km))\n\n# Estatísticas descritivas por cluster\ndescr_km &lt;- dados_km %&gt;%\n  group_by(cluster) %&gt;%\n  summarise(\n    n = n(),\n    idade_media = mean(idade),\n    freq_media = mean(frequencia),\n    treino_media = mean(tempo_treino),\n    gasto_media = mean(gasto_mensal),\n    plano_media = mean(tempo_plano),\n    .groups = \"drop\"\n  )\n\ndescr_km\n\n\n  \n\n\n\n\n4.2.1 Cluster 1: “Clientes ocasionais / risco” (284 clientes, ~54%)\n\nPadrão observado\n\nFrequência baixa\nSessões curtas\nMenor tempo de plano\nGasto mensal baixo–moderado\nIdade mais jovem\n\nLeitura substantiva\n\nRepresenta clientes pouco engajados, com uso esporádico da academia e maior risco de evasão.\n\nCoerência estatística\n\nCluster grande → silhueta moderada (esperado)\nCorresponde ao cluster 3 da solução hierárquica\n\nPerfil realista e central do negócio\n\n\n\n4.2.2 Cluster 2: “Clientes intensivos / premium” (125 clientes, ~24%)\n\nPadrão observado\n\nMaior frequência semanal\nSessões mais longas\nMaior gasto mensal\nMaior tempo de permanência\nIdade intermediária\n\nLeitura substantiva\n\nClientes altamente engajados, que utilizam intensamente o serviço e apresentam maior valor econômico.\n\nCoerência estatística\n\nCluster bem separado\nAlto alinhamento com o cluster 1 do hierárquico\n\nCluster forte, estável e estrategicamente valioso\n\n\n\n4.2.3 Cluster 3: “Clientes fiéis e econômicos” (121 clientes, ~23%)\n\nPadrão observado\n\nIdade mais elevada\nFrequência relativamente alta\nTreinos médios\nGasto baixo\nTempo de plano longo\n\nLeitura substantiva\n\nClientes consistentes e leais, que mantêm vínculo prolongado, mas sem consumo premium.\n\nCoerência estatística\n\nPerfil emerge claramente em \\(k = 3\\)\nEquivale ao cluster 2 da solução hierárquica\n\nPerfil importante que seria perdido em soluções mais grosseiras\n\nA análise descritiva dos clusters obtidos pelo algoritmo K-médias com três grupos revelou perfis claramente distintos de clientes. O primeiro cluster é composto majoritariamente por clientes ocasionais, com baixa frequência, sessões curtas e menor tempo de permanência no plano. O segundo cluster reúne clientes intensivos, caracterizados por elevada frequência semanal, treinos longos, maior gasto mensal e forte fidelização. O terceiro cluster representa clientes fiéis e econômicos, com idade mais elevada, frequência regular, gasto moderado e longo tempo de vínculo. Esses perfis são consistentes com aqueles identificados pela abordagem hierárquica, indicando concordância entre métodos baseados em princípios distintos."
+  },
+  {
+    "objectID": "projeto/aa/aa.html",
+    "href": "projeto/aa/aa.html",
+    "title": "Segmentação de Usuários de uma Plataforma de Streaming",
+    "section": "",
+    "text": "Data de entrega: 26 de fevereiro de 2026"
+  },
+  {
+    "objectID": "projeto/aa/aa.html#base-de-dados",
+    "href": "projeto/aa/aa.html#base-de-dados",
+    "title": "Segmentação de Usuários de uma Plataforma de Streaming",
+    "section": "1.1 Base de dados",
+    "text": "1.1 Base de dados\nCada observação representa um usuário ativo da plataforma.\nAs variáveis disponíveis são:\n\n\n\nVariável\nDescrição\n\n\n\n\nidade\nIdade do usuário (anos)\n\n\nhoras_semana\nHoras médias de consumo por semana\n\n\ndias_ativos\nNúmero médio de dias ativos por semana\n\n\navaliacoes\nNúmero médio de avaliações feitas por mês\n\n\ntempo_assinatura\nTempo de assinatura (meses)\n\n\nvalor_plano\nValor mensal do plano (R$)\n\n\n\nTodas as variáveis são quantitativas contínuas. Os dados para esta análise estão disponíveis aqui."
+  },
+  {
+    "objectID": "projeto/aa/aa.html#objetivo",
+    "href": "projeto/aa/aa.html#objetivo",
+    "title": "Segmentação de Usuários de uma Plataforma de Streaming",
+    "section": "1.2 Objetivo",
+    "text": "1.2 Objetivo\nIdentificar perfis distintos de usuários com base em padrões de uso, engajamento e fidelização, utilizando métodos de análise de agrupamentos."
+  },
+  {
+    "objectID": "projeto/aa/aa.html#etapas-obrigatórias-da-análise",
+    "href": "projeto/aa/aa.html#etapas-obrigatórias-da-análise",
+    "title": "Segmentação de Usuários de uma Plataforma de Streaming",
+    "section": "1.3 Etapas obrigatórias da análise",
+    "text": "1.3 Etapas obrigatórias da análise\n\n1.3.1 1. Análise exploratória dos dados (EDA)\nPergunta-guia:\n&gt; Os dados sugerem a coexistência de múltiplos perfis de usuários?\n\n\n\n1.3.2 2. Pré-processamento\n\nPadronize as variáveis;\nJustifique a necessidade da padronização;\nDefina a métrica de distância utilizada.\n\n\n\n\n1.3.3 3. Avaliação da tendência a agrupamento\n\n1.3.3.1 3.1 Estatística de Hopkins\n\nCalcule a estatística de Hopkins;\nInterprete formalmente o valor obtido;\n\n\n\n1.3.3.2 3.2 Método visual (VAT)\n\nAplique o método VAT;\nInterprete a matriz de distâncias reorganizada;\nDiscuta valores plausíveis para o número de clusters.\n\n\n\n\n\n1.3.4 4. Análise de Componentes Principais (PCA)\n\nUtilize PCA para visualização exploratória;\nConstrua o gráfico das duas primeiras componentes;\n\n\n\n\n1.3.5 5. Métodos hierárquicos\nAplique os seguintes métodos hierárquicos aglomerativos:\n\nMétodo do vizinho mais próximo (single linkage)\nMétodo do vizinho mais distante (complete linkage)\nMétodo da distância média (average linkage)\nMétodo do centroide (centroid)\nMétodo de Ward (Ward.D2)\n\n\n1.3.5.1 5.1 Correlação cofenética\n\nCalcule a correlação cofenética para cada método;\nCompare os resultados;\nSelecione o método mais adequado.\n\n\n\n\n\n1.3.6 6. Dendrograma e escolha do número de clusters\n\nConstrua o dendrograma do método selecionado;\nAvalie visualmente possíveis cortes;\nTeste pelo menos três valores diferentes de k;\nJustifique a escolha final.\n\n\n\n\n1.3.7 7. Validação por silhueta\n\nCalcule a silhueta média global;\nAnalise a silhueta por cluster;\nIdentifique clusters fracos ou observações de fronteira.\n\n\n\n\n1.3.8 8. Análise descritiva e leitura substantiva (Hierárquico)\n\nCalcule estatísticas descritivas por cluster;\nRealize a leitura substantiva dos grupos;\nAtribua rótulos conceituais aos perfis identificados.\n\n\n\n\n1.3.9 9. K-médias como método confirmatório\n\nAplique K-médias com o valor final de k;\nUtilize múltiplas inicializações (nstart elevado);\nCompare os resultados com a solução hierárquica."
+  },
+  {
+    "objectID": "projeto/aa/aa.html#conclusão",
+    "href": "projeto/aa/aa.html#conclusão",
+    "title": "Segmentação de Usuários de uma Plataforma de Streaming",
+    "section": "2.6 Conclusão",
+    "text": "2.6 Conclusão\nApresente:\n\na segmentação final escolhida;\na justificativa metodológica completa;\na interpretação dos perfis encontrados;\nimplicações práticas para a plataforma de streaming."
+  },
+  {
+    "objectID": "projeto/aa/aa.html#análise-exploratória-dos-dados-eda",
+    "href": "projeto/aa/aa.html#análise-exploratória-dos-dados-eda",
+    "title": "Segmentação de Usuários de uma Plataforma de Streaming",
+    "section": "2.1 Análise exploratória dos dados (EDA)",
+    "text": "2.1 Análise exploratória dos dados (EDA)\nPergunta-guia:\n&gt; Os dados sugerem a coexistência de múltiplos perfis de usuários?"
+  },
+  {
+    "objectID": "projeto/aa/aa.html#pré-processamento",
+    "href": "projeto/aa/aa.html#pré-processamento",
+    "title": "Segmentação de Usuários de uma Plataforma de Streaming",
+    "section": "2.2 Pré-processamento",
+    "text": "2.2 Pré-processamento\n\nPadronize as variáveis;\nJustifique a necessidade da padronização;\nDefina a métrica de distância utilizada."
+  },
+  {
+    "objectID": "projeto/aa/aa.html#avaliação-da-tendência-a-agrupamento",
+    "href": "projeto/aa/aa.html#avaliação-da-tendência-a-agrupamento",
+    "title": "Segmentação de Usuários de uma Plataforma de Streaming",
+    "section": "2.3 Avaliação da tendência a agrupamento",
+    "text": "2.3 Avaliação da tendência a agrupamento\n\n2.3.1 Estatística de Hopkins\n\nCalcule a estatística de Hopkins;\nInterprete formalmente o valor obtido;\n\n\n\n2.3.2 Método visual (VAT)\n\nAplique o método VAT;\nInterprete a matriz de distâncias reorganizada;\nDiscuta valores plausíveis para o número de clusters.\n\n\n\n\n2.3.3 Análise de Componentes Principais (PCA)\n\nUtilize PCA para visualização exploratória;\nConstrua o gráfico das duas primeiras componentes;"
+  },
+  {
+    "objectID": "projeto/aa/aa.html#análise-de-componentes-principais-pca",
+    "href": "projeto/aa/aa.html#análise-de-componentes-principais-pca",
+    "title": "Segmentação de Usuários de uma Plataforma de Streaming",
+    "section": "2.4 4. Análise de Componentes Principais (PCA)",
+    "text": "2.4 4. Análise de Componentes Principais (PCA)\n\nUtilize PCA para visualização exploratória;\nConstrua o gráfico das duas primeiras componentes;\n\n\n\n2.4.1 5. Métodos hierárquicos\nAplique os seguintes métodos hierárquicos aglomerativos:\n\nMétodo do vizinho mais próximo (single linkage)\nMétodo do vizinho mais distante (complete linkage)\nMétodo da distância média (average linkage)\nMétodo do centroide (centroid)\nMétodo de Ward (Ward.D2)\n\n\n\n2.4.2 5.1 Correlação cofenética\n\nCalcule a correlação cofenética para cada método;\nCompare os resultados;\nSelecione o método mais adequado.\n\n\n\n\n2.4.3 6. Dendrograma e escolha do número de clusters\n\nConstrua o dendrograma do método selecionado;\nAvalie visualmente possíveis cortes;\nTeste pelo menos três valores diferentes de k;\nJustifique a escolha final.\n\n\n\n\n2.4.4 7. Validação por silhueta\n\nCalcule a silhueta média global;\nAnalise a silhueta por cluster;\nIdentifique clusters fracos ou observações de fronteira.\n\n\n\n\n2.4.5 8. Análise descritiva e leitura substantiva (Hierárquico)\n\nCalcule estatísticas descritivas por cluster;\nRealize a leitura substantiva dos grupos;\nAtribua rótulos conceituais aos perfis identificados.\n\n\n\n\n2.4.6 9. K-médias como método confirmatório\n\nAplique K-médias com o valor final de k;\nUtilize múltiplas inicializações (nstart elevado);\nCompare os resultados com a solução hierárquica."
+  },
+  {
+    "objectID": "projeto/aa/aa.html#métodos-hierárquicos",
+    "href": "projeto/aa/aa.html#métodos-hierárquicos",
+    "title": "Segmentação de Usuários de uma Plataforma de Streaming",
+    "section": "2.4 Métodos hierárquicos",
+    "text": "2.4 Métodos hierárquicos\nAplique os seguintes métodos hierárquicos aglomerativos:\n\nMétodo do vizinho mais próximo (single linkage)\nMétodo do vizinho mais distante (complete linkage)\nMétodo da distância média (average linkage)\nMétodo do centroide (centroid)\nMétodo de Ward (Ward.D2)\n\n\n2.4.1 Correlação cofenética\n\nCalcule a correlação cofenética para cada método;\nCompare os resultados;\nSelecione o método mais adequado.\n\n\n\n\n2.4.2 Dendrograma e escolha do número de clusters\n\nConstrua o dendrograma do método selecionado;\nAvalie visualmente possíveis cortes;\nTeste pelo menos três valores diferentes de k;\nJustifique a escolha final.\n\n\n\n\n2.4.3 Validação por silhueta\n\nCalcule a silhueta média global;\nAnalise a silhueta por cluster;\nIdentifique clusters fracos ou observações de fronteira.\n\n\n\n\n2.4.4 Análise descritiva e leitura substantiva (Hierárquico)\n\nCalcule estatísticas descritivas por cluster;\nRealize a leitura substantiva dos grupos;\nAtribua rótulos conceituais aos perfis identificados."
+  },
+  {
+    "objectID": "projeto/aa/aa.html#k-médias-como-método-confirmatório",
+    "href": "projeto/aa/aa.html#k-médias-como-método-confirmatório",
+    "title": "Segmentação de Usuários de uma Plataforma de Streaming",
+    "section": "2.5 K-médias como método confirmatório",
+    "text": "2.5 K-médias como método confirmatório\n\nAplique K-médias com o valor final de k;\nUtilize múltiplas inicializações (nstart elevado);\nCompare os resultados com a solução hierárquica."
+  },
+  {
+    "objectID": "programacao/semana-14.html#script-de-análise-de-dados",
+    "href": "programacao/semana-14.html#script-de-análise-de-dados",
+    "title": "Semana 14",
+    "section": "",
+    "text": "Segmentação de clientes de uma rede de academias \n Ver análise PDF"
+  },
+  {
+    "objectID": "programacao/semana-14.html#projeto-análise-de-agrupamentos",
+    "href": "programacao/semana-14.html#projeto-análise-de-agrupamentos",
+    "title": "Semana 14",
+    "section": "",
+    "text": "Segmentação de Usuários de uma Plataforma de Streaming \n Ver projeto PDF"
   }
 ]
