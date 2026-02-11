@@ -3824,5 +3824,12 @@
     "title": "Semana 15",
     "section": "",
     "text": "Análise Discriminante \n\n\nVer slides PDF"
+  },
+  {
+    "objectID": "aulas/analise_discr/discriminante.html#classificação-em-mais-de-duas-população-normais-3",
+    "href": "aulas/analise_discr/discriminante.html#classificação-em-mais-de-duas-população-normais-3",
+    "title": "Análise Discriminante",
+    "section": "Classificação em mais de duas população normais",
+    "text": "Classificação em mais de duas população normais\n\nUtilizando o escore quadrático \\(d_i^Q(\\boldsymbol{x})\\) de discriminação, podemos simplificar a regra de classificação. Classificamos \\(\\boldsymbol{x}\\) em \\(\\boldsymbol{\\pi}_i\\) se\n\n\\[d_i^Q(\\boldsymbol{x}) = \\max_j \\left[ d_j^Q(\\boldsymbol{x})\\right]\\]\npara \\(j = 1, 2, \\cdots, k\\)."
   }
 ]

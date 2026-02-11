@@ -613,7 +613,7 @@ d_i^Q(\boldsymbol{x}) =  - \dfrac{1}{2} \ln \left( |\boldsymbol{\Sigma}_i|\right
 $$ 
 
 
-# Classificação em mais de duas população normais
+## Classificação em mais de duas população normais
 
 
 - Utilizando o escore quadrático $d_i^Q(\boldsymbol{x})$ de discriminação, podemos simplificar a regra de classificação. Classificamos $\boldsymbol{x}$ em $\boldsymbol{\pi}_i$ se
