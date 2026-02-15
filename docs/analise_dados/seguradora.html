@@ -1,0 +1,1614 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.29">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Classificação Antifraude em Seguros Automotivos usando Funções Discriminantes Lineares e Quadráticas – EST014 - Estatística Multivariada I</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-748b535e376f14d4692bf2b2e5fd6380.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-b09848b6287391c45069fed345a57cb2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-e9f3ba5fbee03b112b18b9666ab66a2c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-b09848b6287391c45069fed345a57cb2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link href="../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+
+<script src="../site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="Classificação Antifraude em Seguros Automotivos usando Funções Discriminantes Lineares e Quadráticas – EST014 - Estatística Multivariada I">
+<meta property="og:description" content="Homepage da disciplina EST014 - Estatística Multivariada I, 2025/2">
+<meta property="og:image" content="http://professortp.com.br/est014/analise_dados/seguradora_files/figure-html/unnamed-chunk-4-1.png">
+<meta property="og:site_name" content="EST014 - Estatística Multivariada I">
+<meta property="og:image:height" content="3000">
+<meta property="og:image:width" content="4200">
+</head>
+
+<body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Classificação Antifraude em Seguros Automotivos usando Funções Discriminantes Lineares e Quadráticas</li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../images/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      <div class="sidebar-tools-main">
+    <a href="https://github.com/tiagomartin/est014" title="github" class="quarto-navigation-tool px-1" aria-label="github"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../aulas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Aulas</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercicios.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Listas de Exercícios</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../analises.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Análise de dados</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../plano.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Plano de Ensino</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../projeto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Projetos</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../cronograma.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cronograma da Disciplina</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Navegação</h2>
+   
+  <ul>
+  <li><a href="#contexto-e-objetivo" id="toc-contexto-e-objetivo" class="nav-link active" data-scroll-target="#contexto-e-objetivo"><span class="header-section-number">1</span> Contexto e Objetivo</a></li>
+  <li><a href="#pacotes-utilizados" id="toc-pacotes-utilizados" class="nav-link" data-scroll-target="#pacotes-utilizados"><span class="header-section-number">2</span> Pacotes utilizados</a></li>
+  <li><a href="#leitura-e-exploração-dos-dados" id="toc-leitura-e-exploração-dos-dados" class="nav-link" data-scroll-target="#leitura-e-exploração-dos-dados"><span class="header-section-number">3</span> Leitura e exploração dos dados</a></li>
+  <li><a href="#diagnóstico-de-suposições-covariâncias-iguais" id="toc-diagnóstico-de-suposições-covariâncias-iguais" class="nav-link" data-scroll-target="#diagnóstico-de-suposições-covariâncias-iguais"><span class="header-section-number">4</span> Diagnóstico de suposições: covariâncias iguais?</a>
+  <ul class="collapse">
+  <li><a href="#teste-de-box-boxs-m" id="toc-teste-de-box-boxs-m" class="nav-link" data-scroll-target="#teste-de-box-boxs-m"><span class="header-section-number">4.1</span> Teste de Box (Box’s M)</a></li>
+  <li><a href="#comparação-direta-das-covariâncias" id="toc-comparação-direta-das-covariâncias" class="nav-link" data-scroll-target="#comparação-direta-das-covariâncias"><span class="header-section-number">4.2</span> Comparação direta das covariâncias</a></li>
+  </ul></li>
+  <li><a href="#ajuste-dos-modelos-lda-fisher-e-qda" id="toc-ajuste-dos-modelos-lda-fisher-e-qda" class="nav-link" data-scroll-target="#ajuste-dos-modelos-lda-fisher-e-qda"><span class="header-section-number">5</span> Ajuste dos modelos: LDA (Fisher) e QDA</a>
+  <ul class="collapse">
+  <li><a href="#método-da-ressubstituição" id="toc-método-da-ressubstituição" class="nav-link" data-scroll-target="#método-da-ressubstituição"><span class="header-section-number">5.1</span> Método da Ressubstituição</a></li>
+  <li><a href="#método-da-ressubstituição-com-divisão-amostral" id="toc-método-da-ressubstituição-com-divisão-amostral" class="nav-link" data-scroll-target="#método-da-ressubstituição-com-divisão-amostral"><span class="header-section-number">5.2</span> Método da Ressubstituição com Divisão Amostral</a></li>
+  <li><a href="#método-da-validação-cruzada-k-fold" id="toc-método-da-validação-cruzada-k-fold" class="nav-link" data-scroll-target="#método-da-validação-cruzada-k-fold"><span class="header-section-number">5.3</span> Método da Validação Cruzada <span class="math inline">\(k\)</span>-fold</a></li>
+  </ul></li>
+  <li><a href="#conclusão" id="toc-conclusão" class="nav-link" data-scroll-target="#conclusão"><span class="header-section-number">6</span> Conclusão</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/tiagomartin/est014/edit/main/analise_dados/seguradora.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/tiagomartin/est014/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="seguradora.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Classificação Antifraude em Seguros Automotivos usando Funções Discriminantes Lineares e Quadráticas</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="contexto-e-objetivo" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="contexto-e-objetivo"><span class="header-section-number">1</span> Contexto e Objetivo</h2>
+<p>Uma seguradora de automóveis quer automatizar a triagem de sinistros para decidir quais casos devem ser auditados com prioridade (investigação antifraude). Historicamente, o setor antifraude classifica sinistros em:</p>
+<ul>
+<li><p><strong>Classe A (Regular):</strong> sinistro com perfil compatível com o padrão esperado.</p></li>
+<li><p><strong>Classe B (Suspeito):</strong> sinistro com padrão atípico (alto risco de inconsistência/fraude).</p></li>
+</ul>
+<p>Para cada sinistro, são coletadas variáveis operacionais e comportamentais:</p>
+<ul>
+<li><p><code>valor_reparo (R$)</code></p></li>
+<li><p><code>dias_para_reportar</code>: dias entre o evento e o aviso</p></li>
+<li><p><code>qt_sinistros_12m</code>: nº de sinistros nos últimos 12 meses</p></li>
+<li><p><code>ratio_reparo_vs_fipe</code>: valor reparo / valor FIPE do veículo</p></li>
+<li><p><code>dist_evento_resid</code>: km entre local do evento e residência</p></li>
+<li><p><code>mudancas_contato_6m</code>: nº de mudanças de telefone/endereço nos últimos 6 meses</p></li>
+</ul>
+<p>O <strong>objetivo</strong> desta análise é usar Análise Discriminante para classificar sinistros como Regular vs Suspeito e justificar quando usar LDA e quando usar QDA, comparando desempenho e suposições.</p>
+<hr>
+</section>
+<section id="pacotes-utilizados" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="pacotes-utilizados"><span class="header-section-number">2</span> Pacotes utilizados</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>load <span class="ot">&lt;-</span> <span class="cf">function</span>(pkg){</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  new.pkg <span class="ot">&lt;-</span> pkg[<span class="sc">!</span>(pkg <span class="sc">%in%</span> <span class="fu">installed.packages</span>()[, <span class="st">"Package"</span>])]</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">length</span>(new.pkg))</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">install.packages</span>(new.pkg, <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sapply</span>(pkg, require, <span class="at">character.only =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>} </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="do">## Pacotes utilizados nessa análise</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>packages <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"tidyverse"</span>, <span class="st">"MASS"</span>, <span class="st">"biotools"</span>, <span class="st">"caret"</span>, <span class="st">"pROC"</span>, <span class="st">"ggplot2"</span>, <span class="st">"Matrix"</span>, <span class="st">"stats"</span>, <span class="st">"reshape2"</span>, <span class="st">"corrplot"</span>, <span class="st">"RColorBrewer"</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(packages)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   tidyverse         MASS     biotools        caret         pROC      ggplot2 
+        TRUE         TRUE         TRUE         TRUE         TRUE         TRUE 
+      Matrix        stats     reshape2     corrplot RColorBrewer 
+        TRUE         TRUE         TRUE         TRUE         TRUE </code></pre>
+</div>
+</div>
+</section>
+<section id="leitura-e-exploração-dos-dados" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="leitura-e-exploração-dos-dados"><span class="header-section-number">3</span> Leitura e exploração dos dados</h2>
+<p>os dados para esta análise estão disponíveis <a href="..\dados/seguradora.csv">aqui</a>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   400 obs. of  7 variables:
+ $ valor_reparo        : num  4907 9681 5055 8929 11344 ...
+ $ dias_para_reportar  : num  6.95 6.2 5.32 6.93 4.93 ...
+ $ qt_sinistros_12m    : num  2 1 1 0 2 1 1 1 0 2 ...
+ $ ratio_reparo_vs_fipe: num  0.169 0.502 0.538 0.147 0.315 ...
+ $ dist_evento_resid   : num  8.35 24.46 29.22 19.11 17.49 ...
+ $ mudancas_contato_6m : num  0 2 0 1 1 2 0 1 0 0 ...
+ $ classe              : Factor w/ 2 levels "Regular","Suspeito": 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  valor_reparo   dias_para_reportar qt_sinistros_12m ratio_reparo_vs_fipe
+ Min.   : 2731   Min.   : 1.229     Min.   :0.0000   Min.   :0.02225     
+ 1st Qu.: 6336   1st Qu.: 5.304     1st Qu.:0.0000   1st Qu.:0.31351     
+ Median : 7995   Median : 7.223     Median :1.0000   Median :0.48738     
+ Mean   : 8449   Mean   : 7.890     Mean   :0.8025   Mean   :0.53469     
+ 3rd Qu.: 9553   3rd Qu.: 9.758     3rd Qu.:1.0000   3rd Qu.:0.70367     
+ Max.   :26571   Max.   :19.550     Max.   :5.0000   Max.   :1.46809     
+ dist_evento_resid mudancas_contato_6m      classe   
+ Min.   :  2.682   Min.   :0.0000      Regular :320  
+ 1st Qu.: 15.873   1st Qu.:0.0000      Suspeito: 80  
+ Median : 25.454   Median :0.0000                    
+ Mean   : 29.362   Mean   :0.5125                    
+ 3rd Qu.: 37.239   3rd Qu.:1.0000                    
+ Max.   :134.776   Max.   :4.0000                    </code></pre>
+</div>
+</div>
+<p>A inspeção inicial dos dados indica que as variáveis apresentam escalas distintas e distribuições assimétricas positivas, especialmente para <code>valor_reparo</code> e <code>dist_evento_resid</code>, cujos valores máximos são substancialmente superiores às medianas. As variáveis <code>qt_sinistros_12m</code> e <code>mudancas_contato_6m</code> assumem valores inteiros baixos, sugerindo natureza discreta de contagem. Observa-se ainda desbalanceamento entre as classes, com predominância da categoria <code>Regular</code>. Nesta etapa, entretanto, não é possível inferir diferenças estruturais entre as populações, sendo necessária análise estratificada por classe.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df_long <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>classe, <span class="at">names_to =</span> <span class="st">"variavel"</span>, <span class="at">values_to =</span> <span class="st">"valor"</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_long, <span class="fu">aes</span>(<span class="at">x =</span> valor, <span class="at">fill =</span> classe)) <span class="sc">+</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> variavel, <span class="at">scales =</span> <span class="st">"free"</span>, <span class="at">ncol =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>) <span class="sc">+</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribuições das variáveis por população"</span>,</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Valor"</span>, <span class="at">y =</span> <span class="st">"Densidade"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="seguradora_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>A análise das distribuições das variáveis por população indica diferenças consistentes no comportamento das duas classes. Observa-se que a população <code>Suspeito</code> apresenta deslocamento das densidades para valores mais elevados em variáveis como <code>dias_para_reportar</code>, <code>ratio_reparo_vs_fipe</code>, <code>qt_sinistros_12m</code> e <code>valor_reparo</code>, além de maior dispersão geral, sugerindo maior heterogeneidade nesses casos. Em <code>dist_evento_resid</code>, a distribuição dos suspeitos apresenta cauda mais longa, indicando ocorrência relativamente mais frequente de valores extremos. Já a variável <code>mudancas_contato_6m</code> mostra concentração em valores baixos para ambas as populações, embora o grupo <code>Suspeito</code> apresente maior variabilidade. Apesar dessas diferenças, observa-se sobreposição considerável entre as densidades das duas classes em praticamente todas as variáveis, indicando que a separação entre <code>Regular</code> e <code>Suspeito</code> não é trivial quando analisada isoladamente em cada variável, reforçando a necessidade de métodos multivariados para identificação conjunta dos padrões discriminantes.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_long, <span class="fu">aes</span>(<span class="at">x =</span> classe, <span class="at">y =</span> valor, <span class="at">fill =</span> classe)) <span class="sc">+</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">outlier.alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> variavel, <span class="at">scales =</span> <span class="st">"free"</span>, <span class="at">ncol =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>) <span class="sc">+</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Boxplots comparativos entre Regular e Suspeito"</span>,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">""</span>, <span class="at">y =</span> <span class="st">"Valor"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="seguradora_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Os boxplots comparativos evidenciam diferenças consistentes entre as populações <code>Regular</code> e <code>Suspeito</code> em diversas variáveis analisadas. Observa-se que a classe <code>Suspeito</code> tende a apresentar medianas mais elevadas e maior dispersão em <code>dias_para_reportar</code>, <code>dist_evento_resid</code>, <code>qt_sinistros_12m</code>, <code>ratio_reparo_vs_fipe</code> e <code>valor_reparo</code>, indicando maior variabilidade e presença mais frequente de valores extremos nesses casos. A variável <code>mudancas_contato_6m</code> apresenta distribuição concentrada em valores baixos para ambas as populações, embora o grupo <code>Suspeito</code> mostre maior amplitude interquartílica. Apesar das diferenças nas tendências centrais e na variabilidade, verifica-se sobreposição entre os intervalos interquartílicos das duas classes, sugerindo que nenhuma variável isoladamente é suficiente para uma separação completa entre os grupos, reforçando a necessidade de abordagem multivariada para fins de classificação.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> ratio_reparo_vs_fipe,</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>               <span class="at">y =</span> dias_para_reportar,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">color =</span> classe)) <span class="sc">+</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_ellipse</span>(<span class="at">type =</span> <span class="st">"norm"</span>, <span class="at">linewidth =</span> <span class="fl">1.1</span>) <span class="sc">+</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>) <span class="sc">+</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Relação bivariada com elipses gaussianas"</span>,</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Ratio Reparo/FIPE"</span>,</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Dias para reportar"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="seguradora_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>A análise da relação bivariada entre <code>ratio_reparo_vs_fipe</code> e <code>dias_para_reportar</code>, representada por meio de elipses gaussianas, indica diferenças na posição e na dispersão das duas populações. Observa-se que a classe <code>Suspeito</code> apresenta maior variabilidade conjunta e uma tendência a valores mais elevados em ambas as variáveis, refletida por uma elipse mais ampla e deslocada em relação ao grupo <code>Regular</code>. Além disso, a orientação distinta das elipses sugere padrões de associação diferentes entre as variáveis nas duas classes. Apesar dessas diferenças estruturais, verifica-se uma região considerável de sobreposição entre os grupos, indicando que a separação não é linearmente perfeita quando analisada apenas nesse plano bidimensional, o que reforça a necessidade de métodos multivariados para capturar adequadamente a estrutura discriminante dos dados.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>X_scaled <span class="ot">&lt;-</span> <span class="fu">scale</span>(df[, <span class="sc">-</span><span class="dv">7</span>])</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>pca <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(X_scaled)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>pca_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(pca<span class="sc">$</span>x[,<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>], <span class="at">classe =</span> df<span class="sc">$</span>classe)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(pca_df, <span class="fu">aes</span>(PC1, PC2, <span class="at">color =</span> classe)) <span class="sc">+</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_ellipse</span>(<span class="at">type =</span> <span class="st">"norm"</span>) <span class="sc">+</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>) <span class="sc">+</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Projeção PCA das duas populações"</span>,</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"PC1"</span>, <span class="at">y =</span> <span class="st">"PC2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="seguradora_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>A projeção das observações nos dois primeiros componentes principais evidencia diferenças estruturais entre as populações analisadas. Observa-se que a classe <code>Suspeito</code> apresenta maior dispersão ao longo do primeiro componente (PC1), indicando maior variabilidade multivariada nesse grupo, enquanto a classe <code>Regular</code> se concentra mais próxima do centro da distribuição. As elipses gaussianas mostram deslocamento dos centróides entre as classes, sugerindo diferenças sistemáticas no padrão conjunto das variáveis. Contudo, a presença de uma região relevante de sobreposição entre as populações indica que a separação não é completamente evidente apenas na projeção bidimensional da PCA, reforçando a necessidade de métodos discriminantes supervisionados para melhorar a capacidade de classificação.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>corr_reg <span class="ot">&lt;-</span> <span class="fu">cor</span>(df[df<span class="sc">$</span>classe<span class="sc">==</span><span class="st">"Regular"</span>,<span class="sc">-</span><span class="dv">7</span>])</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>corr_sus <span class="ot">&lt;-</span> <span class="fu">cor</span>(df[df<span class="sc">$</span>classe<span class="sc">==</span><span class="st">"Suspeito"</span>,<span class="sc">-</span><span class="dv">7</span>])</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>labels_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">valor_reparo =</span> <span class="st">"Valor reparo"</span>,</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">dias_para_reportar =</span> <span class="st">"Dias reportar"</span>,</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">qt_sinistros_12m =</span> <span class="st">"Sinistros 12m"</span>,</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">ratio_reparo_vs_fipe =</span> <span class="st">"Ratio rep/FIPE"</span>,</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">dist_evento_resid =</span> <span class="st">"Dist. evento-resid"</span>,</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">mudancas_contato_6m =</span> <span class="st">"Mudanças 6m"</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(corr_reg) <span class="ot">&lt;-</span> <span class="fu">rownames</span>(corr_reg) <span class="ot">&lt;-</span> labels_vars[<span class="fu">colnames</span>(corr_reg)]</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(corr_sus) <span class="ot">&lt;-</span> <span class="fu">rownames</span>(corr_sus) <span class="ot">&lt;-</span> labels_vars[<span class="fu">colnames</span>(corr_sus)]</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(corr_reg,<span class="at">method =</span> <span class="st">"color"</span>, <span class="at">outline =</span> T, <span class="at">addgrid.col =</span> <span class="st">"darkgray"</span>, <span class="at">order =</span> <span class="st">"hclust"</span>, <span class="at">cl.pos =</span> <span class="st">"b"</span>, <span class="at">tl.col =</span> <span class="st">"indianred4"</span>, <span class="at">tl.cex =</span> <span class="fl">1.0</span>, <span class="at">tl.srt =</span> <span class="dv">40</span>, <span class="at">cl.cex =</span> <span class="fl">1.2</span>, <span class="at">addCoef.col =</span> <span class="st">"white"</span>, <span class="at">number.digits =</span> <span class="dv">2</span>,  <span class="at">number.cex =</span> <span class="fl">0.65</span>, <span class="at">col =</span> <span class="fu">colorRampPalette</span>(<span class="fu">c</span>(<span class="st">"darkred"</span>,<span class="st">"white"</span>,<span class="st">"midnightblue"</span>))(<span class="dv">100</span>))</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="fu">mtext</span>(<span class="st">"Grupo Regular"</span>, <span class="at">side =</span> <span class="dv">3</span>, <span class="at">line =</span> <span class="dv">3</span>, <span class="at">cex =</span> <span class="fl">1.2</span>, <span class="at">font =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="seguradora_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(corr_sus, <span class="at">method =</span> <span class="st">"color"</span>, <span class="at">outline =</span> T, <span class="at">addgrid.col =</span> <span class="st">"darkgray"</span>, <span class="at">order =</span> <span class="st">"hclust"</span>, <span class="at">cl.pos =</span> <span class="st">"b"</span>, <span class="at">tl.col =</span> <span class="st">"indianred4"</span>, <span class="at">tl.cex =</span> <span class="fl">1.0</span>, <span class="at">tl.srt =</span> <span class="dv">40</span>, <span class="at">cl.cex =</span> <span class="fl">1.2</span>, <span class="at">addCoef.col =</span> <span class="st">"white"</span>, <span class="at">number.digits =</span> <span class="dv">2</span>, <span class="at">number.cex =</span> <span class="fl">0.65</span>, <span class="at">col =</span> <span class="fu">colorRampPalette</span>(<span class="fu">c</span>(<span class="st">"darkred"</span>,<span class="st">"white"</span>,<span class="st">"midnightblue"</span>))(<span class="dv">100</span>))</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mtext</span>(<span class="st">"Grupo Suspeito"</span>, <span class="at">side =</span> <span class="dv">3</span>, <span class="at">line =</span> <span class="dv">3</span>, <span class="at">cex =</span> <span class="fl">1.2</span>, <span class="at">font =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="seguradora_files/figure-html/unnamed-chunk-8-2.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>A análise das matrizes de correlação evidencia diferenças importantes na estrutura de dependência entre as variáveis nos dois grupos analisados. No grupo <code>Regular</code>, observa-se um padrão de correlações predominantemente fracas a moderadas, indicando relações lineares pouco intensas entre os indicadores operacionais. As associações entre <code>valor do reparo</code>, <code>sinistros</code> e <code>distância do evento</code> são positivas, porém de baixa magnitude, sugerindo um comportamento relativamente estável e homogêneo dos registros. A variável <code>dias para reportar</code> apresenta correlações discretas com as demais, o que indica que o tempo de comunicação do sinistro não está fortemente ligado às demais características nesse grupo.</p>
+<p>Por outro lado, o grupo <code>Suspeito</code> apresenta uma estrutura de correlação mais intensa e consistente entre diversas variáveis. Observa-se associação positiva moderada entre <code>sinistros</code>, <code>dias para reportar</code>, <code>mudanças de contato</code> e <code>distância do evento</code>, sugerindo que esses fatores tendem a aumentar conjuntamente. Esse padrão indica maior interdependência entre os indicadores comportamentais e operacionais, possivelmente refletindo perfis menos homogêneos e maior variabilidade estrutural.</p>
+<p>De forma geral, as diferenças entre as matrizes sugerem que os grupos não apenas diferem em nível médio das variáveis, mas também em sua estrutura interna de covariância. Essa evidência reforça a presença de heterogeneidade multivariada entre as populações, aspecto relevante para técnicas de classificação e análise discriminante.</p>
+<hr>
+</section>
+<section id="diagnóstico-de-suposições-covariâncias-iguais" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="diagnóstico-de-suposições-covariâncias-iguais"><span class="header-section-number">4</span> Diagnóstico de suposições: covariâncias iguais?</h2>
+<section id="teste-de-box-boxs-m" class="level3" data-number="4.1">
+<h3 data-number="4.1" class="anchored" data-anchor-id="teste-de-box-boxs-m"><span class="header-section-number">4.1</span> Teste de Box (Box’s M)</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#H_0: Sigma_R = Sigma_S = Sigma</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>box_res <span class="ot">&lt;-</span> biotools<span class="sc">::</span><span class="fu">boxM</span>(df[, <span class="sc">-</span><span class="dv">7</span>], df<span class="sc">$</span>classe)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>box_res</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Box's M-test for Homogeneity of Covariance Matrices
+
+data:  df[, -7]
+Chi-Sq (approx.) = 175.44, df = 21, p-value &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>O teste de Box (Box’s M) foi aplicado para avaliar a homogeneidade das matrizes de covariância entre os grupos. O resultado obtido (<span class="math inline">\(\chi^2 = 175.44\)</span>, <span class="math inline">\(gl = 21\)</span>, <span class="math inline">\(p &lt; 2.2 \times 10^{-16}\)</span>) indica rejeição da hipótese nula de igualdade das matrizes, sugerindo que as populações apresentam estruturas de variabilidade distintas. Contudo, deve-se interpretar esse resultado com cautela, pois o teste de Box é altamente sensível ao tamanho amostral e a desvios de normalidade multivariada, podendo detectar diferenças estatisticamente significativas mesmo quando as discrepâncias práticas são moderadas. Ainda assim, a evidência aponta que a suposição de covariâncias iguais, fundamental para a Análise Discriminante Linear, pode estar violada, o que, do ponto de vista teórico, favorece o uso de modelos mais flexíveis, como a Análise Discriminante Quadrática. Assim, a escolha do modelo discriminante deve considerar não apenas o resultado do teste formal, mas também o desempenho preditivo e a estabilidade das classificações obtidas.</p>
+</section>
+<section id="comparação-direta-das-covariâncias" class="level3" data-number="4.2">
+<h3 data-number="4.2" class="anchored" data-anchor-id="comparação-direta-das-covariâncias"><span class="header-section-number">4.2</span> Comparação direta das covariâncias</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>cov_reg <span class="ot">&lt;-</span> <span class="fu">cov</span>(df[df<span class="sc">$</span>classe <span class="sc">==</span> <span class="st">"Regular"</span>, <span class="sc">-</span><span class="dv">7</span>])</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>cov_sus <span class="ot">&lt;-</span> <span class="fu">cov</span>(df[df<span class="sc">$</span>classe <span class="sc">==</span> <span class="st">"Suspeito"</span>, <span class="sc">-</span><span class="dv">7</span>])</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>cov_reg</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                     valor_reparo dias_para_reportar qt_sinistros_12m
+valor_reparo         4.732656e+06      1736.49394848     349.33459958
+dias_para_reportar   1.736494e+03        11.72548018       0.70813084
+qt_sinistros_12m     3.493346e+02         0.70813084       0.67319749
+ratio_reparo_vs_fipe 3.480007e+01        -0.06116438       0.01911089
+dist_evento_resid    5.652570e+03         9.72350496       2.32919399
+mudancas_contato_6m  2.274612e+02         0.75419196       0.09149687
+                     ratio_reparo_vs_fipe dist_evento_resid mudancas_contato_6m
+valor_reparo                 34.800074938      5652.5702264        2.274612e+02
+dias_para_reportar           -0.061164381         9.7235050        7.541920e-01
+qt_sinistros_12m              0.019110886         2.3291940        9.149687e-02
+ratio_reparo_vs_fipe          0.060525485         0.5696093        5.567377e-03
+dist_evento_resid             0.569609344       265.0373673        1.771633e+00
+mudancas_contato_6m           0.005567377         1.7716332        3.825921e-01</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>cov_sus</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                     valor_reparo dias_para_reportar qt_sinistros_12m
+valor_reparo         2.157630e+07       6123.0564606     2012.9053037
+dias_para_reportar   6.123056e+03         15.6636780        2.0153236
+qt_sinistros_12m     2.012905e+03          2.0153236        1.1580696
+ratio_reparo_vs_fipe 1.817955e+02          0.4813671        0.1412292
+dist_evento_resid    4.312760e+04         38.5516270       11.2819783
+mudancas_contato_6m  9.591896e+02          1.5553973        0.3117089
+                     ratio_reparo_vs_fipe dist_evento_resid mudancas_contato_6m
+valor_reparo                  181.7954627      43127.600941         959.1895894
+dias_para_reportar              0.4813671         38.551627           1.5553973
+qt_sinistros_12m                0.1412292         11.281978           0.3117089
+ratio_reparo_vs_fipe            0.1298240          3.879459           0.1086049
+dist_evento_resid               3.8794586        761.116194           9.5362481
+mudancas_contato_6m             0.1086049          9.536248           0.8449367</code></pre>
+</div>
+</div>
+<p>As matrizes de covariância estimadas para os grupos <code>Regular</code> e <code>Suspeito</code> indicam diferenças estruturais importantes tanto nas variâncias individuais das variáveis quanto nas relações de dependência entre elas.</p>
+<p>Observa-se que o grupo <code>Suspeito</code> apresenta variâncias substancialmente maiores em diversas variáveis, especialmente em <code>valor_reparo</code> e <code>dist_evento_resid</code>, evidenciando maior dispersão e heterogeneidade dos dados nesse grupo. Esse comportamento sugere maior variabilidade operacional e possível presença de casos extremos ou padrões menos homogêneos quando comparados ao grupo Regular.</p>
+<p>Além disso, as covariâncias no grupo <code>Suspeito</code> tendem a assumir magnitudes mais elevadas, indicando relações lineares mais intensas entre algumas variáveis, como entre <code>valor_reparo</code>, <code>dias_para_reportar</code> e <code>dist_evento_resid</code>. Já no grupo <code>Regular</code>, as covariâncias são relativamente menores, refletindo uma estrutura mais estável e menos dispersa.</p>
+<p>Essas diferenças estruturais reforçam a evidência de que as populações possuem padrões de variabilidade distintos, o que implica que métodos de classificação que assumem igualdade das matrizes de covariância podem não ser plenamente adequados. A presença de heterogeneidade nas estruturas de dispersão sugere que abordagens mais flexíveis, capazes de acomodar diferentes geometrias entre grupos, podem representar melhor a separação entre as classes.</p>
+<hr>
+</section>
+</section>
+<section id="ajuste-dos-modelos-lda-fisher-e-qda" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="ajuste-dos-modelos-lda-fisher-e-qda"><span class="header-section-number">5</span> Ajuste dos modelos: LDA (Fisher) e QDA</h2>
+<section id="método-da-ressubstituição" class="level3" data-number="5.1">
+<h3 data-number="5.1" class="anchored" data-anchor-id="método-da-ressubstituição"><span class="header-section-number">5.1</span> Método da Ressubstituição</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>X_scaled <span class="ot">&lt;-</span> <span class="fu">scale</span>(df[, <span class="sc">-</span><span class="dv">7</span>])</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>df_scaled <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">classe =</span> df<span class="sc">$</span>classe, X_scaled)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>fit_lda <span class="ot">&lt;-</span> MASS<span class="sc">::</span><span class="fu">lda</span>(classe <span class="sc">~</span> ., <span class="at">data =</span> df_scaled)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>fit_qda <span class="ot">&lt;-</span> MASS<span class="sc">::</span><span class="fu">qda</span>(classe <span class="sc">~</span> ., <span class="at">data =</span> df_scaled)</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>fit_lda</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Call:
+lda(classe ~ ., data = df_scaled)
+
+Prior probabilities of groups:
+ Regular Suspeito 
+     0.8      0.2 
+
+Group means:
+         valor_reparo dias_para_reportar qt_sinistros_12m ratio_reparo_vs_fipe
+Regular    -0.1990037         -0.1289575       -0.1269541           -0.1936770
+Suspeito    0.7960148          0.5158298        0.5078163            0.7747081
+         dist_evento_resid mudancas_contato_6m
+Regular         -0.1227236          -0.1273873
+Suspeito         0.4908943           0.5095490
+
+Coefficients of linear discriminants:
+                            LD1
+valor_reparo         0.60924975
+dias_para_reportar   0.18151359
+qt_sinistros_12m     0.07438289
+ratio_reparo_vs_fipe 0.64072925
+dist_evento_resid    0.04676077
+mudancas_contato_6m  0.15616528</code></pre>
+</div>
+</div>
+<section id="análise-discriminante-linear-lda" class="level4" data-number="5.1.1">
+<h4 data-number="5.1.1" class="anchored" data-anchor-id="análise-discriminante-linear-lda"><span class="header-section-number">5.1.1</span> Análise Discriminante Linear (LDA)</h4>
+<p>A análise discriminante linear foi ajustada considerando probabilidades <em>a priori</em> de 0,8 para o grupo <code>Regular</code> e 0,2 para o grupo <code>Suspeito</code>, refletindo o desbalanceamento observado entre as classes. As médias padronizadas indicam que o grupo <code>Suspeito</code> apresenta valores sistematicamente mais elevados em todas as variáveis analisadas, sugerindo um perfil geral de maior intensidade operacional e maior exposição ao risco quando comparado ao grupo <code>Regular</code>.</p>
+<p>Os coeficientes da função discriminante (LD1) mostram que <code>ratio_reparo_vs_fipe</code> e <code>valor_reparo</code> possuem maior contribuição para a separação entre os grupos, seguidos por <code>dias_para_reportar</code> e <code>mudancas_contato_6m</code>. Já <code>dist_evento_resid</code> e <code>qt_sinistros_12m</code> apresentam influência relativamente menor na combinação linear discriminante. Como todas as variáveis foram padronizadas previamente, a magnitude dos coeficientes pode ser interpretada diretamente como medida de importância relativa na discriminação.</p>
+<p>De forma geral, a função discriminante construída sugere que a separação entre as classes ocorre principalmente ao longo de um eixo associado a maiores valores de reparo e maior proporção entre custo de reparo e valor de mercado do veículo, indicando que essas características são fundamentais para distinguir os perfis analisados.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Obter projeções LD1</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>lda_proj <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit_lda)<span class="sc">$</span>x</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>dados_plot <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">LD1 =</span> lda_proj[,<span class="dv">1</span>])</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="co"># --------------------------------------------------</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Gráfico das densidades na direção discriminante</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="co"># --------------------------------------------------</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dados_plot, <span class="fu">aes</span>(<span class="at">x =</span> LD1, <span class="at">fill =</span> classe, <span class="at">color =</span> classe)) <span class="sc">+</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.35</span>, <span class="at">linewidth =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(</span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> dados_plot <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(classe) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">m =</span> <span class="fu">mean</span>(LD1)),</span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">xintercept =</span> m, <span class="at">color =</span> classe),</span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">linetype =</span> <span class="st">"dashed"</span>,</span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth =</span> <span class="fl">1.1</span></span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Projeção na Função Discriminante Linear (LD1)"</span>,</span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Score discriminante (LD1)"</span>,</span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Densidade"</span></span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>) <span class="sc">+</span></span>
+<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"top"</span></span>
+<span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="seguradora_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>A projeção dos indivíduos na primeira função discriminante linear (LD1) evidencia uma separação consistente entre os grupos <code>Regular</code> e <code>Suspeito</code>. Observa-se que o grupo <code>Regular</code> concentra-se predominantemente em valores menores do escore discriminante, enquanto o grupo <code>Suspeito</code> apresenta distribuição deslocada para valores mais altos, indicando que a combinação linear das variáveis consegue capturar diferenças estruturais entre as populações. Apesar da sobreposição parcial das densidades, esperada em problemas reais de classificação, as médias dos grupos encontram-se bem separadas ao longo do eixo LD1, sugerindo bom poder discriminante do modelo linear e indicando que a maior parte da variabilidade relevante para a distinção entre as classes está concentrada nessa única dimensão.</p>
+<section id="avaliação-do-modelo-linear" class="level5" data-number="5.1.1.1">
+<h5 data-number="5.1.1.1" class="anchored" data-anchor-id="avaliação-do-modelo-linear"><span class="header-section-number">5.1.1.1</span> Avaliação do Modelo Linear</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>pred_lda_resub <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit_lda)<span class="sc">$</span>class</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>conf_lda_resub <span class="ot">&lt;-</span> <span class="fu">confusionMatrix</span>(pred_lda_resub, df<span class="sc">$</span>classe, <span class="at">positive =</span> <span class="st">'Suspeito'</span>)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>conf_lda_resub</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Confusion Matrix and Statistics
+
+          Reference
+Prediction Regular Suspeito
+  Regular      309       40
+  Suspeito      11       40
+                                          
+               Accuracy : 0.8725          
+                 95% CI : (0.8358, 0.9036)
+    No Information Rate : 0.8             
+    P-Value [Acc &gt; NIR] : 9.165e-05       
+                                          
+                  Kappa : 0.5389          
+                                          
+ Mcnemar's Test P-Value : 8.826e-05       
+                                          
+            Sensitivity : 0.5000          
+            Specificity : 0.9656          
+         Pos Pred Value : 0.7843          
+         Neg Pred Value : 0.8854          
+             Prevalence : 0.2000          
+         Detection Rate : 0.1000          
+   Detection Prevalence : 0.1275          
+      Balanced Accuracy : 0.7328          
+                                          
+       'Positive' Class : Suspeito        
+                                          </code></pre>
+</div>
+</div>
+<p>A avaliação do desempenho da função discriminante linear indica acurácia global de 87,25%, superior à taxa de classificação pelo acaso (<code>No Information Rate</code> = 0,80), com evidência estatística significativa (<code>p &lt; 0,001</code>). Observa-se elevada especificidade (0,9656), indicando forte capacidade do modelo em identificar corretamente indivíduos da classe <code>Regular</code>. Entretanto, a sensibilidade foi moderada (0,50), sugerindo maior dificuldade na detecção de casos suspeitos, refletida pela presença de falsos negativos. O valor de Kappa igual a 0,5389 indica concordância moderada entre predições e classes reais. A acurácia balanceada (0,7328) evidencia que o desempenho não é uniforme entre as classes, possivelmente influenciado pelo desbalanceamento amostral e pela sobreposição parcial das distribuições. Em termos práticos, o modelo apresenta bom desempenho geral, mas pode requerer ajustes caso a prioridade seja maximizar a identificação de perfis suspeitos.</p>
+</section>
+</section>
+<section id="análise-discriminante-quadrática-qda" class="level4" data-number="5.1.2">
+<h4 data-number="5.1.2" class="anchored" data-anchor-id="análise-discriminante-quadrática-qda"><span class="header-section-number">5.1.2</span> Análise Discriminante Quadrática (QDA)</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>fit_qda</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Call:
+qda(classe ~ ., data = df_scaled)
+
+Prior probabilities of groups:
+ Regular Suspeito 
+     0.8      0.2 
+
+Group means:
+         valor_reparo dias_para_reportar qt_sinistros_12m ratio_reparo_vs_fipe
+Regular    -0.1990037         -0.1289575       -0.1269541           -0.1936770
+Suspeito    0.7960148          0.5158298        0.5078163            0.7747081
+         dist_evento_resid mudancas_contato_6m
+Regular         -0.1227236          -0.1273873
+Suspeito         0.4908943           0.5095490</code></pre>
+</div>
+</div>
+<p>A análise discriminante quadrática utiliza as mesmas médias por grupo, porém permite matrizes de covariância específicas para cada classe. Considerando que o teste de Box indicou rejeição da hipótese de homogeneidade das covariâncias e que o grupo <code>Suspeito</code> apresenta maior variabilidade estrutural, o modelo QDA é teoricamente mais adequado para representar a separação entre as populações.</p>
+<p>Enquanto o LDA produz uma fronteira de decisão linear, o QDA permite superfícies de decisão curvas, capazes de capturar diferenças na dispersão dos grupos. Dado o padrão observado nas matrizes de correlação e covariância, especialmente a maior intensidade das associações no grupo <code>Suspeito</code>, espera-se que o QDA apresente melhor desempenho preditivo em validações fora da amostra.</p>
+<section id="avaliação-do-modelo-quadrático" class="level5" data-number="5.1.2.1">
+<h5 data-number="5.1.2.1" class="anchored" data-anchor-id="avaliação-do-modelo-quadrático"><span class="header-section-number">5.1.2.1</span> Avaliação do Modelo Quadrático</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>pred_qda_resub <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit_qda)<span class="sc">$</span>class</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>conf_qda_resub <span class="ot">&lt;-</span> <span class="fu">confusionMatrix</span>(pred_qda_resub, df<span class="sc">$</span>classe, <span class="at">positive =</span> <span class="st">'Suspeito'</span>)</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>conf_qda_resub</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Confusion Matrix and Statistics
+
+          Reference
+Prediction Regular Suspeito
+  Regular      302       38
+  Suspeito      18       42
+                                          
+               Accuracy : 0.86            
+                 95% CI : (0.8221, 0.8925)
+    No Information Rate : 0.8             
+    P-Value [Acc &gt; NIR] : 0.001145        
+                                          
+                  Kappa : 0.5172          
+                                          
+ Mcnemar's Test P-Value : 0.011118        
+                                          
+            Sensitivity : 0.5250          
+            Specificity : 0.9437          
+         Pos Pred Value : 0.7000          
+         Neg Pred Value : 0.8882          
+             Prevalence : 0.2000          
+         Detection Rate : 0.1050          
+   Detection Prevalence : 0.1500          
+      Balanced Accuracy : 0.7344          
+                                          
+       'Positive' Class : Suspeito        
+                                          </code></pre>
+</div>
+</div>
+<p>A função discriminante quadrática apresentou acurácia global de 86%, superior ao <code>No Information Rate</code> (0,80), indicando capacidade preditiva significativa. A sensibilidade foi de 0,525, mostrando melhora discreta na identificação de casos suspeitos em comparação ao desempenho típico de classificadores lineares quando há heterogeneidade nas covariâncias. Por outro lado, a especificidade foi ligeiramente menor (0,9437), sugerindo pequeno aumento de erros na classificação de indivíduos da classe <code>Regular</code>. O coeficiente Kappa (0,5172) indica concordância moderada, enquanto a acurácia balanceada (0,7344) mostra desempenho relativamente equilibrado entre as classes, apesar do desbalanceamento amostral. Em termos gerais, o modelo quadrático apresenta desempenho semelhante ao linear, com leve ganho na detecção da classe <code>Suspeito</code>, porém sem melhoria substancial na acurácia global.</p>
+</section>
+</section>
+</section>
+<section id="método-da-ressubstituição-com-divisão-amostral" class="level3" data-number="5.2">
+<h3 data-number="5.2" class="anchored" data-anchor-id="método-da-ressubstituição-com-divisão-amostral"><span class="header-section-number">5.2</span> Método da Ressubstituição com Divisão Amostral</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12345</span>)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>train_id <span class="ot">&lt;-</span> <span class="fu">createDataPartition</span>(df<span class="sc">$</span>classe, <span class="at">p =</span> <span class="fl">0.7</span>, <span class="at">list =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>train <span class="ot">&lt;-</span> df[train_id, ]</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>test  <span class="ot">&lt;-</span> df[<span class="sc">-</span>train_id, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Foi realizada uma divisão amostral estratificada utilizando a função <code>createDataPartition()</code>, preservando a proporção original das classes <code>Regular</code> e <code>Suspeito</code> em ambos os subconjuntos. Fixou-se uma semente aleatória (<code>set.seed(12345)</code>) para garantir reprodutibilidade dos resultados. Aproximadamente 70% das observações foram alocadas ao conjunto de treinamento (<code>train</code>), utilizado para ajuste dos modelos discriminantes, enquanto os 30% restantes compuseram o conjunto de teste (<code>test</code>), empregado na avaliação externa do desempenho preditivo.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(df<span class="sc">$</span>classe))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ Regular Suspeito 
+     0.8      0.2 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(train<span class="sc">$</span>classe))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ Regular Suspeito 
+     0.8      0.2 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(test<span class="sc">$</span>classe))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ Regular Suspeito 
+     0.8      0.2 </code></pre>
+</div>
+</div>
+<p>A divisão amostral foi realizada de forma estratificada em relação à variável resposta, preservando a proporção original das classes no conjunto completo de dados. Observa-se que a classe <code>Regular</code> representa aproximadamente 80% das observações, enquanto a classe <code>Suspeito</code> corresponde a cerca de 20%, padrão que se manteve tanto nos conjuntos de treinamento quanto de teste. Essa manutenção das proporções indica que o particionamento não introduziu viés na representação das populações, garantindo maior confiabilidade na estimação dos modelos discriminantes e na avaliação de desempenho fora da amostra.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>preproc <span class="ot">&lt;-</span> <span class="fu">preProcess</span>(train[, <span class="sc">-</span><span class="dv">7</span>], <span class="at">method =</span> <span class="fu">c</span>(<span class="st">"center"</span>,<span class="st">"scale"</span>))</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>train_scaled <span class="ot">&lt;-</span> <span class="fu">predict</span>(preproc, train)</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>test_scaled  <span class="ot">&lt;-</span> <span class="fu">predict</span>(preproc, test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Antes da estimação das funções discriminantes, as variáveis explicativas foram padronizadas por meio de centralização e escalonamento, utilizando exclusivamente as estatísticas do conjunto de treinamento. Essa estratégia evita vazamento de informação entre as amostras e garante que a avaliação do modelo no conjunto de teste reflita um cenário realista de aplicação. Posteriormente, a mesma transformação foi aplicada ao conjunto de teste, assegurando consistência na escala das variáveis durante o processo de classificação.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>fit_lda <span class="ot">&lt;-</span> <span class="fu">lda</span>(classe <span class="sc">~</span> ., <span class="at">data =</span> train_scaled)</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>fit_lda</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Call:
+lda(classe ~ ., data = train_scaled)
+
+Prior probabilities of groups:
+ Regular Suspeito 
+     0.8      0.2 
+
+Group means:
+         valor_reparo dias_para_reportar qt_sinistros_12m ratio_reparo_vs_fipe
+Regular    -0.1854576         -0.1343928       -0.1267502           -0.1933343
+Suspeito    0.7418304          0.5375714        0.5070007            0.7733371
+         dist_evento_resid mudancas_contato_6m
+Regular         -0.1244438          -0.1388189
+Suspeito         0.4977752           0.5552754
+
+Coefficients of linear discriminants:
+                             LD1
+valor_reparo         0.552255319
+dias_para_reportar   0.232348499
+qt_sinistros_12m     0.083529897
+ratio_reparo_vs_fipe 0.638621687
+dist_evento_resid    0.003714212
+mudancas_contato_6m  0.204460423</code></pre>
+</div>
+</div>
+<section id="análise-discriminante-linear-lda-1" class="level4" data-number="5.2.1">
+<h4 data-number="5.2.1" class="anchored" data-anchor-id="análise-discriminante-linear-lda-1"><span class="header-section-number">5.2.1</span> Análise Discriminante Linear (LDA)</h4>
+<p>A análise discriminante linear foi estimada utilizando as variáveis padronizadas, o que permite interpretar diretamente os coeficientes da função discriminante como medidas relativas da contribuição de cada variável para a separação entre as populações. As probabilidades <em>a priori</em> indicam um desbalanceamento entre as classes, com aproximadamente 80% das observações pertencendo ao grupo <code>Regular</code> e 20% ao grupo <code>Suspeito</code>.</p>
+<p>Observa-se que os centróides das populações ao longo das variáveis padronizadas apresentam sinais opostos, sugerindo que o grupo <code>Suspeito</code> tende a assumir valores mais elevados nas variáveis analisadas, especialmente em <code>valor_reparo</code>, <code>ratio_reparo_vs_fipe</code>, <code>dias_para_reportar</code> e <code>mudancas_contato_6m</code>, o que indica um padrão comportamental distinto entre os grupos.</p>
+<p>A função discriminante linear (LD1) evidencia que as variáveis com maior contribuição para a separação entre as classes são:</p>
+<ul>
+<li><p><code>ratio_reparo_vs_fipe</code> (0,638): principal fator discriminante;</p></li>
+<li><p><code>valor_reparo</code> (0,552): forte influência na classificação;</p></li>
+<li><p><code>dias_para_reportar</code> (0,232) e <code>mudancas_contato_6m</code> (0,204): contribuição moderada.</p></li>
+</ul>
+<p>Por outro lado, as variáveis <code>qt_sinistros_12m</code> (0,083) e <code>dist_evento_resid</code> (<span class="math inline">\(\approx\)</span> 0,003) apresentam menor impacto discriminante, indicando que exercem influência limitada na distinção entre as populações no espaço linear.</p>
+<p>De forma geral, a padronização das variáveis permite concluir que a separação entre os grupos é dominada por características associadas ao custo relativo do reparo e ao comportamento temporal do segurado, sugerindo que padrões financeiros e operacionais são mais relevantes para a discriminação do que medidas puramente espaciais.</p>
+<section id="avaliação-do-modelo-linear-1" class="level5" data-number="5.2.1.1">
+<h5 data-number="5.2.1.1" class="anchored" data-anchor-id="avaliação-do-modelo-linear-1"><span class="header-section-number">5.2.1.1</span> Avaliação do Modelo Linear</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>pred_lda_test <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit_lda, <span class="at">newdata =</span> test_scaled)<span class="sc">$</span>class</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>conf_lda_test <span class="ot">&lt;-</span> <span class="fu">confusionMatrix</span>(pred_lda_test,</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>                                 test_scaled<span class="sc">$</span>classe,</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">positive =</span> <span class="st">"Suspeito"</span>)</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>conf_lda_test</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Confusion Matrix and Statistics
+
+          Reference
+Prediction Regular Suspeito
+  Regular       92       13
+  Suspeito       4       11
+                                          
+               Accuracy : 0.8583          
+                 95% CI : (0.7829, 0.9153)
+    No Information Rate : 0.8             
+    P-Value [Acc &gt; NIR] : 0.06473         
+                                          
+                  Kappa : 0.4848          
+                                          
+ Mcnemar's Test P-Value : 0.05235         
+                                          
+            Sensitivity : 0.45833         
+            Specificity : 0.95833         
+         Pos Pred Value : 0.73333         
+         Neg Pred Value : 0.87619         
+             Prevalence : 0.20000         
+         Detection Rate : 0.09167         
+   Detection Prevalence : 0.12500         
+      Balanced Accuracy : 0.70833         
+                                          
+       'Positive' Class : Suspeito        
+                                          </code></pre>
+</div>
+</div>
+<p>A avaliação da função discriminante linear no conjunto de teste indica um desempenho global satisfatório, com <code>acurácia</code> de 85,83%, valor superior à taxa base de classificação (<code>No Information Rate</code> = 0,80). O intervalo de confiança de 95% sugere estabilidade razoável da estimativa, embora o <code>p-valor</code> associado à comparação com a NIR (p = 0,0647) indique evidência estatística apenas moderada de melhoria em relação a uma classificação trivial.</p>
+<p>A matriz de confusão revela que o modelo apresenta alta <code>especificidade</code> (95,83%), indicando excelente capacidade de identificar corretamente contratos do grupo <code>Regular</code>. Entretanto, a <code>sensibilidade</code> (45,83%) é relativamente baixa, evidenciando dificuldade em detectar observações do grupo <code>Suspeito</code>. Esse padrão é coerente com o desbalanceamento entre as classes e sugere que a fronteira linear favorece a redução de falsos positivos em detrimento da identificação completa dos casos suspeitos.</p>
+<p>O <code>coeficiente Kappa</code> (0,4848) e a <code>acurácia balanceada</code> (0,7083) indicam desempenho moderado quando se considera o desequilíbrio entre as populações. Além disso, o <code>teste de McNemar</code> (p ≈ 0,052) sugere uma leve assimetria nos erros de classificação, com tendência a subestimar a classe <code>Suspeito</code>.</p>
+<p>De forma geral, os resultados mostram que a função discriminante linear apresenta boa capacidade de classificação global, porém com limitação na detecção de casos suspeitos, indicando que ajustes na fronteira de decisão ou estratégias de balanceamento podem ser considerados para melhorar a sensibilidade do modelo.</p>
+</section>
+</section>
+<section id="análise-discriminante-quadrática-qda-1" class="level4" data-number="5.2.2">
+<h4 data-number="5.2.2" class="anchored" data-anchor-id="análise-discriminante-quadrática-qda-1"><span class="header-section-number">5.2.2</span> Análise Discriminante Quadrática (QDA)</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>fit_qda <span class="ot">&lt;-</span> <span class="fu">qda</span>(classe <span class="sc">~</span> ., <span class="at">data =</span> train_scaled)</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>fit_qda</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Call:
+qda(classe ~ ., data = train_scaled)
+
+Prior probabilities of groups:
+ Regular Suspeito 
+     0.8      0.2 
+
+Group means:
+         valor_reparo dias_para_reportar qt_sinistros_12m ratio_reparo_vs_fipe
+Regular    -0.1854576         -0.1343928       -0.1267502           -0.1933343
+Suspeito    0.7418304          0.5375714        0.5070007            0.7733371
+         dist_evento_resid mudancas_contato_6m
+Regular         -0.1244438          -0.1388189
+Suspeito         0.4977752           0.5552754</code></pre>
+</div>
+</div>
+<p>O ajuste da função discriminante quadrática indica diferenças claras entre os centróides das duas populações no espaço das variáveis padronizadas. Observa-se que o grupo <code>Suspeito</code> apresenta médias sistematicamente superiores em praticamente todas as variáveis analisadas, especialmente em <code>ratio_reparo_vs_fipe</code>, <code>valor_reparo</code>, <code>dias_para_reportar</code> e <code>mudancas_contato_6m</code>. Esse padrão sugere maior intensidade de sinistros, maior tempo de reporte e valores relativos de reparo mais elevados, características coerentes com perfis de maior risco.</p>
+<p>Como as variáveis foram padronizadas previamente, os valores médios negativos associados ao grupo <code>Regular</code> indicam posicionamento abaixo da média global, enquanto as médias positivas do grupo <code>Suspeito</code> indicam deslocamento na direção oposta. Essa separação dos centróides evidencia que existe discriminação potencial entre as classes, embora não necessariamente linear.</p>
+<p>A principal diferença conceitual do QDA em relação à LDA é a consideração de matrizes de covariância específicas para cada população, permitindo que a fronteira de decisão seja curva. Dessa forma, o modelo torna-se mais flexível para capturar diferenças na dispersão e na estrutura de variância entre os grupos, aspecto particularmente relevante quando há evidência de heterogeneidade nas matrizes de covariância.</p>
+<p>Em síntese, os resultados sugerem que a separação entre as classes ocorre tanto por deslocamento das médias quanto por diferenças na estrutura de variabilidade, justificando a utilização da abordagem quadrática como alternativa à função discriminante linear.</p>
+<section id="avaliação-do-modelo-quadrático-1" class="level5" data-number="5.2.2.1">
+<h5 data-number="5.2.2.1" class="anchored" data-anchor-id="avaliação-do-modelo-quadrático-1"><span class="header-section-number">5.2.2.1</span> Avaliação do Modelo Quadrático</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>pred_qda_test <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit_qda, <span class="at">newdata =</span> test_scaled)<span class="sc">$</span>class</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>conf_qda_test <span class="ot">&lt;-</span> <span class="fu">confusionMatrix</span>(pred_qda_test,</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>                                 test_scaled<span class="sc">$</span>classe,</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">positive =</span> <span class="st">"Suspeito"</span>)</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>conf_qda_test</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Confusion Matrix and Statistics
+
+          Reference
+Prediction Regular Suspeito
+  Regular       91       12
+  Suspeito       5       12
+                                          
+               Accuracy : 0.8583          
+                 95% CI : (0.7829, 0.9153)
+    No Information Rate : 0.8             
+    P-Value [Acc &gt; NIR] : 0.06473         
+                                          
+                  Kappa : 0.5029          
+                                          
+ Mcnemar's Test P-Value : 0.14561         
+                                          
+            Sensitivity : 0.5000          
+            Specificity : 0.9479          
+         Pos Pred Value : 0.7059          
+         Neg Pred Value : 0.8835          
+             Prevalence : 0.2000          
+         Detection Rate : 0.1000          
+   Detection Prevalence : 0.1417          
+      Balanced Accuracy : 0.7240          
+                                          
+       'Positive' Class : Suspeito        
+                                          </code></pre>
+</div>
+</div>
+<p>A matriz de confusão obtida no conjunto de teste indica que o modelo QDA apresentou <code>acurácia</code> global de aproximadamente 85,8%, valor superior à taxa de classificação aleatória (<code>NIR</code> = 0,8), embora o teste estatístico associado apresente evidência moderada de ganho preditivo. Observa-se elevada <code>especificidade</code> (<span class="math inline">\(\approx\)</span> 0,95), indicando que a maioria dos clientes regulares foi corretamente identificada. Por outro lado, a <code>sensibilidade</code> (<span class="math inline">\(\approx\)</span> 0,50) foi mais baixa, revelando maior dificuldade do modelo em detectar corretamente observações da classe <code>Suspeito</code>, o que sugere uma tendência conservadora na classificação.</p>
+<p>O <code>coeficiente Kappa</code> em torno de 0,50 indica concordância moderada além do acaso, reforçando que o modelo possui capacidade discriminante, mas ainda apresenta limitações na identificação da classe minoritária. A <code>balanced accuracy</code> próxima de 0,72 evidencia que o desempenho não é uniforme entre as classes, refletindo o desequilíbrio amostral existente. De modo geral, os resultados sugerem que a função discriminante quadrática captura parte da estrutura multivariada dos dados, porém com ganhos modestos na capacidade de detecção da classe positiva, mantendo um comportamento mais eficiente na classificação da classe <code>Regular</code>.</p>
+</section>
+</section>
+</section>
+<section id="método-da-validação-cruzada-k-fold" class="level3" data-number="5.3">
+<h3 data-number="5.3" class="anchored" data-anchor-id="método-da-validação-cruzada-k-fold"><span class="header-section-number">5.3</span> Método da Validação Cruzada <span class="math inline">\(k\)</span>-fold</h3>
+<section id="análise-discriminante-linear-lda-2" class="level4" data-number="5.3.1">
+<h4 data-number="5.3.1" class="anchored" data-anchor-id="análise-discriminante-linear-lda-2"><span class="header-section-number">5.3.1</span> Análise Discriminante Linear (LDA)</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>train_control <span class="ot">&lt;-</span> <span class="fu">trainControl</span>(<span class="at">method =</span> <span class="st">"cv"</span>, <span class="at">number =</span> <span class="dv">10</span>)</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>lda_cv <span class="ot">&lt;-</span> <span class="fu">train</span>(classe <span class="sc">~</span> ., <span class="at">data =</span> train_scaled, <span class="at">method =</span> <span class="st">"lda"</span>, <span class="at">trControl =</span> train_control)</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>lda_cv<span class="sc">$</span>finalModel</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Call:
+lda(x, grouping = y)
+
+Prior probabilities of groups:
+ Regular Suspeito 
+     0.8      0.2 
+
+Group means:
+         valor_reparo dias_para_reportar qt_sinistros_12m ratio_reparo_vs_fipe
+Regular    -0.1854576         -0.1343928       -0.1267502           -0.1933343
+Suspeito    0.7418304          0.5375714        0.5070007            0.7733371
+         dist_evento_resid mudancas_contato_6m
+Regular         -0.1244438          -0.1388189
+Suspeito         0.4977752           0.5552754
+
+Coefficients of linear discriminants:
+                             LD1
+valor_reparo         0.552255319
+dias_para_reportar   0.232348499
+qt_sinistros_12m     0.083529897
+ratio_reparo_vs_fipe 0.638621687
+dist_evento_resid    0.003714212
+mudancas_contato_6m  0.204460423</code></pre>
+</div>
+</div>
+<p>A estimação da função discriminante linear via validação cruzada (<code>10-fold CV</code>) produziu coeficientes estáveis e consistentes com aqueles obtidos na estimação direta do modelo. Observa-se que as variáveis <code>ratio_reparo_vs_fipe</code> e <code>valor_reparo</code> apresentam os maiores pesos positivos na função discriminante, indicando maior contribuição para a separação entre as populações. A variável <code>dias_para_reportar</code> também exerce influência relevante, sugerindo que atrasos no reporte tendem a deslocar as observações na direção associada à classe <code>Suspeito</code>.</p>
+<p>Por outro lado, <code>dist_evento_resid</code> apresenta coeficiente pequeno, indicando menor poder discriminante marginal quando consideradas simultaneamente as demais variáveis. A estabilidade dos coeficientes sob validação cruzada sugere que a estrutura de separação entre os grupos é consistente e pouco sensível a variações amostrais, reforçando a robustez do modelo linear estimado.</p>
+<section id="avaliação-do-modelo-linear-2" class="level5" data-number="5.3.1.1">
+<h5 data-number="5.3.1.1" class="anchored" data-anchor-id="avaliação-do-modelo-linear-2"><span class="header-section-number">5.3.1.1</span> Avaliação do Modelo Linear</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>lda_cv<span class="sc">$</span>results</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["parameter"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Accuracy"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Kappa"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["AccuracySD"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["KappaSD"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"none","2":"0.8602627","3":"0.4855825","4":"0.05317542","5":"0.1830265","_rn_":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p>A avaliação do modelo discriminante linear por meio de validação cruzada (10 folds) indicou uma <code>acurácia</code> média de aproximadamente 0,86, com <code>coeficiente Kappa</code> em torno de 0,49, sugerindo desempenho moderado na classificação além do acaso. O <code>desvio padrão da acurácia</code> (<span class="math inline">\(\approx\)</span> 0,053) indica variação relativamente pequena entre as partições amostrais, evidenciando estabilidade do modelo frente a diferentes subconjuntos de treinamento e teste.</p>
+<p>Esses resultados mostram que a função discriminante linear apresenta capacidade consistente de separação entre as classes, mantendo desempenho semelhante ao observado nas demais estratégias de avaliação, mas com estimativa mais realista do erro de generalização. O valor positivo de Kappa reforça que o modelo captura estrutura discriminante relevante nos dados, embora ainda existam regiões de sobreposição entre as populações que limitam uma classificação perfeita.</p>
+</section>
+</section>
+<section id="análise-discriminante-quadrática-qda-2" class="level4" data-number="5.3.2">
+<h4 data-number="5.3.2" class="anchored" data-anchor-id="análise-discriminante-quadrática-qda-2"><span class="header-section-number">5.3.2</span> Análise Discriminante Quadrática (QDA)</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>qda_cv <span class="ot">&lt;-</span> <span class="fu">train</span>(classe <span class="sc">~</span> ., <span class="at">data =</span> train_scaled, <span class="at">method =</span> <span class="st">"qda"</span>, <span class="at">trControl =</span> train_control)</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>qda_cv<span class="sc">$</span>finalModel</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Call:
+qda(x, grouping = y)
+
+Prior probabilities of groups:
+ Regular Suspeito 
+     0.8      0.2 
+
+Group means:
+         valor_reparo dias_para_reportar qt_sinistros_12m ratio_reparo_vs_fipe
+Regular    -0.1854576         -0.1343928       -0.1267502           -0.1933343
+Suspeito    0.7418304          0.5375714        0.5070007            0.7733371
+         dist_evento_resid mudancas_contato_6m
+Regular         -0.1244438          -0.1388189
+Suspeito         0.4977752           0.5552754</code></pre>
+</div>
+</div>
+<p>A análise discriminante quadrática foi estimada considerando probabilidades <em>a priori</em> proporcionais ao tamanho das classes (<code>Regular</code> = 0,8; <code>Suspeito</code> = 0,2). As médias padronizadas indicam que a classe <code>Suspeito</code> apresenta valores sistematicamente maiores na maioria das variáveis, sugerindo deslocamento multivariado consistente entre os grupos. Diferentemente da LDA, a QDA permite estruturas de covariância distintas entre as populações, resultando em fronteiras de decisão potencialmente não lineares.</p>
+<p>Apesar dessa maior flexibilidade teórica, os coeficientes médios estimados nas partições de validação cruzada mostram comportamento semelhante ao modelo linear, sugerindo que a separação entre classes ocorre predominantemente ao longo de uma direção principal comum no espaço das variáveis. Isso indica que a complexidade adicional da QDA pode não trazer ganhos substanciais de generalização neste conjunto de dados.</p>
+<section id="avaliação-do-modelo-quadrático-2" class="level5" data-number="5.3.2.1">
+<h5 data-number="5.3.2.1" class="anchored" data-anchor-id="avaliação-do-modelo-quadrático-2"><span class="header-section-number">5.3.2.1</span> Avaliação do Modelo Quadrático</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>qda_cv<span class="sc">$</span>results</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["parameter"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Accuracy"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Kappa"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["AccuracySD"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["KappaSD"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"none","2":"0.839272","3":"0.4155755","4":"0.05345175","5":"0.2622519","_rn_":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p>A análise discriminante quadrática apresentou <code>acurácia</code> média de aproximadamente 0,84 na validação cruzada (<code>Kappa</code> <span class="math inline">\(\approx\)</span> 0,42), indicando capacidade moderada de discriminação entre as classes. O <code>desvio-padrão</code> relativamente elevado da acurácia (<span class="math inline">\(\approx\)</span> 0,05) sugere maior variabilidade do modelo entre as partições amostrais, refletindo a maior complexidade da QDA ao estimar matrizes de covariância específicas para cada grupo. Comparativamente, observa-se que o desempenho preditivo não supera substancialmente o obtido pela função discriminante linear, apesar da flexibilização da fronteira de decisão. Esse resultado indica que, embora as populações apresentem diferenças estruturais nas covariâncias, a separação entre classes ocorre predominantemente ao longo de uma direção linear dominante, tornando o modelo linear mais estável e parcimonioso para fins de classificação.</p>
+</section>
+</section>
+</section>
+</section>
+<section id="conclusão" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="conclusão"><span class="header-section-number">6</span> Conclusão</h2>
+<p>A análise exploratória inicial evidenciou diferenças sistemáticas entre as populações <code>Regular</code> e <code>Suspeito</code>, tanto nas distribuições marginais das variáveis quanto nas relações bivariadas e estruturas de correlação. As visualizações gráficas indicaram que a classe <code>Suspeito</code> tende a apresentar valores mais elevados em indicadores associados a risco, como <code>razão reparo/FIPE</code>, <code>quantidade de sinistros</code> e <code>distância do evento à residência</code>, além de maior dispersão geral. A projeção em componentes principais confirmou a existência de uma direção dominante de separação entre os grupos, embora com região de sobreposição relevante, sugerindo a presença de erros de classificação inevitáveis.</p>
+<p>O teste de Box indicou heterogeneidade significativa entre as matrizes de covariância, evidenciando que a hipótese de igualdade estrutural entre os grupos não é estritamente válida. Ainda assim, a análise discriminante linear apresentou desempenho competitivo e estável, com boa capacidade de separação ao longo de uma única função discriminante dominante (LD1). A interpretação dos coeficientes revelou que variáveis associadas ao comportamento de sinistros e ao valor relativo do reparo possuem maior contribuição para a discriminação entre as classes.</p>
+<p>A análise discriminante quadrática, por sua vez, incorporou a diferença nas estruturas de variância entre os grupos, permitindo fronteiras de decisão mais flexíveis. Entretanto, os resultados empíricos mostraram ganhos limitados em relação ao modelo linear, além de maior variabilidade nas estimativas durante a validação cruzada. Isso sugere que, apesar da diferença nas covariâncias, a separação entre as populações ocorre principalmente em uma direção aproximadamente linear no espaço das variáveis.</p>
+<p>De modo geral, os resultados indicam que ambos os modelos apresentam desempenho satisfatório na identificação da classe <code>Suspeito</code>, com níveis semelhantes de <code>acurácia</code> e concordância (<code>Kappa</code>). Contudo, considerando a maior estabilidade, simplicidade interpretativa e menor variância preditiva observada, a função discriminante linear se mostra mais adequada como modelo final para classificação neste contexto.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("http:\/\/professortp\.com\.br\/est014\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Copyright 2025, Tiago Pereira</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/tiagomartin/est014/edit/main/analise_dados/seguradora.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/tiagomartin/est014/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>Página construída usando <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

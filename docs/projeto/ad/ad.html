@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Projetos – EST014 - Estatística Multivariada I</title>
+<title>Análise Discriminante em Detecção de Risco de Crédito – EST014 - Estatística Multivariada I</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +23,26 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./cronograma.html" rel="next">
-<link href="./plano.html" rel="prev">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-a220adb8a605b89d59acc5f3dfb417c5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-748b535e376f14d4692bf2b2e5fd6380.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-b09848b6287391c45069fed345a57cb2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-e9f3ba5fbee03b112b18b9666ab66a2c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-b09848b6287391c45069fed345a57cb2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -68,53 +70,175 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<style>
-/* Estilos visuais EST304 sem quebrar tipografia do Quarto */
-.aulas-list .list-group-item {
-  border-left: 4px solid #2761E3;
-  padding-top: 0.8rem;
-  padding-bottom: 0.8rem;
-}
-.aulas-list .list-group-item:hover {
-  background-color: #F2F2F2;
-}
-.disciplina-badge {
-  background-color: #2761E3;
-}
-.btn-est304-main {
-  background-color: #2761E3;
-  border-color: #2761E3;
-  color: #fff;
-}
-.btn-est304-main:hover {
-  background-color: #789CEB;
-  border-color: #789CEB;
-  color: #fff;
-}
-.btn-est304-outline {
-  color: #2761E3;
-  border-color: #2761E3;
-}
-.btn-est304-outline:hover {
-  background-color: #2761E3;
-  color: #fff;
-}
-.due-date-badge {
-  color: red;
-  border-color: #7F2E2F;
-  font-size: 16pt;
-  font-weight: 600;
-  padding: 4px 8px;
-}
-</style>
 
 
-<meta property="og:title" content="Projetos – EST014 - Estatística Multivariada I">
+<meta property="og:title" content="Análise Discriminante em Detecção de Risco de Crédito – EST014 - Estatística Multivariada I">
 <meta property="og:description" content="Homepage da disciplina EST014 - Estatística Multivariada I, 2025/2">
 <meta property="og:site_name" content="EST014 - Estatística Multivariada I">
 </head>
 
-<body class="nav-sidebar docked quarto-light">
+<body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -123,7 +247,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./projeto.html">Projetos</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Análise Discriminante em Detecção de Risco de Crédito</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -137,11 +261,12 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
-      <a href="./index.html" class="sidebar-logo-link">
-      <img src="./images/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <a href="../../index.html" class="sidebar-logo-link">
+      <img src="../../images/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main">
     <a href="https://github.com/tiagomartin/est014" title="github" class="quarto-navigation-tool px-1" aria-label="github"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -153,37 +278,37 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./aulas.html" class="sidebar-item-text sidebar-link">
+  <a href="../../aulas.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Aulas</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./exercicios.html" class="sidebar-item-text sidebar-link">
+  <a href="../../exercicios.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Listas de Exercícios</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./analises.html" class="sidebar-item-text sidebar-link">
+  <a href="../../analises.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Análise de dados</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./plano.html" class="sidebar-item-text sidebar-link">
+  <a href="../../plano.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Plano de Ensino</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./projeto.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../projeto.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Projetos</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./cronograma.html" class="sidebar-item-text sidebar-link">
+  <a href="../../cronograma.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Cronograma da Disciplina</span></a>
   </div>
 </li>
@@ -192,15 +317,24 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#contexto" id="toc-contexto" class="nav-link active" data-scroll-target="#contexto"><span class="header-section-number">1</span> Contexto</a></li>
+  <li><a href="#base-de-dados" id="toc-base-de-dados" class="nav-link" data-scroll-target="#base-de-dados"><span class="header-section-number">2</span> Base de dados</a></li>
+  <li><a href="#etapas-obrigatórias-da-análise" id="toc-etapas-obrigatórias-da-análise" class="nav-link" data-scroll-target="#etapas-obrigatórias-da-análise"><span class="header-section-number">3</span> Etapas obrigatórias da análise</a></li>
+  </ul>
+<div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/tiagomartin/est014/edit/main/projeto/ad/ad.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/tiagomartin/est014/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="ad.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Projetos</h1>
+<h1 class="title">Análise Discriminante em Detecção de Risco de Crédito</h1>
 </div>
 
 
@@ -217,51 +351,82 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Esta página contém os projetos de análise de dados que serão apresentados ao longo do semestre. Você pode baixar os projetos em versão PDF.</p>
-<div class="list-group aulas-list">
-<div class="list-group-item d-flex justify-content-between align-items-center">
-<div>
-<p><span class="fw-bold">1. Análise de Componentes Principais</span></p>
-</div>
-<div class="d-flex align-items-center gap-3">
-<p><span> <a href="projeto/acp/acp.html" class="btn btn-est304-main btn-sm">Ver projeto</a> <a href="projeto/acp/acp.pdf" class="btn btn-est304-outline btn-sm">PDF</a> </span></p>
-<p><span class="badge due-date-badge"> Entrega: 19/12/2025 </span></p>
-</div>
-</div>
-<div class="list-group-item d-flex justify-content-between align-items-center">
-<div>
-<p><span class="fw-bold">2. Análise Fatorial</span></p>
-</div>
-<div class="d-flex align-items-center gap-3">
-<p><span> <a href="projeto/af/af.html" class="btn btn-est304-main btn-sm">Ver projeto</a> <a href="projeto/af/af.pdf" class="btn btn-est304-outline btn-sm">PDF</a> </span></p>
-<p><span class="badge due-date-badge"> Entrega: 03/02/2026 </span></p>
-</div>
-</div>
-<div class="list-group-item d-flex justify-content-between align-items-center">
-<div>
-<p><span class="fw-bold">3. Análise de Agrupamentos</span></p>
-</div>
-<div class="d-flex align-items-center gap-3">
-<p><span> <a href="projeto/aa/aa.html" class="btn btn-est304-main btn-sm">Ver projeto</a> <a href="projeto/aa/aa.pdf" class="btn btn-est304-outline btn-sm">PDF</a> </span></p>
-<p><span class="badge due-date-badge"> Entrega: 26/02/2026 </span></p>
-</div>
-</div>
-<div class="list-group-item d-flex justify-content-between align-items-center">
-<div>
-<p><span class="fw-bold">4. Análise Discriminante</span></p>
-</div>
-<div class="d-flex align-items-center gap-3">
-<p><span> <a href="projeto/ad/ad.html" class="btn btn-est304-main btn-sm">Ver projeto</a> <a href="projeto/ad/ad.pdf" class="btn btn-est304-outline btn-sm">PDF</a> </span></p>
-<p><span class="badge due-date-badge"> Entrega: 26/02/2026 </span></p>
-</div>
-</div>
-</div>
+<p align="center" style="font-size: 40px">
+<code>Data de entrega: 26 de fevereiro de 2026</code>
+</p>
+<hr>
+<section id="contexto" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Contexto</h1>
+<p>Uma instituição financeira deseja desenvolver um sistema de apoio à decisão para identificar clientes com alto risco de inadimplência a partir de informações comportamentais e financeiras recentes.</p>
+<p>Cada cliente foi classificado historicamente em duas populações:</p>
+<ul>
+<li><p><code>Adimplente</code>: clientes que mantêm pagamentos regulares</p></li>
+<li><p><code>Risco</code>: clientes que apresentaram atraso ou inadimplência relevante</p></li>
+</ul>
+<p>O objetivo da equipe de análise é construir e avaliar funções discriminantes capazes de separar essas populações e apoiar o processo de análise de crédito.</p>
+<hr>
+</section>
+<section id="base-de-dados" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Base de dados</h1>
+<p>A base de dados contém as seguintes variáveis:</p>
+<ul>
+<li><p><code>valor_limite</code>: limite total de crédito disponível</p></li>
+<li><p><code>dias_atraso_medio</code>: média de dias de atraso nos últimos 12 meses</p></li>
+<li><p><code>qt_atrasos_12m</code>: número de atrasos registrados</p></li>
+<li><p><code>ratio_divida_renda</code>: razão dívida/renda mensal</p></li>
+<li><p><code>dist_agencia_resid</code>: distância entre residência e agência mais próxima</p></li>
+<li><p><code>mudancas_endereco_6m</code>: mudanças de endereço recentes</p></li>
+<li><p><code>classe</code>: população (Adimplente ou Risco)</p></li>
+</ul>
+<p>Os dados para esta análise estão disponíveis <a href="../..\dados/dados_risco.csv">aqui</a>.</p>
+<hr>
+</section>
+<section id="etapas-obrigatórias-da-análise" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Etapas obrigatórias da análise</h1>
+<p>O aluno deverá realizar uma análise discriminante completa para classificar clientes em duas populações (Adimplente <em>vs</em> Risco), reproduzindo todas as etapas de um estudo aplicado. Em síntese, espera-se que o aluno:</p>
+<ul>
+<li><p>Explorar os dados: analisar estrutura, distribuições, boxplots, relações bivariadas e matrizes de correlação por grupo.</p></li>
+<li><p>Verificar suposições: aplicar o teste de Box (Box’s M) e comparar as matrizes de covariância das populações.</p></li>
+<li><p>Estimar modelos discriminantes:</p>
+<ul>
+<li>Função Discriminante Linear (LDA)</li>
+<li>Função Discriminante Quadrática (QDA)</li>
+</ul></li>
+<li><p>Visualizar e interpretar:</p>
+<ul>
+<li>projeção na função discriminante</li>
+<li>separação entre os grupos</li>
+<li>importância das variáveis.</li>
+</ul></li>
+<li><p>Avaliar desempenho preditivo usando três abordagens:</p>
+<ul>
+<li>método da ressubstituição,</li>
+<li>divisão treino/teste,</li>
+<li>validação cruzada.</li>
+</ul></li>
+<li><p>Comparar LDA e QDA, discutindo qual modelo é mais adequado ao problema.</p></li>
+<li><p>Produzir interpretação final, relacionando resultados estatísticos com o contexto aplicado de risco de crédito.</p></li>
+</ul>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
     const icon = "";
     const anchorJS = new window.AnchorJS();
     anchorJS.options = {
@@ -659,18 +824,6 @@ ul.task-list li input[type="checkbox"] {
     }
   });
   </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./plano.html" class="pagination-link" aria-label="Plano de Ensino">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Plano de Ensino</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="./cronograma.html" class="pagination-link" aria-label="Cronograma da Disciplina">
-        <span class="nav-page-text">Cronograma da Disciplina</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -679,7 +832,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/tiagomartin/est014/edit/main/projeto.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/tiagomartin/est014/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/tiagomartin/est014/edit/main/projeto/ad/ad.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/tiagomartin/est014/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Página construída usando <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

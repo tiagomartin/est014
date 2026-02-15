@@ -1,0 +1,593 @@
+---
+title: "Classificação Antifraude em Seguros Automotivos usando Funções Discriminantes Lineares e Quadráticas"
+format:
+  html:
+    toc: true
+    toc-title: "Navegação"
+    number-sections: true
+    df-print: paged
+  pdf:
+    toc: true
+    number-sections: true
+    df-print: kable
+    documentclass: article
+    geometry: margin=1in
+    keep-tex: false
+editor: visual
+execute:
+  echo: true
+  warning: false
+  message: false
+  fig-width: 7
+  fig-height: 5
+  fig-dpi: 300
+  fig-path: "figures/"
+  # fig-format: "png"   # opcional; descomente se preferir PNG sempre
+---
+
+
+## Contexto e Objetivo
+
+
+Uma seguradora de automóveis quer automatizar a triagem de sinistros para decidir quais casos devem ser auditados com prioridade (investigação antifraude). Historicamente, o setor antifraude classifica sinistros em:
+
+- **Classe A (Regular):** sinistro com perfil compatível com o padrão esperado.
+
+- **Classe B (Suspeito):** sinistro com padrão atípico (alto risco de inconsistência/fraude).
+
+Para cada sinistro, são coletadas variáveis operacionais e comportamentais:
+
+- `valor_reparo (R$)`
+
+- `dias_para_reportar`: dias entre o evento e o aviso
+
+- `qt_sinistros_12m`: nº de sinistros nos últimos 12 meses
+
+- `ratio_reparo_vs_fipe`: valor reparo / valor FIPE do veículo
+
+- `dist_evento_resid`: km entre local do evento e residência
+
+- `mudancas_contato_6m`: nº de mudanças de telefone/endereço nos últimos 6 meses
+
+
+O **objetivo** desta análise é usar Análise Discriminante para classificar sinistros como Regular vs Suspeito e justificar quando usar LDA e quando usar QDA, comparando desempenho e suposições.
+
+
+---
+
+
+
+## Pacotes utilizados
+ 
+```{r}
+load <- function(pkg){
+  new.pkg <- pkg[!(pkg %in% installed.packages()[, "Package"])]
+  if (length(new.pkg))
+    install.packages(new.pkg, dependencies = TRUE)
+  sapply(pkg, require, character.only = TRUE)
+} 
+
+## Pacotes utilizados nessa análise
+
+packages = c("tidyverse", "MASS", "biotools", "caret", "pROC", "ggplot2", "Matrix", "stats", "reshape2", "corrplot", "RColorBrewer")
+load(packages)
+```
+
+
+
+```{r, echo=FALSE}
+set.seed(2026)
+# -------------------------------
+# 1) Tamanhos e variáveis
+# -------------------------------
+n_reg <- 320
+n_sus <- 80
+p <- 6
+
+vars <- c("valor_reparo", "dias_para_reportar", "qt_sinistros_12m",
+          "ratio_reparo_vs_fipe", "dist_evento_resid", "mudancas_contato_6m")
+
+# separação (menor => mais sobreposição => mais erros)
+sep <- 0.35
+
+dir <- c(0.7, 0.9, 1.0, 0.4, 0.9, 0.8)
+dir <- dir / sqrt(sum(dir^2))
+mu_reg <- rep(0, p)
+mu_sus <- mu_reg + sep * dir
+
+# -------------------------------
+# 2) Matrizes de correlação latentes DIFERENTES (SPD)
+# -------------------------------
+R_reg <- matrix(c(
+  1.00, 0.20, 0.25, 0.10, 0.20, 0.25,
+  0.20, 1.00, 0.30, 0.05, 0.25, 0.30,
+  0.25, 0.30, 1.00, 0.10, 0.25, 0.35,
+  0.10, 0.05, 0.10, 1.00, 0.15, 0.10,
+  0.20, 0.25, 0.25, 0.15, 1.00, 0.25,
+  0.25, 0.30, 0.35, 0.10, 0.25, 1.00
+), nrow = p, byrow = TRUE)
+
+# "Suspeito" com dependências mais fortes (como você viu nos seus heatmaps)
+R_sus_raw <- R_reg
+R_sus_raw[upper.tri(R_sus_raw)] <- pmin(R_sus_raw[upper.tri(R_sus_raw)] + 0.25, 0.95)
+R_sus_raw[lower.tri(R_sus_raw)] <- t(R_sus_raw)[lower.tri(R_sus_raw)]
+diag(R_sus_raw) <- 1
+
+# Garantir SPD
+R_sus <- as.matrix(nearPD(R_sus_raw, corr = TRUE)$mat)
+
+# -------------------------------
+# 3) Função cópula -> marginais realistas
+#    (parâmetros DIFERENTES por grupo => variâncias diferentes)
+# -------------------------------
+to_realistic <- function(Z, group = c("Regular","Suspeito")){
+  group <- match.arg(group)
+  U <- pnorm(Z)
+
+  if(group == "Regular"){
+    # Regular: menor variabilidade
+    valor_reparo <- qlnorm(U[,1], meanlog = log(7500), sdlog = 0.30)
+    dias_rep     <- qgamma(U[,2], shape = 5, scale = 1.5)     # média 7.5
+    sin12m       <- qpois(U[,3], lambda = 0.7)
+    ratio        <- 2.0 * qbeta(U[,4], shape1 = 2.5, shape2 = 7.5) # [0,2.0]
+    dist         <- qgamma(U[,5], shape = 3.0, scale = 9)     # média 27
+    mud6m        <- pmin(qpois(U[,6], lambda = 0.45), 6)
+
+  } else {
+    # Suspeito: maior variabilidade + médias um pouco maiores
+    valor_reparo <- qlnorm(U[,1], meanlog = log(9500), sdlog = 0.45) # variância maior
+    dias_rep     <- qgamma(U[,2], shape = 3.5, scale = 2.6)          # média 9.1 + dispersão
+    sin12m       <- qpois(U[,3], lambda = 1.2)
+    ratio        <- 2.4 * qbeta(U[,4], shape1 = 2.2, shape2 = 5.2)   # [0,2.4] mais espalhado
+    dist         <- qgamma(U[,5], shape = 2.2, scale = 15)           # média 33 + dispersão
+    mud6m        <- pmin(qpois(U[,6], lambda = 0.85), 6)
+  }
+
+  out <- data.frame(
+    valor_reparo = valor_reparo,
+    dias_para_reportar = dias_rep,
+    qt_sinistros_12m = sin12m,
+    ratio_reparo_vs_fipe = ratio,
+    dist_evento_resid = dist,
+    mudancas_contato_6m = mud6m
+  )
+  out
+}
+
+# -------------------------------
+# 4) Gerar Z com correlações diferentes por grupo
+# -------------------------------
+Z_reg <- mvrnorm(n_reg, mu = mu_reg, Sigma = R_reg)
+Z_sus <- mvrnorm(n_sus, mu = mu_sus, Sigma = R_sus)
+
+df_reg <- to_realistic(Z_reg, "Regular")  %>%
+  mutate(classe = factor("Regular", levels = c("Regular","Suspeito")))
+df_sus <- to_realistic(Z_sus, "Suspeito") %>%
+  mutate(classe = factor("Suspeito", levels = c("Regular","Suspeito")))
+
+df <- bind_rows(df_reg, df_sus)
+
+write.csv(df, "F:/SITE/est014/dados/seguradora.csv", row.names = FALSE)
+```
+
+
+
+## Leitura e exploração dos dados
+
+os dados para esta análise estão disponíveis [aqui](/dados/seguradora.csv).
+
+```{r}
+df %>% 
+  str()
+
+df %>% 
+  summary()
+```
+
+A inspeção inicial dos dados indica que as variáveis apresentam escalas distintas e distribuições assimétricas positivas, especialmente para `valor_reparo` e `dist_evento_resid`, cujos valores máximos são substancialmente superiores às medianas. As variáveis `qt_sinistros_12m` e `mudancas_contato_6m` assumem valores inteiros baixos, sugerindo natureza discreta de contagem. Observa-se ainda desbalanceamento entre as classes, com predominância da categoria `Regular`. Nesta etapa, entretanto, não é possível inferir diferenças estruturais entre as populações, sendo necessária análise estratificada por classe.
+
+
+```{r}
+df_long <- df %>%
+  pivot_longer(-classe, names_to = "variavel", values_to = "valor")
+
+ggplot(df_long, aes(x = valor, fill = classe)) +
+  geom_density(alpha = 0.5) +
+  facet_wrap(~ variavel, scales = "free", ncol = 3) +
+  theme_minimal(base_size = 13) +
+  labs(title = "Distribuições das variáveis por população",
+       x = "Valor", y = "Densidade")
+```
+
+A análise das distribuições das variáveis por população indica diferenças consistentes no comportamento das duas classes. Observa-se que a população `Suspeito` apresenta deslocamento das densidades para valores mais elevados em variáveis como `dias_para_reportar`, `ratio_reparo_vs_fipe`, `qt_sinistros_12m` e `valor_reparo`, além de maior dispersão geral, sugerindo maior heterogeneidade nesses casos. Em `dist_evento_resid`, a distribuição dos suspeitos apresenta cauda mais longa, indicando ocorrência relativamente mais frequente de valores extremos. Já a variável `mudancas_contato_6m` mostra concentração em valores baixos para ambas as populações, embora o grupo `Suspeito` apresente maior variabilidade. Apesar dessas diferenças, observa-se sobreposição considerável entre as densidades das duas classes em praticamente todas as variáveis, indicando que a separação entre `Regular` e `Suspeito` não é trivial quando analisada isoladamente em cada variável, reforçando a necessidade de métodos multivariados para identificação conjunta dos padrões discriminantes.
+
+```{r}
+ggplot(df_long, aes(x = classe, y = valor, fill = classe)) +
+  geom_boxplot(alpha = 0.7, outlier.alpha = 0.3) +
+  facet_wrap(~ variavel, scales = "free", ncol = 3) +
+  theme_minimal(base_size = 13) +
+  labs(title = "Boxplots comparativos entre Regular e Suspeito",
+       x = "", y = "Valor")
+```
+
+
+Os boxplots comparativos evidenciam diferenças consistentes entre as populações `Regular` e `Suspeito` em diversas variáveis analisadas. Observa-se que a classe `Suspeito` tende a apresentar medianas mais elevadas e maior dispersão em `dias_para_reportar`, `dist_evento_resid`, `qt_sinistros_12m`, `ratio_reparo_vs_fipe` e `valor_reparo`, indicando maior variabilidade e presença mais frequente de valores extremos nesses casos. A variável `mudancas_contato_6m` apresenta distribuição concentrada em valores baixos para ambas as populações, embora o grupo `Suspeito` mostre maior amplitude interquartílica. Apesar das diferenças nas tendências centrais e na variabilidade, verifica-se sobreposição entre os intervalos interquartílicos das duas classes, sugerindo que nenhuma variável isoladamente é suficiente para uma separação completa entre os grupos, reforçando a necessidade de abordagem multivariada para fins de classificação.
+
+```{r}
+ggplot(df, aes(x = ratio_reparo_vs_fipe,
+               y = dias_para_reportar,
+               color = classe)) +
+  geom_point(alpha = 0.5) +
+  stat_ellipse(type = "norm", linewidth = 1.1) +
+  theme_minimal(base_size = 13) +
+  labs(title = "Relação bivariada com elipses gaussianas",
+       x = "Ratio Reparo/FIPE",
+       y = "Dias para reportar")
+```
+
+A análise da relação bivariada entre `ratio_reparo_vs_fipe` e `dias_para_reportar`, representada por meio de elipses gaussianas, indica diferenças na posição e na dispersão das duas populações. Observa-se que a classe `Suspeito` apresenta maior variabilidade conjunta e uma tendência a valores mais elevados em ambas as variáveis, refletida por uma elipse mais ampla e deslocada em relação ao grupo `Regular`. Além disso, a orientação distinta das elipses sugere padrões de associação diferentes entre as variáveis nas duas classes. Apesar dessas diferenças estruturais, verifica-se uma região considerável de sobreposição entre os grupos, indicando que a separação não é linearmente perfeita quando analisada apenas nesse plano bidimensional, o que reforça a necessidade de métodos multivariados para capturar adequadamente a estrutura discriminante dos dados.
+
+```{r}
+X_scaled <- scale(df[, -7])
+pca <- prcomp(X_scaled)
+
+pca_df <- data.frame(pca$x[,1:2], classe = df$classe)
+
+ggplot(pca_df, aes(PC1, PC2, color = classe)) +
+  geom_point(alpha = 0.6) +
+  stat_ellipse(type = "norm") +
+  theme_minimal(base_size = 13) +
+  labs(title = "Projeção PCA das duas populações",
+       x = "PC1", y = "PC2")
+```
+
+A projeção das observações nos dois primeiros componentes principais evidencia diferenças estruturais entre as populações analisadas. Observa-se que a classe `Suspeito` apresenta maior dispersão ao longo do primeiro componente (PC1), indicando maior variabilidade multivariada nesse grupo, enquanto a classe `Regular` se concentra mais próxima do centro da distribuição. As elipses gaussianas mostram deslocamento dos centróides entre as classes, sugerindo diferenças sistemáticas no padrão conjunto das variáveis. Contudo, a presença de uma região relevante de sobreposição entre as populações indica que a separação não é completamente evidente apenas na projeção bidimensional da PCA, reforçando a necessidade de métodos discriminantes supervisionados para melhorar a capacidade de classificação.
+
+```{r}
+corr_reg <- cor(df[df$classe=="Regular",-7])
+corr_sus <- cor(df[df$classe=="Suspeito",-7])
+
+labels_vars <- c(
+  valor_reparo = "Valor reparo",
+  dias_para_reportar = "Dias reportar",
+  qt_sinistros_12m = "Sinistros 12m",
+  ratio_reparo_vs_fipe = "Ratio rep/FIPE",
+  dist_evento_resid = "Dist. evento-resid",
+  mudancas_contato_6m = "Mudanças 6m"
+)
+
+colnames(corr_reg) <- rownames(corr_reg) <- labels_vars[colnames(corr_reg)]
+colnames(corr_sus) <- rownames(corr_sus) <- labels_vars[colnames(corr_sus)]
+
+corrplot(corr_reg,method = "color", outline = T, addgrid.col = "darkgray", order = "hclust", cl.pos = "b", tl.col = "indianred4", tl.cex = 1.0, tl.srt = 40, cl.cex = 1.2, addCoef.col = "white", number.digits = 2,  number.cex = 0.65, col = colorRampPalette(c("darkred","white","midnightblue"))(100))
+mtext("Grupo Regular", side = 3, line = 3, cex = 1.2, font = 2)
+
+corrplot(corr_sus, method = "color", outline = T, addgrid.col = "darkgray", order = "hclust", cl.pos = "b", tl.col = "indianred4", tl.cex = 1.0, tl.srt = 40, cl.cex = 1.2, addCoef.col = "white", number.digits = 2, number.cex = 0.65, col = colorRampPalette(c("darkred","white","midnightblue"))(100))
+mtext("Grupo Suspeito", side = 3, line = 3, cex = 1.2, font = 2)
+```
+
+
+A análise das matrizes de correlação evidencia diferenças importantes na estrutura de dependência entre as variáveis nos dois grupos analisados. No grupo `Regular`, observa-se um padrão de correlações predominantemente fracas a moderadas, indicando relações lineares pouco intensas entre os indicadores operacionais. As associações entre `valor do reparo`, `sinistros` e `distância do evento` são positivas, porém de baixa magnitude, sugerindo um comportamento relativamente estável e homogêneo dos registros. A variável `dias para reportar` apresenta correlações discretas com as demais, o que indica que o tempo de comunicação do sinistro não está fortemente ligado às demais características nesse grupo.
+
+Por outro lado, o grupo `Suspeito` apresenta uma estrutura de correlação mais intensa e consistente entre diversas variáveis. Observa-se associação positiva moderada entre `sinistros`, `dias para reportar`, `mudanças de contato` e `distância do evento`, sugerindo que esses fatores tendem a aumentar conjuntamente. Esse padrão indica maior interdependência entre os indicadores comportamentais e operacionais, possivelmente refletindo perfis menos homogêneos e maior variabilidade estrutural.
+
+De forma geral, as diferenças entre as matrizes sugerem que os grupos não apenas diferem em nível médio das variáveis, mas também em sua estrutura interna de covariância. Essa evidência reforça a presença de heterogeneidade multivariada entre as populações, aspecto relevante para técnicas de classificação e análise discriminante.
+
+---
+
+## Diagnóstico de suposições: covariâncias iguais?
+
+### Teste de Box (Box’s M)
+
+
+```{r}
+#H_0: Sigma_R = Sigma_S = Sigma
+
+box_res <- biotools::boxM(df[, -7], df$classe)
+box_res
+```
+
+
+O teste de Box (Box’s M) foi aplicado para avaliar a homogeneidade das matrizes de covariância entre os grupos. O resultado obtido ($\chi^2 = 175.44$, $gl = 21$, $p < 2.2 \times 10^{-16}$) indica rejeição da hipótese nula de igualdade das matrizes, sugerindo que as populações apresentam estruturas de variabilidade distintas. Contudo, deve-se interpretar esse resultado com cautela, pois o teste de Box é altamente sensível ao tamanho amostral e a desvios de normalidade multivariada, podendo detectar diferenças estatisticamente significativas mesmo quando as discrepâncias práticas são moderadas. Ainda assim, a evidência aponta que a suposição de covariâncias iguais, fundamental para a Análise Discriminante Linear, pode estar violada, o que, do ponto de vista teórico, favorece o uso de modelos mais flexíveis, como a Análise Discriminante Quadrática. Assim, a escolha do modelo discriminante deve considerar não apenas o resultado do teste formal, mas também o desempenho preditivo e a estabilidade das classificações obtidas.
+
+### Comparação direta das covariâncias
+
+```{r}
+cov_reg <- cov(df[df$classe == "Regular", -7])
+cov_sus <- cov(df[df$classe == "Suspeito", -7])
+
+cov_reg
+cov_sus
+```
+
+
+As matrizes de covariância estimadas para os grupos `Regular` e `Suspeito` indicam diferenças estruturais importantes tanto nas variâncias individuais das variáveis quanto nas relações de dependência entre elas.
+
+Observa-se que o grupo `Suspeito` apresenta variâncias substancialmente maiores em diversas variáveis, especialmente em `valor_reparo` e `dist_evento_resid`, evidenciando maior dispersão e heterogeneidade dos dados nesse grupo. Esse comportamento sugere maior variabilidade operacional e possível presença de casos extremos ou padrões menos homogêneos quando comparados ao grupo Regular.
+
+Além disso, as covariâncias no grupo `Suspeito` tendem a assumir magnitudes mais elevadas, indicando relações lineares mais intensas entre algumas variáveis, como entre `valor_reparo`, `dias_para_reportar` e `dist_evento_resid`. Já no grupo `Regular`, as covariâncias são relativamente menores, refletindo uma estrutura mais estável e menos dispersa.
+
+Essas diferenças estruturais reforçam a evidência de que as populações possuem padrões de variabilidade distintos, o que implica que métodos de classificação que assumem igualdade das matrizes de covariância podem não ser plenamente adequados. A presença de heterogeneidade nas estruturas de dispersão sugere que abordagens mais flexíveis, capazes de acomodar diferentes geometrias entre grupos, podem representar melhor a separação entre as classes.
+
+
+---
+
+## Ajuste dos modelos: LDA (Fisher) e QDA
+
+
+### Método da Ressubstituição
+
+```{r}
+X_scaled <- scale(df[, -7])
+df_scaled <- data.frame(classe = df$classe, X_scaled)
+
+fit_lda <- MASS::lda(classe ~ ., data = df_scaled)
+fit_qda <- MASS::qda(classe ~ ., data = df_scaled)
+
+fit_lda
+```
+
+#### Análise Discriminante Linear (LDA)
+
+A análise discriminante linear foi ajustada considerando probabilidades *a priori* de 0,8 para o grupo `Regular` e 0,2 para o grupo `Suspeito`, refletindo o desbalanceamento observado entre as classes. As médias padronizadas indicam que o grupo `Suspeito` apresenta valores sistematicamente mais elevados em todas as variáveis analisadas, sugerindo um perfil geral de maior intensidade operacional e maior exposição ao risco quando comparado ao grupo `Regular`.
+
+Os coeficientes da função discriminante (LD1) mostram que `ratio_reparo_vs_fipe` e `valor_reparo` possuem maior contribuição para a separação entre os grupos, seguidos por `dias_para_reportar` e `mudancas_contato_6m`. Já `dist_evento_resid` e `qt_sinistros_12m` apresentam influência relativamente menor na combinação linear discriminante. Como todas as variáveis foram padronizadas previamente, a magnitude dos coeficientes pode ser interpretada diretamente como medida de importância relativa na discriminação.
+
+De forma geral, a função discriminante construída sugere que a separação entre as classes ocorre principalmente ao longo de um eixo associado a maiores valores de reparo e maior proporção entre custo de reparo e valor de mercado do veículo, indicando que essas características são fundamentais para distinguir os perfis analisados.
+
+
+
+```{r}
+# Obter projeções LD1
+lda_proj <- predict(fit_lda)$x
+
+dados_plot <- df %>%
+  mutate(LD1 = lda_proj[,1])
+
+# --------------------------------------------------
+# Gráfico das densidades na direção discriminante
+# --------------------------------------------------
+ggplot(dados_plot, aes(x = LD1, fill = classe, color = classe)) +
+  geom_density(alpha = 0.35, linewidth = 1.2) +
+  geom_vline(
+    data = dados_plot %>% group_by(classe) %>% summarise(m = mean(LD1)),
+    aes(xintercept = m, color = classe),
+    linetype = "dashed",
+    linewidth = 1.1
+  ) +
+  labs(
+    title = "Projeção na Função Discriminante Linear (LD1)",
+    x = "Score discriminante (LD1)",
+    y = "Densidade"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    plot.title = element_text(face = "bold"),
+    legend.position = "top"
+  )
+```
+
+A projeção dos indivíduos na primeira função discriminante linear (LD1) evidencia uma separação consistente entre os grupos `Regular` e `Suspeito`. Observa-se que o grupo `Regular` concentra-se predominantemente em valores menores do escore discriminante, enquanto o grupo `Suspeito` apresenta distribuição deslocada para valores mais altos, indicando que a combinação linear das variáveis consegue capturar diferenças estruturais entre as populações. Apesar da sobreposição parcial das densidades, esperada em problemas reais de classificação, as médias dos grupos encontram-se bem separadas ao longo do eixo LD1, sugerindo bom poder discriminante do modelo linear e indicando que a maior parte da variabilidade relevante para a distinção entre as classes está concentrada nessa única dimensão.
+
+
+
+##### Avaliação do Modelo Linear
+
+```{r}
+pred_lda_resub <- predict(fit_lda)$class
+
+conf_lda_resub <- confusionMatrix(pred_lda_resub, df$classe, positive = 'Suspeito')
+conf_lda_resub
+```
+
+A avaliação do desempenho da função discriminante linear indica acurácia global de 87,25%, superior à taxa de classificação pelo acaso (`No Information Rate` = 0,80), com evidência estatística significativa (`p < 0,001`). Observa-se elevada especificidade (0,9656), indicando forte capacidade do modelo em identificar corretamente indivíduos da classe `Regular`. Entretanto, a sensibilidade foi moderada (0,50), sugerindo maior dificuldade na detecção de casos suspeitos, refletida pela presença de falsos negativos. O valor de Kappa igual a 0,5389 indica concordância moderada entre predições e classes reais. A acurácia balanceada (0,7328) evidencia que o desempenho não é uniforme entre as classes, possivelmente influenciado pelo desbalanceamento amostral e pela sobreposição parcial das distribuições. Em termos práticos, o modelo apresenta bom desempenho geral, mas pode requerer ajustes caso a prioridade seja maximizar a identificação de perfis suspeitos.
+
+
+
+#### Análise Discriminante Quadrática (QDA)
+
+```{r}
+fit_qda
+```
+
+A análise discriminante quadrática utiliza as mesmas médias por grupo, porém permite matrizes de covariância específicas para cada classe. Considerando que o teste de Box indicou rejeição da hipótese de homogeneidade das covariâncias e que o grupo `Suspeito` apresenta maior variabilidade estrutural, o modelo QDA é teoricamente mais adequado para representar a separação entre as populações.
+
+Enquanto o LDA produz uma fronteira de decisão linear, o QDA permite superfícies de decisão curvas, capazes de capturar diferenças na dispersão dos grupos. Dado o padrão observado nas matrizes de correlação e covariância, especialmente a maior intensidade das associações no grupo `Suspeito`, espera-se que o QDA apresente melhor desempenho preditivo em validações fora da amostra.
+
+
+##### Avaliação do Modelo Quadrático
+
+```{r}
+pred_qda_resub <- predict(fit_qda)$class
+
+conf_qda_resub <- confusionMatrix(pred_qda_resub, df$classe, positive = 'Suspeito')
+conf_qda_resub
+```
+
+
+A função discriminante quadrática apresentou acurácia global de 86%, superior ao `No Information Rate` (0,80), indicando capacidade preditiva significativa. A sensibilidade foi de 0,525, mostrando melhora discreta na identificação de casos suspeitos em comparação ao desempenho típico de classificadores lineares quando há heterogeneidade nas covariâncias. Por outro lado, a especificidade foi ligeiramente menor (0,9437), sugerindo pequeno aumento de erros na classificação de indivíduos da classe `Regular`. O coeficiente Kappa (0,5172) indica concordância moderada, enquanto a acurácia balanceada (0,7344) mostra desempenho relativamente equilibrado entre as classes, apesar do desbalanceamento amostral. Em termos gerais, o modelo quadrático apresenta desempenho semelhante ao linear, com leve ganho na detecção da classe `Suspeito`, porém sem melhoria substancial na acurácia global.
+
+
+### Método da Ressubstituição com Divisão Amostral
+
+```{r}
+set.seed(12345)
+
+train_id <- createDataPartition(df$classe, p = 0.7, list = FALSE)
+
+train <- df[train_id, ]
+test  <- df[-train_id, ]
+```
+
+
+Foi realizada uma divisão amostral estratificada utilizando a função `createDataPartition()`, preservando a proporção original das classes `Regular` e `Suspeito` em ambos os subconjuntos. Fixou-se uma semente aleatória (`set.seed(12345)`) para garantir reprodutibilidade dos resultados. Aproximadamente 70% das observações foram alocadas ao conjunto de treinamento (`train`), utilizado para ajuste dos modelos discriminantes, enquanto os 30% restantes compuseram o conjunto de teste (`test`), empregado na avaliação externa do desempenho preditivo.
+
+```{r}
+prop.table(table(df$classe))
+prop.table(table(train$classe))
+prop.table(table(test$classe))
+```
+
+A divisão amostral foi realizada de forma estratificada em relação à variável resposta, preservando a proporção original das classes no conjunto completo de dados. Observa-se que a classe `Regular` representa aproximadamente 80% das observações, enquanto a classe `Suspeito` corresponde a cerca de 20%, padrão que se manteve tanto nos conjuntos de treinamento quanto de teste. Essa manutenção das proporções indica que o particionamento não introduziu viés na representação das populações, garantindo maior confiabilidade na estimação dos modelos discriminantes e na avaliação de desempenho fora da amostra.
+
+```{r}
+preproc <- preProcess(train[, -7], method = c("center","scale"))
+
+train_scaled <- predict(preproc, train)
+test_scaled  <- predict(preproc, test)
+```
+
+
+Antes da estimação das funções discriminantes, as variáveis explicativas foram padronizadas por meio de centralização e escalonamento, utilizando exclusivamente as estatísticas do conjunto de treinamento. Essa estratégia evita vazamento de informação entre as amostras e garante que a avaliação do modelo no conjunto de teste reflita um cenário realista de aplicação. Posteriormente, a mesma transformação foi aplicada ao conjunto de teste, assegurando consistência na escala das variáveis durante o processo de classificação.
+
+
+```{r}
+fit_lda <- lda(classe ~ ., data = train_scaled)
+
+fit_lda
+```
+
+
+#### Análise Discriminante Linear (LDA)
+
+A análise discriminante linear foi estimada utilizando as variáveis padronizadas, o que permite interpretar diretamente os coeficientes da função discriminante como medidas relativas da contribuição de cada variável para a separação entre as populações. As probabilidades *a priori* indicam um desbalanceamento entre as classes, com aproximadamente 80% das observações pertencendo ao grupo `Regular` e 20% ao grupo `Suspeito`.
+
+Observa-se que os centróides das populações ao longo das variáveis padronizadas apresentam sinais opostos, sugerindo que o grupo `Suspeito` tende a assumir valores mais elevados nas variáveis analisadas, especialmente em `valor_reparo`, `ratio_reparo_vs_fipe`, `dias_para_reportar` e `mudancas_contato_6m`, o que indica um padrão comportamental distinto entre os grupos.
+
+A função discriminante linear (LD1) evidencia que as variáveis com maior contribuição para a separação entre as classes são:
+
+- `ratio_reparo_vs_fipe` (0,638): principal fator discriminante;
+
+- `valor_reparo` (0,552): forte influência na classificação;
+
+- `dias_para_reportar` (0,232) e `mudancas_contato_6m` (0,204): contribuição moderada.
+
+Por outro lado, as variáveis `qt_sinistros_12m` (0,083) e `dist_evento_resid` ($\approx$ 0,003) apresentam menor impacto discriminante, indicando que exercem influência limitada na distinção entre as populações no espaço linear.
+
+De forma geral, a padronização das variáveis permite concluir que a separação entre os grupos é dominada por características associadas ao custo relativo do reparo e ao comportamento temporal do segurado, sugerindo que padrões financeiros e operacionais são mais relevantes para a discriminação do que medidas puramente espaciais.
+
+
+##### Avaliação do Modelo Linear
+
+```{r}
+pred_lda_test <- predict(fit_lda, newdata = test_scaled)$class
+
+conf_lda_test <- confusionMatrix(pred_lda_test,
+                                 test_scaled$classe,
+                                 positive = "Suspeito")
+conf_lda_test
+```
+
+
+A avaliação da função discriminante linear no conjunto de teste indica um desempenho global satisfatório, com `acurácia` de 85,83%, valor superior à taxa base de classificação (`No Information Rate` = 0,80). O intervalo de confiança de 95% sugere estabilidade razoável da estimativa, embora o `p-valor` associado à comparação com a NIR (p = 0,0647) indique evidência estatística apenas moderada de melhoria em relação a uma classificação trivial.
+
+A matriz de confusão revela que o modelo apresenta alta `especificidade` (95,83%), indicando excelente capacidade de identificar corretamente contratos do grupo `Regular`. Entretanto, a `sensibilidade` (45,83%) é relativamente baixa, evidenciando dificuldade em detectar observações do grupo `Suspeito`. Esse padrão é coerente com o desbalanceamento entre as classes e sugere que a fronteira linear favorece a redução de falsos positivos em detrimento da identificação completa dos casos suspeitos.
+
+O `coeficiente Kappa` (0,4848) e a `acurácia balanceada` (0,7083) indicam desempenho moderado quando se considera o desequilíbrio entre as populações. Além disso, o `teste de McNemar` (p ≈ 0,052) sugere uma leve assimetria nos erros de classificação, com tendência a subestimar a classe `Suspeito`.
+
+De forma geral, os resultados mostram que a função discriminante linear apresenta boa capacidade de classificação global, porém com limitação na detecção de casos suspeitos, indicando que ajustes na fronteira de decisão ou estratégias de balanceamento podem ser considerados para melhorar a sensibilidade do modelo.
+
+
+
+#### Análise Discriminante Quadrática (QDA)
+```{r}
+fit_qda <- qda(classe ~ ., data = train_scaled)
+fit_qda
+```
+
+O ajuste da função discriminante quadrática indica diferenças claras entre os centróides das duas populações no espaço das variáveis padronizadas. Observa-se que o grupo `Suspeito` apresenta médias sistematicamente superiores em praticamente todas as variáveis analisadas, especialmente em `ratio_reparo_vs_fipe`, `valor_reparo`, `dias_para_reportar` e `mudancas_contato_6m`. Esse padrão sugere maior intensidade de sinistros, maior tempo de reporte e valores relativos de reparo mais elevados, características coerentes com perfis de maior risco.
+
+Como as variáveis foram padronizadas previamente, os valores médios negativos associados ao grupo `Regular` indicam posicionamento abaixo da média global, enquanto as médias positivas do grupo `Suspeito` indicam deslocamento na direção oposta. Essa separação dos centróides evidencia que existe discriminação potencial entre as classes, embora não necessariamente linear.
+
+A principal diferença conceitual do QDA em relação à LDA é a consideração de matrizes de covariância específicas para cada população, permitindo que a fronteira de decisão seja curva. Dessa forma, o modelo torna-se mais flexível para capturar diferenças na dispersão e na estrutura de variância entre os grupos, aspecto particularmente relevante quando há evidência de heterogeneidade nas matrizes de covariância.
+
+Em síntese, os resultados sugerem que a separação entre as classes ocorre tanto por deslocamento das médias quanto por diferenças na estrutura de variabilidade, justificando a utilização da abordagem quadrática como alternativa à função discriminante linear.
+
+
+##### Avaliação do Modelo Quadrático
+
+
+```{r}
+pred_qda_test <- predict(fit_qda, newdata = test_scaled)$class
+
+conf_qda_test <- confusionMatrix(pred_qda_test,
+                                 test_scaled$classe,
+                                 positive = "Suspeito")
+
+conf_qda_test
+```
+
+
+
+A matriz de confusão obtida no conjunto de teste indica que o modelo QDA apresentou `acurácia` global de aproximadamente 85,8%, valor superior à taxa de classificação aleatória (`NIR` = 0,8), embora o teste estatístico associado apresente evidência moderada de ganho preditivo. Observa-se elevada `especificidade` ($\approx$ 0,95), indicando que a maioria dos clientes regulares foi corretamente identificada. Por outro lado, a `sensibilidade` ($\approx$ 0,50) foi mais baixa, revelando maior dificuldade do modelo em detectar corretamente observações da classe `Suspeito`, o que sugere uma tendência conservadora na classificação.
+
+O `coeficiente Kappa` em torno de 0,50 indica concordância moderada além do acaso, reforçando que o modelo possui capacidade discriminante, mas ainda apresenta limitações na identificação da classe minoritária. A `balanced accuracy` próxima de 0,72 evidencia que o desempenho não é uniforme entre as classes, refletindo o desequilíbrio amostral existente. De modo geral, os resultados sugerem que a função discriminante quadrática captura parte da estrutura multivariada dos dados, porém com ganhos modestos na capacidade de detecção da classe positiva, mantendo um comportamento mais eficiente na classificação da classe `Regular`.
+
+
+
+### Método da Validação Cruzada $k$-fold
+
+#### Análise Discriminante Linear (LDA)
+
+```{r}
+train_control <- trainControl(method = "cv", number = 10)
+
+lda_cv <- train(classe ~ ., data = train_scaled, method = "lda", trControl = train_control)
+
+lda_cv$finalModel
+```
+
+
+A estimação da função discriminante linear via validação cruzada (`10-fold CV`) produziu coeficientes estáveis e consistentes com aqueles obtidos na estimação direta do modelo. Observa-se que as variáveis `ratio_reparo_vs_fipe` e `valor_reparo` apresentam os maiores pesos positivos na função discriminante, indicando maior contribuição para a separação entre as populações. A variável `dias_para_reportar` também exerce influência relevante, sugerindo que atrasos no reporte tendem a deslocar as observações na direção associada à classe `Suspeito`.
+
+Por outro lado, `dist_evento_resid` apresenta coeficiente pequeno, indicando menor poder discriminante marginal quando consideradas simultaneamente as demais variáveis. A estabilidade dos coeficientes sob validação cruzada sugere que a estrutura de separação entre os grupos é consistente e pouco sensível a variações amostrais, reforçando a robustez do modelo linear estimado.
+
+
+##### Avaliação do Modelo Linear
+
+```{r}
+lda_cv$results
+```
+
+
+A avaliação do modelo discriminante linear por meio de validação cruzada (10 folds) indicou uma `acurácia` média de aproximadamente 0,86, com `coeficiente Kappa` em torno de 0,49, sugerindo desempenho moderado na classificação além do acaso. O `desvio padrão da acurácia` ($\approx$ 0,053) indica variação relativamente pequena entre as partições amostrais, evidenciando estabilidade do modelo frente a diferentes subconjuntos de treinamento e teste.
+
+Esses resultados mostram que a função discriminante linear apresenta capacidade consistente de separação entre as classes, mantendo desempenho semelhante ao observado nas demais estratégias de avaliação, mas com estimativa mais realista do erro de generalização. O valor positivo de Kappa reforça que o modelo captura estrutura discriminante relevante nos dados, embora ainda existam regiões de sobreposição entre as populações que limitam uma classificação perfeita.
+
+
+
+#### Análise Discriminante Quadrática (QDA)
+
+```{r}
+qda_cv <- train(classe ~ ., data = train_scaled, method = "qda", trControl = train_control)
+
+qda_cv$finalModel
+```
+
+
+A análise discriminante quadrática foi estimada considerando probabilidades *a priori* proporcionais ao tamanho das classes (`Regular` = 0,8; `Suspeito` = 0,2). As médias padronizadas indicam que a classe `Suspeito` apresenta valores sistematicamente maiores na maioria das variáveis, sugerindo deslocamento multivariado consistente entre os grupos. Diferentemente da LDA, a QDA permite estruturas de covariância distintas entre as populações, resultando em fronteiras de decisão potencialmente não lineares.
+
+Apesar dessa maior flexibilidade teórica, os coeficientes médios estimados nas partições de validação cruzada mostram comportamento semelhante ao modelo linear, sugerindo que a separação entre classes ocorre predominantemente ao longo de uma direção principal comum no espaço das variáveis. Isso indica que a complexidade adicional da QDA pode não trazer ganhos substanciais de generalização neste conjunto de dados.
+
+
+
+##### Avaliação do Modelo Quadrático
+
+```{r}
+qda_cv$results
+```
+
+
+A análise discriminante quadrática apresentou `acurácia` média de aproximadamente 0,84 na validação cruzada (`Kappa` $\approx$ 0,42), indicando capacidade moderada de discriminação entre as classes. O `desvio-padrão` relativamente elevado da acurácia ($\approx$ 0,05) sugere maior variabilidade do modelo entre as partições amostrais, refletindo a maior complexidade da QDA ao estimar matrizes de covariância específicas para cada grupo. Comparativamente, observa-se que o desempenho preditivo não supera substancialmente o obtido pela função discriminante linear, apesar da flexibilização da fronteira de decisão. Esse resultado indica que, embora as populações apresentem diferenças estruturais nas covariâncias, a separação entre classes ocorre predominantemente ao longo de uma direção linear dominante, tornando o modelo linear mais estável e parcimonioso para fins de classificação.
+
+
+## Conclusão
+
+
+A análise exploratória inicial evidenciou diferenças sistemáticas entre as populações `Regular` e `Suspeito`, tanto nas distribuições marginais das variáveis quanto nas relações bivariadas e estruturas de correlação. As visualizações gráficas indicaram que a classe `Suspeito` tende a apresentar valores mais elevados em indicadores associados a risco, como `razão reparo/FIPE`, `quantidade de sinistros` e `distância do evento à residência`, além de maior dispersão geral. A projeção em componentes principais confirmou a existência de uma direção dominante de separação entre os grupos, embora com região de sobreposição relevante, sugerindo a presença de erros de classificação inevitáveis.
+
+O teste de Box indicou heterogeneidade significativa entre as matrizes de covariância, evidenciando que a hipótese de igualdade estrutural entre os grupos não é estritamente válida. Ainda assim, a análise discriminante linear apresentou desempenho competitivo e estável, com boa capacidade de separação ao longo de uma única função discriminante dominante (LD1). A interpretação dos coeficientes revelou que variáveis associadas ao comportamento de sinistros e ao valor relativo do reparo possuem maior contribuição para a discriminação entre as classes.
+
+A análise discriminante quadrática, por sua vez, incorporou a diferença nas estruturas de variância entre os grupos, permitindo fronteiras de decisão mais flexíveis. Entretanto, os resultados empíricos mostraram ganhos limitados em relação ao modelo linear, além de maior variabilidade nas estimativas durante a validação cruzada. Isso sugere que, apesar da diferença nas covariâncias, a separação entre as populações ocorre principalmente em uma direção aproximadamente linear no espaço das variáveis.
+
+De modo geral, os resultados indicam que ambos os modelos apresentam desempenho satisfatório na identificação da classe `Suspeito`, com níveis semelhantes de `acurácia` e concordância (`Kappa`). Contudo, considerando a maior estabilidade, simplicidade interpretativa e menor variância preditiva observada, a função discriminante linear se mostra mais adequada como modelo final para classificação neste contexto.

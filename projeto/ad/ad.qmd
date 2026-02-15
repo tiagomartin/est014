@@ -1,0 +1,227 @@
+---
+title: "Análise Discriminante em Detecção de Risco de Crédito"
+format:
+  html:
+    number-sections: true
+    toc: true
+    toc-depth: 2
+  pdf:
+    number-sections: true
+    toc: false
+    toc-depth: 2
+bibliography: references.bib
+---
+
+
+<p align="center" style="font-size: 40px"> 
+`Data de entrega: 26 de fevereiro de 2026`
+</p>
+
+
+---
+
+# Contexto
+
+
+Uma instituição financeira deseja desenvolver um sistema de apoio à decisão para identificar clientes com alto risco de inadimplência a partir de informações comportamentais e financeiras recentes.
+
+Cada cliente foi classificado historicamente em duas populações:
+
+- `Adimplente`: clientes que mantêm pagamentos regulares
+
+- `Risco`: clientes que apresentaram atraso ou inadimplência relevante
+
+O objetivo da equipe de análise é construir e avaliar funções discriminantes capazes de separar essas populações e apoiar o processo de análise de crédito.
+
+
+---
+
+# Base de dados
+
+
+```{r, echo=FALSE}
+simulate_credit_work <- function(n = 500, p_risco = 0.20, seed = 12345,
+                                 sep = 0.28) {
+  set.seed(seed)
+
+  # ---------- util: MVN via Cholesky ----------
+  rmvnorm_chol <- function(n, Sigma, mu = NULL) {
+    p <- ncol(Sigma)
+    if (is.null(mu)) mu <- rep(0, p)
+    L <- chol(Sigma)
+    Z <- matrix(rnorm(n * p), n, p)
+    sweep(Z %*% L, 2, mu, "+")
+  }
+
+  # ---------- tamanhos ----------
+  n_risco <- round(n * p_risco)
+  n_adim  <- n - n_risco
+
+  # ---------- ordem latente (7 vars) ----------
+  # 1 limite, 2 atraso_dias, 3 qt_atrasos, 4 dti, 5 distancia, 6 mud_end, 7 "ruído"
+  # (o 7º ajuda a manter SPD e flexibilidade; não vira variável final)
+  p_lat <- 7
+
+  # ---------- correlação latente: Adimplente (mais fraca/moderada) ----------
+  R_adim <- matrix(c(
+    1.00, 0.15, 0.10, 0.20, 0.05, 0.05, 0.05,
+    0.15, 1.00, 0.35, 0.30, 0.10, 0.15, 0.10,
+    0.10, 0.35, 1.00, 0.25, 0.10, 0.15, 0.10,
+    0.20, 0.30, 0.25, 1.00, 0.10, 0.10, 0.10,
+    0.05, 0.10, 0.10, 0.10, 1.00, 0.20, 0.10,
+    0.05, 0.15, 0.15, 0.10, 0.20, 1.00, 0.10,
+    0.05, 0.10, 0.10, 0.10, 0.10, 0.10, 1.00
+  ), p_lat, p_lat, byrow = TRUE)
+
+  # ---------- correlação latente: Risco (mais forte e com padrão diferente) ----------
+  # maior dependência entre atraso, qt_atrasos, DTI e mudanças
+  R_risco <- matrix(c(
+    1.00, 0.10, 0.10, 0.25, 0.05, 0.05, 0.05,
+    0.10, 1.00, 0.55, 0.50, 0.15, 0.30, 0.10,
+    0.10, 0.55, 1.00, 0.45, 0.10, 0.30, 0.10,
+    0.25, 0.50, 0.45, 1.00, 0.10, 0.25, 0.10,
+    0.05, 0.15, 0.10, 0.10, 1.00, 0.25, 0.10,
+    0.05, 0.30, 0.30, 0.25, 0.25, 1.00, 0.10,
+    0.05, 0.10, 0.10, 0.10, 0.10, 0.10, 1.00
+  ), p_lat, p_lat, byrow = TRUE)
+
+  # segurança SPD
+  stopifnot(all(eigen(R_adim, only.values = TRUE)$values > 1e-8))
+  stopifnot(all(eigen(R_risco, only.values = TRUE)$values > 1e-8))
+
+  # ---------- médias latentes (grupos "próximos") ----------
+  # desloca atraso/qt_atrasos/dti/mudanças um pouco para o Risco, mas sem exagero
+  mu_adim  <- rep(0, p_lat)
+  mu_risco <- c(0.00, sep, sep, sep, 0.05, sep, 0.00)
+
+  Z_adim  <- rmvnorm_chol(n_adim,  R_adim,  mu_adim)
+  Z_risco <- rmvnorm_chol(n_risco, R_risco, mu_risco)
+
+  # ---------- copula -> uniformes ----------
+  U_adim  <- pnorm(Z_adim)
+  U_risco <- pnorm(Z_risco)
+
+  # ---------- marginais realistas (SEM negativos) ----------
+  # 1) valor_limite: lognormal (R$) - risco um pouco menor e mais disperso (var diferente!)
+  valor_limite_adim  <- qlnorm(U_adim[,1],  meanlog = log(18000), sdlog = 0.45)
+  valor_limite_risco <- qlnorm(U_risco[,1], meanlog = log(16000), sdlog = 0.55)
+
+  # 2) dias_atraso_medio: gamma (dias) - risco maior e mais disperso
+  dias_adim  <- qgamma(U_adim[,2],  shape = 2.2, scale = 3.8)   # média ~8.4
+  dias_risco <- qgamma(U_risco[,2], shape = 2.0, scale = 5.5)   # média ~11.0 (próximo)
+
+  # 3) qt_atrasos_12m: Poisson com taxa individual (mistura) - risco maior
+  lambda_adim  <- 0.20 + 0.60 * U_adim[,3]    # ~0.2 a 0.8
+  lambda_risco <- 0.45 + 1.10 * U_risco[,3]   # ~0.45 a 1.55
+  qt_adim  <- rpois(n_adim,  lambda_adim)
+  qt_risco <- rpois(n_risco, lambda_risco)
+
+  # 4) ratio_divida_renda: beta em [0,1] - risco maior e mais disperso
+  dti_adim  <- qbeta(U_adim[,4],  3.0, 7.5)   # média ~0.29
+  dti_risco <- qbeta(U_risco[,4], 3.8, 6.2)   # média ~0.38 (sem separar demais)
+
+  # 5) dist_agencia_resid: gamma (km) - risco ligeiramente maior e mais variável
+  dist_adim  <- qgamma(U_adim[,5],  shape = 3.2, scale = 3.8)   # média ~12 km
+  dist_risco <- qgamma(U_risco[,5], shape = 2.8, scale = 4.8)   # média ~13.4 km
+
+  # 6) mudancas_endereco_6m: Poisson truncado 0..4 - risco maior
+  mud_adim  <- pmin(rpois(n_adim,  0.10 + 0.35*U_adim[,6]), 4)
+  mud_risco <- pmin(rpois(n_risco, 0.25 + 0.60*U_risco[,6]), 4)
+
+  # arredondamentos/limites realistas
+  valor_limite_adim  <- round(valor_limite_adim,  2)
+  valor_limite_risco <- round(valor_limite_risco, 2)
+
+  dias_adim  <- round(dias_adim,  2)
+  dias_risco <- round(dias_risco, 2)
+
+  dist_adim  <- round(dist_adim,  2)
+  dist_risco <- round(dist_risco, 2)
+
+  ratio_divida_renda_adim  <- round(dti_adim,  3)
+  ratio_divida_renda_risco <- round(dti_risco, 3)
+
+  # ---------- monta data.frame final ----------
+  df_adim <- data.frame(
+    valor_limite = valor_limite_adim,
+    dias_atraso_medio = dias_adim,
+    qt_atrasos_12m = qt_adim,
+    ratio_divida_renda = ratio_divida_renda_adim,
+    dist_agencia_resid = dist_adim,
+    mudancas_endereco_6m = mud_adim,
+    classe = "Adimplente"
+  )
+
+  df_risco <- data.frame(
+    valor_limite = valor_limite_risco,
+    dias_atraso_medio = dias_risco,
+    qt_atrasos_12m = qt_risco,
+    ratio_divida_renda = ratio_divida_renda_risco,
+    dist_agencia_resid = dist_risco,
+    mudancas_endereco_6m = mud_risco,
+    classe = "Risco"
+  )
+
+  df <- rbind(df_adim, df_risco)
+  df$classe <- factor(df$classe, levels = c("Adimplente", "Risco"))
+
+  # embaralha
+  df <- df[sample(nrow(df)), ]
+  rownames(df) <- NULL
+  df
+}
+
+# --------- uso ----------
+df <- simulate_credit_work(n = 550, p_risco = 0.30, seed = 12345, sep = 0.28)
+
+write.csv(df, "F:/SITE/est014/dados/dados_risco.csv", row.names = FALSE)
+```
+
+
+
+A base de dados contém as seguintes variáveis:
+
+- `valor_limite`: limite total de crédito disponível
+
+- `dias_atraso_medio`: média de dias de atraso nos últimos 12 meses
+
+- `qt_atrasos_12m`: número de atrasos registrados
+
+- `ratio_divida_renda`: razão dívida/renda mensal
+
+- `dist_agencia_resid`: distância entre residência e agência mais próxima
+
+- `mudancas_endereco_6m`: mudanças de endereço recentes
+
+- `classe`: população (Adimplente ou Risco)
+
+
+Os dados para esta análise estão disponíveis [aqui](/dados/dados_risco.csv).
+
+---
+
+# Etapas obrigatórias da análise
+
+O aluno deverá realizar uma análise discriminante completa para classificar clientes em duas populações (Adimplente *vs* Risco), reproduzindo todas as etapas de um estudo aplicado. Em síntese, espera-se que o aluno:
+
+- Explorar os dados: analisar estrutura, distribuições, boxplots, relações bivariadas e matrizes de correlação por grupo.
+
+- Verificar suposições: aplicar o teste de Box (Box’s M) e comparar as matrizes de covariância das populações.
+
+- Estimar modelos discriminantes:
+    - Função Discriminante Linear (LDA)
+    - Função Discriminante Quadrática (QDA)
+
+- Visualizar e interpretar:
+    - projeção na função discriminante
+    - separação entre os grupos
+    - importância das variáveis.
+
+- Avaliar desempenho preditivo usando três abordagens:
+    - método da ressubstituição,
+    - divisão treino/teste,
+    - validação cruzada.
+
+- Comparar LDA e QDA, discutindo qual modelo é mais adequado ao problema.
+
+- Produzir interpretação final, relacionando resultados estatísticos com o contexto aplicado de risco de crédito.
