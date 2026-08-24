@@ -167,7 +167,7 @@ df_sus <- to_realistic(Z_sus, "Suspeito") %>%
 
 df <- bind_rows(df_reg, df_sus)
 
-write.csv(df, "F:/SITE/est014/dados/seguradora.csv", row.names = FALSE)
+write.csv(df, "F:/SITE/est328/dados/seguradora.csv", row.names = FALSE)
 ```
 
 

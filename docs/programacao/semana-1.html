@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Semana 01 – EST014 - Estatística Multivariada I</title>
+<title>Semana 01 – EST328 - Análise Multivariada e Aprendizado Não Supervisionado</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -43,6 +43,8 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/bootstrap/bootstrap-b09848b6287391c45069fed345a57cb2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/bootstrap/bootstrap-dark-e9f3ba5fbee03b112b18b9666ab66a2c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="../site_libs/bootstrap/bootstrap-b09848b6287391c45069fed345a57cb2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -72,9 +74,9 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="Semana 01 – EST014 - Estatística Multivariada I">
-<meta property="og:description" content="Homepage da disciplina EST014 - Estatística Multivariada I, 2025/2">
-<meta property="og:site_name" content="EST014 - Estatística Multivariada I">
+<meta property="og:title" content="Semana 01 – EST328 - Análise Multivariada e Aprendizado Não Supervisionado">
+<meta property="og:description" content="Homepage da disciplina EST328 - Análise Multivariada e Aprendizado Não Supervisionado, 2026/2">
+<meta property="og:site_name" content="EST328 - Análise Multivariada e Aprendizado Não Supervisionado">
 </head>
 
 <body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -265,7 +267,7 @@ ul.task-list li input[type="checkbox"] {
       <img src="../images/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main">
-    <a href="https://github.com/tiagomartin/est014" title="github" class="quarto-navigation-tool px-1" aria-label="github"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/tiagomartin/est328" title="github" class="quarto-navigation-tool px-1" aria-label="github"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div>
@@ -284,26 +286,8 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../exercicios.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Listas de Exercícios</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../analises.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Análise de dados</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../plano.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Plano de Ensino</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../projeto.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Projetos</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -317,8 +301,15 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#plano-de-ensino" id="toc-plano-de-ensino" class="nav-link active" data-scroll-target="#plano-de-ensino">Plano de Ensino</a></li>
+  <li><a href="#slides" id="toc-slides" class="nav-link" data-scroll-target="#slides">Slides</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/tiagomartin/est328/edit/main/programacao/semana-1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/tiagomartin/est328/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -343,10 +334,17 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Sejam bem-vindos à disciplina EST014 - Estatística Multivariada I.</p>
-<p>Leiam com atenção o <a href="https://github.com/tiagomartin/est014/blob/3510b6c24211502df95769537ddb1097d026bd8d/documentos/Plano_de_Ensino_EST014_2025_2.pdf">plano de ensino</a> da disciplina. Nele estão as regras do jogo!</p>
+<p>Sejam bem-vindos à disciplina EST328 - Análise Multivariada e Aprendizado Não Supervisionado.</p>
+<section id="plano-de-ensino" class="level2">
+<h2 class="anchored" data-anchor-id="plano-de-ensino">Plano de Ensino</h2>
+<p>Leiam com atenção o <a href="..\documentos/Plano_de_Ensino_EST328_2026_2.pdf">plano de ensino</a> da disciplina. Nele estão as regras do jogo!</p>
+</section>
+<section id="slides" class="level2">
+<h2 class="anchored" data-anchor-id="slides">Slides</h2>
+<p><i class="fa-solid fa-file-powerpoint fa-lg" aria-label="file-powerpoint"></i> <a href="..\aulas/revisao_alg_linear/rev_alg_linear.html#/title-slide" aria-label="Revisão de Álgebra Linear" title="Revisão de Álgebra Linear">Revisão de Álgebra Matricial</a></p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -434,7 +432,7 @@ ul.task-list li input[type="checkbox"] {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("http:\/\/professortp\.com\.br\/est014\/");
+        var filterRegex = new RegExp("http:\/\/professortp\.com\.br\/est328\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -765,11 +763,11 @@ ul.task-list li input[type="checkbox"] {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>© Copyright 2025, Tiago Pereira</p>
+<p>© Copyright 2026, Tiago Pereira</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/tiagomartin/est014/edit/main/programacao/semana-1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/tiagomartin/est014/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/tiagomartin/est328/edit/main/programacao/semana-1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/tiagomartin/est328/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Página construída usando <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

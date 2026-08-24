@@ -174,7 +174,7 @@ simulate_credit_work <- function(n = 500, p_risco = 0.20, seed = 12345,
 # --------- uso ----------
 df <- simulate_credit_work(n = 550, p_risco = 0.30, seed = 12345, sep = 0.28)
 
-write.csv(df, "F:/SITE/est014/dados/dados_risco.csv", row.names = FALSE)
+write.csv(df, "F:/SITE/est328/dados/dados_risco.csv", row.names = FALSE)
 ```
 
 

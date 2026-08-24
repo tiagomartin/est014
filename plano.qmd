@@ -59,7 +59,7 @@ Leia com atenção o **plano de ensino da disciplina** que será oferecida neste
 <div class="d-flex align-items-center gap-3">
 
   <span>
-    <a href="documentos/Plano_de_Ensino_EST014_2025_2.pdf" class="btn btn-est304-main btn-sm">Ver plano</a>
+    <a href="/documentos/Plano_de_Ensino_EST328_2026_2.pdf" class="btn btn-est304-main btn-sm">Ver plano</a>
   </span>
 
 </div>

@@ -177,8 +177,7 @@
 \frame{\titlepage}
 
 
-\begin{frame}
-\begin{block}{O Problema da classificação e discriminação}
+\begin{frame}{O Problema da classificação e discriminação}
 \phantomsection\label{o-problema-da-classificauxe7uxe3o-e-discriminauxe7uxe3o}
 \begin{itemize}
 \tightlist
@@ -208,9 +207,9 @@
   classificar novos indivíduos em um de \(k\) grupos
   \textbf{pré-definidos}.
 \end{itemize}
-\end{block}
+\end{frame}
 
-\begin{block}{Discriminação em dois grupos}
+\begin{frame}{Discriminação em dois grupos}
 \phantomsection\label{discriminauxe7uxe3o-em-dois-grupos}
 \begin{itemize}
 \tightlist
@@ -248,9 +247,9 @@
   Seja \(\Omega\) o espaço amostral (conjunto de resultados possíveis
   para \(\boldsymbol{x}\)).
 \end{itemize}
-\end{block}
+\end{frame}
 
-\begin{block}{Classificação em dois grupos - Regras de classificação}
+\begin{frame}{Classificação em dois grupos - Regras de classificação}
 \phantomsection\label{classificauxe7uxe3o-em-dois-grupos---regras-de-classificauxe7uxe3o}
 \begin{itemize}
 \tightlist
@@ -269,16 +268,16 @@
     seja classificado como pertencente a \(\boldsymbol{\pi}_2\).
   \end{itemize}
 \end{itemize}
-\end{block}
+\end{frame}
 
-\begin{block}{Classificação em dois grupos - Ilustração}
+\begin{frame}{Classificação em dois grupos - Ilustração}
 \phantomsection\label{classificauxe7uxe3o-em-dois-grupos---ilustrauxe7uxe3o}
 \begin{center}
 \pandocbounded{\includegraphics[keepaspectratio]{../../images/AD/discriminacao_2_grupos.jpg}}
 \end{center}
-\end{block}
+\end{frame}
 
-\begin{block}{Classificação em dois grupos - Probabilidades de
+\begin{frame}{Classificação em dois grupos - Probabilidades de
 má-classificação}
 \phantomsection\label{classificauxe7uxe3o-em-dois-grupos---probabilidades-de-muxe1-classificauxe7uxe3o}
 Com base no que foi apresentado, temos as seguintes probabilidades:
@@ -300,16 +299,16 @@ Com base no que foi apresentado, temos as seguintes probabilidades:
 \end{itemize}
 
 \[\small P(1|2) = P(\boldsymbol{x} \in R_1| \boldsymbol{\pi}_2) = \displaystyle{\int_{R_1} f_2(\boldsymbol{x}) d \boldsymbol{x}}\]
-\end{block}
+\end{frame}
 
-\begin{block}{Classificação em dois grupos - Ilustração}
+\begin{frame}{Classificação em dois grupos - Ilustração}
 \phantomsection\label{classificauxe7uxe3o-em-dois-grupos---ilustrauxe7uxe3o-1}
 \begin{center}
 \pandocbounded{\includegraphics[keepaspectratio]{../../images/AD/prob_ma_class_2_pop.jpg}}
 \end{center}
-\end{block}
+\end{frame}
 
-\begin{block}{Classificação em dois grupos - Incorporando probabilidades
+\begin{frame}{Classificação em dois grupos - Incorporando probabilidades
 a priori}
 \phantomsection\label{classificauxe7uxe3o-em-dois-grupos---incorporando-probabilidades-a-priori}
 Vamos assumir probabilidades a priori \(p_1 = P(\boldsymbol{\pi}_1)\) e
@@ -334,9 +333,9 @@ Vamos assumir probabilidades a priori \(p_1 = P(\boldsymbol{\pi}_1)\) e
 \end{itemize}
 
 \[P(C_1 \cap \boldsymbol{\pi}_2) = P(C_1|\boldsymbol{\pi}_2)P(\boldsymbol{\pi}_2) = P(1|2)p_2\]
-\end{block}
+\end{frame}
 
-\begin{block}{Classificação em dois grupos - Incorporando probabilidades
+\begin{frame}{Classificação em dois grupos - Incorporando probabilidades
 a priori}
 \phantomsection\label{classificauxe7uxe3o-em-dois-grupos---incorporando-probabilidades-a-priori-1}
 \begin{itemize}
@@ -356,9 +355,9 @@ a priori}
 \end{itemize}
 
 \[P(C_2 \cap \boldsymbol{\pi}_1) = P(C_2|\boldsymbol{\pi}_1)P(\boldsymbol{\pi}_1) = P(2|1)p_1\]
-\end{block}
+\end{frame}
 
-\begin{block}{Classificação em dois grupos - Incorporando custos de
+\begin{frame}{Classificação em dois grupos - Incorporando custos de
 má-classificação}
 \phantomsection\label{classificauxe7uxe3o-em-dois-grupos---incorporando-custos-de-muxe1-classificauxe7uxe3o}
 Agora vamos incorporar custos de má-classificação:
@@ -382,9 +381,9 @@ Agora vamos incorporar custos de má-classificação:
 \pause
 
 Naturalmente, consideramos \(c(1|1) = c(2|2) = 0\).
-\end{block}
+\end{frame}
 
-\begin{block}{Classificação em dois grupos - Custo esperado de
+\begin{frame}{Classificação em dois grupos - Custo esperado de
 má-classificação (\(ECM\))}
 \phantomsection\label{classificauxe7uxe3o-em-dois-grupos---custo-esperado-de-muxe1-classificauxe7uxe3o-ecm}
 Diferentes critérios podem ser utilizados para fins de determinar a
@@ -406,9 +405,9 @@ esperado de má-classificação}.
   Assim, a melhor regra de classificação, baseada nesse critério, seria
   aquela que minimizasse \(ECM\).
 \end{itemize}
-\end{block}
+\end{frame}
 
-\begin{block}{Classificação em dois grupos - Regras de classificação
+\begin{frame}{Classificação em dois grupos - Regras de classificação
 para mínimo (\(ECM\))}
 \phantomsection\label{classificauxe7uxe3o-em-dois-grupos---regras-de-classificauxe7uxe3o-para-muxednimo-ecm}
 As regiões \(R_1\) e \(R_2\), responsáveis por alocar qualquer
@@ -425,9 +424,9 @@ ou, de forma equivalente,
 
 ou, de forma equivalente,
 \(p_1c(2|1)f_1(\boldsymbol{x}) < p_2c(1|2)f_2(\boldsymbol{x})\).
-\end{block}
+\end{frame}
 
-\begin{block}{Classificação em dois grupos - casos particulares}
+\begin{frame}{Classificação em dois grupos - casos particulares}
 \phantomsection\label{classificauxe7uxe3o-em-dois-grupos---casos-particulares}
 \begin{itemize}
 \tightlist
@@ -444,9 +443,9 @@ ou, de forma equivalente,
 \end{itemize}
 
 \[\small R_1: = \dfrac{f_1(\boldsymbol{x})}{f_2(\boldsymbol{x})} \geqslant \left( \dfrac{p_2}{p_1}\right) \,\,\,\,\,\, R_2: = \dfrac{f_1(\boldsymbol{x})}{f_2(\boldsymbol{x})} < \left( \dfrac{p_2}{p_1}\right)\]
-\end{block}
+\end{frame}
 
-\begin{block}{Classificação em dois grupos - casos particulares}
+\begin{frame}{Classificação em dois grupos - casos particulares}
 \phantomsection\label{classificauxe7uxe3o-em-dois-grupos---casos-particulares-1}
 \begin{itemize}
 \tightlist
@@ -455,9 +454,9 @@ ou, de forma equivalente,
 \end{itemize}
 
 \[\small R_1: = \dfrac{f_1(\boldsymbol{x})}{f_2(\boldsymbol{x})} \geqslant 1 \,\,\,\,\,\, R_2: = \dfrac{f_1(\boldsymbol{x})}{f_2(\boldsymbol{x})} < 1\]
-\end{block}
+\end{frame}
 
-\begin{block}{Classificação em dois grupos - Classificação pelo Teorema
+\begin{frame}{Classificação em dois grupos - Classificação pelo Teorema
 de Bayes}
 \phantomsection\label{classificauxe7uxe3o-em-dois-grupos---classificauxe7uxe3o-pelo-teorema-de-bayes}
 Usando o teorema de Bayes, podemos alocar uma nova observação
@@ -466,9 +465,9 @@ Usando o teorema de Bayes, podemos alocar uma nova observação
 \[P(\boldsymbol{\pi}_1|\boldsymbol{x}_0) = \dfrac{p_1f_1(\boldsymbol{x}_0)}{p_1f_1(\boldsymbol{x}_0) + p_2f_2(\boldsymbol{x}_0)};\]
 
 \[P(\boldsymbol{\pi}_2|\boldsymbol{x}_0) = 1 - P(\boldsymbol{\pi}_1|\boldsymbol{x}_0)\]
-\end{block}
+\end{frame}
 
-\begin{block}{Classificação em duas população normais}
+\begin{frame}{Classificação em duas população normais}
 \phantomsection\label{classificauxe7uxe3o-em-duas-populauxe7uxe3o-normais}
 \begin{block}{1º caso: as populações possuem variância comum}
 \phantomsection\label{uxba-caso-as-populauxe7uxf5es-possuem-variuxe2ncia-comum}
@@ -485,9 +484,9 @@ para \(i = 1,2\) em que \(\boldsymbol{\mu}_i\) é o vetor de médias da
 \(i\)-ésima população e \(\boldsymbol{\Sigma}\) é a matriz de
 covariâncias positiva definida comum às duas populações.
 \end{block}
-\end{block}
+\end{frame}
 
-\begin{block}{Classificação em duas população normais}
+\begin{frame}{Classificação em duas população normais}
 \phantomsection\label{classificauxe7uxe3o-em-duas-populauxe7uxe3o-normais-1}
 \begin{block}{1º caso: as populações possuem variância comum}
 \phantomsection\label{uxba-caso-as-populauxe7uxf5es-possuem-variuxe2ncia-comum-1}
@@ -510,9 +509,9 @@ covariâncias positiva definida comum às duas populações.
 
 \[\small \exp\left\lbrace -\dfrac{1}{2} \left( \boldsymbol{x} - \boldsymbol{\mu}_1\right) ^t \boldsymbol{\Sigma}^{-1} \left( \boldsymbol{x} - \boldsymbol{\mu}_1\right) + \dfrac{1}{2} \left( \boldsymbol{x} - \boldsymbol{\mu}_2\right) ^t \boldsymbol{\Sigma}^{-1} \left( \boldsymbol{x} - \boldsymbol{\mu}_2\right)\right\rbrace \geqslant \left( \dfrac{c(1|2)}{c(2|1)}\right) \left( \dfrac{p_2}{p_1}\right)\]
 \end{block}
-\end{block}
+\end{frame}
 
-\begin{block}{Classificação em duas população normais}
+\begin{frame}{Classificação em duas população normais}
 \phantomsection\label{classificauxe7uxe3o-em-duas-populauxe7uxe3o-normais-2}
 \begin{block}{1º caso: as populações possuem variância comum}
 \phantomsection\label{uxba-caso-as-populauxe7uxf5es-possuem-variuxe2ncia-comum-2}
@@ -536,9 +535,9 @@ covariâncias positiva definida comum às duas populações.
 
 e em \(\boldsymbol{\pi}_2\), caso contrário.
 \end{block}
-\end{block}
+\end{frame}
 
-\begin{block}{Classificação em duas população normais}
+\begin{frame}{Classificação em duas população normais}
 \phantomsection\label{classificauxe7uxe3o-em-duas-populauxe7uxe3o-normais-3}
 \begin{block}{Para dados amostrais}
 \phantomsection\label{para-dados-amostrais}
@@ -556,9 +555,9 @@ em que
 
 \[\boldsymbol{S}_c =  \displaystyle{\frac{(n_1 - 1) {\boldsymbol{S}_1} + (n_2 - 1) {\boldsymbol{S}_2}}{n_1 + n_2 - 2}}\]
 \end{block}
-\end{block}
+\end{frame}
 
-\begin{block}{Classificação em duas população normais}
+\begin{frame}{Classificação em duas população normais}
 \phantomsection\label{classificauxe7uxe3o-em-duas-populauxe7uxe3o-normais-4}
 \begin{block}{2º caso: as populações não possuem variância comum}
 \phantomsection\label{uxba-caso-as-populauxe7uxf5es-nuxe3o-possuem-variuxe2ncia-comum}
@@ -581,9 +580,9 @@ lineares.
 
 e em \(\boldsymbol{\pi}_2\), caso contrário.
 \end{block}
-\end{block}
+\end{frame}
 
-\begin{block}{Classificação em duas população normais}
+\begin{frame}{Classificação em duas população normais}
 \phantomsection\label{classificauxe7uxe3o-em-duas-populauxe7uxe3o-normais-5}
 \begin{block}{2º caso: as populações não possuem variância comum}
 \phantomsection\label{uxba-caso-as-populauxe7uxf5es-nuxe3o-possuem-variuxe2ncia-comum-1}
@@ -603,9 +602,9 @@ e em \(\boldsymbol{\pi}_2\), caso contrário.
   \(\boldsymbol{x}\).
 \end{itemize}
 \end{block}
-\end{block}
+\end{frame}
 
-\begin{block}{Classificação em duas população normais}
+\begin{frame}{Classificação em duas população normais}
 \phantomsection\label{classificauxe7uxe3o-em-duas-populauxe7uxe3o-normais-6}
 \begin{block}{Para dados amostrais}
 \phantomsection\label{para-dados-amostrais-1}
@@ -626,9 +625,9 @@ e em \(\boldsymbol{\pi}_2\), caso contrário, sendo
 \[\hat{\delta} = \dfrac{1}{2} \ln \left( \dfrac{|\boldsymbol{S}_1|}{|\boldsymbol{S}_2|} \right) + \dfrac{1}{2} \left( \bar{\boldsymbol{x}}_1^t \boldsymbol{S}_1^{-1}\bar{\boldsymbol{x}}_1 - \bar{\boldsymbol{x}}_2^t \boldsymbol{S}_2^{-1}\bar{\boldsymbol{x}}_2\right)
 \]
 \end{block}
-\end{block}
+\end{frame}
 
-\begin{block}{Discriminação em duas populações}
+\begin{frame}{Discriminação em duas populações}
 \phantomsection\label{discriminauxe7uxe3o-em-duas-populauxe7uxf5es}
 \begin{block}{A função discriminante linear de Fisher}
 \phantomsection\label{a-funuxe7uxe3o-discriminante-linear-de-fisher}
@@ -647,9 +646,9 @@ e em \(\boldsymbol{\pi}_2\), caso contrário, sendo
   Não pressupõe normalidade multivariada dos dados!
 \end{itemize}
 \end{block}
-\end{block}
+\end{frame}
 
-\begin{block}{Discriminação em duas populações}
+\begin{frame}{Discriminação em duas populações}
 \phantomsection\label{discriminauxe7uxe3o-em-duas-populauxe7uxf5es-1}
 \begin{block}{A função discriminante linear de Fisher}
 \phantomsection\label{a-funuxe7uxe3o-discriminante-linear-de-fisher-1}
@@ -672,9 +671,9 @@ e em \(\boldsymbol{\pi}_2\), caso contrário, sendo
   \(\boldsymbol{\pi}_2\)
 \end{itemize}
 \end{block}
-\end{block}
+\end{frame}
 
-\begin{block}{Discriminação em duas populações}
+\begin{frame}{Discriminação em duas populações}
 \phantomsection\label{discriminauxe7uxe3o-em-duas-populauxe7uxf5es-2}
 \begin{block}{A função discriminante linear de Fisher}
 \phantomsection\label{a-funuxe7uxe3o-discriminante-linear-de-fisher-2}
@@ -699,9 +698,9 @@ d^2(\boldsymbol{x}, \boldsymbol{\mu}_2) - d^2(\boldsymbol{x}, \boldsymbol{\mu}_1
 
 \[ L(\boldsymbol{x}) = \left[ \boldsymbol{x} - \displaystyle{\frac{1}{2}(\boldsymbol{\mu}_1 + \boldsymbol{\mu}_2)} \right]^t \boldsymbol{\Sigma}^{-1}(\boldsymbol{\mu}_1 - \boldsymbol{\mu}_2)\]
 \end{block}
-\end{block}
+\end{frame}
 
-\begin{block}{Discriminação em duas populações}
+\begin{frame}{Discriminação em duas populações}
 \phantomsection\label{discriminauxe7uxe3o-em-duas-populauxe7uxf5es-3}
 \begin{block}{A função discriminante linear de Fisher}
 \phantomsection\label{a-funuxe7uxe3o-discriminante-linear-de-fisher-3}
@@ -725,9 +724,9 @@ L(\boldsymbol{x}) = (\boldsymbol{\mu}_1 - \boldsymbol{\mu}_2)^t\boldsymbol{\Sigm
 
 é chamado de \textbf{função discriminante linear de Fisher}.
 \end{block}
-\end{block}
+\end{frame}
 
-\begin{block}{Discriminação em duas populações}
+\begin{frame}{Discriminação em duas populações}
 \phantomsection\label{discriminauxe7uxe3o-em-duas-populauxe7uxf5es-4}
 \begin{block}{A função discriminante linear de Fisher}
 \phantomsection\label{a-funuxe7uxe3o-discriminante-linear-de-fisher-4}
@@ -749,9 +748,9 @@ m &= \displaystyle{\frac{1}{2}(\boldsymbol{\mu}_1 - \boldsymbol{\mu}_2)^t \bolds
 \end{aligned}
 \]
 \end{block}
-\end{block}
+\end{frame}
 
-\begin{block}{Discriminação em duas populações}
+\begin{frame}{Discriminação em duas populações}
 \phantomsection\label{discriminauxe7uxe3o-em-duas-populauxe7uxf5es-5}
 \begin{block}{A função discriminante linear de Fisher}
 \phantomsection\label{a-funuxe7uxe3o-discriminante-linear-de-fisher-5}
@@ -773,9 +772,9 @@ m &= \displaystyle{\frac{1}{2}(\boldsymbol{\mu}_1 - \boldsymbol{\mu}_2)^t \bolds
 
 \[(\boldsymbol{\mu}_1 - \boldsymbol{\mu}_2)^t \boldsymbol{\Sigma}^{-1} \boldsymbol{x} = \boldsymbol{b}^t \boldsymbol{x} = b_1x_1 + b_2x_2 + \cdots + b_px_p\]
 \end{block}
-\end{block}
+\end{frame}
 
-\begin{block}{Discriminação em duas populações}
+\begin{frame}{Discriminação em duas populações}
 \phantomsection\label{discriminauxe7uxe3o-em-duas-populauxe7uxf5es-6}
 \begin{block}{Para dados amostrais}
 \phantomsection\label{para-dados-amostrais-2}
@@ -784,9 +783,9 @@ m &= \displaystyle{\frac{1}{2}(\boldsymbol{\mu}_1 - \boldsymbol{\mu}_2)^t \bolds
 
 \[\boldsymbol{S}_c =  \displaystyle{\frac{(n_1 - 1) {\boldsymbol{S}_1} + (n_2 - 1) {\boldsymbol{S}_2}}{n_1 + n_2 - 2}}\]
 \end{block}
-\end{block}
+\end{frame}
 
-\begin{block}{Probabilidade de classificação incorreta}
+\begin{frame}{Probabilidade de classificação incorreta}
 \phantomsection\label{probabilidade-de-classificauxe7uxe3o-incorreta}
 \begin{block}{Estimação das probabilidades de classificação incorreta}
 \phantomsection\label{estimauxe7uxe3o-das-probabilidades-de-classificauxe7uxe3o-incorreta}
@@ -810,9 +809,9 @@ População de origem & Classe 1 & Classe 2 & Total \\
 
 \[n_{ij}: \text{é o número de elementos de } i \text{ classificados em } j\]
 \end{block}
-\end{block}
+\end{frame}
 
-\begin{block}{Probabilidade de classificação incorreta}
+\begin{frame}{Probabilidade de classificação incorreta}
 \phantomsection\label{probabilidade-de-classificauxe7uxe3o-incorreta-1}
 \begin{block}{Estimação das probabilidades de classificação incorreta}
 \phantomsection\label{estimauxe7uxe3o-das-probabilidades-de-classificauxe7uxe3o-incorreta-1}
@@ -835,9 +834,9 @@ População de origem & Classe 1 & Classe 2 & Total \\
 
 \[\widehat{p}(acerto) = \displaystyle{\frac{n_{11} + n_{22}}{n_1 + n_2}}\]
 \end{block}
-\end{block}
+\end{frame}
 
-\begin{block}{Probabilidade de classificação incorreta}
+\begin{frame}{Probabilidade de classificação incorreta}
 \phantomsection\label{probabilidade-de-classificauxe7uxe3o-incorreta-2}
 \begin{block}{Estimação das probabilidades de classificação incorreta}
 \phantomsection\label{estimauxe7uxe3o-das-probabilidades-de-classificauxe7uxe3o-incorreta-2}
@@ -849,9 +848,9 @@ População de origem & Classe 1 & Classe 2 & Total \\
 
 \[TEA = \displaystyle{\frac{n_{12} + n_{21}}{n_1 + n_2}}\]
 \end{block}
-\end{block}
+\end{frame}
 
-\begin{block}{Probabilidade de classificação incorreta}
+\begin{frame}{Probabilidade de classificação incorreta}
 \phantomsection\label{probabilidade-de-classificauxe7uxe3o-incorreta-3}
 \begin{itemize}
 \tightlist
@@ -873,9 +872,9 @@ População de origem & Classe 1 & Classe 2 & Total \\
     omitida é utilizada para estimar as probabilidades de erro.
   \end{itemize}
 \end{itemize}
-\end{block}
+\end{frame}
 
-\begin{block}{Classificação em \(k\) grupos}
+\begin{frame}{Classificação em \(k\) grupos}
 \phantomsection\label{classificauxe7uxe3o-em-k-grupos}
 \begin{itemize}
 \tightlist
@@ -906,9 +905,9 @@ População de origem & Classe 1 & Classe 2 & Total \\
 \end{itemize}
 
 \[P(j|i) = \displaystyle{\int_{R_j} f_i(\boldsymbol{x}) d\boldsymbol{x}} \,\,\,\, i,j = 1,2, \cdots, k\]
-\end{block}
+\end{frame}
 
-\begin{block}{Classificação em \(k\) grupos}
+\begin{frame}{Classificação em \(k\) grupos}
 \phantomsection\label{classificauxe7uxe3o-em-k-grupos-1}
 \begin{itemize}
 \tightlist
@@ -933,9 +932,9 @@ em que,
 \end{itemize}
 
 \[\displaystyle{\sum_{i=1, i \neq j}^kp_if_i(\boldsymbol{x})c(j|i)}, \,\,\, \text{seja mínimo.}\]
-\end{block}
+\end{frame}
 
-\begin{block}{Classificação em \(k\) grupos}
+\begin{frame}{Classificação em \(k\) grupos}
 \phantomsection\label{classificauxe7uxe3o-em-k-grupos-2}
 \begin{itemize}
 \tightlist
@@ -954,9 +953,9 @@ em que,
   fica simplificada, sendo dada pela regra de classificação para duas
   populações apresentada anteriormente.
 \end{itemize}
-\end{block}
+\end{frame}
 
-\begin{block}{Classificação em mais de duas população normais}
+\begin{frame}{Classificação em mais de duas população normais}
 \phantomsection\label{classificauxe7uxe3o-em-mais-de-duas-populauxe7uxe3o-normais}
 \begin{itemize}
 \tightlist
@@ -970,9 +969,9 @@ em que,
 para \(i = 1,2, \cdots, k\) em que \(\boldsymbol{\mu}_i\) é o vetor de
 médias da \(i\)-ésima população e \(\boldsymbol{\Sigma}_i\) é a matriz
 de covariâncias positiva definida da \(i\)-ésima população.
-\end{block}
+\end{frame}
 
-\begin{block}{Classificação em mais de duas população normais}
+\begin{frame}{Classificação em mais de duas população normais}
 \phantomsection\label{classificauxe7uxe3o-em-mais-de-duas-populauxe7uxe3o-normais-1}
 \begin{itemize}
 \tightlist
@@ -996,9 +995,9 @@ de covariâncias positiva definida da \(i\)-ésima população.
   \(\ln\left[ p_j f_j(\boldsymbol{x})\right]\), em relação a todos os
   valores de \(j\), \(j = 1,2, \cdots, k\).
 \end{itemize}
-\end{block}
+\end{frame}
 
-\begin{block}{Classificação em mais de duas população normais}
+\begin{frame}{Classificação em mais de duas população normais}
 \phantomsection\label{classificauxe7uxe3o-em-mais-de-duas-populauxe7uxe3o-normais-2}
 \begin{itemize}
 \tightlist
@@ -1019,7 +1018,6 @@ de covariâncias positiva definida da \(i\)-ésima população.
 \[
 d_i^Q(\boldsymbol{x}) =  - \dfrac{1}{2} \ln \left( |\boldsymbol{\Sigma}_i|\right) - \dfrac{1}{2} \left( \boldsymbol{x} - \boldsymbol{\mu}_i\right) ^t \boldsymbol{\Sigma}_i^{-1} \left( \boldsymbol{x} - \boldsymbol{\mu}_i\right) + \ln\left( p_i\right) 
 \]
-\end{block}
 \end{frame}
 
 \begin{frame}{Classificação em mais de duas população normais}
@@ -1035,8 +1033,9 @@ d_i^Q(\boldsymbol{x}) =  - \dfrac{1}{2} \ln \left( |\boldsymbol{\Sigma}_i|\right
 \[d_i^Q(\boldsymbol{x}) = \max_j \left[ d_j^Q(\boldsymbol{x})\right]\]
 
 para \(j = 1, 2, \cdots, k\).
+\end{frame}
 
-\begin{block}{Classificação em mais de duas população normais}
+\begin{frame}{Classificação em mais de duas população normais}
 \phantomsection\label{classificauxe7uxe3o-em-mais-de-duas-populauxe7uxe3o-normais-4}
 \begin{block}{Para dados amostrais}
 \phantomsection\label{para-dados-amostrais-3}
@@ -1061,9 +1060,9 @@ observação \(\boldsymbol{x}\) em \(\boldsymbol{\pi}_i\) se
 
 \[Q_i(\boldsymbol{x}) = \max_j \left[Q_j(\boldsymbol{x})\right], \,\,\,\, j = 1, 2, \cdots, k\]
 \end{block}
-\end{block}
+\end{frame}
 
-\begin{block}{Classificação em mais de duas população normais}
+\begin{frame}{Classificação em mais de duas população normais}
 \phantomsection\label{classificauxe7uxe3o-em-mais-de-duas-populauxe7uxe3o-normais-5}
 \begin{itemize}
 \tightlist
@@ -1092,9 +1091,9 @@ d_i(\boldsymbol{x}) =  \boldsymbol{\mu}_i^t \boldsymbol{\Sigma}^{-1} \boldsymbol
 \]
 
 para \(i = 1, 2, \cdots, k\).
-\end{block}
+\end{frame}
 
-\begin{block}{Classificação em mais de duas população normais}
+\begin{frame}{Classificação em mais de duas população normais}
 \phantomsection\label{classificauxe7uxe3o-em-mais-de-duas-populauxe7uxe3o-normais-6}
 \begin{itemize}
 \tightlist
@@ -1104,9 +1103,9 @@ para \(i = 1, 2, \cdots, k\).
 \end{itemize}
 
 \[d_i(\boldsymbol{x}) = \max_j \left[d_j(\boldsymbol{x})\right], \,\,\,\, j = 1, 2, \cdots, k\]
-\end{block}
+\end{frame}
 
-\begin{block}{Classificação em mais de duas população normais}
+\begin{frame}{Classificação em mais de duas população normais}
 \phantomsection\label{classificauxe7uxe3o-em-mais-de-duas-populauxe7uxe3o-normais-7}
 \begin{block}{Para dados amostrais}
 \phantomsection\label{para-dados-amostrais-4}
@@ -1127,9 +1126,9 @@ sendo
 
 para \(i = 1, 2, \cdots, k\).
 \end{block}
-\end{block}
+\end{frame}
 
-\begin{block}{Classificação em mais de duas população normais}
+\begin{frame}{Classificação em mais de duas população normais}
 \phantomsection\label{classificauxe7uxe3o-em-mais-de-duas-populauxe7uxe3o-normais-8}
 \begin{block}{Para dados amostrais}
 \phantomsection\label{para-dados-amostrais-5}
@@ -1142,9 +1141,9 @@ para \(i = 1, 2, \cdots, k\).
 \[\hat{d}_i(\boldsymbol{x}) = \max_j \left[\hat{d}_j(\boldsymbol{x})\right], \,\,\,\, j = 1, 2, 
 \cdots, k\]
 \end{block}
-\end{block}
+\end{frame}
 
-\begin{block}{Classificação em mais de duas população normais}
+\begin{frame}{Classificação em mais de duas população normais}
 \phantomsection\label{classificauxe7uxe3o-em-mais-de-duas-populauxe7uxe3o-normais-9}
 \begin{block}{Funções discriminantes de Fisher para mais de duas
 populações}
@@ -1171,9 +1170,9 @@ corresponde ao \(j\)-ésimo maior autovalor da matriz
 \(\boldsymbol{W}^{-1}\boldsymbol{B}\) e tal que
 \(\widehat{\boldsymbol{e}}_j^t \boldsymbol{W} \widehat{\boldsymbol{e}}_j = 1\)
 \end{block}
-\end{block}
+\end{frame}
 
-\begin{block}{Classificação em mais de duas população normais}
+\begin{frame}{Classificação em mais de duas população normais}
 \phantomsection\label{classificauxe7uxe3o-em-mais-de-duas-populauxe7uxe3o-normais-10}
 \begin{block}{Funções discriminantes de Fisher para mais de duas
 populações}
@@ -1191,9 +1190,9 @@ populações}
 
 \[\boldsymbol{B} = \displaystyle{\sum_{i=1}^k} n_i (\bar{\boldsymbol{x}}_i - \bar{\boldsymbol{x}})(\bar{\boldsymbol{x}}_i - \bar{\boldsymbol{x}})^t\]
 \end{block}
-\end{block}
+\end{frame}
 
-\begin{block}{Classificação em mais de duas população normais}
+\begin{frame}{Classificação em mais de duas população normais}
 \phantomsection\label{classificauxe7uxe3o-em-mais-de-duas-populauxe7uxe3o-normais-11}
 \begin{block}{Funções discriminantes de Fisher para mais de duas
 populações}
@@ -1211,9 +1210,9 @@ populações}
 \end{itemize}
 \end{block}
 \end{block}
-\end{block}
+\end{frame}
 
-\begin{block}{Classificação em mais de duas população normais}
+\begin{frame}{Classificação em mais de duas população normais}
 \phantomsection\label{classificauxe7uxe3o-em-mais-de-duas-populauxe7uxe3o-normais-12}
 \begin{block}{Funções discriminantes de Fisher para mais de duas
 populações}
@@ -1237,9 +1236,9 @@ populações}
 \end{itemize}
 \end{block}
 \end{block}
-\end{block}
+\end{frame}
 
-\begin{block}{Probabilidade de classificação incorreta}
+\begin{frame}{Probabilidade de classificação incorreta}
 \phantomsection\label{probabilidade-de-classificauxe7uxe3o-incorreta-4}
 Os erros de classificação são definidos como:
 
@@ -1260,7 +1259,6 @@ E as probabilidades de ocorrência destes erros são estimadas por:
 onde \(n_{ji}\) é o número de elementos da população \(\pi_j\)
 classificados incorretamente pela regra na população \(\pi_i\),
 \(i,j = 1, \cdots, g\), \(i \neq j\).
-\end{block}
 \end{frame}
 
 

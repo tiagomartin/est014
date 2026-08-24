@@ -4,25 +4,25 @@ project:
 
 website:
   page-navigation: true
-  title: "EST014 - Estatística Multivariada I"
-  description: "Homepage da disciplina EST014 - Estatística Multivariada I, 2025/2"
-  site-url: "http://professortp.com.br/est014/"
+  title: "EST328 - Análise Multivariada e Aprendizado Não Supervisionado"
+  description: "Homepage da disciplina EST328 - Análise Multivariada e Aprendizado Não Supervisionado, 2026/2"
+  site-url: "http://professortp.com.br/est328/"
 
-  repo-url: "https://github.com/tiagomartin/est014"
+  repo-url: "https://github.com/tiagomartin/est328"
   repo-actions: [edit, issue]
 
   open-graph: true
   
   page-footer:
     right: "Página construída usando [Quarto](https://quarto.org/)."
-    left: "&copy; Copyright 2025, Tiago Pereira"
+    left: "&copy; Copyright 2026, Tiago Pereira"
 
 
   sidebar:
     tools: 
     - icon: github
       text: github
-      href: https://github.com/tiagomartin/est014
+      href: https://github.com/tiagomartin/est328
     background: "#F2F2F2"
     logo: "images/logo.png"
     pinned: true
@@ -33,10 +33,10 @@ website:
     contents:
       - aulas.qmd
       #- estudos.qmd
-      - exercicios.qmd
-      - analises.qmd
+      #- exercicios.qmd
+      #- analises.qmd
       - plano.qmd
-      - projeto.qmd
+      #- projeto.qmd
       - cronograma.qmd
       #- material.qmd
 

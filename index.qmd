@@ -1,5 +1,5 @@
 ---
-title: "Estatística Multivariada I"
+title: "Análise Multivariada e Aprendizado Não Supervisionado"
 page-layout: full
 title-block-banner: false
 comments: false
@@ -8,12 +8,12 @@ bibliography: references.bib
 ---
 
 ::: {#hero-heading}
-Página dedicada à disciplina **EST014 - Estatística Multivariada I**
+Página dedicada à disciplina **EST328 - Análise Multivariada e Aprendizado Não Supervisionado**
 :::
 
 ------------------------------------------------------------------------
 
-Estatística Multivariada I é uma disciplina que apresenta o estudo de técnicas estatísticas voltadas para a análise simultânea de múltiplas variáveis. O curso abrange temas como análise de componentes principais, análise fatorial, análise de agrupamentos e análise discriminante. Essas metodologias são amplamente aplicadas em diversas áreas do conhecimento, permitindo a extração de informações relevantes a partir de conjuntos de dados complexos. O objetivo da disciplina é fornecer tanto a fundamentação teórica quanto a aplicação prática dessas técnicas, capacitando os alunos a utilizar ferramentas estatísticas avançadas em suas pesquisas e projetos.
+Análise Multivariada e Aprendizado Não Supervisionado é uma disciplina que apresenta o estudo de técnicas estatísticas voltadas para a análise simultânea de múltiplas variáveis. O curso abrange temas como análise de componentes principais, análise fatorial, análise de agrupamentos e análise discriminante. Essas metodologias são amplamente aplicadas em diversas áreas do conhecimento, permitindo a extração de informações relevantes a partir de conjuntos de dados complexos. O objetivo da disciplina é fornecer tanto a fundamentação teórica quanto a aplicação prática dessas técnicas, capacitando os alunos a utilizar ferramentas estatísticas avançadas em suas pesquisas e projetos.
 
 ![](images/multi_I.jpg){width="1000"}
 
@@ -21,7 +21,7 @@ Estatística Multivariada I é uma disciplina que apresenta o estudo de técnica
 
 # Ementa
 
-Revisão de Álgebra Matricial. Introdução à Estatística Multivariada. Distribuição Normal Multivariada. Análise de Componentes Principais. Análise Fatorial. Análise de Conglomerados ou Agrupamentos. Análise Discriminante.
+Revisão de Álgebra Matricial. Introdução à Estatística Multivariada. Distribuição Normal Multivariada. Aprendizado Não Supervisionado. Análise de Componentes Principais. Análise Fatorial. Análise de Conglomerados ou Agrupamentos. Análise Discriminante.
 
 
 
@@ -36,14 +36,18 @@ Revisão de Álgebra Matricial. Introdução à Estatística Multivariada. Distr
 
 3. **Distribuição Normal Multivariada:** função densidade. Propriedades. Distribuição Normal Bivariada. Elipsóides de concentração. Métodos práticos de verificação da hipótese de normalidade multivariada.
 
-4. **Análise de Componentes Principais:** construção das Componentes Principais pela Matriz de Covariância e pela Matriz de Correlação. Proporção da Variância Total Explicada pelas Componentes. Estimação das Componentes Principais e dos Escores. Exemplos Práticos de Aplicação.
+4. **Aprendizado Não Supervisionado:** Aprendizado Não Supervisionado: Definição. Aprendizado
+Supervisionado versus Aprendizado Não Supervisionado. Desafios do Aprendizado
+Não Supervisionado.
 
-5. **Análise Fatorial:** apresentação teórica da metodologia. Modelo de Fatores Ortogonais. Estimação dos Fatores pelos Métodos de Componentes Principais, de Fatores Principais e de Máxima Verossimilhança. Rotação de Fatores: Rotações Ortogonais e Oblíquas.
+5. **Análise de Componentes Principais:** construção das Componentes Principais pela Matriz de Covariância e pela Matriz de Correlação. Proporção da Variância Total Explicada pelas Componentes. Estimação das Componentes Principais e dos Escores. Exemplos Práticos de Aplicação.
+
+6. **Análise Fatorial:** apresentação teórica da metodologia. Modelo de Fatores Ortogonais. Estimação dos Fatores pelos Métodos de Componentes Principais, de Fatores Principais e de Máxima Verossimilhança. Rotação de Fatores: Rotações Ortogonais e Oblíquas.
 Estimação dos Escores dos Fatores: Método de Mínimos Quadrados e Método de Regressão. Exemplos Práticos de Aplicação.
 
-6. **Análise de Conglomerados ou Agrupamentos:**  discussão dos vários Métodos de Formação de Conglomerados, Variáveis Quantitativas e Qualitativas. Métodos Hierárquicos: Método de Ligação Simples (Single Linkage), de Ligação Completa (Complete Linkage), de Ligação Média (Average Linkage), do Centróide, e de Ward. Métodos para encontrar o Número de Conglomerados Ótimo da Partição. Métodos Não Hierárquicos: Método das K-Médias (KMeans). Exemplos Práticos de Aplicação.
+7. **Análise de Conglomerados ou Agrupamentos:**  discussão dos vários Métodos de Formação de Conglomerados, Variáveis Quantitativas e Qualitativas. Métodos Hierárquicos: Método de Ligação Simples (Single Linkage), de Ligação Completa (Complete Linkage), de Ligação Média (Average Linkage), do Centróide, e de Ward. Métodos para encontrar o Número de Conglomerados Ótimo da Partição. Métodos Não Hierárquicos: Método das K-Médias (KMeans). Exemplos Práticos de Aplicação.
 
-7. **Análise Discriminante:** discriminação e classificação em 2 grupos. Estimação das Probabilidades de Erro de Classificação. Discriminação e Classificação Multivariada. Função Discriminante de Fischer. Exemplos Práticos de Aplicação.
+8. **Análise Discriminante:** discriminação e classificação em 2 grupos. Estimação das Probabilidades de Erro de Classificação. Discriminação e Classificação Multivariada. Função Discriminante de Fischer. Exemplos Práticos de Aplicação.
 
 
 # Horário de Aulas
@@ -52,9 +56,31 @@ Neste semestre, as aulas da disciplina serão ministradas no LABEST II.
 
 | Dia           | Horário         | Local        |
 |---------------|-----------------|--------------|
-| Terça-feira   | 21:00 - 22:40   | LABEST III   |
-| Quinta-feira   | 19:00 - 20:40   | LABEST III   |
+| Segunda-feira   | 21:00 - 22:40   | LABEST II   |
+| Quarta-feira   | 19:00 - 20:40   | LABEST II   |
 
+
+## Avaliações
+
+::: {.callout-note title="Critérios de Avaliação"}
+A nota final do semestre será computada da seguinte forma:
+
+| Atividade       | Tipo                          | Conteúdo                                |           Data |    Pontos |
+| --------------- | ----------------------------- | --------------------------------------- | -------------: | --------: |
+| **Atividade 1** | Lista de Exercícios 01        | Revisão de Álgebra Matricial            | **08/09/2026** |  **10,0** |
+| **Atividade 2** | Lista de Exercícios 02        | Introdução à Estatística Multivariada   | **21/09/2026** |  **10,0** |
+| **Atividade 3** | Lista de Exercícios 03        | Distribuição Normal Multivariada        | **05/10/2026** |  **10,0** |
+| **Atividade 4** | Relatório de Análise de Dados | Análise de Componentes Principais  | **19/10/2026** |  **17,5** |
+| **Atividade 5** | Relatório de Análise de Dados | Análise Fatorial                    | **03/11/2026** |  **17,5** |
+| **Atividade 6** | Relatório de Análise de Dados | Análise de Agrupamentos             | **16/11/2026** |  **17,5** |
+| **Atividade 7** | Relatório de Análise de Dados | Análise Discriminante               | **30/11/2026** |  **17,5** |
+|                 |                               | **Total**                               |                | **100,0** |
+
+
+:::
+
+
+**Exame Especial: 21/12/2026**
 
 # Referências Bibliográficas
 

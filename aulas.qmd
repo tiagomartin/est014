@@ -1,17 +1,95 @@
 ---
 title: "Aulas"
+format:
+  html:
+    theme: cosmo
+    fontsize: 1.2em
+    include-in-header:
+      text: |
+        <style>
+        /* Estilos visuais EST304 sem quebrar tipografia do Quarto */
+        .aulas-list .list-group-item {
+          border-left: 4px solid #003287;
+          padding-top: 0.8rem;
+          padding-bottom: 0.8rem;
+        }
+        .aulas-list .list-group-item:hover {
+          background-color: #F2F2F2;
+        }
+        .disciplina-badge {
+          background-color: #003287;
+        }
+        .btn-est304-main {
+          background-color: #003287;
+          border-color: #003287;
+          color: #fff;
+        }
+        .btn-est304-main:hover {
+          background-color: #789CEB;
+          border-color: #789CEB;
+          color: #fff;
+        }
+        .btn-est304-outline {
+          color: #003287;
+          border-color: #003287;
+        }
+        .btn-est304-outline:hover {
+          background-color: #003287;
+          color: #fff;
+        }
+        </style>
 ---
+<!-- Esta página contém aulas que serão apresentadas ao longo do semestre. Você pode baixar as aulas em uma versão PDF. -->
 
-- [Revisão de Álgebra Matricial](/aulas/revisao_alg_linear/rev_alg_linear.html#/title-slide)
+Esta página contém aulas que serão apresentadas ao longo do semestre. 
 
-- [Introdução à Estatística Multivariada](/aulas/intro_est_multi/intro_est_multi.html#/title-slide)
+::: {.list-group .aulas-list}
 
-- [Distribuição Normal Multivariada](/aulas/distr_normal_multi/distr_normal_multi.html#/title-slide)
+::: {.list-group-item .d-flex .justify-content-between .align-items-center}
+<span class="fw-bold">
+  Revisão de Álgebra Matricial
+</span>
 
-- [Análise de Componentes Principais](/aulas/analise_comp_princ/comp_princ.html#/title-slide)
+<span>
+[Ver slides](/aulas/revisao_alg_linear/rev_alg_linear.html#/title-slide){.btn .btn-est304-main .btn-sm}
+<!-- [PDF](/aulas/regressao/intro/intro.pdf){.btn .btn-est304-outline .btn-sm} -->
+</span>
+:::
 
-- [Análise Fatorial](/aulas/analise_fatorial/fatorial.html#/title-slide)
+:::
 
-- [Análise de Conglomerados ou Agrupamentos](/aulas/analise_agrupamento/agrupamento.html#/title-slide)
 
-- [Análise Discriminante](/aulas/analise_discr/discriminante.html#/title-slide)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- --- -->
+<!-- title: "Aulas" -->
+<!-- --- -->
+
+<!-- - [Revisão de Álgebra Matricial](/aulas/revisao_alg_linear/rev_alg_linear.html#/title-slide) -->
+
+<!-- - [Introdução à Estatística Multivariada](/aulas/intro_est_multi/intro_est_multi.html#/title-slide) -->
+
+<!-- - [Distribuição Normal Multivariada](/aulas/distr_normal_multi/distr_normal_multi.html#/title-slide) -->
+
+<!-- - [Análise de Componentes Principais](/aulas/analise_comp_princ/comp_princ.html#/title-slide) -->
+
+<!-- - [Análise Fatorial](/aulas/analise_fatorial/fatorial.html#/title-slide) -->
+
+<!-- - [Análise de Conglomerados ou Agrupamentos](/aulas/analise_agrupamento/agrupamento.html#/title-slide) -->
+
+<!-- - [Análise Discriminante](/aulas/analise_discr/discriminante.html#/title-slide) -->

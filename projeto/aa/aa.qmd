@@ -109,7 +109,7 @@ dados_streaming <- bind_rows(g1, g2, g3) %>%
     tempo_assinatura = round(clamp(tempo_assinatura, 1, 60)),
     valor_plano = round(clamp(valor_plano, 25, 80), 2)
   )
-write.csv(dados_streaming, "F:/SITE/est014/dados/dados_streaming.csv", row.names = FALSE)
+write.csv(dados_streaming, "F:/SITE/est328/dados/dados_streaming.csv", row.names = FALSE)
 ```
 
 ---

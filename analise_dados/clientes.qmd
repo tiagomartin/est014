@@ -144,7 +144,7 @@ dados <- dados %>%
     tempo_plano  = round(clamp(tempo_plano, 1, 60), 0)
   )
 
-write.csv(dados, "F:/SITE/est014/dados/clientes.csv", row.names = FALSE)
+write.csv(dados, "F:/SITE/est328/dados/clientes.csv", row.names = FALSE)
 ```
 
 ---

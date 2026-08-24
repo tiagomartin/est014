@@ -110,7 +110,7 @@ dados <- tibble(
   IT      = to_0_10(IT),
   SUPPORT = to_0_10(SUPPORT)
 )
-write.csv(dados, "F:/SITE/est014/dados/estudantes.csv", row.names = FALSE)
+write.csv(dados, "F:/SITE/est328/dados/estudantes.csv", row.names = FALSE)
 ```
 
 

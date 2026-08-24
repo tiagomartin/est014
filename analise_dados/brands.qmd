@@ -79,7 +79,7 @@ load(packages)
 ## Leitura dos dados
 
 ```{r}
-path <- "https://raw.githubusercontent.com/tiagomartin/est014/refs/heads/master/dados/brand.csv"
+path <- "https://raw.githubusercontent.com/tiagomartin/est328/refs/heads/master/dados/brand.csv"
 brands <- read_csv(path, show_col_types = FALSE) %>%
   clean_names() 
 
