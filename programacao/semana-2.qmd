@@ -7,6 +7,8 @@ title: "Semana 02"
 
 {{< fa file-powerpoint size=lg >}} [Revisão de Álgebra Matricial](/aulas/revisao_alg_linear/rev_alg_linear.html#/title-slide "Revisão de Álgebra Linear"){aria-label="Revisão de Álgebra Linear"}
 
+{{< fa file-powerpoint size=lg >}} [Introdução à Estatística Multivariada](/aulas/intro_est_multi/intro_est_multi.html#/title-slide "Introdução à Estatística Multivariada"){aria-label="Introdução à Estatística Multivariada"}
+
 
 ## Entrega lista de exercícios 01
 
